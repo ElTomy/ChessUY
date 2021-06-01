@@ -1,0 +1,655 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #111;
+  height: 180vh;
+  font-family: Roboto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100px;
+}
+
+header .header-logo img {
+  margin: 0 20px;
+  width: 300px;
+}
+
+/*
+Loading Screen
+*/
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  -webkit-animation: loader 2s infinite ease;
+          animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  -webkit-animation: loader-inner 2s infinite ease-in;
+          animation: loader-inner 2s infinite ease-in;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  25% {
+    height: 0%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+
+.landing-video {
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.landing-video .background-opacity {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.landing-video video {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+.landing-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.landing-page .landing-overlay {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2;
+  width: 500px;
+  text-align: center;
+}
+
+.landing-page .landing-overlay .index-info {
+  margin: 40px 20px 0 20px;
+}
+
+.landing-page .landing-overlay .index-info h1 {
+  color: #0076be;
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0;
+}
+
+.landing-page .landing-overlay .index-info p {
+  color: white;
+  font-weight: 300;
+}
+
+.register-wrapper .radio-user, .register-wrapper2 .radio-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  padding: 20px 15px;
+  -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.register-wrapper .radio-user .option, .register-wrapper2 .radio-user .option {
+  background: transparent;
+  height: 50px;
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid #0076be;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.register-wrapper .radio-user .option .dot, .register-wrapper2 .radio-user .option .dot {
+  margin-left: 20px;
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+}
+
+.register-wrapper .radio-user .option .dot::before, .register-wrapper2 .radio-user .option .dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #0076be;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.register-wrapper .radio-user .option span, .register-wrapper2 .radio-user .option span {
+  margin-left: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.register-wrapper .radio-user input[type="radio"], .register-wrapper2 .radio-user input[type="radio"] {
+  display: none;
+}
+
+.register-wrapper .radio-user #option-1:checked:checked ~ .option-1,
+.register-wrapper .radio-user #option-2:checked:checked ~ .option-2,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1,
+.register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2,
+.register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 {
+  border-color: #0076be;
+  background: #0076be;
+}
+
+.register-wrapper .radio-user #option-1:checked:checked ~ .option-1 .dot,
+.register-wrapper .radio-user #option-2:checked:checked ~ .option-2 .dot,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot,
+.register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2 .dot,
+.register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 .dot {
+  background: #fff;
+}
+
+.register-wrapper .radio-user #option-1:checked:checked ~ .option-1 .dot::before,
+.register-wrapper .radio-user #option-2:checked:checked ~ .option-2 .dot::before,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot::before, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot::before,
+.register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2 .dot::before,
+.register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 .dot::before {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.buttons, .login-wrapper .login-button, .register-wrapper .register-button, .register-wrapper2 .register-button {
+  margin: 20px;
+  /*
+        Top Bar
+    */
+  /*
+        Right Bar
+    */
+  /*
+        Bottom Bar
+    */
+  /*
+        Left Bar
+    */
+}
+
+.buttons .login-button, .buttons .register-button, .login-wrapper .login-button .login-button, .login-wrapper .login-button .register-button, .register-wrapper .register-button .login-button, .register-wrapper .register-button .register-button, .register-wrapper2 .register-button .login-button, .register-wrapper2 .register-button .register-button {
+  margin: 20px 0;
+}
+
+.buttons a, .login-wrapper .login-button a, .register-wrapper .register-button a, .register-wrapper2 .register-button a {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+  width: 150px;
+  padding: 15px 30px;
+  color: #0076be;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 20px;
+  overflow: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.buttons a i, .login-wrapper .login-button a i, .register-wrapper .register-button a i, .register-wrapper2 .register-button a i {
+  margin: 0 10px;
+}
+
+.buttons a:hover, .login-wrapper .login-button a:hover, .register-wrapper .register-button a:hover, .register-wrapper2 .register-button a:hover {
+  background-color: #0076be;
+  color: white;
+  -webkit-box-shadow: 0 0 10px #0076be, 0 0 40px #0076be, 0 0 80px #0076be;
+          box-shadow: 0 0 10px #0076be, 0 0 40px #0076be, 0 0 80px #0076be;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.buttons a span, .login-wrapper .login-button a span, .register-wrapper .register-button a span, .register-wrapper2 .register-button a span {
+  position: absolute;
+  display: block;
+}
+
+.buttons a span:nth-child(1), .login-wrapper .login-button a span:nth-child(1), .register-wrapper .register-button a span:nth-child(1), .register-wrapper2 .register-button a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), to(#0076be));
+  background: linear-gradient(90deg, transparent, #0076be);
+}
+
+.buttons a:hover span:nth-child(1), .login-wrapper .login-button a:hover span:nth-child(1), .register-wrapper .register-button a:hover span:nth-child(1), .register-wrapper2 .register-button a:hover span:nth-child(1) {
+  left: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.buttons a span:nth-child(2), .login-wrapper .login-button a span:nth-child(2), .register-wrapper .register-button a span:nth-child(2), .register-wrapper2 .register-button a span:nth-child(2) {
+  right: 0;
+  top: -100%;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#0076be));
+  background: linear-gradient(180deg, transparent, #0076be);
+}
+
+.buttons a:hover span:nth-child(2), .login-wrapper .login-button a:hover span:nth-child(2), .register-wrapper .register-button a:hover span:nth-child(2), .register-wrapper2 .register-button a:hover span:nth-child(2) {
+  top: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition-delay: 0.125s;
+          transition-delay: 0.125s;
+}
+
+.buttons a span:nth-child(3), .login-wrapper .login-button a span:nth-child(3), .register-wrapper .register-button a span:nth-child(3), .register-wrapper2 .register-button a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), to(#0076be));
+  background: linear-gradient(270deg, transparent, #0076be);
+}
+
+.buttons a:hover span:nth-child(3), .login-wrapper .login-button a:hover span:nth-child(3), .register-wrapper .register-button a:hover span:nth-child(3), .register-wrapper2 .register-button a:hover span:nth-child(3) {
+  right: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+.buttons a span:nth-child(4), .login-wrapper .login-button a span:nth-child(4), .register-wrapper .register-button a span:nth-child(4), .register-wrapper2 .register-button a span:nth-child(4) {
+  left: 0;
+  bottom: -100%;
+  width: 2px;
+  height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(transparent), to(#0076be));
+  background: linear-gradient(360deg, transparent, #0076be);
+}
+
+.buttons a:hover span:nth-child(4), .login-wrapper .login-button a:hover span:nth-child(4), .register-wrapper .register-button a:hover span:nth-child(4), .register-wrapper2 .register-button a:hover span:nth-child(4) {
+  bottom: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition-delay: 0.375s;
+          transition-delay: 0.375s;
+}
+
+img {
+  width: 400px;
+}
+
+.login-wrapper, .register-wrapper, .register-wrapper2 {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login-wrapper .inputs, .register-wrapper .inputs, .register-wrapper2 .inputs {
+  margin: 10px 0;
+  width: 100%;
+  height: 50px;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-wrapper .inputs input, .register-wrapper .inputs input, .register-wrapper2 .inputs input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: #0076be;
+  padding-top: 10px;
+  border: none;
+  outline: 0px;
+}
+
+.login-wrapper .inputs input:focus + .lbl-user .text-user, .login-wrapper .inputs input:valid + .lbl-user .text-user, .register-wrapper .inputs input:focus + .lbl-user .text-user, .register-wrapper .inputs input:valid + .lbl-user .text-user, .register-wrapper2 .inputs input:focus + .lbl-user .text-user, .register-wrapper2 .inputs input:valid + .lbl-user .text-user {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  font-size: 14px;
+  color: #0076be;
+}
+
+.login-wrapper .inputs input:focus + .lbl-user:after, .register-wrapper .inputs input:focus + .lbl-user:after, .register-wrapper2 .inputs input:focus + .lbl-user:after {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.login-wrapper .inputs input:-webkit-autofill, .register-wrapper .inputs input:-webkit-autofill, .register-wrapper2 .inputs input:-webkit-autofill {
+  -webkit-text-fill-color: #0076be;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@-webkit-keyframes autofill {
+  0%, 100% {
+    color: #333;
+    background: transparent;
+  }
+}
+
+.login-wrapper .inputs .lbl-user, .register-wrapper .inputs .lbl-user, .register-wrapper2 .inputs .lbl-user {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid white;
+}
+
+.login-wrapper .inputs .lbl-user .text-user, .register-wrapper .inputs .lbl-user .text-user, .register-wrapper2 .inputs .lbl-user .text-user {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  color: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.login-wrapper .inputs .lbl-user:after, .register-wrapper .inputs .lbl-user:after, .register-wrapper2 .inputs .lbl-user:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #0076be;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.login-wrapper .forgot-password a, .register-wrapper .forgot-password a, .register-wrapper2 .forgot-password a {
+  color: #858585;
+  font-size: 15px;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.login-wrapper .forgot-password a:hover, .register-wrapper .forgot-password a:hover, .register-wrapper2 .forgot-password a:hover {
+  color: white;
+}
+
+.login-wrapper .column-wrapper, .register-wrapper .column-wrapper, .register-wrapper2 .column-wrapper {
+  width: 600px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.login-wrapper .column-wrapper .column, .register-wrapper .column-wrapper .column, .register-wrapper2 .column-wrapper .column {
+  margin: 20px;
+}
+
+@media screen and (max-width: 605px) {
+  .register-wrapper {
+    height: 100vh;
+  }
+  .register-wrapper .register-logo img {
+    width: 300px;
+  }
+  .register-wrapper2 {
+    padding: 40px 0;
+    height: 100%;
+  }
+  .register-wrapper2 .register-logo img {
+    width: 300px;
+  }
+  .register-wrapper2 .column-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .register-wrapper2 .column-wrapper .column {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .landing-page .landing-overlay {
+    width: 100%;
+  }
+  .landing-page .landing-overlay .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .landing-page .landing-overlay .buttons .index-info {
+    width: 90%;
+  }
+  .landing-page .landing-overlay .buttons a {
+    margin: 5px;
+  }
+  .landing-page .landing-overlay img {
+    width: 300px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
