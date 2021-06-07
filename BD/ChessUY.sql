@@ -647,16 +647,23 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Register`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(60),IN Nac Date,IN Mai Varchar(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Register`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(60),IN Nac Date,IN Mai Varchar(100),out x int)
 BEGIN
 	if(not exists(select * from usuario where Usuario = Usu))then
 		if(not exists(select * from Solicitudes where Usuario = Usu))then
 			if(tip =  1)then
 				insert into usuario(Tipo,Usuario,CI,Año,Apellido,Institucion,Nombre,Contacto,Contrasenia,Nacimiento,Mail)value(Tip,Usu,Cedula,an,Ape,Inst,Nom,Cont,Pass,Nac,Mai);
+                set x = "1";
 			else
 				insert into Solicitudes(Tipo,Usuario,CI,Año,Apellido,Institucion,Nombre,Contacto,Contrasenia,Nacimiento,Mail)value(Tip,Usu,Cedula,an,Ape,Inst,Nom,Cont,Pass,Nac,Mai);
+                set x = "2";
+                
 			end if;
+            else
+            set x = "0";
 		end if;
+        else
+        set x = "0";
 	end if;
 END ;;
 DELIMITER ;
@@ -674,4 +681,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-07 15:52:55
+-- Dump completed on 2021-06-07 16:07:34
