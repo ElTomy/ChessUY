@@ -79,5 +79,13 @@ class servidor{
 
         $stmts->bind_param("s",$usuario);
     }
+    function AgregarUsuario($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("isiisssssss",$tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail);
+    }
 }
 ?>
