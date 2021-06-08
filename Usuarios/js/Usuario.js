@@ -89,20 +89,22 @@ class Usuario{
     
     
     login(usuario, pass){ 
-        var x=0;
+        var x= false;
+
         $.ajax({
             async: false,
             type: "POST",
-            url: "../php/logearse.php",
+            url: "../Usuarios/php/logearse.php",
             data: {usuario:usuario,pass:pass},
             success: function(log){
                 var txt = log;
                 var log2 = JSON.parse(txt);
-                if(log[0] == "asd"){
-                    x= 0;
+                if(log2[0] == "asd"){
+                    x = false;
                 }else{
-                    sessionStorage.setItem("ci", log2.ci);
-                    x = 1;
+                    sessionStorage.setItem("usuario", log2.usuario);
+                    sessionStorage.setItem("tipo", log2.tipo);
+                    x = true;
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
