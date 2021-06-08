@@ -24,7 +24,8 @@ class servidor{
             if($stmts->fetch()){
                 if($us == null){
                     $stmts->close();
-                    return false;
+                    $info[0] = "asd";
+                    return $info;
                 }else{
                     $stmts->close();
                     session_start();
@@ -34,11 +35,13 @@ class servidor{
                     return $info;
                 }
             }else{
-                return false;
+                $info[0] = "asd";
+                return $info;
             }
         
         }else{
-            return false;
+            $info[0] = "asd";
+            return $info;
         }
     }
     function Register($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail){
@@ -76,5 +79,5 @@ class servidor{
 
         $stmts->bind_param("s",$usuario);
     }
-
+}
 ?>
