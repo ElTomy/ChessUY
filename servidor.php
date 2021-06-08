@@ -20,7 +20,7 @@ class servidor{
         $us="";
         if($stmts->execute()){
             $stmts->store_result();
-            $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail);
+            $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
             if($stmts->fetch()){
                 if($us == null){
                     $stmts->close();
@@ -44,13 +44,13 @@ class servidor{
             return $info;
         }
     }
-    function Register($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail){
+    function Register($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL login(?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("isiisssssss",$tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contrasenia,$Nacimiento,$Mail);
+        $stmts->bind_param("isiisssssss",$tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
         if($stmts->execute()){
             $resultado = $conn->query('SELECT @x as p_out');
             $x = $resultado->fetch_assoc();
@@ -79,5 +79,32 @@ class servidor{
 
         $stmts->bind_param("s",$usuario);
     }
+    function AgregarUsuario($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("isiisssssss",$tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
+    }
+    function InfoSolicitudes(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoSolicitudes()";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param();
+        if($stmts->execute()){
+            $stmts->store_result();
+            $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
+            while($stmts->fetch()){
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                array_push($Info, $data);
+            }
+            $stmts->close();
+        }
+        return $Info;
+    }
+
 }
 ?>
