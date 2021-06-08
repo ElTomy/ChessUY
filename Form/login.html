@@ -10,6 +10,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="../Javascript/Loader.js"></script>
+    <script src="../Usuarios/js/Usuario.js"></script>
+    <script src="../Usuarios/js/function-usuarios.js"></script>
 
     <link
       rel="shortcut icon"
@@ -43,13 +45,13 @@
           </div>
 
           <div class="inputs">
-            <input type="text" name="usuario" required />
+            <input type="text" name="usuario" id="usuario" required />
             <label class="lbl-user">
               <span class="text-user"> Usuario </span>
             </label>
           </div>
           <div class="inputs">
-            <input type="password" name="Contraseña" required />
+            <input type="password" name="Contraseña" id="contraseña" required />
             <label class="lbl-user">
               <span class="text-user"> Contraseña </span>
             </label>
@@ -58,7 +60,7 @@
             <a href="">He olvidado mi contraseña.</a>
           </div>
           <div class="login-button">
-            <a href="#">
+            <a href="#" onclick="log()">
               <span></span>
               <span></span>
               <span></span>
