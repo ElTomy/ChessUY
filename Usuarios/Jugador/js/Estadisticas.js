@@ -1,3 +1,3 @@
 $( document ).ready(function(){
-    $("#Estadisticas").load('php/ArmoEstadisticas.php');
+    $("#Estadisticas").load('../php/ArmoEstadisticas.php');
 });
