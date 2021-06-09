@@ -12,13 +12,41 @@ class servidor
             return $conexion;
         }
     }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
-    function login($usuario, $pass)
-    {
+    
+    function VerificoSesion($tipo){
+        session_start();
+
+        if(!isset($_SESSION["usuario"])){
+            header("Location: /chessuy/Form/login.html");
+
+        }else{
+            switch ($tipo) {
+                case 0: //admin
+                    if($_SESSION["tipo"] != "0"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 1: //jugador
+                    if($_SESSION["tipo"] != "1"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 2: //arbitro
+                    if($_SESSION["tipo"] != "2"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 3: //periodista
+                    if($_SESSION["tipo"] != "3"){
+                    header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+            }
+            }
+        
+    }
+
+    function login($usuario, $pass){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL login(?,?)";
@@ -167,7 +195,8 @@ class servidor
         $sql = "CALL CrearTorneo(?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("iiissii", $Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes);
+        $stmts->bind_param("iiissii",$Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes);
+        $stmts->execute();
     }
     //
     //
@@ -184,14 +213,13 @@ class servidor
         $stmts->bind_param("s", $usuario);
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos);
-            while ($stmts->fetch()) {
-                $data = array('ELO' => $ELO, 'usuario' => $Usuario, 'Victorias' => $Victorias, 'Derrotas' => $Derrotas, 'Tablas' => $Tablas, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos);
-                $info[] = $data;
-            }
+            $stmts->bind_result($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+            $stmts->fetch();
             $stmts->close();
+            return array($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+
         }
-        return $info;
+        return false;
     }
     //
     //
@@ -204,6 +232,7 @@ class servidor
         $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("isiiiiiii", $ELO, $Usuario, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos);
+        $stmts->bind_param("isiiiiiii",$ELO,$Usuario,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+        $stmts->execute();
     }
 }
