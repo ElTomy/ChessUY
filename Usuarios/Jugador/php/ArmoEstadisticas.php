@@ -1,7 +1,7 @@
 <?php
 include '../../../servidor.php';
 session_start();
-$Usuario = $_SESSION['Usuario'];
+$Usuario = $_SESSION['usuario'];
 $server= new servidor();
 list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($Usuario);
 $return =

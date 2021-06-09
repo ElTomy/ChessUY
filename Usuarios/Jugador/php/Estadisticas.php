@@ -46,9 +46,8 @@
 
         <div class="index-info">
           <h1>ESTADISTICAS</h1>
-          <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, in.</b>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, sed accusamus illum molestiae vitae assumenda architecto rerum voluptatum laborum placeat aperiam maiores dolor modi quisquam necessitatibus voluptatem dolorum excepturi. Quo, sit tempore velit aperiam at culpa maxime dolor quisquam provident assumenda similique ab doloribus soluta impedit in corporis dolorum, ea vel excepturi voluptatem earum. Quia ex deserunt officiis laboriosam sit aliquam quaerat vitae maiores minus nesciunt magni, consequatur culpa vel dolore iure corporis nam in eaque rerum libero! Exercitationem minus optio alias veritatis aliquid voluptate accusamus ratione, sit praesentium. Aut asperiores earum eligendi, cumque reiciendis sapiente animi dicta accusantium similique.</p>
+          <div id='Estadisticas' ></div>
         </div>
-        <div class='Estadisticas' ></div>
       </div>
     </section>
 
