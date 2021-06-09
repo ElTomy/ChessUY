@@ -16,6 +16,7 @@
       href="../media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
+    <script src="js/Form.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../styles/styles.css" />
 
@@ -43,64 +44,64 @@
         <div class="column-wrapper">
             <div class="column">
                 <div class="inputs">
-                    <input type="text" name="nombre" required />
+                    <input type="text" id="nombre" name="nombre" required />
                     <label class="lbl-user">
                         <span class="text-user"> Nombre </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" name="apellido" required />
+                    <input type="text" id="apellido" name="apellido" required />
                     <label class="lbl-user">
                         <span class="text-user"> Apellido </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" name="institucion" required />
+                    <input type="text" id="institucion" name="institucion" required />
                     <label class="lbl-user">
                         <span class="text-user"> Institución Liceal </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" name="año" required />
+                    <input type="text" id="año" name="año" required />
                     <label class="lbl-user">
                         <span class="text-user"> Año Cursando </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" name="nacimiento" required />
+                    <input type="text" id="nacimiento" name="nacimiento" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Fecha de Nacimiento (DD/MM/AAAA)</span>
+                        <span class="text-user"> Fecha de Nacimiento (Año/Mes/Día)</span>
                     </label>
                 </div>
             </div>
             <div class="column">
                 <div class="inputs">
-                    <input type="text" name="cedula" required />
+                    <input type="text" id="cedula" name="cedula" required />
                     <label class="lbl-user">
                         <span class="text-user"> Cedula</span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" name="celular" required />
+                    <input type="text" id="celular" name="celular" required />
                     <label class="lbl-user">
                         <span class="text-user"> Celular</span>
                     </label>
                 </div>
             
                 <div class="inputs">
-                    <input type="text" name="usuario" required />
+                    <input type="text" id="usuario" name="usuario" required />
                     <label class="lbl-user">
                     <span class="text-user"> Usuario </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="email" name="email" required />
+                    <input type="email" id="email" name="email" required />
                     <label class="lbl-user">
                     <span class="text-user"> Email </span>
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="password" name="Contraseña" required />
+                    <input type="password" id="contraseña" name="Contraseña" required />
                     <label class="lbl-user">
                     <span class="text-user"> Contraseña </span>
                     </label>
@@ -108,7 +109,7 @@
             </div>
         </div>
         <div class="register-button">
-            <a href="#">
+            <a href="#" onclick="Register()">
             <span></span>
             <span></span>
             <span></span>
