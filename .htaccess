@@ -1,8 +1,7 @@
-RewriteEngine on
+RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 ErrorDocument 404 /ChessUY/Error/404.html
 ErrorDocument 403 /ChessUY/Error/403.html
