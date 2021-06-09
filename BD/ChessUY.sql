@@ -43,6 +43,7 @@ CREATE TABLE `estadisticas` (
 
 LOCK TABLES `estadisticas` WRITE;
 /*!40000 ALTER TABLE `estadisticas` DISABLE KEYS */;
+INSERT INTO `estadisticas` VALUES ('jose',1,1,1,1,1,1,1,1);
 /*!40000 ALTER TABLE `estadisticas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +386,7 @@ CREATE TABLE `solicitudes` (
   `Institucion` varchar(60) DEFAULT NULL,
   `Nombre` varchar(45) DEFAULT NULL,
   `Contacto` varchar(45) DEFAULT NULL,
-  `Contrasenia` varchar(45) DEFAULT NULL,
+  `Contrasenia` varchar(130) DEFAULT NULL,
   `Nacimiento` date DEFAULT NULL,
   `Mail` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -471,7 +472,7 @@ CREATE TABLE `usuario` (
   `Institucion` varchar(60) DEFAULT NULL,
   `Nombre` varchar(45) DEFAULT NULL,
   `Contacto` varchar(45) DEFAULT NULL,
-  `Contrasenia` varchar(45) DEFAULT NULL,
+  `Contrasenia` varchar(130) DEFAULT NULL,
   `Nacimiento` date DEFAULT NULL,
   `Mail` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Usuario`)
@@ -484,6 +485,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'jose',NULL,NULL,NULL,NULL,NULL,NULL,'7110eda4d09e062aa5e4a390b0a572ac0d2c0220',NULL,NULL),(0,'pepe',NULL,NULL,NULL,NULL,NULL,NULL,'7110eda4d09e062aa5e4a390b0a572ac0d2c0220',NULL,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -575,7 +577,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarUsuario`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(60),IN Nac Date,IN Mai Varchar(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarUsuario`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(130),IN Nac Date,IN Mai Varchar(100))
 BEGIN
 	insert into usuario(Tipo,Usuario,CI,Año,Apellido,Institucion,Nombre,Contacto,Contrasenia,Nacimiento,Mail)value(Tip,Usu,Cedula,an,Ape,Inst,Nom,Cont,Pass,Nac,Mai);
 	Delete from Solicitudes where Usuario = Usu;
@@ -709,7 +711,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Register`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(60),IN Nac Date,IN Mai Varchar(100),out x int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Register`(IN Tip INT,IN Usu Varchar(60),IN Cedula INT,IN an INT,IN Ape Varchar(60),IN Inst Varchar(60),IN Nom Varchar(60),IN Cont Varchar(60),IN Pass Varchar(130),IN Nac Date,IN Mai Varchar(100),out x int)
 BEGIN
 	if(not exists(select * from usuario where Usuario = Usu))then
 		if(not exists(select * from Solicitudes where Usuario = Usu))then
@@ -743,4 +745,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-09 16:19:18
+-- Dump completed on 2021-06-09 18:39:23
