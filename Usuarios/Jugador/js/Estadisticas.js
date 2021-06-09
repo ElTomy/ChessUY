@@ -1,4 +1,3 @@
 $( document ).ready(function(){
-    //sessionStorage.getItem('Usuario');
-    $("#Estadisticas").load('php/Estadisticas.php');
+    $("#Estadisticas").load('php/ArmoEstadisticas.php');
 });
