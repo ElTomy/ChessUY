@@ -6,7 +6,6 @@ body{
     box-sizing: border-box;
     overflow-x: hidden;
     background-color: #111;
-    height: 180vh;
     font-family: Roboto;
 }
 
@@ -56,6 +55,36 @@ footer{
 
         img{
             width: 200px;
+        }
+    }
+}
+
+.Solicitudes-wrapper{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1{
+        color: white;
+        font-size: 30px;
+        font-weight: lighter;
+    }
+    table{
+        width: 600px;
+        border: 1px solid #0076be;
+
+        tr{
+            border: none;
+
+            th{
+                color: white;
+                border: none;
+                font-weight: lighter;
+            }
         }
     }
 }
