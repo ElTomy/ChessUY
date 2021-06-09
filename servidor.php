@@ -46,7 +46,6 @@ class servidor{
     }
     function Register($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail){
         $conn = $this->conectar();
-        $info = array();
         $sql = "CALL login(?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
@@ -80,7 +79,6 @@ class servidor{
     }
     function AgregarUsuario($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail){
         $conn = $this->conectar();
-        $info = array();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
@@ -104,6 +102,55 @@ class servidor{
         }
         return $info;
     }
+    function InfoUsuario(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoUsuario()";
+        $stmts = $conn->prepare($sql);
 
+        $stmts->bind_param();
+        if($stmts->execute()){
+            $stmts->store_result();
+            $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
+            while($stmts->fetch()){
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $Info;
+    }
+    function CrearTorneo($Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes){
+        $conn = $this->conectar();
+        $sql = "CALL CrearTorneo(?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("iiissii",$Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes);
+    }
+    function InfoEstadisticas($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoEstadisticas(?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("s",$Usuario);
+        if($stmts->execute()){
+            $stmts->store_result();
+            $stmts->bind_result($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+            while($stmts->fetch()){
+                $data = array('ELO' => $ELO, 'usuario' => $Usuario, 'Victorias' => $Victorias, 'Derrotas' => $Derrotas, 'Tablas' => $Tablas, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $Info;
+    }
+    function AgregarEstadistica($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos){
+        $conn = $this->conectar();
+        $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("isiiiiiii",$ELO,$Usuario,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+    }
 }
 ?>
