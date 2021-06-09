@@ -83,8 +83,8 @@ class servidor{
         $info = array();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-
         $stmts->bind_param("isiisssssss",$tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
+        $stmts->execute();
     }
     function InfoSolicitudes(){
         $conn = $this->conectar();
@@ -97,7 +97,7 @@ class servidor{
             $stmts->store_result();
             $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
             while($stmts->fetch()){
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => sha1($Contraseña), 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
                 $info[] = $data;
             }
             $stmts->close();
