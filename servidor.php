@@ -11,11 +11,37 @@ class servidor{
         }
     }
     
-    function VerificoSesion(){
+    function VerificoSesion($tipo){
         session_start();
+
         if(!isset($_SESSION["usuario"])){
-        header("Location: /chessuy/Form/login.html");
-        }
+            header("Location: /chessuy/Form/login.html");
+
+        }else{
+            switch ($tipo) {
+                case 0: //admin
+                    if($_SESSION["tipo"] != "0"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 1: //jugador
+                    if($_SESSION["tipo"] != "1"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 2: //arbitro
+                    if($_SESSION["tipo"] != "2"){
+                        header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+                case 3: //periodista
+                    if($_SESSION["tipo"] != "3"){
+                    header("Location: /chessuy/Form/login.html");
+                    }
+                    break;
+            }
+            }
+        
     }
 
     function login($usuario, $pass){
