@@ -24,23 +24,23 @@ class servidor{
             if($stmts->fetch()){
                 if($us == null){
                     $stmts->close();
-                    $info[0] = "asd";
+                    $info = array('error'=> true);
                     return $info;
                 }else{
                     $stmts->close();
                     session_start();
                     $_SESSION['usuario'] = $us;
                     $_SESSION['tipo'] = $tipo;
-                    $info = array('usuario'=> $us, 'tipo' => $tipo);
+                    $info = array('error'=> false, 'usuario'=> $us, 'tipo' => $tipo);
                     return $info;
                 }
             }else{
-                $info[0] = "asd";
+                $info = array('error'=> true);
                 return $info;
             }
         
         }else{
-            $info[0] = "asd";
+            $info = array('error'=> true);
             return $info;
         }
     }

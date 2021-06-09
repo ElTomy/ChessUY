@@ -7,7 +7,7 @@ if(isset($_POST['usuario'])){
     $pwd = $_POST["pass"];
     echo json_encode($server->login($user, $pwd)); 
 }else{
-    $log[0] = "asd";
+    $log = array('error'=> true);
     echo json_encode($log);
 }
 ?>

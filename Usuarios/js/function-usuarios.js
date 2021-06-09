@@ -11,19 +11,19 @@ function log(){
         if(log == true){
           var tipo = sessionStorage.getItem("tipo");
           switch (tipo) {
-            case 0: //admin
+            case "0": //admin
               console.log('logeado admin');
               //location.href ="";
               break;
-            case 1: //jugador
+            case "1": //jugador
               console.log('logeado jugador');
               //location.href ="";
               break;
-            case 2: //arbitro
+            case "2": //arbitro
               console.log('logeado arbitro');
               //location.href ="";
               break;
-            case 3: //periodista
+            case "3": //periodista
               console.log('logeado periodista');
               //location.href ="";
               break;

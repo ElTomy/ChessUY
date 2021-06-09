@@ -90,7 +90,6 @@ class Usuario{
     
     login(usuario, pass){ 
         var x= false;
-
         $.ajax({
             async: false,
             type: "POST",
@@ -99,7 +98,8 @@ class Usuario{
             success: function(log){
                 var txt = log;
                 var log2 = JSON.parse(txt);
-                if(log2[0] == "asd"){
+
+                if(log2.error == true){
                     x = false;
                 }else{
                     sessionStorage.setItem("usuario", log2.usuario);
