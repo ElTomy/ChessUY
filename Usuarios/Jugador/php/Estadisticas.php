@@ -28,7 +28,7 @@
     <title>ChessUY | Championship</title>
   </head>
   <body>
-
+  <div id="header"></div>
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
