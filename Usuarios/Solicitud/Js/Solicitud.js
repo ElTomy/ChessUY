@@ -1,6 +1,6 @@
 var len = 0;
 var x = 0;
-var ci, usr, nom, ape, ins, mai, tip;
+var ci, usr, nom, ape, ins, mai, tip, año, con, nac,pas;
 $(document).ready(function () {
     $.ajax({
         type: "Post",
@@ -18,17 +18,28 @@ $(document).ready(function () {
                 ins = solic[len].Institucion;
                 mai = solic[len].Mail;
                 tip = solic[len].tipo;
-                console.log(usr);
-                document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<tr id="' + len + '"><td>' + ci + '</td> <td id="user' + len + '">' + usr + '</td> <td>' + nom + '</td> <td>' + ape + '</td> <td>' + ins + '</td> <td>' + mai + '</td> <td>' + tip + '</td><td><button onclick="aprobar(' + len + ',' + usr + ');">✓</button><button onclick="rechazar(' + len + ',' + "'" + usr + "'" + ');">✖</button></td></tr>';
+                año = solic[len].año;
+                con = solic[len].Contacto;
+                nac = solic[len].Nacimiento;
+                pas = solic[len].Contraseña;
+                document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td>' + ci + '</td> <td id="user' + len + '">' + usr + '</td> <td>' + nom + '</td> <td>' + ape + '</td> <td>' + ins + '</td> <td>' + mai + '</td> <td>' + tip + '</td><td><button onclick="aprobar(' + len + ',' + "'" + ci + "'" + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" + ',' + "'" + ape + "'" + ',' + "'" + ins + "'" + ',' + "'" + mai + "'" + ',' + "'" + tip + "'" + ',' + "'" + año + "'" + ',' + "'" + con + "'" + ',' + "'" + nac + "'" +',' + "'" + pas + "'" + ');">✓</button><button onclick="rechazar(' + len + ',' + "'" + usr + "'" + ');">✖</button></td>';
                 len++;
             }
         }
     });
 });
 
-function aprobar(data, usr) {
-    console.log(data);
+function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac,pas) {
+    console.log(data,ci, usr, nom, ape, ins, mai, tip, año, con, nac,pas);
     alert("Usuario aprobado : " + usr);
+    $.ajax({
+        type: "Post",
+        url: "../Solicitud/PHP/Aprobar.php",
+        data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tip, año: año, contacto: con, nacimiento: nac, contraseña:pas },
+        success: function (response) {
+            console.log(response);
+        }
+    });
 }
 function rechazar(data, usr) {
     console.log(data);
