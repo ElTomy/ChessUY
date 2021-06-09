@@ -159,6 +159,7 @@ class servidor{
         $stmts = $conn->prepare($sql);
 
         $stmts->bind_param("iiissii",$Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes);
+        $stmts->execute();
     }
     function InfoEstadisticas($usuario){
         $conn = $this->conectar();
@@ -170,13 +171,12 @@ class servidor{
         if($stmts->execute()){
             $stmts->store_result();
             $stmts->bind_result($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
-            while($stmts->fetch()){
-                $data = array('ELO' => $ELO, 'usuario' => $Usuario, 'Victorias' => $Victorias, 'Derrotas' => $Derrotas, 'Tablas' => $Tablas, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos);
-                $info[] = $data;
-            }
+            $stmts->fetch();
             $stmts->close();
+            return array($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+
         }
-        return $info;
+        return false;
     }
     function AgregarEstadistica($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos){
         $conn = $this->conectar();
@@ -184,6 +184,7 @@ class servidor{
         $stmts = $conn->prepare($sql);
 
         $stmts->bind_param("isiiiiiii",$ELO,$Usuario,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
+        $stmts->execute();
     }
 }
 ?>

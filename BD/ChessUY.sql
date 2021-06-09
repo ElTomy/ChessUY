@@ -542,7 +542,7 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'chessuy'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `Agregar estadistica` */;
+/*!50003 DROP PROCEDURE IF EXISTS `AgregarEstadistica` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -552,7 +552,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Agregar estadistica`(IN El INT,IN Usu Varchar(60),IN Vict INT,IN Tab INT,IN Der INT,IN Coron INT,IN Comid INT,IN MT INT,IN MM INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarEstadistica`(IN El INT,IN Usu Varchar(60),IN Vict INT,IN Tab INT,IN Der INT,IN Coron INT,IN Comid INT,IN MT INT,IN MM INT)
 BEGIN
 	if(not exists(select * from Solicitudes where Usuario = Usu))then
 		insert into estadisticas(Usuario,ELO,Victorias,Derrotas,Tablas,Coronaciones,Comidas,Menos_Tiempo,Menos_Movimientos)value(Usu,El,Vict,Der,Tab,Coron,Comid,MT,MM);
@@ -743,4 +743,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-08 16:26:44
+-- Dump completed on 2021-06-09 16:19:18

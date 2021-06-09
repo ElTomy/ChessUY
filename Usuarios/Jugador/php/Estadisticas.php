@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
   include '../../../servidor.php';
   $server= new servidor();
   $server->VerificoSesion(1); 
@@ -30,27 +31,26 @@
 
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
+=======
+include '../../../servidor.php';
+session_start();
+$Usuario = $_SESSION['Usuario'];
+$server= new servidor();
+list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($Usuario);
+$return =
+"<div>
+    <div>
+        <p><b>ELO: </b>$ELO</p>
+        <p><b>Victorias: </b>$Victorias</p>
+        <p><b>Derrotas: </b>$Derrotas</p>
+        <p><b>Tablas: </b>$Tablas</p>
+        <p><b>Coronaciones: </b>$Coronaciones</p>
+        <p><b>Cantidad de piezas comidas: </b>$Comidas</p>
+        <p><b>Victoria en menos tiempo: </b>$Menos_Tiempo</p>
+        <p><b>Victoria en menos movimientos: </b>$Menos_Movimientos</p>
+>>>>>>> 4c4c4e32c31f9a9fd61514f5644b55ea6fd16413
     </div>
-    <div class="landing-video">
-      <div class="background-opacity"></div>
-      <video autoplay="" loop="" muted="">
-        <source src="../../media/videos/Ajedrez.mp4" type="video/mp4" />
-      </video>
-    </div>
-
-
-    <section class="landing-page">
-      <div class="landing-overlay">
-        <img src="../../media/svg/Logo/Logo(ForDarkVersion).svg" />
-
-        <div class="index-info">
-          <h1>ESTADISTICAS</h1>
-          <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, in.</b>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, sed accusamus illum molestiae vitae assumenda architecto rerum voluptatum laborum placeat aperiam maiores dolor modi quisquam necessitatibus voluptatem dolorum excepturi. Quo, sit tempore velit aperiam at culpa maxime dolor quisquam provident assumenda similique ab doloribus soluta impedit in corporis dolorum, ea vel excepturi voluptatem earum. Quia ex deserunt officiis laboriosam sit aliquam quaerat vitae maiores minus nesciunt magni, consequatur culpa vel dolore iure corporis nam in eaque rerum libero! Exercitationem minus optio alias veritatis aliquid voluptate accusamus ratione, sit praesentium. Aut asperiores earum eligendi, cumque reiciendis sapiente animi dicta accusantium similique.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </body>
-</html>
+</div>";
+echo $return;
+return $return;
+?>
