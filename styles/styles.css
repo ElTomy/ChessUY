@@ -105,16 +105,30 @@ footer .cyberhydra img {
 .Solicitudes-wrapper table {
   width: 600px;
   border: 1px solid #0076be;
+  border-spacing: 0px;
 }
 
 .Solicitudes-wrapper table tr {
   border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .Solicitudes-wrapper table tr th {
   color: white;
   border: none;
   font-weight: lighter;
+  background-color: #0076be;
+  padding: 5px;
+  margin: 0;
+}
+
+.Solicitudes-wrapper table tr td {
+  color: white;
+  border: none;
+  font-weight: lighter;
+  padding: 5px;
+  border: 1px solid #0076be;
 }
 
 /*
