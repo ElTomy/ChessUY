@@ -10,6 +10,14 @@ class servidor{
             return $conexion;
         }
     }
+    
+    function VerificoSesion(){
+        session_start();
+        if(!isset($_SESSION["usuario"])){
+        header("Location: /chessuy/Form/login.html");
+        }
+    }
+
     function login($usuario, $pass){
         $conn = $this->conectar();
         $info = array();
