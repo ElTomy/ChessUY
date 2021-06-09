@@ -12,7 +12,11 @@ class servidor
             return $conexion;
         }
     }
-    
+        //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function VerificoSesion($tipo){
         session_start();
 
@@ -45,7 +49,11 @@ class servidor
             }
         
     }
-
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function login($usuario, $pass){
         $conn = $this->conectar();
         $info = array();
