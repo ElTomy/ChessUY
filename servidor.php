@@ -15,7 +15,7 @@ class servidor{
         $info = array();
         $sql = "CALL login(?,?)";
         $stmts = $conn->prepare($sql);
-
+        $pass=sha1($pass);
         $stmts->bind_param("ss",$usuario, $pass);
         $us="";
         if($stmts->execute()){
@@ -108,7 +108,6 @@ class servidor{
         $sql = "CALL InfoUsuario()";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param();
         if($stmts->execute()){
             $stmts->store_result();
             $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
@@ -118,7 +117,7 @@ class servidor{
             }
             $stmts->close();
         }
-        return $Info;
+        return $info;
     }
     function CrearTorneo($Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes){
         $conn = $this->conectar();
@@ -133,7 +132,7 @@ class servidor{
         $sql = "CALL InfoEstadisticas(?)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("s",$Usuario);
+        $stmts->bind_param("s",$usuario);
         if($stmts->execute()){
             $stmts->store_result();
             $stmts->bind_result($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
@@ -143,7 +142,7 @@ class servidor{
             }
             $stmts->close();
         }
-        return $Info;
+        return $info;
     }
     function AgregarEstadistica($Usuario,$ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos){
         $conn = $this->conectar();
