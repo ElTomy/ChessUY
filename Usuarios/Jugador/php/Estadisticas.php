@@ -3,7 +3,6 @@ include '../../../servidor.php';
 session_start();
 $Usuario = $_SESSION['Usuario'];
 $server= new servidor();
-$Info = array();
 list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($Usuario);
 $return =
 "<div>
