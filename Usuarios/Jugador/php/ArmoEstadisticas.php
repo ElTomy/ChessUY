@@ -5,7 +5,7 @@ $Usuario = $_SESSION['usuario'];
 $server= new servidor();
 list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($Usuario);
 $return =
-"<div>
+"<div class='estadisticas-wrapper'>
     <div>
         <p><b>ELO: </b>$ELO</p>
         <p><b>Victorias: </b>$Victorias</p>
