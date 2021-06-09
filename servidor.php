@@ -73,11 +73,10 @@ class servidor{
     }
     function BorarSolicitud($usuario){
         $conn = $this->conectar();
-        $info = array();
-        $sql = "CALL login(?)";
+        $sql = "CALL BorarSolicitud(?)";
         $stmts = $conn->prepare($sql);
-
         $stmts->bind_param("s",$usuario);
+        $stmts->execute();
     }
     function AgregarUsuario($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail){
         $conn = $this->conectar();
@@ -93,17 +92,17 @@ class servidor{
         $sql = "CALL InfoSolicitudes()";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param();
+
         if($stmts->execute()){
             $stmts->store_result();
             $stmts->bind_result($tipo,$us,$ci,$año,$apellido,$Institucion,$Nombre,$Contacto,$Contraseña,$Nacimiento,$Mail);
             while($stmts->fetch()){
                 $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
-                array_push($Info, $data);
+                $info[] = $data;
             }
             $stmts->close();
         }
-        return $Info;
+        return $info;
     }
 
 }
