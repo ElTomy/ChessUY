@@ -25,8 +25,6 @@ function Register() {
     var numeros = /[0-9]/gi;
     var letras = /[A-Z]/gi;
 
-    alert(nacimiento);
-
     if(nombre == "" || apellido == "" || institucion == "" || año == "" || nacimiento == "" || cedula == "" || celular == "" || usuario == "" || email == "" || contraseña == ""){
         $.ajax({
             url: "/ChessUY/Modal/modal.php",
@@ -86,8 +84,6 @@ function Register() {
                 contraseña: contraseña
                 },
                 success: function (data) {
-
-                    alert(data);
 
                     var mensaje_modal;
         

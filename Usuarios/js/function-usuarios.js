@@ -66,3 +66,6 @@ function log(){
       }
     }
 }
+function cerrar(){
+  document.getElementById("modal").innerHTML = "";
+}
