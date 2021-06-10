@@ -945,7 +945,6 @@ img {
   .login-wrapper,
   .register-wrapper,
   .register-wrapper2 {
-    margin-top: 100px;
     .column-wrapper {
       .column:nth-child(1) {
         display: flex;
@@ -1038,5 +1037,17 @@ img {
         }
       }
     }
+  }
+  footer{
+      .footer-body{
+          .cyberhydra{
+              p{
+                  font-size: 15px;
+              }
+              img{
+                  width: 150px;
+              }
+          }
+      }
   }
 }
