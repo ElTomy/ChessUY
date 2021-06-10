@@ -39,6 +39,11 @@ header {
   height: 100px;
 }
 
+header .header-logo {
+  position: relative;
+  z-index: 10;
+}
+
 header .header-logo img {
   margin: 0 20px;
   width: 250px;
@@ -95,6 +100,126 @@ header .nav-links .loginregister .register-button {
 
 header .nav-links .loginregister a:hover {
   width: 120px;
+}
+
+header .burger-mobile {
+  position: relative;
+  z-index: 2;
+  display: none;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+header .burger-mobile .bar1,
+header .burger-mobile .bar2,
+header .burger-mobile .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #0076be;
+  margin: 6px 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+header #links-mobile {
+  display: none;
+  -webkit-transform: translateY(-120%);
+          transform: translateY(-120%);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(51, 51, 51, 0.95);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+}
+
+header #links-mobile .links-wrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+
+header #links-mobile .links-wrapper .profile-picture {
+  background-color: #0076be;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header #links-mobile .links-wrapper .profile-picture i {
+  color: white;
+  font-size: 50px;
+}
+
+header #links-mobile .links-wrapper h2 {
+  color: #0076be;
+  font-weight: lighter;
+}
+
+header #links-mobile .links-wrapper a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  height: 50px;
+  margin: 10px 20px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  background-color: #0076be;
+  border-radius: 30px;
+}
+
+header #links-mobile .links-wrapper a i {
+  margin: 0 5px;
+}
+
+header #links-mobile .links-wrapper a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 
 footer {
@@ -358,7 +483,8 @@ footer .footer-body .cyberhydra img {
           align-items: center;
 }
 
-.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar, .Solicitudes-wrapper table tr td .botones-solicitudes #rechazar {
+.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar,
+.Solicitudes-wrapper table tr td .botones-solicitudes #rechazar {
   background-color: #0076be;
   border: none;
   color: white;
@@ -372,7 +498,8 @@ footer .footer-body .cyberhydra img {
   font-weight: bold;
 }
 
-.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar:hover, .Solicitudes-wrapper table tr td .botones-solicitudes #rechazar:hover {
+.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar:hover,
+.Solicitudes-wrapper table tr td .botones-solicitudes #rechazar:hover {
   width: 100px;
   background-color: #333;
 }
@@ -478,7 +605,7 @@ Loading Screen
   width: 30px;
   height: 30px;
   position: relative;
-  border: 4px solid #Fff;
+  border: 4px solid #fff;
   -webkit-animation: loader 2s infinite ease;
           animation: loader 2s infinite ease;
 }
@@ -750,7 +877,6 @@ Loading Screen
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 2;
   width: 500px;
   text-align: center;
 }
@@ -771,7 +897,8 @@ Loading Screen
   font-weight: 300;
 }
 
-.register-wrapper .radio-user, .register-wrapper2 .radio-user {
+.register-wrapper .radio-user,
+.register-wrapper2 .radio-user {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -791,7 +918,8 @@ Loading Screen
           box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 }
 
-.register-wrapper .radio-user .option, .register-wrapper2 .radio-user .option {
+.register-wrapper .radio-user .option,
+.register-wrapper2 .radio-user .option {
   background: transparent;
   height: 50px;
   width: 200px;
@@ -810,7 +938,8 @@ Loading Screen
   transition: all 0.3s ease;
 }
 
-.register-wrapper .radio-user .option .dot, .register-wrapper2 .radio-user .option .dot {
+.register-wrapper .radio-user .option .dot,
+.register-wrapper2 .radio-user .option .dot {
   margin-left: 20px;
   height: 20px;
   width: 20px;
@@ -819,7 +948,8 @@ Loading Screen
   position: relative;
 }
 
-.register-wrapper .radio-user .option .dot::before, .register-wrapper2 .radio-user .option .dot::before {
+.register-wrapper .radio-user .option .dot::before,
+.register-wrapper2 .radio-user .option .dot::before {
   position: absolute;
   content: "";
   top: 4px;
@@ -835,19 +965,22 @@ Loading Screen
   transition: all 0.3s ease;
 }
 
-.register-wrapper .radio-user .option span, .register-wrapper2 .radio-user .option span {
+.register-wrapper .radio-user .option span,
+.register-wrapper2 .radio-user .option span {
   margin-left: 30px;
   font-size: 20px;
   color: white;
 }
 
-.register-wrapper .radio-user input[type="radio"], .register-wrapper2 .radio-user input[type="radio"] {
+.register-wrapper .radio-user input[type="radio"],
+.register-wrapper2 .radio-user input[type="radio"] {
   display: none;
 }
 
 .register-wrapper .radio-user #option-1:checked:checked ~ .option-1,
 .register-wrapper .radio-user #option-2:checked:checked ~ .option-2,
-.register-wrapper .radio-user #option-3:checked:checked ~ .option-3, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3,
+.register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1,
 .register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2,
 .register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 {
   border-color: #0076be;
@@ -856,7 +989,8 @@ Loading Screen
 
 .register-wrapper .radio-user #option-1:checked:checked ~ .option-1 .dot,
 .register-wrapper .radio-user #option-2:checked:checked ~ .option-2 .dot,
-.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot,
+.register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot,
 .register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2 .dot,
 .register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 .dot {
   background: #fff;
@@ -864,7 +998,8 @@ Loading Screen
 
 .register-wrapper .radio-user #option-1:checked:checked ~ .option-1 .dot::before,
 .register-wrapper .radio-user #option-2:checked:checked ~ .option-2 .dot::before,
-.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot::before, .register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot::before,
+.register-wrapper .radio-user #option-3:checked:checked ~ .option-3 .dot::before,
+.register-wrapper2 .radio-user #option-1:checked:checked ~ .option-1 .dot::before,
 .register-wrapper2 .radio-user #option-2:checked:checked ~ .option-2 .dot::before,
 .register-wrapper2 .radio-user #option-3:checked:checked ~ .option-3 .dot::before {
   opacity: 1;
@@ -872,7 +1007,10 @@ Loading Screen
           transform: scale(1);
 }
 
-.buttons, .login-wrapper .login-button, .register-wrapper .register-button, .register-wrapper2 .register-button {
+.buttons,
+.login-wrapper .login-button,
+.register-wrapper .register-button,
+.register-wrapper2 .register-button {
   margin: 20px;
   /*
         Top Bar
@@ -888,11 +1026,21 @@ Loading Screen
     */
 }
 
-.buttons .login-button, .buttons .register-button, .login-wrapper .login-button .login-button, .login-wrapper .login-button .register-button, .register-wrapper .register-button .login-button, .register-wrapper .register-button .register-button, .register-wrapper2 .register-button .login-button, .register-wrapper2 .register-button .register-button {
+.buttons .login-button,
+.buttons .register-button,
+.login-wrapper .login-button .login-button,
+.login-wrapper .login-button .register-button,
+.register-wrapper .register-button .login-button,
+.register-wrapper .register-button .register-button,
+.register-wrapper2 .register-button .login-button,
+.register-wrapper2 .register-button .register-button {
   margin: 20px 0;
 }
 
-.buttons a, .login-wrapper .login-button a, .register-wrapper .register-button a, .register-wrapper2 .register-button a {
+.buttons a,
+.login-wrapper .login-button a,
+.register-wrapper .register-button a,
+.register-wrapper2 .register-button a {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -908,11 +1056,17 @@ Loading Screen
   transition: 0.2s;
 }
 
-.buttons a i, .login-wrapper .login-button a i, .register-wrapper .register-button a i, .register-wrapper2 .register-button a i {
+.buttons a i,
+.login-wrapper .login-button a i,
+.register-wrapper .register-button a i,
+.register-wrapper2 .register-button a i {
   margin: 0 10px;
 }
 
-.buttons a:hover, .login-wrapper .login-button a:hover, .register-wrapper .register-button a:hover, .register-wrapper2 .register-button a:hover {
+.buttons a:hover,
+.login-wrapper .login-button a:hover,
+.register-wrapper .register-button a:hover,
+.register-wrapper2 .register-button a:hover {
   background-color: #0076be;
   color: white;
   -webkit-box-shadow: 0 0 10px #0076be, 0 0 40px #0076be, 0 0 80px #0076be;
@@ -921,12 +1075,18 @@ Loading Screen
           transition-delay: 0.5s;
 }
 
-.buttons a span, .login-wrapper .login-button a span, .register-wrapper .register-button a span, .register-wrapper2 .register-button a span {
+.buttons a span,
+.login-wrapper .login-button a span,
+.register-wrapper .register-button a span,
+.register-wrapper2 .register-button a span {
   position: absolute;
   display: block;
 }
 
-.buttons a span:nth-child(1), .login-wrapper .login-button a span:nth-child(1), .register-wrapper .register-button a span:nth-child(1), .register-wrapper2 .register-button a span:nth-child(1) {
+.buttons a span:nth-child(1),
+.login-wrapper .login-button a span:nth-child(1),
+.register-wrapper .register-button a span:nth-child(1),
+.register-wrapper2 .register-button a span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -935,13 +1095,19 @@ Loading Screen
   background: linear-gradient(90deg, transparent, #0076be);
 }
 
-.buttons a:hover span:nth-child(1), .login-wrapper .login-button a:hover span:nth-child(1), .register-wrapper .register-button a:hover span:nth-child(1), .register-wrapper2 .register-button a:hover span:nth-child(1) {
+.buttons a:hover span:nth-child(1),
+.login-wrapper .login-button a:hover span:nth-child(1),
+.register-wrapper .register-button a:hover span:nth-child(1),
+.register-wrapper2 .register-button a:hover span:nth-child(1) {
   left: 100%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.buttons a span:nth-child(2), .login-wrapper .login-button a span:nth-child(2), .register-wrapper .register-button a span:nth-child(2), .register-wrapper2 .register-button a span:nth-child(2) {
+.buttons a span:nth-child(2),
+.login-wrapper .login-button a span:nth-child(2),
+.register-wrapper .register-button a span:nth-child(2),
+.register-wrapper2 .register-button a span:nth-child(2) {
   right: 0;
   top: -100%;
   width: 2px;
@@ -950,7 +1116,10 @@ Loading Screen
   background: linear-gradient(180deg, transparent, #0076be);
 }
 
-.buttons a:hover span:nth-child(2), .login-wrapper .login-button a:hover span:nth-child(2), .register-wrapper .register-button a:hover span:nth-child(2), .register-wrapper2 .register-button a:hover span:nth-child(2) {
+.buttons a:hover span:nth-child(2),
+.login-wrapper .login-button a:hover span:nth-child(2),
+.register-wrapper .register-button a:hover span:nth-child(2),
+.register-wrapper2 .register-button a:hover span:nth-child(2) {
   top: 100%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -958,7 +1127,10 @@ Loading Screen
           transition-delay: 0.125s;
 }
 
-.buttons a span:nth-child(3), .login-wrapper .login-button a span:nth-child(3), .register-wrapper .register-button a span:nth-child(3), .register-wrapper2 .register-button a span:nth-child(3) {
+.buttons a span:nth-child(3),
+.login-wrapper .login-button a span:nth-child(3),
+.register-wrapper .register-button a span:nth-child(3),
+.register-wrapper2 .register-button a span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -967,7 +1139,10 @@ Loading Screen
   background: linear-gradient(270deg, transparent, #0076be);
 }
 
-.buttons a:hover span:nth-child(3), .login-wrapper .login-button a:hover span:nth-child(3), .register-wrapper .register-button a:hover span:nth-child(3), .register-wrapper2 .register-button a:hover span:nth-child(3) {
+.buttons a:hover span:nth-child(3),
+.login-wrapper .login-button a:hover span:nth-child(3),
+.register-wrapper .register-button a:hover span:nth-child(3),
+.register-wrapper2 .register-button a:hover span:nth-child(3) {
   right: 100%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -975,7 +1150,10 @@ Loading Screen
           transition-delay: 0.25s;
 }
 
-.buttons a span:nth-child(4), .login-wrapper .login-button a span:nth-child(4), .register-wrapper .register-button a span:nth-child(4), .register-wrapper2 .register-button a span:nth-child(4) {
+.buttons a span:nth-child(4),
+.login-wrapper .login-button a span:nth-child(4),
+.register-wrapper .register-button a span:nth-child(4),
+.register-wrapper2 .register-button a span:nth-child(4) {
   left: 0;
   bottom: -100%;
   width: 2px;
@@ -984,7 +1162,10 @@ Loading Screen
   background: linear-gradient(360deg, transparent, #0076be);
 }
 
-.buttons a:hover span:nth-child(4), .login-wrapper .login-button a:hover span:nth-child(4), .register-wrapper .register-button a:hover span:nth-child(4), .register-wrapper2 .register-button a:hover span:nth-child(4) {
+.buttons a:hover span:nth-child(4),
+.login-wrapper .login-button a:hover span:nth-child(4),
+.register-wrapper .register-button a:hover span:nth-child(4),
+.register-wrapper2 .register-button a:hover span:nth-child(4) {
   bottom: 100%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -1001,7 +1182,9 @@ img {
           filter: invert(1);
 }
 
-.login-wrapper, .register-wrapper, .register-wrapper2 {
+.login-wrapper,
+.register-wrapper,
+.register-wrapper2 {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1018,7 +1201,9 @@ img {
           flex-direction: column;
 }
 
-.login-wrapper .inputs, .register-wrapper .inputs, .register-wrapper2 .inputs {
+.login-wrapper .inputs,
+.register-wrapper .inputs,
+.register-wrapper2 .inputs {
   margin: 10px 0;
   width: 100%;
   height: 50px;
@@ -1027,7 +1212,9 @@ img {
   overflow: hidden;
 }
 
-.login-wrapper .inputs input, .register-wrapper .inputs input, .register-wrapper2 .inputs input {
+.login-wrapper .inputs input,
+.register-wrapper .inputs input,
+.register-wrapper2 .inputs input {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -1037,19 +1224,28 @@ img {
   outline: 0px;
 }
 
-.login-wrapper .inputs input:focus + .lbl-user .text-user, .login-wrapper .inputs input:valid + .lbl-user .text-user, .register-wrapper .inputs input:focus + .lbl-user .text-user, .register-wrapper .inputs input:valid + .lbl-user .text-user, .register-wrapper2 .inputs input:focus + .lbl-user .text-user, .register-wrapper2 .inputs input:valid + .lbl-user .text-user {
+.login-wrapper .inputs input:focus + .lbl-user .text-user,
+.login-wrapper .inputs input:valid + .lbl-user .text-user,
+.register-wrapper .inputs input:focus + .lbl-user .text-user,
+.register-wrapper .inputs input:valid + .lbl-user .text-user,
+.register-wrapper2 .inputs input:focus + .lbl-user .text-user,
+.register-wrapper2 .inputs input:valid + .lbl-user .text-user {
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
   font-size: 14px;
   color: #0076be;
 }
 
-.login-wrapper .inputs input:focus + .lbl-user:after, .register-wrapper .inputs input:focus + .lbl-user:after, .register-wrapper2 .inputs input:focus + .lbl-user:after {
+.login-wrapper .inputs input:focus + .lbl-user:after,
+.register-wrapper .inputs input:focus + .lbl-user:after,
+.register-wrapper2 .inputs input:focus + .lbl-user:after {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
 }
 
-.login-wrapper .inputs input:-webkit-autofill, .register-wrapper .inputs input:-webkit-autofill, .register-wrapper2 .inputs input:-webkit-autofill {
+.login-wrapper .inputs input:-webkit-autofill,
+.register-wrapper .inputs input:-webkit-autofill,
+.register-wrapper2 .inputs input:-webkit-autofill {
   -webkit-text-fill-color: #0076be;
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   -webkit-transition: background-color 5000s ease-in-out 0s;
@@ -1057,13 +1253,16 @@ img {
 }
 
 @-webkit-keyframes autofill {
-  0%, 100% {
+  0%,
+  100% {
     color: #333;
     background: transparent;
   }
 }
 
-.login-wrapper .inputs .lbl-user, .register-wrapper .inputs .lbl-user, .register-wrapper2 .inputs .lbl-user {
+.login-wrapper .inputs .lbl-user,
+.register-wrapper .inputs .lbl-user,
+.register-wrapper2 .inputs .lbl-user {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1073,7 +1272,9 @@ img {
   border-bottom: 1px solid white;
 }
 
-.login-wrapper .inputs .lbl-user .text-user, .register-wrapper .inputs .lbl-user .text-user, .register-wrapper2 .inputs .lbl-user .text-user {
+.login-wrapper .inputs .lbl-user .text-user,
+.register-wrapper .inputs .lbl-user .text-user,
+.register-wrapper2 .inputs .lbl-user .text-user {
   position: absolute;
   bottom: 5px;
   left: 0;
@@ -1082,8 +1283,10 @@ img {
   transition: all 0.3s ease;
 }
 
-.login-wrapper .inputs .lbl-user:after, .register-wrapper .inputs .lbl-user:after, .register-wrapper2 .inputs .lbl-user:after {
-  content: '';
+.login-wrapper .inputs .lbl-user:after,
+.register-wrapper .inputs .lbl-user:after,
+.register-wrapper2 .inputs .lbl-user:after {
+  content: "";
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -1096,7 +1299,9 @@ img {
   transition: all 0.3s ease;
 }
 
-.login-wrapper .forgot-password a, .register-wrapper .forgot-password a, .register-wrapper2 .forgot-password a {
+.login-wrapper .forgot-password a,
+.register-wrapper .forgot-password a,
+.register-wrapper2 .forgot-password a {
   color: #858585;
   font-size: 15px;
   text-decoration: none;
@@ -1104,11 +1309,15 @@ img {
   transition: 0.5s;
 }
 
-.login-wrapper .forgot-password a:hover, .register-wrapper .forgot-password a:hover, .register-wrapper2 .forgot-password a:hover {
+.login-wrapper .forgot-password a:hover,
+.register-wrapper .forgot-password a:hover,
+.register-wrapper2 .forgot-password a:hover {
   color: white;
 }
 
-.login-wrapper .column-wrapper, .register-wrapper .column-wrapper, .register-wrapper2 .column-wrapper {
+.login-wrapper .column-wrapper,
+.register-wrapper .column-wrapper,
+.register-wrapper2 .column-wrapper {
   width: 80%;
   display: -ms-grid;
   display: grid;
@@ -1116,7 +1325,9 @@ img {
       grid-template-columns: 1fr 1fr;
 }
 
-.login-wrapper .column-wrapper .column:nth-child(1), .register-wrapper .column-wrapper .column:nth-child(1), .register-wrapper2 .column-wrapper .column:nth-child(1) {
+.login-wrapper .column-wrapper .column:nth-child(1),
+.register-wrapper .column-wrapper .column:nth-child(1),
+.register-wrapper2 .column-wrapper .column:nth-child(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1130,7 +1341,9 @@ img {
   margin-right: 20px;
 }
 
-.login-wrapper .column-wrapper .column:nth-child(2), .register-wrapper .column-wrapper .column:nth-child(2), .register-wrapper2 .column-wrapper .column:nth-child(2) {
+.login-wrapper .column-wrapper .column:nth-child(2),
+.register-wrapper .column-wrapper .column:nth-child(2),
+.register-wrapper2 .column-wrapper .column:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1159,6 +1372,56 @@ img {
 }
 
 @media screen and (max-width: 605px) {
+  header .header-logo {
+    margin: 20px 0;
+  }
+  header .header-logo img {
+    width: 200px;
+  }
+  header .nav-links {
+    display: none;
+  }
+  header .burger-mobile {
+    display: block;
+  }
+  header #links-mobile {
+    display: block;
+  }
+  .login-wrapper,
+  .register-wrapper,
+  .register-wrapper2 {
+    margin-top: 100px;
+  }
+  .login-wrapper .column-wrapper .column:nth-child(1),
+  .register-wrapper .column-wrapper .column:nth-child(1),
+  .register-wrapper2 .column-wrapper .column:nth-child(1) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0;
+  }
+  .login-wrapper .column-wrapper .column:nth-child(2),
+  .register-wrapper .column-wrapper .column:nth-child(2),
+  .register-wrapper2 .column-wrapper .column:nth-child(2) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0;
+  }
   .register-wrapper {
     height: 100vh;
   }
@@ -1206,21 +1469,6 @@ img {
 }
 
 @media screen and (max-width: 510px) {
-  header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  header .header-logo {
-    margin: 20px 0;
-  }
-  header .nav-links {
-    display: none;
-  }
   footer .footer-body {
     text-align: center;
   }
