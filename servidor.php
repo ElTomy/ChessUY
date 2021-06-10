@@ -95,7 +95,7 @@ class servidor
     function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail)
     {
         $conn = $this->conectar();
-        $sql = "CALL login(?,?,?,?,?,?,?,?,?,?,?,@x)";
+        $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
         $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
@@ -115,7 +115,7 @@ class servidor
                 }
             }
         } else {
-            $valor = 0;
+            $valor = $stmts->error;
         }
         return $valor;
     }
