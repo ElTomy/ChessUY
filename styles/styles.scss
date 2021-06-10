@@ -217,13 +217,21 @@ footer{
     }
     table{
         width: 600px;
-        border: 1px solid #0076be;
         border-spacing: 0px;
 
         tr{
             border: none;
             margin: 0;
             padding: 0;
+            text-align: center;
+
+            th:nth-child(1){
+                border-radius: 30px 0 0 0;
+            }
+            th:nth-child(8){
+                border-radius: 0 30px 0 0;
+            }
+            
 
             th{
                 color: white;
@@ -239,6 +247,39 @@ footer{
                 font-weight: lighter;
                 padding: 5px;
                 border: 1px solid #0076be;
+                padding: 5px 20px;
+
+                .botones-solicitudes{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    #aprobar, #rechazar{
+                        background-color: #0076be;
+                        border: none;
+                        color: white;
+                        width: 50px;
+                        height: 25px;
+                        margin: 5px 5px;
+                        cursor: pointer;
+                        border-radius: 30px;
+                        transition: 0.5s;
+                        font-weight: bold;
+                    }
+                    #aprobar:hover, #rechazar:hover{
+                        width: 100px;
+                        background-color: #333;
+                    }
+                    #aprobar:hover{
+                        color: greenyellow;
+                    }
+                    #rechazar:hover{
+                        color: red;
+                    }
+                }
+            }
+            td:nth-child(8){
+                display: block;
+                width: 150px;
             }
         }
     }

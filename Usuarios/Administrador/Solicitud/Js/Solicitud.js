@@ -4,13 +4,19 @@ var ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas;
 $(document).ready(function () {
     $.ajax({
         type: "Post",
-        url: "../Solicitud/PHP/Solicitud.php",
+        url: "PHP/Solicitud.php",
         success: function (response) {
+
             var solic = JSON.parse(response);
-            while (x <= 0) {
-                if (solic[len].ci == null) {
+
+            while(x <= 0) {
+
+                
+                if (solic[len] == undefined) {
                     x = 1;
                 } else {
+                    console.log("Len:" + len);
+                    console.log("Otro: " + solic[len]["ci"]);
                     ci = solic[len].ci;
                     usr = solic[len].usuario;
                     nom = solic[len].Nombre;
@@ -27,8 +33,10 @@ $(document).ready(function () {
                     }else{
                         tip = "Arbitro";
                     }
-                    document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td>' + ci + '</td> <td id="user' + len + '">' + usr + '</td> <td>' + nom + '</td> <td>' + ape + '</td> <td>' + ins + '</td> <td>' + mai + '</td> <td>' + tip + '</td><td><button onclick="aprobar(' + len + ',' + "'" + ci + "'" + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" + ',' + "'" + ape + "'" + ',' + "'" + ins + "'" + ',' + "'" + mai + "'" + ',' + "'" + tip + "'" + ',' + "'" + año + "'" + ',' + "'" + con + "'" + ',' + "'" + nac + "'" + ',' + "'" + pas + "'" + ');">✓</button><button onclick="rechazar(' + len + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" +  ',' + "'" + mai + "'" +');">✖</button></td>';
+                    document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td>' + ci + '</td> <td id="user' + len + '">' + usr + '</td> <td>' + nom + '</td> <td>' + ape + '</td> <td>' + ins + '</td> <td>' + mai + '</td> <td>' + tip + '</td><td><div class="botones-solicitudes"><button id="aprobar" onclick="aprobar(' + len + ',' + "'" + ci + "'" + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" + ',' + "'" + ape + "'" + ',' + "'" + ins + "'" + ',' + "'" + mai + "'" + ',' + "'" + tip + "'" + ',' + "'" + año + "'" + ',' + "'" + con + "'" + ',' + "'" + nac + "'" + ',' + "'" + pas + "'" + ');">✓</button><button id="rechazar" onclick="rechazar(' + len + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" +  ',' + "'" + mai + "'" +');">✖</button></div></td>';
+                    console.log("----------")
                     len++;
+                    console.log("Len:" + len);
                 }
             }
         }
@@ -38,7 +46,7 @@ $(document).ready(function () {
 function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
     $.ajax({
         type: "Post",
-        url: "../Solicitud/PHP/Aprobar.php",
+        url: "PHP/Aprobar.php",
         data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tip, año: año, contacto: con, nacimiento: nac, contraseña: pas },
         success: function (response) {
             console.log(response);
@@ -48,7 +56,7 @@ function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
 function rechazar(data, usr, nom,mai) {
     $.ajax({
         type: "Post",
-        url: "../Solicitud/PHP/Rechazar.php",
+        url: "PHP/Rechazar.php",
         data: { usuario: usr, nombre: nom ,mail:mai},
         success: function (response) {
             console.log(response);

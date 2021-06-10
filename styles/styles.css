@@ -302,7 +302,6 @@ footer .footer-body .cyberhydra img {
 
 .Solicitudes-wrapper table {
   width: 600px;
-  border: 1px solid #0076be;
   border-spacing: 0px;
 }
 
@@ -310,6 +309,15 @@ footer .footer-body .cyberhydra img {
   border: none;
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+.Solicitudes-wrapper table tr th:nth-child(1) {
+  border-radius: 30px 0 0 0;
+}
+
+.Solicitudes-wrapper table tr th:nth-child(8) {
+  border-radius: 0 30px 0 0;
 }
 
 .Solicitudes-wrapper table tr th {
@@ -327,6 +335,51 @@ footer .footer-body .cyberhydra img {
   font-weight: lighter;
   padding: 5px;
   border: 1px solid #0076be;
+  padding: 5px 20px;
+}
+
+.Solicitudes-wrapper table tr td .botones-solicitudes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar, .Solicitudes-wrapper table tr td .botones-solicitudes #rechazar {
+  background-color: #0076be;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 25px;
+  margin: 5px 5px;
+  cursor: pointer;
+  border-radius: 30px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar:hover, .Solicitudes-wrapper table tr td .botones-solicitudes #rechazar:hover {
+  width: 100px;
+  background-color: #333;
+}
+
+.Solicitudes-wrapper table tr td .botones-solicitudes #aprobar:hover {
+  color: greenyellow;
+}
+
+.Solicitudes-wrapper table tr td .botones-solicitudes #rechazar:hover {
+  color: red;
+}
+
+.Solicitudes-wrapper table tr td:nth-child(8) {
+  display: block;
+  width: 150px;
 }
 
 /*

@@ -11,6 +11,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script
+      src="https://kit.fontawesome.com/1e193e3a23.js"
+      crossorigin="anonymous"
+  ></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="../Solicitud/Js/Solicitud.js"></script>
   <script src="/ChessUY/Javascript/Loader.js"></script>
