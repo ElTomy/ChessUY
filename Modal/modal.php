@@ -43,6 +43,18 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "Debe completar todos los campos.";
         break;
+
+    case 8:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "La contraseña debe tener mas de 8 caracteres y solo puede contener letras y numeros.";
+        break;
+    
+    case 9:
+        $mensaje_2 = "Error:";
+        $link = "";
+        $mensaje = "Hubo un error inesperado, vuelve a intentarlo.";
+        break;
 }
 
 

@@ -13,12 +13,12 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="../Solicitud/Js/Solicitud.js"></script>
-  <script src="../../Javascript/Loader.js"></script>
+  <script src="/ChessUY/Javascript/Loader.js"></script>
 
-  <link rel="stylesheet" href="../../styles/styles.css">
+  <link rel="stylesheet" href="/ChessUY/styles/styles.css">
   <link
       rel="shortcut icon"
-      href="../../media/svg/Logo/Favicon.svg"
+      href="/ChessUY/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
 
@@ -27,18 +27,20 @@
 
 <body>
 
+  <div id="header"></div>
+
   <div class="loader-wrapper">
     <span class="loader"><span class="loader-inner"></span></span>
   </div>
   <div class="landing-video">
     <div class="background-opacity"></div>
     <video autoplay="" loop="" muted="">
-      <source src="../../media/videos/Ajedrez.mp4" type="video/mp4" />
+      <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
     </video>
   </div>
 
   <section class="Solicitudes-wrapper">
-    <img src="../../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+    <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
     <h1>Solicitudes</h1>
     <table id="tablaprueba">
         <tr id="thead">
@@ -53,6 +55,8 @@
         </tr>
     </table>
   </section>
+
+  <div id="footer"></div>
   
 </body>
 
