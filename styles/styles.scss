@@ -180,6 +180,12 @@ footer{
                 background-color: #0076be;
                 padding: 10px;
                 border-radius: 30px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            a:hover{
+                background-color: #333;
+                color: white;
             }
             hr{
                 width: 400px;
@@ -287,7 +293,7 @@ footer{
 
 #nohaysolicitudes{
     width: 100%;
-    height: 80vh;
+    height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -770,12 +776,21 @@ img{
         }              
     }
     .column-wrapper{
-        width: 600px;
+        width: 80%;
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        .column{
-            margin: 20px;
+        .column:nth-child(1){
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .column:nth-child(2){
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            margin-left: 20px;
         }
     }
 }
