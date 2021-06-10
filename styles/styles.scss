@@ -683,6 +683,10 @@ img{
     width: 400px;
 }
 
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 .login-wrapper, .register-wrapper, .register-wrapper2{
     height: 100vh;
     display: flex;
@@ -724,6 +728,7 @@ img{
                 background: transparent;
             }
         }
+
         .lbl-user{
             position: absolute;
             bottom: 0;

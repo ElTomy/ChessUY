@@ -8,7 +8,6 @@ function TipoUsuario() {
     }
     location.href = "Register-Options";
     sessionStorage.setItem("tipo", tipo);
-    alert(sessionStorage.getItem("tipo"));
 }
     
 function Register() {
@@ -25,6 +24,8 @@ function Register() {
     var tipousuario = sessionStorage.getItem("tipo");
     var numeros = /[0-9]/gi;
     var letras = /[A-Z]/gi;
+
+    alert(nacimiento);
 
     if(nombre == "" || apellido == "" || institucion == "" || año == "" || nacimiento == "" || cedula == "" || celular == "" || usuario == "" || email == "" || contraseña == ""){
         $.ajax({
@@ -66,6 +67,9 @@ function Register() {
                 contraseña: contraseña
                 },
                 success: function (data) {
+
+                    alert(data);
+
                     var mensaje_modal;
         
                     if(data == 1){
