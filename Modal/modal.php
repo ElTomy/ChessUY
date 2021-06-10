@@ -31,6 +31,18 @@ switch($numero_mensaje){
         $link = "/ChessUY/Index";
         $mensaje = "Tu cuenta ha sido creada correctamente pero actualmente no esta aprobada, en breve le informaremos.";
         break;
+    
+    case 6:
+        $mensaje_2 = "Login:";
+        $link = "";
+        $mensaje = "Debe completar todos los campos.";
+        break;
+
+    case 7:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "Debe completar todos los campos.";
+        break;
 }
 
 

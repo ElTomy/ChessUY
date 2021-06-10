@@ -3,7 +3,14 @@ function log(){
     var contra=$('#contraseña').val();
     
     if(usuario == "" || contra == ""){
-      alert("Debe completar todos los campos");
+      $.ajax({
+        url: "/ChessUY/Modal/modal.php",
+        type: "POST",
+        data: { numero_mensaje: 6},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
     }else{
       let user = new Usuario();
       var log = user.login(usuario, contra);
