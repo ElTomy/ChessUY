@@ -382,6 +382,67 @@ footer .footer-body .cyberhydra img {
   width: 150px;
 }
 
+#nohaysolicitudes {
+  width: 100%;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#nohaysolicitudes .nohaysolicitudes-wrapper {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  color: white;
+  font-weight: lighter;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#nohaysolicitudes .nohaysolicitudes-wrapper a {
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #0076be;
+  text-decoration: none;
+  color: white;
+  border-radius: 30px;
+}
+
+#nohaysolicitudes .nohaysolicitudes-wrapper a i {
+  margin: 0 10px;
+}
+
 /*
 Loading Screen
 */

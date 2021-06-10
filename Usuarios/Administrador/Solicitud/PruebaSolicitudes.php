@@ -43,6 +43,13 @@
     </video>
   </div>
 
+  <section id="nohaysolicitudes">
+    <div class="nohaysolicitudes-wrapper">
+      <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+      <p>No hay solicitudes en estos momentos.</p>
+      <a href="/ChessUY/Index"><i class="fas fa-chevron-circle-left"></i> Volver a la Página Principal</a>
+    </div>
+  </section>
   <section class="Solicitudes-wrapper">
     <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
     <h1>Solicitudes</h1>

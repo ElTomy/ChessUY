@@ -11,7 +11,6 @@ $(document).ready(function () {
 
             while(x <= 0) {
 
-                
                 if (solic[len] == undefined) {
                     x = 1;
                 } else {
@@ -39,7 +38,15 @@ $(document).ready(function () {
                     console.log("Len:" + len);
                 }
             }
+            if(solic[0] == undefined){
+                $(".Solicitudes-wrapper").hide();
+                $("#nohaysolicitudes").show();
+            }else{
+                $(".Solicitudes-wrapper").show();
+                $("#nohaysolicitudes").hide();
+            }
         }
+        
     });
 });
 

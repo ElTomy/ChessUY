@@ -285,6 +285,47 @@ footer{
     }
 }
 
+#nohaysolicitudes{
+    width: 100%;
+    height: 80vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .nohaysolicitudes-wrapper{
+        background-color: #111;
+        padding: 20px;
+        border-radius: 30px;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        color: white;
+        font-weight: lighter;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        a{
+            font-size: 15px;
+            display: flex;
+            width: 300px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            background-color: #0076be;
+            text-decoration: none;
+            color: white;
+            border-radius: 30px;
+
+            i{
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
 /*
 Loading Screen
 */
