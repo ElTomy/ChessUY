@@ -1,19 +1,26 @@
 <?php
 include '../../servidor.php';
-
 $servidor = new servidor();
 
 $tipo = $_POST['tipo'];
 $nombre = $_POST['nombre'];
-$apellido = isset($_POST['apellido']);
-$institucion = isset($_POST['institucion']);
-$año = isset($_POST['año']);
-$nacimiento = isset($_POST['nacimiento']);
-$cedula = isset($_POST['cedula']);
-$celular = isset($_POST['celular']);
-$usuario = isset($_POST['usuario']);
-$email = isset($_POST['email']);
-$contraseña = isset($_POST['contraseña']);
+$apellido = $_POST['apellido'];
+$institucion = $_POST['institucion'];
+$año = $_POST['año'];
+$nacimiento = $_POST['nacimiento'];
+$cedula = $_POST['cedula'];
+$celular = $_POST['celular'];
+$usuario = $_POST['usuario'];
+$email = $_POST['email'];
+$contraseña = $_POST['contraseña'];
 
-echo "Tipo:" . $tipo;
+if($tipo == 1){
+    $contraseña = sha1($contraseña);
+}
+
+$x = $servidor->Register($tipo, $usuario, $cedula, $año, $apellido, $institucion, $nombre, $celular, $contraseña, $nacimiento, $email);
+
+echo $x;
+return $x;
+
 ?>

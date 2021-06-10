@@ -1,10 +1,10 @@
 function TipoUsuario() {
     if (document.getElementById("option-1").checked == true) {
-        tipo = "1";
+        tipo = 1;
     } else if (document.getElementById("option-2").checked == true) {
-        tipo = "2";
+        tipo = 2;
     } else {
-        tipo = "3";
+        tipo = 3;
     }
     location.href = "Register-Options";
     sessionStorage.setItem("tipo", tipo);
@@ -23,6 +23,11 @@ function Register() {
     var email = $("#email").val();
     var contraseña = $("#contraseña").val();
     var tipousuario = sessionStorage.getItem("tipo");
+    var numeros = /[0-9]/gi;
+    var letras = /[A-Z]/gi;
+
+    if(contraseña.length > 8 && contraseña.match(numeros) && contraseña.match(letras)){
+    }
 
     console.log(nombre);
     console.log(apellido);
@@ -53,7 +58,22 @@ function Register() {
         contraseña: contraseña
         },
         success: function (data) {
-        location.href = "PHP/Form.php";
+            var mensaje_modal;
+
+            if(data == 1){
+                mensaje_modal = 3;                
+            }
+            else if(data == 2){
+                mensaje_modal = 5; 
+            }
+            $.ajax({
+                url: "/ChessUY/Modal/modal.php",
+                type: "POST",
+                data:{numero_mensaje: mensaje_modal},
+                success: function (modal){
+                    document.getElementById("modal").innerHTML = modal;
+                }
+            });
         }
     });
 }
