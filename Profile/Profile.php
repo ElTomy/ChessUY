@@ -49,8 +49,6 @@
     <section class="profile-wrapper">
         <div class="profile-body">
             <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
-            <h1>Mi Perfil</h1>
-            <hr>
             <div class="profile-avatar">
                   <div class="profile-flex">
                     <div class="profile-body-picture">
@@ -62,7 +60,7 @@
                     ?>
                     </div>
                   </div>
-                  <a href="">Editar Perfil</a>
+                  <a href=""><i class="fas fa-edit"></i> Editar Perfil</a>
             </div>
 
             <section class="trofeos-wrapper">
@@ -91,7 +89,7 @@
                       <p>Descripción del Trofeo</p>
                     </div>
                   </div>
-                  
+
                 </div>
 
               </div>
@@ -186,11 +184,9 @@
                       </div>
                     </div>
                   </div>
-                  <a class="ver-logros" href="">Ver mis logros</a>
+                  <a class="ver-logros" href=""><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
-            <hr>
-            
         </div>
     </section>
 

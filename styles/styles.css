@@ -1583,6 +1583,10 @@ img {
   transition: 0.3s;
 }
 
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .ver-logros i {
+  margin-right: 10px;
+}
+
 .profile-wrapper .profile-body .profile-grid .logros-wrapper .ver-logros:hover {
   background-color: #111;
   color: #fcba03;
