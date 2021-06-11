@@ -1,3 +1,9 @@
+<?php
+  include '../servidor.php';
+  $server= new servidor();
+  $server->VerificoSesion(1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,32 +52,142 @@
             <h1>Mi Perfil</h1>
             <hr>
             <div class="profile-avatar">
-                <div class="profile-body-picture">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="profile-avatar-body">
-                <?php
-                  session_start();
-                  echo "<p>" . $_SESSION['usuario'] . "</p>";
-                ?>
-                    <a href="">Cambiar foto de perfil.</a>
-                </div>
+                  <div class="profile-flex">
+                    <div class="profile-body-picture">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-avatar-body">
+                    <?php
+                      echo "<p>" . $_SESSION['usuario'] . "</p>";
+                    ?>
+                    </div>
+                  </div>
+                  <a href="">Editar Perfil</a>
             </div>
+
+            <section class="trofeos-wrapper">
+              <div class="trofeo-header">
+                <h1>Trofeos</h1>
+                <hr>
+
+                <div class="trofeos-list">
+
+                  <div class="trofeo">
+                    <div class="trofeo-img">
+                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
+                    </div>
+                    <div class="trofeo-body">
+                      <h1>Nombre del Trofeo</h1>
+                      <p>Descripción del Trofeo</p>
+                    </div>
+                  </div>
+
+                  <div class="trofeo">
+                    <div class="trofeo-img">
+                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
+                    </div>
+                    <div class="trofeo-body">
+                      <h1>Nombre del Trofeo</h1>
+                      <p>Descripción del Trofeo</p>
+                    </div>
+                  </div>
+                  
+                </div>
+
+              </div>
+            </section>
             
-            <div class="profile-info-field">
-                <p class="bold-title">Nombre:</p><p>Juan Andrés Morena</p>;
-            </div>
-            <div class="profile-info-field">
-                <p class="bold-title">Correo Electrónico:</p><p>thewolfmodzyt@gmail.com</p>
-            </div>
-            <div class="profile-info-field">
-                <p class="bold-title">Documento:</p><p>54879239</p>
-            </div>
-            <div class="profile-info-field">
-                <p class="bold-title">Celular:</p><p>098234717</p>
-            </div>
-            <div class="profile-info-field">
-                <p class="bold-title">Fecha de Nacimiento:</p><p>10/05/2003</p>
+            <div class="profile-grid">
+
+              <div class="estadisticas-wrapper">
+                <div class="estadisticas-header">
+                  <h1>Estadisticas</h1>
+                </div>
+                <hr>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">ELO:</h1><p>1</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Victorias:</h1><p>2</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Derrotas:</h1><p>10</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Tablas:</h1><p>3</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Coronaciones:</h1><p>3</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Piezas Comidas:</h1><p>3</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Victorias en menos tiempo:</h1><p>3</p>
+                </div>
+                <div class="estadisticas-body">
+                  <h1 class="estadisticas-titulo">Victorias en menos movimientos:</h1><p>3</p>
+                </div>
+              </div>
+
+              <div class="logros-wrapper">
+                <div class="logros-header">
+                  <h1>Logros</h1><p>(1)</p>
+                </div>
+                <hr>
+                  <div class="logro-wrapper">
+                    <div class="logro">
+                      <div class="imagen-logro">
+                      <img class="img-trofeo" src="/ChessUY/media/images/Logro.png" alt="">
+                      </div>
+                      <div class="logro-body">
+                        <h1>Primera Jugada</h1>
+                        <p>Descripcion del Logro</p>
+                        <p class="porcentaje">99% de los usuarios tienen este logro.</p>
+                      </div>
+                  </div>
+                  </div>
+
+                  <div class="logro-wrapper">
+                    <div class="logro">
+                      <div class="imagen-logro">
+                      <i class="fas fa-lock"></i>
+                      </div>
+                      <div class="logro-body">
+                      <h1 class="bloqueado">Nombre del Logro</h1>
+                        <p>Descripcion del Logro</p>
+                        <p class="porcentaje">10% de los usuarios tienen este logro.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="logro-wrapper">
+                    <div class="logro">
+                      <div class="imagen-logro">
+                      <i class="fas fa-lock"></i>
+                      </div>
+                      <div class="logro-body">
+                      <h1 class="bloqueado">Nombre del Logro</h1>
+                        <p>Descripcion del Logro</p>
+                        <p class="porcentaje">0,05% de los usuarios tienen este logro.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="logro-wrapper">
+                    <div class="logro">
+                      <div class="imagen-logro">
+                        <i class="fas fa-lock"></i>
+                      </div>
+                      <div class="logro-body">
+                        <h1 class="bloqueado">Nombre del Logro</h1>
+                        <p>Descripcion del Logro</p>
+                        <p class="porcentaje">1% de los usuarios tienen este logro.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="ver-logros" href="">Ver mis logros</a>
+              </div>
             </div>
             <hr>
             

@@ -48,7 +48,8 @@
             <a href="/ChessUY/Index"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
-                    echo "<a href=''><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
+                    echo "  <a href='/ChessUY/Profile/Profile.php'><i class='fas fa-address-card'></i> Mi Perfil</a>
+                            <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{
                     echo "<a href='/ChessUY/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
                           <a href='/ChessUY/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";

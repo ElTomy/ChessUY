@@ -23,8 +23,6 @@ body {
 }
 
 header {
-  position: absolute;
-  top: 0;
   z-index: 2;
   width: 100%;
   display: -webkit-box;
@@ -180,7 +178,7 @@ header .nav-links .loginregister a:hover {
 
 header .burger-mobile {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   display: none;
   cursor: pointer;
   margin: 0 20px;
@@ -202,6 +200,7 @@ header #links-mobile {
   -webkit-transform: translateY(-120%);
           transform: translateY(-120%);
   position: absolute;
+  z-index: 3;
   top: 0;
   width: 100%;
   height: 100vh;
@@ -779,6 +778,7 @@ Loading Screen
 
 .landing-video {
   position: absolute;
+  top: 0;
   z-index: -2;
   width: 100%;
   height: 100vh;
@@ -935,7 +935,7 @@ Loading Screen
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 }
 
 .landing-page .landing-overlay {
@@ -1435,7 +1435,6 @@ img {
 
 .profile-wrapper {
   width: 100%;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1452,7 +1451,7 @@ img {
 }
 
 .profile-wrapper .profile-body {
-  min-width: 500px;
+  width: 80%;
   background-color: #111;
   border-radius: 30px;
   display: -webkit-box;
@@ -1471,8 +1470,310 @@ img {
   padding: 20px 0;
 }
 
-.profile-wrapper .profile-body img {
-  margin-bottom: 20px;
+.profile-wrapper .profile-body .profile-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30%;
+      grid-template-columns: 1fr 30%;
+  width: 100%;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background-color: #222;
+  border-radius: 30px;
+  margin: 20px;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper .estadisticas-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper .estadisticas-header h1 {
+  color: white;
+  margin: 5px 0;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper .estadisticas-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px dashed #0076be;
+  margin: 10px 50px;
+  text-align: left;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper .estadisticas-body .estadisticas-titulo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #0076be;
+  font-size: 20px;
+}
+
+.profile-wrapper .profile-body .profile-grid .estadisticas-wrapper .estadisticas-body p {
+  text-align: right;
+  margin-left: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  background-color: #222;
+  border-radius: 30px;
+  margin: 20px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .ver-logros {
+  margin: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #0076be;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .ver-logros:hover {
+  background-color: #111;
+  color: #fcba03;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px 10px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .imagen-logro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #2c2c2c;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .imagen-logro .img-trofeo {
+  width: 70px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .imagen-logro i {
+  color: white;
+  font-size: 30px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .logro-body {
+  margin: 0 10px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .logro-body h1 {
+  color: #0076be;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .logro-body p {
+  color: white;
+  margin: 5px 0;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .logro-body .bloqueado {
+  color: grey;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logro-wrapper .logro .logro-body .porcentaje {
+  color: grey;
+  font-size: 13px;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logros-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+}
+
+.profile-wrapper .profile-body .profile-grid .logros-wrapper .logros-header p {
+  color: #0076be;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper {
+  background-color: #222;
+  width: calc(100% - 40px);
+  border-radius: 30px;
+  margin: 20px 0 0 0;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo-header {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo-header h1 {
+  font-size: 1.8rem;
+  color: #fcba03;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeos-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo {
+  margin: 15px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo .trofeo-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo .trofeo-img img {
+  width: 80px;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo .trofeo-body {
+  margin: 0 10px;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo .trofeo-body h1 {
+  color: #fcba03;
+  font-size: 25px;
+  margin: 0;
+}
+
+.profile-wrapper .profile-body .trofeos-wrapper .trofeo .trofeo-body p {
+  color: white;
+  margin: 5px 0;
 }
 
 .profile-wrapper .profile-body h1 {
@@ -1518,31 +1819,54 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(100% - 40px);
+  background-color: #222;
+  border-radius: 30px;
+  margin-top: 40px;
+}
+
+.profile-wrapper .profile-body .profile-avatar .profile-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 40px;
 }
 
-.profile-wrapper .profile-body .profile-avatar .profile-avatar-body {
+.profile-wrapper .profile-body .profile-avatar .profile-flex .profile-avatar-body {
   margin: 0 10px;
 }
 
-.profile-wrapper .profile-body .profile-avatar .profile-avatar-body p {
+.profile-wrapper .profile-body .profile-avatar .profile-flex .profile-avatar-body p {
   margin: 0;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
 }
 
-.profile-wrapper .profile-body .profile-avatar .profile-avatar-body a {
-  margin: 0;
+.profile-wrapper .profile-body .profile-avatar a {
+  margin: 0 40px;
   text-decoration: none;
-  color: #0076be;
+  color: white;
+  background-color: #0076be;
+  padding: 10px 20px;
+  border-radius: 30px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-.profile-wrapper .profile-body .profile-avatar .profile-avatar-body a:hover {
+.profile-wrapper .profile-body .profile-avatar a:hover {
+  background-color: #111;
   color: #009dff;
 }
 
@@ -1568,10 +1892,63 @@ img {
   font-size: 30px;
 }
 
+@media screen and (max-width: 1700px) {
+  .profile-wrapper .profile-body .profile-grid {
+    -ms-grid-columns: 1fr 25vw;
+        grid-template-columns: 1fr 25vw;
+  }
+}
+
 @media screen and (max-width: 1300px) {
+  .profile-wrapper .profile-body .profile-avatar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-wrapper .profile-body .profile-avatar a {
+    margin: 20px;
+  }
+  .profile-wrapper .profile-body .profile-avatar .profile-flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .profile-wrapper .profile-body .profile-grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .profile-wrapper .profile-body .profile-grid .logros-wrapper .logros {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
   .noticias-wrapper .noticias-grid {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .profile-wrapper .profile-body .profile-grid .logros-wrapper .logros {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .noticias-wrapper .noticias-grid {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .profile-wrapper .trofeos-wrapper .trofeo-header .trofeos-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -1579,6 +1956,29 @@ img {
   .noticias-wrapper .noticias-grid {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .profile-wrapper .profile-body {
+    width: 100%;
+  }
+  .profile-wrapper .profile-body img {
+    width: 300px;
+  }
+  .profile-wrapper .profile-body .profile-grid {
+    width: 90%;
+  }
+  .profile-wrapper .profile-body .profile-grid .logros-wrapper .logros {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .profile-wrapper .profile-body .profile-avatar {
+    width: calc(90% - 40px);
+    margin: 20px;
+  }
+  .profile-wrapper .profile-body .trofeos-wrapper {
+    width: calc(90% - 40px);
   }
 }
 
@@ -1722,6 +2122,33 @@ img {
   }
   footer .footer-body .cyberhydra img {
     width: 150px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile-wrapper .profile-body .profile-grid .logros-wrapper .logros .logro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-wrapper .profile-body .profile-grid .estadisticas-wrapper {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  .profile-wrapper .profile-body .profile-grid .logros-wrapper {
+    margin: 0;
+  }
+  .profile-wrapper .profile-body .profile-avatar {
+    width: 90%;
+    margin: 20px;
   }
 }
 /*# sourceMappingURL=styles.css.map */
