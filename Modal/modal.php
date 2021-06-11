@@ -43,6 +43,30 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "Debe completar todos los campos.";
         break;
+
+    case 8:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "La contraseña debe tener mas de 8 caracteres y solo puede contener letras y numeros.";
+        break;
+    
+    case 9:
+        $mensaje_2 = "Error:";
+        $link = "";
+        $mensaje = "Hubo un error inesperado, vuelve a intentarlo.";
+        break;
+
+    case 10:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "El año cursado debe ser numerico (1-6).";
+        break;
+
+    case 11:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "El campo de celular o de cedula debe ser numerico.";
+        break;
 }
 
 
@@ -55,7 +79,7 @@ $modal = "  <div class='modal'>
                         <h1>$mensaje_2</h1>
                         <hr>
                         <p>$mensaje</p>
-                        <a href='$link'><i class='fas fa-times-circle'></i> Cerrar</a>
+                        <a onclick='cerrar()'><i class='fas fa-times-circle'></i> Cerrar</a>
                     </div>
                 </div>
             </div>";
