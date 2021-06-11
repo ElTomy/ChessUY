@@ -48,6 +48,55 @@ INSERT INTO `estadisticas` VALUES ('jose',1,1,1,1,1,1,1,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `foto`
+--
+
+DROP TABLE IF EXISTS `foto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `foto` (
+  `ID_Foto` int NOT NULL,
+  `URL` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID_Foto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `foto`
+--
+
+LOCK TABLES `foto` WRITE;
+/*!40000 ALTER TABLE `foto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `foto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fotoperfil`
+--
+
+DROP TABLE IF EXISTS `fotoperfil`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fotoperfil` (
+  `ID_Foto` int DEFAULT NULL,
+  `Usuario` varchar(45) DEFAULT NULL,
+  KEY `Usuario` (`Usuario`),
+  KEY `ID_Foto` (`ID_Foto`),
+  CONSTRAINT `fotoperfil_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Usuario`),
+  CONSTRAINT `fotoperfil_ibfk_2` FOREIGN KEY (`ID_Foto`) REFERENCES `foto` (`ID_Foto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fotoperfil`
+--
+
+LOCK TABLES `fotoperfil` WRITE;
+/*!40000 ALTER TABLE `fotoperfil` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fotoperfil` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `imagen`
 --
 
@@ -783,4 +832,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-10  9:18:37
+-- Dump completed on 2021-06-11  9:04:02
