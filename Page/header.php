@@ -53,6 +53,16 @@
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "<h2>" . $_SESSION['usuario'] . "</h2>";
+                    if($_SESSION['tipo'] == 0){
+                        $tipo = "<i class='fas fa-star'></i> Administrador";
+                    }else if($_SESSION['tipo'] == 1){
+                        $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                    }else if($_SESSION['tipo'] == 2){
+                        $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                    }else if($_SESSION['tipo'] == 3){
+                        $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                    }
+                    echo "<p class='tipo-profile'>$tipo</p>";
                 }else{
                     echo "<h2>Invitado</h2>";
                 }

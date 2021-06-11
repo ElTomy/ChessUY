@@ -223,7 +223,7 @@ header #links-mobile {
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(51, 51, 51, 0.95);
+  background-color: rgba(32, 32, 32, 0.95);
   -webkit-transition: ease-in 0.3s;
   transition: ease-in 0.3s;
 }
@@ -271,6 +271,7 @@ header #links-mobile .links-wrapper .profile-picture i {
 header #links-mobile .links-wrapper h2 {
   color: #0076be;
   font-weight: lighter;
+  margin: 10px 0 0 0;
 }
 
 header #links-mobile .links-wrapper a {
@@ -300,6 +301,12 @@ header #links-mobile .links-wrapper a i {
 
 header #links-mobile .links-wrapper a:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+header #links-mobile .links-wrapper .tipo-profile {
+  color: #fcba03;
+  font-size: 13px;
+  margin: 2px 0 20px 0;
 }
 
 .change .bar1 {
