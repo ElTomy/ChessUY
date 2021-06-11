@@ -73,10 +73,18 @@
                     </label>
                 </div>
                 <div class="inputs">
-                    <input type="text" id="nacimiento" name="nacimiento" required />
+                    <?php
+
+                    $año = date('Y');
+                    $mes = date('m');
+                    $dia = date('d');
+
+                    echo "<input type='date' max='$año-$mes-$dia' id='nacimiento' name='nacimiento' />";
+                    ?>
                     <label class="lbl-user">
-                        <span class="text-user"> Fecha de Nacimiento (Año/Mes/Día)</span>
+                        <span class="text-user"> Fecha de Nacimiento</span>
                     </label>
+                    
                 </div>
             </div>
             <div class="column">
@@ -92,17 +100,16 @@
                         <span class="text-user"> Celular</span>
                     </label>
                 </div>
-            
-                <div class="inputs">
-                    <input type="text" id="usuario" name="usuario" required />
-                    <label class="lbl-user">
-                    <span class="text-user"> Usuario </span>
-                    </label>
-                </div>
                 <div class="inputs">
                     <input type="email" id="email" name="email" required />
                     <label class="lbl-user">
                     <span class="text-user"> Email </span>
+                    </label>
+                </div>
+                <div class="inputs">
+                    <input type="text" id="usuario" name="usuario" required />
+                    <label class="lbl-user">
+                    <span class="text-user"> Usuario </span>
                     </label>
                 </div>
                 <div class="inputs">

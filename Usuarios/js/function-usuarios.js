@@ -44,14 +44,7 @@ function log(){
               default:
                 console.log('error');
           }
-          $.ajax({
-            url: "/ChessUY/Modal/modal.php",
-            type: "POST",
-            data: { numero_mensaje: mensaje},
-            success: function (data) {
-                document.getElementById("modal").innerHTML = data;
-            }
-          });
+          location.href = "/ChessUY/Index";
       }else{
         var numero_mensaje = 1;
 
@@ -65,4 +58,16 @@ function log(){
       });
       }
     }
+}
+function cerrar(){
+  document.getElementById("modal").innerHTML = "";
+}
+function cerrarSesion(){
+  $.ajax({
+      url: "/ChessUY/Form/PHP/cerrarSesion.php",
+      type: "POST",
+      success: function (data) {
+        location.reload();
+      }
+  });
 }

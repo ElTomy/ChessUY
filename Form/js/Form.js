@@ -6,9 +6,8 @@ function TipoUsuario() {
     } else {
         tipo = 3;
     }
-    location.href = "Register-Options";
+    location.href = "Register-Options.php";
     sessionStorage.setItem("tipo", tipo);
-    alert(sessionStorage.getItem("tipo"));
 }
     
 function Register() {
@@ -35,7 +34,26 @@ function Register() {
                 document.getElementById("modal").innerHTML = data;
             }
           });
-    }else{
+    }else if(!año.match(numeros) || año > 6 || año < 1){
+        $.ajax({
+            url: "/ChessUY/Modal/modal.php",
+            type: "POST",
+            data: { numero_mensaje: 10},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+          });
+    }else if(!cedula.match(numeros) || cedula.match(letras) || !celular.match(numeros) || celular.match(letras)){
+        $.ajax({
+            url: "/ChessUY/Modal/modal.php",
+            type: "POST",
+            data: { numero_mensaje: 11},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+          });
+    }
+    else{
         if(contraseña.length > 8 && contraseña.match(numeros) && contraseña.match(letras)){            
             console.log(nombre);
             console.log(apellido);
@@ -66,6 +84,7 @@ function Register() {
                 contraseña: contraseña
                 },
                 success: function (data) {
+
                     var mensaje_modal;
         
                     if(data == 1){
@@ -102,5 +121,5 @@ function Register() {
     }
 }
 function cerrar(){
-    $("#modal").innerHTML = "";
+    document.getElementById("modal").innerHTML = "";
 }
