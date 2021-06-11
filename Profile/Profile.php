@@ -48,7 +48,9 @@
 
     <section class="profile-wrapper">
         <div class="profile-body">
-            <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            <a href="/ChessUY/Index">
+              <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            </a>
             <div class="profile-avatar">
                   <div class="profile-flex">
                     <div class="profile-body-picture">
