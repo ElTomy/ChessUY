@@ -2115,6 +2115,12 @@ img {
   .landing-page .landing-overlay img {
     width: 300px;
   }
+  .profile-wrapper .profile-body .trofeos-wrapper .trofeo-header .trofeos-list .trofeo {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -2153,6 +2159,10 @@ img {
   .profile-wrapper .profile-body .profile-avatar {
     width: 90%;
     margin: 20px;
+  }
+  .profile-wrapper .profile-body .trofeos-wrapper {
+    width: 90%;
+    margin-bottom: 40px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1460,6 +1460,19 @@ img {
       }
     }
   }
+  .profile-wrapper {
+    .profile-body {
+      .trofeos-wrapper {
+        .trofeo-header{
+          .trofeos-list{
+            .trofeo{
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media screen and (max-width: 450px) {
   .noticias-wrapper {
@@ -1513,6 +1526,10 @@ img {
     .profile-avatar {
       width: 90%;
       margin: 20px;
+    }
+    .trofeos-wrapper{
+      width: 90%;
+      margin-bottom: 40px;
     }
   }
 }

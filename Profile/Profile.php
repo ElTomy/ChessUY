@@ -66,8 +66,6 @@
             <section class="trofeos-wrapper">
               <div class="trofeo-header">
                 <h1>Trofeos</h1>
-                <hr>
-
                 <div class="trofeos-list">
 
                   <div class="trofeo">
@@ -101,7 +99,6 @@
                 <div class="estadisticas-header">
                   <h1>Estadisticas</h1>
                 </div>
-                <hr>
                 <div class="estadisticas-body">
                   <h1 class="estadisticas-titulo">ELO:</h1><p>1</p>
                 </div>
@@ -132,7 +129,6 @@
                 <div class="logros-header">
                   <h1>Logros</h1><p>(1)</p>
                 </div>
-                <hr>
                   <div class="logro-wrapper">
                     <div class="logro">
                       <div class="imagen-logro">
