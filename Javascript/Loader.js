@@ -1,7 +1,7 @@
 window.onload = function(){
     $(".loader-wrapper").fadeOut("slow");
 
-    $("#header").load("/ChessUY/Page/header.html");
+    $("#header").load("/ChessUY/Page/header.php");
     $("#footer").load("/ChessUY/Page/footer.html");
 };
 
