@@ -18,7 +18,6 @@ class servidor
     //
     //
     function VerificoSesion($tipo){
-        session_start();
 
         if(!isset($_SESSION["usuario"])){
             header("Location: /chessuy/Form/login.html");

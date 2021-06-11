@@ -67,6 +67,12 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "El campo de celular o de cedula debe ser numerico.";
         break;
+
+    case 12:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "La cedula no es válida, debe tener 8 digitos.";
+        break;
 }
 
 

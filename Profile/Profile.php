@@ -1,7 +1,36 @@
 <?php
   include '../servidor.php';
   $server= new servidor();
-  $server->VerificoSesion(1);
+  session_start();
+  $server->VerificoSesion($_SESSION['tipo']);
+
+  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($_SESSION['usuario']);
+
+  if($ELO == null){
+    $ELO = 0;
+  }
+  if($Victorias == null){
+    $Victorias = 0;
+  }
+  if($Derrotas == null){
+    $Derrotas = 0;
+  }
+  if($Tablas == null){
+    $Tablas = 0;
+  }
+  if($Coronaciones == null){
+    $Coronaciones = 0;
+  }
+  if($Comidas == null){
+    $Comidas = 0;
+  }
+  if($Menos_Tiempo == null){
+    $Menos_Tiempo = 0;
+  }
+  if($Menos_Movimientos == null){
+    $Menos_Movimientos = 0;
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +88,16 @@
                     <div class="profile-avatar-body">
                     <?php
                       echo "<p>" . $_SESSION['usuario'] . "</p>";
+                      if($_SESSION['tipo'] == 0){
+                        $tipo = "<i class='fas fa-star'></i> Administrador";
+                      }else if($_SESSION['tipo'] == 1){
+                        $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                      }else if($_SESSION['tipo'] == 2){
+                        $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                      }else if($_SESSION['tipo'] == 3){
+                        $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                      }
+                      echo "<p class='tipo-profile'>$tipo</p>";
                     ?>
                     </div>
                   </div>
@@ -101,30 +140,33 @@
                 <div class="estadisticas-header">
                   <h1>Estadisticas</h1>
                 </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">ELO:</h1><p>1</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Victorias:</h1><p>2</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Derrotas:</h1><p>10</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Tablas:</h1><p>3</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Coronaciones:</h1><p>3</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Piezas Comidas:</h1><p>3</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Victorias en menos tiempo:</h1><p>3</p>
-                </div>
-                <div class="estadisticas-body">
-                  <h1 class="estadisticas-titulo">Victorias en menos movimientos:</h1><p>3</p>
-                </div>
+                <?php
+                  echo "  <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                          </div>
+                          <div class='estadisticas-body'>
+                            <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                          </div>";
+                ?>
+                
               </div>
 
               <div class="logros-wrapper">

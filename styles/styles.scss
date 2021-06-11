@@ -58,10 +58,21 @@ header {
           font-size: 20px;
         }
       }
-      p {
-        transition: 0.5s;
-        font-size: 20px;
-        color: white;
+      .header-user{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        p {
+          transition: 0.5s;
+          font-size: 20px;
+          color: white;
+          margin: 0;
+        }
+        .tipo-profile{
+          color: #fcba03;
+          font-size: 13px;
+          
+        }
       }
       .profile {
         padding: 10px;
@@ -676,7 +687,7 @@ Loading Screen
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    padding: 20px 15px;
+    padding: 0 15px;
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 
     .option {
@@ -857,7 +868,7 @@ img {
 .login-wrapper,
 .register-wrapper,
 .register-wrapper2 {
-  height: 100vh;
+  margin: 100px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1228,9 +1239,13 @@ img {
           margin: 0 10px;
 
           p {
-            margin: 0;
+            margin: 5px 0;
             color: white;
             font-size: 30px;
+          }
+          .tipo-profile{
+            color: #fcba03;
+            font-size: 15px;
           }
         }
       }
@@ -1394,8 +1409,7 @@ img {
     }
   }
   .register-wrapper {
-    height: 100vh;
-
+    margin: 100px 0;
     .register-logo {
       img {
         width: 300px;
@@ -1403,7 +1417,7 @@ img {
     }
   }
   .register-wrapper2 {
-    padding: 40px 0;
+    margin: 0;
     height: 100%;
 
     .register-logo {

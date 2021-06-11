@@ -13,7 +13,19 @@
                     echo "  <div class='header-session'>
                                 <a class='profile' href='/ChessUY/Profile/Profile.php'>
                                     <div class='session-image'><i class='fas fa-user'></i></div>
-                                    <p>" . $_SESSION['usuario'] . "</p>
+                                    <div class='header-user'>
+                                        <p>" . $_SESSION['usuario'] . "</p>";
+                                    if($_SESSION['tipo'] == 0){
+                                        $tipo = "<i class='fas fa-star'></i> Administrador";
+                                    }else if($_SESSION['tipo'] == 1){
+                                        $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                                    }else if($_SESSION['tipo'] == 2){
+                                        $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                                    }else if($_SESSION['tipo'] == 3){
+                                        $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                                    }
+                                    echo "<p class='tipo-profile'>$tipo</p>
+                                    </div>
                                 </a>
                                 <a class='cerrarsesion' onclick='cerrarSesion()'><i class='fas fa-door-open'></i> CERRAR SESIÓN</a>
                             </div>";

@@ -96,11 +96,30 @@ header .nav-links .header-session .session-image i {
   font-size: 20px;
 }
 
-header .nav-links .header-session p {
+header .nav-links .header-session .header-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header .nav-links .header-session .header-user p {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   font-size: 20px;
   color: white;
+  margin: 0;
+}
+
+header .nav-links .header-session .header-user .tipo-profile {
+  color: #fcba03;
+  font-size: 13px;
 }
 
 header .nav-links .header-session .profile {
@@ -989,7 +1008,7 @@ Loading Screen
       -ms-flex-align: center;
           align-items: center;
   border-radius: 5px;
-  padding: 20px 15px;
+  padding: 0 15px;
   -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
           box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 }
@@ -1261,7 +1280,7 @@ img {
 .login-wrapper,
 .register-wrapper,
 .register-wrapper2 {
-  height: 100vh;
+  margin: 100px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1853,9 +1872,14 @@ img {
 }
 
 .profile-wrapper .profile-body .profile-avatar .profile-flex .profile-avatar-body p {
-  margin: 0;
+  margin: 5px 0;
   color: white;
   font-size: 30px;
+}
+
+.profile-wrapper .profile-body .profile-avatar .profile-flex .profile-avatar-body .tipo-profile {
+  color: #fcba03;
+  font-size: 15px;
 }
 
 .profile-wrapper .profile-body .profile-avatar a {
@@ -2033,13 +2057,13 @@ img {
     margin: 0;
   }
   .register-wrapper {
-    height: 100vh;
+    margin: 100px 0;
   }
   .register-wrapper .register-logo img {
     width: 300px;
   }
   .register-wrapper2 {
-    padding: 40px 0;
+    margin: 0;
     height: 100%;
   }
   .register-wrapper2 .register-logo img {

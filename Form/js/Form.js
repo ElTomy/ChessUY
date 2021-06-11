@@ -52,6 +52,15 @@ function Register() {
                 document.getElementById("modal").innerHTML = data;
             }
           });
+    }else if(cedula.length != 8){
+        $.ajax({
+            url: "/ChessUY/Modal/modal.php",
+            type: "POST",
+            data: { numero_mensaje: 12},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+          });
     }
     else{
         if(contraseña.length > 8 && contraseña.match(numeros) && contraseña.match(letras)){            
@@ -84,6 +93,8 @@ function Register() {
                 contraseña: contraseña
                 },
                 success: function (data) {
+
+                    alert(data);
 
                     var mensaje_modal;
         
