@@ -2065,6 +2065,99 @@ img {
           flex-direction: column;
 }
 
+.board-wrapper .board .movimientos .match-players {
+  margin: 20px 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player, .board-wrapper .board .movimientos .match-players .second-player {
+  margin: 0 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player .profile-body-picture, .board-wrapper .board .movimientos .match-players .second-player .profile-body-picture {
+  background-color: #0076be;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player .profile-body-picture i, .board-wrapper .board .movimientos .match-players .second-player .profile-body-picture i {
+  color: white;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body {
+  margin: 0 10px;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body h1, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body h1 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body p, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body p {
+  margin: 0;
+  color: #0076be;
+}
+
+.board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body {
+  text-align: right;
+}
+
+.board-wrapper .board .movimientos .match-players .vs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  height: 40px;
+  background: -webkit-gradient(linear, left top, right top, from(#0076be), to(#002a9a));
+  background: linear-gradient(90deg, #0076be 0%, #002a9a 100%);
+  border-radius: 50%;
+  color: white;
+}
+
+.board-wrapper .board .movimientos .match-players .vs h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.board-wrapper .board .movimientos .espectadores {
+  margin: 0;
+  color: #888;
+}
+
 .board-wrapper .board .movimientos h1 {
   color: white;
   margin: 0;

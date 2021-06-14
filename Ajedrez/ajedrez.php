@@ -1,3 +1,9 @@
+<?php
+  include '../servidor.php';
+  $server= new servidor();
+  session_start();
+  $server->VerificoSesion($_SESSION['tipo']);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -122,6 +128,30 @@
           <div class="movimientos-img">
             <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
           </div>
+          <div class="match-players">
+            <div class="first-player">
+              <div class="profile-body-picture">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="profile-avatar-body">
+                <h1>ByJuanii</h1>
+                <p><i class="fas fa-chess-knight"></i> Jugador</p>
+              </div>
+            </div>
+            <div class="vs">
+              <h1>VS</h1>
+            </div>
+            <div class="second-player">
+              <div class="profile-avatar-body">
+                <h1>Jugador 2</h1>
+                <p><i class="fas fa-chess-knight"></i> Jugador</p>
+              </div>
+              <div class="profile-body-picture">
+                <i class="fas fa-user"></i>
+              </div>           
+            </div>
+          </div>
+          <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
           <h1>Movimientos</h1>
           <table>
             <tr>

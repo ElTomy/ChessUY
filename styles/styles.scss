@@ -1388,6 +1388,70 @@ img {
       align-items: center;
       flex-direction: column;
 
+      .match-players{
+        margin: 20px 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .first-player, .second-player{
+          margin: 0 30px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .profile-body-picture{
+            background-color: #0076be;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i{
+              color: white;
+            }
+          }
+          .profile-avatar-body{
+            margin: 0 10px;
+            h1{
+              margin: 0;
+              font-size: 1.3em;
+            }
+            p{
+              margin: 0;
+              color: #0076be;
+            }
+          }
+        }
+        .second-player{
+          .profile-avatar-body{
+            text-align: right;
+          }
+        }
+        .vs{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 40px;
+          height: 40px;
+          background: linear-gradient(90deg, rgba(0,118,190,1) 0%, rgba(0,42,154,1) 100%);
+          border-radius: 50%;
+          color: white;
+
+          h1{
+            font-size: 1rem;
+            margin: 0;
+          }
+        }
+      }
+      .espectadores{
+        margin: 0;
+        color: #888;
+      }
+
       h1{
         color: white;
         margin: 0;
