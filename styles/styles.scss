@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
-
-body {
+*{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+body {
   overflow-x: hidden;
   background-color: #111;
   font-family: Roboto;
+  box-sizing: border-box;
 }
 ::-webkit-scrollbar {
   width: 7px;
@@ -274,6 +276,7 @@ footer {
     p {
       color: white;
       font-size: 13px;
+      margin: 10px 0;
     }
 
     .cyberhydra {
@@ -288,6 +291,7 @@ footer {
 
       img {
         width: 200px;
+        margin: 0 20px;
       }
     }
   }
@@ -1299,6 +1303,12 @@ img {
 
 
 */
+#test{
+  display: block;
+  width: 100px;
+  height: 50px;
+  background-color: #0076be;
+}
 .board-wrapper{
   display: flex;
   justify-content: center;
@@ -1314,6 +1324,76 @@ img {
     background-color: #111;
     border-radius: 30px;
 
+    .ajedrez-flex{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 2%;
+    }
+
+    .first-player-mobile, .second-player-mobile{
+      margin: 10px 30px;
+      display: none;
+      justify-content: flex-start;
+      align-items: center;
+      .first-player-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+      .profile-body-picture{
+        background-color: #0076be;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        i{
+          color: white;
+        }
+      }
+      .profile-avatar-body{
+        margin: 0 10px;
+        h1{
+          margin: 0;
+          font-size: 1rem;
+          font-weight: lighter;
+          color: white;
+        }
+        p{
+          font-size: 0.8rem;
+          margin: 0;
+          color: #0076be;
+        }
+      }
+    }
+    .first-player-mobile{
+      justify-content: space-between;
+
+      .espectadores{
+        color: #888;
+      }
+    }
+    .second-player-mobile{
+      justify-content: flex-end;
+    }
+
+    .mobile-img{
+      display: none;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+
+      img{
+        width: 70%;
+      }
+    }
     .ajedrez-wrapper{
       display: flex;
       align-items: center;
@@ -1327,30 +1407,45 @@ img {
         margin: 5%;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(8, 1fr);
-        border: 10px solid #009dff;
-        border-radius: 40px;
         .cell, .cell2{
           display: flex;
           justify-content: center;
           align-items: center;
           overflow: hidden;
+          text-align: center;
 
           i{
+            position: absolute;
+            z-index: 4;
             font-size: 2rem;
+          }
+          .board-number{
+            font-size: 0.9rem;
+            position: relative;
+            top: -30%;
+            left: -35%;
+            color: #ffffff80;
+          }
+          .board-text{
+            font-size: 0.9rem;
+            position: relative;
+            top: 35%;
+            left: 30%;
+            color: #ffffff80;
           }
         }
         .cell:nth-child(1){
-          border-radius: 30px 0 0 0;
+          border-radius: 10px 0 0 0;
         }
         .cell:nth-child(8){
-          border-radius: 0 30px 0 0;
+          border-radius: 0 10px 0 0;
         }
 
         .cell2:nth-child(57){
-          border-radius: 0 0 0 30px;
+          border-radius: 0 0 0 10px;
         }
         .cell2:nth-child(64){
-          border-radius: 0 0 30px 0;
+          border-radius: 0 0 10px 0;
         }
 
         .cell #Negro, .cell2 #Negro{
@@ -1394,37 +1489,7 @@ img {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .first-player, .second-player{
-          margin: 0 30px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          .profile-body-picture{
-            background-color: #0076be;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            i{
-              color: white;
-            }
-          }
-          .profile-avatar-body{
-            margin: 0 10px;
-            h1{
-              margin: 0;
-              font-size: 1.3em;
-            }
-            p{
-              margin: 0;
-              color: #0076be;
-            }
-          }
-        }
+        
         .second-player{
           .profile-avatar-body{
             text-align: right;
@@ -1447,19 +1512,15 @@ img {
           }
         }
       }
-      .espectadores{
-        margin: 0;
-        color: #888;
-      }
 
       h1{
         color: white;
-        margin: 0;
+        margin: 10px 0;
         font-weight: lighter;
       }
 
       table{
-        margin: 20px;
+        margin: 0 20px;
         width: 90%;
         background-color: #333;
         border-radius: 30px 30px 0 0;
@@ -1497,6 +1558,10 @@ img {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        img{
+          width: 80%;
+        }
       }
       .movimientos-board{
         width: 90%;
@@ -1521,6 +1586,68 @@ img {
     .profile-grid {
       grid-template-columns: 1fr 25vw;
     }
+  }
+}
+@media screen and (max-width: 900px) {
+  .board-wrapper{
+    height: auto;
+    .board{
+      width: 100%;
+      border-radius: 10px;
+      grid-template-columns: 1fr;
+
+      .first-player-mobile, .second-player-mobile{
+        display: flex;
+      }
+  
+      .ajedrez-wrapper{
+        margin: 0 auto;
+      }
+      .movimientos{
+        .movimientos-img{
+          display: none;
+        }
+        .match-players{
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          align-items: initial;
+          
+          .first-player-mobile, .second-player-mobile{
+            width: 100%;
+            hyphens: auto;
+            flex-direction: column;
+            justify-content: initial;
+            align-items: center;
+            margin: 0 2%;
+
+            .first-player-wrapper{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .profile-body-picture{
+                width: 40px;
+                height: 40px;
+              }
+              .profile-avatar-body{
+                text-align: center;
+  
+                h1{
+                  margin: 5px 0;
+                }
+              }
+            }
+            
+          }
+          .vs{
+          }
+        }
+      }
+      .mobile-img{
+        display: flex;
+      }
+    }
+    
   }
 }
 @media screen and (max-width: 1300px) {
@@ -1738,6 +1865,7 @@ img {
         }
         img {
           width: 150px;
+          margin: 0 20px;
         }
       }
     }

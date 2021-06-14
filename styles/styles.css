@@ -1,12 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
-body {
+* {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+}
+
+body {
   overflow-x: hidden;
   background-color: #111;
   font-family: Roboto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -370,6 +373,7 @@ footer .footer-body {
 footer .footer-body p {
   color: white;
   font-size: 13px;
+  margin: 10px 0;
 }
 
 footer .footer-body .cyberhydra {
@@ -392,6 +396,7 @@ footer .footer-body .cyberhydra p {
 
 footer .footer-body .cyberhydra img {
   width: 200px;
+  margin: 0 20px;
 }
 
 .modal {
@@ -1934,6 +1939,13 @@ img {
 
 
 */
+#test {
+  display: block;
+  width: 100px;
+  height: 50px;
+  background-color: #0076be;
+}
+
 .board-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1959,6 +1971,115 @@ img {
   border-radius: 30px;
 }
 
+.board-wrapper .board .ajedrez-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2%;
+}
+
+.board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+  margin: 10px 30px;
+  display: none;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .first-player-mobile .first-player-wrapper, .board-wrapper .board .second-player-mobile .first-player-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .first-player-mobile .profile-body-picture, .board-wrapper .board .second-player-mobile .profile-body-picture {
+  background-color: #0076be;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .first-player-mobile .profile-body-picture i, .board-wrapper .board .second-player-mobile .profile-body-picture i {
+  color: white;
+}
+
+.board-wrapper .board .first-player-mobile .profile-avatar-body, .board-wrapper .board .second-player-mobile .profile-avatar-body {
+  margin: 0 10px;
+}
+
+.board-wrapper .board .first-player-mobile .profile-avatar-body h1, .board-wrapper .board .second-player-mobile .profile-avatar-body h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: lighter;
+  color: white;
+}
+
+.board-wrapper .board .first-player-mobile .profile-avatar-body p, .board-wrapper .board .second-player-mobile .profile-avatar-body p {
+  font-size: 0.8rem;
+  margin: 0;
+  color: #0076be;
+}
+
+.board-wrapper .board .first-player-mobile {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.board-wrapper .board .first-player-mobile .espectadores {
+  color: #888;
+}
+
+.board-wrapper .board .second-player-mobile {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.board-wrapper .board .mobile-img {
+  display: none;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.board-wrapper .board .mobile-img img {
+  width: 70%;
+}
+
 .board-wrapper .board .ajedrez-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1982,8 +2103,6 @@ img {
       grid-template-columns: repeat(8, 1fr);
   -ms-grid-rows: (1fr)[8];
       grid-template-rows: repeat(8, 1fr);
-  border: 10px solid #009dff;
-  border-radius: 40px;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
@@ -1997,26 +2116,45 @@ img {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  text-align: center;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell i, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
+  position: absolute;
+  z-index: 4;
   font-size: 2rem;
 }
 
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
+  font-size: 0.9rem;
+  position: relative;
+  top: -30%;
+  left: -35%;
+  color: #ffffff80;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
+  font-size: 0.9rem;
+  position: relative;
+  top: 35%;
+  left: 30%;
+  color: #ffffff80;
+}
+
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-child(1) {
-  border-radius: 30px 0 0 0;
+  border-radius: 10px 0 0 0;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-child(8) {
-  border-radius: 0 30px 0 0;
+  border-radius: 0 10px 0 0;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-child(57) {
-  border-radius: 0 0 0 30px;
+  border-radius: 0 0 0 10px;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-child(64) {
-  border-radius: 0 0 30px 0;
+  border-radius: 0 0 10px 0;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
@@ -2079,53 +2217,6 @@ img {
           align-items: center;
 }
 
-.board-wrapper .board .movimientos .match-players .first-player, .board-wrapper .board .movimientos .match-players .second-player {
-  margin: 0 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.board-wrapper .board .movimientos .match-players .first-player .profile-body-picture, .board-wrapper .board .movimientos .match-players .second-player .profile-body-picture {
-  background-color: #0076be;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.board-wrapper .board .movimientos .match-players .first-player .profile-body-picture i, .board-wrapper .board .movimientos .match-players .second-player .profile-body-picture i {
-  color: white;
-}
-
-.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body {
-  margin: 0 10px;
-}
-
-.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body h1, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body h1 {
-  margin: 0;
-  font-size: 1.3em;
-}
-
-.board-wrapper .board .movimientos .match-players .first-player .profile-avatar-body p, .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body p {
-  margin: 0;
-  color: #0076be;
-}
-
 .board-wrapper .board .movimientos .match-players .second-player .profile-avatar-body {
   text-align: right;
 }
@@ -2153,19 +2244,14 @@ img {
   margin: 0;
 }
 
-.board-wrapper .board .movimientos .espectadores {
-  margin: 0;
-  color: #888;
-}
-
 .board-wrapper .board .movimientos h1 {
   color: white;
-  margin: 0;
+  margin: 10px 0;
   font-weight: lighter;
 }
 
 .board-wrapper .board .movimientos table {
-  margin: 20px;
+  margin: 0 20px;
   width: 90%;
   background-color: #333;
   border-radius: 30px 30px 0 0;
@@ -2211,6 +2297,10 @@ img {
           align-items: center;
 }
 
+.board-wrapper .board .movimientos .movimientos-img img {
+  width: 80%;
+}
+
 .board-wrapper .board .movimientos .movimientos-board {
   width: 90%;
   height: 90%;
@@ -2230,6 +2320,81 @@ img {
   .profile-wrapper .profile-body .profile-grid {
     -ms-grid-columns: 1fr 25vw;
         grid-template-columns: 1fr 25vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .board-wrapper {
+    height: auto;
+  }
+  .board-wrapper .board {
+    width: 100%;
+    border-radius: 10px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .board-wrapper .board .ajedrez-wrapper {
+    margin: 0 auto;
+  }
+  .board-wrapper .board .movimientos .movimientos-img {
+    display: none;
+  }
+  .board-wrapper .board .movimientos .match-players {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -webkit-box-align: initial;
+        -ms-flex-align: initial;
+            align-items: initial;
+  }
+  .board-wrapper .board .movimientos .match-players .first-player-mobile, .board-wrapper .board .movimientos .match-players .second-player-mobile {
+    width: 100%;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: initial;
+        -ms-flex-pack: initial;
+            justify-content: initial;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0 2%;
+  }
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-body-picture, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-body-picture {
+    width: 40px;
+    height: 40px;
+  }
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body {
+    text-align: center;
+  }
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body h1, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body h1 {
+    margin: 5px 0;
+  }
+  .board-wrapper .board .mobile-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
@@ -2462,6 +2627,7 @@ img {
   }
   footer .footer-body .cyberhydra img {
     width: 150px;
+    margin: 0 20px;
   }
 }
 

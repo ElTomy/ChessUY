@@ -44,92 +44,11 @@
 
     <section class="board-wrapper">
       <div class="board">
-        <div class="ajedrez-wrapper">
-          <div class="ajedrez">
-
-            <div class="cell"><i id="Negro" class="fas fa-chess-rook"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-knight"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-bishop"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-queen"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-king"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-bishop"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-knight"></i></div>
-            <div class="cell"><i id="Negro" class="fas fa-chess-rook"></i></div>
-
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-            <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
-
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-            <div class="cell2"></div>
-
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-            <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
-
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-rook"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-knight"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-bishop"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-queen"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-king"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-bishop"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-knight"></i></div>
-            <div class="cell2"><i id="Blanco" class="fas fa-chess-rook"></i></div>
-
-            
-            
-          </div>
+        <div class="mobile-img">
+          <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
         </div>
-
-        <div class="movimientos">
-          <div class="movimientos-img">
-            <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
-          </div>
-          <div class="match-players">
-            <div class="first-player">
+        <div class="first-player-mobile">
+            <div class="first-player-wrapper">
               <div class="profile-body-picture">
                 <i class="fas fa-user"></i>
               </div>
@@ -138,20 +57,101 @@
                 <p><i class="fas fa-chess-knight"></i> Jugador</p>
               </div>
             </div>
-            <div class="vs">
-              <h1>VS</h1>
-            </div>
-            <div class="second-player">
-              <div class="profile-avatar-body">
-                <h1>Jugador 2</h1>
-                <p><i class="fas fa-chess-knight"></i> Jugador</p>
-              </div>
-              <div class="profile-body-picture">
-                <i class="fas fa-user"></i>
-              </div>           
+            <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
+        </div>
+        <div class="ajedrez-flex">
+          <div class="ajedrez-wrapper">
+            <div class="ajedrez">
+
+              <div class="cell"><i id="Negro" class="fas fa-chess-rook"></i><p class="board-number">8</p></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-knight"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-bishop"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-queen"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-king"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-bishop"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-knight"></i></div>
+              <div class="cell"><i id="Negro" class="fas fa-chess-rook"></i></div>
+
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i><p class="board-number">7</p></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+              <div class="cell2"><i id="Negro" class="fas fa-chess-pawn"></i></div>
+
+              <div class="cell"><p class="board-number">6</p></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+
+              <div class="cell2"><p class="board-number">5</p></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+
+              <div class="cell"><p class="board-number">4</p></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+              <div class="cell"></div>
+
+              <div class="cell2"><p class="board-number">3</p></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+              <div class="cell2"></div>
+
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i><p class="board-number">2</p></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+              <div class="cell"><i id="Blanco" class="fas fa-chess-pawn"></i></div>
+
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-rook"></i><p class="board-number">1</p><p class="board-text">A</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-knight"></i><p class="board-text">B</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-bishop"></i><p class="board-text">C</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-queen"></i><p class="board-text">D</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-king"></i><p class="board-text">E</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-bishop"></i><p class="board-text">F</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-knight"></i><p class="board-text">G</p></div>
+              <div class="cell2"><i id="Blanco" class="fas fa-chess-rook"></i><p class="board-text">H</p></div>              
+              
             </div>
           </div>
-          <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
+        </div>
+        <div class="second-player-mobile">
+            <div class="profile-body-picture">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-avatar-body">
+              <h1>ByJuanii</h1>
+              <p><i class="fas fa-chess-knight"></i> Jugador</p>
+            </div>
+        </div>
+
+        <div class="movimientos">
+          <div class="movimientos-img">
+            <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+          </div>
           <h1>Movimientos</h1>
           <table>
             <tr>
