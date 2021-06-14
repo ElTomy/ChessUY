@@ -1927,6 +1927,212 @@ img {
   font-size: 30px;
 }
 
+/*
+
+
+          AJEDREZ
+
+
+*/
+.board-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: calc(98vh - 100px);
+}
+
+.board-wrapper .board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60% 1fr;
+      grid-template-columns: 60% 1fr;
+  width: 90%;
+  height: 100%;
+  background-color: #111;
+  border-radius: 30px;
+}
+
+.board-wrapper .board .ajedrez-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  margin: 5%;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+  border: 10px solid #009dff;
+  border-radius: 40px;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell i, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
+  font-size: 2rem;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-child(1) {
+  border-radius: 30px 0 0 0;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-child(8) {
+  border-radius: 0 30px 0 0;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-child(57) {
+  border-radius: 0 0 0 30px;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-child(64) {
+  border-radius: 0 0 30px 0;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
+  background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#262626));
+  background: linear-gradient(90deg, #bebebe 0%, #262626 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Blanco, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Blanco {
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa00), to(#814e00));
+  background: linear-gradient(90deg, #ffaa00 0%, #814e00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-last-of-type(odd) {
+  background-color: #222;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-last-of-type(even) {
+  background-color: #0076be;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-last-of-type(odd) {
+  background-color: #0076be;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:nth-last-of-type(even) {
+  background-color: #222;
+}
+
+.board-wrapper .board .movimientos {
+  background-color: #222;
+  border-radius: 30px;
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.board-wrapper .board .movimientos h1 {
+  color: white;
+  margin: 0;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos table {
+  margin: 20px;
+  width: 90%;
+  background-color: #333;
+  border-radius: 30px 30px 0 0;
+}
+
+.board-wrapper .board .movimientos table tr th {
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos table tr td {
+  height: 30px;
+  background-color: #444;
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos table tr td #Negro {
+  background-color: grey;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .movimientos table tr td #Blanco {
+  background-color: #fcba03;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .movimientos .movimientos-img {
+  width: 100%;
+  margin: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .movimientos-board {
+  width: 90%;
+  height: 90%;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #333;
+}
+
+/*
+
+
+
+
+
+*/
 @media screen and (max-width: 1700px) {
   .profile-wrapper .profile-body .profile-grid {
     -ms-grid-columns: 1fr 25vw;
