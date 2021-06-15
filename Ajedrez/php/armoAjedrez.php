@@ -1,18 +1,18 @@
 <?php
-for($x = 1; $x <= 8; $x += 1){
-    for($y = 1; $y <= 8; $y += 1){
-        $Ajedrez .='<div onclick="seleccionar($x,$y)" class=';
+$Ajedrez = "hola";
+for($x = 1; $x < 8; $x++){
+    for($y = 1; $y < 8; $y++){
         if(($x + $y)%2 == 0){
-            $Ajedrez .='"cell">';
+            $Ajedrez .='<div onclick="seleccionar($x,$y)" class="cell">';
         }else{
-            $Ajedrez .='"cell2">';
+            $Ajedrez .='<div onclick="seleccionar($x,$y)" class="cell2">';
         }
         $Ajedrez .='</div>';
     }
-    $Ajedrez .='<p class="board-number">$x</p>';
 }
-//juani el tema de las letras no se si sabes una forma mas facil de hacer que usar un switch 
-$Ajedrez ='
+//juani el tema de las letras y numeros  no se como acerlo 
+$Ajedrez .='
+<p class="board-number">$x</p>
 <p class="board-text">H</p>             
 ';
 echo $Ajedrez;

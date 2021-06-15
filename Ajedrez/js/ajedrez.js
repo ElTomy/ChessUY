@@ -20,6 +20,8 @@ const Piezas = {
     NPeon:'p',  
 }
 const Tablero = [];
+const seleccionado = null;
+const Movimiento = null;
 
 function boardsize(){
     var width = window.innerWidth;
@@ -168,6 +170,73 @@ function CreoTablero(){
     }
 }
 function seleccionar(x,y){
+    if(seleccionado == null){
+        if(Tablero[x][y] != null){
+            seleccionado = {
+                Ejex: x,
+                Ejey: y,
+                Contenido: Tablero[x][y].Piezas,
+            }
+            Movimientos();
+        }
+    }else{
+        /*if(Tablero[x][y] != Movimiento.Posible){
+            Muevo la pieza
+        }else{
+            if(Tablero[x][y] != null){
+                seleccionado = {
+                    Ejex: x,
+                    Ejey: y,
+                    Contenido: Tablero[x][y].Piezas,
+                }
+            Movimientos();
+            }else{
+                seleccionado = null;
+                movimientos = null;
+            }  
+        }*/
+        console.log("hola")
+    }
+}
+function Movimientos(){
+    switch(seleccionado.contenido){
+        case NTorre,BTorre:
+            Torre();
+        break;
+        case NCaballo,BCaballo:
+            Caballo();
+        break;
+        case NAlfil,BAlfil:
+            Alfil();
+        break;
+        case NPeon,BPeon:
+            Peon();
+        break;
+        case NDama,BDama:
+            Dama();
+        break;
+        case NRey,BRey:
+            Rey();
+        break;
+                                            
+    }
+}
+function Peon(){
+
+}
+function Torre(){
+    
+}
+function Caballo(){
+    
+}
+function Alfil(){
+    
+}
+function Dama(){
+    
+}
+function Rey(){
     
 }
 window.onresize = boardsize;
