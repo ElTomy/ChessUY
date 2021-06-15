@@ -1,7 +1,25 @@
 $( document ).ready(function(){
+    $("#ArmoAjedrez").load('php/armoAjedrez.php');
     boardsize();
+    CreoTablero();
+    PosicionPiezas();
 });
 
+const Piezas = {
+    BRey: 'r', 
+    BDama: 'd',
+    BCaballo: 'c',
+    BAlfil: 'a',
+    BTorre:'t', 
+    BPeon:'p',
+    NRey: 'r', 
+    NDama: 'd',
+    NCaballo: 'c',
+    NAlfil: 'a',
+    NTorre:'t', 
+    NPeon:'p',  
+}
+const Tablero = [];
 
 function boardsize(){
     var width = window.innerWidth;
@@ -82,5 +100,71 @@ function boardsize(){
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
     }    
+}
+function PosicionPiezas(){
+    for(let x = 1; x <= 8; x += 1){
+        Tablero[x][2] ={
+            Pieza: Piezas.BPeon,
+        }
+        Tablero[x][7] ={
+            Pieza: Piezas.NPeon,
+        }  
+    }
+    Tablero[1][1] ={
+        Piezas: Piezas.BTorre,
+    }
+    Tablero[1][8] ={
+        Piezas: Piezas.NTorre,
+    }
+    Tablero[2][1] ={
+        Piezas: Piezas.BCaballo,
+    }
+    Tablero[2][8] ={
+        Piezas: Piezas.NCaballo,
+    }
+    Tablero[3][1] ={
+        Piezas: Piezas.BAlfil,
+    }
+    Tablero[3][8] ={
+        Piezas: Piezas.NAlfil,
+    }
+    Tablero[4][1] ={
+        Piezas: Piezas.BDama,
+    }
+    Tablero[4][8] ={
+        Piezas: Piezas.NDama,
+    }
+    Tablero[5][1] ={
+        Piezas: Piezas.BRey,
+    }
+    Tablero[5][8] ={
+        Piezas: Piezas.NRey,
+    }
+    Tablero[6][1] ={
+        Piezas: Piezas.BAlfil,
+    }
+    Tablero[6][8] ={
+        Piezas: Piezas.NAlfil,
+    }
+    Tablero[7][1] ={
+        Piezas: Piezas.BCaballo,
+    }
+    Tablero[7][1] ={
+        Piezas: Piezas.NCaballo,
+    }
+    Tablero[8][1] ={
+        Piezas: Piezas.BTorre,
+    }
+    Tablero[8][8] ={
+        Piezas: Piezas.NTorre,
+    }
+}
+function CreoTablero(){
+    for(let x = 1; x <= 8; x += 1){
+        Tablero[x] = [];
+        for(let y = 1; y <= 8; y += 1){
+            Tablero[x][y] = null;
+        }
+    }
 }
 window.onresize = boardsize;
