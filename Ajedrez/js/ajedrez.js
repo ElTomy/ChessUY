@@ -167,4 +167,7 @@ function CreoTablero(){
         }
     }
 }
+function seleccionar(x,y){
+    
+}
 window.onresize = boardsize;
