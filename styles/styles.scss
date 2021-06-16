@@ -1414,6 +1414,14 @@ img {
           overflow: hidden;
           text-align: center;
 
+          .celda{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+          }
+
           i{
             position: absolute;
             z-index: 4;

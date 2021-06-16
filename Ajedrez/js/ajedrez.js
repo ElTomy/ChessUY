@@ -95,6 +95,8 @@ function boardsize(){
 
         
 
+        
+
     }else{
         var board_width = (98 * width) / 100;
         var board_height = ((98 * height) / 100) - 100;
@@ -185,6 +187,17 @@ function PosicionPiezas(){
     Tablero[8][8] ={
         Piezas: Piezas.NTorre,
     }
+
+    console.log()
+
+    $.ajax({
+        url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("ArmoAjedrez").innerHTML = data;
+        }
+    });
 }
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
