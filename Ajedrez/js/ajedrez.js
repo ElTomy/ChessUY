@@ -6,10 +6,11 @@ $( document ).ready(function(){
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
+            PosicionPiezas();
         }
     });
     CreoTablero();
-    PosicionPiezas();
+    
 });
 
 const Piezas = {
@@ -139,7 +140,7 @@ function PosicionPiezas(){
             Piezas: Piezas.NPeon,
         }  
     }
-    Tablero[1][1] ={
+    Tablero[1][1] ={        
         Piezas: Piezas.BTorre,
     }
     Tablero[1][8] ={
@@ -187,8 +188,6 @@ function PosicionPiezas(){
     Tablero[8][8] ={
         Piezas: Piezas.NTorre,
     }
-
-    console.log()
 
 }
 function CreoTablero(){
