@@ -1,4 +1,7 @@
 $( document ).ready(function(){
+    CreoTablero();
+    PosicionPiezas();
+    resetMovimientos();
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
@@ -9,8 +12,6 @@ $( document ).ready(function(){
             PosicionPiezas();
         }
     });
-    CreoTablero();
-    
 });
 
 const Piezas = {
@@ -29,7 +30,7 @@ const Piezas = {
 }
 const Tablero = [];
 var seleccionado = null;
-var  Movimiento = [[],[]];
+var  Movimiento = [];
 
 function boardsize(){
     
@@ -59,8 +60,6 @@ function boardsize(){
 
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
 
-            console.log(cell_width);
-            console.log(board_text_margin);
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
@@ -78,8 +77,6 @@ function boardsize(){
 
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
 
-            console.log(cell_width);
-            console.log(board_text_margin);
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
@@ -135,60 +132,104 @@ function PosicionPiezas(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x][2] ={
             Piezas: Piezas.BPeon,
+            Ejex: x,
+            Ejey: 2,
         }
         Tablero[x][7] ={
             Piezas: Piezas.NPeon,
+            Ejex: x,
+            Ejey: 7,
         }  
     }
     Tablero[1][1] ={        
         Piezas: Piezas.BTorre,
+        Ejex: 1,
+        Ejey: 1,
     }
     Tablero[1][8] ={
         Piezas: Piezas.NTorre,
+        Ejex: 1,
+        Ejey: 8,
     }
     Tablero[2][1] ={
         Piezas: Piezas.BCaballo,
+        Ejex: 2,
+        Ejey: 1,
     }
     Tablero[2][8] ={
         Piezas: Piezas.NCaballo,
+        Ejex: 2,
+        Ejey: 8,
     }
     Tablero[3][1] ={
         Piezas: Piezas.BAlfil,
+        Ejex: 3,
+        Ejey: 1,
     }
     Tablero[3][8] ={
         Piezas: Piezas.NAlfil,
+        Ejex: 3,
+        Ejey: 8,
     }
     Tablero[4][1] ={
         Piezas: Piezas.BDama,
+        Ejex: 4,
+        Ejey: 1,
     }
     Tablero[4][8] ={
         Piezas: Piezas.NDama,
+        Ejex: 4,
+        Ejey: 8,
     }
     Tablero[5][1] ={
         Piezas: Piezas.BRey,
+        Ejex: 5,
+        Ejey: 1,
     }
     Tablero[5][8] ={
         Piezas: Piezas.NRey,
+        Ejex: 5,
+        Ejey: 8,
     }
     Tablero[6][1] ={
         Piezas: Piezas.BAlfil,
+        Ejex: 6,
+        Ejey: 1,
     }
     Tablero[6][8] ={
         Piezas: Piezas.NAlfil,
+        Ejex: 6,
+        Ejey: 8,
     }
     Tablero[7][1] ={
         Piezas: Piezas.BCaballo,
+        Ejex: 7,
+        Ejey: 1,
     }
     Tablero[7][8] ={
         Piezas: Piezas.NCaballo,
+        Ejex: 7,
+        Ejey: 8,
     }
     Tablero[8][1] ={
         Piezas: Piezas.BTorre,
+        Ejex: 8,
+        Ejey: 1,
     }
     Tablero[8][8] ={
         Piezas: Piezas.NTorre,
+        Ejex: 8,
+        Ejey: 8,
     }
 
+}
+function resetMovimientos(){
+    for(let x = 1; x <= 8; x += 1){
+        Movimiento[x] = [];
+        for(let y = 1; y <= 8; y += 1){
+            Movimiento[x][y] = null;
+        }
+    }
 }
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
@@ -196,6 +237,8 @@ function CreoTablero(){
         for(let y = 1; y <= 8; y += 1){
             Tablero[x][y] = {
                 Piezas: null,
+                Ejex: x,
+                Ejey: y,
             }
         }
     }
@@ -212,8 +255,17 @@ function seleccionar(x,y){
             Movimientos();
         }
     }else{
-        /*if(Tablero[x][y] != true){
-            Muevo la pieza
+        if(Movimiento[x][y] == true){
+            Tablero[x][y] = {
+                Piezas: seleccionado.Contenido,
+                Ejex: x,
+                Ejey: y,
+            }
+            Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
+                Piezas: null,
+                Ejex: seleccionado.Ejex,
+                Ejey: seleccionado.Ejey,
+            }
         }else{
             if(Tablero[x][y] != null){
                 seleccionado = {
@@ -222,15 +274,17 @@ function seleccionar(x,y){
                     Contenido: Tablero[x][y].Piezas,
                 }
             Movimientos();
-            }else{
+            }
                 seleccionado = null;
-                movimientos = null;
-            }  
-        }*/
-     
+                resetMovimientos(); 
+              
+        }
     }
 }
 function Movimientos(){
+    console.log(seleccionado.Contenido)
+    muestrotablero();
+
     let x = seleccionado.Ejex
     let y = seleccionado.Ejey;
     switch(seleccionado.Contenido){
@@ -262,7 +316,6 @@ function Movimientos(){
     }
 }
 function Peon(x,y){
-
     var xx = x + 1;
     var yy;
     if(seleccionado.Contenido == Piezas.BPeon){
@@ -315,69 +368,207 @@ function Peon(x,y){
 }
 }
 function Torre(x,y){
+    //aribba↑
     for(let px = x;px <= 8;px += 1){
         Movimiento[px][y] = true;
     }
-    for(let px = x;px >= 8;px -= 1){
+    //abajo↓
+    for(let px = x;px >= 0;px -= 1){
         Movimiento[px][y] = true;
     }
+    //derecha→
     for(let py = y;py <= 8;py += 1){
         Movimiento[x][py] = true;
     }
-    for(let py = y;py >= 8;py -= 1){
+    //izquierda←
+    for(let py = y;py >= 0;py -= 1){
         Movimiento[x][py] = true;
     }
 }
 function Caballo(x,y){
-    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = true;}
-    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = true;}
-    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = true;}
-    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = true;}
-    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = true;}
-    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = true;}
-    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = true;}
-    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = true;}
+    let xx = x-2;
+    let yy = y-1;
+    //La primera flecha significa 2 para ese lado y la segunda solo 1
+    //←↑
+    if (x-2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    yy = y+1;
+    //←↓
+    if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    yy = y+2;
+    //↓←
+    if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    xx = x+1;
+    //↓→
+    if (x+1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    xx = x+2;
+    yy = y+1;
+    //→↓
+    if (x+2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    yy = y-1;
+    //→↑
+    if (x+2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    yy = y-2;
+    xx = x+1;
+    //↑→
+    if (x+1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
+    xx = x-1;
+    //↑←
+    if (x-1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
 }
 function Alfil(x,y){
     let ix;
     let iy;
     let i;
-    if(x<y){
-        ix = x;
-        iy = y;
-    }else{
-        ix = y;
-        iy = x;
-    }
-    for(i = iy;i <= 8;ipx += 1){
-        Movimiento[px][y] = true;
-    }
-    for(i = ix;i >= 8;i -= 1){
-        Movimiento[px][y] = true;
-    }
-    for(i = y;i <= 8;i += 1){
-        Movimiento[x][py] = true;
-    }
-    for(i = y;i >= 8;i -= 1){
-        Movimiento[x][py] = true;
-    }
+    //ArribaIzquierda↑←
+    for(i = 1;i <= 8;i += 1){
+        if(y-i>=1 && x-i >= 1){
+            ix = x - i;
+            iy = y - i;
+            Movimiento[ix][iy] = true;
+        }
+    }    
+    //AbajoIzquierda↓←
+    for(i = 1;i <= 8;i += 1){
+        if(y+i<=8 && x-i >= 1){
+            ix = x - i;
+            iy = y + i;
+            Movimiento[ix][iy] = true;
+        }
+    }    
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8;i += 1){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            Movimiento[ix][iy] = true;
+        }
+    }   
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8;i += 1){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            Movimiento[ix][iy] = true;
+        }
+    }    
     
 }
 function Dama(x,y){
+    //aribba↑
     for(let px = x;px <= 8;px += 1){
         Movimiento[px][y] = true;
     }
-    for(let px = x;px >= 8;px -= 1){
+    //abajo↓
+    for(let px = x;px >= 0;px -= 1){
         Movimiento[px][y] = true;
     }
+    //derecha→
     for(let py = y;py <= 8;py += 1){
         Movimiento[x][py] = true;
     }
-    for(let py = y;py >= 8;py -= 1){
+    //izquierda←
+    for(let py = y;py >= 0;py -= 1){
         Movimiento[x][py] = true;
     }
+    let ix;
+    let iy;
+    let i;
+    //ArribaIzquierda↑←
+    for(i = 1;i <= 8;i += 1){
+        if(y-i>=1 && x-i >= 1){
+            ix = x - i;
+            iy = y - i;
+            Movimiento[ix][iy] = true;
+        }
+    }    
+    //AbajoIzquierda↓←
+    for(i = 1;i <= 8;i += 1){
+        if(y+i<=8 && x-i >= 1){
+            ix = x - i;
+            iy = y + i;
+            Movimiento[ix][iy] = true;
+        }
+    }    
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8;i += 1){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            Movimiento[ix][iy] = true;
+        }
+    }   
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8;i += 1){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            Movimiento[ix][iy] = true;
+        }
+    }  
 }
 function Rey(x,y){
-    
+    if(seleccionado.Contenido == Piezas.BRey){
+        if(x == 5 && y == 1){
+            if(Tablero[8][1].Piezas == Piezas.BTorre){
+                //0-0
+                Movimiento[7][1] = true;
+            }else if( Tablero[1][1].Piezas == Piezas.BTorre){
+                //0-0-0
+                Movimiento[3][1] = true;
+            }
+        }
+    }else{
+        if(x == 5 && y == 8){
+            if(Tablero[8][8].Piezas == Piezas.NTorre){
+                //0-0
+                Movimiento[7][8] = true;
+            }else if(Tablero[1][8].Piezas == Piezas.NTorre){
+                //0-0-0
+                Movimiento[3][8] = true;
+            }
+        }
+    }
+    let xx = x-1;
+    let yy = y-1;
+    //ArribaIzquierda↑←
+    if(x-1 >= 1 && y-1 >= 1){Movimiento[xx][yy] = true;}
+    //ArribaDerecha↑→
+    xx=x+1;
+    if(x+1 <= 8 && y-1 >= 1){Movimiento[xx][yy] = true;}
+    //AbajoIzquierda↓←
+    xx=x-1;
+    yy=y+1;
+    if(x-1 >= 1 && y+1 <= 8){Movimiento[xx][yy] = true;}
+    //AbajoDerecha→↓
+    xx=x+1;
+    if(x+1 <= 8 && y+1 <= 8){Movimiento[xx][yy] = true;}
+    //Abajo↓
+    yy=y-1;
+    if(y-1 >= 1){Movimiento[x][yy] = true;}
+    //Izquierda←
+    xx=x-1;
+    if(x-1 >= 1){Movimiento[xx][y] = true;}
+    //aribba↑
+    yy=y+1;
+    if(y+1 <= 8){Movimiento[x][yy] = true;}
+    //Derecha→
+    xx=x+1;
+    if(x+1 <= 8){Movimiento[xx][y] = true;}
 }
 window.onresize = boardsize;
+
+function muestrotablero(){
+    
+    console.table([ [Tablero[1][1].Piezas, Tablero[1][2].Piezas,Tablero[1][3].Piezas,Tablero[1][4].Piezas,Tablero[1][5].Piezas,Tablero[1][6].Piezas,Tablero[1][7].Piezas,Tablero[1][8].Piezas] , 
+                    [Tablero[2][1].Piezas, Tablero[2][2].Piezas,Tablero[2][3].Piezas,Tablero[2][4].Piezas,Tablero[2][5].Piezas,Tablero[2][6].Piezas,Tablero[2][7].Piezas,Tablero[2][8].Piezas] ,
+                    [Tablero[3][1].Piezas, Tablero[3][2].Piezas,Tablero[3][3].Piezas,Tablero[3][4].Piezas,Tablero[3][5].Piezas,Tablero[3][6].Piezas,Tablero[3][7].Piezas,Tablero[3][8].Piezas] ,
+                    [Tablero[4][1].Piezas, Tablero[4][2].Piezas,Tablero[4][3].Piezas,Tablero[4][4].Piezas,Tablero[4][5].Piezas,Tablero[4][6].Piezas,Tablero[4][7].Piezas,Tablero[4][8].Piezas] ,
+                    [Tablero[5][1].Piezas, Tablero[5][2].Piezas,Tablero[5][3].Piezas,Tablero[5][4].Piezas,Tablero[5][5].Piezas,Tablero[5][6].Piezas,Tablero[5][7].Piezas,Tablero[5][8].Piezas] ,
+                    [Tablero[6][1].Piezas, Tablero[6][2].Piezas,Tablero[6][3].Piezas,Tablero[6][4].Piezas,Tablero[6][5].Piezas,Tablero[6][6].Piezas,Tablero[6][7].Piezas,Tablero[6][8].Piezas] ,
+                    [Tablero[7][1].Piezas, Tablero[7][2].Piezas,Tablero[7][3].Piezas,Tablero[7][4].Piezas,Tablero[7][5].Piezas,Tablero[7][6].Piezas,Tablero[7][7].Piezas,Tablero[7][8].Piezas] ,
+                    [Tablero[8][1].Piezas, Tablero[8][2].Piezas,Tablero[8][3].Piezas,Tablero[8][4].Piezas,Tablero[8][5].Piezas,Tablero[8][6].Piezas,Tablero[8][7].Piezas,Tablero[8][8].Piezas] ,
+                    
+                    
+    ]);
+
+}
