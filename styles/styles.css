@@ -2127,17 +2127,13 @@ img {
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
   font-size: 0.9rem;
-  position: relative;
-  top: -30%;
-  left: -35%;
+  position: absolute;
   color: #ffffff80;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
   font-size: 0.9rem;
-  position: relative;
-  top: 35%;
-  left: 30%;
+  position: absolute;
   color: #ffffff80;
 }
 

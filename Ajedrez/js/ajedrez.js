@@ -56,17 +56,38 @@ function boardsize(){
            
             cell_width = boardtotal_width / 8;
 
+            board_text_margin = -cell_width + ((30 * cell_width) / 100);
+
+            console.log(cell_width);
+            console.log(board_text_margin);
+
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-            $(".board-text").css ('width', cell_width);
-            $(".board-text").css ('height', cell_width);
+
+            $(".board-text").css ('margin-top', board_text_margin);
+            $(".board-text").css ('margin-right', board_text_margin);
+
+            $(".board-number").css ('margin-top', board_text_margin);
+            $(".board-number").css ('margin-right', board_text_margin);
 
             $(".ajedrez-wrapper").css ('height', boardtotal_width);
             $(".ajedrez-wrapper").css ('width', boardtotal_width);
 
         }else{
+
+            board_text_margin = -cell_width + ((30 * cell_width) / 100);
+
+            console.log(cell_width);
+            console.log(board_text_margin);
+
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
+
+            $(".board-text").css ('margin-top', board_text_margin);
+            $(".board-text").css ('margin-right', board_text_margin);
+
+            $(".board-number").css ('margin-bottom', board_text_margin);
+            $(".board-number").css ('margin-left', board_text_margin);
     
             $(".ajedrez-wrapper").css ('height', boardtotal);
             $(".ajedrez-wrapper").css ('width', boardtotal);
@@ -94,7 +115,15 @@ function boardsize(){
             $(".cell").css ('width', cell_height);
             $(".cell").css ('height', cell_height);
         }
-       
+
+        board_text_margin = -cell_height + ((40 * cell_height) / 100);
+
+        $(".board-text").css ('margin-top', board_text_margin);
+        $(".board-text").css ('margin-right', board_text_margin);
+
+        $(".board-number").css ('margin-bottom', board_text_margin);
+        $(".board-number").css ('margin-left', board_text_margin);
+
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
     }    
