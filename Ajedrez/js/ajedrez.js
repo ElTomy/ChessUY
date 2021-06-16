@@ -327,25 +327,36 @@ function Torre(x,y){
     for(let px = x;px <= 8;px += 1){
         Movimiento[px][y] = true;
     }
-    for(let px = x;px >= 8;px -= 1){
+    for(let px = x;px >= 0;px -= 1){
         Movimiento[px][y] = true;
     }
     for(let py = y;py <= 8;py += 1){
         Movimiento[x][py] = true;
     }
-    for(let py = y;py >= 8;py -= 1){
+    for(let py = y;py >= 0;py -= 1){
         Movimiento[x][py] = true;
     }
 }
 function Caballo(x,y){
-    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = true;}
-    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = true;}
-    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = true;}
-    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = true;}
-    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = true;}
-    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = true;}
-    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = true;}
-    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = true;}
+    let xx = x-2;
+    let yy = y-1;
+    if (x-2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    yy = y+1;
+    if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    yy = y+2;
+    if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    xx = x+1;
+    if (x+1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    xx = x+2;
+    yy = y+1;
+    if (x+2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    yy = y-1;
+    if (x+2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    yy = y-2;
+    xx = x+1;
+    if (x+1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
+    xx = x-1;
+    if (x-1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
 }
 function Alfil(x,y){
     let ix;
@@ -358,17 +369,17 @@ function Alfil(x,y){
         ix = y;
         iy = x;
     }
-    for(i = iy;i <= 8;ipx += 1){
+    for(i = ix;i <= 8;i += 1){
         Movimiento[px][y] = true;
     }
-    for(i = ix;i >= 8;i -= 1){
+    for(i = ix;i >= 0;i -= 1){
         Movimiento[px][y] = true;
     }
-    for(i = y;i <= 8;i += 1){
+    for(i = iy;i <= 8;i += 1){
         Movimiento[x][py] = true;
     }
-    for(i = y;i >= 8;i -= 1){
-        Movimiento[x][py] = true;
+    for(i = iy;i >= 0;i -= 1){
+        Movimiento[i][i] = true;
     }
     
 }
