@@ -1,8 +1,8 @@
 <?php
-  include '../servidor.php';
+  /*include '../servidor.php';
   $server= new servidor();
   session_start();
-  $server->VerificoSesion($_SESSION['0']);
+  $server->VerificoSesion($_SESSION['0']);*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +61,7 @@
         </div>
         <div class="ajedrez-flex">
           <div class="ajedrez-wrapper">
-            <div class="ajedrez">
-              <div id="ArmoAjedrez"></div>
+            <div class="ajedrez" id= "ArmoAjedrez">
             </div>
           </div>
         </div>

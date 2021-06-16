@@ -20,14 +20,14 @@ const Piezas = {
     NPeon:'p',  
 }
 const Tablero = [];
-const seleccionado = null;
+var seleccionado = null;
 const Movimiento = null;
 
 function boardsize(){
     var width = window.innerWidth;
     var height = window.innerHeight;
 
-    console.log(width);
+  
 
     if(width > 900){
         var board_width = (90 * width) / 100;
@@ -35,24 +35,15 @@ function boardsize(){
         var board_margin2 = (5 * board_wrapper) / 100;
         var boardtotal_width = board_wrapper - (board_margin2 * 2);
 
-        console.log('--------------');
-        console.log('Ancho Maximo: ' + boardtotal_width);
-        console.log('--------------');
-
+    
         var board_height = ((98 * height) / 100) - 100;
         var board_margin = (5 * board_height) / 100;
         var boardtotal = board_height - (board_margin * 2);
         var cell_width = boardtotal / 8;
-        console.log('--------------');
-        console.log('Ancho: ' + board_width);
-        console.log('Alto: ' + board_height);
-        console.log('--------------');
+  
 
         if(boardtotal >= boardtotal_width){
-            console.log('--------------');
-            console.log('Ancho Tablero: ' + boardtotal)
-            console.log('¡Es Mayor!');
-            console.log('--------------');
+           
 
             cell_width = boardtotal_width / 8;
 
@@ -78,10 +69,7 @@ function boardsize(){
     }else{
         var board_width = (98 * width) / 100;
         var board_height = ((98 * height) / 100) - 100;
-        console.log('--------------');
-        console.log('Ancho: ' + board_width);
-        console.log('Alto: ' + board_height);
-        console.log('--------------');
+       
 
         if(board_width > board_height){
             var board_margin = (2 * board_height) / 100;
@@ -98,7 +86,7 @@ function boardsize(){
             $(".cell").css ('width', cell_height);
             $(".cell").css ('height', cell_height);
         }
-        console.log(cell_height);
+       
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
     }    
@@ -106,10 +94,10 @@ function boardsize(){
 function PosicionPiezas(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x][2] ={
-            Pieza: Piezas.BPeon,
+            Piezas: Piezas.BPeon,
         }
         Tablero[x][7] ={
-            Pieza: Piezas.NPeon,
+            Piezas: Piezas.NPeon,
         }  
     }
     Tablero[1][1] ={
@@ -195,27 +183,27 @@ function seleccionar(x,y){
                 movimientos = null;
             }  
         }*/
-        console.log("hola")
+     
     }
 }
 function Movimientos(){
-    switch(seleccionado.contenido){
-        case NTorre,BTorre:
+    switch(seleccionado.Contenido){
+        case Piezas.NTorre, Piezas.BTorre:
             Torre();
         break;
-        case NCaballo,BCaballo:
+        case Piezas.NCaballo,Piezas.BCaballo:
             Caballo();
         break;
-        case NAlfil,BAlfil:
+        case Piezas.NAlfil,Piezas.BAlfil:
             Alfil();
         break;
-        case NPeon,BPeon:
+        case Piezas.NPeon,Piezas.BPeon:
             Peon();
         break;
-        case NDama,BDama:
+        case Piezas.NDama,Piezas.BDama:
             Dama();
         break;
-        case NRey,BRey:
+        case Piezas.NRey,Piezas.BRey:
             Rey();
         break;
                                             
