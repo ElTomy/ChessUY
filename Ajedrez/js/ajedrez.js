@@ -21,7 +21,9 @@ const Piezas = {
 }
 const Tablero = [];
 const seleccionado = null;
-const Movimiento = null;
+const Movimiento = [],[];
+
+
 
 function boardsize(){
     var width = window.innerWidth;
@@ -199,44 +201,120 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
+    let x = seleccionado.Ejex
+    let y = seleccionado.Ejey;
     switch(seleccionado.contenido){
         case NTorre,BTorre:
-            Torre();
+            Torre(x,y);
         break;
         case NCaballo,BCaballo:
-            Caballo();
+            Caballo(x,y);
         break;
         case NAlfil,BAlfil:
-            Alfil();
+            Alfil(x,y);
         break;
         case NPeon,BPeon:
-            Peon();
+            Peon(x,y);
         break;
         case NDama,BDama:
-            Dama();
+            Dama(x,y);
         break;
         case NRey,BRey:
-            Rey();
+            Rey(x,y);
         break;
                                             
     }
 }
-function Peon(){
-
+function Peon(x,y){
+    if(seleccionado.contenido == BPeon){
+        if(y == 2){
+            Movimiento[x][4] = Posible;
+        }
+        Movimiento[x][y+1] = Posible;
+        if(Tablero[x+1][y+1] != null){
+            Movimiento[x+1][y+1] = Posible;
+        }
+        if(Tablero[x-1][y+1] != null){
+            Movimiento[x-1][y+1] = Posible;
+        }
+    }else{
+        if(y == 7){
+            Movimiento[x][5] = Posible;
+        }
+        Movimiento[x][y-1] = Posible;
+        if(Tablero[x+1][y-1] != null){
+            Movimiento[x+1][y-1] = Posible;
+        }else{
+            if(Tablero[x-1][y-1] != null){
+                Movimiento[x-1][y-1] = Posible;
+            }
+        }
+    }
 }
-function Torre(){
+function Torre(x,y){
+    for(let px = x;px <= 8;px += 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(let px = x;px >= 8;px -= 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(let py = y;py <= 8;py += 1){
+        Movimiento[x][py] = Posible;
+    }
+    for(let py = y;py >= 8;py -= 1){
+        Movimiento[x][py] = Posible;
+    }
+}
+function Caballo(x,y){
+    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = Posible;}
+    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = Posible;}
+    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = Posible;}
+    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = Posible;}
+    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = Posible;}
+    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = Posible;}
+    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = Posible;}
+    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = Posible;}
+}
+function Alfil(x,y){
+    let ix;
+    let iy;
+    let i;
+    if(x<y){
+        ix = x;
+        iy = y;
+    }else{
+        ix = y;
+        iy = x;
+    }
+    for(i = iy;i <= 8;ipx += 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(i = ix;i >= 8;i -= 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(i = y;i <= 8;i += 1){
+        Movimiento[x][py] = Posible;
+    }
+    for(i = y;i >= 8;i -= 1){
+        Movimiento[x][py] = Posible;
+    }
     
 }
-function Caballo(){
-    
+function Dama(x,y){
+    for(let px = x;px <= 8;px += 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(let px = x;px >= 8;px -= 1){
+        Movimiento[px][y] = Posible;
+    }
+    for(let py = y;py <= 8;py += 1){
+        Movimiento[x][py] = Posible;
+    }
+    for(let py = y;py >= 8;py -= 1){
+        Movimiento[x][py] = Posible;
+    }
 }
-function Alfil(){
-    
-}
-function Dama(){
-    
-}
-function Rey(){
+function Rey(x,y){
     
 }
 window.onresize = boardsize;
