@@ -34,8 +34,7 @@ function boardsize(){
     
     var width = window.innerWidth;
     var height = window.innerHeight;
-    console.log("width:" + width);
-    console.log("height:" + height);
+   
 
   
 
@@ -167,7 +166,7 @@ function CreoTablero(){
     }
 }
 function seleccionar(x,y){
-    console.log(Tablero)
+    
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
             seleccionado = {
@@ -178,7 +177,7 @@ function seleccionar(x,y){
             Movimientos();
         }
     }else{
-        /*if(Tablero[x][y] != Movimiento.Posible){
+        /*if(Tablero[x][y] != true){
             Muevo la pieza
         }else{
             if(Tablero[x][y] != null){
@@ -222,55 +221,56 @@ function Movimientos(){
     }
 }
 function Peon(x,y){
-    console.log(Movimiento)
+
     if(seleccionado.Contenido == Piezas.BPeon){
         if(y == 2){
-            Movimiento[x][4] = Movimiento.Posible;
+            Movimiento[x][4] = true;
         }
-        Movimiento[x][y+1] = Movimiento.Posible;
+        Movimiento[x][y+1] = true;
+        console.log("asd" + Tablero[x+1][y+1].Piezas)
         if(Tablero[x+1][y+1].Piezas != null){
-            Movimiento[x+1][y+1] = Movimiento.Posible;
+            Movimiento[x+1][y+1] = true;
         }
         if(Tablero[x-1][y+1].Piezas != null){
-            Movimiento[x-1][y+1] = Movimiento.Posible;
+            Movimiento[x-1][y+1] = true;
         }
     }else{
         if(y == 7){
-            Movimiento[x][5] = Movimiento.Posible;
+            Movimiento[x][5] = true;
         }
-        Movimiento[x][y-1] = Movimiento.Posible;
+        Movimiento[x][y-1] = true;
         if(Tablero[x+1][y-1].Piezas != null){
-            Movimiento[x+1][y-1] = Movimiento.Posible;
+            Movimiento[x+1][y-1] = true;
         }else{
             if(Tablero[x-1][y-1].Piezas != null){
-                Movimiento[x-1][y-1] = Movimiento.Posible;
+                Movimiento[x-1][y-1] = true;
             }
         }
     }
 }
 function Torre(x,y){
     for(let px = x;px <= 8;px += 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(let px = x;px >= 8;px -= 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(let py = y;py <= 8;py += 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
     for(let py = y;py >= 8;py -= 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
 }
 function Caballo(x,y){
-    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = Movimiento.Posible;}
-    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = Movimiento.Posible;}
-    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = Movimiento.Posible;}
-    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = Movimiento.Posible;}
-    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = Movimiento.Posible;}
-    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = Movimiento.Posible;}
-    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = Movimiento.Posible;}
-    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = Movimiento.Posible;}
+    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = true;}
+    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = true;}
+    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = true;}
+    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = true;}
+    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = true;}
+    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = true;}
+    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = true;}
+    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = true;}
 }
 function Alfil(x,y){
     let ix;
@@ -284,31 +284,31 @@ function Alfil(x,y){
         iy = x;
     }
     for(i = iy;i <= 8;ipx += 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(i = ix;i >= 8;i -= 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(i = y;i <= 8;i += 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
     for(i = y;i >= 8;i -= 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
     
 }
 function Dama(x,y){
     for(let px = x;px <= 8;px += 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(let px = x;px >= 8;px -= 1){
-        Movimiento[px][y] = Movimiento.Posible;
+        Movimiento[px][y] = true;
     }
     for(let py = y;py <= 8;py += 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
     for(let py = y;py >= 8;py -= 1){
-        Movimiento[x][py] = Movimiento.Posible;
+        Movimiento[x][py] = true;
     }
 }
 function Rey(x,y){
