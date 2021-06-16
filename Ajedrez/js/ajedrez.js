@@ -557,17 +557,15 @@ function Rey(x,y){
 window.onresize = boardsize;
 
 function muestrotablero(){
-    
-    console.table([ [Tablero[1][1].Piezas, Tablero[1][2].Piezas,Tablero[1][3].Piezas,Tablero[1][4].Piezas,Tablero[1][5].Piezas,Tablero[1][6].Piezas,Tablero[1][7].Piezas,Tablero[1][8].Piezas] , 
-                    [Tablero[2][1].Piezas, Tablero[2][2].Piezas,Tablero[2][3].Piezas,Tablero[2][4].Piezas,Tablero[2][5].Piezas,Tablero[2][6].Piezas,Tablero[2][7].Piezas,Tablero[2][8].Piezas] ,
-                    [Tablero[3][1].Piezas, Tablero[3][2].Piezas,Tablero[3][3].Piezas,Tablero[3][4].Piezas,Tablero[3][5].Piezas,Tablero[3][6].Piezas,Tablero[3][7].Piezas,Tablero[3][8].Piezas] ,
-                    [Tablero[4][1].Piezas, Tablero[4][2].Piezas,Tablero[4][3].Piezas,Tablero[4][4].Piezas,Tablero[4][5].Piezas,Tablero[4][6].Piezas,Tablero[4][7].Piezas,Tablero[4][8].Piezas] ,
-                    [Tablero[5][1].Piezas, Tablero[5][2].Piezas,Tablero[5][3].Piezas,Tablero[5][4].Piezas,Tablero[5][5].Piezas,Tablero[5][6].Piezas,Tablero[5][7].Piezas,Tablero[5][8].Piezas] ,
-                    [Tablero[6][1].Piezas, Tablero[6][2].Piezas,Tablero[6][3].Piezas,Tablero[6][4].Piezas,Tablero[6][5].Piezas,Tablero[6][6].Piezas,Tablero[6][7].Piezas,Tablero[6][8].Piezas] ,
-                    [Tablero[7][1].Piezas, Tablero[7][2].Piezas,Tablero[7][3].Piezas,Tablero[7][4].Piezas,Tablero[7][5].Piezas,Tablero[7][6].Piezas,Tablero[7][7].Piezas,Tablero[7][8].Piezas] ,
-                    [Tablero[8][1].Piezas, Tablero[8][2].Piezas,Tablero[8][3].Piezas,Tablero[8][4].Piezas,Tablero[8][5].Piezas,Tablero[8][6].Piezas,Tablero[8][7].Piezas,Tablero[8][8].Piezas] ,
-                    
+
+    console.table([ [Tablero[8][1].Piezas, Tablero[7][1].Piezas,Tablero[6][1].Piezas,Tablero[5][1].Piezas,Tablero[4][1].Piezas,Tablero[3][1].Piezas,Tablero[2][1].Piezas,Tablero[1][1].Piezas] ,
+                    [Tablero[8][2].Piezas, Tablero[7][2].Piezas,Tablero[6][2].Piezas,Tablero[5][2].Piezas,Tablero[4][2].Piezas,Tablero[3][2].Piezas,Tablero[2][2].Piezas,Tablero[1][2].Piezas] ,
+                    [Tablero[8][3].Piezas, Tablero[7][2].Piezas,Tablero[6][2].Piezas,Tablero[5][2].Piezas,Tablero[4][2].Piezas,Tablero[3][2].Piezas,Tablero[2][2].Piezas,Tablero[1][2].Piezas] ,
+                    [Tablero[8][4].Piezas, Tablero[7][4].Piezas,Tablero[6][4].Piezas,Tablero[5][4].Piezas,Tablero[4][4].Piezas,Tablero[3][4].Piezas,Tablero[2][4].Piezas,Tablero[1][4].Piezas] ,
+                    [Tablero[8][5].Piezas, Tablero[7][5].Piezas,Tablero[6][5].Piezas,Tablero[5][5].Piezas,Tablero[4][5].Piezas,Tablero[3][5].Piezas,Tablero[2][5].Piezas,Tablero[1][5].Piezas] ,
+                    [Tablero[8][6].Piezas, Tablero[7][6].Piezas,Tablero[6][6].Piezas,Tablero[5][6].Piezas,Tablero[4][6].Piezas,Tablero[3][6].Piezas,Tablero[2][6].Piezas,Tablero[1][6].Piezas] ,
+                    [Tablero[8][7].Piezas, Tablero[7][7].Piezas,Tablero[6][7].Piezas,Tablero[5][7].Piezas,Tablero[4][7].Piezas,Tablero[3][7].Piezas,Tablero[2][7].Piezas,Tablero[1][7].Piezas] ,
+                    [Tablero[8][8].Piezas, Tablero[7][8].Piezas,Tablero[6][8].Piezas,Tablero[5][8].Piezas,Tablero[4][8].Piezas,Tablero[3][8].Piezas,Tablero[2][8].Piezas,Tablero[1][8].Piezas] ,
                     
     ]);
-
 }
