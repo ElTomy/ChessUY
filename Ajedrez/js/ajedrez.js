@@ -190,14 +190,6 @@ function PosicionPiezas(){
 
     console.log()
 
-    $.ajax({
-        url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
-        type: "POST",
-        data: {},
-        success: function (data) {
-            document.getElementById("ArmoAjedrez").innerHTML = data;
-        }
-    });
 }
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
