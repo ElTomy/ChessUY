@@ -213,28 +213,34 @@ function Movimientos(){
     }
 }
 function Peon(x,y){
-    console.log(Movimiento)
+    var xx = x + 1;
+    var yy = y + 1;
     if(seleccionado.Contenido == Piezas.BPeon){
         if(y == 2){
-            Movimiento[x][4] = Movimiento.Posible;
+            Movimiento[x][4] = true;
         }
-        Movimiento[x][y+1] = Movimiento.Posible;
-        if(Tablero[x+1][y+1].Piezas != null){
-            Movimiento[x+1][y+1] = Movimiento.Posible;
+        Movimiento[x][yy] = Movimiento.Posible;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = Movimiento.Posible;
         }
-        if(Tablero[x-1][y+1].Piezas != null){
-            Movimiento[x-1][y+1] = Movimiento.Posible;
+        xx = x -1;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = Movimiento.Posible;
         }
     }else{
         if(y == 7){
             Movimiento[x][5] = Movimiento.Posible;
         }
-        Movimiento[x][y-1] = Movimiento.Posible;
-        if(Tablero[x+1][y-1].Piezas != null){
-            Movimiento[x+1][y-1] = Movimiento.Posible;
+        yy = y -1;
+        xx = x +1;
+
+        Movimiento[x][yy] = Movimiento.Posible;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = Movimiento.Posible;
         }else{
-            if(Tablero[x-1][y-1].Piezas != null){
-                Movimiento[x-1][y-1] = Movimiento.Posible;
+            xx = x -1;
+            if(Tablero[xx][yy].Piezas != null){
+                Movimiento[xx][yy] = Movimiento.Posible;
             }
         }
     }
