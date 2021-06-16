@@ -221,29 +221,34 @@ function Movimientos(){
     }
 }
 function Peon(x,y){
-
+    var xx = x + 1;
+    var yy = y + 1;
     if(seleccionado.Contenido == Piezas.BPeon){
         if(y == 2){
             Movimiento[x][4] = true;
         }
-        Movimiento[x][y+1] = true;
-        console.log("asd" + Tablero[x+1][y+1].Piezas)
-        if(Tablero[x+1][y+1].Piezas != null){
-            Movimiento[x+1][y+1] = true;
+        Movimiento[x][yy] = true;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = true;
         }
-        if(Tablero[x-1][y+1].Piezas != null){
-            Movimiento[x-1][y+1] = true;
+        xx = x -1;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = true;
         }
     }else{
         if(y == 7){
             Movimiento[x][5] = true;
         }
-        Movimiento[x][y-1] = true;
-        if(Tablero[x+1][y-1].Piezas != null){
-            Movimiento[x+1][y-1] = true;
+        yy = y -1;
+        xx = x +1;
+
+        Movimiento[x][yy] = true;
+        if(Tablero[xx][yy].Piezas != null){
+            Movimiento[xx][yy] = true;
         }else{
-            if(Tablero[x-1][y-1].Piezas != null){
-                Movimiento[x-1][y-1] = true;
+            xx = x -1;
+            if(Tablero[xx][yy].Piezas != null){
+                Movimiento[xx][yy] = true;
             }
         }
     }
