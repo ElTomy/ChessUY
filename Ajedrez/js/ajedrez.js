@@ -372,7 +372,7 @@ function Torre(x,y){
         Movimiento[px][y] = true;
     }
     //abajo↓
-    for(let px = x;px >= 0;px -= 1){
+    for(let px = x;px >= 1;px -= 1){
         Movimiento[px][y] = true;
     }
     //derecha→
@@ -380,7 +380,7 @@ function Torre(x,y){
         Movimiento[x][py] = true;
     }
     //izquierda←
-    for(let py = y;py >= 0;py -= 1){
+    for(let py = y;py >= 1;py -= 1){
         Movimiento[x][py] = true;
     }
 }
@@ -394,6 +394,7 @@ function Caballo(x,y){
     //←↓
     if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
     yy = y+2;
+    xx = x-1;
     //↓←
     if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
     xx = x+1;
@@ -458,7 +459,7 @@ function Dama(x,y){
         Movimiento[px][y] = true;
     }
     //abajo↓
-    for(let px = x;px >= 0;px -= 1){
+    for(let px = x;px >= 1;px -= 1){
         Movimiento[px][y] = true;
     }
     //derecha→
@@ -466,7 +467,7 @@ function Dama(x,y){
         Movimiento[x][py] = true;
     }
     //izquierda←
-    for(let py = y;py >= 0;py -= 1){
+    for(let py = y;py >= 1;py -= 1){
         Movimiento[x][py] = true;
     }
     let ix;
