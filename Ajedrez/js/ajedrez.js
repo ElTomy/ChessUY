@@ -1,6 +1,13 @@
 $( document ).ready(function(){
-    $("#ArmoAjedrez").load('php/armoAjedrez.php');
-    boardsize();
+    $.ajax({
+        url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("ArmoAjedrez").innerHTML = data;
+            boardsize();
+        }
+    });
     CreoTablero();
     PosicionPiezas();
 });
@@ -24,12 +31,16 @@ var seleccionado = null;
 var  Movimiento = [[],[]];
 
 function boardsize(){
+    
     var width = window.innerWidth;
     var height = window.innerHeight;
+    console.log("width:" + width);
+    console.log("height:" + height);
 
   
 
     if(width > 900){
+   
         var board_width = (90 * width) / 100;
         var board_wrapper = (60 * board_width) / 100;
         var board_margin2 = (5 * board_wrapper) / 100;
@@ -44,7 +55,6 @@ function boardsize(){
 
         if(boardtotal >= boardtotal_width){
            
-
             cell_width = boardtotal_width / 8;
 
             $(".cell").css ('width', cell_width);
@@ -54,7 +64,6 @@ function boardsize(){
 
             $(".ajedrez-wrapper").css ('height', boardtotal_width);
             $(".ajedrez-wrapper").css ('width', boardtotal_width);
-
 
         }else{
             $(".cell").css ('width', cell_width);
