@@ -1,6 +1,7 @@
 $( document ).ready(function(){
     CreoTablero();
     PosicionPiezas();
+    resetMovimientos();
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
@@ -28,7 +29,7 @@ const Piezas = {
 }
 const Tablero = [];
 var seleccionado = null;
-var  Movimiento = [[],[]];
+var  Movimiento = [];
 
 function boardsize(){
     
@@ -221,6 +222,14 @@ function PosicionPiezas(){
     }
 
 }
+function resetMovimientos(){
+    for(let x = 1; x <= 8; x += 1){
+        Movimiento[x] = [];
+        for(let y = 1; y <= 8; y += 1){
+            Movimiento[x][y] = null;
+        }
+    }
+}
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
@@ -261,7 +270,7 @@ function seleccionar(x,y){
             Movimientos();
             }else{
                 seleccionado = null;
-                movimientos = null;
+                resetMovimientos();
             }  
         }
     }
