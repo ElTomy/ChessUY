@@ -19,12 +19,12 @@ const Piezas = {
     BAlfil: 'a',
     BTorre:'t', 
     BPeon:'p',
-    NRey: 'r', 
-    NDama: 'd',
-    NCaballo: 'c',
-    NAlfil: 'a',
-    NTorre:'t', 
-    NPeon:'p',  
+    NRey: 'rn', 
+    NDama: 'dn',
+    NCaballo: 'cn',
+    NAlfil: 'an',
+    NTorre:'tn', 
+    NPeon:'pn',  
 }
 const Tablero = [];
 var seleccionado = null;
@@ -147,7 +147,7 @@ function PosicionPiezas(){
     Tablero[7][1] ={
         Piezas: Piezas.BCaballo,
     }
-    Tablero[7][1] ={
+    Tablero[7][8] ={
         Piezas: Piezas.NCaballo,
     }
     Tablero[8][1] ={
@@ -161,7 +161,9 @@ function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
         for(let y = 1; y <= 8; y += 1){
-            Tablero[x][y] = null;
+            Tablero[x][y] = {
+                Piezas: null,
+            }
         }
     }
 }
@@ -199,59 +201,85 @@ function Movimientos(){
     let x = seleccionado.Ejex
     let y = seleccionado.Ejey;
     switch(seleccionado.Contenido){
-        case Piezas.NTorre, Piezas.BTorre:
+        case Piezas.NTorre:
+        case Piezas.BTorre:
                 Torre(x,y);
         break;
-        case Piezas.NCaballo,Piezas.BCaballo:
+        case Piezas.NCaballo:
+        case Piezas.BCaballo:
                 Caballo(x,y);
         break;
-        case Piezas.NAlfil,Piezas.BAlfil:
+        case Piezas.NAlfil:
+        case Piezas.BAlfil:
                 Alfil(x,y);
         break;
-        case Piezas.NPeon,Piezas.BPeon:
+        case Piezas.NPeon:
+        case Piezas.BPeon:
                 Peon(x,y);
         break;
-        case Piezas.NDama,Piezas.BDama:
+        case Piezas.NDama:
+        case Piezas.BDama:
                 Dama(x,y);
         break;
-        case Piezas.NRey,Piezas.BRey:
+        case Piezas.NRey:
+        case Piezas.BRey:
                 Rey(x,y);
         break;
                                             
     }
 }
 function Peon(x,y){
+
     var xx = x + 1;
-    var yy = y + 1;
+    var yy;
     if(seleccionado.Contenido == Piezas.BPeon){
+        yy = y + 1;
+        //movimiento: 2-adelante
         if(y == 2){
             Movimiento[x][4] = true;
         }
-        Movimiento[x][yy] = true;
-        if(Tablero[xx][yy].Piezas != null){
-            Movimiento[xx][yy] = true;
-        }
-        xx = x -1;
-        if(Tablero[xx][yy].Piezas != null){
-            Movimiento[xx][yy] = true;
-        }
-    }else{
-        if(y == 7){
-            Movimiento[x][5] = true;
-        }
-        yy = y -1;
-        xx = x +1;
-
-        Movimiento[x][yy] = true;
-        if(Tablero[xx][yy].Piezas != null){
-            Movimiento[xx][yy] = true;
-        }else{
-            xx = x -1;
+         //movimiento: 1-adelante
+         Movimiento[x][yy] = true;
+         if(xx<=8){
+            //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
-                Movimiento[xx][yy] = true;
+            Movimiento[xx][yy] = true;
             }
-        }
+         }
+         xx = x -1;
+         if(xx>=1){
+            
+            //movimiento: comer-i
+           if(Tablero[xx][yy].Piezas != null){
+               Movimiento[xx][yy] = true;
+           }
+         }
+        
+    }else{
+        if(seleccionado.Contenido == Piezas.NPeon){
+            yy = y-1;
+            //movimiento: 2-adelante
+            if(y == 7){
+                Movimiento[x][5] = true;
+            }
+             //movimiento: 1-adelante
+             Movimiento[x][yy] = true;
+             if(xx<=8){
+                //movimiento: comer-d
+                if(Tablero[xx][yy].Piezas != null){
+                Movimiento[xx][yy] = true;
+                }
+             }
+             xx = x -1;
+             if(xx>=1){
+                
+                //movimiento: comer-i
+               if(Tablero[xx][yy].Piezas != null){
+                   Movimiento[xx][yy] = true;
+               }
+             }
     }
+}
 }
 function Torre(x,y){
     for(let px = x;px <= 8;px += 1){
