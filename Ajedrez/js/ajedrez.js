@@ -9,6 +9,7 @@ $( document ).ready(function(){
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
+            PosicionPiezas();
         }
     });
 });
@@ -140,7 +141,7 @@ function PosicionPiezas(){
             Ejey: 7,
         }  
     }
-    Tablero[1][1] ={
+    Tablero[1][1] ={        
         Piezas: Piezas.BTorre,
         Ejex: 1,
         Ejey: 1,
