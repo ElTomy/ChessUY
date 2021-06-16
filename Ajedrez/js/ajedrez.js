@@ -21,7 +21,7 @@ const Piezas = {
 }
 const Tablero = [];
 var seleccionado = null;
-const Movimiento = null;
+var  Movimiento = [[],[]];
 
 function boardsize(){
     var width = window.innerWidth;
@@ -158,8 +158,9 @@ function CreoTablero(){
     }
 }
 function seleccionar(x,y){
+    console.log(Tablero)
     if(seleccionado == null){
-        if(Tablero[x][y] != null){
+        if(Tablero[x][y].Piezas != null){
             seleccionado = {
                 Ejex: x,
                 Ejey: y,
@@ -187,44 +188,121 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
+    let x = seleccionado.Ejex
+    let y = seleccionado.Ejey;
     switch(seleccionado.Contenido){
         case Piezas.NTorre, Piezas.BTorre:
-            Torre();
+                Torre(x,y);
         break;
         case Piezas.NCaballo,Piezas.BCaballo:
-            Caballo();
+                Caballo(x,y);
         break;
         case Piezas.NAlfil,Piezas.BAlfil:
-            Alfil();
+                Alfil(x,y);
         break;
         case Piezas.NPeon,Piezas.BPeon:
-            Peon();
+                Peon(x,y);
         break;
         case Piezas.NDama,Piezas.BDama:
-            Dama();
+                Dama(x,y);
         break;
         case Piezas.NRey,Piezas.BRey:
-            Rey();
+                Rey(x,y);
         break;
                                             
     }
 }
-function Peon(){
-
+function Peon(x,y){
+    console.log(Movimiento)
+    if(seleccionado.Contenido == Piezas.BPeon){
+        if(y == 2){
+            Movimiento[x][4] = Movimiento.Posible;
+        }
+        Movimiento[x][y+1] = Movimiento.Posible;
+        if(Tablero[x+1][y+1].Piezas != null){
+            Movimiento[x+1][y+1] = Movimiento.Posible;
+        }
+        if(Tablero[x-1][y+1].Piezas != null){
+            Movimiento[x-1][y+1] = Movimiento.Posible;
+        }
+    }else{
+        if(y == 7){
+            Movimiento[x][5] = Movimiento.Posible;
+        }
+        Movimiento[x][y-1] = Movimiento.Posible;
+        if(Tablero[x+1][y-1].Piezas != null){
+            Movimiento[x+1][y-1] = Movimiento.Posible;
+        }else{
+            if(Tablero[x-1][y-1].Piezas != null){
+                Movimiento[x-1][y-1] = Movimiento.Posible;
+            }
+        }
+    }
 }
-function Torre(){
+function Torre(x,y){
+    for(let px = x;px <= 8;px += 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(let px = x;px >= 8;px -= 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(let py = y;py <= 8;py += 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
+    for(let py = y;py >= 8;py -= 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
+}
+function Caballo(x,y){
+    if (x-2>=1 && y-1<=8) {Movimiento[x-2][y-1] = Movimiento.Posible;}
+    if (x-2>=1 && y+1<=8) {Movimiento[x-2][y+1] = Movimiento.Posible;}
+    if (x-1>=1 && y+2<=8) {Movimiento[x-2][y+2] = Movimiento.Posible;}
+    if (x+1>=1 && y+2<=8) {Movimiento[x+1][y+2] = Movimiento.Posible;}
+    if (x+2>=1 && y+1<=8) {Movimiento[x+2][y+1] = Movimiento.Posible;}
+    if (x+2>=1 && y-1<=8) {Movimiento[x+2][y-1] = Movimiento.Posible;}
+    if (x+1>=1 && y-2<=8) {Movimiento[x+1][y-2] = Movimiento.Posible;}
+    if (x-1>=1 && y-2<=8) {Movimiento[x-1][y-2] = Movimiento.Posible;}
+}
+function Alfil(x,y){
+    let ix;
+    let iy;
+    let i;
+    if(x<y){
+        ix = x;
+        iy = y;
+    }else{
+        ix = y;
+        iy = x;
+    }
+    for(i = iy;i <= 8;ipx += 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(i = ix;i >= 8;i -= 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(i = y;i <= 8;i += 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
+    for(i = y;i >= 8;i -= 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
     
 }
-function Caballo(){
-    
+function Dama(x,y){
+    for(let px = x;px <= 8;px += 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(let px = x;px >= 8;px -= 1){
+        Movimiento[px][y] = Movimiento.Posible;
+    }
+    for(let py = y;py <= 8;py += 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
+    for(let py = y;py >= 8;py -= 1){
+        Movimiento[x][py] = Movimiento.Posible;
+    }
 }
-function Alfil(){
-    
-}
-function Dama(){
-    
-}
-function Rey(){
+function Rey(x,y){
     
 }
 window.onresize = boardsize;
