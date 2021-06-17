@@ -33,10 +33,10 @@ else
             "1") . ./ABML/modif/cambnom.sh;;
             "2") . ./ABML/modif/agragrup.sh;;
             "3") . ./ABML/modif/elimgrup.sh;;
-            "4") . ./ABML/modif/cambgrup.sh;;
-            "5") . ./ABML/modif/movhome.sh;;
-            "6") . ./ABML/modif/blockusr.sh;;
-            "7") . ./ABML/modif/unblockusr.sh;;
+            "4") . ./ABML/modif/gruprim.sh;;
+            "5") . ./ABML/modif/movehome.sh;;
+            "6") . ./ABML/modif/lokuser.sh;;
+            "7") . ./ABML/modif/unkuser.sh;;
         esac
     else
         echo ""

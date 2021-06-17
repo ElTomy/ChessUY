@@ -296,7 +296,6 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
-           
             armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
@@ -307,15 +306,16 @@ function seleccionar(x,y){
                     color: Tablero[x][y].color,
                 }
             Movimientos();
+            armoAjedrez();
             }
         }
         seleccionado = null;
         resetMovimientos(); 
+        armoAjedrez();
       
     }
 }
 function Movimientos(){
-    console.log(seleccionado.Contenido)
     muestrotablero();
 
     let x = seleccionado.Ejex
@@ -405,55 +405,55 @@ function Peon(x,y){
 }
 }
 function Torre(x,y){
-    //aribba↑
     let i;
-    for(i = 1;i <= 8;i += 1){
+   //derecha→
+    for(i = 1;i <= 8; i++){
         ix  = i +x;
         if(ix <= 8){
             if(Tablero[ix][y].Piezas != null){
                 comer(ix,y);
-                ix= 9;
+                break;
             }else{
                 comer(ix,y);
             }
         }
     }
-    //abajo↓
-    for(i = 8;i >= 1;i -= 1){
-        ix  = x - i;
-        if(ix >= 1){
+    //izquierda
+    for(i = 1; i <= 8; i++){
+        if( x-i >= 1){
+            ix = x - i;
             if(Tablero[ix][y].Piezas != null){
                 comer(ix,y);
-                ix = 0;
+                break;
             }else{
                 comer(ix,y);
             }
         }
-    }
-    //derecha→
-    for(i = 1;i <= 8;i += 1){
+    }   
+    //arriba
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1){
+            iy = y - i;
+            if(Tablero[x][iy].Piezas != null){
+                comer(x,iy);
+                break;
+            }else{
+                comer(x,iy);
+            }
+        } }
+   //abajo↓
+    for(i = 1;i <= 8; i++){
         iy  = i +y;
         if(iy <= 8){
             if(Tablero[x][iy].Piezas != null){
                 comer(x,iy);
-                iy = 9;
+                break;
             }else{
                 comer(x,iy);
             }
         }
     }
-    //izquierda←
-    for(i = 8;i >= 1;i -= 1){
-        iy  = y - i;
-        if(iy >= 1){
-            if(Tablero[x][iy].Piezas != null){
-                comer(x,iy);
-                iy = 0;
-            }else{
-                comer(x,iy);
-            }
-        }
-    }
+    
 }
 function Caballo(x,y){
     let xx = x-2;
@@ -491,52 +491,52 @@ function Alfil(x,y){
     let iy;
     let i;
     //ArribaIzquierda↑←
-    for(i = 1;i <= 8;i += 1){
+    for(i = 1; i <= 8; i++){
         if(y-i>=1 && x-i >= 1){
             ix = x - i;
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
                 comer(ix,iy);
-                i = 9;
+                break;
             }else{
                 comer(ix,iy);
             }
         }
     }    
     //AbajoIzquierda↓←
-    for(i = 1;i <= 8;i += 1){
+    for(i = 1;i <= 8; i++){
         if(y+i<=8 && x-i >= 1){
             ix = x - i;
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
                 comer(ix,iy);
-                i = 0;
+               break;
             }else{
                 comer(ix,iy);
             }
         }
     }    
     //ArribaDerecha↑→
-    for(i = 1;i <= 8;i += 1){
+    for(i = 1;i <= 8; i++){
         if(y-i>=1 && x+i <= 8){
             ix = x + i;
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
                 comer(ix,iy);
-                i = 9;
+                break;
             }else{
                 comer(ix,iy);
             }
         }
     }   
     //AbajoDerecha→↓
-    for(i = 1;i <= 8;i += 1){
+    for(i = 1;i <= 8; i++){
         if(y+i<=8 && x+i <= 8){
             ix = x + i;
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
                 comer(ix,iy);
-                i = 0;
+                break;
             }else{
                 comer(ix,iy);
             }
@@ -545,92 +545,103 @@ function Alfil(x,y){
     
 }
 function Dama(x,y){
-   //aribba↑
-   for(let px = x;px <= 8;px += 1){
-    if(Tablero[px][y].Piezas != null){
-        comer(px,y);
-        px = 9;
-    }else{
-        comer(px,y);
+   let i;
+   let ix;
+   let iy;
+    //derecha→
+    for(i = 1;i <= 8; i++){
+        ix  = i +x;
+        if(ix <= 8){
+            if(Tablero[ix][y].Piezas != null){
+                comer(ix,y);
+                break;
+            }else{
+                comer(ix,y);
+            }
+        }
     }
-}
-//abajo↓
-for(let px = x;px >= 1;px -= 1){
-    if(Tablero[px][y].Piezas != null){
-        comer(px,y);
-        px = 0;
-    }else{
-        comer(px,y);
+    //izquierda
+    for(i = 1; i <= 8; i++){
+        if( x-i >= 1){
+            ix = x - i;
+            if(Tablero[ix][y].Piezas != null){
+                comer(ix,y);
+                break;
+            }else{
+                comer(ix,y);
+            }
+        }
+    }   
+    //arriba
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1){
+            iy = y - i;
+            if(Tablero[x][iy].Piezas != null){
+                comer(x,iy);
+                break;
+            }else{
+                comer(x,iy);
+            }
+        } }
+   //abajo↓
+    for(i = 1;i <= 8; i++){
+        iy  = i +y;
+        if(iy <= 8){
+            if(Tablero[x][iy].Piezas != null){
+                comer(x,iy);
+                break;
+            }else{
+                comer(x,iy);
+            }
+        }
     }
-}
-//derecha→
-for(let py = y;py <= 8;py += 1){
-    if(Tablero[x][py].Piezas != null){
-        comer(x,py);
-        py = 9;
-    }else{
-        comer(x,py);
-    }
-}
-//izquierda←
-for(let py = y;py >= 1;py -= 1){
-    if(Tablero[x][py].Piezas != null){
-        comer(x,py);
-        py = 0;
-    }else{
-        comer(x,py);
-    }
-}
-let ix;
-let iy;
-let i;
 //ArribaIzquierda↑←
-for(i = 1;i <= 8;i += 1){
+for(i = 1; i <= 8; i++){
     if(y-i>=1 && x-i >= 1){
         ix = x - i;
         iy = y - i;
         if(Tablero[ix][iy].Piezas != null){
             comer(ix,iy);
-            i = 9;
+            break;
         }else{
             comer(ix,iy);
         }
     }
 }    
 //AbajoIzquierda↓←
-for(i = 1;i <= 8;i += 1){
+for(i = 1;i <= 8; i++){
     if(y+i<=8 && x-i >= 1){
         ix = x - i;
         iy = y + i;
         if(Tablero[ix][iy].Piezas != null){
             comer(ix,iy);
-            i = 0;
+           break;
         }else{
             comer(ix,iy);
         }
     }
 }    
 //ArribaDerecha↑→
-for(i = 1;i <= 8;i += 1){
+for(i = 1;i <= 8; i++){
     if(y-i>=1 && x+i <= 8){
         ix = x + i;
         iy = y - i;
         if(Tablero[ix][iy].Piezas != null){
             comer(ix,iy);
-            i = 9;
+            break;
         }else{
             comer(ix,iy);
         }
     }
 }   
 //AbajoDerecha→↓
-for(i = 1;i <= 8;i += 1){
+for(i = 1;i <= 8; i++){
     if(y+i<=8 && x+i <= 8){
         ix = x + i;
         iy = y + i;
         if(Tablero[ix][iy].Piezas != null){
             comer(ix,iy);
-            i = 0;
+            break;
         }else{
             comer(ix,iy);
         }

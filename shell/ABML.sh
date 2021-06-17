@@ -22,4 +22,10 @@ case "$opc" in
     "2") . ./ABML/bajar.sh;;
     "3") . ./ABML/modificar.sh;;
     "4") . ./ABML/listar.sh;;
+    "q") echo "Hacer algo";;
+    *)  echo "+-------------------------------------+"
+        echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"
+        echo "+-------------------------------------+"
+        sleep 3s
+        . ./ABML.sh
 esac
