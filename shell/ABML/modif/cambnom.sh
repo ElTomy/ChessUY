@@ -15,23 +15,23 @@ then
 else
     if usermod -l $novnom $usu >/dev/null 2>&1
     then
-        groupadd $novnom
-        usermod -g $novnom $novnom
-        groupdel $usu
+        groupadd $novnom >/dev/null 2>&1
+        usermod -g $novnom $novnom >/dev/null 2>&1
+        groupdel $usu >/dev/null 2>&1
         home=$(eval echo "~$novnom")
         home=$(dirname $home)
-        usermod -m -d $home/$novnom $novnom
+        usermod -m -d $home/$novnom $novnom >/dev/null 2>&1
         echo ""
-        echo "+------------------------------------+"
-        echo -e "| ${green}Se cambio el nombre correctamente${nc}  |"
-        echo "+------------------------------------+"
+        echo "+-----------------------------------+"
+        echo -e "| ${green}Se cambio el nombre correctamente${nc} |"
+        echo "+-----------------------------------+"
         sleep 3s
         . ./ABML/modificar.sh
     else
         echo ""
-        echo "+---------------------------------------------------------+"
-        echo -e "| ${red}Hubo un error, intente otro nombre${nc}                     |"
-        echo "+---------------------------------------------------------+"
+        echo "+-------------------------------------+"
+        echo -e "| ${red}Hubo un error, intente otro nombre${nc} |"
+        echo "+-------------------------------------+"
         sleep 3s
         . ./ABML/modif/cambnom.sh
     fi
