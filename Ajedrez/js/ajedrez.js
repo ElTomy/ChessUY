@@ -408,19 +408,39 @@ function Peon(x,y){
 function Torre(x,y){
     //aribba↑
     for(let px = x;px <= 8;px += 1){
-        Movimiento[px][y] = true;
+        if(Tablero[px][y].Piezas != null){
+            Movimiento[px][y] = true;
+            px = 9;
+        }else{
+            Movimiento[px][y] = true;
+        }
     }
     //abajo↓
     for(let px = x;px >= 1;px -= 1){
-        Movimiento[px][y] = true;
+        if(Tablero[px][y].Piezas != null){
+            Movimiento[px][y] = true;
+            px = 0;
+        }else{
+            Movimiento[px][y] = true;
+        }
     }
     //derecha→
     for(let py = y;py <= 8;py += 1){
-        Movimiento[x][py] = true;
+        if(Tablero[x][py].Piezas != null){
+            Movimiento[x][py] = true;
+            py = 9;
+        }else{
+            Movimiento[x][py] = true;
+        }
     }
     //izquierda←
     for(let py = y;py >= 1;py -= 1){
-        Movimiento[x][py] = true;
+        if(Tablero[x][py].Piezas != null){
+            Movimiento[x][py] = true;
+            py = 0;
+        }else{
+            Movimiento[x][py] = true;
+        }
     }
 }
 function Caballo(x,y){
@@ -463,7 +483,12 @@ function Alfil(x,y){
         if(y-i>=1 && x-i >= 1){
             ix = x - i;
             iy = y - i;
-            Movimiento[ix][iy] = true;
+            if(Tablero[ix][iy].Piezas != null){
+                Movimiento[ix][iy] = true;
+                i = 9;
+            }else{
+                Movimiento[ix][iy] = true;
+            }
         }
     }    
     //AbajoIzquierda↓←
@@ -471,7 +496,12 @@ function Alfil(x,y){
         if(y+i<=8 && x-i >= 1){
             ix = x - i;
             iy = y + i;
-            Movimiento[ix][iy] = true;
+            if(Tablero[ix][iy].Piezas != null){
+                Movimiento[ix][iy] = true;
+                i = 0;
+            }else{
+                Movimiento[ix][iy] = true;
+            }
         }
     }    
     //ArribaDerecha↑→
@@ -479,7 +509,12 @@ function Alfil(x,y){
         if(y-i>=1 && x+i <= 8){
             ix = x + i;
             iy = y - i;
-            Movimiento[ix][iy] = true;
+            if(Tablero[ix][iy].Piezas != null){
+                Movimiento[ix][iy] = true;
+                i = 9;
+            }else{
+                Movimiento[ix][iy] = true;
+            }
         }
     }   
     //AbajoDerecha→↓
@@ -487,63 +522,108 @@ function Alfil(x,y){
         if(y+i<=8 && x+i <= 8){
             ix = x + i;
             iy = y + i;
-            Movimiento[ix][iy] = true;
+            if(Tablero[ix][iy].Piezas != null){
+                Movimiento[ix][iy] = true;
+                i = 0;
+            }else{
+                Movimiento[ix][iy] = true;
+            }
         }
     }    
     
 }
 function Dama(x,y){
-    //aribba↑
-    for(let px = x;px <= 8;px += 1){
+   //aribba↑
+   for(let px = x;px <= 8;px += 1){
+    if(Tablero[px][y].Piezas != null){
+        Movimiento[px][y] = true;
+        px = 9;
+    }else{
         Movimiento[px][y] = true;
     }
-    //abajo↓
-    for(let px = x;px >= 1;px -= 1){
+}
+//abajo↓
+for(let px = x;px >= 1;px -= 1){
+    if(Tablero[px][y].Piezas != null){
+        Movimiento[px][y] = true;
+        px = 0;
+    }else{
         Movimiento[px][y] = true;
     }
-    //derecha→
-    for(let py = y;py <= 8;py += 1){
+}
+//derecha→
+for(let py = y;py <= 8;py += 1){
+    if(Tablero[x][py].Piezas != null){
+        Movimiento[x][py] = true;
+        py = 9;
+    }else{
         Movimiento[x][py] = true;
     }
-    //izquierda←
-    for(let py = y;py >= 1;py -= 1){
+}
+//izquierda←
+for(let py = y;py >= 1;py -= 1){
+    if(Tablero[x][py].Piezas != null){
+        Movimiento[x][py] = true;
+        py = 0;
+    }else{
         Movimiento[x][py] = true;
     }
-    let ix;
-    let iy;
-    let i;
-    //ArribaIzquierda↑←
-    for(i = 1;i <= 8;i += 1){
-        if(y-i>=1 && x-i >= 1){
-            ix = x - i;
-            iy = y - i;
+}
+let ix;
+let iy;
+let i;
+//ArribaIzquierda↑←
+for(i = 1;i <= 8;i += 1){
+    if(y-i>=1 && x-i >= 1){
+        ix = x - i;
+        iy = y - i;
+        if(Tablero[ix][iy].Piezas != null){
+            Movimiento[ix][iy] = true;
+            i = 9;
+        }else{
             Movimiento[ix][iy] = true;
         }
     }
-    //AbajoIzquierda↓←
-    for(i = 1;i <= 8;i += 1){
-        if(y+i<=8 && x-i >= 1){
-            ix = x - i;
-            iy = y + i;
+}    
+//AbajoIzquierda↓←
+for(i = 1;i <= 8;i += 1){
+    if(y+i<=8 && x-i >= 1){
+        ix = x - i;
+        iy = y + i;
+        if(Tablero[ix][iy].Piezas != null){
+            Movimiento[ix][iy] = true;
+            i = 0;
+        }else{
             Movimiento[ix][iy] = true;
         }
     }
-    //ArribaDerecha↑→
-    for(i = 1;i <= 8;i += 1){
-        if(y-i>=1 && x+i <= 8){
-            ix = x + i;
-            iy = y - i;
+}    
+//ArribaDerecha↑→
+for(i = 1;i <= 8;i += 1){
+    if(y-i>=1 && x+i <= 8){
+        ix = x + i;
+        iy = y - i;
+        if(Tablero[ix][iy].Piezas != null){
+            Movimiento[ix][iy] = true;
+            i = 9;
+        }else{
             Movimiento[ix][iy] = true;
         }
     }
-    //AbajoDerecha→↓
-    for(i = 1;i <= 8;i += 1){
-        if(y+i<=8 && x+i <= 8){
-            ix = x + i;
-            iy = y + i;
+}   
+//AbajoDerecha→↓
+for(i = 1;i <= 8;i += 1){
+    if(y+i<=8 && x+i <= 8){
+        ix = x + i;
+        iy = y + i;
+        if(Tablero[ix][iy].Piezas != null){
+            Movimiento[ix][iy] = true;
+            i = 0;
+        }else{
             Movimiento[ix][iy] = true;
         }
     }
+}    
 }
 function Rey(x,y){
     if(seleccionado.Contenido == Piezas.BRey){
