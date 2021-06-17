@@ -354,17 +354,17 @@ function Peon(x,y){
     if(seleccionado.Contenido == Piezas.BPeon){
         yy = y + 1;
         //movimiento: 2-adelante
-        if(y == 2 && Tablero[x][4].Piezas == null){
-            Movimiento[x][4] = true;
+        if(y == 2 && Tablero[x][4].Piezas == null && Tablero[x][yy].Piezas == null){
+            comer(x,4);
         }
          //movimiento: 1-adelante
          if(Tablero[x][yy].Piezas == null){
-            Movimiento[x][yy] = true;
+            comer(x,yy);
          }
         if(xx<=8){
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
-            Movimiento[xx][yy] = true;
+                comer(xx,yy);
             }
         }
         xx = x -1;
@@ -372,7 +372,7 @@ function Peon(x,y){
             
             //movimiento: comer-i
            if(Tablero[xx][yy].Piezas != null){
-               Movimiento[xx][yy] = true;
+            comer(xx,yy);
            }
          }
         
@@ -380,17 +380,17 @@ function Peon(x,y){
         if(seleccionado.Contenido == Piezas.NPeon){
             yy = y-1;
             //movimiento: 2-adelante
-            if(y == 7 && Tablero[x][5].Piezas == null){
-                Movimiento[x][5] = true;
+            if(y == 7 && Tablero[x][5].Piezas == null && Tablero[x][yy].Piezas == null){
+                comer(x,5);
             }
              //movimiento: 1-adelante
              if(Tablero[x][yy].Piezas == null){
-                Movimiento[x][yy] = true;
+                comer(x,yy);
              }
              if(xx<=8){
                 //movimiento: comer-d
                 if(Tablero[xx][yy].Piezas != null){
-                Movimiento[xx][yy] = true;
+                    comer(xx,yy);
                 }
              }
              xx = x -1;
@@ -398,7 +398,7 @@ function Peon(x,y){
                 
                 //movimiento: comer-i
                if(Tablero[xx][yy].Piezas != null){
-                   Movimiento[xx][yy] = true;
+                comer(xx,yy);
                }
              }
     }
@@ -406,39 +406,52 @@ function Peon(x,y){
 }
 function Torre(x,y){
     //aribba↑
-    for(let px = x;px <= 8;px += 1){
-        if(Tablero[px][y].Piezas != null){
-            Movimiento[px][y] = true;
-            px = 9;
-        }else{
-            Movimiento[px][y] = true;
+    let i;
+    for(i = 1;i <= 8;i += 1){
+        ix  = i +x;
+        if(ix <= 8){
+            if(Tablero[ix][y].Piezas != null){
+                comer(ix,y);
+                ix= 9;
+            }else{
+                comer(ix,y);
+            }
         }
     }
     //abajo↓
-    for(let px = x;px >= 1;px -= 1){
-        if(Tablero[px][y].Piezas != null){
-            Movimiento[px][y] = true;
-            px = 0;
-        }else{
-            Movimiento[px][y] = true;
+    for(i = 8;i >= 1;i -= 1){
+        ix  = x - i;
+        if(ix >= 1){
+            if(Tablero[ix][y].Piezas != null){
+                comer(ix,y);
+                ix = 0;
+            }else{
+                comer(ix,y);
+            }
         }
     }
     //derecha→
-    for(let py = y;py <= 8;py += 1){
-        if(Tablero[x][py].Piezas != null){
-            Movimiento[x][py] = true;
-            py = 9;
-        }else{
-            Movimiento[x][py] = true;
+    for(i = 1;i <= 8;i += 1){
+        iy  = i +y;
+        if(iy <= 8){
+            if(Tablero[x][iy].Piezas != null){
+                comer(x,iy);
+                iy = 9;
+            }else{
+                comer(x,iy);
+            }
         }
     }
     //izquierda←
-    for(let py = y;py >= 1;py -= 1){
-        if(Tablero[x][py].Piezas != null){
-            Movimiento[x][py] = true;
-            py = 0;
-        }else{
-            Movimiento[x][py] = true;
+    for(i = 8;i >= 1;i -= 1){
+        iy  = y - i;
+        if(iy >= 1){
+            if(Tablero[x][iy].Piezas != null){
+                comer(x,iy);
+                iy = 0;
+            }else{
+                comer(x,iy);
+            }
         }
     }
 }
@@ -447,31 +460,31 @@ function Caballo(x,y){
     let yy = y-1;
     //La primera flecha significa 2 para ese lado y la segunda solo 1
     //←↑
-    if (x-2>=1 && y-1>=1) {Movimiento[xx][yy] = true;}
+    if (x-2>=1 && y-1>=1) {comer(xx,yy);}
     yy = y+1;
     //←↓
-    if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    if (x-2>=1 && y+1<=8) {comer(xx,yy);}
     yy = y+2;
     xx = x-1;
     //↓←
-    if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    if (x-1>=1 && y+2<=8) {comer(xx,yy);}
     xx = x+1;
     //↓→
-    if (x+1<=8 && y+2<=8) {Movimiento[xx][yy] = true;}
+    if (x+1<=8 && y+2<=8) {comer(xx,yy);}
     xx = x+2;
     yy = y+1;
     //→↓
-    if (x+2<=8 && y+1<=8) {Movimiento[xx][yy] = true;}
+    if (x+2<=8 && y+1<=8) {comer(xx,yy);}
     yy = y-1;
     //→↑
-    if (x+2<=8 && y-1>=1) {Movimiento[xx][yy] = true;}
+    if (x+2<=8 && y-1>=1) {comer(xx,yy);}
     yy = y-2;
     xx = x+1;
     //↑→
-    if (x+1<=8 && y-2>=1) {Movimiento[xx][yy] = true;}
+    if (x+1<=8 && y-2>=1) {comer(xx,yy);}
     xx = x-1;
     //↑←
-    if (x-1>=1 && y-2>=1) {Movimiento[xx][yy] = true;}
+    if (x-1>=1 && y-2>=1) {comer(xx,yy);}
 }
 function Alfil(x,y){
     let ix;
@@ -483,10 +496,10 @@ function Alfil(x,y){
             ix = x - i;
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
                 i = 9;
             }else{
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
             }
         }
     }    
@@ -496,10 +509,10 @@ function Alfil(x,y){
             ix = x - i;
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
                 i = 0;
             }else{
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
             }
         }
     }    
@@ -509,10 +522,10 @@ function Alfil(x,y){
             ix = x + i;
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
                 i = 9;
             }else{
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
             }
         }
     }   
@@ -522,50 +535,50 @@ function Alfil(x,y){
             ix = x + i;
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
                 i = 0;
             }else{
-                Movimiento[ix][iy] = true;
+                comer(ix,iy);
             }
         }
     }    
     
-}/*
+}
 function Dama(x,y){
    //aribba↑
    for(let px = x;px <= 8;px += 1){
     if(Tablero[px][y].Piezas != null){
-        Movimiento[px][y] = true;
+        comer(px,y);
         px = 9;
     }else{
-        Movimiento[px][y] = true;
+        comer(px,y);
     }
 }
 //abajo↓
 for(let px = x;px >= 1;px -= 1){
     if(Tablero[px][y].Piezas != null){
-        Movimiento[px][y] = true;
+        comer(px,y);
         px = 0;
     }else{
-        Movimiento[px][y] = true;
+        comer(px,y);
     }
 }
 //derecha→
 for(let py = y;py <= 8;py += 1){
     if(Tablero[x][py].Piezas != null){
-        Movimiento[x][py] = true;
+        comer(x,py);
         py = 9;
     }else{
-        Movimiento[x][py] = true;
+        comer(x,py);
     }
 }
 //izquierda←
 for(let py = y;py >= 1;py -= 1){
     if(Tablero[x][py].Piezas != null){
-        Movimiento[x][py] = true;
+        comer(x,py);
         py = 0;
     }else{
-        Movimiento[x][py] = true;
+        comer(x,py);
     }
 }
 let ix;
@@ -577,10 +590,10 @@ for(i = 1;i <= 8;i += 1){
         ix = x - i;
         iy = y - i;
         if(Tablero[ix][iy].Piezas != null){
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
             i = 9;
         }else{
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
         }
     }
 }    
@@ -590,10 +603,10 @@ for(i = 1;i <= 8;i += 1){
         ix = x - i;
         iy = y + i;
         if(Tablero[ix][iy].Piezas != null){
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
             i = 0;
         }else{
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
         }
     }
 }    
@@ -603,10 +616,10 @@ for(i = 1;i <= 8;i += 1){
         ix = x + i;
         iy = y - i;
         if(Tablero[ix][iy].Piezas != null){
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
             i = 9;
         }else{
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
         }
     }
 }   
@@ -616,62 +629,67 @@ for(i = 1;i <= 8;i += 1){
         ix = x + i;
         iy = y + i;
         if(Tablero[ix][iy].Piezas != null){
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
             i = 0;
         }else{
-            Movimiento[ix][iy] = true;
+            comer(ix,iy);
         }
     }
 }    
-}*/
+}
 function Rey(x,y){
     if(seleccionado.Contenido == Piezas.BRey){
         if(x == 5 && y == 1){
             if(Tablero[8][1].Piezas == Piezas.BTorre){
                 //0-0
-                Movimiento[7][1] = true;
+                comer(7,1);
             }else if( Tablero[1][1].Piezas == Piezas.BTorre){
                 //0-0-0
-                Movimiento[3][1] = true;
+                comer(3,1);
             }
         }
     }else{
         if(x == 5 && y == 8){
             if(Tablero[8][8].Piezas == Piezas.NTorre){
                 //0-0
-                Movimiento[7][8] = true;
+                comer(7,8);
             }else if(Tablero[1][8].Piezas == Piezas.NTorre){
                 //0-0-0
-                Movimiento[3][8] = true;
+                comer(3,8);
             }
         }
     }
     let xx = x-1;
     let yy = y-1;
     //ArribaIzquierda↑←
-    if(x-1 >= 1 && y-1 >= 1){Movimiento[xx][yy] = true;}
+    if(x-1 >= 1 && y-1 >= 1){comer(xx,yy);}
     //ArribaDerecha↑→
     xx=x+1;
-    if(x+1 <= 8 && y-1 >= 1){Movimiento[xx][yy] = true;}
+    if(x+1 <= 8 && y-1 >= 1){comer(xx,yy);}
     //AbajoIzquierda↓←
     xx=x-1;
     yy=y+1;
-    if(x-1 >= 1 && y+1 <= 8){Movimiento[xx][yy] = true;}
+    if(x-1 >= 1 && y+1 <= 8){comer(xx,yy);}
     //AbajoDerecha→↓
     xx=x+1;
-    if(x+1 <= 8 && y+1 <= 8){Movimiento[xx][yy] = true;}
+    if(x+1 <= 8 && y+1 <= 8){comer(xx,yy);}
     //Abajo↓
     yy=y-1;
-    if(y-1 >= 1){Movimiento[x][yy] = true;}
+    if(y-1 >= 1){comer(x,yy);}
     //Izquierda←
     xx=x-1;
-    if(x-1 >= 1){Movimiento[xx][y] = true;}
+    if(x-1 >= 1){comer(xx,y);}
     //aribba↑
     yy=y+1;
-    if(y+1 <= 8){Movimiento[x][yy] = true;}
+    if(y+1 <= 8){comer(x,yy);}
     //Derecha→
     xx=x+1;
-    if(x+1 <= 8){Movimiento[xx][y] = true;}
+    if(x+1 <= 8){comer(xx,y);}
+}
+function comer(x,y){
+    if(Tablero[x][y].color != seleccionado.color){
+        Movimiento[x][y] = true;
+    }
 }
 window.onresize = boardsize;
 
