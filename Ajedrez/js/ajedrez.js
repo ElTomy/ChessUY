@@ -286,7 +286,7 @@ function seleccionar(x,y){
             console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
             Tablero[x][y] = {
                 Piezas: seleccionado.Contenido,
-                Color: seleccionado.Color,
+                color: seleccionado.color,
                 Ejex: x,
                 Ejey: y,
             }
@@ -424,7 +424,7 @@ function Caballo(x,y){
     let yy = y-1;
     //La primera flecha significa 2 para ese lado y la segunda solo 1
     //←↑
-    if (x-2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    if (x-2>=1 && y-1>=1) {Movimiento[xx][yy] = true;}
     yy = y+1;
     //←↓
     if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
@@ -434,21 +434,21 @@ function Caballo(x,y){
     if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
     xx = x+1;
     //↓→
-    if (x+1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
+    if (x+1<=8 && y+2<=8) {Movimiento[xx][yy] = true;}
     xx = x+2;
     yy = y+1;
     //→↓
-    if (x+2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
+    if (x+2<=8 && y+1<=8) {Movimiento[xx][yy] = true;}
     yy = y-1;
     //→↑
-    if (x+2>=1 && y-1<=8) {Movimiento[xx][yy] = true;}
+    if (x+2<=8 && y-1>=1) {Movimiento[xx][yy] = true;}
     yy = y-2;
     xx = x+1;
     //↑→
-    if (x+1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
+    if (x+1<=8 && y-2>=1) {Movimiento[xx][yy] = true;}
     xx = x-1;
     //↑←
-    if (x-1>=1 && y-2<=8) {Movimiento[xx][yy] = true;}
+    if (x-1>=1 && y-2>=1) {Movimiento[xx][yy] = true;}
 }
 function Alfil(x,y){
     let ix;
