@@ -355,19 +355,21 @@ function Peon(x,y){
     if(seleccionado.Contenido == Piezas.BPeon){
         yy = y + 1;
         //movimiento: 2-adelante
-        if(y == 2){
+        if(y == 2 && Tablero[x][4].Piezas == null){
             Movimiento[x][4] = true;
         }
          //movimiento: 1-adelante
-         Movimiento[x][yy] = true;
-         if(xx<=8){
+         if(Tablero[x][yy].Piezas == null){
+            Movimiento[x][yy] = true;
+         }
+        if(xx<=8){
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
             Movimiento[xx][yy] = true;
             }
-         }
-         xx = x -1;
-         if(xx>=1){
+        }
+        xx = x -1;
+        if(xx>=1){
             
             //movimiento: comer-i
            if(Tablero[xx][yy].Piezas != null){
@@ -379,11 +381,13 @@ function Peon(x,y){
         if(seleccionado.Contenido == Piezas.NPeon){
             yy = y-1;
             //movimiento: 2-adelante
-            if(y == 7){
+            if(y == 7 && Tablero[x][5].Piezas == null){
                 Movimiento[x][5] = true;
             }
              //movimiento: 1-adelante
-             Movimiento[x][yy] = true;
+             if(Tablero[x][yy].Piezas == null){
+                Movimiento[x][yy] = true;
+             }
              if(xx<=8){
                 //movimiento: comer-d
                 if(Tablero[xx][yy].Piezas != null){
