@@ -16,6 +16,10 @@ $( document ).ready(function(){
         }
     });
  }
+ const Color = {
+    Blanco:'b',
+    Negro:'n',
+}
 const Piezas = {
     BRey: 'r', 
     BDama: 'd',
@@ -134,112 +138,112 @@ function PosicionPiezas(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x][2] ={
             Piezas: Piezas.BPeon,
+            color: Color.Blanco,
             Ejex: x,
             Ejey: 2,
-     
         }
         Tablero[x][7] ={
             Piezas: Piezas.NPeon,
+            color: Color.Negro,
             Ejex: x,
             Ejey: 7,
-           
         }  
     }
     Tablero[1][1] ={
         Piezas: Piezas.BTorre,
+        color: Color.Blanco,
         Ejex: 1,
         Ejey: 1,
-      
     }
     Tablero[1][8] ={
         Piezas: Piezas.NTorre,
+        color: Color.Negro,
         Ejex: 1,
         Ejey: 8,
-     
     }
     Tablero[2][1] ={
         Piezas: Piezas.BCaballo,
+        color: Color.Blanco,
         Ejex: 2,
         Ejey: 1,
-       
     }
     Tablero[2][8] ={
         Piezas: Piezas.NCaballo,
+        color: Color.Negro,
         Ejex: 2,
         Ejey: 8,
-      
     }
     Tablero[3][1] ={
         Piezas: Piezas.BAlfil,
+        color: Color.Blanco,
         Ejex: 3,
         Ejey: 1,
-       
     }
     Tablero[3][8] ={
         Piezas: Piezas.NAlfil,
+        color: Color.Negro,
         Ejex: 3,
         Ejey: 8,
-       
     }
     Tablero[4][1] ={
         Piezas: Piezas.BDama,
+        color: Color.Blanco,
         Ejex: 4,
         Ejey: 1,
-    
     }
     Tablero[4][8] ={
         Piezas: Piezas.NDama,
+        color: Color.Negro,
         Ejex: 4,
         Ejey: 8,
- 
     }
     Tablero[5][1] ={
         Piezas: Piezas.BRey,
+        color: Color.Blanco,
         Ejex: 5,
         Ejey: 1,
-      
     }
     Tablero[5][8] ={
         Piezas: Piezas.NRey,
+        color: Color.Negro,
         Ejex: 5,
         Ejey: 8,
-     
     }
     Tablero[6][1] ={
         Piezas: Piezas.BAlfil,
+        color: Color.Blanco,
         Ejex: 6,
         Ejey: 1,
-      
     }
     Tablero[6][8] ={
         Piezas: Piezas.NAlfil,
+        color: Color.Negro,
         Ejex: 6,
         Ejey: 8,
-      
     }
     Tablero[7][1] ={
         Piezas: Piezas.BCaballo,
+        color: Color.Blanco,
         Ejex: 7,
         Ejey: 1,
-      
     }
     Tablero[7][8] ={
         Piezas: Piezas.NCaballo,
+        color: Color.Negro,
         Ejex: 7,
         Ejey: 8,
-   
     }
     Tablero[8][1] ={
         Piezas: Piezas.BTorre,
+        color: Color.Blanco,
         Ejex: 8,
         Ejey: 1,
-      
     }
     Tablero[8][8] ={
         Piezas: Piezas.NTorre,
+        color: Color.Negro,
         Ejex: 8,
         Ejey: 8,
-      
     }
 
 }
@@ -257,6 +261,7 @@ function CreoTablero(){
         for(let y = 1; y <= 8; y += 1){
             Tablero[x][y] = {
                 Piezas: null,
+                color: null,
                 Ejex: x,
                 Ejey: y,
             }
@@ -271,20 +276,23 @@ function seleccionar(x,y){
                 Ejex: x,
                 Ejey: y,
                 Contenido: Tablero[x][y].Piezas,
+                color: Tablero[x][y].color,
             }
             Movimientos();
         }
     }else{
-        if(Movimiento[x][y] == true){
+        if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
             console.log(Tablero[x][y])
             console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
             Tablero[x][y] = {
                 Piezas: seleccionado.Contenido,
+                Color: seleccionado.Color,
                 Ejex: x,
                 Ejey: y,
             }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
+                color: null,
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
@@ -298,13 +306,14 @@ function seleccionar(x,y){
                     Ejex: x,
                     Ejey: y,
                     Contenido: Tablero[x][y].Piezas,
+                    color: Tablero[x][y].color,
                 }
             Movimientos();
             }
-                seleccionado = null;
-                resetMovimientos(); 
-              
         }
+        seleccionado = null;
+        resetMovimientos(); 
+      
     }
 }
 function Movimientos(){
