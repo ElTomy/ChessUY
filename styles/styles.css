@@ -2142,6 +2142,13 @@ img {
   background-color: rgba(255, 255, 255, 0.623);
 }
 
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .seleccionado .punto-comer, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .seleccionado .punto-comer {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell .celda, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .celda {
   display: -webkit-box;
   display: -ms-flexbox;
