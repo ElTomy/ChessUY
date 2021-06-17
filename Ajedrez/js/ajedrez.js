@@ -2,18 +2,20 @@ $( document ).ready(function(){
     CreoTablero();
     PosicionPiezas();
     resetMovimientos();
+    armoAjedrez();
+    
+});
+ function armoAjedrez(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {},
+        data: {Tablero:Tablero},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
-            PosicionPiezas();
         }
     });
-});
-
+ }
 const Piezas = {
     BRey: 'r', 
     BDama: 'd',
@@ -134,92 +136,110 @@ function PosicionPiezas(){
             Piezas: Piezas.BPeon,
             Ejex: x,
             Ejey: 2,
+     
         }
         Tablero[x][7] ={
             Piezas: Piezas.NPeon,
             Ejex: x,
             Ejey: 7,
+           
         }  
     }
-    Tablero[1][1] ={        
+    Tablero[1][1] ={
         Piezas: Piezas.BTorre,
         Ejex: 1,
         Ejey: 1,
+      
     }
     Tablero[1][8] ={
         Piezas: Piezas.NTorre,
         Ejex: 1,
         Ejey: 8,
+     
     }
     Tablero[2][1] ={
         Piezas: Piezas.BCaballo,
         Ejex: 2,
         Ejey: 1,
+       
     }
     Tablero[2][8] ={
         Piezas: Piezas.NCaballo,
         Ejex: 2,
         Ejey: 8,
+      
     }
     Tablero[3][1] ={
         Piezas: Piezas.BAlfil,
         Ejex: 3,
         Ejey: 1,
+       
     }
     Tablero[3][8] ={
         Piezas: Piezas.NAlfil,
         Ejex: 3,
         Ejey: 8,
+       
     }
     Tablero[4][1] ={
         Piezas: Piezas.BDama,
         Ejex: 4,
         Ejey: 1,
+    
     }
     Tablero[4][8] ={
         Piezas: Piezas.NDama,
         Ejex: 4,
         Ejey: 8,
+ 
     }
     Tablero[5][1] ={
         Piezas: Piezas.BRey,
         Ejex: 5,
         Ejey: 1,
+      
     }
     Tablero[5][8] ={
         Piezas: Piezas.NRey,
         Ejex: 5,
         Ejey: 8,
+     
     }
     Tablero[6][1] ={
         Piezas: Piezas.BAlfil,
         Ejex: 6,
         Ejey: 1,
+      
     }
     Tablero[6][8] ={
         Piezas: Piezas.NAlfil,
         Ejex: 6,
         Ejey: 8,
+      
     }
     Tablero[7][1] ={
         Piezas: Piezas.BCaballo,
         Ejex: 7,
         Ejey: 1,
+      
     }
     Tablero[7][8] ={
         Piezas: Piezas.NCaballo,
         Ejex: 7,
         Ejey: 8,
+   
     }
     Tablero[8][1] ={
         Piezas: Piezas.BTorre,
         Ejex: 8,
         Ejey: 1,
+      
     }
     Tablero[8][8] ={
         Piezas: Piezas.NTorre,
         Ejex: 8,
         Ejey: 8,
+      
     }
 
 }
@@ -256,6 +276,8 @@ function seleccionar(x,y){
         }
     }else{
         if(Movimiento[x][y] == true){
+            console.log(Tablero[x][y])
+            console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
             Tablero[x][y] = {
                 Piezas: seleccionado.Contenido,
                 Ejex: x,
@@ -266,6 +288,10 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
+            console.log(Tablero[x][y])
+            console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
+            console.log("-----")
+            armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
                 seleccionado = {
@@ -282,7 +308,6 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
-    console.log(seleccionado.Contenido)
     muestrotablero();
 
     let x = seleccionado.Ejex
@@ -373,7 +398,7 @@ function Torre(x,y){
         Movimiento[px][y] = true;
     }
     //abajo↓
-    for(let px = x;px >= 0;px -= 1){
+    for(let px = x;px >= 1;px -= 1){
         Movimiento[px][y] = true;
     }
     //derecha→
@@ -381,7 +406,7 @@ function Torre(x,y){
         Movimiento[x][py] = true;
     }
     //izquierda←
-    for(let py = y;py >= 0;py -= 1){
+    for(let py = y;py >= 1;py -= 1){
         Movimiento[x][py] = true;
     }
 }
@@ -395,6 +420,7 @@ function Caballo(x,y){
     //←↓
     if (x-2>=1 && y+1<=8) {Movimiento[xx][yy] = true;}
     yy = y+2;
+    xx = x-1;
     //↓←
     if (x-1>=1 && y+2<=8) {Movimiento[xx][yy] = true;}
     xx = x+1;
@@ -459,7 +485,7 @@ function Dama(x,y){
         Movimiento[px][y] = true;
     }
     //abajo↓
-    for(let px = x;px >= 0;px -= 1){
+    for(let px = x;px >= 1;px -= 1){
         Movimiento[px][y] = true;
     }
     //derecha→
@@ -467,7 +493,7 @@ function Dama(x,y){
         Movimiento[x][py] = true;
     }
     //izquierda←
-    for(let py = y;py >= 0;py -= 1){
+    for(let py = y;py >= 1;py -= 1){
         Movimiento[x][py] = true;
     }
     let ix;
@@ -480,7 +506,7 @@ function Dama(x,y){
             iy = y - i;
             Movimiento[ix][iy] = true;
         }
-    }    
+    }
     //AbajoIzquierda↓←
     for(i = 1;i <= 8;i += 1){
         if(y+i<=8 && x-i >= 1){
@@ -488,7 +514,7 @@ function Dama(x,y){
             iy = y + i;
             Movimiento[ix][iy] = true;
         }
-    }    
+    }
     //ArribaDerecha↑→
     for(i = 1;i <= 8;i += 1){
         if(y-i>=1 && x+i <= 8){
@@ -496,7 +522,7 @@ function Dama(x,y){
             iy = y - i;
             Movimiento[ix][iy] = true;
         }
-    }   
+    }
     //AbajoDerecha→↓
     for(i = 1;i <= 8;i += 1){
         if(y+i<=8 && x+i <= 8){
@@ -504,7 +530,7 @@ function Dama(x,y){
             iy = y + i;
             Movimiento[ix][iy] = true;
         }
-    }  
+    }
 }
 function Rey(x,y){
     if(seleccionado.Contenido == Piezas.BRey){
@@ -561,7 +587,7 @@ function muestrotablero(){
 
     console.table([ [Tablero[8][1].Piezas, Tablero[7][1].Piezas,Tablero[6][1].Piezas,Tablero[5][1].Piezas,Tablero[4][1].Piezas,Tablero[3][1].Piezas,Tablero[2][1].Piezas,Tablero[1][1].Piezas] ,
                     [Tablero[8][2].Piezas, Tablero[7][2].Piezas,Tablero[6][2].Piezas,Tablero[5][2].Piezas,Tablero[4][2].Piezas,Tablero[3][2].Piezas,Tablero[2][2].Piezas,Tablero[1][2].Piezas] ,
-                    [Tablero[8][3].Piezas, Tablero[7][2].Piezas,Tablero[6][2].Piezas,Tablero[5][2].Piezas,Tablero[4][2].Piezas,Tablero[3][2].Piezas,Tablero[2][2].Piezas,Tablero[1][2].Piezas] ,
+                    [Tablero[8][3].Piezas, Tablero[7][3].Piezas,Tablero[6][3].Piezas,Tablero[5][3].Piezas,Tablero[4][3].Piezas,Tablero[3][3].Piezas,Tablero[2][3].Piezas,Tablero[1][3].Piezas] ,
                     [Tablero[8][4].Piezas, Tablero[7][4].Piezas,Tablero[6][4].Piezas,Tablero[5][4].Piezas,Tablero[4][4].Piezas,Tablero[3][4].Piezas,Tablero[2][4].Piezas,Tablero[1][4].Piezas] ,
                     [Tablero[8][5].Piezas, Tablero[7][5].Piezas,Tablero[6][5].Piezas,Tablero[5][5].Piezas,Tablero[4][5].Piezas,Tablero[3][5].Piezas,Tablero[2][5].Piezas,Tablero[1][5].Piezas] ,
                     [Tablero[8][6].Piezas, Tablero[7][6].Piezas,Tablero[6][6].Piezas,Tablero[5][6].Piezas,Tablero[4][6].Piezas,Tablero[3][6].Piezas,Tablero[2][6].Piezas,Tablero[1][6].Piezas] ,
