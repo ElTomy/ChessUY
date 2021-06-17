@@ -306,15 +306,16 @@ function seleccionar(x,y){
                     color: Tablero[x][y].color,
                 }
             Movimientos();
+            armoAjedrez();
             }
         }
         seleccionado = null;
         resetMovimientos(); 
+        armoAjedrez();
       
     }
 }
 function Movimientos(){
-    console.log(seleccionado.Contenido)
     muestrotablero();
 
     let x = seleccionado.Ejex
