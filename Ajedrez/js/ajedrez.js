@@ -9,7 +9,7 @@ $( document ).ready(function(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero},
+        data: {Tablero:Tablero, Movimiento:Movimiento},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
@@ -279,6 +279,7 @@ function seleccionar(x,y){
                 color: Tablero[x][y].color,
             }
             Movimientos();
+            armoAjedrez();
         }
     }else{
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){

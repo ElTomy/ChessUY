@@ -1,5 +1,8 @@
 <?php
 $Tablero = $_POST['Tablero'];
+$mov = $_POST['Movimiento'];
+
+
 
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
@@ -56,39 +59,47 @@ for($y = 1; $y <= 8; $y++){
                                     default:
                                     $img = "";
         }
+
+        if($mov[$x][$y] == "true"){
+            $op = "style='background-color:red'";
+        }else{
+            $op = "";
+        }
+
+        //if
         if($y == 1){
             if($x == 1){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p><p class="board-text">' . $letras_y[($x - 1)] . '</p>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p><p class="board-text">' . $letras_y[($x - 1)] . '</p>' . $img;
             }else{
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '><p class="board-text">' . $letras_y[($x - 1)] . '</p>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" '. $op .' class="cell" id=' . $x . '' . $y. '><p class="board-text">' . $letras_y[($x - 1)] . '</p>' . $img;
             }
 
         }else if(($y)%2 == 0){
             if($y == 2 && $x == 1){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>' . $img;
             }else if($y == 2){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '>' . $img;
             }else if($y == 8 && $x == 1){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
             }else if($y == 8){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '>' . $img;
             }else{
                 if($x == 1){
-                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
+                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
                 }else{
-                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell2" id=' . $x . '' . $y. '>'. $img;
+                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell2" id=' . $x . '' . $y. '>'. $img;
                 }
             }
         }else{
             if($y == 7 && $x == 1){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>' . $img; 
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>' . $img; 
             }else if($y == 7){
-                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '>' . $img;
+                $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell" id=' . $x . '' . $y. '>' . $img;
             }else{
                 if($x == 1){
-                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
+                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell" id=' . $x . '' . $y. '><p class="board-number">' . $numeros_x[($y - 1)] . '</p>'. $img;
                 }else{
-                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')" class="cell" id=' . $x . '' . $y. '>'. $img;
+                    $Ajedrez .='<div onclick="seleccionar('.$x.','.$y.')"'. $op .' class="cell" id=' . $x . '' . $y. '>'. $img;
                 }
             }
             
