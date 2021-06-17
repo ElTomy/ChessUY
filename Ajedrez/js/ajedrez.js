@@ -282,8 +282,7 @@ function seleccionar(x,y){
         }
     }else{
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
-            console.log(Tablero[x][y])
-            console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
+           
             Tablero[x][y] = {
                 Piezas: seleccionado.Contenido,
                 color: seleccionado.color,
@@ -296,9 +295,7 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
-            console.log(Tablero[x][y])
-            console.log(Tablero[seleccionado.Ejex][seleccionado.Ejey])
-            console.log("-----")
+           
             armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
@@ -317,6 +314,7 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
+    console.log(seleccionado.Contenido)
     muestrotablero();
 
     let x = seleccionado.Ejex
@@ -531,7 +529,7 @@ function Alfil(x,y){
         }
     }    
     
-}
+}/*
 function Dama(x,y){
    //aribba↑
    for(let px = x;px <= 8;px += 1){
@@ -624,7 +622,7 @@ for(i = 1;i <= 8;i += 1){
         }
     }
 }    
-}
+}*/
 function Rey(x,y){
     if(seleccionado.Contenido == Piezas.BRey){
         if(x == 5 && y == 1){
@@ -678,7 +676,7 @@ window.onresize = boardsize;
 
 function muestrotablero(){
 
-    console.table([ [Tablero[8][1].Piezas, Tablero[7][1].Piezas,Tablero[6][1].Piezas,Tablero[5][1].Piezas,Tablero[4][1].Piezas,Tablero[3][1].Piezas,Tablero[2][1].Piezas,Tablero[1][1].Piezas] ,
+    /*console.table([ [Tablero[8][1].Piezas, Tablero[7][1].Piezas,Tablero[6][1].Piezas,Tablero[5][1].Piezas,Tablero[4][1].Piezas,Tablero[3][1].Piezas,Tablero[2][1].Piezas,Tablero[1][1].Piezas] ,
                     [Tablero[8][2].Piezas, Tablero[7][2].Piezas,Tablero[6][2].Piezas,Tablero[5][2].Piezas,Tablero[4][2].Piezas,Tablero[3][2].Piezas,Tablero[2][2].Piezas,Tablero[1][2].Piezas] ,
                     [Tablero[8][3].Piezas, Tablero[7][3].Piezas,Tablero[6][3].Piezas,Tablero[5][3].Piezas,Tablero[4][3].Piezas,Tablero[3][3].Piezas,Tablero[2][3].Piezas,Tablero[1][3].Piezas] ,
                     [Tablero[8][4].Piezas, Tablero[7][4].Piezas,Tablero[6][4].Piezas,Tablero[5][4].Piezas,Tablero[4][4].Piezas,Tablero[3][4].Piezas,Tablero[2][4].Piezas,Tablero[1][4].Piezas] ,
@@ -687,5 +685,5 @@ function muestrotablero(){
                     [Tablero[8][7].Piezas, Tablero[7][7].Piezas,Tablero[6][7].Piezas,Tablero[5][7].Piezas,Tablero[4][7].Piezas,Tablero[3][7].Piezas,Tablero[2][7].Piezas,Tablero[1][7].Piezas] ,
                     [Tablero[8][8].Piezas, Tablero[7][8].Piezas,Tablero[6][8].Piezas,Tablero[5][8].Piezas,Tablero[4][8].Piezas,Tablero[3][8].Piezas,Tablero[2][8].Piezas,Tablero[1][8].Piezas] ,
                     
-    ]);
+    ]);*/
 }
