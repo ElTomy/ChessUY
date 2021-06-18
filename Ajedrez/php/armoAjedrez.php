@@ -60,6 +60,7 @@ for($y = 1; $y <= 8; $y++){
                                     $img = "";
         }
         if($mov[$x][$y] == "true"){
+
             if($Tablero[$x][$y]['Piezas'] != null){
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 90%; height: 90%; border: 2px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
