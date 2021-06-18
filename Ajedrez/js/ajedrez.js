@@ -9,7 +9,7 @@ $( document ).ready(function(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento},
+        data: {Tablero:Tablero, Movimiento:Movimiento, Jugadas:Jugadas ,Turno:Turno},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
@@ -34,6 +34,8 @@ const Piezas = {
     NTorre:'tn', 
     NPeon:'pn',  
 }
+var Jugadas = [];
+var Turno = 1;
 const Tablero = [];
 var seleccionado = null;
 var  Movimiento = [];
@@ -286,12 +288,35 @@ function seleccionar(x,y){
            if((seleccionado.Contenido == "p"||seleccionado.Contenido == "pn")&&(y == 1||y == 8)){
                 Coronacion(x,y);
                 console.log("coronacion")
+                Jugadas[Turno] = {
+                    Piezas: seleccionado.color,
+                    color: seleccionado.color,
+                    Ejex: x,
+                    Ejey: y,
+                    simbolo: "=",
+                }
            }else{
+               if(Tablero[x][y].Piezas != null){
+                Jugadas[Turno] = {
+                    Piezas: seleccionado.color,
+                    color: seleccionado.color,
+                    Ejex: x,
+                    Ejey: y,
+                    simbolo: "x",
+                }
+               }
                 Tablero[x][y] = {
                     Piezas: seleccionado.Contenido,
                     color: seleccionado.color,
                     Ejex: x,
                     Ejey: y,
+                }
+                Jugadas[Turno] = {
+                    Piezas: seleccionado.color,
+                    color: seleccionado.color,
+                    Ejex: x,
+                    Ejey: y,
+                    simbolo: null,
                 }
            }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
@@ -300,6 +325,8 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
+            //muestrotablero();
+            Turno = Turno + 1;
             armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
@@ -320,7 +347,7 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
-    muestrotablero();
+    //muestrotablero();
 
     let x = seleccionado.Ejex
     let y = seleccionado.Ejey;
