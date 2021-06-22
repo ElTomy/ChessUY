@@ -205,6 +205,30 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function PerfilUsuario($user)
+    {
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL PerfilUsuario(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $user);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+            while ($stmts->fetch()) {
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                return $data;
+            }
+            $stmts->close();
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function CrearTorneo($Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes)
     {
         $conn = $this->conectar();
