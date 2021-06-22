@@ -36,6 +36,7 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
+var simbolo = null;
 const Tablero = [];
 var seleccionado = null;
 var  Movimiento = [];
@@ -293,43 +294,50 @@ function seleccionar(x,y){
            if((seleccionado.Contenido == "p"||seleccionado.Contenido == "pn")&&(y == 1||y == 8)){
                 sel= seleccionado.Contenido;
                 Coronacion(x,y,sel);
-                Jugadas[Turno] = {
-                    Piezas: seleccionado.color,
-                    color: seleccionado.color,
-                    Ejex: x,
-                    Ejey: y,
-                    simbolo: "=",
+                simbolo = "=";
+                if(Tablero[x][y].Piezas != null){
+                    simbolo = simbolo + ",x";
                 }
-           }else{
-               if(Tablero[x][y].Piezas != null){
-                Jugadas[Turno] = {
-                    Piezas: seleccionado.color,
-                    color: seleccionado.color,
-                    Ejex: x,
-                    Ejey: y,
-                    simbolo: "x",
-                }
+                    Jugadas[Turno] = {
+                        Piezas: seleccionado.Contenido,
+                        color: seleccionado.color,
+                        Ejex: x,
+                        Ejey: y,
+                        simbolo: simbolo,
+                    }
+               }else{
+                   if(Tablero[x][y].Piezas != null){
+                    simbolo = simbolo + "x";
+                    Jugadas[Turno] = {
+                        Piezas: seleccionado.Contenido,
+                        color: seleccionado.color,
+                        Ejex: x,
+                        Ejey: y,
+                        simbolo: "x",
+                    }
+                   }else{
+                    Jugadas[Turno] = {
+                        Piezas: seleccionado.Contenido,
+                        color: seleccionado.color,
+                        Ejex: x,
+                        Ejey: y,
+                        simbolo: simbolo,
+                    }
+                   }
+                    Tablero[x][y] = {
+                        Piezas: seleccionado.Contenido,
+                        color: seleccionado.color,
+                        Ejex: x,
+                        Ejey: y,
+                    }
                }
-                Tablero[x][y] = {
-                    Piezas: seleccionado.Contenido,
-                    color: seleccionado.color,
-                    Ejex: x,
-                    Ejey: y,
-                }
-                Jugadas[Turno] = {
-                    Piezas: seleccionado.color,
-                    color: seleccionado.color,
-                    Ejex: x,
-                    Ejey: y,
-                    simbolo: null,
-                }
-           }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
                 color: null,
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
+            simbolo = null;
             Turno = Turno + 1;
            
             armoAjedrez();
@@ -1100,17 +1108,30 @@ function Jaque(x,y, sel){
  
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
+        var color = "b";
     }else{
         var colorR = "rn";
+        var color = "n";
     }
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
                     console.log("JAQUE")
+                    simbolo = "+";
+                    if(Tablero[x][y].Piezas != null){
+                        simbolo = simbolo + ",x";
+                    }
                     jaque = true;
                     var a = p;
                     var b = q;
+                    Jugadas[Turno] = {
+                        Piezas: sel,
+                        color: color,
+                        Ejex: x,
+                        Ejey: y,
+                        simbolo: simbolo,
+                    }
                     break;
              }
             }
