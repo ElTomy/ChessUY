@@ -1,6 +1,8 @@
 <?php
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
+$jugadas = isset($_POST['Jugadas']);
+$Turnos = isset($_POST['Turno']);
 
 
 
