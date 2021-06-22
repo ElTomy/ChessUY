@@ -1122,12 +1122,15 @@ function Jaque(x,y, sel){
        //     JaqueMate(a,b,sel);
        //}
        if(jaque == true){
-            SalirJaque(a,b,sel, x,y, colorR);
+            //JaqueMate(a,b,sel, x,y, colorR);
         }
        resetMovimientos();
 
 }
-function SalirJaque(a,b,sel, x,y, colorR){
+function SalirJaque(){
+  //metodo tomy
+}
+function JaqueMate(a,b,sel, x,y, colorR){
     console.log(sel, x, y, colorR)
     let i;
     let ix;
@@ -1226,21 +1229,13 @@ function SalirJaque(a,b,sel, x,y, colorR){
                 for(var p = 1; p <= 8; p++){
                     for(var q = 1; q <= 8; q++){
                         if(Tablero[p][q].Piezas == op[0]){
-                            Peon(p,q, op[0])
+                            //Peon(p,q, op[0])
                            
-                            if(Movimientos[pX][pY] == true){
+                            //if(Movimientos[pX][pY] == true){
            
-                            }
+          //                  }
                            
                     }}}
-
-
-
-
-
-
-
-
     
         break;
         case Piezas.NAlfil:
@@ -1259,10 +1254,6 @@ function SalirJaque(a,b,sel, x,y, colorR){
         case Piezas.BRey:
              
         break;}
-   
-}
-function JaqueMate(x,y,sel){
-    console.log("comprobar jaquemate")
    
 }
 function muestrotablero(){
