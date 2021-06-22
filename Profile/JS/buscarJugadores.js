@@ -11,5 +11,5 @@ $( document ).ready(function(){
 });
 
 function perfil(usuario){
-    location.href="/ChessUY/Profile/Profile.php"+'?Usuario='+usuario;
+    location.href = usuario;
 }
