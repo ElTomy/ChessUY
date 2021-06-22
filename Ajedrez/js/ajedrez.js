@@ -347,7 +347,6 @@ function seleccionar(x,y){
     }
 }
 function Movimientos(){
-    //muestrotablero();
 
     let x = seleccionado.Ejex
     let y = seleccionado.Ejey;
@@ -374,7 +373,7 @@ function Movimientos(){
         break;
         case Piezas.NRey:
         case Piezas.BRey:
-                Rey(x,y);
+               Rey(x,y);
         break;
                                             
     }
@@ -680,7 +679,7 @@ for(i = 1;i <= 8; i++){
 }    
 }
 function Rey(x,y){
-    if(seleccionado.Contenido == Piezas.BRey){
+   if(seleccionado.Contenido == Piezas.BRey){
         if(x == 5 && y == 1){
             if(Tablero[8][1].Piezas == Piezas.BTorre){
                 //0-0
@@ -727,6 +726,8 @@ function Rey(x,y){
     //Derecha→
     xx=x+1;
     if(x+1 <= 8){comer(xx,y);}
+
+    JR();
 }
 function comer(x,y){
     if(Tablero[x][y].color != seleccionado.color){
@@ -752,9 +753,252 @@ function Coronacion(x,y){
 }
 window.onresize = boardsize;
 
-function muestrotablero(){
+function JR(){
+    for(var p = 1; p <= 8; p++){
+        for(var q = 1; q <= 8; q++){
+            if(Movimiento[p][q] == true){
+                JaqueRey(p,q);
+            }  
+        }}
+}
+function JaqueRey(x, y){
+ 
+    let i;
+    let ix;
+    let iy;
+    let xx = x-2;
+    let yy = y-1;
 
-    /*console.table([ [Tablero[1][1].Piezas, Tablero[2][1].Piezas,Tablero[3][1].Piezas,Tablero[4][1].Piezas,Tablero[5][1].Piezas,Tablero[6][1].Piezas,Tablero[7][1].Piezas,Tablero[8][1].Piezas] ,
+    if(seleccionado.color == "n"){
+        var colorC = "c";
+        var colorT = "t";
+        var colorD = "d";
+        var colorA = "a";
+        var colorP = "p";
+        var colorR = "r";
+    }else{
+        var colorC = "cn";
+        var colorT = "tn";
+        var colorD = "dn";
+        var colorA = "an";
+        var colorP = "pn";
+        var colorR = "rn";
+    }
+    
+    //Caballo
+    //←↑
+    if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} // o algo para marcar
+    yy = y+1;
+    //←↓
+    if (x-2>=1 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}// o algo para marcar
+    yy = y+2;
+    xx = x-1;
+    //↓←
+    if (x-1>=1 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} // o algo para marcar
+    xx = x+1;
+    //↓→
+    if (x+1<=8 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} // o algo para marcar
+    xx = x+2;
+    yy = y+1;
+    //→↓
+    if (x+2<=8 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}// o algo para marcar
+    yy = y-1;
+    //→↑
+    if (x+2<=8 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} // o algo para marcar
+    yy = y-2;
+    xx = x+1;
+    //↑→
+    if (x+1<=8 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} // o algo para marcar
+    xx = x-1;
+    //↑←
+    if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}// o algo para marcar;
+    
+    //----------------------------------------------------------------------------------
+    //Torre y Reina
+    //derecha→
+    for(i = 1;i <= 8; i++){
+        ix  = i +x;
+        if(ix <= 8){
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+                break;
+            }else{
+                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
+                    Movimiento[x][y] = null
+                   
+                }
+            }
+        }
+    }
+    
+    //izquierda
+    for(i = 1; i <= 8; i++){
+        if( x-i >= 1){
+            ix = x - i;
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+                break;
+            }else{
+                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+            }
+            
+        }
+    }   
+    //arriba
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1){
+            iy = y - i;
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+                break;
+            }else{
+                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+            }
+        } }
+        
+   //abajo↓
+    for(i = 1;i <= 8; i++){
+        iy  = i +y;
+        if(iy <= 8){
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                    Movimiento[x][y] = null 
+                }
+                break;
+            }else{
+                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                    Movimiento[x][y] = null
+                }
+            }
+        }
+    }
+    //----------------------------------------------------------------------------------
+    //Alfil y Reina
+
+    //ArribaIzquierda↑←
+for(i = 1; i <= 8; i++){
+    if(y-i>=1 && x-i >= 1){
+        ix = x - i;
+        iy = y - i;
+        if(Tablero[ix][iy].Piezas != null){
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+            break;
+        }else{
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+        }
+    }
+}    
+
+//AbajoIzquierda↓←
+for(i = 1;i <= 8; i++){
+    if(y+i<=8 && x-i >= 1){
+        ix = x - i;
+        iy = y + i;
+        if(Tablero[ix][iy].Piezas != null){
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+            break;
+        }else{
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+        }
+    }
+}    
+
+//ArribaDerecha↑→
+for(i = 1;i <= 8; i++){
+    if(y-i>=1 && x+i <= 8){
+        ix = x + i;
+        iy = y - i;
+        if(Tablero[ix][iy].Piezas != null){
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+            break;
+        }else{
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+        }
+    }
+}  
+ 
+//AbajoDerecha→↓
+for(i = 1;i <= 8; i++){
+    if(y+i<=8 && x+i <= 8){
+        ix = x + i;
+        iy = y + i;
+        if(Tablero[ix][iy].Piezas != null){
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+            break;
+        }else{
+            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                Movimiento[x][y] = null
+            }
+        }
+    }
+}   
+
+  //----------------------------------------------------------------------------------
+    //Peon y Rei
+    xx = x-1;
+    yy = y-1;
+    //ArribaIzquierda↑←
+    if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //ArribaDerecha↑→
+    xx=x+1;
+    if(x+1 <= 8 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //AbajoIzquierda↓←
+    xx=x-1;
+    yy=y+1;
+    if(x-1 >= 1 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //AbajoDerecha→↓
+    xx=x+1;
+    if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //Abajo↓
+    yy=y-1;
+    if(y-1 >= 1){if(Tablero[x][yy].Piezas == colorP || Tablero[x][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //Izquierda←
+    xx=x-1;
+    if(x-1 >= 1){if(Tablero[xx][y].Piezas == colorP || Tablero[xx][y].Piezas == colorR){Movimiento[x][y] = null}}
+    //aribba↑
+    yy=y+1;
+    if(y+1 <= 8){if(Tablero[x][yy].Piezas == colorC || Tablero[x][yy].Piezas == colorR){Movimiento[x][y] = null}}
+    //Derecha→
+    xx=x+1;
+    if(x+1 <= 8){if(Tablero[xx][y].Piezas == colorC || Tablero[xx][y].Piezas == colorR){Movimiento[x][y] = null}}
+
+}
+
+function Jaque(){
+
+    //comprobar jaquemate
+    //JaqueMate();
+}
+function JaqueMate(){
+    //compruebo movimientos del rey
+    //JaqueRey
+}
+/*function muestrotablero(){
+    console.table([ [Tablero[1][1].Piezas, Tablero[2][1].Piezas,Tablero[3][1].Piezas,Tablero[4][1].Piezas,Tablero[5][1].Piezas,Tablero[6][1].Piezas,Tablero[7][1].Piezas,Tablero[8][1].Piezas] ,
                     [Tablero[1][2].Piezas, Tablero[2][2].Piezas,Tablero[3][2].Piezas,Tablero[4][2].Piezas,Tablero[5][2].Piezas,Tablero[6][2].Piezas,Tablero[7][2].Piezas,Tablero[8][2].Piezas] ,
                     [Tablero[1][3].Piezas, Tablero[2][3].Piezas,Tablero[3][3].Piezas,Tablero[4][3].Piezas,Tablero[5][3].Piezas,Tablero[6][3].Piezas,Tablero[7][3].Piezas,Tablero[8][3].Piezas] ,
                     [Tablero[1][4].Piezas, Tablero[2][4].Piezas,Tablero[3][4].Piezas,Tablero[4][4].Piezas,Tablero[5][4].Piezas,Tablero[6][4].Piezas,Tablero[7][4].Piezas,Tablero[8][4].Piezas] ,
@@ -763,5 +1007,5 @@ function muestrotablero(){
                     [Tablero[1][7].Piezas, Tablero[2][7].Piezas,Tablero[3][7].Piezas,Tablero[4][7].Piezas,Tablero[5][7].Piezas,Tablero[6][7].Piezas,Tablero[7][7].Piezas,Tablero[8][7].Piezas] ,
                     [Tablero[1][8].Piezas, Tablero[2][8].Piezas,Tablero[3][8].Piezas,Tablero[4][8].Piezas,Tablero[5][8].Piezas,Tablero[6][8].Piezas,Tablero[7][8].Piezas,Tablero[8][8].Piezas] ,
                     
-    ]);*/
-}
+    ]);
+}*/
