@@ -186,10 +186,11 @@ class servidor
     {
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL InfoUsuario()";
+        $sql = "CALL InfoUsuarios()";
         $stmts = $conn->prepare($sql);
 
         if ($stmts->execute()) {
+            
             $stmts->store_result();
             $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
             while ($stmts->fetch()) {

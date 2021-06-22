@@ -2,7 +2,6 @@
   include '../servidor.php';
   $server= new servidor();
   session_start();
-  $server->VerificoSesion($_SESSION['tipo']);
 
   list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($_SESSION['usuario']);
 
@@ -31,6 +30,12 @@
     $Menos_Movimientos = 0;
   }
 
+
+  if(isset($_GET['Usuario'])){
+    $usuario = $_GET['Usuario'];
+  }else{
+    $usuario = "";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +61,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../styles/styles.css" />
 
-    <title>ChessUY | Mi Perfil</title>
+    <title>ChessUY | 
+
+      <?php
+            if($usuario != null){
+              echo $usuario;
+            }else{
+              echo "Perfil";
+            } 
+      ?>
+
+    </title>
   </head>
   <body>
 
@@ -101,7 +116,14 @@
                     ?>
                     </div>
                   </div>
-                  <a href=""><i class="fas fa-edit"></i> Editar Perfil</a>
+                  <?php
+
+                  if($usuario == $_SESSION['usuario']){
+                    echo '<a href=""><i class="fas fa-edit"></i> Editar Perfil</a>';
+                  }
+
+                  ?>
+                  
             </div>
 
             <section class="trofeos-wrapper">
