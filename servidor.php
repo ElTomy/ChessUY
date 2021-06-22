@@ -186,10 +186,11 @@ class servidor
     {
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL InfoUsuario()";
+        $sql = "CALL InfoUsuarios()";
         $stmts = $conn->prepare($sql);
 
         if ($stmts->execute()) {
+            
             $stmts->store_result();
             $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
             while ($stmts->fetch()) {
@@ -199,6 +200,30 @@ class servidor
             $stmts->close();
         }
         return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function PerfilUsuario($user)
+    {
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL PerfilUsuario(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $user);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+            while ($stmts->fetch()) {
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                return $data;
+            }
+            $stmts->close();
+        }
+        return false;
     }
     //
     //

@@ -5,6 +5,8 @@
         </a>        
     </div>
     <div class="nav-links">
+
+            <a class="search" href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>
         
             <?php
                 session_start();
@@ -27,7 +29,7 @@
                                     echo "<p class='tipo-profile'>$tipo</p>
                                     </div>
                                 </a>
-                                <a class='cerrarsesion' onclick='cerrarSesion()'><i class='fas fa-door-open'></i> CERRAR SESIÓN</a>
+                                <a class='cerrarsesion' onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>
                             </div>";
                 }else{
                     echo "<div class='loginregister'>

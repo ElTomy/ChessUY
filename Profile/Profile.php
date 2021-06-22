@@ -2,9 +2,23 @@
   include '../servidor.php';
   $server= new servidor();
   session_start();
-  $server->VerificoSesion($_SESSION['tipo']);
 
-  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($_SESSION['usuario']);
+  if(isset($_GET['Usuario'])){
+
+    $usuario = $_GET['Usuario'];
+    $usuario_info = $server->PerfilUsuario($usuario);
+
+    list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+
+  }else{
+
+    $usuario = "";
+    $usuario_info = $server->PerfilUsuario($_SESSION['usuario']);
+
+    list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($_SESSION['usuario']);
+
+  }
+
 
   if($ELO == null){
     $ELO = 0;
@@ -30,7 +44,6 @@
   if($Menos_Movimientos == null){
     $Menos_Movimientos = 0;
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +69,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../styles/styles.css" />
 
-    <title>ChessUY | Mi Perfil</title>
+    <title>ChessUY | 
+
+      <?php
+            if($usuario != null){
+              echo $usuario;
+            }else{
+              echo "Perfil";
+            } 
+      ?>
+
+    </title>
   </head>
   <body>
 
@@ -87,21 +110,33 @@
                     </div>
                     <div class="profile-avatar-body">
                     <?php
-                      echo "<p>" . $_SESSION['usuario'] . "</p>";
-                      if($_SESSION['tipo'] == 0){
+                      echo "<p>" . $usuario_info['usuario'] . "</p>";
+                      if($usuario_info['tipo'] == 0){
                         $tipo = "<i class='fas fa-star'></i> Administrador";
-                      }else if($_SESSION['tipo'] == 1){
+                      }else if($usuario_info['tipo'] == 1){
                         $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
-                      }else if($_SESSION['tipo'] == 2){
+                      }else if($usuario_info['tipo'] == 2){
                         $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-                      }else if($_SESSION['tipo'] == 3){
+                      }else if($usuario_info['tipo'] == 3){
                         $tipo = "<i class='fas fa-microphone'></i> Periodista";
                       }
                       echo "<p class='tipo-profile'>$tipo</p>";
                     ?>
                     </div>
                   </div>
-                  <a href=""><i class="fas fa-edit"></i> Editar Perfil</a>
+                  <?php
+
+                  if(isset($_SESSION['usuario'])){
+                    if($usuario_info['usuario'] == $_SESSION['usuario']){
+                      echo '<a href=""><i class="fas fa-edit"></i> Editar Perfil</a>';
+                    }
+                  }else{
+
+                  }
+                  
+
+                  ?>
+                  
             </div>
 
             <section class="trofeos-wrapper">

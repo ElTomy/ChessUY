@@ -158,6 +158,21 @@ header .nav-links .header-session .cerrarsesion {
   cursor: pointer;
 }
 
+header .nav-links .search {
+  border-radius: 30px;
+  background-color: #0076be;
+  color: white;
+  margin: 0 20px;
+  padding: 10px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+header .nav-links .search:hover {
+  background-color: #002e4b;
+}
+
 header .nav-links a {
   text-decoration: none;
   color: #0076be;
@@ -401,6 +416,7 @@ footer .footer-body .cyberhydra img {
 
 .modal {
   position: absolute;
+  top: 0;
   z-index: 10;
   width: 100%;
   height: 100vh;
@@ -1930,6 +1946,235 @@ img {
 .profile-wrapper .profile-body .profile-avatar .profile-body-picture i {
   color: white;
   font-size: 30px;
+}
+
+/*
+
+
+Buscar Jugadores
+
+
+*/
+.search-wrapper {
+  width: 100%;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.search-wrapper .search-list {
+  width: 40%;
+  padding: 20px 0;
+  background-color: #111;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.search-wrapper .search-list .search-logo {
+  margin-bottom: 20px;
+}
+
+.search-wrapper .search-list .search-logo img {
+  width: 300px;
+}
+
+.search-wrapper .search-list .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.search-wrapper .search-list .search .search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3rem;
+  background-color: #0076be;
+}
+
+.search-wrapper .search-list .search .search-bar i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: #222;
+  border-radius: 50%;
+}
+
+.search-wrapper .search-list .search .search-bar input {
+  margin-left: 10px;
+  height: 40px;
+  width: calc(100% - 50px);
+  background-color: #222;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: white;
+  text-indent: 10px;
+}
+
+.search-wrapper .search-list .search .search-box {
+  padding: 10px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper {
+  width: 500px;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player {
+  width: 300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80px 1fr;
+      grid-template-columns: 80px 1fr;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper .player-img {
+  width: 80px;
+  height: 80px;
+  background-color: #0076be;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper .player-img i {
+  color: white;
+  font-size: 25px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .player-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  margin-left: 20px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .player-body p {
+  color: #fcba03;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button {
+  width: 120px;
+  color: white;
+  background-color: #0076be;
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button i {
+  margin-right: 10px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button:hover {
+  background-color: #333;
+  color: #fcba03;
+}
+
+.search-wrapper .search-list h1 {
+  color: white;
+  font-weight: lighter;
+}
+
+.search-wrapper .search-list hr {
+  margin: 20px 0;
+  width: 80%;
+  border: 1px solid white;
 }
 
 /*
