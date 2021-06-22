@@ -11,5 +11,6 @@ $( document ).ready(function(){
 });
 
 function perfil(usuario){
+    usuario = usuario.charAt(0).toUpperCase() + usuario.slice(1);
     location.href = usuario;
 }

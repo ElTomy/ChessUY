@@ -3,21 +3,10 @@
   $server= new servidor();
   session_start();
 
-  if(isset($_GET['Usuario'])){
+  $usuario = $_GET['Usuario'];
+  $usuario_info = $server->PerfilUsuario($usuario);
 
-    $usuario = $_GET['Usuario'];
-    $usuario_info = $server->PerfilUsuario($usuario);
-
-    list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
-
-  }else{
-
-    $usuario = "";
-    $usuario_info = $server->PerfilUsuario($_SESSION['usuario']);
-
-    list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($_SESSION['usuario']);
-
-  }
+  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
 
 
   if($ELO == null){
@@ -72,10 +61,10 @@
     <title>ChessUY | 
 
       <?php
-            if($usuario != null){
-              echo $usuario;
+            if($usuario == $_SESSION['usuario']){
+              echo "Mi Perfil";
             }else{
-              echo "Perfil";
+              echo $usuario;
             } 
       ?>
 
