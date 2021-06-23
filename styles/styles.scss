@@ -1765,6 +1765,59 @@ Buscar Jugadores
           width: 80%;
         }
       }
+      .jugadores{
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .JugadorUno, .JugadorDos{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 15px;
+
+          .jugador-img{
+            width: 50px;
+            height: 50px;
+            background-color: #0076be;
+            border-radius: 50%;
+            margin: 0 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i{
+              color: white;
+              font-size: 20px;
+            }
+          }
+
+          .jugador-body{
+            width: 110px;
+            h1{
+              color: white;
+              margin: 0;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: 20px;
+            }
+            p{
+              margin: 2px 0;
+              color: #0076be;
+              font-size: 13px;
+            }
+          }
+        }
+
+        .JugadorDos{
+          .jugador-body{
+            text-align: right;
+          }
+        }
+      }
       .movimientos-board{
         width: 90%;
         height: 90%;
@@ -1787,6 +1840,26 @@ Buscar Jugadores
   .profile-wrapper .profile-body {
     .profile-grid {
       grid-template-columns: 1fr 25vw;
+    }
+  }
+}
+@media screen and (max-width: 1380px) {
+  .board-wrapper{
+    .board{
+      .movimientos{
+        .jugadores{
+          flex-direction: column;
+          .JugadorUno, .JugadorDos{
+            width: 100%;
+          }
+          .JugadorUno{
+            justify-content: flex-start;
+          }
+          .JugadorDos{
+            justify-content: flex-end;
+          }
+        }
+      }
     }
   }
 }
