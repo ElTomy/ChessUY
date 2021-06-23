@@ -1771,6 +1771,10 @@ Buscar Jugadores
         justify-content: space-between;
         align-items: center;
 
+        a{
+          text-decoration: none;
+        }
+
         .JugadorUno, .JugadorDos{
           display: flex;
           justify-content: center;
@@ -1803,6 +1807,7 @@ Buscar Jugadores
               overflow: hidden;
               text-overflow: ellipsis;
               font-size: 20px;
+              transition: 0.2s;
             }
             p{
               margin: 2px 0;
@@ -1812,6 +1817,10 @@ Buscar Jugadores
           }
         }
 
+        .JugadorUno:hover h1, .JugadorDos:hover h1{
+          color: #0076be;
+        }
+        
         .JugadorDos{
           .jugador-body{
             text-align: right;

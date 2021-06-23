@@ -135,6 +135,12 @@ for($y = 1; $y <= 8; $y++){
         $Ajedrez .= '</div>';
     }
 }
+
+/*
+
+En la parte donde hace el <a href="/ChessUY/Profile/ByJuanii <-- aca hay que poner el nombre del Usuario ej: "ByJuanii";
+
+*/
 $Ajedrez .='            </div>
                         </div>
                     </div>
@@ -154,25 +160,29 @@ $Ajedrez .='            </div>
                     <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <div class="jugadores">
-                    <div class="JugadorUno">
-                        <div class="jugador-img">
-                            <i class="fas fa-user"></i>
+                    <a href="/ChessUY/Profile/ByJuanii">
+                        <div class="JugadorUno">
+                            <div class="jugador-img">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="jugador-body">
+                                <h1>ByJuanii</h1>
+                                <p><i class="fas fa-star"></i> Administrador</p>
+                            </div>
                         </div>
-                        <div class="jugador-body">
-                            <h1>ByJuanii</h1>
-                            <p><i class="fas fa-star"></i> Administrador</p>
-                        </div>
-                    </div>
+                    </a>
                     <h1>-</h1>
-                    <div class="JugadorDos">
-                        <div class="jugador-body">
-                            <h1>Jugador 2</h1>
-                            <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                    <a href="/ChessUY/Profile/ByJuanii">
+                        <div class="JugadorDos">
+                            <div class="jugador-body">
+                                <h1>Jugador 2</h1>
+                                <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                            </div>
+                            <div class="jugador-img">
+                                <i class="fas fa-user"></i>
+                            </div>
                         </div>
-                        <div class="jugador-img">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <h1>Movimientos</h1>
                 <table>

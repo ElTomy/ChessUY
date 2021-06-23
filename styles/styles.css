@@ -2601,6 +2601,10 @@ Buscar Jugadores
           align-items: center;
 }
 
+.board-wrapper .board .movimientos .jugadores a {
+  text-decoration: none;
+}
+
 .board-wrapper .board .movimientos .jugadores .JugadorUno, .board-wrapper .board .movimientos .jugadores .JugadorDos {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2647,12 +2651,18 @@ Buscar Jugadores
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 20px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body p, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body p {
   margin: 2px 0;
   color: #0076be;
   font-size: 13px;
+}
+
+.board-wrapper .board .movimientos .jugadores .JugadorUno:hover h1, .board-wrapper .board .movimientos .jugadores .JugadorDos:hover h1 {
+  color: #0076be;
 }
 
 .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body {
