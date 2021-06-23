@@ -185,20 +185,23 @@ $Ajedrez .='            </div>
                     </a>
                 </div>
                 <h1>Movimientos</h1>
-                <table>
-                    <tr>
-                    <th>Pieza</th>
-                    <th>Movimiento</th>
-                    </tr>
-                    <tr>
-                    <td><i id="Blanco" class="fas fa-chess-pawn"></i></td>
-                    <td>A4</td>
-                    </tr>
-                    <tr>
-                    <td><i id="Negro" class="fas fa-chess-pawn"></i></td>
-                    <td>E6</td>
-                    </tr>
-                </table>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Pieza</th>
+                            <th>Movimiento</th>
+                        </tr>
+                        
+                        <tr>
+                            <td><i id="Blanco" class="fas fa-chess-pawn"></i></td>
+                            <td>A4</td>
+                        </tr>
+                        <tr>
+                            <td><i id="Negro" class="fas fa-chess-pawn"></i></td>
+                            <td>E6</td>
+                        </tr>
+                    </table>
+                </div>
 
                 </div>';
 
