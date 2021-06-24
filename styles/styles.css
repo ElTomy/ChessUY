@@ -2056,10 +2056,10 @@ Buscar Jugadores
       -ms-flex-align: center;
           align-items: center;
   width: 300px;
-  padding: 10px;
+  padding: 5px;
   margin: 10px;
   border-radius: 3rem;
-  background-color: #0076be;
+  background-color: #444;
 }
 
 .search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar i {
