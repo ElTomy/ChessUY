@@ -24,7 +24,7 @@
                                 "</div>
                             </div>
                             <div class='profileButton'>
-                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i> Perfil</button>
+                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>
                             </div>
                         </div>";
     }

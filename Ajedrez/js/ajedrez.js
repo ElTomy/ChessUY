@@ -101,6 +101,8 @@ function boardsize(){
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
 
+            $(".movimientos").css ('height', board_height);
+
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
 
@@ -117,6 +119,8 @@ function boardsize(){
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
+
+            $(".movimientos").css ('height', (board_height - 20));
 
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);

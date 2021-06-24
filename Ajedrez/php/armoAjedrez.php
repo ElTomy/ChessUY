@@ -8,7 +8,24 @@ $Turnos = isset($_POST['Turno']);
 
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
-$Ajedrez = "";
+$Ajedrez = '    <div class="mobile-img">
+                    <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                </div>
+                <div class="first-player-mobile">
+                    <div class="first-player-wrapper">
+                        <div class="profile-body-picture">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-avatar-body">
+                            <h1>ByJuanii</h1>
+                            <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                        </div>
+                    </div>
+                    <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
+                </div>
+                <div class="ajedrez-flex">
+                    <div class="ajedrez-wrapper">
+                        <div class="ajedrez">';
 
 
 for($y = 1; $y <= 8; $y++){
@@ -114,9 +131,80 @@ for($y = 1; $y <= 8; $y++){
             }
             
         }
-        $Ajedrez .='</div>';
+        
+        $Ajedrez .= '</div>';
     }
 }
+
+/*
+
+En la parte donde hace el <a href="/ChessUY/Profile/ByJuanii <-- aca hay que poner el nombre del Usuario ej: "ByJuanii";
+
+*/
+$Ajedrez .='            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-player-mobile">
+                    <div class="profile-body-picture">
+                    <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-avatar-body">
+                    <h1>ByJuanii</h1>
+                    <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                    </div>
+                </div>
+
+                <div class="movimientos">
+                <div class="movimientos-img">
+                    <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                </div>
+                <div class="jugadores">
+                    <a href="/ChessUY/Profile/ByJuanii">
+                        <div class="JugadorUno">
+                            <div class="jugador-img">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="jugador-body">
+                                <h1>ByJuanii</h1>
+                                <p><i class="fas fa-star"></i> Administrador</p>
+                            </div>
+                        </div>
+                    </a>
+                    <h1>-</h1>
+                    <a href="/ChessUY/Profile/ByJuanii">
+                        <div class="JugadorDos">
+                            <div class="jugador-body">
+                                <h1>Jugador 2</h1>
+                                <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                            </div>
+                            <div class="jugador-img">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h1>Movimientos</h1>
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th>Pieza</th>
+                            <th>Movimiento</th>
+                        </tr>
+                        
+                        <tr>
+                            <td><i id="Blanco" class="fas fa-chess-pawn"></i></td>
+                            <td>A4</td>
+                        </tr>
+                        <tr>
+                            <td><i id="Negro" class="fas fa-chess-pawn"></i></td>
+                            <td>E6</td>
+                        </tr>
+                    </table>
+                </div>
+
+                </div>';
+
 echo $Ajedrez;
 
 ?>

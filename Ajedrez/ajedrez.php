@@ -43,59 +43,7 @@
     </div>
 
     <section class="board-wrapper">
-      <div class="board">
-        <div class="mobile-img">
-          <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
-        </div>
-        <div class="first-player-mobile">
-            <div class="first-player-wrapper">
-              <div class="profile-body-picture">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="profile-avatar-body">
-                <h1>ByJuanii</h1>
-                <p><i class="fas fa-chess-knight"></i> Jugador</p>
-              </div>
-            </div>
-            <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
-        </div>
-        <div class="ajedrez-flex">
-          <div class="ajedrez-wrapper">
-            <div class="ajedrez" id= "ArmoAjedrez">
-            </div>
-          </div>
-        </div>
-        <div class="second-player-mobile">
-            <div class="profile-body-picture">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="profile-avatar-body">
-              <h1>ByJuanii</h1>
-              <p><i class="fas fa-chess-knight"></i> Jugador</p>
-            </div>
-        </div>
-
-        <div class="movimientos">
-          <div class="movimientos-img">
-            <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
-          </div>
-          <h1>Movimientos</h1>
-          <table>
-            <tr>
-              <th>Pieza</th>
-              <th>Movimiento</th>
-            </tr>
-            <tr>
-              <td><i id="Blanco" class="fas fa-chess-pawn"></i></td>
-              <td>A4</td>
-            </tr>
-            <tr>
-              <td><i id="Negro" class="fas fa-chess-pawn"></i></td>
-              <td>E6</td>
-            </tr>
-          </table>
-
-        </div>
+      <div class="board" id="ArmoAjedrez">
       </div>
     </section>
 

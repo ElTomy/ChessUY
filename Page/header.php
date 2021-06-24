@@ -13,7 +13,7 @@
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
-                                <a class='profile' href='/ChessUY/Profile/Profile.php'>
+                                <a class='profile' href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'>
                                     <div class='session-image'><i class='fas fa-user'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
@@ -73,9 +73,11 @@
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "  <a href='/ChessUY/Profile/Profile.php'><i class='fas fa-address-card'></i> Mi Perfil</a>
+                            <a class='search' href='/ChessUY/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
                             <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{
-                    echo "<a href='/ChessUY/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
+                    echo "<a class='search' href='/ChessUY/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
+                          <a href='/ChessUY/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
                           <a href='/ChessUY/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
