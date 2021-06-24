@@ -1,8 +1,11 @@
 <?php
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
-$jugadas = isset($_POST['Jugadas']);
-$Turnos = isset($_POST['Turno']);
+if(isset($_POST['Jugadas'])){
+    $jugadas = $_POST['Jugadas'];
+    echo $jugadas[1]["simbolo"];
+}
+$Turnos = $_POST['Turno'];
 
 
 
@@ -190,17 +193,123 @@ $Ajedrez .='            </div>
                         <tr>
                             <th>Pieza</th>
                             <th>Movimiento</th>
-                        </tr>
-                        
-                        <tr>
-                            <td><i id="Blanco" class="fas fa-chess-pawn"></i></td>
-                            <td>A4</td>
-                        </tr>
-                        <tr>
-                            <td><i id="Negro" class="fas fa-chess-pawn"></i></td>
-                            <td>E6</td>
-                        </tr>
-                    </table>
+                        </tr>';
+                        for($i = 1;$i<$Turnos;$i++){
+                        $s = $jugadas[$i]['simbolo'];
+                        switch($jugadas[$i]['Piezas']){
+    
+                            case "t":
+                                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
+                                break;
+                            case "tn":
+                                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
+                                break;
+            
+                            case "c":
+                                $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
+                                break;
+                            case "cn":
+                                $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
+                                break;
+            
+                            case "a":
+                                $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
+                                break;
+                            case "an":
+                                $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
+                                break;
+        
+                            case "d":
+                                $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
+                                break;
+                            case "dn":
+                                $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
+                                break;
+    
+                            case "r":
+                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
+                                break;
+                            case "rn":
+                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
+                                break;
+
+                            case "p":
+                                $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
+                                break;
+                            case "pn":
+                                $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
+                                break;
+
+                                default:
+                                $img = "";
+                            }
+                            switch($jugadas[$i]['Ejey']){
+
+                                case 1:
+                                    $p = 8;
+                                    break;
+                                case 2:
+                                    $p = 7;
+                                    break;
+                
+                                case 3:
+                                    $p = 6;
+                                    break;
+                                case 4:
+                                    $p = 5;
+                                    break;
+                
+                                case 5:
+                                    $p = 4;
+                                    break;
+                                case 6:
+                                    $p = 3;
+                                    break;
+            
+                                case 7:
+                                    $p = 2;
+                                    break;
+                                case 8:
+                                    $p = 1;
+                                    break;
+                            }
+                            switch($jugadas[$i]['Ejex']){
+
+                                case 1:
+                                    $j = "A";
+                                    break;
+                                case 2:
+                                    $j = "B";
+                                    break;
+                
+                                case 3:
+                                    $j = "C";
+                                    break;
+                                case 4:
+                                    $j = "D";
+                                    break;
+                
+                                case 5:
+                                    $j = "E";
+                                    break;
+                                case 6:
+                                    $j = "F";
+                                    break;
+            
+                                case 7:
+                                    $j = "G";
+                                    break;
+                                case 8:
+                                    $j = "H";
+                                    break;
+                            }
+                            $Ajedrez .=' <tr>
+                            <td>'.$img.'</td>';
+                            echo $s;
+                            $Ajedrez .='<td>'.$j.$p.$s.'</td>';
+                            $Ajedrez .='</tr>';
+                        }
+                        $Ajedrez .=' </table>
                 </div>
 
                 </div>';

@@ -340,72 +340,51 @@ function seleccionar(x,y){
         }
     }else{
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
-          
+            if(Tablero[x][y].Piezas != null){
+                simbolo = "x";
+            }
            if((seleccionado.Contenido == "p"||seleccionado.Contenido == "pn")&&(y == 1||y == 8)){
                 sel= seleccionado.Contenido;
                 Coronacion(x,y,sel);
-                simbolo = "=";
-                if(Tablero[x][y].Piezas != null){
-                    simbolo = simbolo + ",x";
+                if(simbolo != null){
+                    simbolo = simbolo + "=";
+                }else{
+                    simbolo =  "=";
                 }
-                    Jugadas[Turno] = {
-                        Piezas: seleccionado.Contenido,
-                        color: seleccionado.color,
-                        Ejex: x,
-                        Ejey: y,
-                        simbolo: simbolo,
-                    }
                }else{
-                   if(Tablero[x][y].Piezas != null){
-                    simbolo = simbolo + "x";
-                    Jugadas[Turno] = {
-                        Piezas: seleccionado.Contenido,
-                        color: seleccionado.color,
-                        Ejex: x,
-                        Ejey: y,
-                        simbolo: "x",
+            /*
+                if(Enroque[1].Piezas != null || Enroque[2].Piezas != null){
+                let ax;
+                let p;
+                    if(x == 7){
+                    ax = Enroque[1].x;
+                    p = Enroque[1].p;
+                    }else{
+                    ax = Enroque[2].x;
+                    p = Enroque[2].p;
                     }
-                   }else{
-                       if(Enroque[1].Piezas != null || Enroque[2].Piezas != null){
-                        let ax;
-                        let p;
-                           if(x == 7){
-                            ax = Enroque[1].x;
-                            p = Enroque[1].p;
-                           }else{
-                            ax = Enroque[2].x;
-                            p = Enroque[2].p;
-                           }
-                        let ay = Enroque.y;
-                        let q = Enroque.q;
-                        Tablero[ax][ay] = {
-                            Piezas: null,
-                            color: null,
-                            Ejex: ax,
-                            Ejey: ay,
-                        }
-                        Tablero[p][q] = {
-                            Piezas: Enroque.Piezas,
-                            color: Enroque.Color,
-                            Ejex: p,
-                            Ejey: q,
-                        };
-                        simbolo = Enroque.Simbolo;
-                       }
-                    Jugadas[Turno] = {
-                        Piezas: seleccionado.Contenido,
-                        color: seleccionado.color,
-                        Ejex: x,
-                        Ejey: y,
-                        simbolo: simbolo,
-                    }
-                   }
-                    Tablero[x][y] = {
-                        Piezas: seleccionado.Contenido,
-                        color: seleccionado.color,
-                        Ejex: x,
-                        Ejey: y,
-                    }
+                let ay = Enroque.y;
+                let q = Enroque.q;
+                Tablero[ax][ay] = {
+                    Piezas: null,
+                    color: null,
+                    Ejex: ax,
+                    Ejey: ay,
+                }
+                Tablero[p][q] = {
+                    Piezas: Enroque.Piezas,
+                    color: Enroque.Color,
+                    Ejex: p,
+                    Ejey: q,
+                };
+                simbolo = Enroque.Simbolo;
+                }*/
+            Tablero[x][y] = {
+                Piezas: seleccionado.Contenido,
+                color: seleccionado.color,
+                Ejex: x,
+                Ejey: y,
+            }
                }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
@@ -413,9 +392,6 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
-            simbolo = null;
-            Turno = Turno + 1;
-           
             armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
@@ -431,8 +407,8 @@ function seleccionar(x,y){
                 }
             }
         }
-        console.log(Jugadas);
         sel= seleccionado.Contenido;
+        selc= seleccionado.color;
         seleccionado = null;
         Enroque[1,2] = {
             x: null,
@@ -446,6 +422,17 @@ function seleccionar(x,y){
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
+        console.log(Jugadas);
+        Jugadas[Turno] = {
+            Piezas: sel,
+            color: selc,
+            Ejex: x,
+            Ejey: y,
+            simbolo: simbolo,
+        }
+        simbolo = null;
+        Turno = Turno + 1;
+       
         armoAjedrez();
       
     }
@@ -1298,20 +1285,14 @@ function Jaque(x,y, sel){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
                     console.log("JAQUE")
-                    simbolo = "+";
-                    if(Tablero[x][y].Piezas != null){
-                        simbolo = simbolo + ",x";
+                    if(simbolo != null){
+                        simbolo = simbolo + "+";
+                    }else{
+                        simbolo = "+";
                     }
                     jaque = true;
                     var a = p;
                     var b = q;
-                    Jugadas[Turno] = {
-                        Piezas: sel,
-                        color: color,
-                        Ejex: x,
-                        Ejey: y,
-                        simbolo: simbolo,
-                    }
                     break;
              }
             }
@@ -1473,7 +1454,7 @@ function JaqueMate(a,b,sel, x,y, colorR){
 //
 //
 function muestrotablero(){
-    console.table([ [Tablero[1][1].Piezas, Tablero[2][1].Piezas,Tablero[3][1].Piezas,Tablero[4][1].Piezas,Tablero[5][1].Piezas,Tablero[6][1].Piezas,Tablero[7][1].Piezas,Tablero[8][1].Piezas] ,
+   /* console.table([ [Tablero[1][1].Piezas, Tablero[2][1].Piezas,Tablero[3][1].Piezas,Tablero[4][1].Piezas,Tablero[5][1].Piezas,Tablero[6][1].Piezas,Tablero[7][1].Piezas,Tablero[8][1].Piezas] ,
                     [Tablero[1][2].Piezas, Tablero[2][2].Piezas,Tablero[3][2].Piezas,Tablero[4][2].Piezas,Tablero[5][2].Piezas,Tablero[6][2].Piezas,Tablero[7][2].Piezas,Tablero[8][2].Piezas] ,
                     [Tablero[1][3].Piezas, Tablero[2][3].Piezas,Tablero[3][3].Piezas,Tablero[4][3].Piezas,Tablero[5][3].Piezas,Tablero[6][3].Piezas,Tablero[7][3].Piezas,Tablero[8][3].Piezas] ,
                     [Tablero[1][4].Piezas, Tablero[2][4].Piezas,Tablero[3][4].Piezas,Tablero[4][4].Piezas,Tablero[5][4].Piezas,Tablero[6][4].Piezas,Tablero[7][4].Piezas,Tablero[8][4].Piezas] ,
@@ -1482,5 +1463,5 @@ function muestrotablero(){
                     [Tablero[1][7].Piezas, Tablero[2][7].Piezas,Tablero[3][7].Piezas,Tablero[4][7].Piezas,Tablero[5][7].Piezas,Tablero[6][7].Piezas,Tablero[7][7].Piezas,Tablero[8][7].Piezas] ,
                     [Tablero[1][8].Piezas, Tablero[2][8].Piezas,Tablero[3][8].Piezas,Tablero[4][8].Piezas,Tablero[5][8].Piezas,Tablero[6][8].Piezas,Tablero[7][8].Piezas,Tablero[8][8].Piezas] ,
                     
-    ]);
+    ]);*/
 }
