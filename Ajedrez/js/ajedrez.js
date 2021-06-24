@@ -1267,7 +1267,11 @@ for(i = 1;i <= 8; i++){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-var jaque;
+var jaque = {
+    jaque: null,
+    x: null,
+    y: null,
+}
 function Jaque(x,y, sel){
    
     // llamo a movimiento para generar movimiento en nueva posicion
@@ -1290,15 +1294,18 @@ function Jaque(x,y, sel){
                     }else{
                         simbolo = "+";
                     }
-                    jaque = true;
-                    var a = p;
-                    var b = q;
+                    jaque = {
+                        jaque: true,
+                        color:color,
+                        x: x,
+                        y: y,
+                    }
                     break;
              }
             }
         }  
        }
-       
+       console.log(jaque)
        //comprobar jaquemate
        //if(jaque == true){
        //     JaqueMate(a,b,sel);

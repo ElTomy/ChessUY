@@ -61,8 +61,12 @@
     <title>ChessUY | 
 
       <?php
-            if($usuario == $_SESSION['usuario']){
-              echo "Mi Perfil";
+            if(isset($_SESSION['usuario'])){
+              if($usuario == $_SESSION['usuario']){
+                echo "Mi Perfil";
+              }else{
+                echo $usuario;
+              }
             }else{
               echo $usuario;
             } 
@@ -117,7 +121,7 @@
 
                   if(isset($_SESSION['usuario'])){
                     if($usuario_info['usuario'] == $_SESSION['usuario']){
-                      echo '<a href=""><i class="fas fa-edit"></i> Editar Perfil</a>';
+                      echo '<a href="/ChessUY/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 
