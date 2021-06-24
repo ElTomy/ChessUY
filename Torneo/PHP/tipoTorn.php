@@ -4,12 +4,127 @@ if(isset($_POST['opt'])) {
     $opt = $_POST['opt'];
 }
 
+//Codigo de agenda
+$agenHTML = '
+<div style="width: 60%; height: 100%;">
+    <div style="width: 98%; height: 78%; border: solid grey; border-width: 1px; border-radius: 20px; padding: 1%;">
+        AGENDA
+    </div>
+    <div style="width: 98%; height: 16%; padding: 4% 0% 0% 0%; text-align: center;">
+        <p>A que hora debe cambiar?</p>
+        <input type="time">
+    </div>
+</div>
+<div style="width: 38%; height: 100%; padding: 2%;">
+    <div style="width: 100%; height: 26.6%; text-align: center;">
+        <div style="width: 30px; height: 30px; border-radius: 20px; background-color: red; margin: auto;"></div>
+        Comienzo de las inscripciones
+    </div>
+    <div style="width: 100%; height: 26.6%; text-align: center;">
+        <div style="width: 30px; height: 30px; border-radius: 20px; background-color: orange; margin: auto;"></div>
+        Fin de las inscripciones
+    </div>
+    <div style="width: 100%; height: 26.6%; text-align: center;">
+        <div style="width: 30px; height: 30px; border-radius: 20px; background-color: green; margin: auto;"></div>
+        Comienzo del torneo
+    </div>
+</div>
+';
+
+//Codigo de los tiempos
+$tiemHTML = '
+<div>
+    Tiempo para descalificar
+    <input type="text">
+</div>
+<div>
+    Tiempo total por jugador
+    <input type="text">
+</div>
+<div>
+    Cantidad de partidas por dia
+    <input type="number">
+</div>
+';
+
+//Codigo de opciones avanzadas
+$avanHTML = 0;
+
+//Codigo de premio
+$premHTML = '
+Premio
+<input type="text">
+';
+
+//Codigo para guardar y crear
+$guCrHTML = '
+<button>Guardar</button>
+<button>Crear</button>
+';
+
 if($opt == 'norm') {
-    echo 'Esta seria la configuracion normal';
+
+    echo '
+    <div style="width: 50%; height: 100%;">
+        <div style="height: 68%; border-radius: 20px; padding: 1%; display: flex;">'.
+//          Aca va la agenda
+            $agenHTML
+      .'</div>
+        <div style="height: 28%; border-radius: 20px; padding: 1%;">'.
+//          temp
+            $tiemHTML
+      .'</div>
+    </div>
+    <div style="width: 50%; height: 100%;">
+        <div style="height: 58%; background-color: rgba(255, 0, 0, 0.1); text-align: center; color: grey; border-radius: 20px; padding: 1%;">
+            (deshabilitado)
+        </div>
+        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+//          Premio
+            $premHTML
+      .'</div>
+        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+//          Guardar/Crear
+            $guCrHTML
+      .'</div>
+    </div>
+
+    ';
+
 } elseif($opt == 'avan') {
-    echo 'Esta seria la configuracion avanzada';
+    
+    echo '
+    <div style="width: 50%; height: 100%;">
+        <div style="height: 68%; border-radius: 20px; padding: 1%;">'.
+//          Aca va la agenda
+            $agenHTML
+      .'</div>
+        <div style="height: 28%; border-radius: 20px; padding: 1%;">'.
+//          temp
+            $tiemHTML
+      .'</div>
+    </div>
+    <div style="width: 50%; height: 100%;">
+        <div style="height: 58%; border-radius: 20px; padding: 1%;">'.
+//          Aca va la parte avanzada
+            $avanHTML
+      .'</div>
+        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+//          Premio
+            $premHTML
+      .'</div>
+        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+//          Guardar/Crear
+            $guCrHTML
+      .'</div>
+    </div>
+
+    ';
+
 } elseif($opt == 'pres') {
     echo 'Tendriamos que ver la BD';
+} else {
+    echo 'Hubo un error';
 }
 
 ?>

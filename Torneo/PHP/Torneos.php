@@ -38,24 +38,27 @@
 
 
     <section class="landing-page">
-      <div style='background-color: #292929; width: 85%; height: 700px; border-radius: 30px; padding: 1%;'>
+      <div style='background-color: #292929; width: 85%; height: 700px; border-radius: 30px; padding: 1%; margin: 1% 0% 1% 0%;'>
         <div style='text-align: center; padding: 1%; color: white;'>
           <h1>Crear Torneo</h1>
         </div>
         <hr>
-        <div style='padding: 2%; color: white; display: flex;'>
-          <div style='width: 20%; height: 600px;'>
+        <div style='padding-top: 2%; color: white; display: flex;'>
+          <div style='width: 20%; height: 600px; border: solid #292929; border-width: 1px;'>
             Tipo de Torneo:
-            <form action="/action_page.php">
+            <form>
               <select name="tipTorn" id="tipTorn" onchange='confTipo(this)'>
-                <option disabled selected value>Selecciona un tipo de torneo</option>
+                <option disabled selected>Selecciona un tipo de torneo</option>
                 <option value="norm">Normal</option>
                 <option value="avan">Avanzado</option>
                 <option value="pres">Crear preset??</option>
               </select>
             </form>
+            <div style='width: 100%; height: 91%; margin-top: 5%; background-color: #353535; border-radius: 20px;'>
+
+            </div>
           </div>
-          <div id='hola' style='width: 80%; height: 600px;'>
+          <div id='hola' style='width: 80%; height: 600px; margin-left: 1%; display: flex; border: solid grey; border-width: 1px; border-radius: 20px;'>
           </div>
         </div>
       </div>
