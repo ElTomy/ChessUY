@@ -179,7 +179,7 @@ header {
     display: none;
     transform: translateY(-120%);
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     top: 0;
     width: 100%;
     height: 100vh;
@@ -1335,7 +1335,7 @@ Buscar Jugadores
   flex-direction: column;
 
   .search-list{
-    max-width: 500px;
+    width: 1000px;
     padding: 20px 0;
     background-color: #111;
     border-radius: 30px;
@@ -1352,61 +1352,83 @@ Buscar Jugadores
       }
     }
     .search{
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
 
-      .search-bar{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .search-wrapper-body{
+        width: calc(100% - 40px);
+        background-color: #222;
+        border-radius: 30px;
 
-        width: 300px;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 3rem;
-        background-color: #0076be;
+        .search-bar-wrapper{
+          width: 100%;
 
-        i{
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 40px;
-          height: 40px;
-          color: white;
-          background-color: #222;
-          border-radius: 50%;
-        }
 
-        input{
-          margin-left: 10px;
-          height: 40px;
-          width: calc(100% - 50px);
-          background-color: #222;
-          border: none;
-          border-radius: 30px;
-
-          outline: none;
-          color: white;
-
-          text-indent: 10px;
+          .search-bar{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            width: 300px;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 3rem;
+            background-color: #444;
+    
+            i{
+              position: absolute;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 20px;
+              height: 20px;
+              color: white;
+              border-radius: 50%;
+              margin-right: -250px;
+            }
+    
+            input{
+              height: 40px;
+              width: 100%;
+              background-color: #333;
+              border: none;
+              border-radius: 30px;
+    
+              outline: none;
+              color: white;
+    
+              text-indent: 10px;
+            }
+          }
         }
       }
+
       .search-box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
         padding: 10px;
 
         .player-wrapper{
-          width: 100%;
-          margin: 10px 0;
+          margin: 10px 10px;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          background-color: #333;
+          border-radius: 5rem;
 
           .player{
-            width: 300px;
+            width: 100%;
             display: grid;
             grid-template-columns: 80px 1fr;
+            margin: 10px;
             
             .img-wrapper{
               display: flex;
@@ -1432,6 +1454,7 @@ Buscar Jugadores
             
   
             .player-body{
+              width: 180px;
               display: flex;
               justify-content: center;
               flex-direction: column;
@@ -1441,12 +1464,19 @@ Buscar Jugadores
               hyphens: auto;
               
               margin-left: 20px;
+
+              h1{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
               p{
                 color: #fcba03;
               }
             }
           }
           .profileButton{
+            margin: 10px;
             button{
               display: flex;
               justify-content: center;
@@ -1783,6 +1813,8 @@ Buscar Jugadores
         align-items: center;
 
         a{
+          width: 100%;
+
           text-decoration: none;
         }
 
@@ -1878,6 +1910,18 @@ Buscar Jugadores
           .JugadorDos{
             justify-content: flex-end;
           }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1050px) {
+  .search-wrapper{
+    .search-list{
+      width: 500px;
+      .search{
+        .search-box{
+          grid-template-columns: 1fr;
         }
       }
     }
@@ -2169,36 +2213,45 @@ Buscar Jugadores
     .search-list{
       width: 95%;
       .search{
-        .search-box{
-          width: 100%;
-          .player-wrapper{
-            .player{
-              width: 100%;
-              grid-template-columns: 50px 1fr;
-              .img-wrapper{
-                margin: 0;
-                .player-img{
-                  width: 50px;
-                  height: 50px;
+        .search-wrapper-body{
+          width: calc(100% - 10px);
+          .search-box{
+            padding: 0;
+            .player-wrapper{
+              .player{
+                width: 100%;
+                grid-template-columns: 50px 1fr;
+                .img-wrapper{
+                  margin: 0;
+                  .player-img{
+                    width: 50px;
+                    height: 50px;
+
+                    .logo{
+                      i{
+                        font-size: 15px;
+                      }
+                    }
+                  }
+                  
                 }
-                
+                .player-body{
+                  width: 100px;
+                  margin-left: 5px;
+                  h1{
+                    font-size: 18px;
+                  }
+                  p{
+                    font-size: 10px;
+                  }
+                }
               }
-              .player-body{
-                width: 150px;
-                margin-left: 5px;
-                h1{
-                  font-size: 20px;
+              .profileButton{
+                button{
+                  width: 100px;
+                  height: 40px;
+                  border-radius: 30px;
                 }
-                p{
-                  font-size: 12px;
-                }
-              }
-            }
-            .profileButton{
-              button{
-                width: 100px;
-                height: 40px;
-                border-radius: 30px;
               }
             }
           }
