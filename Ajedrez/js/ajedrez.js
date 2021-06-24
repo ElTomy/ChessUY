@@ -392,6 +392,7 @@ function seleccionar(x,y){
                 Ejex: seleccionado.Ejex,
                 Ejey: seleccionado.Ejey,
             }
+            var a = 0;
             armoAjedrez();
         }else{
             if(Tablero[x][y] != null){
@@ -410,7 +411,7 @@ function seleccionar(x,y){
         sel= seleccionado.Contenido;
         selc= seleccionado.color;
         seleccionado = null;
-        Enroque[1,2] = {
+        /*Enroque[1,2] = {
             x: null,
             y: null,
             p: null,
@@ -418,21 +419,23 @@ function seleccionar(x,y){
             Simbolo: null,
             Piezas: null,
             Color: null,
-        }
+        }*/
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
         console.log(Jugadas);
-        Jugadas[Turno] = {
-            Piezas: sel,
-            color: selc,
-            Ejex: x,
-            Ejey: y,
-            simbolo: simbolo,
+        if(a == 0){
+            Jugadas[Turno] = {
+                Piezas: sel,
+                color: selc,
+                Ejex: x,
+                Ejey: y,
+                simbolo: simbolo,
+            }
+            simbolo = null;
+            Turno = Turno + 1;
+            a = 1;
         }
-        simbolo = null;
-        Turno = Turno + 1;
-       
         armoAjedrez();
       
     }
