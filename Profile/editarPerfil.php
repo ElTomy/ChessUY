@@ -1,3 +1,15 @@
+<?php
+include '../servidor.php';
+$server= new servidor();
+session_start();
+$usuario = $_SESSION['usuario'];
+
+$usuario_info = $server->PerfilUsuario($usuario);
+
+$tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-chess-knight'></i> Jugador", "<i class='fas fa-ruler-horizontal'></i> Árbitro", "<i class='fas fa-microphone'></i> Periodista")
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +48,9 @@
         <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
+    <?php
 
+    $Perfil = '
     <section class="editarperfil-wrapper">
         <div class="editarperfil">
             <div class="editarperfil-body">
@@ -56,37 +70,37 @@
                             </a>
                         </div>
 
-                        <h1>ByJuanii</h1>
-                        <p><i class="fas fa-star"></i> Administrador</p>
+                        <h1>' . $usuario_info["usuario"] . '</h1>
+                        <p>' . $tipo[$usuario_info["tipo"]] . '</p>
                     </div>
                     <div class="editarperfil-body-wrapper">
                         <h1 class="titulos-divisiones">Nombre de Usuario</h1>
                         <hr class="lineadivisora">
                         <div class="inputs">
-                            <label>Usuario: </label> <input type="text" placeholder="Usuario" value="ByJuanii">
+                            <label>Usuario: </label> <input type="text" placeholder="Usuario" value="' . $usuario_info["usuario"] . '">
                         </div>
                         <h1 class="titulos-divisiones">Información Personal</h1>
                         <hr class="lineadivisora">
                         <div class="inputs">
-                            <label>Nombre: </label> <input type="text" placeholder="Nombre" value="Juan" disabled>
+                            <label>Nombre: </label> <input type="text" placeholder="Nombre" value="' . $usuario_info["Nombre"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Apellido: </label> <input type="text" placeholder="Apellido" value="Morena" disabled>
+                            <label>Apellido: </label> <input type="text" placeholder="Apellido" value="' . $usuario_info["apellido"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Correo Electrónico: </label> <input type="text" placeholder="Email" value="thewolfmodzyt@gmail.com" disabled>
+                            <label>Correo Electrónico: </label> <input type="text" placeholder="Email" value="' . $usuario_info["Mail"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Institución: </label> <input type="text" placeholder="Institución" value="Liceo IEP" disabled>
+                            <label>Institución: </label> <input type="text" placeholder="Institución" value="' . $usuario_info["Institucion"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Año: </label> <input type="text" placeholder="Año" value="6" disabled>
+                            <label>Año: </label> <input type="text" placeholder="Año" value="' . $usuario_info["año"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Documento: </label> <input type="text" placeholder="Documento" value="1234567" disabled>
+                            <label>Documento: </label> <input type="text" placeholder="Documento" value="' . $usuario_info["ci"] . '" disabled>
                         </div>
                         <div class="inputs">
-                            <label>Celular: </label> <input type="text" placeholder="Documento" value="098234717" disabled>
+                            <label>Celular: </label> <input type="text" placeholder="Celular" value="' . $usuario_info["Contacto"] . '" disabled>
                         </div>
                         <h1 class="titulos-divisiones">Cambiar Contraseña</h1>
                         <hr class="lineadivisora">
@@ -107,7 +121,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>';
+    echo $Perfil;
+    ?>
 
     <div id="footer"></div>
   </body>
