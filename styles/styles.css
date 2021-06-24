@@ -2025,7 +2025,27 @@ Buscar Jugadores
           flex-direction: column;
 }
 
-.search-wrapper .search-list .search .search-bar {
+.search-wrapper .search-list .search .search-wrapper-body {
+  width: calc(100% - 40px);
+  background-color: #222;
+  border-radius: 30px;
+}
+
+.search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2037,12 +2057,12 @@ Buscar Jugadores
           align-items: center;
   width: 300px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   border-radius: 3rem;
   background-color: #0076be;
 }
 
-.search-wrapper .search-list .search .search-bar i {
+.search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2059,7 +2079,7 @@ Buscar Jugadores
   border-radius: 50%;
 }
 
-.search-wrapper .search-list .search .search-bar input {
+.search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar input {
   margin-left: 10px;
   height: 40px;
   width: calc(100% - 50px);
@@ -2072,7 +2092,6 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box {
-  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -2094,7 +2113,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player {
-  width: 300px;
+  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 80px 1fr;
@@ -2135,6 +2154,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body {
+  width: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2151,6 +2171,12 @@ Buscar Jugadores
       -ms-hyphens: auto;
           hyphens: auto;
   margin-left: 20px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .player .player-body h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body p {
@@ -3064,32 +3090,35 @@ Buscar Jugadores
   .search-wrapper .search-list {
     width: 95%;
   }
-  .search-wrapper .search-list .search .search-box {
-    width: 100%;
+  .search-wrapper .search-list .search .search-wrapper-body {
+    width: calc(100% - 10px);
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box {
+    padding: 0;
+  }
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player {
     width: 100%;
     -ms-grid-columns: 50px 1fr;
         grid-template-columns: 50px 1fr;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .img-wrapper {
     margin: 0;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper .player-img {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .img-wrapper .player-img {
     width: 50px;
     height: 50px;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body {
     width: 150px;
     margin-left: 5px;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body h1 {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body h1 {
     font-size: 20px;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body p {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body p {
     font-size: 12px;
   }
-  .search-wrapper .search-list .search .search-box .player-wrapper .profileButton button {
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .profileButton button {
     width: 100px;
     height: 40px;
     border-radius: 30px;
