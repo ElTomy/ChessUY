@@ -10,7 +10,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Profile/JS/buscarJugadores.js"></script>
     <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
 
@@ -22,7 +21,7 @@
     />
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Buscar</title>
+    <title>ChessUY | Editar Perfil</title>
   </head>
   <body>
     
@@ -38,59 +37,73 @@
       </video>
     </div>
 
-
-    <section class="search-wrapper">
-        <div class="search-list">
-            <div class="search-logo">
-                <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
-            </div>
-            <h1>Buscar Jugadores</h1>
-            <hr>
-
-            <div class="search">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Buscar Jugador">
+    <section class="editarperfil-wrapper">
+        <div class="editarperfil">
+            <div class="editarperfil-body">
+                <div class="editarperfil-logo">
+                    <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
-                <div class="search-box" id="search-box">
-
-
-                    <div class="player-wrapper">
-                        <div class="player">
-                            <div class="img-wrapper">
-                                <div class="player-img">
-                                    <div class="logo"><i class="fas fa-user"></i></div>
-                                </div>
+                <h1>Editar Perfil</h1>
+                <hr>
+                <div class="editarperfil-inputs">
+                    <div class="img-wrapper">
+                        <div class="img-editarperfil">
+                            <div class="editarperfil-img">
+                                <i class="fas fa-user"></i>
                             </div>
-                            <div class="player-body">
-                                <h1>ByJuanii</h1>
-                                <p><i class="fas fa-star"></i> Administrador</p>
-                            </div>
+                            <a href="" class="editarpefil-img-hover">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
                         </div>
-                        <div class="profileButton">
-                            <button><i class="fas fa-id-card"></i> Perfil</a>
+
+                        <h1>ByJuanii</h1>
+                        <p><i class="fas fa-star"></i> Administrador</p>
+                    </div>
+                    <div class="editarperfil-body-wrapper">
+                        <h1 class="titulos-divisiones">Nombre de Usuario</h1>
+                        <hr class="lineadivisora">
+                        <div class="inputs">
+                            <label>Usuario: </label> <input type="text" placeholder="Usuario" value="ByJuanii">
+                        </div>
+                        <h1 class="titulos-divisiones">Información Personal</h1>
+                        <hr class="lineadivisora">
+                        <div class="inputs">
+                            <label>Nombre: </label> <input type="text" placeholder="Nombre" value="Juan" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Apellido: </label> <input type="text" placeholder="Apellido" value="Morena" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Correo Electrónico: </label> <input type="text" placeholder="Email" value="thewolfmodzyt@gmail.com" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Institución: </label> <input type="text" placeholder="Institución" value="Liceo IEP" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Año: </label> <input type="text" placeholder="Año" value="6" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Documento: </label> <input type="text" placeholder="Documento" value="1234567" disabled>
+                        </div>
+                        <div class="inputs">
+                            <label>Celular: </label> <input type="text" placeholder="Documento" value="098234717" disabled>
+                        </div>
+                        <h1 class="titulos-divisiones">Cambiar Contraseña</h1>
+                        <hr class="lineadivisora">
+                        <div class="inputs" id="contraseña-anterior">
+                            <label>Contraseña Anterior: </label> <input type="password" placeholder="Contraseña Anterior">
+                        </div>
+                        <div class="inputs" id="contraseña-nueva">
+                            <label>Nueva Contraseña: </label> <input type="password" placeholder="Nueva Contraseña">
+                        </div>
+                        <div class="botonContra">
+                            <a href=""><i class="fas fa-key"></i> Cambiar Contraseña</a>
+                        </div>
+                        <hr class="lineadivisora">
+                        <div class="botonGuardar">
+                            <a href=""><i class="fas fa-save"></i> Guardar Cambios</a>
                         </div>
                     </div>
-
-                    <div class="player-wrapper">
-                        <div class="player">
-                            <div class="img-wrapper">
-                                <div class="player-img">
-                                    <div class="logo"><i class="fas fa-user"></i></div>
-                                </div>
-                            </div>
-                            <div class="player-body">
-                                <h1>ByJuanii</h1>
-                                <p><i class="fas fa-star"></i> Administrador</p>
-                            </div>
-                        </div>
-                        <div class="profileButton">
-                            <button><i class="fas fa-id-card"></i> Perfil</a>
-                        </div>
-                    </div>
-
-
-
                 </div>
             </div>
         </div>
