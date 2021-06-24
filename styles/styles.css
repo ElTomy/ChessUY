@@ -1981,7 +1981,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list {
-  max-width: 500px;
+  width: 1000px;
   padding: 20px 0;
   background-color: #111;
   border-radius: 30px;
@@ -2009,6 +2009,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2071,12 +2072,16 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   padding: 10px;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper {
-  width: 100%;
-  margin: 10px 0;
+  margin: 10px 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2726,6 +2731,16 @@ Buscar Jugadores
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .search-wrapper .search-list {
+    width: 500px;
+  }
+  .search-wrapper .search-list .search .search-box {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 

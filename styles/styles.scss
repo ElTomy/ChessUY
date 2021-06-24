@@ -1335,7 +1335,7 @@ Buscar Jugadores
   flex-direction: column;
 
   .search-list{
-    max-width: 500px;
+    width: 1000px;
     padding: 20px 0;
     background-color: #111;
     border-radius: 30px;
@@ -1352,6 +1352,7 @@ Buscar Jugadores
       }
     }
     .search{
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1394,11 +1395,14 @@ Buscar Jugadores
         }
       }
       .search-box{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
         padding: 10px;
 
         .player-wrapper{
-          width: 100%;
-          margin: 10px 0;
+          margin: 10px 10px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -1784,7 +1788,7 @@ Buscar Jugadores
 
         a{
           width: 100%;
-          
+
           text-decoration: none;
         }
 
@@ -1880,6 +1884,18 @@ Buscar Jugadores
           .JugadorDos{
             justify-content: flex-end;
           }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1050px) {
+  .search-wrapper{
+    .search-list{
+      width: 500px;
+      .search{
+        .search-box{
+          grid-template-columns: 1fr;
         }
       }
     }
