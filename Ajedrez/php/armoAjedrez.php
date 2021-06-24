@@ -3,7 +3,6 @@ $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
 if(isset($_POST['Jugadas'])){
     $jugadas = $_POST['Jugadas'];
-    echo $jugadas[1]["simbolo"];
 }
 $Turnos = $_POST['Turno'];
 
@@ -305,7 +304,6 @@ $Ajedrez .='            </div>
                             }
                             $Ajedrez .=' <tr>
                             <td>'.$img.'</td>';
-                            echo $s;
                             $Ajedrez .='<td>'.$j.$p.$s.'</td>';
                             $Ajedrez .='</tr>';
                         }
