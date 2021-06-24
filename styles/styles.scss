@@ -93,9 +93,6 @@ header {
         color: #0076be;
         font-weight: 500;
       }
-      .profile:hover .session-image {
-        margin-right: 15px;
-      }
       .cerrarsesion {
         margin: 0 20px;
         display: block;
@@ -1883,6 +1880,241 @@ Buscar Jugadores
 /*
 
 
+Editar perfil
+
+
+*/
+.editarperfil-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .editarperfil{
+    margin: 40px;
+    width: 90%;
+
+    background-color: #222;
+    border-radius: 30px;
+
+    .img-wrapper{
+      margin: 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      h1{
+        margin: 5px 0;
+        color: white;
+      }
+      p{
+        margin: 0;
+        color: #fcba03;
+      }
+      .img-editarperfil{
+        .editarperfil-img{
+          width: 150px;
+          height: 150px;
+          background-color: #0076be;
+          border-radius: 50%;
+    
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.5s;
+    
+          i{
+            font-size: 30px;
+            color: white;
+            transition: 0.5s;
+          }
+        }
+        .editarpefil-img-hover{
+          text-decoration: none;
+          width: 150px;
+          height: 150px;
+          background-color: rgba(0, 0, 0, 0.5);
+          position: absolute;
+          margin-top: -150px;
+          border-radius: 50%;
+          opacity: 0;
+  
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.5s;
+  
+          i{
+            font-size: 30px;
+            color: white;
+            transition: 0.5s;
+          }
+        }
+      }
+
+      .editarperfil-img:hover i{
+        opacity: 0;
+      }
+
+      .editarpefil-img-hover:hover{
+        opacity: 1;
+      }
+    }
+
+    .editarperfil-body{
+
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      margin: 20px 0;
+
+      hr{
+        width: calc(100% - 80px);
+        margin: 10px 0;
+      }
+
+      .editarperfil-logo{
+        margin-bottom: 20px;
+        img{
+          width: 100%;
+        }
+      }
+
+      .editarperfil-inputs{
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .editarperfil-body-wrapper{
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+          margin-right: 40px;
+        }
+
+        .inputs{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          label{
+            white-space: nowrap;
+            color: #666;
+            font-weight: lighter;
+
+          }
+          input{
+            width: 100%;
+            height: 40px;
+
+            border-radius: 30px;
+            margin: 5px 0;
+            margin-left: 10px;
+            background-color: #333;
+            border: 1px solid #555;
+            outline: none;
+            text-indent: 10px;
+
+            color: white;
+          }
+          input:disabled{
+            color: #666;
+          }
+        }
+        .titulos-divisiones{
+          margin: 20px 0;
+          color: #888;
+        }
+        .lineadivisora{
+          width: 100%;
+          border: 1px solid #888;
+        }
+
+        .botonContra{
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 200px;
+            height: 50px;
+            margin: 10px 0;
+
+            background-color: #0076be;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+
+            transition: 0.5s;
+
+            i{
+              margin-right: 10px;
+            }
+          }
+          a:hover{
+            background-color: #00436d;
+          }
+        }
+        .botonGuardar{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 200px;
+            height: 50px;
+
+            background-color: #0076be;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+
+            transition: 0.5s;
+            
+            i{
+              margin-right: 10px;
+            }
+          }
+          a:hover{
+            background-color: #00436d;
+          }
+        }
+      }
+
+      h1{
+        font-weight: lighter;
+        color: white;
+      }
+      p{
+
+      }
+    }
+  }
+}
+/*
+
+
 
 
 
@@ -2086,6 +2318,53 @@ Buscar Jugadores
     }
   }
 }
+@media screen and (max-width: 800px) {
+  .editarperfil-wrapper{
+    .editarperfil{
+      .editarperfil-body{
+        hr{
+          width: calc(100% - 40px);
+        }
+        .editarperfil-inputs{
+          grid-template-columns: 1fr;
+
+          .img-wrapper{
+            .img-editarperfil{
+              .editarperfil-img{
+                width: 100px;
+                height: 100px;
+              }
+              .editarpefil-img-hover{
+                width: 100px;
+                height: 100px;
+                margin-top: -100px;
+              }
+            }
+            
+          }
+
+          .editarperfil-body-wrapper{
+            margin: 0 20px;
+
+            .titulos-divisiones{
+              font-size: 20px;
+            }
+            .inputs{
+              label{
+                font-size: 13px;
+              }
+              input{
+                height: 30px;
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+      
+    }
+  }
+}
 @media screen and (max-width: 650px) {
   .profile-wrapper {
     .profile-body {
@@ -2257,6 +2536,22 @@ Buscar Jugadores
           }
         }
       }
+    }
+  }
+  .editarperfil-wrapper{
+    .editarperfil{
+      width: 90%;
+      margin: 0;
+      .editarperfil-body{
+
+        .editarperfil-inputs{
+          
+          .editarperfil-body-wrapper{
+            margin: 0 20px;
+          }
+        }
+      }
+      
     }
   }
 }

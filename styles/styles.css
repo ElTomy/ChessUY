@@ -150,10 +150,6 @@ header .nav-links .header-session .profile:hover p {
   font-weight: 500;
 }
 
-header .nav-links .header-session .profile:hover .session-image {
-  margin-right: 15px;
-}
-
 header .nav-links .header-session .cerrarsesion {
   margin: 0 20px;
   display: block;
@@ -2734,6 +2730,322 @@ Buscar Jugadores
 /*
 
 
+Editar perfil
+
+
+*/
+.editarperfil-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editarperfil-wrapper .editarperfil {
+  margin: 40px;
+  width: 90%;
+  background-color: #222;
+  border-radius: 30px;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper h1 {
+  margin: 5px 0;
+  color: white;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper p {
+  margin: 0;
+  color: #fcba03;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .img-editarperfil .editarperfil-img {
+  width: 150px;
+  height: 150px;
+  background-color: #0076be;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .img-editarperfil .editarperfil-img i {
+  font-size: 30px;
+  color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .img-editarperfil .editarpefil-img-hover {
+  text-decoration: none;
+  width: 150px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  margin-top: -150px;
+  border-radius: 50%;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .img-editarperfil .editarpefil-img-hover i {
+  font-size: 30px;
+  color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .editarperfil-img:hover i {
+  opacity: 0;
+}
+
+.editarperfil-wrapper .editarperfil .img-wrapper .editarpefil-img-hover:hover {
+  opacity: 1;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 20px 0;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body hr {
+  width: calc(100% - 80px);
+  margin: 10px 0;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-logo {
+  margin-bottom: 20px;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-logo img {
+  width: 100%;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px 1fr;
+      grid-template-columns: 300px 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 40px;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .inputs {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .inputs label {
+  white-space: nowrap;
+  color: #666;
+  font-weight: lighter;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .inputs input {
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  margin: 5px 0;
+  margin-left: 10px;
+  background-color: #333;
+  border: 1px solid #555;
+  outline: none;
+  text-indent: 10px;
+  color: white;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .inputs input:disabled {
+  color: #666;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .titulos-divisiones {
+  margin: 20px 0;
+  color: #888;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .lineadivisora {
+  width: 100%;
+  border: 1px solid #888;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonContra {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonContra a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  height: 50px;
+  margin: 10px 0;
+  background-color: #0076be;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonContra a i {
+  margin-right: 10px;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonContra a:hover {
+  background-color: #00436d;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonGuardar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonGuardar a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  height: 50px;
+  background-color: #0076be;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonGuardar a i {
+  margin-right: 10px;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .botonGuardar a:hover {
+  background-color: #00436d;
+}
+
+.editarperfil-wrapper .editarperfil .editarperfil-body h1 {
+  font-weight: lighter;
+  color: white;
+}
+
+/*
+
+
 
 
 
@@ -2948,6 +3260,38 @@ Buscar Jugadores
   }
 }
 
+@media screen and (max-width: 800px) {
+  .editarperfil-wrapper .editarperfil .editarperfil-body hr {
+    width: calc(100% - 40px);
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .img-wrapper .img-editarperfil .editarperfil-img {
+    width: 100px;
+    height: 100px;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .img-wrapper .img-editarperfil .editarpefil-img-hover {
+    width: 100px;
+    height: 100px;
+    margin-top: -100px;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper {
+    margin: 0 20px;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper .titulos-divisiones {
+    font-size: 20px;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper .inputs label {
+    font-size: 13px;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper .inputs input {
+    height: 30px;
+    font-size: 10px;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .profile-wrapper .profile-body {
     width: 100%;
@@ -3132,6 +3476,13 @@ Buscar Jugadores
     width: 100px;
     height: 40px;
     border-radius: 30px;
+  }
+  .editarperfil-wrapper .editarperfil {
+    width: 90%;
+    margin: 0;
+  }
+  .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .editarperfil-body-wrapper {
+    margin: 0 20px;
   }
 }
 
