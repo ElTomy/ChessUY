@@ -2022,7 +2022,7 @@ Editar perfil
             margin: 5px 0;
             margin-left: 10px;
             background-color: #333;
-            border: 1px solid #555;
+            border: 1px solid #999;
             outline: none;
             text-indent: 10px;
 
@@ -2030,6 +2030,7 @@ Editar perfil
           }
           input:disabled{
             color: #666;
+            border: 1px solid #555;
           }
         }
         .titulos-divisiones{

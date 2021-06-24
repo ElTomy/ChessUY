@@ -2935,7 +2935,7 @@ Editar perfil
   margin: 5px 0;
   margin-left: 10px;
   background-color: #333;
-  border: 1px solid #555;
+  border: 1px solid #999;
   outline: none;
   text-indent: 10px;
   color: white;
@@ -2943,6 +2943,7 @@ Editar perfil
 
 .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .inputs input:disabled {
   color: #666;
+  border: 1px solid #555;
 }
 
 .editarperfil-wrapper .editarperfil .editarperfil-body .editarperfil-inputs .titulos-divisiones {
