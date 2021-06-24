@@ -1104,7 +1104,11 @@ for(i = 1;i <= 8; i++){
     if(x+1 <= 8){if( Tablero[xx][y].Piezas == colorR){Movimiento[x][y] = null}}
 
 }
-var jaque;
+var jaque = {
+    jaque: null,
+    x: null,
+    y: null,
+}
 function Jaque(x,y, sel){
    
     // llamo a movimiento para generar movimiento en nueva posicion
@@ -1126,9 +1130,13 @@ function Jaque(x,y, sel){
                     if(Tablero[x][y].Piezas != null){
                         simbolo = simbolo + ",x";
                     }
-                    jaque = true;
-                    var a = p;
-                    var b = q;
+                    jaque = {
+                        jaque: true,
+                        color:color,
+                        x: x,
+                        y: y,
+                    }
+
                     Jugadas[Turno] = {
                         Piezas: sel,
                         color: color,
@@ -1141,7 +1149,7 @@ function Jaque(x,y, sel){
             }
         }  
        }
-       
+       console.log(jaque)
        //comprobar jaquemate
        //if(jaque == true){
        //     JaqueMate(a,b,sel);
