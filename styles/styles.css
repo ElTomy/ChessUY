@@ -244,7 +244,7 @@ header #links-mobile {
   -webkit-transform: translateY(-120%);
           transform: translateY(-120%);
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   top: 0;
   width: 100%;
   height: 100vh;
@@ -2617,6 +2617,7 @@ Buscar Jugadores
 }
 
 .board-wrapper .board .movimientos .jugadores a {
+  width: 100%;
   text-decoration: none;
 }
 
