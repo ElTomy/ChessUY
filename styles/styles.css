@@ -2063,6 +2063,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar i {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2072,18 +2073,17 @@ Buscar Jugadores
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   color: white;
-  background-color: #222;
   border-radius: 50%;
+  margin-right: -250px;
 }
 
 .search-wrapper .search-list .search .search-wrapper-body .search-bar-wrapper .search-bar input {
-  margin-left: 10px;
   height: 40px;
-  width: calc(100% - 50px);
-  background-color: #222;
+  width: 100%;
+  background-color: #333;
   border: none;
   border-radius: 30px;
   outline: none;
@@ -2110,6 +2110,8 @@ Buscar Jugadores
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #333;
+  border-radius: 5rem;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player {
@@ -2118,6 +2120,7 @@ Buscar Jugadores
   display: grid;
   -ms-grid-columns: 80px 1fr;
       grid-template-columns: 80px 1fr;
+  margin: 10px;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player .img-wrapper {
@@ -2154,7 +2157,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body {
-  width: 200px;
+  width: 180px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2181,6 +2184,10 @@ Buscar Jugadores
 
 .search-wrapper .search-list .search .search-box .player-wrapper .player .player-body p {
   color: #fcba03;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton {
+  margin: 10px;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .profileButton button {
@@ -3108,15 +3115,18 @@ Buscar Jugadores
     width: 50px;
     height: 50px;
   }
+  .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .img-wrapper .player-img .logo i {
+    font-size: 15px;
+  }
   .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body {
-    width: 150px;
+    width: 100px;
     margin-left: 5px;
   }
   .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .player .player-body p {
-    font-size: 12px;
+    font-size: 10px;
   }
   .search-wrapper .search-list .search .search-wrapper-body .search-box .player-wrapper .profileButton button {
     width: 100px;
