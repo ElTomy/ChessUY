@@ -61,8 +61,12 @@
     <title>ChessUY | 
 
       <?php
-            if($usuario == $_SESSION['usuario']){
-              echo "Mi Perfil";
+            if(isset($_SESSION['usuario'])){
+              if($usuario == $_SESSION['usuario']){
+                echo "Mi Perfil";
+              }else{
+                echo $usuario;
+              }
             }else{
               echo $usuario;
             } 
