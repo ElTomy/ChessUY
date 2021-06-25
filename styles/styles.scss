@@ -294,7 +294,9 @@ footer {
       font-size: 13px;
       margin: 10px 0;
     }
-
+    img{
+      width: 400px;
+    }
     .cyberhydra {
       margin-top: 40px;
       display: flex;
@@ -490,8 +492,13 @@ footer {
     color: white;
     border-radius: 30px;
 
+    img{
+      max-width: 400px;
+    }
+
     p{
       margin: 30px 20px 30px 20px;
+      text-align: center;
     }
     a {
       font-size: 15px;
@@ -894,10 +901,6 @@ Loading Screen
     transition: 0.5s;
     transition-delay: 0.375s;
   }
-}
-
-img {
-  width: 400px;
 }
 
 ::-webkit-calendar-picker-indicator {
