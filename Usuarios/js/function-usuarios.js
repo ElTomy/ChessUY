@@ -67,7 +67,7 @@ function cerrarSesion(){
       url: "/ChessUY/Form/PHP/cerrarSesion.php",
       type: "POST",
       success: function (data) {
-        location.href = "/ChessUY/Index";
+        location.href = "/ChessUY/Index.php";
       }
   });
 }

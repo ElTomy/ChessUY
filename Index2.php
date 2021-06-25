@@ -27,7 +27,7 @@ $index ='
     />
     <link rel="stylesheet" href="styles/styles.css" />
 
-    <title>ChessUY | Championship</title>
+    <title>ChessUY | Inicio</title>
   </head>
   <body>
     <div id="header"></div>
@@ -63,14 +63,27 @@ $index ='
           </a>
         </div>
       </div>
-    </section>
+    </section>';
 
-    <section class="noticias-wrapper" id="ArmoNoticias">
-    </section>
+    if($_SESSION['tipo'] == 0){
+      $index .= '<section class="administrador-wrapper">
+              <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
+              <p class="admin"><i class="fas fa-user"></i> ' . $_SESSION["usuario"] . '</p>
+              <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <div class="admin-buttons">
+                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/ChessUY/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+              </div>
+            </section>';
+    }
 
-    <div id="footer"></div>
-  </body>
-</html>';
+
+
+    $index .= '    <section class="noticias-wrapper" id="ArmoNoticias">
+              </section>
+            <div id="footer"></div>
+          </body>
+        </html>';
 
 
 echo $index;
