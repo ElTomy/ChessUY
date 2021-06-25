@@ -1008,7 +1008,13 @@ Loading Screen
 }
 
 .landing-page .landing-overlay .index-info {
-  margin: 40px 20px 0 20px;
+  margin: 40px 20px;
+  width: 90%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 .landing-page .landing-overlay .index-info h1 {
@@ -1016,6 +1022,11 @@ Loading Screen
   font-weight: 400;
   font-size: 30px;
   margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 .landing-page .landing-overlay .index-info p {

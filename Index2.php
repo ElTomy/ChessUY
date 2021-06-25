@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+$index ='
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,10 +47,20 @@
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <h1>Campeonato de Ajedrez Online</h1>
-          <p>
-            <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
+          <h1>¡Bienvenido <span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
+          <p style="margin-top: 10px;">
+            Bienvenido a la página principal de <b>ChessUY Championship</b>.
           </p>
+        </div>
+
+        <div class="buttons" style="margin: 0;">
+          <a href="Ajedrez/ajedrez.php">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <i class="fas fa-chess-knight"></i>Jugar
+          </a>
         </div>
       </div>
     </section>
@@ -54,4 +70,9 @@
 
     <div id="footer"></div>
   </body>
-</html>
+</html>';
+
+
+echo $index;
+
+?>

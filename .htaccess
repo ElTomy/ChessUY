@@ -3,6 +3,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
+RewriteRule ^Inicio Index2.php
+
 ErrorDocument 404 /ChessUY/Error/404.html
 ErrorDocument 403 /ChessUY/Error/403.html
 Options All -Indexes
