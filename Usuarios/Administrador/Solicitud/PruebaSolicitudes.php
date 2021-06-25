@@ -17,6 +17,7 @@
   ></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="../Solicitud/Js/Solicitud.js"></script>
+  <script src="../../js/function-usuarios.js"></script>
   <script src="/ChessUY/Javascript/Loader.js"></script>
 
   <link rel="stylesheet" href="/ChessUY/styles/styles.css">
