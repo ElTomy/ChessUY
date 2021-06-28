@@ -31,7 +31,7 @@
   </head>
   <body>
     <div id="header"></div>
-
+    <div id="modal"></div>
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
