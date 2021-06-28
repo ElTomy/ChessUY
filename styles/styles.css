@@ -1344,6 +1344,19 @@ Loading Screen
           flex-direction: column;
 }
 
+.login-wrapper .login-logo,
+.register-wrapper .login-logo,
+.register-wrapper2 .login-logo {
+  width: 100%;
+}
+
+.login-wrapper .register-logo img,
+.register-wrapper .register-logo img,
+.register-wrapper2 .register-logo img {
+  width: 300px;
+  margin: 20px 0;
+}
+
 .login-wrapper .inputs,
 .register-wrapper .inputs,
 .register-wrapper2 .inputs {

@@ -915,6 +915,17 @@ Loading Screen
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
+  .login-logo{
+    width: 100%;
+  }
+  .register-logo {
+    img {
+      width: 300px;
+      margin: 20px 0
+    }
+  }
+
   .inputs {
     margin: 10px 0;
     width: 100%;
