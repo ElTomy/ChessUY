@@ -9,7 +9,7 @@
                             <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }else{
-                echo '  <a href="/ChessUY/index">
+                echo '  <a href="/ChessUY/Index.php">
                             <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }
