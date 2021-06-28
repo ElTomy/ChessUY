@@ -16,7 +16,8 @@
       crossorigin="anonymous"
   ></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="../Solicitud/Js/Solicitud.js"></script>
+  <script src="/ChessUY/Usuarios/Administrador/Solicitud/Js/Solicitud.js"></script>
+  <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
   <script src="/ChessUY/Javascript/Loader.js"></script>
 
   <link rel="stylesheet" href="/ChessUY/styles/styles.css">
@@ -47,7 +48,7 @@
     <div class="nohaysolicitudes-wrapper">
       <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
       <p>No hay solicitudes en estos momentos.</p>
-      <a href="/ChessUY/Index"><i class="fas fa-chevron-circle-left"></i> Volver a la Página Principal</a>
+      <a href="/ChessUY/Inicio"><i class="fas fa-chevron-circle-left"></i> Volver a la Página Principal</a>
     </div>
   </section>
   <section class="Solicitudes-wrapper">

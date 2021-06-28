@@ -4,7 +4,7 @@ var ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas;
 $(document).ready(function () {
     $.ajax({
         type: "Post",
-        url: "PHP/Solicitud.php",
+        url: "/ChessUY/Usuarios/Administrador/Solicitud/PHP/Solicitud.php",
         success: function (response) {
 
             var solic = JSON.parse(response);
