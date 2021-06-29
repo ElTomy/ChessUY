@@ -9,3 +9,31 @@ function confTipo(opt) {
         }
     });
 }
+
+function opcReser(reser) {
+    reser = reser.value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/resoNo.php",
+        data: { reser:reser },
+        success: function (html) {
+            document.getElementById("penultOpt").innerHTML = html;
+        }
+    });
+}
+
+function cantFech(ultopt) {
+    ultopt = ultopt.value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/cantFech.php",
+        data: { ultopt:ultopt },
+        success: function (html) {
+            document.getElementById("ultOpt").innerHTML = html;
+        }
+    });
+}
+
+function crearAnun() {
+    
+}

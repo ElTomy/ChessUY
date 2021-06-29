@@ -48,7 +48,59 @@ $tiemHTML = '
 ';
 
 //Codigo de opciones avanzadas
-$avanHTML = 0;
+$avanHTML = '
+
+<p style="height: 10%; width: 100%;">Opciones avanzadas
+<div style="display: flex; height: 90%; width: 100%;">
+    <div style=" width: 50%; height: 100%;">
+        <div style="margin-bottom: 5%;">
+            <p style="width: 100%;">Cantidad de Jugadores</p>
+            <input type="number">
+        </div>
+        <div>
+            <p style="width: 100%;">ELO maximo</p>
+            <input type="number">
+        </div>
+        <div>
+            <p style="width: 100%;">ELO minimo</p>
+            <input type="number">
+        </div>
+        <div style="margin-top: 10%; width: 100%;">
+            <form>
+                <p style="width: 100%; margin-bottom: 5%;">Que hacer cuando se llega al maximo de jugadores</p>
+                <input type="radio" name="opcRes" value="listRes" onchange="opcReser(this)">
+                <label for="html">Lista de reservas</label><br>
+                <input type="radio" name="opcRes" value="termInsc" onchange="opcReser(this)">
+                <label for="css">Terminar inscripciones</label><br>
+            </form>
+        </div>
+    </div>
+
+    <div style="width: 50%; height: 100%;">
+        <div style="margin-bottom: 5%;">
+        <p style="width: 100%;">Localidad</p>
+            <select name="locTorn" id="locTorn">
+                <option disabled selected>Selecciona una localidad</option>
+                <option value="x">Cualquiera</option>
+                <option value="mtv">Montevideo</option>
+                <option value="can">Canelones</option>
+                <option value="etc">etc.</option>
+            </select>
+        </div>
+        <div>
+            <p style="width: 100%;">Edad maxima</p>
+            <input type="number">
+        </div>
+        <div>
+            <p style="width: 100%;">Edad minima</p>
+            <input type="number">
+        </div>
+        <div id="penultOpt" style="margin-top: 27%; width: 100%;">
+        </div>
+    </div>
+</div>
+
+';
 
 //Codigo de premio
 $premHTML = '
@@ -95,7 +147,7 @@ if($opt == 'norm') {
     
     echo '
     <div style="width: 50%; height: 100%;">
-        <div style="height: 68%; border-radius: 20px; padding: 1%;">'.
+        <div style="height: 68%; border-radius: 20px; padding: 1%; display: flex;">'.
 //          Aca va la agenda
             $agenHTML
       .'</div>
