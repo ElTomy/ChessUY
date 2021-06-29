@@ -304,7 +304,17 @@ $Ajedrez .='            </div>
                             }
                             $Ajedrez .=' <tr>
                             <td>'.$img.'</td>';
-                            $Ajedrez .='<td>'.$j.$p.$s.'</td>';
+                            if($s == 'x'){
+                                $Ajedrez .='<td>'.$s.$j.$p.'</td>';
+                            }else{
+                               if($s == 'x+'){
+                                $Ajedrez .='<td>'.'x'.$j.$p.'+'.'</td>';
+                               }elseif ($s == 'x=') {
+                                $Ajedrez .='<td>'.'x'.$j.$p.'='.'</td>';
+                               }else{
+                                $Ajedrez .='<td>'.$j.$p.$s.'</td>';
+                            }}
+                            
                             $Ajedrez .='</tr>';
                         }
                         $Ajedrez .=' </table>

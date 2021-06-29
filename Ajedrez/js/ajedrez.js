@@ -46,6 +46,12 @@ const Tablero = [];
 var seleccionado = null;
 var  Movimiento = [];
 var Enroque = [];
+var jaque = {
+    jaque: null,
+    color: null,
+    x: null,
+    y: null,
+}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -307,6 +313,7 @@ function CreoTablero(){
 //
 function seleccionar(x,y){
     var sel;
+    // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
             if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
@@ -320,7 +327,9 @@ function seleccionar(x,y){
                 armoAjedrez();
             }
         }
+        
     }else{
+        //moves la pieza
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
             sel= seleccionado.Contenido;
             if(Tablero[x][y].Piezas != null){
@@ -409,6 +418,20 @@ function seleccionar(x,y){
                 Ejex: x,
                 Ejey: y,
             }
+           
+            if(jaque.jaque == true){
+               
+                if(x == jaque.x && y == jaque.y){
+                    jaque = {
+                        jaque: null,
+                        color: null,
+                        x: null,
+                        y: null,
+                    }
+                }
+            }
+            
+
                }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
@@ -419,6 +442,7 @@ function seleccionar(x,y){
             var a = 0;
             armoAjedrez();
         }else{
+            //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
                 if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
                     seleccionado = {
@@ -435,11 +459,10 @@ function seleccionar(x,y){
         sel= seleccionado.Contenido;
         selc= seleccionado.color;
         seleccionado = null;
-
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
-        console.log(Jugadas);
+
         if(a == 0){
             Jugadas[Turno] = {
                 Piezas: sel,
@@ -519,7 +542,22 @@ function Movimientos(a,b,sel){
         break;
                                             
     }
-}}
+}
+
+    if(jaque.jaque == true){
+        for(var p = 1; p <= 8; p++){
+            for(var q = 1; q <= 8; q++){
+                if(Movimiento[p][q] == true){ 
+                 if(p == jaque.x && q == jaque.y){
+
+                }else{
+                    Movimiento[p][q] = null;
+                }
+            }
+            }}
+    }
+
+}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -980,10 +1018,23 @@ function Coronacion(x,y,sel){
             Ejey: y,
         }
     }
+
+    $.ajax({
+        url: "/ChessUY/Modal/modalCoronacion.php",
+        type: "POST",
+        data: {color: col},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
  
 }
 window.onresize = boardsize;
-
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
 function JR(sel){
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
@@ -1250,11 +1301,7 @@ for(i = 1;i <= 8; i++){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-var jaque = {
-    jaque: null,
-    x: null,
-    y: null,
-}
+
 function Jaque(x,y, sel){
    
     // llamo a movimiento para generar movimiento en nueva posicion
@@ -1288,7 +1335,6 @@ function Jaque(x,y, sel){
             }
         }  
        }
-       console.log(jaque)
        //comprobar jaquemate
        //if(jaque == true){
        //     JaqueMate(a,b,sel);

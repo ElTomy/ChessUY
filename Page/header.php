@@ -1,15 +1,26 @@
 <header>
     <div class="header-logo">
-        <a href="/ChessUY/index">
-            <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
-        </a>        
-    </div>
-    <div class="nav-links">
 
-            <a class="search" href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>
+        <?php
+            session_start();
+            
+            if(isset($_SESSION['usuario'])){
+                echo '  <a href="/ChessUY/Inicio">
+                            <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
+                        </a> ';
+            }else{
+                echo '  <a href="/ChessUY/Index.php">
+                            <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
+                        </a> ';
+            }
+            
+            echo '      </div>
+                    <div class="nav-links">
         
-            <?php
-                session_start();
+                    <a class="search" href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>';
+    
+        
+            
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>

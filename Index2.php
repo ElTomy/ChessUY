@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+$index ='
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +27,7 @@
     />
     <link rel="stylesheet" href="styles/styles.css" />
 
-    <title>ChessUY | Championship</title>
+    <title>ChessUY | Inicio</title>
   </head>
   <body>
     <div id="header"></div>
@@ -41,13 +47,13 @@
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <h1>Campeonato de Ajedrez Online</h1>
-          <p>
-            <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
+          <h1>¡Bienvenido <span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
+          <p style="margin-top: 10px;">
+            Bienvenido a la página principal de <b>ChessUY Championship</b>.
           </p>
         </div>
 
-        <div class="buttons">
+        <div class="buttons" style="margin: 0;">
           <a href="Ajedrez/ajedrez.php">
             <span></span>
             <span></span>
@@ -57,11 +63,29 @@
           </a>
         </div>
       </div>
-    </section>
+    </section>';
 
-    <section class="noticias-wrapper" id="ArmoNoticias">
-    </section>
+    if($_SESSION['tipo'] == 0){
+      $index .= '<section class="administrador-wrapper">
+              <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
+              <p class="admin"><i class="fas fa-user"></i> ' . $_SESSION["usuario"] . '</p>
+              <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <div class="admin-buttons">
+                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/ChessUY/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+              </div>
+            </section>';
+    }
 
-    <div id="footer"></div>
-  </body>
-</html>
+
+
+    $index .= '    <section class="noticias-wrapper" id="ArmoNoticias">
+              </section>
+            <div id="footer"></div>
+          </body>
+        </html>';
+
+
+echo $index;
+
+?>

@@ -44,7 +44,7 @@ function log(){
               default:
                 console.log('error');
           }
-          location.href = "/ChessUY/Index";
+          location.href = "/ChessUY/Inicio";
       }else{
         var numero_mensaje = 1;
 
@@ -67,7 +67,7 @@ function cerrarSesion(){
       url: "/ChessUY/Form/PHP/cerrarSesion.php",
       type: "POST",
       success: function (data) {
-        location.href = "/ChessUY/Index";
+        location.href = "/ChessUY/Index.php";
       }
   });
 }

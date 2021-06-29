@@ -1,9 +1,13 @@
 <?php
-  /*include '../servidor.php';
-  $server= new servidor();
-  session_start();
-  $server->VerificoSesion($_SESSION['0']);*/
+session_start();
+
+if(isset($_SESSION['usuario'])){
+  header('location: /ChessUY/Inicio');
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,35 +20,46 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../Javascript/Loader.js"></script>
-    <script src="js/ajedrez.js"></script>
+    <script src="/ChessUY/Noticias/js/noticias.js"></script>
+    <script src="Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
 
     <title>ChessUY | Championship</title>
   </head>
   <body>
     <div id="header"></div>
-    <div id="modal"></div>
+
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <section class="board-wrapper">
-      <div class="board" id="ArmoAjedrez">
+    <section class="landing-page">
+      <div class="landing-overlay">
+        <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
+
+        <div class="index-info">
+          <h1>Campeonato de Ajedrez Online</h1>
+          <p>
+            <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
+          </p>
+        </div>
       </div>
+    </section>
+
+    <section class="noticias-wrapper" id="ArmoNoticias">
     </section>
 
     <div id="footer"></div>

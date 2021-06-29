@@ -94,8 +94,6 @@ function Register() {
                 },
                 success: function (data) {
 
-                    alert(data);
-
                     var mensaje_modal;
         
                     if(data == 1){

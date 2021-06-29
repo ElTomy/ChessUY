@@ -3,7 +3,7 @@ class servidor
 {
     function conectar()
     {
-        if (!$conexion = mysqli_connect('localhost', 'root', 'root', 'ChessUY')) {
+        if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')) {
             echo "No se pudo conectar a la base de datos";
             exit;
         } else {
