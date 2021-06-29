@@ -32,10 +32,10 @@ if($color == 'b'){
                         <hr>
                         <p>Elija su pieza</p>
                         <div >
-                        <img src='/ChessUY/media/svg/Piezas/SVG/Reina_Dorada.svg' alt=''>
-                        <img src='/ChessUY/media/svg/Piezas/SVG/Torre_Dorada.svg' alt=''>
-                        <img src='/ChessUY/media/svg/Piezas/SVG/Caballo_Dorado.svg' alt=''>
-                        <img src='/ChessUY/media/svg/Piezas/SVG/Alfil_Dorada.svg' alt=''>
+                        <i class='fas fa-chess-queen' id='Negro'></i>
+                        <i class='fas fa-chess-bishop' id='Negro'></i>
+                        <i class='fas fa-chess-knight' id='Negro'></i>
+                        <i class='fas fa-chess-rook' id='Negro'></i>
                         </div>
 
                     </div>

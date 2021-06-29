@@ -331,6 +331,7 @@ function CreoTablero(){
 //
 function seleccionar(x,y){
     var sel;
+    // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
             if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
@@ -344,7 +345,9 @@ function seleccionar(x,y){
                 armoAjedrez();
             }
         }
+        
     }else{
+        //moves la pieza
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
             if(Tablero[x][y].Piezas != null){
                 simbolo = "x";
@@ -391,6 +394,20 @@ function seleccionar(x,y){
                 Ejex: x,
                 Ejey: y,
             }
+           
+            if(jaque.jaque == true){
+               
+                if(x == jaque.x && y == jaque.y){
+                    jaque = {
+                        jaque: null,
+                        color: null,
+                        x: null,
+                        y: null,
+                    }
+                }
+            }
+            
+
                }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
@@ -401,6 +418,7 @@ function seleccionar(x,y){
             var a = 0;
             armoAjedrez();
         }else{
+            //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
                 if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
                     seleccionado = {
@@ -410,12 +428,6 @@ function seleccionar(x,y){
                         color: Tablero[x][y].color,
                     }
                     Movimientos();
-                    jaque = {
-                        jaque: null,
-                        color: null,
-                        x: null,
-                        y: null,
-                    }
                     armoAjedrez();
                 }
             }
@@ -432,6 +444,7 @@ function seleccionar(x,y){
             Piezas: null,
             Color: null,
         }*/
+        //resetas movimientos y lo mostras
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
@@ -522,9 +535,8 @@ function Movimientos(a,b,sel){
             for(var q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
                  if(p == jaque.x && q == jaque.y){
-                    console.log("si podes mover")
+
                 }else{
-                    console.log("no podes mover")
                     Movimiento[p][q] = null;
                 }
             }
