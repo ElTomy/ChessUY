@@ -46,6 +46,12 @@ const Tablero = [];
 var seleccionado = null;
 var  Movimiento = [];
 var Enroque = [];
+var jaque = {
+    jaque: null,
+    color: null,
+    x: null,
+    y: null,
+}
 Enroque[1] = {
     x: null,
     y: null,
@@ -404,6 +410,12 @@ function seleccionar(x,y){
                         color: Tablero[x][y].color,
                     }
                     Movimientos();
+                    jaque = {
+                        jaque: null,
+                        color: null,
+                        x: null,
+                        y: null,
+                    }
                     armoAjedrez();
                 }
             }
@@ -423,7 +435,7 @@ function seleccionar(x,y){
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
-        console.log(Jugadas);
+
         if(a == 0){
             Jugadas[Turno] = {
                 Piezas: sel,
@@ -503,7 +515,23 @@ function Movimientos(a,b,sel){
         break;
                                             
     }
-}}
+}
+
+    if(jaque.jaque == true){
+        for(var p = 1; p <= 8; p++){
+            for(var q = 1; q <= 8; q++){
+                if(Movimiento[p][q] == true){ 
+                 if(p == jaque.x && q == jaque.y){
+                    console.log("si podes mover")
+                }else{
+                    console.log("no podes mover")
+                    Movimiento[p][q] = null;
+                }
+            }
+            }}
+    }
+
+}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1000,10 +1028,23 @@ function Coronacion(x,y,sel){
             Ejey: y,
         }
     }
+
+    $.ajax({
+        url: "/ChessUY/Modal/modalCoronacion.php",
+        type: "POST",
+        data: {color: col},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
  
 }
 window.onresize = boardsize;
-
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
 function JR(sel){
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
@@ -1270,11 +1311,7 @@ for(i = 1;i <= 8; i++){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-var jaque = {
-    jaque: null,
-    x: null,
-    y: null,
-}
+
 function Jaque(x,y, sel){
    
     // llamo a movimiento para generar movimiento en nueva posicion
@@ -1308,7 +1345,6 @@ function Jaque(x,y, sel){
             }
         }  
        }
-       console.log(jaque)
        //comprobar jaquemate
        //if(jaque == true){
        //     JaqueMate(a,b,sel);
