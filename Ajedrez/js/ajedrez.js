@@ -360,6 +360,7 @@ function seleccionar(x,y){
                                 Ejex: 8,
                                 Ejey: 1,
                             }
+                            simbolo = "0-0";
                         }
                         if(x == 3 && y == 1 && Tablero[1][1].Piezas == Piezas.BTorre){
                             console.log("enroque2");
@@ -376,6 +377,7 @@ function seleccionar(x,y){
                                 Ejex: 1,
                                 Ejey: 1,
                             }
+                            simbolo = "0-0-0";
                         }
                     }else{
                         if(x == 7 && y == 8 && Tablero[8][8].Piezas == Piezas.NTorre){
@@ -393,6 +395,7 @@ function seleccionar(x,y){
                                 Ejex: 8,
                                 Ejey: 8,
                             }
+                            simbolo = "0-0";
                         }
                         if(x == 3 && y == 8 && Tablero[1][8].Piezas == Piezas.NTorre){
                             console.log("enroque4");
@@ -409,6 +412,7 @@ function seleccionar(x,y){
                                 Ejex: 1,
                                 Ejey: 8,
                             }
+                            simbolo = "0-0-0";
                         }
                     }
                 }
@@ -925,22 +929,22 @@ function Rey(x,y,sel){
     }
    if(selecc == Piezas.BRey){
         if(x == 5 && y == 1){
-            if(Tablero[8][1].Piezas == Piezas.BTorre){
+            if(Tablero[8][1].Piezas == Piezas.BTorre && Tablero[6][1].Piezas == null){
                 //0-0
                 comer(7,1,selecc);
             }
-            if( Tablero[1][1].Piezas == Piezas.BTorre){
+            if( Tablero[1][1].Piezas == Piezas.BTorre && Tablero[4][1].Piezas == null && Tablero[2][1].Piezas == null){
                 //0-0-0
                 comer(3,1,selecc);
             }
         }
     }else{
         if(x == 5 && y == 8){
-            if(Tablero[8][8].Piezas == Piezas.NTorre){
+            if(Tablero[8][8].Piezas == Piezas.NTorre && Tablero[6][8].Piezas == null){
                 //0-0
                 comer(7,8,selecc);
             }
-            if(Tablero[1][8].Piezas == Piezas.NTorre){
+            if(Tablero[1][8].Piezas == Piezas.NTorre && Tablero[4][8].Piezas == null && Tablero[2][8].Piezas == null){
                 //0-0-0
                 comer(3,8,selecc);
             }
@@ -1483,14 +1487,6 @@ function JaqueMate(a,b,sel, x,y, colorR){
              
         break;}
    
-}
-//
-//
-/*------------------------------------------------------------------------------------------*/
-//
-//
-function Enroque(x,y,sel){
-    
 }
 //
 //
