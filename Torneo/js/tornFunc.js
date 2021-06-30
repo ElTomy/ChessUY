@@ -1,3 +1,5 @@
+var opt;
+
 function confTipo(opt) {
     opt = opt.value;
     $.ajax({
@@ -32,8 +34,4 @@ function cantFech(ultopt) {
             document.getElementById("ultOpt").innerHTML = html;
         }
     });
-}
-
-function crearAnun() {
-    
 }
