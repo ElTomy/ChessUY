@@ -311,6 +311,8 @@ $Ajedrez .='            </div>
                                 $Ajedrez .='<td>'.'x'.$j.$p.'+'.'</td>';
                                }elseif ($s == 'x=') {
                                 $Ajedrez .='<td>'.'x'.$j.$p.'='.'</td>';
+                               }elseif ($s == '0-0' || $s == '0-0-0'){
+                                $Ajedrez .='<td>'.$s.'</td>';
                                }else{
                                 $Ajedrez .='<td>'.$j.$p.$s.'</td>';
                             }}
