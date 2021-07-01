@@ -7,13 +7,13 @@ if(isset($_POST['ultopt'])) {
 if($ultopt == "canti") {
     echo '
 
-    <input type="number">
+    <input type="number" name="cantRes">
 
     ';
 } elseif($ultopt == "fecha") {
     echo '
     
-    <input type="date">
+    <input type="date" name="fechRes">
     
     ';
 } else {

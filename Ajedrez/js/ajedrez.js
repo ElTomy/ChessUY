@@ -46,7 +46,6 @@ const Tablero = [];
 const Tablero2 = [];
 var seleccionado = null;
 var  Movimiento = [];
-var Enroque = [];
 var jaque = {
     jaque: null,
     pieza: null,
@@ -54,24 +53,6 @@ var jaque = {
     y: null,
 }
 var posibleMov = true;
-Enroque[1] = {
-    x: null,
-    y: null,
-    p: null,
-    q: null,
-    Simbolo: null,
-    Piezas: null,
-    Color: null,
-}
-Enroque[2] = {
-    x: null,
-    y: null,
-    p: null,
-    q: null,
-    Simbolo: null,
-    Piezas: null,
-    Color: null,
-}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -82,8 +63,6 @@ function boardsize(){
     var width = window.innerWidth;
     var height = window.innerHeight;
    
-
-  
 
     if(width > 900){
    
@@ -358,54 +337,119 @@ function seleccionar(x,y){
     }else{
         //moves la pieza
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
+            sel= seleccionado.Contenido;
             if(Tablero[x][y].Piezas != null){
                 simbolo = "x";
             }
-           if((seleccionado.Contenido == "p"||seleccionado.Contenido == "pn")&&(y == 1||y == 8)){
-                sel= seleccionado.Contenido;
-                Coronacion(x,y,sel);
-                if(simbolo != null){
-                    simbolo = simbolo + "=";
-                }else{
-                    simbolo =  "=";
+           if(seleccionado.Contenido == "p"||seleccionado.Contenido == "pn"){
+               if(y == 1||y == 8){
+                    Coronacion(x,y,sel);
+                    if(simbolo != null){
+                        simbolo = simbolo + "=";
+                    }else{
+                        simbolo =  "=";
+                    }
+               }else{
+                    if((y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)||(y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)) {
+                        Tablero[x][5] = {
+                            Piezas: null,
+                            color: null,
+                            Ejex: x,
+                            Ejey: 5,
+                        }
+                        simbolo = "x";
+                    }else{
+                        if((y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)||(y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)){
+                            Tablero[x][4] = {
+                                Piezas: null,
+                                color: null,
+                                Ejex: x,
+                                Ejey: 4,
+                            }
+                            simbolo = "x";
+                        }
+                    }
                 }
                }else{
-            /*
-                if(Enroque[1].Piezas != null || Enroque[2].Piezas != null){
-                let ax;
-                let p;
-                    if(x == 7){
-                    ax = Enroque[1].x;
-                    p = Enroque[1].p;
+                if(seleccionado.Contenido == "r"||seleccionado.Contenido == "rn"){
+                   if(seleccionado.Contenido == Piezas.BRey){
+                        if(x == 7 && y == 1 && Tablero[8][1].Piezas == Piezas.BTorre){
+                            //0-0
+                            Tablero[6][1] = {
+                                Piezas: Piezas.BTorre,
+                                color: seleccionado.Color,
+                                Ejex: 6,
+                                Ejey: 1,
+                            }
+                            Tablero[8][1] = {
+                                Piezas: null,
+                                color: null,
+                                Ejex: 8,
+                                Ejey: 1,
+                            }
+                            simbolo = "0-0";
+                        }
+                        if(x == 3 && y == 1 && Tablero[1][1].Piezas == Piezas.BTorre){
+                            //0-0-0
+                            Tablero[4][1] = {
+                                Piezas: Piezas.BTorre,
+                                color: seleccionado.Color,
+                                Ejex: 4,
+                                Ejey: 1,
+                            }
+                            Tablero[1][1] = {
+                                Piezas: null,
+                                color: null,
+                                Ejex: 1,
+                                Ejey: 1,
+                            }
+                            simbolo = "0-0-0";
+                        }
                     }else{
-                    ax = Enroque[2].x;
-                    p = Enroque[2].p;
+                        if(x == 7 && y == 8 && Tablero[8][8].Piezas == Piezas.NTorre){
+                            //0-0
+                            Tablero[6][8] = {
+                                Piezas: Piezas.NTorre,
+                                color: seleccionado.Color,
+                                Ejex: 6,
+                                Ejey: 8,
+                            }
+                            Tablero[8][8] = {
+                                Piezas: null,
+                                color: null,
+                                Ejex: 8,
+                                Ejey: 8,
+                            }
+                            simbolo = "0-0";
+                        }
+                        if(x == 3 && y == 8 && Tablero[1][8].Piezas == Piezas.NTorre){
+                            //0-0-0
+                            Tablero[4][8] = {
+                                Piezas: Piezas.NTorre,
+                                color: seleccionado.Color,
+                                Ejex: 4,
+                                Ejey: 8,
+                            }
+                            Tablero[1][8] = {
+                                Piezas: null,
+                                color: null,
+                                Ejex: 1,
+                                Ejey: 8,
+                            }
+                            simbolo = "0-0-0";
+                        }
                     }
-                let ay = Enroque.y;
-                let q = Enroque.q;
-                Tablero[ax][ay] = {
-                    Piezas: null,
-                    color: null,
-                    Ejex: ax,
-                    Ejey: ay,
                 }
-                Tablero[p][q] = {
-                    Piezas: Enroque.Piezas,
-                    color: Enroque.Color,
-                    Ejex: p,
-                    Ejey: q,
-                };
-                simbolo = Enroque.Simbolo;
-                }*/
+            }
             Tablero[x][y] = {
                 Piezas: seleccionado.Contenido,
                 color: seleccionado.color,
                 Ejex: x,
                 Ejey: y,
             }
-           
+        
             if(jaque.jaque == true){
-                if(x == jaque.x && y == jaque.y){
+                if((x == jaque.x && y == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
                     jaque = {
                         jaque: null,
                         pieza: null,
@@ -414,9 +458,6 @@ function seleccionar(x,y){
                     }
                 }
             }
-            
-
-               }
             Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
                 Piezas: null,
                 color: null,
@@ -443,16 +484,6 @@ function seleccionar(x,y){
         sel= seleccionado.Contenido;
         selc= seleccionado.color;
         seleccionado = null;
-        /*Enroque[1,2] = {
-            x: null,
-            y: null,
-            p: null,
-            q: null,
-            Simbolo: null,
-            Piezas: null,
-            Color: null,
-        }*/
-        //resetas movimientos y lo mostras
         muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
@@ -538,7 +569,7 @@ function Movimientos(a,b,sel){
     }
 }
 
-    if(jaque.jaque == true){
+    if(jaque.jaque == true && seleccionado != null){
 
         for(var p = 1; p <= 8; p++){
             for(var q = 1; q <= 8; q++){
@@ -548,10 +579,10 @@ function Movimientos(a,b,sel){
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-
-                    if(p != jaque.x || q != jaque.y){
+                    if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
+                    if((p != jaque.x || q != jaque.y)){
                         Movimiento[p][q] = null;
-                    }
+                    }}
                    /* 
                     //movimiento t2
                     Tablero2[p][q] = {
@@ -571,7 +602,7 @@ function Movimientos(a,b,sel){
                     //
                     // SalirJaque(jaque.x,jaque.y,jaque.sel)
                     //comer pieza jaque*/
-                    JaqueMate();
+                    //JaqueMate();
             }
             }}
     }
@@ -585,6 +616,8 @@ function Movimientos(a,b,sel){
 function Peon(x,y, sel){
     var xx = x + 1;
     var yy;
+    let xa = x - 1;
+    let xb = x + 1;
     if(sel == undefined){
         selecc = seleccionado.Contenido;
     }else{
@@ -601,6 +634,14 @@ function Peon(x,y, sel){
          if(Tablero[x][yy].Piezas == null){
             comer(x,yy,selecc);
          }
+        if(y == 5 && Tablero[xa][y].Piezas == "pn" && Tablero[xa][6].Piezas == null) {
+            //Peon al paso izquierda
+            comer(xa,6,selecc);
+        }
+        if(y == 5 && Tablero[xb][y].Piezas == "pn" && Tablero[xb][6].Piezas == null) {
+            //Peon al paso derecha
+            comer(xb,6,selecc);
+        }
         if(xx<=8){
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
@@ -627,6 +668,14 @@ function Peon(x,y, sel){
              if(Tablero[x][yy].Piezas == null){
                 comer(x,yy,selecc);
              }
+             if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
+                //Peon al paso izquierda
+                comer(xa,3,selecc);
+            }
+            if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
+                //Peon al paso derecha
+                comer(xb,3,selecc);
+            }
              if(xx<=8){
                 //movimiento: comer-d
                 if(Tablero[xx][yy].Piezas != null){
@@ -944,60 +993,24 @@ function Rey(x,y,sel){
     }
    if(selecc == Piezas.BRey){
         if(x == 5 && y == 1){
-            if(Tablero[8][1].Piezas == Piezas.BTorre){
+            if(Tablero[8][1].Piezas == Piezas.BTorre && Tablero[6][1].Piezas == null){
                 //0-0
                 comer(7,1,selecc);
-                Enroque[1] = {
-                    x: 8,
-                    y: 1,
-                    p: 6,
-                    q: 1,
-                    Simbolo:"0-0",
-                    Piezas: Piezas.BTorre,
-                    Color: Color.Blanco,
-                } 
             }
-            if( Tablero[1][1].Piezas == Piezas.BTorre){
+            if( Tablero[1][1].Piezas == Piezas.BTorre && Tablero[4][1].Piezas == null && Tablero[2][1].Piezas == null){
                 //0-0-0
                 comer(3,1,selecc);
-                Enroque[2] = {
-                    x: 1,
-                    y: 1,
-                    p: 4,
-                    q: 1,
-                    Simbolo:"0-0-0",
-                    Piezas: Piezas.BTorre,
-                    Color: Color.Blanco,
-                }
             }
         }
     }else{
         if(x == 5 && y == 8){
-            if(Tablero[8][8].Piezas == Piezas.NTorre){
+            if(Tablero[8][8].Piezas == Piezas.NTorre && Tablero[6][8].Piezas == null){
                 //0-0
                 comer(7,8,selecc);
-                Enroque[1] = {
-                    x: 8,
-                    y: 8,
-                    p: 6,
-                    q: 8,
-                    Simbolo:"0-0",
-                    Piezas: Piezas.NTorre,
-                    Color: Color.Negro,
-                }
             }
-            if(Tablero[1][8].Piezas == Piezas.NTorre){
+            if(Tablero[1][8].Piezas == Piezas.NTorre && Tablero[4][8].Piezas == null && Tablero[2][8].Piezas == null){
                 //0-0-0
                 comer(3,8,selecc);
-                Enroque[2] = {
-                    x: 1,
-                    y: 8,
-                    p: 4,
-                    q: 8,
-                    Simbolo:"0-0-0",
-                    Piezas: Piezas.NTorre,
-                    Color: Color.Negro,
-                }
             }
         }
     }
