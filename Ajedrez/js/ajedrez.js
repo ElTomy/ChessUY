@@ -604,11 +604,11 @@ function Peon(x,y, sel){
          if(Tablero[x][yy].Piezas == null){
             comer(x,yy,selecc);
          }
-        if(y == 5 && Tablero[xa][y].Piezas == "pn") {
+        if(y == 5 && Tablero[xa][y].Piezas == "pn" && Tablero[xa][6].Piezas == null) {
             //Peon al paso izquierda
             comer(xa,6,selecc);
         }
-        if(y == 5 && Tablero[xb][y].Piezas == "pn") {
+        if(y == 5 && Tablero[xb][y].Piezas == "pn" && Tablero[xb][6].Piezas == null) {
             //Peon al paso derecha
             comer(xb,6,selecc);
         }
@@ -638,11 +638,11 @@ function Peon(x,y, sel){
              if(Tablero[x][yy].Piezas == null){
                 comer(x,yy,selecc);
              }
-             if(y == 4 && Tablero[xa][y].Piezas == "p") {
+             if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
                 //Peon al paso izquierda
                 comer(xa,3,selecc);
             }
-            if(y == 4 && Tablero[xb][y].Piezas == "p") {
+            if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
                 //Peon al paso derecha
                 comer(xb,3,selecc);
             }
