@@ -444,7 +444,7 @@ function seleccionar(x,y){
         
             if(jaque.jaque == true){
             
-                if(x == jaque.x && y == jaque.y){
+                if((x == jaque.x && y == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
                     jaque = {
                         jaque: null,
                         color: null,
@@ -568,7 +568,7 @@ function Movimientos(a,b,sel){
         for(var p = 1; p <= 8; p++){
             for(var q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-                 if(p == jaque.x && q == jaque.y){
+                 if((p == jaque.x && q == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
 
                 }else{
                     Movimiento[p][q] = null;
