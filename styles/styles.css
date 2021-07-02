@@ -568,6 +568,40 @@ footer .footer-body .cyberhydra img {
   background-image: linear-gradient(to bottom, transparent, #444);
 }
 
+.modal .modal-wrapper .modal-content .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.modal .modal-wrapper .modal-content .card button {
+  width: 200px;
+  height: 40px;
+  margin: 5px 10px;
+  background-color: #0076be;
+  border: none;
+  padding: 10px;
+  border-radius: 3em;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.modal .modal-wrapper .modal-content .card button:hover {
+  background-color: #00436d;
+  color: #009dff;
+}
+
 @-webkit-keyframes modalAnim {
   from {
     -webkit-transform: translateY(-110%);

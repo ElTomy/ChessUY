@@ -417,6 +417,33 @@ footer {
         }
 
       }
+
+      .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 10px 0;
+
+        button{
+          width: 200px;
+          height: 40px;
+          margin: 5px 10px;
+          background-color: #0076be;
+          border: none;
+          padding: 10px;
+          border-radius: 3em;
+          color: white;
+          cursor: pointer;
+
+          transition: .5s;
+        }
+        button:hover{
+          background-color: #00436d;
+          color: #009dff;
+        }
+      }
     }
   }
 }
