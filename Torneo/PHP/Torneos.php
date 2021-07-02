@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <div class="style">
+    </div>
+
     <script
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
@@ -47,7 +50,7 @@
           <div style='width: 20%; height: 600px; border: solid #292929; border-width: 1px;'>
             Tipo de Torneo:
             <form>
-              <select name="tipTorn" id="tipTorn" onchange='confTipo(this)'>
+              <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
                 <option disabled selected>Selecciona un tipo de torneo</option>
                 <option value="norm">Normal</option>
                 <option value="avan">Avanzado</option>

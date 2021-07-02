@@ -1,14 +1,11 @@
 <?php
-
 if(isset($_POST['opt'])) {
     $opt = $_POST['opt'];
 }
-
 //Codigo de agenda
 $agenHTML = '
 <div style="width: 60%; height: 100%;">
-    <div style="width: 98%; height: 78%; border: solid grey; border-width: 1px; border-radius: 20px; padding: 1%;">
-        AGENDA
+    <div id="agenTorn" style="width: 98%; height: 78%; border: solid grey; border-width: 1px; border-radius: 20px; padding: 1%;">
     </div>
     <div style="width: 98%; height: 16%; padding: 4% 0% 0% 0%; text-align: center;">
         <p>A que hora debe cambiar?</p>
