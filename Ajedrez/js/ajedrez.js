@@ -509,7 +509,39 @@ function seleccionar(x,y){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function Movimientos(a,b,sel){
+function Movimientos(a,b,sel, sj){
+
+    if(sj ==1){
+        console.log("hola")
+
+        switch(sel){
+            case Piezas.NTorre:
+            case Piezas.BTorre:
+                    Torre(a,b,sel);
+            break;
+            case Piezas.NCaballo:
+            case Piezas.BCaballo:
+                    Caballo(a,b,sel);
+            break;
+            case Piezas.NAlfil:
+            case Piezas.BAlfil:
+                    Alfil(a,b,sel);
+            break;
+            case Piezas.NPeon:
+            case Piezas.BPeon:
+                    Peon(a,b,sel);
+            break;
+            case Piezas.NDama:
+            case Piezas.BDama:
+                    Dama(a,b,sel);
+            break;
+            case Piezas.NRey:
+            case Piezas.BRey:
+                   Rey(a,b,sel);
+            break;
+                                                
+        }
+    }else{
     if(a == undefined && b == undefined){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
@@ -570,20 +602,20 @@ function Movimientos(a,b,sel){
 }
 
     if(jaque.jaque == true && seleccionado != null){
-
+        //copio el Tablero en Tablero2
         for(var p = 1; p <= 8; p++){
             for(var q = 1; q <= 8; q++){
                 Tablero2[p][q] = Tablero[p][q];
             }}
-         
+         //veo que piezas pueden comer el jaque
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
                     if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
                     if((p != jaque.x || q != jaque.y)){
                         Movimiento[p][q] = null;
-                    }}
-                   /* 
+                    }
+
                     //movimiento t2
                     Tablero2[p][q] = {
                         Piezas: seleccionado.Contenido,
@@ -598,15 +630,18 @@ function Movimientos(a,b,sel){
                         Ejex: seleccionado.Ejex,
                         Ejey: seleccionado.Ejey,
                     }
-
+                    // console.log(Tablero)
+                    // console.log(Tablero2)
                     //
-                    // SalirJaque(jaque.x,jaque.y,jaque.sel)
-                    //comer pieza jaque*/
+                    SalirJaque(jaque.x,jaque.y,jaque.pieza)
+                    //comer pieza jaque
+                }
+                  
                     //JaqueMate();
             }
             }}
     }
-
+}
 }
 //
 //
@@ -1420,9 +1455,9 @@ function Jaque(x,y, sel){
 //
 //
 function SalirJaque(x,y,sel){
-    console.log(".")
-        //Movimientos(x,y,sel);
- 
+        console.log(x, y, sel)
+        Movimientos(x,y,sel, 1);
+ /*
         if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
             var colorR = "r";
         }else{
@@ -1444,18 +1479,18 @@ function SalirJaque(x,y,sel){
                             x: x,
                             y: y,
                         }
-                        break;*/
+                        break;
                  }else{
                     /*jaque = {
                         jaque: null,
                         pieza:null,
                         x: null,
-                        y: null,*/
+                        y: null,
                         console.log("no")
                  }
                 }
             }  
-           } 
+           } */
 }
 //
 //
