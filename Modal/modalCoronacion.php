@@ -1,6 +1,10 @@
-<?php
 
+<script src="/ChessUY/Ajedrez/js/ajedrez.js"></script>
+<?php
 $color = $_POST['color'];
+$x = $_POST['x'];
+$y = $_POST['y'];
+
 if($color == 'b'){
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
@@ -12,10 +16,10 @@ if($color == 'b'){
                         <hr>
                         <p>Elija su pieza</p>
                         <div style='display: flex'>
-                        <i class='fas fa-chess-queen' id='Blanco'></i>
-                        <i class='fas fa-chess-bishop' id='Blanco'></i>
-                        <i class='fas fa-chess-knight' id='Blanco'></i>
-                        <i class='fas fa-chess-rook' id='Blanco'></i>
+                        <button onclick = 'cambioCoronacion($x, $y, d, $color)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
+                        <button><i class='fas fa-chess-bishop' id='Blanco'></i></button>
+                        <button><i class='fas fa-chess-knight' id='Blanco'></i></button>
+                        <button><i class='fas fa-chess-rook' id='Blanco'></i></button>
                         </div>
 
                     </div>
@@ -32,10 +36,10 @@ if($color == 'b'){
                         <hr>
                         <p>Elija su pieza</p>
                         <div >
-                        <i class='fas fa-chess-queen' id='Negro'></i>
-                        <i class='fas fa-chess-bishop' id='Negro'></i>
-                        <i class='fas fa-chess-knight' id='Negro'></i>
-                        <i class='fas fa-chess-rook' id='Negro'></i>
+                        <button cambioCoronacion($x, $y, dn, $color)><i class='fas fa-chess-queen' id='Negro'></i></button>
+                        <button><i class='fas fa-chess-bishop' id='Negro'></i></button>
+                        <button><i class='fas fa-chess-knight' id='Negro'></i></button>
+                        <button><i class='fas fa-chess-rook' id='Negro'></i></button>
                         </div>
 
                     </div>

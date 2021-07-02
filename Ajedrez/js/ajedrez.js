@@ -1071,6 +1071,18 @@ function Coronacion(x,y,sel){
     }else{
         var col = "b";
     }
+    $.ajax({
+        url: "/ChessUY/Modal/modalCoronacion.php",
+        type: "POST",
+        data: {color: col , x:x, y:y},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
+}
+
+function cambioCoronacion(x, y, pieza, col){
+    console.log(x, y, pieza, col)
     if(col == Color.Negro){
         Tablero[x][y] = {
             Piezas: Piezas.NDama,
@@ -1086,16 +1098,6 @@ function Coronacion(x,y,sel){
             Ejey: y,
         }
     }
-
-    $.ajax({
-        url: "/ChessUY/Modal/modalCoronacion.php",
-        type: "POST",
-        data: {color: col},
-        success: function (data) {
-            document.getElementById("modal").innerHTML = data;
-        }
-      });
- 
 }
 window.onresize = boardsize;
 //
