@@ -230,13 +230,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function CrearTorneo($Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes)
+    function CrearTorneo($Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$MododeReserva,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima)
     {
         $conn = $this->conectar();
-        $sql = "CALL CrearTorneo(?,?,?,?,?,?,?)";
+        $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("iiissii",$Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes);
+        $stmts->bind_param("iiissiisiiisii",$Rondas,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$MododeReserva,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima);
         $stmts->execute();
     }
     //

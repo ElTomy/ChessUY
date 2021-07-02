@@ -43,15 +43,16 @@ var Jugadas = [];
 var Turno = 1;
 var simbolo = null;
 const Tablero = [];
+const Tablero2 = [];
 var seleccionado = null;
 var  Movimiento = [];
-var Enroque = [];
 var jaque = {
     jaque: null,
-    color: null,
+    pieza: null,
     x: null,
     y: null,
 }
+var posibleMov = true;
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -62,8 +63,6 @@ function boardsize(){
     var width = window.innerWidth;
     var height = window.innerHeight;
    
-
-  
 
     if(width > 900){
    
@@ -296,8 +295,15 @@ function resetMovimientos(){
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
+        Tablero2[x] = [];
         for(let y = 1; y <= 8; y += 1){
             Tablero[x][y] = {
+                Piezas: null,
+                color: null,
+                Ejex: x,
+                Ejey: y,
+            }
+            Tablero2[x][y] = {
                 Piezas: null,
                 color: null,
                 Ejex: x,
@@ -443,11 +449,10 @@ function seleccionar(x,y){
             }
         
             if(jaque.jaque == true){
-            
                 if((x == jaque.x && y == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
                     jaque = {
                         jaque: null,
-                        color: null,
+                        pieza: null,
                         x: null,
                         y: null,
                     }
@@ -564,15 +569,40 @@ function Movimientos(a,b,sel){
     }
 }
 
-    if(jaque.jaque == true){
+    if(jaque.jaque == true && seleccionado != null){
+
         for(var p = 1; p <= 8; p++){
             for(var q = 1; q <= 8; q++){
+                Tablero2[p][q] = Tablero[p][q];
+            }}
+         
+        for( p = 1; p <= 8; p++){
+            for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-                 if((p == jaque.x && q == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
+                    if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
+                    if((p != jaque.x || q != jaque.y)){
+                        Movimiento[p][q] = null;
+                    }}
+                   /* 
+                    //movimiento t2
+                    Tablero2[p][q] = {
+                        Piezas: seleccionado.Contenido,
+                        color: seleccionado.color,
+                        Ejex: p,
+                        Ejey: q,
+                    }
+                   
+                    Tablero2[seleccionado.Ejex][seleccionado.Ejey] = {
+                        Piezas: null,
+                        color: null,
+                        Ejex: seleccionado.Ejex,
+                        Ejey: seleccionado.Ejey,
+                    }
 
-                }else{
-                    Movimiento[p][q] = null;
-                }
+                    //
+                    // SalirJaque(jaque.x,jaque.y,jaque.sel)
+                    //comer pieza jaque*/
+                    //JaqueMate();
             }
             }}
     }
@@ -1041,6 +1071,18 @@ function Coronacion(x,y,sel){
     }else{
         var col = "b";
     }
+    $.ajax({
+        url: "/ChessUY/Modal/modalCoronacion.php",
+        type: "POST",
+        data: {color: col , x:x, y:y},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
+}
+
+function cambioCoronacion(x, y, pieza, col){
+    console.log(x, y, pieza, col)
     if(col == Color.Negro){
         Tablero[x][y] = {
             Piezas: Piezas.NDama,
@@ -1056,16 +1098,6 @@ function Coronacion(x,y,sel){
             Ejey: y,
         }
     }
-
-    $.ajax({
-        url: "/ChessUY/Modal/modalCoronacion.php",
-        type: "POST",
-        data: {color: col},
-        success: function (data) {
-            document.getElementById("modal").innerHTML = data;
-        }
-      });
- 
 }
 window.onresize = boardsize;
 //
@@ -1341,16 +1373,15 @@ for(i = 1;i <= 8; i++){
 //
 
 function Jaque(x,y, sel){
-   
+   console.log(".")
+
     // llamo a movimiento para generar movimiento en nueva posicion
     Movimientos(x,y, sel);
  
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
-        var color = "b";
     }else{
         var colorR = "rn";
-        var color = "n";
     }
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
@@ -1364,7 +1395,7 @@ function Jaque(x,y, sel){
                     }
                     jaque = {
                         jaque: true,
-                        color:color,
+                        pieza:sel,
                         x: x,
                         y: y,
                     }
@@ -1388,139 +1419,66 @@ function Jaque(x,y, sel){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function SalirJaque(){
-  //metodo tomy
+function SalirJaque(x,y,sel){
+    console.log(".")
+        //Movimientos(x,y,sel);
+ 
+        if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
+            var colorR = "r";
+        }else{
+            var colorR = "rn";
+        }
+        for(var p = 1; p <= 8; p++){
+            for(var q = 1; q <= 8; q++){
+                if(Movimiento[p][q] == true){
+                    if(Tablero2[p][q].Piezas == colorR){
+                        console.log("JAQUE")
+                        /*if(simbolo != null){
+                            simbolo = simbolo + "+";
+                        }else{
+                            simbolo = "+";
+                        }
+                        jaque = {
+                            jaque: true,
+                            pieza:sel,
+                            x: x,
+                            y: y,
+                        }
+                        break;*/
+                 }else{
+                    /*jaque = {
+                        jaque: null,
+                        pieza:null,
+                        x: null,
+                        y: null,*/
+                        console.log("no")
+                 }
+                }
+            }  
+           } 
 }
 //
 //
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function JaqueMate(a,b,sel, x,y, colorR){
-    console.log(sel, x, y, colorR)
-    let i;
-    let ix;
-    let iy;
-    let xx = x-2;
-    let yy = y-1;
-
-    if(colorR =='r'){
-        var  op = [
-            "p",
-            "t",
-            "c",
-            "a",
-            "d"
-          ];
-    }else{
-        var  op = [
-            "pn",
-            "tn",
-            "cn",
-            "an",
-            "dn"
-          ];
+function JaqueMate(){
+    var jaqueMate = true;
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+            if(Movimiento[p][q] == true){ 
+                jaqueMate = false;
+            }
+        }
     }
-   
-    switch(sel){
-        case Piezas.NTorre:
-        case Piezas.BTorre:
-               
-        break;
-        case Piezas.NCaballo:
-        case Piezas.BCaballo:
-            console.log("caballo")
-                //Caballo
-                //←↑
-                if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(1,"("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }} 
-                yy = y+1;
-                //←↓
-                if (x-2>=1 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(2, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }}
-                yy = y+2;
-                xx = x-1;
-                //↓←
-                if (x-1>=1 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(3, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }} 
-                xx = x+1;
-                //↓→
-                if (x+1<=8 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(4, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }} 
-                xx = x+2;
-                yy = y+1;
-                //→↓
-                if (x+2<=8 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(5, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }}
-                yy = y-1;
-                //→↑
-                if (x+2<=8 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(6, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }} 
-                yy = y-2;
-                xx = x+1;
-                //↑→
-                if (x+1<=8 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(7, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }} 
-                xx = x-1;
-                //↑←
-                if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorR){
-                    console.log(8, "("+xx +","+ yy +")", "("+x +","+ y +")")
-                    pX = x;
-                    pY = y;
-                }}
 
-                //peon
-    
-                for(var p = 1; p <= 8; p++){
-                    for(var q = 1; q <= 8; q++){
-                        if(Tablero[p][q].Piezas == op[0]){
-                            //Peon(p,q, op[0])
-                           
-                            //if(Movimientos[pX][pY] == true){
-           
-          //                  }
-                           
-                    }}}
-    
-        break;
-        case Piezas.NAlfil:
-        case Piezas.BAlfil:
-                
-        break;
-        case Piezas.NPeon:
-        case Piezas.BPeon:
-               
-        break;
-        case Piezas.NDama:
-        case Piezas.BDama:
-                
-        break;
-        case Piezas.NRey:
-        case Piezas.BRey:
-             
-        break;}
-   
+    if(jaqueMate == true){
+        console.log("==================================")
+        console.log("JAQUE MATE")
+        console.log("==================================")
+    }else{
+        console.log("no mate")
+    }
 }
 //
 //
