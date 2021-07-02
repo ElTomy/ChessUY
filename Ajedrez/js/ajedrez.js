@@ -166,8 +166,10 @@ function colorJugador(){
     var random = Math.round(Math.random() * 1);
     console.log(random)
     if(random == 1){
-        colJugador == 'b';
-    }else{colJugador == 'n'}
+        colJugador = 'b';
+    }else{
+        colJugador = 'n';
+}
     
     console.log(colJugador)
 }
