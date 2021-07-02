@@ -509,7 +509,63 @@ footer .footer-body .cyberhydra img {
 .modal .modal-wrapper .modal-content hr {
   width: 400px;
   border: 1px solid #0076be;
-  margin-top: 20px;
+  margin: 10px 0;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #161616;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 3em;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper button {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  margin: 5px 10px;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper button i {
+  font-size: 2em;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper button #Blanco {
+  background: -webkit-gradient(linear, left top, right top, from(#ffaa00), to(#814e00));
+  background: linear-gradient(90deg, #ffaa00 0%, #814e00 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper button #Negro {
+  color: linear-gradient(90deg, #bebebe 0%, #262626 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.modal .modal-wrapper .modal-content .button-wrapper button:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#444));
+  background-image: linear-gradient(to bottom, transparent, #444);
 }
 
 @-webkit-keyframes modalAnim {

@@ -3,7 +3,6 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
-    
 });
 //
 //

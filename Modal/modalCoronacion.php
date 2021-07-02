@@ -15,11 +15,11 @@ if($color == 'b'){
                         <h1>Coronación</h1>
                         <hr>
                         <p>Elija su pieza</p>
-                        <div style='display: flex'>
-                        <button onclick = 'cambioCoronacion($x, $y, 'd', $color)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-bishop' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-knight' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-rook' id='Blanco'></i></button>
+                        <div class='button-wrapper'>
+                            <button onclick = 'cambioCoronacion($x, $y, 'd', $color)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
+                            <button><i class='fas fa-chess-bishop' id='Blanco'></i></button>
+                            <button><i class='fas fa-chess-knight' id='Blanco'></i></button>
+                            <button><i class='fas fa-chess-rook' id='Blanco'></i></button>
                         </div>
 
                     </div>
