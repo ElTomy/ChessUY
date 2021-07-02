@@ -1118,6 +1118,8 @@ function Coronacion(x,y,sel){
 
 function cambioCoronacion(x, y, pieza, col){
     console.log(x, y, pieza, col)
+    $(".modal").hide();
+    
     if(col == Color.Negro){
         Tablero[x][y] = {
             Piezas: Piezas.NDama,
