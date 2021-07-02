@@ -1,5 +1,3 @@
-
-<script src="/ChessUY/Ajedrez/js/ajedrez.js"></script>
 <?php
 $color = $_POST['color'];
 $x = $_POST['x'];
@@ -19,11 +17,11 @@ if($color == 'b'){
                         <h1>Coronación</h1>
                         <hr>
                         <p>Elija su pieza</p>
-                        <div style='display: flex'>
-                        <button onclick = 'cambioCoronacion($d)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
-                        <button onclick = 'cambioCoronacion($a)'><i class='fas fa-chess-bishop' id='Blanco'></i></button>
-                        <button onclick = 'cambioCoronacion($c)'><i class='fas fa-chess-knight' id='Blanco'></i></button>
-                        <button onclick = 'cambioCoronacion($t)'><i class='fas fa-chess-rook' id='Blanco'></i></button>
+                        <div class='button-wrapper'>
+                            <button onclick = 'cambioCoronacion($d)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($a)'><i class='fas fa-chess-bishop' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($c)'><i class='fas fa-chess-knight' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($t)'><i class='fas fa-chess-rook' id='Blanco'></i></button>
                         </div>
 
                     </div>

@@ -3,7 +3,7 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
-    
+    Coronacion(1,1,1);
 });
 //
 //
@@ -1107,7 +1107,7 @@ function Coronacion(x,y,sel){
         var col = "b";
     }
     $.ajax({
-        url: "/ChessUY/Modal/modalCoronacion.php",
+        url: "/ChessUY/Modal/modalELO.php",
         type: "POST",
         data: {color: col , x:x, y:y},
         success: function (data) {
