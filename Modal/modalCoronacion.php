@@ -41,7 +41,7 @@ if($color == 'b'){
                         <h1>Coronación</h1>
                         <hr>
                         <p>Elija su pieza</p>
-                        <div >
+                        <div class='button-wrapper'>
                         <button onclick = 'cambioCoronacion($dn)'><i class='fas fa-chess-queen' id='Negro'></i></button>
                         <button onclick = 'cambioCoronacion($an)'><i class='fas fa-chess-bishop' id='Negro'></i></button>
                         <button onclick = 'cambioCoronacion($cn)'><i class='fas fa-chess-knight' id='Negro'></i></button>

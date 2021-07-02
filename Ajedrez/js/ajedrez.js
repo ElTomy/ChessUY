@@ -3,7 +3,6 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
-    Coronacion(1,1,1);
 });
 //
 //
@@ -1107,7 +1106,7 @@ function Coronacion(x,y,sel){
         var col = "b";
     }
     $.ajax({
-        url: "/ChessUY/Modal/modalELO.php",
+        url: "/ChessUY/Modal/modalCoronacion.php",
         type: "POST",
         data: {color: col , x:x, y:y},
         success: function (data) {
@@ -1119,22 +1118,25 @@ function Coronacion(x,y,sel){
 function cambioCoronacion(x, y, pieza, col){
     console.log(x, y, pieza, col)
     $(".modal").hide();
-    
+    console.log(Color.Negro)
     if(col == Color.Negro){
+        console.log("1")
         Tablero[x][y] = {
-            Piezas: Piezas.NDama,
+            Piezas: pieza,
             color: col,
             Ejex: x,
             Ejey: y,
         }
     }else{
+        console.log("2")
         Tablero[x][y] = {
-            Piezas: Piezas.BDama,
+            Piezas: pieza,
             color: col,
             Ejex: x,
             Ejey: y,
         }
     }
+    armoAjedrez();
 }
 window.onresize = boardsize;
 //
