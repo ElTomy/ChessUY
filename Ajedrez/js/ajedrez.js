@@ -43,7 +43,7 @@ var Jugadas = [];
 var Turno = 1;
 var simbolo = null;
 const Tablero = [];
-const Tablero2 = [];
+const TableroJaque = [];
 var seleccionado = null;
 var  Movimiento = [];
 var jaque = {
@@ -173,6 +173,11 @@ function colorJugador(){
     
     console.log(colJugador)
 }
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
 function PosicionPiezas(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x][2] ={
@@ -307,7 +312,7 @@ function resetMovimientos(){
 function CreoTablero(){
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
-        Tablero2[x] = [];
+        TableroJaque[x] = [];
         for(let y = 1; y <= 8; y += 1){
             Tablero[x][y] = {
                 Piezas: null,
@@ -315,7 +320,7 @@ function CreoTablero(){
                 Ejex: x,
                 Ejey: y,
             }
-            Tablero2[x][y] = {
+            TableroJaque[x][y] = {
                 Piezas: null,
                 color: null,
                 Ejex: x,
@@ -523,37 +528,6 @@ function seleccionar(x,y){
 //
 function Movimientos(a,b,sel, sj){
 
-    if(sj ==1){
-        console.log("hola")
-
-            switch(sel){
-                case Piezas.NTorre:
-                case Piezas.BTorre:
-                        Torre(a,b,sel);
-                break;
-                case Piezas.NCaballo:
-                case Piezas.BCaballo:
-                        Caballo(a,b,sel);
-                break;
-                case Piezas.NAlfil:
-                case Piezas.BAlfil:
-                        Alfil(a,b,sel);
-                break;
-                case Piezas.NPeon:
-                case Piezas.BPeon:
-                        Peon(a,b,sel);
-                break;
-                case Piezas.NDama:
-                case Piezas.BDama:
-                        Dama(a,b,sel);
-                break;
-                case Piezas.NRey:
-                case Piezas.BRey:
-                       Rey(a,b,sel);
-                break;
-                                                    
-            }
-    }else{
     if(a == undefined && b == undefined){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
@@ -615,11 +589,7 @@ function Movimientos(a,b,sel, sj){
 
     if(jaque.jaque == true && seleccionado != null){
         //copio el Tablero en Tablero2
-        for(var p = 1; p <= 8; p++){
-            for(var q = 1; q <= 8; q++){
-                Tablero2[p][q] = Tablero[p][q];
-            }}
-         
+        
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
@@ -629,33 +599,15 @@ function Movimientos(a,b,sel, sj){
                         Movimiento[p][q] = null;
                     }
 
-                    //movimiento t2
-                    Tablero[p][q] = {
-                        Piezas: seleccionado.Contenido,
-                        color: seleccionado.color,
-                        Ejex: p,
-                        Ejey: q,
+                    //SalirJaque(jaque.x,jaque.y,jaque.pieza)
                     }
-                   
-                    Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
-                        Piezas: null,
-                        color: null,
-                        Ejex: seleccionado.Ejex,
-                        Ejey: seleccionado.Ejey,
-                    }
-                    // console.log(Tablero)
-                    // console.log(Tablero2)
-                    //
-                    SalirJaque(jaque.x,jaque.y,jaque.pieza)
-                    //comer pieza jaque
-                }
                   
                     //JaqueMate();
             }
             }}
     }
 }
-}
+
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1446,6 +1398,8 @@ function Jaque(x,y, sel){
                     }else{
                         simbolo = "+";
                     }
+                    var reyX = p;
+                    var reyY = q;
                     jaque = {
                         jaque: true,
                         pieza:sel,
@@ -1457,13 +1411,52 @@ function Jaque(x,y, sel){
             }
         }  
        }
-       //comprobar jaquemate
-       //if(jaque == true){
-       //     JaqueMate(a,b,sel);
-       //}
-       if(jaque == true){
-            //JaqueMate(a,b,sel, x,y, colorR);
-        }
+      console.log(reyX, reyY)
+      console.log(jaque.x, jaque.y)
+       if(jaque.jaque == true){
+           
+            switch(sel){
+                case Piezas.NTorre:
+                case Piezas.BTorre:
+                        console.log("torre")
+                        if(jaque.y == reyY){
+                            //igual Y
+                            console.log("Y==")
+                            if(jaque.x > reyX){
+                                console.log("x>r")
+                            }else{
+                                console.log("x<r")
+                            }
+                        }else{
+                             //igual X
+                            console.log("X==")
+                            if(jaque.y > reyY){
+                                console.log("y>r")
+                            }else{
+                                console.log("y<r")
+                            }
+                        }
+                break;
+                case Piezas.NAlfil:
+                case Piezas.BAlfil:
+                        console.log("alfil")
+                        if(jaque.y > reyY){
+                            if(jaque.x > reyX){
+
+                            }else{
+
+                            }
+                        }else{
+
+                        }
+                break;
+                case Piezas.NDama:
+                case Piezas.BDama:
+                        console.log("dama")
+                break;
+                                                    
+            }
+    }
        resetMovimientos();
 
 }
