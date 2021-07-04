@@ -601,8 +601,6 @@ function Movimientos(a,b,sel){
     }
 }
     if(jaque.jaque == true && seleccionado != null){
-        //copio el Tablero en Tablero2
-        
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
@@ -624,6 +622,9 @@ function Movimientos(a,b,sel){
                 }
             }
         }
+    }
+    if(jaque.jaque != true && seleccionado != null){
+        
     }
 }
 
