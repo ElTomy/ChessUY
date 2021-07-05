@@ -1,9 +1,9 @@
 $( document ).ready(function(){
+    colorJugador();
     CreoTablero();
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
-    colorJugador();
 });
 //
 //
@@ -21,10 +21,12 @@ $( document ).ready(function(){
         }
     });
  }
- const Color = {
+ var Color = {
     Blanco:'b',
     Negro:'n',
 }
+ var blan;
+ var neg;
 const Piezas = {
     BRey: 'r', 
     BDama: 'd',
@@ -166,9 +168,13 @@ function colorJugador(){
     var random = Math.round(Math.random() * 1);
     console.log(random)
     if(random == 1){
-        colJugador = 'b';
+        colJugador = 0;
+        blan = 1;
+        neg = 8;
     }else{
-        colJugador = 'n';
+        colJugador = 1;
+        blan = 8;
+        neg = 1;
 }
     
     console.log(colJugador)
@@ -178,118 +184,53 @@ function colorJugador(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function ColocoPieza(Pieza,Color,x,y){
+    Tablero[x][y] = {
+        Piezas: Pieza,
+        color: Color,
+        Ejex: x,
+        Ejey: y,
+    }
+}
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
 function PosicionPiezas(){
-    for(let x = 1; x <= 8; x += 1){
-        Tablero[x][2] ={
-            Piezas: Piezas.BPeon,
-            color: Color.Blanco,
-            Ejex: x,
-            Ejey: 2,
+    if(colJugador == 0){
+        //Peones
+        for(let x = 1; x <= 8; x += 1){
+            ColocoPieza(Piezas.BPeon,Color.Blanco,x,2);
+            ColocoPieza(Piezas.NPeon,Color.Negro,x,7);
         }
-        Tablero[x][7] ={
-            Piezas: Piezas.NPeon,
-            color: Color.Negro,
-            Ejex: x,
-            Ejey: 7,
-        }  
+    }else{
+        for(let x = 1; x <= 8; x += 1){
+            ColocoPieza(Piezas.BPeon,Color.Blanco,x,7);
+            ColocoPieza(Piezas.NPeon,Color.Negro,x,2);
+        }
     }
-    Tablero[1][1] ={
-        Piezas: Piezas.BTorre,
-        color: Color.Blanco,
-        Ejex: 1,
-        Ejey: 1,
-    }
-    Tablero[1][8] ={
-        Piezas: Piezas.NTorre,
-        color: Color.Negro,
-        Ejex: 1,
-        Ejey: 8,
-    }
-    Tablero[2][1] ={
-        Piezas: Piezas.BCaballo,
-        color: Color.Blanco,
-        Ejex: 2,
-        Ejey: 1,
-    }
-    Tablero[2][8] ={
-        Piezas: Piezas.NCaballo,
-        color: Color.Negro,
-        Ejex: 2,
-        Ejey: 8,
-    }
-    Tablero[3][1] ={
-        Piezas: Piezas.BAlfil,
-        color: Color.Blanco,
-        Ejex: 3,
-        Ejey: 1,
-    }
-    Tablero[3][8] ={
-        Piezas: Piezas.NAlfil,
-        color: Color.Negro,
-        Ejex: 3,
-        Ejey: 8,
-    }
-    Tablero[4][1] ={
-        Piezas: Piezas.BDama,
-        color: Color.Blanco,
-        Ejex: 4,
-        Ejey: 1,
-    }
-    Tablero[4][8] ={
-        Piezas: Piezas.NDama,
-        color: Color.Negro,
-        Ejex: 4,
-        Ejey: 8,
-    }
-    Tablero[5][1] ={
-        Piezas: Piezas.BRey,
-        color: Color.Blanco,
-        Ejex: 5,
-        Ejey: 1,
-    }
-    Tablero[5][8] ={
-        Piezas: Piezas.NRey,
-        color: Color.Negro,
-        Ejex: 5,
-        Ejey: 8,
-    }
-    Tablero[6][1] ={
-        Piezas: Piezas.BAlfil,
-        color: Color.Blanco,
-        Ejex: 6,
-        Ejey: 1,
-    }
-    Tablero[6][8] ={
-        Piezas: Piezas.NAlfil,
-        color: Color.Negro,
-        Ejex: 6,
-        Ejey: 8,
-    }
-    Tablero[7][1] ={
-        Piezas: Piezas.BCaballo,
-        color: Color.Blanco,
-        Ejex: 7,
-        Ejey: 1,
-    }
-    Tablero[7][8] ={
-        Piezas: Piezas.NCaballo,
-        color: Color.Negro,
-        Ejex: 7,
-        Ejey: 8,
-    }
-    Tablero[8][1] ={
-        Piezas: Piezas.BTorre,
-        color: Color.Blanco,
-        Ejex: 8,
-        Ejey: 1,
-    }
-    Tablero[8][8] ={
-        Piezas: Piezas.NTorre,
-        color: Color.Negro,
-        Ejex: 8,
-        Ejey: 8,
-    }
-
+    //Torres
+    ColocoPieza(Piezas.BTorre,Color.Blanco,1,blan);
+    ColocoPieza(Piezas.NTorre,Color.Negro,1,neg);
+    ColocoPieza(Piezas.BTorre,Color.Blanco,8,blan);
+    ColocoPieza(Piezas.NTorre,Color.Negro,8,neg);
+    //Caballo
+    ColocoPieza(Piezas.BCaballo,Color.Blanco,2,blan);
+    ColocoPieza(Piezas.NCaballo,Color.Negro,2,neg);
+    ColocoPieza(Piezas.BCaballo,Color.Blanco,7,blan);
+    ColocoPieza(Piezas.NCaballo,Color.Negro,7,neg);
+    //Alfil
+    ColocoPieza(Piezas.BAlfil,Color.Blanco,3,blan);
+    ColocoPieza(Piezas.NAlfil,Color.Negro,3,neg);
+    ColocoPieza(Piezas.BAlfil,Color.Blanco,6,blan);
+    ColocoPieza(Piezas.NAlfil,Color.Negro,6,neg);
+    //Dama
+    ColocoPieza(Piezas.BDama,Color.Blanco,4,blan);
+    ColocoPieza(Piezas.NDama,Color.Negro,4,neg);
+    //Rey
+    ColocoPieza(Piezas.BRey,Color.Blanco,5,blan);
+    ColocoPieza(Piezas.NRey,Color.Negro,5,neg);
 }
 //
 //
@@ -634,15 +575,11 @@ function Peon(x,y, sel){
          if(Tablero[x][yy].Piezas == null){
             comer(x,yy,selecc);
          }
-        if(y == 5 && Tablero[xa][y].Piezas == "pn" && Tablero[xa][6].Piezas == null) {
-            //Peon al paso izquierda
-            comer(xa,6,selecc);
-        }
-        if(y == 5 && Tablero[xb][y].Piezas == "pn" && Tablero[xb][6].Piezas == null) {
-            //Peon al paso derecha
-            comer(xb,6,selecc);
-        }
         if(xx<=8){
+            if(y == 5 && Tablero[xb][y].Piezas == "pn" && Tablero[xb][6].Piezas == null) {
+                //Peon al paso derecha
+                comer(xb,6,selecc);
+            }
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
                 comer(xx,yy,selecc);
@@ -650,6 +587,10 @@ function Peon(x,y, sel){
         }
         xx = x -1;
         if(xx>=1){
+            if(y == 5 && Tablero[xa][y].Piezas == "pn" && Tablero[xa][6].Piezas == null) {
+                //Peon al paso izquierda
+                comer(xa,6,selecc);
+            }
             //movimiento: comer-i
            if(Tablero[xx][yy].Piezas != null){
             comer(xx,yy,selecc);
@@ -668,15 +609,11 @@ function Peon(x,y, sel){
              if(Tablero[x][yy].Piezas == null){
                 comer(x,yy,selecc);
              }
-             if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
-                //Peon al paso izquierda
-                comer(xa,3,selecc);
-            }
-            if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
+             if(xx<=8){
+                 if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
                 //Peon al paso derecha
                 comer(xb,3,selecc);
             }
-             if(xx<=8){
                 //movimiento: comer-d
                 if(Tablero[xx][yy].Piezas != null){
                     comer(xx,yy,selecc);
@@ -684,7 +621,10 @@ function Peon(x,y, sel){
              }
              xx = x -1;
              if(xx>=1){
-                
+                if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
+                    //Peon al paso izquierda
+                    comer(xa,3,selecc);
+                }
                 //movimiento: comer-i
                if(Tablero[xx][yy].Piezas != null){
                 comer(xx,yy,selecc);
