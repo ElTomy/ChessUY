@@ -54,14 +54,6 @@ var jaque = {
     x: null,
     y: null,
 }
-var reyB = {
-    x: null,
-    y: null,
-}
-var reyN = {
-    x: null,
-    y: null,
-}
 var colJugador;
 //
 //
@@ -69,74 +61,48 @@ var colJugador;
 //
 //
 function boardsize(){
-    
     var width = window.innerWidth;
     var height = window.innerHeight;
    
-
     if(width > 900){
-   
         var board_width = (90 * width) / 100;
         var board_wrapper = (60 * board_width) / 100;
         var board_margin2 = (5 * board_wrapper) / 100;
         var boardtotal_width = board_wrapper - (board_margin2 * 2);
-
-    
         var board_height = ((98 * height) / 100) - 100;
         var board_margin = (5 * board_height) / 100;
         var boardtotal = board_height - (board_margin * 2);
         var cell_width = boardtotal / 8;
-  
 
         if(boardtotal >= boardtotal_width){
-           
             cell_width = boardtotal_width / 8;
-
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
-
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-
             $(".movimientos").css ('height', board_height);
-
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
-
             $(".board-number").css ('margin-top', board_text_margin);
             $(".board-number").css ('margin-right', board_text_margin);
-
             $(".ajedrez-wrapper").css ('height', boardtotal_width);
             $(".ajedrez-wrapper").css ('width', boardtotal_width);
 
         }else{
-
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
-
-
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-
             $(".movimientos").css ('height', (board_height - 20));
-
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
-
             $(".board-number").css ('margin-bottom', board_text_margin);
             $(".board-number").css ('margin-left', board_text_margin);
-    
             $(".ajedrez-wrapper").css ('height', boardtotal);
             $(".ajedrez-wrapper").css ('width', boardtotal);
         }
-
-        
-
-        
-
     }else{
         var board_width = (98 * width) / 100;
         var board_height = ((98 * height) / 100) - 100;
-       
 
         if(board_width > board_height){
             var board_margin = (2 * board_height) / 100;
@@ -153,15 +119,12 @@ function boardsize(){
             $(".cell").css ('width', cell_height);
             $(".cell").css ('height', cell_height);
         }
-
         board_text_margin = -cell_height + ((40 * cell_height) / 100);
 
         $(".board-text").css ('margin-top', board_text_margin);
         $(".board-text").css ('margin-right', board_text_margin);
-
         $(".board-number").css ('margin-bottom', board_text_margin);
         $(".board-number").css ('margin-left', board_text_margin);
-
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
     }    
@@ -181,9 +144,7 @@ function colorJugador(){
         colJugador = 1;
         blan = 8;
         neg = 1;
-}
-    
-    console.log(colJugador)
+    }
 }
 //
 //
