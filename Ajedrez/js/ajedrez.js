@@ -1746,18 +1746,18 @@ function Mov_Prohibido(x,y,sel){
                     console.log("AR1")
                     rey = true;
                     //AbajoDerecha
-                    for(i = 1;i <= 8; i++){
-                        if(y+i<=8 && x+i <= 8){
-                            ix = x + i;
-                            iy = y + i;
-                            if(Tablero[ix][iy].Piezas != null){
-                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x+u <= 8){
+                            ux = x + u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
                                     warning = true;
                                     //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
-                                                if(p != Tablero[ux][y].Ejex){
+                                                if((p >! x && q >! y) || (p <! x && q <! y)){
                                                     Movimiento[p][q] = null;
                                                 }
                                             }  
@@ -1782,14 +1782,23 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][iy].Piezas == colorR){
                     console.log("AR2")
                     rey = true;
-                    //
-                    for(i = 1;i <= 8; i++){
-                        if(y+i<=8 && x+i <= 8){
-                            ix = x + i;
-                            iy = y + i;
-                            if(Tablero[ix][iy].Piezas != null){
-                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                    //ArribaDerecha
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x+u <= 8){
+                            ux = x + u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
                                     warning = true;
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p <! x && q >! y) || (p >! x && q <! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
                                 }
                                 break;
                             }
@@ -1810,13 +1819,22 @@ function Mov_Prohibido(x,y,sel){
                     console.log("AR3")
                     rey = true;
                     //
-                    for(i = 1;i <= 8; i++){
-                        if(y+i<=8 && x-i >= 1){
-                            ix = x - i;
-                            iy = y + i;
-                            if(Tablero[ix][iy].Piezas != null){
-                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x-u >= 1){
+                            ux = x - u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
                                     warning = true;
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p >! x && q <! y) || (p <! x && q >! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
                                 }
                                 break;
                             }
@@ -1837,13 +1855,22 @@ function Mov_Prohibido(x,y,sel){
                     console.log("AR4")
                     rey = true;
                     //
-                    for(i = 1; i <= 8; i++){
-                        if(y-i>=1 && x-i >= 1){
-                            ix = x - i;
-                            iy = y - i;
-                            if(Tablero[ix][iy].Piezas != null){
-                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                    for(u = 1; u <= 8; u++){
+                        if(y-u>=1 && x-u >= 1){
+                            ux = x - u;
+                            uy = y - u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
                                     warning = true;
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p >! x && q >! y) || (p <! x && q <! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
                                 }
                                 break;
                             }
