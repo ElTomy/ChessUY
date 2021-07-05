@@ -1661,6 +1661,7 @@ function Mov_Prohibido(x,y,sel){
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
                 if(Tablero[ix][iy].Piezas == colorR){
+                    console.log("AR1")
                     rey = true;
                 }
                 break;
@@ -1673,17 +1674,42 @@ function Mov_Prohibido(x,y,sel){
             ix = x - i;
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
-                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                    Movimiento[x][y] = null
+                if(Tablero[ix][iy].Piezas == colorR){
+                    console.log("AR2")
+                    rey = true;
                 }
                 break;
-            }else{
-                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                    Movimiento[x][y] = null
-                }
             }
         }
     }   
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8; i++){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    console.log("AR3")
+                    rey = true;
+                }
+                break;
+            }
+        }
+    }  
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    console.log("AR4")
+                    rey = true;
+                }
+                break;
+            }
+        }
+    } 
 
 
 
