@@ -253,7 +253,7 @@ function seleccionar(x,y){
                 armoAjedrez();
             }
         }
-        
+
     }else{
         //moves la pieza
         if(Movimiento[x][y] == true && Tablero[x][y].color != seleccionado.color){
@@ -436,7 +436,6 @@ function seleccionar(x,y){
 //
 //
 function Movimientos(a,b,sel){
-console.log(".")
     if(a == undefined && b == undefined){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
