@@ -54,7 +54,14 @@ var jaque = {
     x: null,
     y: null,
 }
-var posibleMov = true;
+var reyB = {
+    x: null,
+    y: null,
+}
+var reyN = {
+    x: null,
+    y: null,
+}
 var colJugador;
 //
 //
@@ -166,7 +173,6 @@ function boardsize(){
 //
 function colorJugador(){
     var random = Math.round(Math.random() * 1);
-    console.log(random)
     if(random == 1){
         colJugador = 0;
         blan = 1;
@@ -261,12 +267,7 @@ function CreoTablero(){
                 Ejex: x,
                 Ejey: y,
             }
-            TableroJaque[x][y] = {
-                Piezas: null,
-                color: null,
-                Ejex: x,
-                Ejey: y,
-            }
+            TableroJaque[x][y] = null;
         }
     }
 }
@@ -407,12 +408,19 @@ function seleccionar(x,y){
             }
         
             if(jaque.jaque == true){
-                if((x == jaque.x && y == jaque.y)||(seleccionado.Contenido == "r" || seleccionado.Contenido  == "rn")){
-                    jaque = {
-                        jaque: null,
-                        pieza: null,
-                        x: null,
-                        y: null,
+
+                for(var o = 1; o <= 8; o++){
+                    for(var u = 1; u <= 8; u++){
+                        if(Movimiento[o][u] == true){ 
+                            if(o == x && u == y){
+                                jaque = {
+                                    jaque: null,
+                                    pieza: null,
+                                    x: null,
+                                    y: null,
+                                }
+                            } 
+                        }
                     }
                 }
             }
@@ -442,7 +450,6 @@ function seleccionar(x,y){
         sel= seleccionado.Contenido;
         selc= seleccionado.color;
         seleccionado = null;
-        muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
 
@@ -467,8 +474,8 @@ function seleccionar(x,y){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function Movimientos(a,b,sel, sj){
-
+function Movimientos(a,b,sel){
+console.log(".")
     if(a == undefined && b == undefined){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
@@ -527,28 +534,36 @@ function Movimientos(a,b,sel, sj){
                                             
     }
 }
-
     if(jaque.jaque == true && seleccionado != null){
-        //copio el Tablero en Tablero2
-        
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
                     if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
-                    //veo que piezas pueden comer el jaque
-                        if((p != jaque.x || q != jaque.y)){
+                        //veo que piezas pueden comer el jaque
+                        if(p != jaque.x || q != jaque.y){
                         Movimiento[p][q] = null;
+                        }
+                        for(var o = 1; o <= 8; o++){
+                            for(var u = 1; u <= 8; u++){
+                                if(TableroJaque[o][u] == true){ 
+                                    if(o == p && u == q){
+                                        Movimiento[p][q] = true;
+                                    } 
+                                }
+                            }
+                        }
                     }
-
-                    //SalirJaque(jaque.x,jaque.y,jaque.pieza)
-                    }
-                  
-                    //JaqueMate();
+                }
             }
-            }}
+        }
+    }
+    if(jaque.jaque != true && seleccionado != null && (seleccionado != Piezas.NRey || seleccionado != Piezas.BRey)){
+        let x = seleccionado.Ejex
+        let y = seleccionado.Ejey;
+        let sel = seleccionado.Contenido;
+        Mov_Prohibido(x,y,sel);
     }
 }
-
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -855,7 +870,7 @@ function Dama(x,y,sel){
             }
         } }
    //abajo↓
-    for(i = 1;i <= 8; i++){
+    for(i = 1; i <= 8; i++){
         iy  = i +y;
         if(iy <= 8){
             if(Tablero[x][iy].Piezas != null){
@@ -1022,11 +1037,8 @@ function Coronacion(x,y,sel){
 }
 
 function cambioCoronacion(x, y, pieza, col){
-    console.log(x, y, pieza, col)
     $(".modal").hide();
-    console.log(Color.Negro)
     if(col == Color.Negro){
-        console.log("1")
         Tablero[x][y] = {
             Piezas: pieza,
             color: col,
@@ -1034,7 +1046,6 @@ function cambioCoronacion(x, y, pieza, col){
             Ejey: y,
         }
     }else{
-        console.log("2")
         Tablero[x][y] = {
             Piezas: pieza,
             color: col,
@@ -1064,10 +1075,7 @@ function JR(sel){
 //
 //
 function JaqueRey(x,y, sel){
- 
-    let i;
-    let ix;
-    let iy;
+    let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
 
@@ -1130,13 +1138,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x-2][y] = null
                 }
                 break;
-            }else{
-                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                   
-                }
             }
         }
     }
@@ -1148,14 +1152,10 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x+2][y] = null
                 }
                 break;
-            }else{
-                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
-            
         }
     }   
     //arriba
@@ -1165,14 +1165,12 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x][y+2] = null
                 }
                 break;
-            }else{
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
-        } }
+        } 
+    }
         
    //abajo↓
     for(i = 1;i <= 8; i++){
@@ -1181,12 +1179,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null 
+                    Movimiento[x][y-2] = null
                 }
                 break;
-            }else{
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
         }
     }
@@ -1201,12 +1196,9 @@ for(i = 1; i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x+2][y+2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }    
@@ -1219,12 +1211,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x+2][y-2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }    
@@ -1237,12 +1226,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x-2][y+2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }  
@@ -1255,12 +1241,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x-2][y-2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }   
@@ -1316,13 +1299,9 @@ for(i = 1;i <= 8; i++){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-
 function Jaque(x,y, sel){
-   console.log(".")
-
     // llamo a movimiento para generar movimiento en nueva posicion
     Movimientos(x,y, sel);
- 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
     }else{
@@ -1347,54 +1326,138 @@ function Jaque(x,y, sel){
                         y: y,
                     }
                     break;
-             }
+                }
             }
         }  
        }
-      console.log(reyX, reyY)
-      console.log(jaque.x, jaque.y)
+
        if(jaque.jaque == true){
-           
             switch(sel){
                 case Piezas.NTorre:
                 case Piezas.BTorre:
-                        console.log("torre")
                         if(jaque.y == reyY){
-                            //igual Y
-                            console.log("Y==")
+                            var l=jaque.x
                             if(jaque.x > reyX){
-                                console.log("x>r")
+                                for(l; l > reyX; l++){
+                                    TableroJaque[l][jaque.y] = true;
+                                }
                             }else{
-                                console.log("x<r")
+                                for(l; l < reyX; l++){
+                                    TableroJaque[l][jaque.y] = true;
+                                }
                             }
                         }else{
-                             //igual X
-                            console.log("X==")
+                            var l=jaque.y
                             if(jaque.y > reyY){
-                                console.log("y>r")
+                                for(l; l > reyY; l++){
+                                    TableroJaque[jaque.x][l] = true;
+                                }
                             }else{
-                                console.log("y<r")
+                                for(l; l < reyY; l++){
+                                    TableroJaque[jaque.x][l] = true;
+                                }
                             }
                         }
+                        
                 break;
                 case Piezas.NAlfil:
                 case Piezas.BAlfil:
-                        console.log("alfil")
                         if(jaque.y > reyY){
                             if(jaque.x > reyX){
-
+                                var l=jaque.x;
+                                var g=jaque.y;
+                                for(g; g > reyY; --g){
+                                    TableroJaque[l][g] = true;
+                                    l = l-1;
+                                }
                             }else{
-
+                                var l=jaque.x;
+                                var g=jaque.y;
+                                for(g; g > reyY; --g){
+                                    TableroJaque[l][g] = true;
+                                    l++;
+                                }
                             }
                         }else{
-
+                            if(jaque.x > reyX){
+                                var l=jaque.x;
+                                var g=jaque.y;
+                                for(g; g < reyY; g++){
+                                    TableroJaque[l][g] = true;
+                                    l = l-1;
+                                }
+                            }else{
+                                var l=jaque.x;
+                                var g=jaque.y;
+                                for(g; g < reyY; g++){
+                                    TableroJaque[l][g] = true;
+                                    l++;
+                                }
+                            }
                         }
                 break;
                 case Piezas.NDama:
                 case Piezas.BDama:
-                        console.log("dama")
-                break;
-                                                    
+                        if(jaque.y == reyY || jaque.x == reyX){
+                            if(jaque.y == reyY){
+                                var l=jaque.x
+                                if(jaque.x > reyX){
+                                    for(l; l > reyX; l++){
+                                        TableroJaque[l][jaque.y] = true;
+                                    }
+                                }else{
+                                    for(l; l < reyX; l++){
+                                        TableroJaque[l][jaque.y] = true;
+                                    }
+                                }
+                            }else{
+                                var l=jaque.y
+                                if(jaque.y > reyY){
+                                    for(l; l > reyY; l++){
+                                        TableroJaque[jaque.x][l] = true;
+                                    }
+                                }else{
+                                    for(l; l < reyY; l++){
+                                        TableroJaque[jaque.x][l] = true;
+                                    }
+                                }
+                            }
+                        }else{
+                            if(jaque.y > reyY){
+                                if(jaque.x > reyX){
+                                    var l=jaque.x;
+                                    var g=jaque.y;
+                                    for(g; g > reyY; --g){
+                                        TableroJaque[l][g] = true;
+                                        l = l-1;
+                                    }
+                                }else{
+                                    var l=jaque.x;
+                                    var g=jaque.y;
+                                    for(g; g > reyY; --g){
+                                        TableroJaque[l][g] = true;
+                                        l++;
+                                    }
+                                }
+                            }else{
+                                if(jaque.x > reyX){
+                                    var l=jaque.x;
+                                    var g=jaque.y;
+                                    for(g; g < reyY; g++){
+                                        TableroJaque[l][g] = true;
+                                        l = l-1;
+                                    }
+                                }else{
+                                    var l=jaque.x;
+                                    var g=jaque.y;
+                                    for(g; g < reyY; g++){
+                                        TableroJaque[l][g] = true;
+                                        l++;
+                                    }
+                                }
+                            }
+                        }
+                break;                             
             }
     }
        resetMovimientos();
@@ -1405,44 +1468,287 @@ function Jaque(x,y, sel){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function SalirJaque(x,y,sel){
-        console.log(x, y, sel)
-        Movimientos(x,y,sel, 1);
- 
-        if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
-            var colorR = "r";
-        }else{
-            var colorR = "rn";
-        }
-        for(var p = 1; p <= 8; p++){
-            for(var q = 1; q <= 8; q++){
-                if(Movimiento[p][q] == true){
-                    if(Tablero2[p][q].Piezas == colorR){
-                        console.log("JAQUE")
-                        if(simbolo != null){
-                            simbolo = simbolo + "+";
-                        }else{
-                            simbolo = "+";
+function Mov_Prohibido(x,y,sel){
+    let i, ix, iy, u, ux, uy;
+    if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
+        var col = "n";
+    }else{
+        var col = "b";
+    }
+    if(col == "n"){
+        var colorR = "rn";
+
+        var colorTop = "t";
+        var colorDop = "d";
+        var colorAop = "a";
+    }else{
+        var colorR = "r";
+
+        var colorTop = "tn";
+        var colorDop = "dn";
+        var colorAop = "an"; 
+    }
+    //----------------------------------------------------------------------------------
+    //Torre y Reina
+
+    //derecha→
+    for(i = 1;i <= 8; i++){
+        ix  = i +x;
+        if(ix <= 8){
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorR){
+                    //izquierda
+                    for(u = 1; u <= 8; u++){
+                        if( x-u >= 1){
+                            ux = x - u;
+                            if(Tablero[ux][y].Piezas != null){
+                                if(Tablero[ux][y].Piezas == colorDop || Tablero[ux][y].Piezas == colorTop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(q != Tablero[ux][y].Ejey){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
+                                }
+                                break;
+                            }
                         }
-                        jaque = {
-                            jaque: true,
-                            pieza:sel,
-                            x: x,
-                            y: y,
-                        }
-                        break;
-                 }else{
-                    jaque = {
-                        jaque: null,
-                        pieza:null,
-                        x: null,
-                        y: null,       
-                 }
-                 console.log("no")
+                    }
                 }
-            }  
-           } 
-}}
+                break;
+            }
+        }
+    }
+    //izquierda
+    for(i = 1; i <= 8; i++){
+        if( x-i >= 1){
+            ix = x - i;
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorR){
+                    //derecha→
+                    for(u = 1;u <= 8; u++){
+                        ux  = u +x;
+                        if(ux <= 8){
+                            if(Tablero[ux][y].Piezas != null){
+                                if(Tablero[ux][y].Piezas == colorDop ||Tablero[ux][y].Piezas == colorTop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(q != Tablero[ux][y].Ejey){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }   
+    //arriba
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1){
+            iy = y - i;
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorR){
+                    //abajo
+                    for(u = 1;u <= 8; u++){
+                        uy  = u +y;
+                        if(uy <= 8){
+                            if(Tablero[x][uy].Piezas != null){
+                                if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(p != Tablero[x][uy].Ejex){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        } 
+    }
+    //abajo↓
+    for(i = 1;i <= 8; i++){
+        iy  = i +y;
+        if(iy <= 8){
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorR){
+                    //arriba
+                    for(u = 1; u <= 8; u++){
+                        if(y-u>=1){
+                            uy = y - u;
+                            if(Tablero[x][uy].Piezas != null){
+                                if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(p != Tablero[x][uy].Ejex){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        } 
+                    }
+                }
+                break;
+            }
+        }
+    }
+//----------------------------------------------------------------------------------
+    //Alfil y Reina
+
+    //ArribaIzquierda↑←
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1 && x-i >= 1){
+            ix = x - i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    //AbajoDerecha
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x+u <= 8){
+                            ux = x + u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p >! x && q >! y) || (p <! x && q <! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+    //AbajoIzquierda↓←
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x-i >= 1){
+            ix = x - i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    //ArribaDerecha
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x+u <= 8){
+                            ux = x + u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p <! x && q >! y) || (p >! x && q <! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    } 
+                }
+                break;
+            }
+        }
+    }   
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8; i++){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    for(u = 1;u <= 8; u++){
+                        if(y+u<=8 && x-u >= 1){
+                            ux = x - u;
+                            uy = y + u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p >! x && q <! y) || (p <! x && q >! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }  
+                }
+                break;
+            }
+        }
+    }  
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    for(u = 1; u <= 8; u++){
+                        if(y-u>=1 && x-u >= 1){
+                            ux = x - u;
+                            uy = y - u;
+                            if(Tablero[ux][uy].Piezas != null){
+                                if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if((p >! x && q >! y) || (p <! x && q <! y)){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    } 
+}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1471,15 +1777,3 @@ function JaqueMate(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function muestrotablero(){
-   /* console.table([ [Tablero[1][1].Piezas, Tablero[2][1].Piezas,Tablero[3][1].Piezas,Tablero[4][1].Piezas,Tablero[5][1].Piezas,Tablero[6][1].Piezas,Tablero[7][1].Piezas,Tablero[8][1].Piezas] ,
-                    [Tablero[1][2].Piezas, Tablero[2][2].Piezas,Tablero[3][2].Piezas,Tablero[4][2].Piezas,Tablero[5][2].Piezas,Tablero[6][2].Piezas,Tablero[7][2].Piezas,Tablero[8][2].Piezas] ,
-                    [Tablero[1][3].Piezas, Tablero[2][3].Piezas,Tablero[3][3].Piezas,Tablero[4][3].Piezas,Tablero[5][3].Piezas,Tablero[6][3].Piezas,Tablero[7][3].Piezas,Tablero[8][3].Piezas] ,
-                    [Tablero[1][4].Piezas, Tablero[2][4].Piezas,Tablero[3][4].Piezas,Tablero[4][4].Piezas,Tablero[5][4].Piezas,Tablero[6][4].Piezas,Tablero[7][4].Piezas,Tablero[8][4].Piezas] ,
-                    [Tablero[1][5].Piezas, Tablero[2][5].Piezas,Tablero[3][5].Piezas,Tablero[4][5].Piezas,Tablero[5][5].Piezas,Tablero[6][5].Piezas,Tablero[7][5].Piezas,Tablero[8][5].Piezas] ,
-                    [Tablero[1][6].Piezas, Tablero[2][6].Piezas,Tablero[3][6].Piezas,Tablero[4][6].Piezas,Tablero[5][6].Piezas,Tablero[6][6].Piezas,Tablero[7][6].Piezas,Tablero[8][6].Piezas] ,
-                    [Tablero[1][7].Piezas, Tablero[2][7].Piezas,Tablero[3][7].Piezas,Tablero[4][7].Piezas,Tablero[5][7].Piezas,Tablero[6][7].Piezas,Tablero[7][7].Piezas,Tablero[8][7].Piezas] ,
-                    [Tablero[1][8].Piezas, Tablero[2][8].Piezas,Tablero[3][8].Piezas,Tablero[4][8].Piezas,Tablero[5][8].Piezas,Tablero[6][8].Piezas,Tablero[7][8].Piezas,Tablero[8][8].Piezas] ,
-                    
-    ]);*/
-}
