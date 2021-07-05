@@ -283,29 +283,29 @@ function seleccionar(x,y){
                }else{
                 if(seleccionado.Contenido == "r"||seleccionado.Contenido == "rn"){
                    if(seleccionado.Contenido == Piezas.BRey){
-                        if(x == 7 && y == 1 && Tablero[8][1].Piezas == Piezas.BTorre){
+                        if(x == 7 && Tablero[8][y].Piezas == Piezas.BTorre){
                             //0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,1);
-                            ColocoPieza(null,null,8,1);
+                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,y);
+                            ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
-                        if(x == 3 && y == 1 && Tablero[1][1].Piezas == Piezas.BTorre){
+                        if(x == 3 && Tablero[1][y].Piezas == Piezas.BTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,1);
-                            ColocoPieza(null,null,1,1);
+                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,y);
+                            ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }else{
-                        if(x == 7 && y == 8 && Tablero[8][8].Piezas == Piezas.NTorre){
+                        if(x == 7 && Tablero[8][y].Piezas == Piezas.NTorre){
                             //0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,8);
-                            ColocoPieza(null,null,8,8);
+                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,y);
+                            ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
-                        if(x == 3 && y == 8 && Tablero[1][8].Piezas == Piezas.NTorre){
+                        if(x == 3 && Tablero[1][y].Piezas == Piezas.NTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,8);
-                            ColocoPieza(null,null,1,8);
+                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,y);
+                            ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }
@@ -844,27 +844,14 @@ function Rey(x,y,sel){
     }else{
         selecc = sel;
     }
-   if(selecc == Piezas.BRey){
-        if(x == 5 && y == 1){
-            if(Tablero[8][1].Piezas == Piezas.BTorre && Tablero[6][1].Piezas == null){
-                //0-0
-                comer(7,1,selecc);
-            }
-            if( Tablero[1][1].Piezas == Piezas.BTorre && Tablero[4][1].Piezas == null && Tablero[2][1].Piezas == null){
-                //0-0-0
-                comer(3,1,selecc);
-            }
+    if(x == 5 && (y == 1 || y == 8)){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre) && seleccionado.color == Tablero[1][y].color && Tablero[6][y].Piezas == null){
+            //0-0
+            comer(7,y,selecc);
         }
-    }else{
-        if(x == 5 && y == 8){
-            if(Tablero[8][8].Piezas == Piezas.NTorre && Tablero[6][8].Piezas == null){
-                //0-0
-                comer(7,8,selecc);
-            }
-            if(Tablero[1][8].Piezas == Piezas.NTorre && Tablero[4][8].Piezas == null && Tablero[2][8].Piezas == null){
-                //0-0-0
-                comer(3,8,selecc);
-            }
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre) && seleccionado.color == Tablero[1][y].color && Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+            //0-0-0
+            comer(3,y,selecc);
         }
     }
     let xx = x-1;
