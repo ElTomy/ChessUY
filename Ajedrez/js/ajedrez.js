@@ -1566,6 +1566,7 @@ function Mov_Prohibido(x,y,sel){
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
+    var rey = false;
 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
@@ -1574,37 +1575,118 @@ function Mov_Prohibido(x,y,sel){
     }
 
     if(col == "n"){
-        var colorC = "c";
-        var colorT = "t";
-        var colorD = "d";
-        var colorA = "a";
-        var colorP = "p";
-        var colorR = "r";
-    }else{
-        var colorC = "cn";
         var colorT = "tn";
         var colorD = "dn";
         var colorA = "an";
-        var colorP = "pn";
         var colorR = "rn";
+
+        var colorTop = "t";
+        var colorDop = "d";
+        var colorAop = "a";
+        var colorRop = "r";
+    }else{
+        var colorT = "t";
+        var colorD = "d";
+        var colorA = "a";
+        var colorR = "r";
+
+        var colorTop = "tn";
+        var colorDop = "dn";
+        var colorAop = "an";
+        var colorRop = "rn";
         
     }
     //----------------------------------------------------------------------------------
     //Torre y Reina
-    var rey = false;
+
     //derecha→
     for(i = 1;i <= 8; i++){
         ix  = i +x;
         if(ix <= 8){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorR){
-                    console.log(1)
+                    console.log("TR1")
                     rey = true;
                 }
                 break;
             }
         }
     }
+    //izquierda
+    for(i = 1; i <= 8; i++){
+        if( x-i >= 1){
+            ix = x - i;
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorR){
+                    console.log("TR2")
+                    rey = true;
+                }
+                break;
+            }
+        }
+    }   
+    //arriba
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1){
+            iy = y - i;
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorR){
+                    console.log("TR3")
+                    rey = true;
+                }
+                break;
+            }
+        } 
+    }
+    //abajo↓
+    for(i = 1;i <= 8; i++){
+        iy  = i +y;
+        if(iy <= 8){
+            if(Tablero[x][iy].Piezas != null){
+                if(Tablero[x][iy].Piezas == colorR){
+                    console.log("TR4")
+                    rey = true; 
+                }
+                break;
+            }
+        }
+    }
+//----------------------------------------------------------------------------------
+    //Alfil y Reina
+
+    //ArribaIzquierda↑←
+    for(i = 1; i <= 8; i++){
+        if(y-i>=1 && x-i >= 1){
+            ix = x - i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorR){
+                    rey = true;
+                }
+                break;
+            }
+        }
+    }
+    //AbajoIzquierda↓←
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x-i >= 1){
+            ix = x - i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                }
+                break;
+            }else{
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                }
+            }
+        }
+    }   
+
+
+
 
     if(rey == true){
         console.log("rey")
