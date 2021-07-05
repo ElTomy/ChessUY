@@ -579,7 +579,7 @@ function Peon(x,y, sel){
     }else{
         selecc = sel;
     }
-    if(selecc == Piezas.BPeon){
+    if((selecc == Piezas.NPeon && colJugador == 1) || (selecc == Piezas.BPeon && colJugador == 0)){
         yy = y + 1;
         //movimiento: 2-adelante
         if(y == 2 && Tablero[x][4].Piezas == null && Tablero[x][yy].Piezas == null){
@@ -613,7 +613,6 @@ function Peon(x,y, sel){
          }}
         
     }else{
-        if(selecc == Piezas.NPeon){
             yy = y-1;
             //movimiento: 2-adelante
             if(y == 7 && Tablero[x][5].Piezas == null && Tablero[x][yy].Piezas == null){
@@ -644,7 +643,7 @@ function Peon(x,y, sel){
                if(Tablero[xx][yy].Piezas != null){
                 comer(xx,yy,selecc);
                }
-             }}
+             }
     }
 }
   
