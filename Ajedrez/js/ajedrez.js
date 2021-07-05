@@ -1204,13 +1204,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x-2][y] = null
                 }
                 break;
-            }else{
-                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                   
-                }
             }
         }
     }
@@ -1222,14 +1218,10 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x+2][y] = null
                 }
                 break;
-            }else{
-                if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
-            
         }
     }   
     //arriba
@@ -1239,14 +1231,12 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null
+                    Movimiento[x][y+2] = null
                 }
                 break;
-            }else{
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
-        } }
+        } 
+    }
         
    //abajo↓
     for(i = 1;i <= 8; i++){
@@ -1255,12 +1245,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null 
+                    Movimiento[x][y-2] = null
                 }
                 break;
-            }else{
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null
-                }
             }
         }
     }
@@ -1275,12 +1262,9 @@ for(i = 1; i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x+2][y+2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }    
@@ -1293,12 +1277,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x+2][y-2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }    
@@ -1311,12 +1292,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x-2][y+2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }  
@@ -1329,12 +1307,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
+                Movimiento[x-2][y-2] = null
             }
             break;
-        }else{
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-            }
         }
     }
 }   
