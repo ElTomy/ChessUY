@@ -515,7 +515,6 @@ function seleccionar(x,y){
         sel= seleccionado.Contenido;
         selc= seleccionado.color;
         seleccionado = null;
-        muestrotablero();
         resetMovimientos(); 
         Jaque(x,y, sel);
 
@@ -605,7 +604,7 @@ function Movimientos(a,b,sel){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
                     if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
-                    //veo que piezas pueden comer el jaque
+                        //veo que piezas pueden comer el jaque
                         if(p != jaque.x || q != jaque.y){
                         Movimiento[p][q] = null;
                         }
@@ -623,13 +622,11 @@ function Movimientos(a,b,sel){
             }
         }
     }
-    if(jaque.jaque != true && seleccionado != null){
-        for(var p = 1; p <= 8; p++){
-            for(var q = 1; q <= 8; q++){
-                if(Movimiento[p][q] == true){
-                    Mov_Prohibido();
-                }  
-            }}
+    if(jaque.jaque != true && seleccionado != null && (seleccionado != Piezas.NRey || seleccionado != Piezas.BRey)){
+        let x = seleccionado.Ejex
+        let y = seleccionado.Ejey;
+        let sel = seleccionado.Contenido;
+        Mov_Prohibido(x,y,sel);
     }
 }
 //
@@ -1144,10 +1141,7 @@ function JR(sel){
 //
 //
 function JaqueRey(x,y, sel){
- 
-    let i;
-    let ix;
-    let iy;
+    let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
 
@@ -1565,8 +1559,45 @@ function Jaque(x,y, sel){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function Mov_Prohibido(){
-    console.log("asd")
+function Mov_Prohibido(x,y,sel){
+    console.log("--------------------")
+    console.log(x,y,sel)
+    console.log("--------------------")
+    let i, ix, iy;
+    let xx = x-2;
+    let yy = y-1;
+
+    if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
+        var col = "n";
+    }else{
+        var col = "b";
+    }
+
+    if(col == "n"){
+        var colorC = "c";
+        var colorT = "t";
+        var colorD = "d";
+        var colorA = "a";
+        var colorP = "p";
+        var colorR = "r";
+    }else{
+        var colorC = "cn";
+        var colorT = "tn";
+        var colorD = "dn";
+        var colorA = "an";
+        var colorP = "pn";
+        var colorR = "rn";
+    }
+    //----------------------------------------------------------------------------------
+    //Torre y Reina
+    var rey = false;
+    
+
+    if(rey == true){
+        console.log("rey")
+    }else{
+        console.log("no")
+    }
 }
 //
 //
