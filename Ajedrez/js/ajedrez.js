@@ -540,7 +540,7 @@ function seleccionar(x,y){
 //
 //
 function Movimientos(a,b,sel){
-
+console.log(".")
     if(a == undefined && b == undefined){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
@@ -1560,13 +1560,9 @@ function Jaque(x,y, sel){
 //
 //
 function Mov_Prohibido(x,y,sel){
-    console.log("--------------------")
-    console.log(x,y,sel)
-    console.log("--------------------")
-    let i, ix, iy;
-    let xx = x-2;
-    let yy = y-1;
+    let i, ix, iy, u, ux, uy;
     var rey = false;
+    var warning = false;
 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
@@ -1583,7 +1579,6 @@ function Mov_Prohibido(x,y,sel){
         var colorTop = "t";
         var colorDop = "d";
         var colorAop = "a";
-        var colorRop = "r";
     }else{
         var colorT = "t";
         var colorD = "d";
@@ -1593,7 +1588,6 @@ function Mov_Prohibido(x,y,sel){
         var colorTop = "tn";
         var colorDop = "dn";
         var colorAop = "an";
-        var colorRop = "rn";
         
     }
     //----------------------------------------------------------------------------------
@@ -1607,6 +1601,28 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][y].Piezas == colorR){
                     console.log("TR1")
                     rey = true;
+                    //izquierda
+                    for(u = 1; u <= 8; u++){
+                        if( x-u >= 1){
+                            ux = x - u;
+                            if(Tablero[ux][y].Piezas != null){
+                                if(Tablero[ux][y].Piezas == colorDop || Tablero[ux][y].Piezas == colorTop){
+                                    warning = true;
+                                    //
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(q != Tablero[ux][y].Ejey){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -1620,6 +1636,28 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][y].Piezas == colorR){
                     console.log("TR2")
                     rey = true;
+                    //derecha→
+                    for(u = 1;u <= 8; u++){
+                        ux  = u +x;
+                        if(ux <= 8){
+                            if(Tablero[ux][y].Piezas != null){
+                                if(Tablero[ux][y].Piezas == colorDop ||Tablero[ux][y].Piezas == colorTop){
+                                    warning = true;
+                                    //
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(q != Tablero[ux][y].Ejey){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -1633,6 +1671,28 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[x][iy].Piezas == colorR){
                     console.log("TR3")
                     rey = true;
+                    //abajo
+                    for(u = 1;u <= 8; u++){
+                        uy  = u +y;
+                        if(uy <= 8){
+                            if(Tablero[x][uy].Piezas != null){
+                                if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
+                                    warning = true;
+                                    //
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(p != Tablero[x][uy].Ejex){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -1645,7 +1705,29 @@ function Mov_Prohibido(x,y,sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorR){
                     console.log("TR4")
-                    rey = true; 
+                    rey = true;
+                    //arriba
+                    for(u = 1; u <= 8; u++){
+                        if(y-u>=1){
+                            uy = y - u;
+                            if(Tablero[x][uy].Piezas != null){
+                                if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
+                                    warning = true;
+                                    //
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(p != Tablero[x][uy].Ejex){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        } 
+                    }
                 }
                 break;
             }
@@ -1663,6 +1745,29 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][iy].Piezas == colorR){
                     console.log("AR1")
                     rey = true;
+                    //AbajoDerecha
+                    for(i = 1;i <= 8; i++){
+                        if(y+i<=8 && x+i <= 8){
+                            ix = x + i;
+                            iy = y + i;
+                            if(Tablero[ix][iy].Piezas != null){
+                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                                    warning = true;
+                                    //
+                                    for(var p = 1; p <= 8; p++){
+                                        for(var q = 1; q <= 8; q++){
+                                            if(Movimiento[p][q] == true){
+                                                if(p != Tablero[ux][y].Ejex){
+                                                    Movimiento[p][q] = null;
+                                                }
+                                            }  
+                                        }
+                                    } 
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -1677,6 +1782,19 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][iy].Piezas == colorR){
                     console.log("AR2")
                     rey = true;
+                    //
+                    for(i = 1;i <= 8; i++){
+                        if(y+i<=8 && x+i <= 8){
+                            ix = x + i;
+                            iy = y + i;
+                            if(Tablero[ix][iy].Piezas != null){
+                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                                    warning = true;
+                                }
+                                break;
+                            }
+                        }
+                    } 
                 }
                 break;
             }
@@ -1691,6 +1809,19 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][iy].Piezas == colorR){
                     console.log("AR3")
                     rey = true;
+                    //
+                    for(i = 1;i <= 8; i++){
+                        if(y+i<=8 && x-i >= 1){
+                            ix = x - i;
+                            iy = y + i;
+                            if(Tablero[ix][iy].Piezas != null){
+                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                                    warning = true;
+                                }
+                                break;
+                            }
+                        }
+                    }  
                 }
                 break;
             }
@@ -1705,6 +1836,19 @@ function Mov_Prohibido(x,y,sel){
                 if(Tablero[ix][iy].Piezas == colorR){
                     console.log("AR4")
                     rey = true;
+                    //
+                    for(i = 1; i <= 8; i++){
+                        if(y-i>=1 && x-i >= 1){
+                            ix = x - i;
+                            iy = y - i;
+                            if(Tablero[ix][iy].Piezas != null){
+                                if(Tablero[ix][iy].Piezas == colorDop ||Tablero[ix][iy].Piezas == colorAop){
+                                    warning = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -1716,8 +1860,9 @@ function Mov_Prohibido(x,y,sel){
 
     if(rey == true){
         console.log("rey")
-    }else{
-        console.log("no")
+    }
+    if(warning == true){
+        console.log("warning")
     }
 }
 //
