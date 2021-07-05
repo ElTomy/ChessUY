@@ -1561,34 +1561,23 @@ function Jaque(x,y, sel){
 //
 function Mov_Prohibido(x,y,sel){
     let i, ix, iy, u, ux, uy;
-    var rey = false;
-    var warning = false;
-
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
     }else{
         var col = "b";
     }
-
     if(col == "n"){
-        var colorT = "tn";
-        var colorD = "dn";
-        var colorA = "an";
         var colorR = "rn";
 
         var colorTop = "t";
         var colorDop = "d";
         var colorAop = "a";
     }else{
-        var colorT = "t";
-        var colorD = "d";
-        var colorA = "a";
         var colorR = "r";
 
         var colorTop = "tn";
         var colorDop = "dn";
-        var colorAop = "an";
-        
+        var colorAop = "an"; 
     }
     //----------------------------------------------------------------------------------
     //Torre y Reina
@@ -1599,16 +1588,12 @@ function Mov_Prohibido(x,y,sel){
         if(ix <= 8){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorR){
-                    console.log("TR1")
-                    rey = true;
                     //izquierda
                     for(u = 1; u <= 8; u++){
                         if( x-u >= 1){
                             ux = x - u;
                             if(Tablero[ux][y].Piezas != null){
                                 if(Tablero[ux][y].Piezas == colorDop || Tablero[ux][y].Piezas == colorTop){
-                                    warning = true;
-                                    //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1634,16 +1619,12 @@ function Mov_Prohibido(x,y,sel){
             ix = x - i;
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorR){
-                    console.log("TR2")
-                    rey = true;
                     //derecha→
                     for(u = 1;u <= 8; u++){
                         ux  = u +x;
                         if(ux <= 8){
                             if(Tablero[ux][y].Piezas != null){
                                 if(Tablero[ux][y].Piezas == colorDop ||Tablero[ux][y].Piezas == colorTop){
-                                    warning = true;
-                                    //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1669,16 +1650,12 @@ function Mov_Prohibido(x,y,sel){
             iy = y - i;
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorR){
-                    console.log("TR3")
-                    rey = true;
                     //abajo
                     for(u = 1;u <= 8; u++){
                         uy  = u +y;
                         if(uy <= 8){
                             if(Tablero[x][uy].Piezas != null){
                                 if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
-                                    warning = true;
-                                    //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1704,16 +1681,12 @@ function Mov_Prohibido(x,y,sel){
         if(iy <= 8){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorR){
-                    console.log("TR4")
-                    rey = true;
                     //arriba
                     for(u = 1; u <= 8; u++){
                         if(y-u>=1){
                             uy = y - u;
                             if(Tablero[x][uy].Piezas != null){
                                 if(Tablero[x][uy].Piezas == colorDop ||Tablero[x][uy].Piezas == colorTop){
-                                    warning = true;
-                                    //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1743,8 +1716,6 @@ function Mov_Prohibido(x,y,sel){
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
                 if(Tablero[ix][iy].Piezas == colorR){
-                    console.log("AR1")
-                    rey = true;
                     //AbajoDerecha
                     for(u = 1;u <= 8; u++){
                         if(y+u<=8 && x+u <= 8){
@@ -1752,8 +1723,6 @@ function Mov_Prohibido(x,y,sel){
                             uy = y + u;
                             if(Tablero[ux][uy].Piezas != null){
                                 if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
-                                    warning = true;
-                                    //
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1780,8 +1749,6 @@ function Mov_Prohibido(x,y,sel){
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
                 if(Tablero[ix][iy].Piezas == colorR){
-                    console.log("AR2")
-                    rey = true;
                     //ArribaDerecha
                     for(u = 1;u <= 8; u++){
                         if(y+u<=8 && x+u <= 8){
@@ -1789,7 +1756,6 @@ function Mov_Prohibido(x,y,sel){
                             uy = y + u;
                             if(Tablero[ux][uy].Piezas != null){
                                 if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
-                                    warning = true;
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1816,16 +1782,12 @@ function Mov_Prohibido(x,y,sel){
             iy = y - i;
             if(Tablero[ix][iy].Piezas != null){
                 if(Tablero[ix][iy].Piezas == colorR){
-                    console.log("AR3")
-                    rey = true;
-                    //
                     for(u = 1;u <= 8; u++){
                         if(y+u<=8 && x-u >= 1){
                             ux = x - u;
                             uy = y + u;
                             if(Tablero[ux][uy].Piezas != null){
                                 if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
-                                    warning = true;
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1852,16 +1814,12 @@ function Mov_Prohibido(x,y,sel){
             iy = y + i;
             if(Tablero[ix][iy].Piezas != null){
                 if(Tablero[ix][iy].Piezas == colorR){
-                    console.log("AR4")
-                    rey = true;
-                    //
                     for(u = 1; u <= 8; u++){
                         if(y-u>=1 && x-u >= 1){
                             ux = x - u;
                             uy = y - u;
                             if(Tablero[ux][uy].Piezas != null){
                                 if(Tablero[ux][uy].Piezas == colorDop ||Tablero[ux][uy].Piezas == colorAop){
-                                    warning = true;
                                     for(var p = 1; p <= 8; p++){
                                         for(var q = 1; q <= 8; q++){
                                             if(Movimiento[p][q] == true){
@@ -1881,16 +1839,6 @@ function Mov_Prohibido(x,y,sel){
             }
         }
     } 
-
-
-
-
-    if(rey == true){
-        console.log("rey")
-    }
-    if(warning == true){
-        console.log("warning")
-    }
 }
 //
 //
