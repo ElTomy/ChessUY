@@ -845,11 +845,11 @@ function Rey(x,y,sel){
         selecc = sel;
     }
     if(x == 5 && (y == 1 || y == 8)){
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre) && seleccionado.color == Tablero[1][y].color && Tablero[6][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
         }
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre) && seleccionado.color == Tablero[1][y].color && Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
             //0-0-0
             comer(3,y,selecc);
         }
