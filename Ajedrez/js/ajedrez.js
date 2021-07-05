@@ -1587,11 +1587,24 @@ function Mov_Prohibido(x,y,sel){
         var colorA = "an";
         var colorP = "pn";
         var colorR = "rn";
+        
     }
     //----------------------------------------------------------------------------------
     //Torre y Reina
     var rey = false;
-    
+    //derecha→
+    for(i = 1;i <= 8; i++){
+        ix  = i +x;
+        if(ix <= 8){
+            if(Tablero[ix][y].Piezas != null){
+                if(Tablero[ix][y].Piezas == colorR){
+                    console.log(1)
+                    rey = true;
+                }
+                break;
+            }
+        }
+    }
 
     if(rey == true){
         console.log("rey")
