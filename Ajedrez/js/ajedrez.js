@@ -280,21 +280,11 @@ function seleccionar(x,y){
                     }
                }else{
                     if((y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)||(y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)) {
-                        Tablero[x][5] = {
-                            Piezas: null,
-                            color: null,
-                            Ejex: x,
-                            Ejey: 5,
-                        }
+                        ColocoPieza(null,null,x,5);
                         simbolo = "x";
                     }else{
                         if((y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)||(y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)){
-                            Tablero[x][4] = {
-                                Piezas: null,
-                                color: null,
-                                Ejex: x,
-                                Ejey: 4,
-                            }
+                            ColocoPieza(null,null,x,4);
                             simbolo = "x";
                         }
                     }
@@ -302,81 +292,35 @@ function seleccionar(x,y){
                }else{
                 if(seleccionado.Contenido == "r"||seleccionado.Contenido == "rn"){
                    if(seleccionado.Contenido == Piezas.BRey){
-                        if(x == 7 && y == 1 && Tablero[8][1].Piezas == Piezas.BTorre){
+                        if(x == 7 && Tablero[8][y].Piezas == Piezas.BTorre){
                             //0-0
-                            Tablero[6][1] = {
-                                Piezas: Piezas.BTorre,
-                                color: seleccionado.Color,
-                                Ejex: 6,
-                                Ejey: 1,
-                            }
-                            Tablero[8][1] = {
-                                Piezas: null,
-                                color: null,
-                                Ejex: 8,
-                                Ejey: 1,
-                            }
+                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,y);
+                            ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
-                        if(x == 3 && y == 1 && Tablero[1][1].Piezas == Piezas.BTorre){
+                        if(x == 3 && Tablero[1][y].Piezas == Piezas.BTorre){
                             //0-0-0
-                            Tablero[4][1] = {
-                                Piezas: Piezas.BTorre,
-                                color: seleccionado.Color,
-                                Ejex: 4,
-                                Ejey: 1,
-                            }
-                            Tablero[1][1] = {
-                                Piezas: null,
-                                color: null,
-                                Ejex: 1,
-                                Ejey: 1,
-                            }
+                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,y);
+                            ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }else{
-                        if(x == 7 && y == 8 && Tablero[8][8].Piezas == Piezas.NTorre){
+                        if(x == 7 && Tablero[8][y].Piezas == Piezas.NTorre){
                             //0-0
-                            Tablero[6][8] = {
-                                Piezas: Piezas.NTorre,
-                                color: seleccionado.Color,
-                                Ejex: 6,
-                                Ejey: 8,
-                            }
-                            Tablero[8][8] = {
-                                Piezas: null,
-                                color: null,
-                                Ejex: 8,
-                                Ejey: 8,
-                            }
+                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,y);
+                            ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
-                        if(x == 3 && y == 8 && Tablero[1][8].Piezas == Piezas.NTorre){
+                        if(x == 3 && Tablero[1][y].Piezas == Piezas.NTorre){
                             //0-0-0
-                            Tablero[4][8] = {
-                                Piezas: Piezas.NTorre,
-                                color: seleccionado.Color,
-                                Ejex: 4,
-                                Ejey: 8,
-                            }
-                            Tablero[1][8] = {
-                                Piezas: null,
-                                color: null,
-                                Ejex: 1,
-                                Ejey: 8,
-                            }
+                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,y);
+                            ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }
                 }
             }
-            Tablero[x][y] = {
-                Piezas: seleccionado.Contenido,
-                color: seleccionado.color,
-                Ejex: x,
-                Ejey: y,
-            }
-        
+            ColocoPieza(seleccionado.Contenido,seleccionado.color,x,y);
             if(jaque.jaque == true){
 
                 for(var o = 1; o <= 8; o++){
@@ -395,12 +339,7 @@ function seleccionar(x,y){
                     }
                 }
             }
-            Tablero[seleccionado.Ejex][seleccionado.Ejey] = {
-                Piezas: null,
-                color: null,
-                Ejex: seleccionado.Ejex,
-                Ejey: seleccionado.Ejey,
-            }
+            ColocoPieza(null,null,seleccionado.Ejex,seleccionado.Ejey);
             var a = 0;
             armoAjedrez();
         }else{
@@ -915,27 +854,14 @@ function Rey(x,y,sel){
     }else{
         selecc = sel;
     }
-   if(selecc == Piezas.BRey){
-        if(x == 5 && y == 1){
-            if(Tablero[8][1].Piezas == Piezas.BTorre && Tablero[6][1].Piezas == null){
-                //0-0
-                comer(7,1,selecc);
-            }
-            if( Tablero[1][1].Piezas == Piezas.BTorre && Tablero[4][1].Piezas == null && Tablero[2][1].Piezas == null){
-                //0-0-0
-                comer(3,1,selecc);
-            }
+    if(x == 5 && (y == 1 || y == 8)){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null){
+            //0-0
+            comer(7,y,selecc);
         }
-    }else{
-        if(x == 5 && y == 8){
-            if(Tablero[8][8].Piezas == Piezas.NTorre && Tablero[6][8].Piezas == null){
-                //0-0
-                comer(7,8,selecc);
-            }
-            if(Tablero[1][8].Piezas == Piezas.NTorre && Tablero[4][8].Piezas == null && Tablero[2][8].Piezas == null){
-                //0-0-0
-                comer(3,8,selecc);
-            }
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+            //0-0-0
+            comer(3,y,selecc);
         }
     }
     let xx = x-1;
@@ -1007,21 +933,7 @@ function Coronacion(x,y,sel){
 
 function cambioCoronacion(x, y, pieza, col){
     $(".modal").hide();
-    if(col == Color.Negro){
-        Tablero[x][y] = {
-            Piezas: pieza,
-            color: col,
-            Ejex: x,
-            Ejey: y,
-        }
-    }else{
-        Tablero[x][y] = {
-            Piezas: pieza,
-            color: col,
-            Ejex: x,
-            Ejey: y,
-        }
-    }
+    ColocoPieza(pieza,col,x,y);
     armoAjedrez();
 }
 window.onresize = boardsize;
