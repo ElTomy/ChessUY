@@ -86,5 +86,16 @@ function enterLogin(){
         }
        }
 
+       var inputC = document.getElementById("contraseña");
+       inputC.onkeypress = function(event){
+           checkEnterPressed(this,event);
+           event.cancelBubble = true;
+           if (event.stopPropagation) event.stopPropagation();
+          };
    
+          function checkEnterPressed(obj, event){
+           if(event.keyCode === 13){
+            log();
+           }
+          }
 }
