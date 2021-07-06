@@ -72,12 +72,11 @@ function cerrarSesion(){
   });
 }
 function enterLogin(){
- 
-  var inputC = document.getElementById("usuario");
-    inputC.onkeypress = function(event){
-        checkEnterPressedUser(this,event);
-        event.cancelBubble = true;
-        if (event.stopPropagation) event.stopPropagation();
+  var inputU = document.getElementById("usuario");
+      inputU.onkeypress = function(event){
+          checkEnterPressedUser(this,event);
+          event.cancelBubble = true;
+          if(event.stopPropagation) event.stopPropagation();
        };
 
        function checkEnterPressedUser(obj, event){
