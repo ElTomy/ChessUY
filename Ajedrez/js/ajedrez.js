@@ -212,6 +212,15 @@ function resetMovimientos(){
         }
     }
 }
+
+function resetTableroJaque(){
+    for(let x = 1; x <= 8; x += 1){
+        TableroJaque[x] = [];
+        for(let y = 1; y <= 8; y += 1){
+            TableroJaque[x][y] = null;
+        }
+    }
+}
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -380,6 +389,7 @@ function seleccionar(x,y){
                                     x: null,
                                     y: null,
                                 }
+                                resetTableroJaque();
                             } 
                         }
                     }
@@ -1034,6 +1044,7 @@ function JR(sel){
 //
 //
 function JaqueRey(x,y, sel){
+    console.log(".")
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
@@ -1291,34 +1302,35 @@ function Jaque(x,y, sel){
        }
 
        if(jaque.jaque == true){
+           console.log(TableroJaque)
             switch(sel){
                 case Piezas.NTorre:
                 case Piezas.BTorre:
-                        if(jaque.y == reyY){
-                            var l=jaque.x
-                            if(jaque.x > reyX){
-                                for(l; l > reyX; l++){
-                                    TableroJaque[l][jaque.y] = true;
-                                }
-                            }else{
-                                for(l; l < reyX; l++){
-                                    TableroJaque[l][jaque.y] = true;
-                                }
+                    if(jaque.y == reyY){
+                        var l=jaque.x
+                        if(jaque.x > reyX){
+                            for(l; l > reyX; l--){
+                                TableroJaque[l][jaque.y] = true;
                             }
                         }else{
-                            var l=jaque.y
-                            if(jaque.y > reyY){
-                                for(l; l > reyY; l++){
-                                    TableroJaque[jaque.x][l] = true;
-                                }
-                            }else{
-                                for(l; l < reyY; l++){
-                                    TableroJaque[jaque.x][l] = true;
-                                }
+                            for(l; l < reyX; l++){
+                                TableroJaque[l][jaque.y] = true;
                             }
                         }
-                        
-                break;
+                    }else{
+                        var l=jaque.y
+                        if(jaque.y > reyY){
+                            for(l; l > reyY; l++){
+                                TableroJaque[jaque.x][l] = true;
+                            }
+                        }else{
+                            for(l; l < reyY; l++){
+                                TableroJaque[jaque.x][l] = true;
+                            }
+                        }
+                    }
+                    
+            break;
                 case Piezas.NAlfil:
                 case Piezas.BAlfil:
                         if(jaque.y > reyY){
