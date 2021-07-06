@@ -1,6 +1,4 @@
-
 <?php
-
 /*
     Principiante -------------------->  600
     Aficionado ----------------------> 1500
@@ -21,13 +19,13 @@
                         <p>Que tan bueno te consideras?</p>
                         <div class='container'>
                         <div class='card'>
-                            <button>Principiante</button> 
-                            <button>Aficionado</button>
-                            <button>Semibuttonrofecional</button>
-                            <button>Candidato a Maestro (CM)</button>
-                            <button>Maestro FIDE (MF)</button>
-                            <button>Maestro Internacional (MI)</button>
-                            <button>Gran Maestro (GM)</button>
+                            <button onclick='guardoESTI(1)'>Principiante</button> 
+                            <button onclick='guardoESTI(2)'>Aficionado</button>
+                            <button onclick='guardoESTI(3)'>Semiprofecional</button>
+                            <button onclick='guardoESTI(4)'>Candidato a Maestro (CM)</button>
+                            <button onclick='guardoESTI(5)'>Maestro FIDE (MF)</button>
+                            <button onclick='guardoESTI(6)'>Maestro Internacional (MI)</button>
+                            <button onclick='guardoESTI(7)'>Gran Maestro (GM)</button>
                         </div>
                         </div>
 
