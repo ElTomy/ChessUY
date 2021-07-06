@@ -71,3 +71,7 @@ function cerrarSesion(){
       }
   });
 }
+function enterLogin(){
+ 
+  
+}
