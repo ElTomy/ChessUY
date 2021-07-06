@@ -20,31 +20,22 @@ function log(){
           var mensaje;
           switch (tipo) {
             case "0": //admin
-              console.log('logeado admin');
               mensaje = 4;
-              //location.href ="";
-              
+              estadisticasInicial();
               break;
-            case "1": //jugador
-              console.log('logeado jugador');
+            case "1": //jugador;
               mensaje = 4;
-              
-              //location.href ="";
               break;
             case "2": //arbitro
-              console.log('logeado arbitro');
               mensaje = 4;
-              //location.href ="";
               break;
             case "3": //periodista
-              console.log('logeado periodista');
               mensaje = 4;
-              //location.href ="";
               break;
               default:
                 console.log('error');
           }
-          location.href = "/ChessUY/Inicio";
+          //location.href = "/ChessUY/Inicio";
       }else{
         var numero_mensaje = 1;
 
@@ -97,4 +88,31 @@ function enterLogin(){
             log();
            }
           }
+}
+function estadisticasInicial(){
+    let us = sessionStorage.getItem('usuario');
+    let user = new Usuario();
+    var est = user.comprueboEstadisticas(us);
+    
+    if(est == true){
+      $.ajax({
+        url: "/ChessUY/Modal/modalELO.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+    });
+    }
+}
+function guardoESTI(x){
+  console.log("nivel:" , x)
+  let us = sessionStorage.getItem('usuario');
+  let user = new Usuario();
+  var guardo = user.comprueboEstadisticas(us, x);
+  console.log(guardo)
+  //modal avisando que se guardo
+  if(guardo == true){
+    $(".modal").hide();
+  }
 }
