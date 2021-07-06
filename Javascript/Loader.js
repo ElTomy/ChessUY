@@ -1,15 +1,15 @@
 window.onload = function(){
     $(".loader-wrapper").fadeOut("slow");
 
-    $("#header").load("/ChessUY/Page/header.php");
-    $("#footer").load("/ChessUY/Page/footer.html");
+    $("#header").load("/cyberhydra/Page/header.php");
+    $("#footer").load("/cyberhydra/Page/footer.html");
 };
 
 function Modal(numero_mensaje){
     var numero = numero_mensaje;
 
     $.ajax({
-        url: "/ChessUY/Modal/modal.php",
+        url: "/cyberhydra/Modal/modal.php",
         type: "POST",
         data: { numero_mensaje: numero},
         success: function (data) {

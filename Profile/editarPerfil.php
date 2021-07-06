@@ -22,16 +22,16 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
 
     
     <link
       rel="shortcut icon"
-      href="/ChessUY/media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
+    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
     <title>ChessUY | Editar Perfil</title>
   </head>
@@ -45,7 +45,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
     <?php
@@ -55,7 +55,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
         <div class="editarperfil">
             <div class="editarperfil-body">
                 <div class="editarperfil-logo">
-                    <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                    <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <h1>Editar Perfil</h1>
                 <hr>

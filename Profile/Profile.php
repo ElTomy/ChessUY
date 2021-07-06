@@ -46,17 +46,17 @@
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/Loader.js"></script>
-    <script src="../Usuarios/js/Usuario.js"></script>
-    <script src="../Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Usuarios/js/Usuario.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
 
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
     <title>ChessUY | 
 
@@ -85,7 +85,7 @@
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -93,8 +93,8 @@
 
     <section class="profile-wrapper">
         <div class="profile-body">
-            <a href="/ChessUY/Index">
-              <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            <a href="/cyberhydra/Index">
+              <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
             </a>
             <div class="profile-avatar">
                   <div class="profile-flex">
@@ -121,7 +121,7 @@
 
                   if(isset($_SESSION['usuario'])){
                     if($usuario_info['usuario'] == $_SESSION['usuario']){
-                      echo '<a href="/ChessUY/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
+                      echo '<a href="/cyberhydra/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 
@@ -139,7 +139,7 @@
 
                   <div class="trofeo">
                     <div class="trofeo-img">
-                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
+                      <img src="/cyberhydra/media/images/Trofeo.png" alt="">
                     </div>
                     <div class="trofeo-body">
                       <h1>Nombre del Trofeo</h1>
@@ -149,7 +149,7 @@
 
                   <div class="trofeo">
                     <div class="trofeo-img">
-                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
+                      <img src="/cyberhydra/media/images/Trofeo.png" alt="">
                     </div>
                     <div class="trofeo-body">
                       <h1>Nombre del Trofeo</h1>
@@ -204,7 +204,7 @@
                   <div class="logro-wrapper">
                     <div class="logro">
                       <div class="imagen-logro">
-                      <img class="img-trofeo" src="/ChessUY/media/images/Logro.png" alt="">
+                      <img class="img-trofeo" src="/cyberhydra/media/images/Logro.png" alt="">
                       </div>
                       <div class="logro-body">
                         <h1>Primera Jugada</h1>

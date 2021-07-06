@@ -4,31 +4,31 @@ $numero_mensaje = $_POST['numero_mensaje'];
 switch($numero_mensaje){
     case 1:
         $mensaje_2 = "Login:";
-        $link = "/ChessUY/Form/Login";
+        $link = "/cyberhydra/Form/Login";
         $mensaje = "El usuario o contraseña que ingresó es incorrecto.";
         break;
     
     case 2:
         $mensaje_2 = "Login:";
-        $link = "/ChessUY/Form/Login";
+        $link = "/cyberhydra/Form/Login";
         $mensaje = "No existe una cuenta con ese nombre de usuario.";
         break;
 
     case 3:
         $mensaje_2 = "Register:";
-        $link = "/ChessUY/Index";
+        $link = "/cyberhydra/Index";
         $mensaje = "Su cuenta ha sido registrada con éxito.";
         break;
 
     case 4:
         $mensaje_2 = "Login:";
-        $link = "/ChessUY/Index";
+        $link = "/cyberhydra/Index";
         $mensaje = "Se ha logeado correctamente.";
         break;
 
     case 5:
         $mensaje_2 = "Register:";
-        $link = "/ChessUY/Index";
+        $link = "/cyberhydra/Index";
         $mensaje = "Tu cuenta ha sido creada correctamente pero actualmente no esta aprobada, en breve le informaremos.";
         break;
     
@@ -75,11 +75,10 @@ switch($numero_mensaje){
         break;
 }
 
-
 $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>$mensaje_2</h1>
@@ -92,6 +91,5 @@ $modal = "  <div class='modal'>
 
 echo $modal;
 return $modal;
-
 ?>
 

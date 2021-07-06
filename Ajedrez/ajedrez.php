@@ -16,16 +16,16 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
     <script src="js/ajedrez.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
     
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
     <title>ChessUY | Championship</title>
   </head>
@@ -38,7 +38,7 @@
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
 

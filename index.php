@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['usuario'])){
-  header('location: /ChessUY/Inicio');
+  header('location: /cyberhydra/Inicio');
 }
 
 ?>
@@ -20,9 +20,9 @@ if(isset($_SESSION['usuario'])){
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Noticias/js/noticias.js"></script>
-    <script src="Javascript/Loader.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Noticias/js/noticias.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
     
     <link
       rel="shortcut icon"
