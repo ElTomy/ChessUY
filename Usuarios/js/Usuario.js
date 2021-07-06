@@ -140,8 +140,11 @@ class Usuario{
             url: "../Usuarios/php/guardoEsti.php",
             data: {usuario:usuario, nivel:nivel},
             success: function(est){
+                console.log(est)
                 var txt = est;
                 var est2 = JSON.parse(txt);
+                console.log("---")
+                console.log(est2)
                 if(est2 == true){
                     x = true;
                 }

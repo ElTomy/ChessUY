@@ -109,7 +109,7 @@ function guardoESTI(x){
   console.log("nivel:" , x)
   let us = sessionStorage.getItem('usuario');
   let user = new Usuario();
-  var guardo = user.comprueboEstadisticas(us, x);
+  var guardo = user.guardoEST_I(us, x);
   console.log(guardo)
   //modal avisando que se guardo
   if(guardo == true){
