@@ -73,5 +73,18 @@ function cerrarSesion(){
 }
 function enterLogin(){
  
-  
+  var inputC = document.getElementById("usuario");
+    inputC.onkeypress = function(event){
+        checkEnterPressedUser(this,event);
+        event.cancelBubble = true;
+        if (event.stopPropagation) event.stopPropagation();
+       };
+
+       function checkEnterPressedUser(obj, event){
+        if(event.keyCode === 13){
+         document.getElementById("contraseña").select();
+        }
+       }
+
+   
 }
