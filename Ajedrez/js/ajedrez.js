@@ -466,7 +466,7 @@ function Movimientos(a,b,sel){
             }
         }
     }
-    if(jaque.jaque != true && seleccionado != null && (seleccionado != Piezas.NRey || seleccionado != Piezas.BRey)){
+    if(jaque.jaque != true && seleccionado != null && (seleccionado.Contenido != Piezas.NRey || seleccionado.Contenido != Piezas.BRey)){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
         let sel = seleccionado.Contenido;
