@@ -956,7 +956,6 @@ function JR(sel){
 //
 //
 function JaqueRey(x,y, sel){
-    console.log(".")
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
@@ -1020,7 +1019,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
-                    Movimiento[x-2][y] = null
+                    if(x >= 3 ){
+                        Movimiento[x-2][y] = null
+                    }
                 }
                 break;
             }
@@ -1033,8 +1034,10 @@ function JaqueRey(x,y, sel){
             ix = x - i;
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                    Movimiento[x+2][y] = null
+                    Movimiento[x][y] = null;
+                    if(x <= 6 ){
+                        Movimiento[x+2][y] = null
+                    }
                 }
                 break;
             }
@@ -1047,7 +1050,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null
-                    Movimiento[x][y+2] = null
+                    if(y <= 6 ){
+                        Movimiento[x][y+2] = null
+                    }
                 }
                 break;
             }
@@ -1061,7 +1066,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null 
-                    Movimiento[x][y-2] = null
+                    if(y >= 3 ){
+                        Movimiento[x][y-2] = null
+                    }
                 }
                 break;
             }
@@ -1078,7 +1085,9 @@ for(i = 1; i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x+2][y+2] = null
+                if(x <= 6 && y <= 6){
+                    Movimiento[x+2][y+2] = null
+                }
             }
             break;
         }
@@ -1093,7 +1102,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x+2][y-2] = null
+                if(x <= 6 && y >= 3){
+                    Movimiento[x+2][y-2] = null
+                }
             }
             break;
         }
@@ -1108,7 +1119,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x-2][y+2] = null
+                if(x >= 3 && y <= 6){
+                    Movimiento[x-2][y+2] = null
+                }
             }
             break;
         }
@@ -1123,7 +1136,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x-2][y-2] = null
+                if(x >= 3 && y >= 3){
+                    Movimiento[x-2][y-2] = null
+                }
             }
             break;
         }
@@ -1214,7 +1229,6 @@ function Jaque(x,y, sel){
        }
 
        if(jaque.jaque == true){
-           console.log(TableroJaque)
             switch(sel){
                 case Piezas.NTorre:
                 case Piezas.BTorre:

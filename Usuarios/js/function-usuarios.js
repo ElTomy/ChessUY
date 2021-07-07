@@ -21,7 +21,7 @@ function log(){
           switch (tipo) {
             case "0": //admin
               mensaje = 4;
-              estadisticasInicial();
+              //estadisticasInicial();
               break;
             case "1": //jugador;
               mensaje = 4;
@@ -35,7 +35,7 @@ function log(){
               default:
                 console.log('error');
           }
-          //location.href = "/ChessUY/Inicio";
+          location.href = "/ChessUY/Inicio";
       }else{
         var numero_mensaje = 1;
 
