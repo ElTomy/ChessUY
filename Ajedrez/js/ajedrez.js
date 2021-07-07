@@ -25,9 +25,13 @@ $( document ).ready(function(){
     Blanco:'b',
     Negro:'n',
 }
- var blan;
- var neg;
-const Piezas = {
+ var blan, neg, colJugador, simbolo, seleccionado;
+ var Jugadas = [];
+ var Turno = 1;
+ const Tablero = [];
+ const TableroJaque = [];
+ var  Movimiento = [];
+ const Piezas = {
     BRey: 'r', 
     BDama: 'd',
     BCaballo: 'c',
@@ -41,20 +45,12 @@ const Piezas = {
     NTorre:'tn', 
     NPeon:'pn',  
 }
-var Jugadas = [];
-var Turno = 1;
-var simbolo = null;
-const Tablero = [];
-const TableroJaque = [];
-var seleccionado = null;
-var  Movimiento = [];
 var jaque = {
     jaque: null,
     pieza: null,
     x: null,
     y: null,
 }
-var colJugador;
 //
 //
 /*------------------------------------------------------------------------------------------*/
