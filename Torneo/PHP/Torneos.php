@@ -62,10 +62,8 @@
             </div>
           </div>
           <div style='width: 80%; height: 600px; margin-left: 1%; border: solid grey; border-width: 1px; border-radius: 20px;'>
-            <form style="height: 100%; width: 100%;" action="../PHP/crTorn.php" method="post">
-              <div style="width: 100%; height: 100%; display: flex;" id="hola">
-              </div>
-            </form>
+            <div style="width: 100%; height: 100%; display: flex;" id="hola">
+            </div>
           </div>
         </div>
       </div>
