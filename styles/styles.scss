@@ -370,7 +370,79 @@ footer {
       hr {
         width: 400px;
         border: 1px solid #0076be;
-        margin-top: 20px;
+        margin: 10px 0 ;
+      }
+      .button-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(22, 22, 22);
+        padding: 10px;
+        margin: 10px;
+        border-radius: 3em;
+        button{
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border: 2px solid #333;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 1s;
+
+          margin: 5px 10px;
+  
+          i{
+            font-size: 2em;
+            
+          }
+          #Blanco{
+            background: linear-gradient(90deg, rgba(255,170,0,1) 0%, rgba(129,78,0,1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+          }
+          #Negro{
+            color: linear-gradient(90deg, rgba(190,190,190,1) 0%, rgba(38,38,38,1) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+          }
+        }
+        button:hover{
+          background-image: linear-gradient(to bottom, transparent, #444);
+        }
+
+      }
+
+      .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 10px 0;
+
+        button{
+          width: 200px;
+          height: 40px;
+          margin: 5px 10px;
+          background-color: #0076be;
+          border: none;
+          padding: 10px;
+          border-radius: 3em;
+          color: white;
+          cursor: pointer;
+
+          transition: .5s;
+        }
+        button:hover{
+          background-color: #00436d;
+          color: #009dff;
+        }
       }
     }
   }

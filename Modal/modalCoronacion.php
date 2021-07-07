@@ -1,11 +1,13 @@
-
-<script src="/ChessUY/Ajedrez/js/ajedrez.js"></script>
 <?php
 $color = $_POST['color'];
 $x = $_POST['x'];
 $y = $_POST['y'];
 
 if($color == 'b'){
+    $d = '"'.$x.'","'.$y.'", "d" , "'.$color.'"';
+    $a = '"'.$x.'","'.$y.'", "a" , "'.$color.'"';
+    $c = '"'.$x.'","'.$y.'", "c" , "'.$color.'"';
+    $t = '"'.$x.'","'.$y.'", "t" , "'.$color.'"';
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -15,17 +17,21 @@ if($color == 'b'){
                         <h1>Coronación</h1>
                         <hr>
                         <p>Elija su pieza</p>
-                        <div style='display: flex'>
-                        <button onclick = 'cambioCoronacion($x, $y, d, $color)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-bishop' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-knight' id='Blanco'></i></button>
-                        <button><i class='fas fa-chess-rook' id='Blanco'></i></button>
+                        <div class='button-wrapper'>
+                            <button onclick = 'cambioCoronacion($d)'><i class='fas fa-chess-queen' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($a)'><i class='fas fa-chess-bishop' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($c)'><i class='fas fa-chess-knight' id='Blanco'></i></button>
+                            <button onclick = 'cambioCoronacion($t)'><i class='fas fa-chess-rook' id='Blanco'></i></button>
                         </div>
 
                     </div>
                 </div>
             </div>";
 }else{
+    $dn = '"'.$x.'","'.$y.'", "dn" , "'.$color.'"';
+    $an = '"'.$x.'","'.$y.'", "an" , "'.$color.'"';
+    $cn = '"'.$x.'","'.$y.'", "cn" , "'.$color.'"';
+    $tn = '"'.$x.'","'.$y.'", "tn" , "'.$color.'"';
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -35,11 +41,11 @@ if($color == 'b'){
                         <h1>Coronación</h1>
                         <hr>
                         <p>Elija su pieza</p>
-                        <div >
-                        <button cambioCoronacion($x, $y, dn, $color)><i class='fas fa-chess-queen' id='Negro'></i></button>
-                        <button><i class='fas fa-chess-bishop' id='Negro'></i></button>
-                        <button><i class='fas fa-chess-knight' id='Negro'></i></button>
-                        <button><i class='fas fa-chess-rook' id='Negro'></i></button>
+                        <div class='button-wrapper'>
+                        <button onclick = 'cambioCoronacion($dn)'><i class='fas fa-chess-queen' id='Negro'></i></button>
+                        <button onclick = 'cambioCoronacion($an)'><i class='fas fa-chess-bishop' id='Negro'></i></button>
+                        <button onclick = 'cambioCoronacion($cn)'><i class='fas fa-chess-knight' id='Negro'></i></button>
+                        <button onclick = 'cambioCoronacion($tn)'><i class='fas fa-chess-rook' id='Negro'></i></button>
                         </div>
 
                     </div>

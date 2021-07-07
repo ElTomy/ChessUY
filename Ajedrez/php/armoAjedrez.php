@@ -36,45 +36,45 @@ for($y = 1; $y <= 8; $y++){
         switch($Tablero[$x][$y]['Piezas']){
 
             case "t":
-                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
+                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
                 break;
             case "tn":
-                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
+                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
                 break;
 
                 case "c":
-                    $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
+                    $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
                     break;
                 case "cn":
-                    $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
+                    $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
                     break;
 
                     case "a":
-                        $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
+                        $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
                         break;
                     case "an":
-                        $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
+                        $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
                         break;
 
                         case "d":
-                            $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
+                            $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
                             break;
                         case "dn":
-                            $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
+                            $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
                             break;
 
                             case "r":
-                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
                                 break;
                             case "rn":
-                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
                                 break;
 
                                 case "p":
-                                    $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
+                                    $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
                                     break;
                                 case "pn":
-                                    $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
+                                    $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
                                     break;
 
                                     default:
@@ -198,45 +198,45 @@ $Ajedrez .='            </div>
                         switch($jugadas[$i]['Piezas']){
     
                             case "t":
-                                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
                                 break;
                             case "tn":
-                                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
                                 break;
             
                             case "c":
-                                $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
                                 break;
                             case "cn":
-                                $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
                                 break;
             
                             case "a":
-                                $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
                                 break;
                             case "an":
-                                $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
                                 break;
         
                             case "d":
-                                $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
                                 break;
                             case "dn":
-                                $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
                                 break;
     
                             case "r":
-                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
                                 break;
                             case "rn":
-                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
                                 break;
 
                             case "p":
-                                $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
+                                $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
                                 break;
                             case "pn":
-                                $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
+                                $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
                                 break;
 
                                 default:

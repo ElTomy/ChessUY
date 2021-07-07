@@ -71,3 +71,30 @@ function cerrarSesion(){
       }
   });
 }
+function enterLogin(){
+  var inputU = document.getElementById("usuario");
+      inputU.onkeypress = function(event){
+          checkEnterPressedUser(this,event);
+          event.cancelBubble = true;
+          if(event.stopPropagation) event.stopPropagation();
+       };
+
+       function checkEnterPressedUser(obj, event){
+        if(event.keyCode === 13){
+         document.getElementById("contraseña").select();
+        }
+       }
+
+       var inputC = document.getElementById("contraseña");
+       inputC.onkeypress = function(event){
+           checkEnterPressed(this,event);
+           event.cancelBubble = true;
+           if (event.stopPropagation) event.stopPropagation();
+          };
+   
+          function checkEnterPressed(obj, event){
+           if(event.keyCode === 13){
+            log();
+           }
+          }
+}
