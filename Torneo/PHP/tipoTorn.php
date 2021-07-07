@@ -32,15 +32,15 @@ $agenHTML = '
 $tiemHTML = '
 <div>
     Tiempo para descalificar
-    <input type="text" name="tempDesc" required>
+    <input type="text" id="tempDesc">
 </div>
 <div>
     Tiempo total por jugador
-    <input type="text" name="tempJug" required>
+    <input type="text" id="tempJug" required>
 </div>
 <div>
     Cantidad de partidas por dia
-    <input type="number" name="partDia" required>
+    <input type="number" id="partDia" required>
 </div>
 ';
 
@@ -51,30 +51,26 @@ $avanHTML = '
 <div style="display: flex; height: 90%; width: 100%;">
     <div style=" width: 50%; height: 100%;">
         <div style="margin-bottom: 5%;">
-            <p style="width: 100%;">Cantidad de Jugadores</p>
-            <input type="number" name="cantJug">
+            <p style="width: 100%;">Limitar Jugadores</p>
+            <input type="checkbox" id="siLim" value="siLim" onclick="quehacerRes()">
         </div>
         <div>
             <p style="width: 100%;">ELO maximo</p>
-            <input type="number" name="eloMax">
+            <input type="number" id="eloMax">
         </div>
         <div>
             <p style="width: 100%;">ELO minimo</p>
-            <input type="number" name="eloMin">
+            <input type="number" id="eloMin">
         </div>
-        <div style="margin-top: 10%; width: 100%;">
-            <p style="width: 100%; margin-bottom: 5%;">Que hacer cuando se llega al maximo de jugadores</p>
-            <input type="radio" name="opcRes" value="listRes" onchange="opcReser(this)">
-            <label for="listRes">Lista de reservas</label><br>
-            <input type="radio" name="opcRes" value="termInsc" onchange="opcReser(this)">
-            <label for="termInsc">Terminar inscripciones</label><br>
+        <div id="quehacerRes" style="margin-top: 10%; width: 100%;">
+            
         </div>
     </div>
 
     <div style="width: 50%; height: 100%;">
         <div style="margin-bottom: 5%;">
         <p style="width: 100%;">Localidad</p>
-            <select name="locTorn" id="locTorn">
+            <select id="locTorn">
                 <option disabled selected>Selecciona una localidad</option>
                 <option value="x">Cualquiera</option>
                 <option value="mtv">Montevideo</option>
@@ -84,13 +80,13 @@ $avanHTML = '
         </div>
         <div>
             <p style="width: 100%;">Edad maxima</p>
-            <input type="number" name="edaMax">
+            <input type="number" id="edaMax">
         </div>
         <div>
             <p style="width: 100%;">Edad minima</p>
-            <input type="number" name="edaMin">
+            <input type="number" id="edaMin">
         </div>
-        <div id="penultOpt" style="margin-top: 27%; width: 100%;">
+        <div id="penultOpt" style="margin-top: 44%; width: 100%;">
         </div>
     </div>
 </div>
@@ -100,13 +96,13 @@ $avanHTML = '
 //Codigo de premio
 $premHTML = '
 Premio
-<input type="text" name="prem" required>
+<input type="text" id="prem" required>
 ';
 
 //Codigo para guardar y crear
 $guCrHTML = '
 <button>Guardar</button>
-<input type="submit" value="Crear">
+<button onclick="envaPHP()">Crear</button>
 ';
 
 if($opt == 'norm') {
@@ -126,7 +122,7 @@ if($opt == 'norm') {
         <div style="height: 58%; background-color: rgba(255, 0, 0, 0.1); text-align: center; color: grey; border-radius: 20px; padding: 1%;">
             (deshabilitado)
         </div>
-        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+        <div style="height: 18%; border-radius: 20px; padding: 10% 0% 0% 1%;">'.
 //          Premio
             $premHTML
       .'</div>
@@ -156,7 +152,7 @@ if($opt == 'norm') {
 //          Aca va la parte avanzada
             $avanHTML
       .'</div>
-        <div style="height: 18%; border-radius: 20px; padding: 1%;">'.
+        <div style="height: 18%; border-radius: 20px; padding: 10% 0% 0% 1%;">'.
 //          Premio
             $premHTML
       .'</div>
