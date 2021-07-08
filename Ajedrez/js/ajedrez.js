@@ -12,7 +12,7 @@ $( document ).ready(function(){
 //
  function armoAjedrez(){
     $.ajax({
-        url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
+        url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
         type: "POST",
         data: {Tablero:Tablero, Movimiento:Movimiento, Jugadas:Jugadas ,Turno:Turno},
         success: function (data) {
@@ -922,7 +922,7 @@ function Coronacion(x,y,sel){
         var col = "b";
     }
     $.ajax({
-        url: "/ChessUY/Modal/modalCoronacion.php",
+        url: "/cyberhydra/Modal/modalCoronacion.php",
         type: "POST",
         data: {color: col , x:x, y:y},
         success: function (data) {
@@ -956,7 +956,6 @@ function JR(sel){
 //
 //
 function JaqueRey(x,y, sel){
-    console.log(".")
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
@@ -1214,7 +1213,6 @@ function Jaque(x,y, sel){
        }
 
        if(jaque.jaque == true){
-           console.log(TableroJaque)
             switch(sel){
                 case Piezas.NTorre:
                 case Piezas.BTorre:

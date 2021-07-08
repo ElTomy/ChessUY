@@ -9,16 +9,16 @@
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
 
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
     <script src="js/Form.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
     <title>ChessUY | Register</title>
   </head>
@@ -32,7 +32,7 @@
     <div class="landing-video">
         <div class="background-opacity"></div>
         <video autoplay="" loop="" muted="">
-          <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+          <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
         </video>
     </div>
 
@@ -41,8 +41,8 @@
     <div class="register-wrapper2">  
 
         <div class="register-logo">
-            <a href="../index.html">
-            <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="" />
+            <a href="/cyberhydra/index.html">
+            <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="" />
             </a>
         </div>
 

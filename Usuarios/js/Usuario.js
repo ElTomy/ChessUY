@@ -87,7 +87,6 @@ class Usuario{
         this.tipo=x;
     }
     
-    
     login(usuario, pass){ 
         var x= false;
         $.ajax({
@@ -98,7 +97,6 @@ class Usuario{
             success: function(log){
                 var txt = log;
                 var log2 = JSON.parse(txt);
-
                 if(log2.error == true){
                     x = false;
                 }else{

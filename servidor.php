@@ -1,8 +1,7 @@
 <?php
 class servidor
 {
-    function conectar()
-    {
+    function conectar(){
         if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')) {
             echo "No se pudo conectar a la base de datos";
             exit;
@@ -20,28 +19,28 @@ class servidor
     function VerificoSesion($tipo){
 
         if(!isset($_SESSION["usuario"])){
-            header("Location: /chessuy/Form/login.html");
+            header("Location: /cyberhydra/Form/login.html");
 
         }else{
             switch ($tipo) {
                 case 0: //admin
                     if($_SESSION["tipo"] != "0"){
-                        header("Location: /chessuy/Form/login.html");
+                        header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
                 case 1: //jugador
                     if($_SESSION["tipo"] != "1"){
-                        header("Location: /chessuy/Form/login.html");
+                        header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
                 case 2: //arbitro
                     if($_SESSION["tipo"] != "2"){
-                        header("Location: /chessuy/Form/login.html");
+                        header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
                 case 3: //periodista
                     if($_SESSION["tipo"] != "3"){
-                    header("Location: /chessuy/Form/login.html");
+                    header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
             }
@@ -100,8 +99,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail)
-    {
+    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
         $conn = $this->conectar();
         $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
@@ -132,8 +130,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function BorarSolicitud($usuario)
-    {
+    function BorarSolicitud($usuario){
         $conn = $this->conectar();
         $sql = "CALL BorarSolicitud(?)";
         $stmts = $conn->prepare($sql);
@@ -145,8 +142,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail)
-    {
+    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
         $conn = $this->conectar();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
@@ -158,8 +154,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoSolicitudes()
-    {
+    function InfoSolicitudes(){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoSolicitudes()";
@@ -182,8 +177,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoUsuario()
-    {
+    function InfoUsuario(){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoUsuarios()";
@@ -206,8 +200,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function PerfilUsuario($user)
-    {
+    function PerfilUsuario($user){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL PerfilUsuario(?)";
@@ -230,8 +223,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+<<<<<<< HEAD
     function CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo)
     {
+=======
+    function CrearTorneo($Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$MododeReserva,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima){
+>>>>>>> 57b77d02d3a8012c7a087dec8dda1cac8e0ceaed
         $conn = $this->conectar();
         $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
@@ -244,8 +241,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoEstadisticas($usuario)
-    {
+    function InfoEstadisticas($usuario){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoEstadisticas(?)";
@@ -267,8 +263,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos)
-    {
+    function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos){
         $conn = $this->conectar();
         $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);

@@ -11,7 +11,7 @@ $Turnos = $_POST['Turno'];
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
 $Ajedrez = '    <div class="mobile-img">
-                    <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                    <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <div class="first-player-mobile">
                     <div class="first-player-wrapper">
@@ -159,10 +159,10 @@ $Ajedrez .='            </div>
 
                 <div class="movimientos">
                 <div class="movimientos-img">
-                    <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                    <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <div class="jugadores">
-                    <a href="/ChessUY/Profile/ByJuanii">
+                    <a href="/cyberhydra/Profile/ByJuanii">
                         <div class="JugadorUno">
                             <div class="jugador-img">
                                 <i class="fas fa-user"></i>
@@ -174,7 +174,7 @@ $Ajedrez .='            </div>
                         </div>
                     </a>
                     <h1>-</h1>
-                    <a href="/ChessUY/Profile/ByJuanii">
+                    <a href="/cyberhydra/Profile/ByJuanii">
                         <div class="JugadorDos">
                             <div class="jugador-body">
                                 <h1>Jugador 2</h1>

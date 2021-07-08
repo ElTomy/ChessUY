@@ -27,7 +27,7 @@ function Register() {
 
     if(nombre == "" || apellido == "" || institucion == "" || año == "" || nacimiento == "" || cedula == "" || celular == "" || usuario == "" || email == "" || contraseña == ""){
         $.ajax({
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             type: "POST",
             data: { numero_mensaje: 7},
             success: function (data) {
@@ -36,7 +36,7 @@ function Register() {
           });
     }else if(!año.match(numeros) || año > 6 || año < 1){
         $.ajax({
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             type: "POST",
             data: { numero_mensaje: 10},
             success: function (data) {
@@ -45,7 +45,7 @@ function Register() {
           });
     }else if(!cedula.match(numeros) || cedula.match(letras) || !celular.match(numeros) || celular.match(letras)){
         $.ajax({
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             type: "POST",
             data: { numero_mensaje: 11},
             success: function (data) {
@@ -54,7 +54,7 @@ function Register() {
           });
     }else if(cedula.length != 8){
         $.ajax({
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             type: "POST",
             data: { numero_mensaje: 12},
             success: function (data) {
@@ -106,7 +106,7 @@ function Register() {
                         mensaje_modal = 9;
                     }
                     $.ajax({
-                        url: "/ChessUY/Modal/modal.php",
+                        url: "/cyberhydra/Modal/modal.php",
                         type: "POST",
                         data:{numero_mensaje: mensaje_modal},
                         success: function (modal){
@@ -118,7 +118,7 @@ function Register() {
         }
         else{
             $.ajax({
-                url: "/ChessUY/Modal/modal.php",
+                url: "/cyberhydra/Modal/modal.php",
                 type: "POST",
                 data: { numero_mensaje: 8},
                 success: function (data) {

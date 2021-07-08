@@ -1,6 +1,6 @@
 $( document ).ready(function(){
     $.ajax({
-        url: "/ChessUY/Profile/PHP/buscar.php",
+        url: "/cyberhydra/Profile/PHP/buscar.php",
         type: "POST",
         data: {},
         success: function (data) {

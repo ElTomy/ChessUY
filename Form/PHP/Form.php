@@ -1,5 +1,5 @@
 <?php
-include '../../servidor.php';
+include '/cyberhydra/servidor.php';
 $servidor = new servidor();
 
 $tipo = $_POST['tipo'];

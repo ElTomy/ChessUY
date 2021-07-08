@@ -5,26 +5,26 @@
             session_start();
             
             if(isset($_SESSION['usuario'])){
-                echo '  <a href="/ChessUY/Inicio">
-                            <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
+                echo '  <a href="/cyberhydra/inicio">
+                            <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }else{
-                echo '  <a href="/ChessUY/Index.php">
-                            <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
+                echo '  <a href="/cyberhydra/Index.php">
+                            <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }
             
             echo '      </div>
                     <div class="nav-links">
         
-                    <a class="search" href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>';
+                    <a class="search" href="/cyberhydra/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>';
     
         
             
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
-                                <a class='profile' href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'>
+                                <a class='profile' href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'>
                                     <div class='session-image'><i class='fas fa-user'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
@@ -44,8 +44,8 @@
                             </div>";
                 }else{
                     echo "<div class='loginregister'>
-                            <a class='login-button' href='/ChessUY/Form/Login'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
-                            <a class='register-button' href='/ChessUY/Form/Register-User'><i class='fas fa-user-plus'></i> REGISTER</a>
+                            <a class='login-button' href='/cyberhydra/Form/login.html'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
+                            <a class='register-button' href='/cyberhydra/Form/register-user.html'><i class='fas fa-user-plus'></i> REGISTER</a>
                           </div>";
                 }
             ?>
@@ -80,16 +80,16 @@
                     echo "<h2>Invitado</h2>";
                 }
             ?>            
-            <a href="/ChessUY/Index"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/cyberhydra/Index"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
-                    echo "  <a href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
-                            <a class='search' href='/ChessUY/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
+                    echo "  <a href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
+                            <a class='search' href='/cyberhydra/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
                             <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{
-                    echo "<a class='search' href='/ChessUY/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
-                          <a href='/ChessUY/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
-                          <a href='/ChessUY/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
+                    echo "<a class='search' href='/cyberhydra/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
+                          <a href='/cyberhydra/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
+                          <a href='/cyberhydra/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
         </div>

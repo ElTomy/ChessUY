@@ -4,7 +4,7 @@ function log(){
     
     if(usuario == "" || contra == ""){
       $.ajax({
-        url: "/ChessUY/Modal/modal.php",
+        url: "/cyberhydra/Modal/modal.php",
         type: "POST",
         data: { numero_mensaje: 6},
         success: function (data) {
@@ -20,36 +20,26 @@ function log(){
           var mensaje;
           switch (tipo) {
             case "0": //admin
-              console.log('logeado admin');
               mensaje = 4;
-              //location.href ="";
-              
               break;
             case "1": //jugador
-              console.log('logeado jugador');
               mensaje = 4;
-              
-              //location.href ="";
               break;
             case "2": //arbitro
-              console.log('logeado arbitro');
               mensaje = 4;
-              //location.href ="";
               break;
             case "3": //periodista
-              console.log('logeado periodista');
               mensaje = 4;
-              //location.href ="";
               break;
               default:
                 console.log('error');
           }
-          location.href = "/ChessUY/Inicio";
+          location.href = "/cyberhydra/inicio";
       }else{
         var numero_mensaje = 1;
 
         $.ajax({
-          url: "/ChessUY/Modal/modal.php",
+          url: "/cyberhydra/Modal/modal.php",
           type: "POST",
           data: { numero_mensaje: numero_mensaje},
           success: function (data) {
@@ -64,10 +54,10 @@ function cerrar(){
 }
 function cerrarSesion(){
   $.ajax({
-      url: "/ChessUY/Form/PHP/cerrarSesion.php",
+      url: "/cyberhydra/Form/PHP/cerrarSesion.php",
       type: "POST",
       success: function (data) {
-        location.href = "/ChessUY/Index.php";
+        location.href = "/cyberhydra/index.php";
       }
   });
 }

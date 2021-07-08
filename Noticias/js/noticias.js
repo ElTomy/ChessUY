@@ -1,3 +1,3 @@
 $( document ).ready(function(){
-    $("#ArmoNoticias").load('/ChessUY/Noticias/php/armoNoticias.php');
+    $("#ArmoNoticias").load('/cyberhydra/Noticias/php/armoNoticias.php');
 });
