@@ -9,7 +9,7 @@ $agenHTML = '
     </div>
     <div style="width: 98%; height: 16%; padding: 4% 0% 0% 0%; text-align: center;">
         <p>A que hora debe cambiar?</p>
-        <input type="time">
+        <input id="hrCom" type="time">
     </div>
 </div>
 <div style="width: 38%; height: 100%; padding: 2%;">
