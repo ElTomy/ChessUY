@@ -1711,6 +1711,7 @@ function JaqueMate(){
     }
 
     if(jaqueMate == true){
+        console.log("JAQUE MATE")
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
             type: "POST",
