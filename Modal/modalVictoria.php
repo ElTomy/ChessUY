@@ -1,5 +1,6 @@
 <?php
-if(/*ganador*/){
+/*
+if(/*ganador){
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -30,4 +31,5 @@ if(/*ganador*/){
 
 echo $modal;
 return $modal;
+*/
 ?>
