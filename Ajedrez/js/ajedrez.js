@@ -25,32 +25,36 @@ $( document ).ready(function(){
     Blanco:'b',
     Negro:'n',
 }
- var blan, neg, colJugador, simbolo, seleccionado;
- var Jugadas = [];
- var Turno = 1;
- const Tablero = [];
- const TableroJaque = [];
- var  Movimiento = [];
- const Piezas = {
-    BRey: 'r', 
-    BDama: 'd',
-    BCaballo: 'c',
-    BAlfil: 'a',
-    BTorre:'t', 
-    BPeon:'p',
-    NRey: 'rn', 
-    NDama: 'dn',
-    NCaballo: 'cn',
-    NAlfil: 'an',
-    NTorre:'tn', 
-    NPeon:'pn',  
+var blan;
+var neg;
+const Piezas = {
+   BRey: 'r', 
+   BDama: 'd',
+   BCaballo: 'c',
+   BAlfil: 'a',
+   BTorre:'t', 
+   BPeon:'p',
+   NRey: 'rn', 
+   NDama: 'dn',
+   NCaballo: 'cn',
+   NAlfil: 'an',
+   NTorre:'tn', 
+   NPeon:'pn',  
 }
+var Jugadas = [];
+var Turno = 1;
+var simbolo = null;
+const Tablero = [];
+const TableroJaque = [];
+var seleccionado = null;
+var  Movimiento = [];
 var jaque = {
-    jaque: null,
-    pieza: null,
-    x: null,
-    y: null,
+   jaque: null,
+   pieza: null,
+   x: null,
+   y: null,
 }
+var colJugador;
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1354,7 +1358,7 @@ function Jaque(x,y, sel){
             }
     }
        resetMovimientos();
-
+      if(jaque.jaque == true){JaqueMate();} 
 }
 //
 //
@@ -1649,10 +1653,30 @@ function Mov_Prohibido(x,y,sel){
 //
 function JaqueMate(){
     var jaqueMate = true;
+    //creo todos los movimientos posibles
+    Torre(x,y);
+    Caballo(x,y);
+    Alfil(x,y);
+    Peon(x,y);
+    Dama(x,y);
+    Rey(x,y);
+
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
+            //recorro todos los movimientos
             if(Movimiento[p][q] == true){ 
-                jaqueMate = false;
+                    //si existen los movimientos los comparo con el TableroJaque
+                    for(var o = 1; o <= 8; o++){
+                        for(var u = 1; u <= 8; u++){
+                            //recorro TableroJaque
+                            if(TableroJaque[o][u] == true){
+                                //si coinciden jaqueMate es false
+                                if(o == p && u == q){
+                                    jaqueMate = false;
+                                } //else para borrar el movimiento??
+                            }
+                        }
+                    }
             }
         }
     }
