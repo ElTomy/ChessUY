@@ -230,8 +230,12 @@ class servidor
         $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
+        $execute = false;
         $stmts->bind_param("iiissisiisiis",$tiempo,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo);
-        $stmts->execute();
+        if($stmts->execute()) {
+            $execute = true;
+        }
+        return $execute;
     }
     //
     //
