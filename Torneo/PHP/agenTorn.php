@@ -27,7 +27,13 @@ for ($h=1;$h<=7;$h++) {
     if (date("N", mktime(0,0,0,$month,1,$year)) == $h){
         for ($i=1;$i<=$cantdias;$i++) {
             $dia = substr("00{$i}", -2);
-            echo "<td style='text-align: center; cursor: pointer;' id='fech" . $year . $mes . $dia . "' onclick='guarFech(this.id)'>" . $i . "</td>";
+            $ymd = $year.$mes.$dia;
+            $ymdAct = date('Y').date('m').date('d');
+            if($ymd > $ymdAct) {
+                echo "<td style='text-align: center; cursor: pointer;' id='fech" . $ymd . "' onclick='guarFech(this.id)'>" . $i . "</td>";
+            } else {
+                echo "<td style='text-align: center; color: grey;' id='fech" . $ymd . "' >" . $i . "</td>";
+            }
             if ($h%7 == 0) {
                 echo "</tr> <tr>";
             }

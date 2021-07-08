@@ -100,8 +100,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail)
-    {
+    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
         $conn = $this->conectar();
         $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
@@ -132,8 +131,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function BorarSolicitud($usuario)
-    {
+    function BorarSolicitud($usuario){
         $conn = $this->conectar();
         $sql = "CALL BorarSolicitud(?)";
         $stmts = $conn->prepare($sql);
@@ -145,8 +143,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail)
-    {
+    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
         $conn = $this->conectar();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
@@ -158,8 +155,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoSolicitudes()
-    {
+    function InfoSolicitudes(){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoSolicitudes()";
@@ -182,8 +178,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoUsuario()
-    {
+    function InfoUsuario(){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoUsuarios()";
@@ -206,8 +201,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function PerfilUsuario($user)
-    {
+    function PerfilUsuario($user){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL PerfilUsuario(?)";
@@ -230,8 +224,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+<<<<<<< HEAD
     function CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo)
     {
+=======
+    function CrearTorneo($Rondas, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$MododeReserva,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima){
+>>>>>>> 81d668c1ff70d3a8ca234615f3a31c35f6452aa2
         $conn = $this->conectar();
         $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
@@ -244,8 +242,7 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoEstadisticas($usuario)
-    {
+    function InfoEstadisticas($usuario){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL InfoEstadisticas(?)";
@@ -267,13 +264,16 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos)
-    {
+    function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos){
         $conn = $this->conectar();
         $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
+        $execute = false;
 
         $stmts->bind_param("isiiiiiii",$ELO,$Usuario,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
-        $stmts->execute();
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
     }
 }

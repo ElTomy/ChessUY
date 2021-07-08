@@ -1,5 +1,3 @@
-var opt;
-
 function confTipo(opt) {
     opt = opt.value;
     $.ajax({
@@ -24,6 +22,7 @@ function opcReser(reser) {
     });
 }
 
+
 function cantFech(ultopt) {
     ultopt = ultopt.value;
     $.ajax({
@@ -36,9 +35,27 @@ function cantFech(ultopt) {
     });
 }
 
+function quehacerRes() {
+    if(document.getElementById('siLim').checked) {
+        $.ajax({
+            url: "../PHP/quehacerRes.php",
+            success: function (html) {
+                $("#quehacerRes").html(html);
+            }
+        })
+    } else {
+        document.getElementById("quehacerRes").innerHTML = '';
+        document.getElementById("penultOpt").innerHTML = '';
+    }
+}
+
 function cargAgen() {
-    alert("Buenas");
-    $("#agenTorn").load("../PHP/agenTorn.php");
+    $.ajax({
+        url: "../PHP/agenTorn.php",
+        success: function (html) {
+            $("#agenTorn").html(html);
+        }
+    })
 }
 
 var date = new Date();
@@ -106,4 +123,100 @@ function guarFech(clicked_id) {
             }
         })
     }
+}
+
+var transf = true;
+
+function envaPHP() {
+    transf = true;
+    opt = document.getElementById("tipTorn").value;
+    reserv.sort();
+    if(opt == 'norm' || opt == 'avan') {
+        var tempDesc = setVar('tempDesc', 'oblig');
+        var tempJug = setVar('tempJug', 'oblig');
+        var partDia = setVar('partDia', 'oblig');
+        var prem = setVar('prem', 'oblig');
+        var hrCom = setVar('hrCom', 'oblig');
+        if(reserv.length < 3) {
+            alert("Asegurese de que las fechas estan seleccionadas");
+            transf = false;
+        } else {
+            var comInsc = reserv[0].slice(4);
+            var finInsc = reserv[1].slice(4);
+            var comTorn = reserv[2].slice(4);
+        }
+    }
+    if(opt == 'avan') {
+        var eloMax = setVar('eloMax', 'simple');
+        var eloMin = setVar('eloMin', 'simple');
+        var edaMax = setVar('edaMax', 'simple');
+        var edaMin = setVar('edaMin', 'simple');
+        var locTorn = setVar('locTorn', 'oblig')
+        if(document.getElementById('siLim').checked) {
+            var cantJug = setVar('cantJug', 'oblig');
+            if($("#opcResList").prop("checked")) {
+                if($("#limResCanti").prop("checked")) {
+                    var cantRes = setVar('cantRes', 'oblig');
+                    var fechRes = setVar('fechRes', 'def');
+                } else if($("#limResFecha").prop("checked")) {
+                    var fechRes = setVar('fechRes', 'oblig');
+                    var cantRes = setVar('cantRes', 'def');
+                } else {
+                    alert('Porfavor, eliga entre cantidad de reservas o fecha limite de reservas');
+                    transf = false;
+                }
+            } else if($("#opcResTerm").prop("checked")) {
+                var fechRes = setVar('fechRes', 'def');
+                var cantRes = setVar('cantRes', 'def');
+            } else {
+                alert('Porfavor, eliga entre crear una lista de reservas o terminar las inscripciones');
+                transf = false;
+            }
+        } else {
+            var cantJug = setVar('cantJug', 'def');
+            var cantRes = setVar('cantRes', 'def');
+            var fechRes = setVar('fechRes', 'def');
+        }
+    }
+
+    console.log("Tiempo para descalificar: "+tempDesc);
+    console.log("Tiempo total por jugador: "+tempJug);
+    console.log("Cantidad de partidas por dia: "+partDia);
+    console.log("ELO Maximo: "+eloMax);
+    console.log("ELO Minimo: "+eloMin);
+    console.log("Edad Maxima: "+edaMax);
+    console.log("Edad Minima: "+edaMin);
+    console.log("Cantidad de Jugadores: "+cantJug);
+    console.log("Cantidad de reservas: "+cantRes);
+    console.log("Premio: "+prem);
+    console.log("Localidad: "+locTorn);
+    console.log("Comienzo de inscripciones: "+comInsc);
+    console.log("Fecha de fin de reservas (deprecated): "+fechRes);
+    console.log("Fin de inscripciones: "+finInsc);
+    console.log("Comienzo del torneo: "+comTorn+" "+hrCom);
+    console.log("--------------------------------------------");
+    console.log("Es transferible?: "+transf);
+}
+
+function setVar(vari, modo) {
+    if(modo == 'simple') {
+        if(document.getElementById(vari).value == "") {
+            vari = null;
+        } else {
+            vari = document.getElementById(vari).value;
+        }
+    }
+    if(modo == 'oblig') {
+        if(document.getElementById(vari).value == "") {
+            alert("Faltan campos para " + vari);
+            vari = null;
+            transf = false;
+        } else {
+            vari = document.getElementById(vari).value;
+        }
+    }
+    if(modo == "def") {
+        vari = null;
+    }
+    return (vari);
 }
