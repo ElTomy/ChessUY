@@ -43,6 +43,9 @@ function quehacerRes() {
                 $("#quehacerRes").html(html);
             }
         })
+    } else {
+        document.getElementById("quehacerRes").innerHTML = '';
+        document.getElementById("penultOpt").innerHTML = '';
     }
 }
 
@@ -122,13 +125,26 @@ function guarFech(clicked_id) {
     }
 }
 
+var transf = true;
+
 function envaPHP() {
+    transf = true;
     opt = document.getElementById("tipTorn").value;
+    reserv.sort();
     if(opt == 'norm' || opt == 'avan') {
         var tempDesc = setVar('tempDesc', 'oblig');
         var tempJug = setVar('tempJug', 'oblig');
         var partDia = setVar('partDia', 'oblig');
         var prem = setVar('prem', 'oblig');
+        var hrCom = setVar('hrCom', 'oblig');
+        if(reserv.length < 3) {
+            alert("Asegurese de que las fechas estan seleccionadas");
+            transf = false;
+        } else {
+            var comInsc = reserv[0].slice(4);
+            var finInsc = reserv[1].slice(4);
+            var comTorn = reserv[2].slice(4);
+        }
     }
     if(opt == 'avan') {
         var eloMax = setVar('eloMax', 'simple');
@@ -146,13 +162,15 @@ function envaPHP() {
                     var fechRes = setVar('fechRes', 'oblig');
                     var cantRes = setVar('cantRes', 'def');
                 } else {
-                    alert("transf == false");
+                    alert('Porfavor, eliga entre cantidad de reservas o fecha limite de reservas');
+                    transf = false;
                 }
             } else if($("#opcResTerm").prop("checked")) {
                 var fechRes = setVar('fechRes', 'def');
                 var cantRes = setVar('cantRes', 'def');
             } else {
-                alert("manco 2");
+                alert('Porfavor, eliga entre crear una lista de reservas o terminar las inscripciones');
+                transf = false;
             }
         } else {
             var cantJug = setVar('cantJug', 'def');
@@ -172,7 +190,12 @@ function envaPHP() {
     console.log("Cantidad de reservas: "+cantRes);
     console.log("Premio: "+prem);
     console.log("Localidad: "+locTorn);
-    console.log("Fecha de fin de reservas: "+fechRes);
+    console.log("Comienzo de inscripciones: "+comInsc);
+    console.log("Fecha de fin de reservas (deprecated): "+fechRes);
+    console.log("Fin de inscripciones: "+finInsc);
+    console.log("Comienzo del torneo: "+comTorn+" "+hrCom);
+    console.log("--------------------------------------------");
+    console.log("Es transferible?: "+transf);
 }
 
 function setVar(vari, modo) {
@@ -187,6 +210,7 @@ function setVar(vari, modo) {
         if(document.getElementById(vari).value == "") {
             alert("Faltan campos para " + vari);
             vari = null;
+            transf = false;
         } else {
             vari = document.getElementById(vari).value;
         }
