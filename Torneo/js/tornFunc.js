@@ -145,6 +145,14 @@ function envaPHP() {
             var finInsc = reserv[1].slice(4);
             var comTorn = reserv[2].slice(4);
         }
+        var eloMax = setVar('eloMax', 'def');
+        var eloMin = setVar('eloMin', 'def');
+        var edaMax = setVar('edaMax', 'def');
+        var edaMin = setVar('edaMin', 'def');
+        var locTorn = setVar('locTorn', 'def')
+        var cantJug = setVar('cantJug', 'def');
+        var cantRes = setVar('cantRes', 'def');
+        var fechRes = setVar('fechRes', 'def');
     }
     if(opt == 'avan') {
         var eloMax = setVar('eloMax', 'simple');
@@ -179,6 +187,31 @@ function envaPHP() {
         }
     }
 
+    if(transf) {
+        $.ajax({
+            url: "../PHP/tornaBD.php",
+            type: "post",
+            data: { Rondas : , 
+                    ELO_Min : eloMin,
+                    ELO_Max : eloMax,
+                    Fecha_inicio : comInsc,
+                    Fecha_fin : finInsc,
+                    Numero_Participantes : cantJug,
+                    TiempoDescalificar : tempDesc,
+                    PartidasxDia : partDia,
+                    MododeReserva : ,
+                    CantidaddeReservas : cantRes,
+                    Localidad : locTorn,
+                    EdadMinima : edaMin,
+                    EdadMaxima : edaMax
+                  },
+            success: function (styles) {
+                $(".style").html(styles);
+            }
+        })
+    }
+
+    /*
     console.log("Tiempo para descalificar: "+tempDesc);
     console.log("Tiempo total por jugador: "+tempJug);
     console.log("Cantidad de partidas por dia: "+partDia);
@@ -195,7 +228,7 @@ function envaPHP() {
     console.log("Fin de inscripciones: "+finInsc);
     console.log("Comienzo del torneo: "+comTorn+" "+hrCom);
     console.log("--------------------------------------------");
-    console.log("Es transferible?: "+transf);
+    console.log("Es transferible?: "+transf); */
 }
 
 function setVar(vari, modo) {
