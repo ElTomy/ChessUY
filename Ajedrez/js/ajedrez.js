@@ -1694,18 +1694,18 @@ function JaqueMate(){
         for( q = 1; q <= 8; q++){
             //recorro todos los movimientos
             if(Movimiento[p][q] == true){ 
-                    //si existen los movimientos los comparo con el TableroJaque
-                    for(var o = 1; o <= 8; o++){
-                        for(var u = 1; u <= 8; u++){
-                            //recorro TableroJaque
-                            if(TableroJaque[o][u] == true){
-                                //si coinciden jaqueMate es false
-                                if(o == p && u == q){
-                                    jaqueMate = false;
-                                }
+                //si existen los movimientos los comparo con el TableroJaque
+                for(var o = 1; o <= 8; o++){
+                    for(var u = 1; u <= 8; u++){
+                        //recorro TableroJaque
+                        if(TableroJaque[o][u] == true){
+                            //si coinciden jaqueMate es false
+                            if(o == p && u == q){
+                                jaqueMate = false;
                             }
                         }
                     }
+                }
             }
         }
     }
