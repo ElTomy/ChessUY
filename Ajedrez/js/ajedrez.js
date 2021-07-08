@@ -1702,6 +1702,7 @@ function JaqueMate(){
                             //si coinciden jaqueMate es false
                             if(o == p && u == q){
                                 jaqueMate = false;
+                                break;
                             }
                         }
                     }
