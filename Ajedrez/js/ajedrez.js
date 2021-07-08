@@ -51,6 +51,7 @@ var  Movimiento = [];
 var jaque = {
    jaque: null,
    pieza: null,
+   color: null,
    x: null,
    y: null,
 }
@@ -330,6 +331,7 @@ function seleccionar(x,y){
                                 jaque = {
                                     jaque: null,
                                     pieza: null,
+                                    color: null,
                                     x: null,
                                     y: null,
                                 }
@@ -1201,8 +1203,10 @@ function Jaque(x,y, sel){
     Movimientos(x,y, sel);
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
+        var color = "n"
     }else{
         var colorR = "rn";
+        var color = "b"
     }
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
@@ -1219,6 +1223,7 @@ function Jaque(x,y, sel){
                     jaque = {
                         jaque: true,
                         pieza:sel,
+                        color: color,
                         x: x,
                         y: y,
                     }
@@ -1654,13 +1659,37 @@ function Mov_Prohibido(x,y,sel){
 function JaqueMate(){
     var jaqueMate = true;
     //creo todos los movimientos posibles
-    Torre(x,y);
-    Caballo(x,y);
-    Alfil(x,y);
-    Peon(x,y);
-    Dama(x,y);
-    Rey(x,y);
-
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+            if(Tablero[p][q].Piezas != null && Tablero[p][q].color != jaque.color){
+                switch(Tablero[p][q].Piezas){
+                    case Piezas.NTorre:
+                    case Piezas.BTorre:
+                            Torre(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NCaballo:
+                    case Piezas.BCaballo:
+                            Caballo(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NAlfil:
+                    case Piezas.BAlfil:
+                            Alfil(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NPeon:
+                    case Piezas.BPeon:
+                            Peon(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NDama:
+                    case Piezas.BDama:
+                            Dama(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NRey:
+                    case Piezas.BRey:
+                           Rey(p,q,Tablero[p][q].Piezas);
+                    break;
+            }}
+        }
+    }
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
             //recorro todos los movimientos
@@ -1673,7 +1702,7 @@ function JaqueMate(){
                                 //si coinciden jaqueMate es false
                                 if(o == p && u == q){
                                     jaqueMate = false;
-                                } //else para borrar el movimiento??
+                                }
                             }
                         }
                     }
@@ -1682,12 +1711,16 @@ function JaqueMate(){
     }
 
     if(jaqueMate == true){
-        console.log("==================================")
-        console.log("JAQUE MATE")
-        console.log("==================================")
-    }else{
-        console.log("no mate")
+        $.ajax({
+            url: "/ChessUY/Modal/modalVictoria.php",
+            type: "POST",
+            data: {},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+          });
     }
+    resetMovimientos();
 }
 //
 //
