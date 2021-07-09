@@ -206,8 +206,13 @@ function envaPHP() {
                     InicioTorneo : comTorn,
                     hrCom : hrCom
                   },
-            success: function () {
-                alert("Se envio todo");
+            success: function (exec) {
+                if(exec) {
+                    alert("Se envio todo");
+                } else {
+                    alert("Hubo un error");
+                }
+                
             }
         })
     }
