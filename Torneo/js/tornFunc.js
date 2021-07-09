@@ -207,12 +207,14 @@ function envaPHP() {
                     hrCom : hrCom
                   },
             success: function (exec) {
-                if(exec) {
-                    alert("Se envio todo");
-                } else {
-                    alert("Hubo un error");
-                }
-                
+                $.ajax({
+                    url: "/ChessUY/Modal/modalCrTorn.php",
+                    type: "POST",
+                    data: {exec:exec},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                  });
             }
         })
     }
@@ -258,3 +260,7 @@ function setVar(vari, modo) {
     }
     return (vari);
 }
+
+function cerrar(){
+    document.getElementById("modal").innerHTML = "";
+  }

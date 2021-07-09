@@ -7,6 +7,7 @@
 
     <div class="style">
     </div>
+    <div id="modal"></div>
 
     <script
       src="https://kit.fontawesome.com/1e193e3a23.js"
