@@ -186,8 +186,6 @@ function envaPHP() {
             var fechRes = setVar('fechRes', 'def');
         }
     }
-    comTorn = comTorn+"-"+hrCom;
-
     
     if(transf) {
         $.ajax({
@@ -205,10 +203,11 @@ function envaPHP() {
                     Localidad : locTorn,
                     EdadMinima : edaMin,
                     EdadMaxima : edaMax,
-                    InicioTorneo : comTorn
+                    InicioTorneo : comTorn,
+                    hrCom : hrCom
                   },
-            success: function (styles) {
-                $(".style").html(styles);
+            success: function () {
+                alert("Se envio todo");
             }
         })
     }

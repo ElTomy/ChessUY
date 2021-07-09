@@ -235,7 +235,7 @@ class servidor
         if($stmts->execute()) {
             $execute = true;
         }
-        return $execute;
+        echo $execute;
     }
     //
     //
