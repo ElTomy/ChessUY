@@ -32,9 +32,10 @@ function log(){
               mensaje = 4;
               break;
               default:
+                
                 console.log('error');
           }
-          location.href = "/cyberhydra/inicio";
+          location.href = "/cyberhydra/Inicio";
       }else{
         var numero_mensaje = 1;
 

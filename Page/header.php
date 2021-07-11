@@ -5,7 +5,7 @@
             session_start();
             
             if(isset($_SESSION['usuario'])){
-                echo '  <a href="/cyberhydra/inicio">
+                echo '  <a href="/cyberhydra/Inicio">
                             <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }else{
