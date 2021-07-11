@@ -18,8 +18,9 @@ $index ='
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
     <script src="Javascript/Loader.js"></script>
+    <script src="/ChessUY/Usuarios/js/Usuario.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-    
+ 
     <link
       rel="shortcut icon"
       href="media/svg/Logo/Favicon.svg"

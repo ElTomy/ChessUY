@@ -16,25 +16,6 @@ function log(){
       var log = user.login(usuario, contra);
       
         if(log == true){
-          var tipo = sessionStorage.getItem("tipo");
-          var mensaje;
-          switch (tipo) {
-            case "0": //admin
-              mensaje = 4;
-              //estadisticasInicial();
-              break;
-            case "1": //jugador;
-              mensaje = 4;
-              break;
-            case "2": //arbitro
-              mensaje = 4;
-              break;
-            case "3": //periodista
-              mensaje = 4;
-              break;
-              default:
-                console.log('error');
-          }
           location.href = "/ChessUY/Inicio";
       }else{
         var numero_mensaje = 1;
@@ -90,10 +71,11 @@ function enterLogin(){
           }
 }
 function estadisticasInicial(){
+  console.log(2)
     let us = sessionStorage.getItem('usuario');
     let user = new Usuario();
     var est = user.comprueboEstadisticas(us);
-    
+
     if(est == true){
       $.ajax({
         url: "/ChessUY/Modal/modalELO.php",
@@ -105,12 +87,12 @@ function estadisticasInicial(){
     });
     }
 }
+
 function guardoESTI(x){
   console.log("nivel:" , x)
   let us = sessionStorage.getItem('usuario');
   let user = new Usuario();
   var guardo = user.guardoEST_I(us, x);
-  console.log(guardo)
   //modal avisando que se guardo
   if(guardo == true){
     $(".modal").hide();

@@ -119,7 +119,7 @@ class Usuario{
         $.ajax({
             async: false,
             type: "POST",
-            url: "../Usuarios/php/comprueboRegistro.php",
+            url: "/ChessUY/Usuarios/php/comprueboRegistro.php",
             data: {usuario:usuario},
             success: function(est){
                 var txt = est;
@@ -137,14 +137,11 @@ class Usuario{
         $.ajax({
             async: false,
             type: "POST",
-            url: "../Usuarios/php/guardoEsti.php",
+            url: "/ChessUY/Usuarios/php/guardoEsti.php",
             data: {usuario:usuario, nivel:nivel},
             success: function(est){
-                console.log(est)
                 var txt = est;
                 var est2 = JSON.parse(txt);
-                console.log("---")
-                console.log(est2)
                 if(est2 == true){
                     x = true;
                 }
