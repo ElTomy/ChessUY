@@ -451,9 +451,6 @@ function Movimientos(a,b,sel){
                 if(Movimiento[p][q] == true){ 
                     if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
                         //veo que piezas pueden comer el jaque
-                        if(p != jaque.x || q != jaque.y){
-                        Movimiento[p][q] = null;
-                        }
                         for(var o = 1; o <= 8; o++){
                             for(var u = 1; u <= 8; u++){
                                 if(TableroJaque[o][u] == true){ 
@@ -1235,6 +1232,14 @@ function Jaque(x,y, sel){
 
        if(jaque.jaque == true){
             switch(sel){
+                case Piezas.NCaballo:
+                case Piezas.BCaballo:
+                    TableroJaque[x][y] = true;
+                break;
+                case Piezas.NPeon:
+                case Piezas.BPeon:
+                        TableroJaque[x][y] = true;
+                break;
                 case Piezas.NTorre:
                 case Piezas.BTorre:
                     if(jaque.y == reyY){
@@ -1710,7 +1715,7 @@ function JaqueMate(){
             }
         }
     }
-
+    console.log(TableroJaque)
     if(jaqueMate == true){
         console.log("JAQUE MATE")
         $.ajax({
