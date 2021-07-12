@@ -64,18 +64,6 @@ function Register() {
     }
     else{
         if(contraseña.length > 8 && contraseña.match(numeros) && contraseña.match(letras)){            
-            console.log(nombre);
-            console.log(apellido);
-            console.log(institucion);
-            console.log(año);
-            console.log(nacimiento);
-            console.log(cedula);
-            console.log(celular);
-            console.log(usuario);
-            console.log(email);
-            console.log(contraseña);
-            console.log(tipousuario);
-        
             $.ajax({
                 url: "PHP/Form.php",
                 type: "POST",
