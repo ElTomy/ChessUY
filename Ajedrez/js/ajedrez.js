@@ -1715,7 +1715,7 @@ function JaqueMate(){
             }
         }
     }
-    console.log(TableroJaque)
+   
     if(jaqueMate == true){
         console.log("JAQUE MATE")
         $.ajax({
