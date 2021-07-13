@@ -84,7 +84,7 @@ for($y = 1; $y <= 8; $y++){
 
             if($Tablero[$x][$y]['Piezas'] != null){
                 $op = "style='display: flex'";
-                $punto = "style = 'width: 90%; height: 90%; border: 2px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
+                $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
             }else{
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 20%; height: 20%; border-radius: 50%; background-color: rgba(255, 255, 255, 0.623);'";
@@ -322,7 +322,7 @@ $Ajedrez .='
                         }
                         $Ajedrez .=' </table>
                 </div>
-                <button onclick="Derrota">Rendirse</button>
+                <button onclick="Derrota"><i class="fas fa-flag"></i> Rendirse</button>
                 </div>';
 
 echo $Ajedrez;
