@@ -16,14 +16,14 @@
       crossorigin="anonymous"
   ></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/ChessUY/Usuarios/Administrador/Solicitud/Js/Solicitud.js"></script>
-  <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-  <script src="/ChessUY/Javascript/Loader.js"></script>
+  <script src="/cyberhydra/Usuarios/Administrador/Solicitud/Js/Solicitud.js"></script>
+  <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+  <script src="/cyberhydra/Javascript/Loader.js"></script>
 
-  <link rel="stylesheet" href="/ChessUY/styles/styles.css">
+  <link rel="stylesheet" href="/cyberhydra/styles/styles.css">
   <link
       rel="shortcut icon"
-      href="/ChessUY/media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
 
@@ -40,19 +40,19 @@
   <div class="landing-video">
     <div class="background-opacity"></div>
     <video autoplay="" loop="" muted="">
-      <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
+      <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
     </video>
   </div>
 
   <section id="nohaysolicitudes">
     <div class="nohaysolicitudes-wrapper">
-      <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+      <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
       <p>No hay solicitudes en estos momentos.</p>
-      <a href="/ChessUY/Inicio"><i class="fas fa-chevron-circle-left"></i> Volver a la Página Principal</a>
+      <a href="/cyberhydra/Inicio"><i class="fas fa-chevron-circle-left"></i> Volver a la Página Principal</a>
     </div>
   </section>
   <section class="Solicitudes-wrapper">
-    <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+    <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
     <h1>Solicitudes</h1>
     <table id="tablaprueba">
         <tr id="thead">
