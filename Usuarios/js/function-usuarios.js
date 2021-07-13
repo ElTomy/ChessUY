@@ -71,7 +71,7 @@ function enterLogin(){
           }
 }
 function estadisticasInicial(){
-  console.log(2)
+
     let us = sessionStorage.getItem('usuario');
     let user = new Usuario();
     var est = user.comprueboEstadisticas(us);
@@ -85,16 +85,23 @@ function estadisticasInicial(){
             document.getElementById("modal").innerHTML = data;
         }
     });
+    }else{
+      $(".loader-wrapper").fadeOut("slow");
+      $("#header").load("/ChessUY/Page/header.php");
+      $("#footer").load("/ChessUY/Page/footer.html");
     }
 }
 
 function guardoESTI(x){
-  console.log("nivel:" , x)
+
   let us = sessionStorage.getItem('usuario');
   let user = new Usuario();
   var guardo = user.guardoEST_I(us, x);
   //modal avisando que se guardo
   if(guardo == true){
     $(".modal").hide();
+    $(".loader-wrapper").fadeOut("slow");
+    $("#header").load("/ChessUY/Page/header.php");
+    $("#footer").load("/ChessUY/Page/footer.html");
   }
 }

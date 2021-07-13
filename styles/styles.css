@@ -555,7 +555,8 @@ footer .footer-body .cyberhydra img {
 }
 
 .modal .modal-wrapper .modal-content .button-wrapper button #Negro {
-  color: linear-gradient(90deg, #bebebe 0%, #262626 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#262626));
+  background: linear-gradient(90deg, #bebebe 0%, #262626 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -593,8 +594,8 @@ footer .footer-body .cyberhydra img {
   border-radius: 3em;
   color: white;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .modal .modal-wrapper .modal-content .card button:hover {
@@ -2403,7 +2404,8 @@ Buscar Jugadores
   margin: 2%;
 }
 
-.board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+.board-wrapper .board .first-player-mobile,
+.board-wrapper .board .second-player-mobile {
   margin: 10px 30px;
   display: none;
   -webkit-box-pack: start;
@@ -2414,7 +2416,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .first-player-wrapper, .board-wrapper .board .second-player-mobile .first-player-wrapper {
+.board-wrapper .board .first-player-mobile .first-player-wrapper,
+.board-wrapper .board .second-player-mobile .first-player-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2426,7 +2429,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .profile-body-picture, .board-wrapper .board .second-player-mobile .profile-body-picture {
+.board-wrapper .board .first-player-mobile .profile-body-picture,
+.board-wrapper .board .second-player-mobile .profile-body-picture {
   background-color: #0076be;
   width: 40px;
   height: 40px;
@@ -2442,22 +2446,26 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .profile-body-picture i, .board-wrapper .board .second-player-mobile .profile-body-picture i {
+.board-wrapper .board .first-player-mobile .profile-body-picture i,
+.board-wrapper .board .second-player-mobile .profile-body-picture i {
   color: white;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body, .board-wrapper .board .second-player-mobile .profile-avatar-body {
+.board-wrapper .board .first-player-mobile .profile-avatar-body,
+.board-wrapper .board .second-player-mobile .profile-avatar-body {
   margin: 0 10px;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body h1, .board-wrapper .board .second-player-mobile .profile-avatar-body h1 {
+.board-wrapper .board .first-player-mobile .profile-avatar-body h1,
+.board-wrapper .board .second-player-mobile .profile-avatar-body h1 {
   margin: 0;
   font-size: 1rem;
   font-weight: lighter;
   color: white;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body p, .board-wrapper .board .second-player-mobile .profile-avatar-body p {
+.board-wrapper .board .first-player-mobile .profile-avatar-body p,
+.board-wrapper .board .second-player-mobile .profile-avatar-body p {
   font-size: 0.8rem;
   margin: 0;
   color: #0076be;
@@ -2520,7 +2528,8 @@ Buscar Jugadores
       grid-template-rows: repeat(8, 1fr);
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2534,7 +2543,8 @@ Buscar Jugadores
   text-align: center;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .seleccionado, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .seleccionado {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .seleccionado,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .seleccionado {
   width: 100%;
   height: 100%;
   display: none;
@@ -2550,7 +2560,8 @@ Buscar Jugadores
           flex-direction: column;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .celda, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .celda {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .celda,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .celda {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2564,19 +2575,22 @@ Buscar Jugadores
   text-align: center;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell i, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell i,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
   position: absolute;
   z-index: 4;
   font-size: 2rem;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
   font-size: 0.9rem;
   position: absolute;
   color: #ffffff80;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
   font-size: 0.9rem;
   position: absolute;
   color: #ffffff80;
@@ -2598,14 +2612,16 @@ Buscar Jugadores
   border-radius: 0 0 10px 0;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
   background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#262626));
   background: linear-gradient(90deg, #bebebe 0%, #262626 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Blanco, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Blanco {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Blanco,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Blanco {
   background: -webkit-gradient(linear, left top, right top, from(#ffaa00), to(#814e00));
   background: linear-gradient(90deg, #ffaa00 0%, #814e00 100%);
   -webkit-background-clip: text;
@@ -2775,7 +2791,8 @@ Buscar Jugadores
   text-decoration: none;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno, .board-wrapper .board .movimientos .jugadores .JugadorDos {
+.board-wrapper .board .movimientos .jugadores .JugadorUno,
+.board-wrapper .board .movimientos .jugadores .JugadorDos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2788,7 +2805,8 @@ Buscar Jugadores
   margin: 0 15px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img {
   width: 50px;
   height: 50px;
   background-color: #0076be;
@@ -2805,16 +2823,19 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img i, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img i {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img i,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img i {
   color: white;
   font-size: 20px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body {
   width: 110px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body h1, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body h1 {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body h1,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body h1 {
   color: white;
   margin: 0;
   white-space: nowrap;
@@ -2825,13 +2846,15 @@ Buscar Jugadores
   transition: 0.2s;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body p, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body p {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body p,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body p {
   margin: 2px 0;
   color: #0076be;
   font-size: 13px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno:hover h1, .board-wrapper .board .movimientos .jugadores .JugadorDos:hover h1 {
+.board-wrapper .board .movimientos .jugadores .JugadorUno:hover h1,
+.board-wrapper .board .movimientos .jugadores .JugadorDos:hover h1 {
   color: #0076be;
 }
 
@@ -3290,7 +3313,8 @@ Responsive
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .board-wrapper .board .movimientos .jugadores .JugadorUno, .board-wrapper .board .movimientos .jugadores .JugadorDos {
+  .board-wrapper .board .movimientos .jugadores .JugadorUno,
+  .board-wrapper .board .movimientos .jugadores .JugadorDos {
     width: 100%;
   }
   .board-wrapper .board .movimientos .jugadores .JugadorUno {
@@ -3325,7 +3349,8 @@ Responsive
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-  .board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+  .board-wrapper .board .first-player-mobile,
+  .board-wrapper .board .second-player-mobile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3345,7 +3370,8 @@ Responsive
         -ms-flex-align: initial;
             align-items: initial;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile, .board-wrapper .board .movimientos .match-players .second-player-mobile {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile {
     width: 100%;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
@@ -3362,7 +3388,8 @@ Responsive
             align-items: center;
     margin: 0 2%;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3373,14 +3400,17 @@ Responsive
         -ms-flex-align: center;
             align-items: center;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-body-picture, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-body-picture {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-body-picture,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-body-picture {
     width: 40px;
     height: 40px;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body {
     text-align: center;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body h1, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body h1 {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body h1,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body h1 {
     margin: 5px 0;
   }
   .board-wrapper .board .mobile-img {

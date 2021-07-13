@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -60,9 +60,9 @@ header {
           font-size: 20px;
         }
       }
-      .header-user{
+      .header-user {
         display: flex;
-        width:150px;
+        width: 150px;
         justify-content: center;
         flex-direction: column;
         p {
@@ -76,10 +76,9 @@ header {
           overflow: hidden;
           text-overflow: ellipsis;
         }
-        .tipo-profile{
+        .tipo-profile {
           color: #fcba03;
           font-size: 13px;
-          
         }
       }
       .profile {
@@ -104,7 +103,7 @@ header {
         cursor: pointer;
       }
     }
-    .search{
+    .search {
       border-radius: 30px;
       background-color: #0076be;
       color: white;
@@ -113,7 +112,7 @@ header {
       transition: 0.5s;
       font-size: 15px;
     }
-    .search:hover{
+    .search:hover {
       background-color: #002e4b;
     }
     a {
@@ -236,11 +235,10 @@ header {
       a:hover {
         background-color: rgba(0, 0, 0, 0.2);
       }
-      .tipo-profile{
+      .tipo-profile {
         color: #fcba03;
         font-size: 13px;
         margin: 2px 0 20px 0;
-        
       }
     }
   }
@@ -294,7 +292,7 @@ footer {
       font-size: 13px;
       margin: 10px 0;
     }
-    img{
+    img {
       width: 400px;
     }
     .cyberhydra {
@@ -370,9 +368,9 @@ footer {
       hr {
         width: 400px;
         border: 1px solid #0076be;
-        margin: 10px 0 ;
+        margin: 10px 0;
       }
-      .button-wrapper{
+      .button-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -380,7 +378,7 @@ footer {
         padding: 10px;
         margin: 10px;
         border-radius: 3em;
-        button{
+        button {
           width: 50px;
           height: 50px;
           background-color: transparent;
@@ -390,35 +388,42 @@ footer {
           transition: all 1s;
 
           margin: 5px 10px;
-  
-          i{
+
+          i {
             font-size: 2em;
-            
           }
-          #Blanco{
-            background: linear-gradient(90deg, rgba(255,170,0,1) 0%, rgba(129,78,0,1) 100%);
+          #Blanco {
+            background: linear-gradient(
+              90deg,
+              rgba(255, 170, 0, 1) 0%,
+              rgba(129, 78, 0, 1) 100%
+            );
             background-clip: text;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
+            -webkit-text-fill-color: transparent;
             -moz-background-clip: text;
             -moz-text-fill-color: transparent;
           }
-          #Negro{
-            color: linear-gradient(90deg, rgba(190,190,190,1) 0%, rgba(38,38,38,1) 100%);
+          #Negro {
+            background: linear-gradient(
+              90deg,
+              rgba(190, 190, 190, 1) 0%,
+              rgba(38, 38, 38, 1) 100%
+            );
+
             background-clip: text;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; 
+            -webkit-text-fill-color: transparent;
             -moz-background-clip: text;
             -moz-text-fill-color: transparent;
           }
         }
-        button:hover{
+        button:hover {
           background-image: linear-gradient(to bottom, transparent, #444);
         }
-
       }
 
-      .card{
+      .card {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -426,7 +431,7 @@ footer {
 
         margin: 10px 0;
 
-        button{
+        button {
           width: 200px;
           height: 40px;
           margin: 5px 10px;
@@ -437,9 +442,9 @@ footer {
           color: white;
           cursor: pointer;
 
-          transition: .5s;
+          transition: 0.5s;
         }
-        button:hover{
+        button:hover {
           background-color: #00436d;
           color: #009dff;
         }
@@ -564,11 +569,11 @@ footer {
     color: white;
     border-radius: 30px;
 
-    img{
+    img {
       max-width: 400px;
     }
 
-    p{
+    p {
       margin: 30px 20px 30px 20px;
       text-align: center;
     }
@@ -987,14 +992,14 @@ Loading Screen
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
-  .login-logo{
+
+  .login-logo {
     width: 100%;
   }
   .register-logo {
     img {
       width: 300px;
-      margin: 20px 0
+      margin: 20px 0;
     }
   }
 
@@ -1184,7 +1189,7 @@ Loading Screen
           height: 50px;
           transition: 0.3s;
 
-          i{
+          i {
             margin-right: 10px;
           }
         }
@@ -1368,7 +1373,7 @@ Loading Screen
             color: white;
             font-size: 30px;
           }
-          .tipo-profile{
+          .tipo-profile {
             color: #fcba03;
             font-size: 15px;
           }
@@ -1410,7 +1415,6 @@ Loading Screen
   }
 }
 
-
 /*
 
 
@@ -1419,7 +1423,7 @@ Buscar Jugadores
 
 */
 
-.search-wrapper{
+.search-wrapper {
   width: 100%;
   padding: 20px 0;
 
@@ -1428,7 +1432,7 @@ Buscar Jugadores
   align-items: center;
   flex-direction: column;
 
-  .search-list{
+  .search-list {
     width: 1000px;
     padding: 20px 0;
     background-color: #111;
@@ -1439,44 +1443,44 @@ Buscar Jugadores
     align-items: center;
     flex-direction: column;
 
-    .search-logo{
+    .search-logo {
       margin-bottom: 20px;
-      img{
+      img {
         width: 300px;
       }
     }
-    .search{
+    .search {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
 
-      .search-wrapper-body{
+      .search-wrapper-body {
         width: calc(100% - 40px);
         background-color: #222;
         border-radius: 30px;
 
-        .search-bar-wrapper{
+        .search-bar-wrapper {
           width: 100%;
 
           display: flex;
           justify-content: center;
           align-items: center;
 
-          .search-bar{
+          .search-bar {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-    
+
             width: 300px;
             padding: 5px;
             margin: 10px;
             border-radius: 3rem;
             background-color: #444;
-    
-            i{
+
+            i {
               position: absolute;
               display: flex;
               justify-content: center;
@@ -1487,30 +1491,30 @@ Buscar Jugadores
               border-radius: 50%;
               margin-right: -250px;
             }
-    
-            input{
+
+            input {
               height: 40px;
               width: 100%;
               background-color: #333;
               border: none;
               border-radius: 30px;
-    
+
               outline: none;
               color: white;
-    
+
               text-indent: 10px;
             }
           }
         }
       }
 
-      .search-box{
+      .search-box {
         display: grid;
         grid-template-columns: 1fr 1fr;
 
         padding: 10px;
 
-        .player-wrapper{
+        .player-wrapper {
           margin: 10px 10px;
           display: flex;
           justify-content: space-between;
@@ -1518,60 +1522,59 @@ Buscar Jugadores
           background-color: #333;
           border-radius: 5rem;
 
-          .player{
+          .player {
             width: 100%;
             display: grid;
             grid-template-columns: 80px 1fr;
             margin: 10px;
-            
-            .img-wrapper{
+
+            .img-wrapper {
               display: flex;
               justify-content: center;
               align-items: center;
-  
-              .player-img{
+
+              .player-img {
                 width: 80px;
                 height: 80px;
                 background-color: #0076be;
                 border-radius: 50%;
-    
+
                 display: flex;
                 justify-content: center;
                 align-items: center;
-    
-                i{
+
+                i {
                   color: white;
                   font-size: 25px;
                 }
               }
             }
-            
-  
-            .player-body{
+
+            .player-body {
               width: 180px;
               display: flex;
               justify-content: center;
               flex-direction: column;
-  
+
               overflow-wrap: break-word;
               word-wrap: break-word;
               hyphens: auto;
-              
+
               margin-left: 20px;
 
-              h1{
+              h1 {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-              p{
+              p {
                 color: #fcba03;
               }
             }
           }
-          .profileButton{
+          .profileButton {
             margin: 10px;
-            button{
+            button {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -1584,11 +1587,11 @@ Buscar Jugadores
               cursor: pointer;
               transition: 0.5s;
 
-              i{
+              i {
                 margin-right: 10px;
               }
             }
-            button:hover{
+            button:hover {
               background-color: #333;
               color: #fcba03;
             }
@@ -1596,11 +1599,11 @@ Buscar Jugadores
         }
       }
     }
-    h1{
+    h1 {
       color: white;
       font-weight: lighter;
     }
-    hr{
+    hr {
       margin: 20px 0;
       width: 80%;
       border: 1px solid white;
@@ -1615,20 +1618,20 @@ Buscar Jugadores
 
 
 */
-#test{
+#test {
   display: block;
   width: 100px;
   height: 50px;
   background-color: #0076be;
 }
-.board-wrapper{
+.board-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: calc(98vh - 100px);
 
-  .board{
+  .board {
     display: grid;
     grid-template-columns: 60% 1fr;
     width: 90%;
@@ -1636,7 +1639,7 @@ Buscar Jugadores
     background-color: #111;
     border-radius: 30px;
 
-    .ajedrez-flex{
+    .ajedrez-flex {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1644,18 +1647,18 @@ Buscar Jugadores
       margin: 2%;
     }
 
-    .first-player-mobile, .second-player-mobile{
+    .first-player-mobile,
+    .second-player-mobile {
       margin: 10px 30px;
       display: none;
       justify-content: flex-start;
       align-items: center;
-      .first-player-wrapper{
+      .first-player-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-
       }
-      .profile-body-picture{
+      .profile-body-picture {
         background-color: #0076be;
         width: 40px;
         height: 40px;
@@ -1665,68 +1668,69 @@ Buscar Jugadores
         justify-content: center;
         align-items: center;
 
-        i{
+        i {
           color: white;
         }
       }
-      .profile-avatar-body{
+      .profile-avatar-body {
         margin: 0 10px;
-        h1{
+        h1 {
           margin: 0;
           font-size: 1rem;
           font-weight: lighter;
           color: white;
         }
-        p{
+        p {
           font-size: 0.8rem;
           margin: 0;
           color: #0076be;
         }
       }
     }
-    .first-player-mobile{
+    .first-player-mobile {
       justify-content: space-between;
 
-      .espectadores{
+      .espectadores {
         color: #888;
       }
     }
-    .second-player-mobile{
+    .second-player-mobile {
       justify-content: flex-end;
     }
 
-    .mobile-img{
+    .mobile-img {
       display: none;
       width: 100%;
       justify-content: center;
       align-items: center;
       margin: 10px 0;
 
-      img{
+      img {
         width: 70%;
       }
     }
-    .ajedrez-wrapper{
+    .ajedrez-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       overflow: hidden;
 
-      .ajedrez{
+      .ajedrez {
         display: grid;
         width: 100%;
         margin: 5%;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(8, 1fr);
-        .cell, .cell2{
+        .cell,
+        .cell2 {
           display: flex;
           justify-content: center;
           align-items: center;
           overflow: hidden;
           text-align: center;
 
-          .seleccionado{
+          .seleccionado {
             width: 100%;
             height: 100%;
 
@@ -1736,7 +1740,7 @@ Buscar Jugadores
             flex-direction: column;
           }
 
-          .celda{
+          .celda {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1744,64 +1748,73 @@ Buscar Jugadores
             text-align: center;
           }
 
-          i{
+          i {
             position: absolute;
             z-index: 4;
             font-size: 2rem;
           }
-          .board-number{
+          .board-number {
             font-size: 0.9rem;
             position: absolute;
             color: #ffffff80;
           }
-          .board-text{
+          .board-text {
             font-size: 0.9rem;
             position: absolute;
             color: #ffffff80;
           }
         }
-        .cell:nth-child(1){
+        .cell:nth-child(1) {
           border-radius: 10px 0 0 0;
         }
-        .cell:nth-child(8){
+        .cell:nth-child(8) {
           border-radius: 0 10px 0 0;
         }
 
-        .cell2:nth-child(57){
+        .cell2:nth-child(57) {
           border-radius: 0 0 0 10px;
         }
-        .cell2:nth-child(64){
+        .cell2:nth-child(64) {
           border-radius: 0 0 10px 0;
         }
 
-        .cell #Negro, .cell2 #Negro{
-          background: linear-gradient(90deg, rgba(190,190,190,1) 0%, rgba(38,38,38,1) 100%);
+        .cell #Negro,
+        .cell2 #Negro {
+          background: linear-gradient(
+            90deg,
+            rgba(190, 190, 190, 1) 0%,
+            rgba(38, 38, 38, 1) 100%
+          );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          
         }
 
-        .cell #Blanco, .cell2 #Blanco{
-          background: linear-gradient(90deg, rgba(255,170,0,1) 0%, rgba(129,78,0,1) 100%);
+        .cell #Blanco,
+        .cell2 #Blanco {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 170, 0, 1) 0%,
+            rgba(129, 78, 0, 1) 100%
+          );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
 
-        .cell:nth-last-of-type(odd){
+        .cell:nth-last-of-type(odd) {
           background-color: #222;
         }
-        .cell:nth-last-of-type(even){
+        .cell:nth-last-of-type(even) {
           background-color: #0076be;
         }
-        .cell2:nth-last-of-type(odd){
+        .cell2:nth-last-of-type(odd) {
           background-color: #0076be;
         }
-        .cell2:nth-last-of-type(even){
+        .cell2:nth-last-of-type(even) {
           background-color: #222;
         }
       }
     }
-    .movimientos{
+    .movimientos {
       height: 100%;
       background-color: #222;
       border-radius: 30px;
@@ -1810,115 +1823,120 @@ Buscar Jugadores
       align-items: center;
       flex-direction: column;
 
-      .match-players{
+      .match-players {
         margin: 20px 0;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
-        .second-player{
-          .profile-avatar-body{
+
+        .second-player {
+          .profile-avatar-body {
             text-align: right;
           }
         }
-        .vs{
+        .vs {
           display: flex;
           justify-content: center;
           align-items: center;
 
           width: 40px;
           height: 40px;
-          background: linear-gradient(90deg, rgba(0,118,190,1) 0%, rgba(0,42,154,1) 100%);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 118, 190, 1) 0%,
+            rgba(0, 42, 154, 1) 100%
+          );
           border-radius: 50%;
           color: white;
 
-          h1{
+          h1 {
             font-size: 1rem;
             margin: 0;
           }
         }
       }
 
-      h1{
+      h1 {
         color: white;
         margin: 10px 0;
         font-weight: lighter;
       }
-      .table-wrapper{
+      .table-wrapper {
         width: 95%;
         height: 100%;
         overflow: auto;
       }
-      table{
+      table {
         width: 100%;
         max-height: 100%;
         background-color: #333;
         border-radius: 30px;
 
-        tr{
-          th{
+        tr {
+          th {
             color: white;
             text-align: center;
             font-weight: lighter;
           }
-          td{
+          td {
             height: 30px;
             background-color: #444;
             color: white;
             text-align: center;
             font-weight: lighter;
 
-            #Negro{
+            #Negro {
               background-color: grey;
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             }
-            #Blanco{
+            #Blanco {
               background-color: #fcba03;
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             }
           }
         }
-        tr:nth-last-child(1) td:nth-last-child(2){
+        tr:nth-last-child(1) td:nth-last-child(2) {
           border-radius: 0 0 0 30px;
         }
-        tr:nth-last-child(1) td:nth-last-child(1){
+        tr:nth-last-child(1) td:nth-last-child(1) {
           border-radius: 0 0 30px 0;
         }
       }
 
-      .movimientos-img{
+      .movimientos-img {
         width: 100%;
         margin: 20px 0;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        img{
+        img {
           width: 80%;
         }
       }
-      .jugadores{
+      .jugadores {
         width: 90%;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        a{
+        a {
           width: 100%;
 
           text-decoration: none;
         }
 
-        .JugadorUno, .JugadorDos{
+        .JugadorUno,
+        .JugadorDos {
           display: flex;
           justify-content: center;
           align-items: center;
           margin: 0 15px;
 
-          .jugador-img{
+          .jugador-img {
             width: 50px;
             height: 50px;
             background-color: #0076be;
@@ -1929,15 +1947,15 @@ Buscar Jugadores
             justify-content: center;
             align-items: center;
 
-            i{
+            i {
               color: white;
               font-size: 20px;
             }
           }
 
-          .jugador-body{
+          .jugador-body {
             width: 110px;
-            h1{
+            h1 {
               color: white;
               margin: 0;
               white-space: nowrap;
@@ -1946,7 +1964,7 @@ Buscar Jugadores
               font-size: 20px;
               transition: 0.2s;
             }
-            p{
+            p {
               margin: 2px 0;
               color: #0076be;
               font-size: 13px;
@@ -1954,17 +1972,18 @@ Buscar Jugadores
           }
         }
 
-        .JugadorUno:hover h1, .JugadorDos:hover h1{
+        .JugadorUno:hover h1,
+        .JugadorDos:hover h1 {
           color: #0076be;
         }
 
-        .JugadorDos{
-          .jugador-body{
+        .JugadorDos {
+          .jugador-body {
             text-align: right;
           }
         }
       }
-      .movimientos-board{
+      .movimientos-board {
         width: 90%;
         height: 90%;
         margin: 20px;
@@ -1981,20 +2000,20 @@ Editar perfil
 
 
 */
-.editarperfil-wrapper{
+.editarperfil-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .editarperfil{
+  .editarperfil {
     margin: 40px;
     width: 90%;
 
     background-color: #222;
     border-radius: 30px;
 
-    .img-wrapper{
+    .img-wrapper {
       margin: 20px;
 
       display: flex;
@@ -2002,33 +2021,33 @@ Editar perfil
       align-items: center;
       flex-direction: column;
 
-      h1{
+      h1 {
         margin: 5px 0;
         color: white;
       }
-      p{
+      p {
         margin: 0;
         color: #fcba03;
       }
-      .img-editarperfil{
-        .editarperfil-img{
+      .img-editarperfil {
+        .editarperfil-img {
           width: 150px;
           height: 150px;
           background-color: #0076be;
           border-radius: 50%;
-    
+
           display: flex;
           justify-content: center;
           align-items: center;
           transition: 0.5s;
-    
-          i{
+
+          i {
             font-size: 30px;
             color: white;
             transition: 0.5s;
           }
         }
-        .editarpefil-img-hover{
+        .editarpefil-img-hover {
           text-decoration: none;
           width: 150px;
           height: 150px;
@@ -2037,13 +2056,13 @@ Editar perfil
           margin-top: -150px;
           border-radius: 50%;
           opacity: 0;
-  
+
           display: flex;
           justify-content: center;
           align-items: center;
           transition: 0.5s;
-  
-          i{
+
+          i {
             font-size: 30px;
             color: white;
             transition: 0.5s;
@@ -2051,17 +2070,16 @@ Editar perfil
         }
       }
 
-      .editarperfil-img:hover i{
+      .editarperfil-img:hover i {
         opacity: 0;
       }
 
-      .editarpefil-img-hover:hover{
+      .editarpefil-img-hover:hover {
         opacity: 1;
       }
     }
 
-    .editarperfil-body{
-
+    .editarperfil-body {
       width: 100%;
       display: flex;
       justify-content: center;
@@ -2070,19 +2088,19 @@ Editar perfil
 
       margin: 20px 0;
 
-      hr{
+      hr {
         width: calc(100% - 80px);
         margin: 10px 0;
       }
 
-      .editarperfil-logo{
+      .editarperfil-logo {
         margin-bottom: 20px;
-        img{
+        img {
           width: 100%;
         }
       }
 
-      .editarperfil-inputs{
+      .editarperfil-inputs {
         width: 100%;
 
         display: grid;
@@ -2091,7 +2109,7 @@ Editar perfil
         align-items: center;
         flex-direction: column;
 
-        .editarperfil-body-wrapper{
+        .editarperfil-body-wrapper {
           display: flex;
           justify-content: center;
           align-items: flex-start;
@@ -2099,19 +2117,18 @@ Editar perfil
           margin-right: 40px;
         }
 
-        .inputs{
+        .inputs {
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
 
-          label{
+          label {
             white-space: nowrap;
             color: #666;
             font-weight: lighter;
-
           }
-          input{
+          input {
             width: 100%;
             height: 40px;
 
@@ -2125,27 +2142,27 @@ Editar perfil
 
             color: white;
           }
-          input:disabled{
+          input:disabled {
             color: #666;
             border: 1px solid #555;
           }
         }
-        .titulos-divisiones{
+        .titulos-divisiones {
           margin: 20px 0;
           color: #888;
         }
-        .lineadivisora{
+        .lineadivisora {
           width: 100%;
           border: 1px solid #888;
         }
 
-        .botonContra{
+        .botonContra {
           width: 100%;
           display: flex;
           justify-content: flex-end;
           align-items: center;
 
-          a{
+          a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -2161,21 +2178,21 @@ Editar perfil
 
             transition: 0.5s;
 
-            i{
+            i {
               margin-right: 10px;
             }
           }
-          a:hover{
+          a:hover {
             background-color: #00436d;
           }
         }
-        .botonGuardar{
+        .botonGuardar {
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
 
-          a{
+          a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -2189,23 +2206,22 @@ Editar perfil
             text-decoration: none;
 
             transition: 0.5s;
-            
-            i{
+
+            i {
               margin-right: 10px;
             }
           }
-          a:hover{
+          a:hover {
             background-color: #00436d;
           }
         }
       }
 
-      h1{
+      h1 {
         font-weight: lighter;
         color: white;
       }
-      p{
-
+      p {
       }
     }
   }
@@ -2226,7 +2242,7 @@ Administrador
 
 */
 
-.administrador-wrapper{
+.administrador-wrapper {
   padding: 40px 0;
   margin-bottom: 40px;
 
@@ -2238,30 +2254,30 @@ Administrador
 
   background-color: rgba(51, 51, 51, 0.7);
 
-  h1{
+  h1 {
     color: #ffaa00;
     font-size: 30px;
     margin: 0 20px;
   }
-  .admin{
+  .admin {
     color: #ffaa00;
     font-size: 20px;
     margin: 5px 20px;
   }
-  p{
+  p {
     text-align: center;
     font-size: 15px;
     color: #888;
     margin: 0 20px;
   }
 
-  .admin-buttons{
+  .admin-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px 20px;
 
-    a{
+    a {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -2275,14 +2291,14 @@ Administrador
       color: #222;
       border-radius: 5rem;
       font-weight: bold;
-      
+
       transition: 0.3s;
 
-      i{
+      i {
         margin-right: 10px;
       }
     }
-    a:hover{
+    a:hover {
       background-color: #333;
       color: #ffaa00;
       font-weight: lighter;
@@ -2313,18 +2329,19 @@ Responsive
   }
 }
 @media screen and (max-width: 1380px) {
-  .board-wrapper{
-    .board{
-      .movimientos{
-        .jugadores{
+  .board-wrapper {
+    .board {
+      .movimientos {
+        .jugadores {
           flex-direction: column;
-          .JugadorUno, .JugadorDos{
+          .JugadorUno,
+          .JugadorDos {
             width: 100%;
           }
-          .JugadorUno{
+          .JugadorUno {
             justify-content: flex-start;
           }
-          .JugadorDos{
+          .JugadorDos {
             justify-content: flex-end;
           }
         }
@@ -2333,11 +2350,11 @@ Responsive
   }
 }
 @media screen and (max-width: 1050px) {
-  .search-wrapper{
-    .search-list{
+  .search-wrapper {
+    .search-list {
       width: 500px;
-      .search{
-        .search-box{
+      .search {
+        .search-box {
           grid-template-columns: 1fr;
         }
       }
@@ -2345,30 +2362,32 @@ Responsive
   }
 }
 @media screen and (max-width: 900px) {
-  .board-wrapper{
+  .board-wrapper {
     height: auto;
-    .board{
+    .board {
       width: 100%;
       border-radius: 10px;
       grid-template-columns: 1fr;
 
-      .first-player-mobile, .second-player-mobile{
+      .first-player-mobile,
+      .second-player-mobile {
         display: flex;
       }
-  
-      .ajedrez-wrapper{
+
+      .ajedrez-wrapper {
         margin: 0 auto;
       }
-      .movimientos{
-        .movimientos-img{
+      .movimientos {
+        .movimientos-img {
           display: none;
         }
-        .match-players{
+        .match-players {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           align-items: initial;
-          
-          .first-player-mobile, .second-player-mobile{
+
+          .first-player-mobile,
+          .second-player-mobile {
             width: 100%;
             hyphens: auto;
             flex-direction: column;
@@ -2376,34 +2395,32 @@ Responsive
             align-items: center;
             margin: 0 2%;
 
-            .first-player-wrapper{
+            .first-player-wrapper {
               display: flex;
               justify-content: center;
               align-items: center;
 
-              .profile-body-picture{
+              .profile-body-picture {
                 width: 40px;
                 height: 40px;
               }
-              .profile-avatar-body{
+              .profile-avatar-body {
                 text-align: center;
-  
-                h1{
+
+                h1 {
                   margin: 5px 0;
                 }
               }
             }
-            
           }
-          .vs{
+          .vs {
           }
         }
       }
-      .mobile-img{
+      .mobile-img {
         display: flex;
       }
     }
-    
   }
 }
 @media screen and (max-width: 1300px) {
@@ -2418,7 +2435,7 @@ Responsive
       .profile-flex {
         flex-direction: column;
 
-        .profile-avatar-body{
+        .profile-avatar-body {
           margin-bottom: 20px;
           text-align: center;
         }
@@ -2463,16 +2480,16 @@ Responsive
   }
 }
 @media screen and (max-width: 930px) {
-  header{
-    .nav-links{
-      .search{
+  header {
+    .nav-links {
+      .search {
         display: none;
       }
     }
-    .burger-mobile{
+    .burger-mobile {
       display: block;
     }
-    #links-mobile{
+    #links-mobile {
       display: flex;
     }
   }
@@ -2504,41 +2521,40 @@ Responsive
   }
 }
 @media screen and (max-width: 800px) {
-  .editarperfil-wrapper{
-    .editarperfil{
-      .editarperfil-body{
-        hr{
+  .editarperfil-wrapper {
+    .editarperfil {
+      .editarperfil-body {
+        hr {
           width: calc(100% - 40px);
         }
-        .editarperfil-inputs{
+        .editarperfil-inputs {
           grid-template-columns: 1fr;
 
-          .img-wrapper{
-            .img-editarperfil{
-              .editarperfil-img{
+          .img-wrapper {
+            .img-editarperfil {
+              .editarperfil-img {
                 width: 100px;
                 height: 100px;
               }
-              .editarpefil-img-hover{
+              .editarpefil-img-hover {
                 width: 100px;
                 height: 100px;
                 margin-top: -100px;
               }
             }
-            
           }
 
-          .editarperfil-body-wrapper{
+          .editarperfil-body-wrapper {
             margin: 0 20px;
 
-            .titulos-divisiones{
+            .titulos-divisiones {
               font-size: 20px;
             }
-            .inputs{
-              label{
+            .inputs {
+              label {
                 font-size: 13px;
               }
-              input{
+              input {
                 height: 30px;
                 font-size: 10px;
               }
@@ -2546,7 +2562,6 @@ Responsive
           }
         }
       }
-      
     }
   }
 }
@@ -2626,15 +2641,15 @@ Responsive
   }
 }
 @media screen and (max-width: 550px) {
-  .administrador-wrapper{
-    h1{
+  .administrador-wrapper {
+    h1 {
       font-size: 20px;
     }
-    .admin-buttons{
+    .admin-buttons {
       width: 100%;
       flex-direction: column;
 
-      a{
+      a {
         margin: 5px 20px;
       }
     }
@@ -2676,9 +2691,9 @@ Responsive
   .profile-wrapper {
     .profile-body {
       .trofeos-wrapper {
-        .trofeo-header{
-          .trofeos-list{
-            .trofeo{
+        .trofeo-header {
+          .trofeos-list {
+            .trofeo {
               flex-direction: column;
             }
           }
@@ -2688,45 +2703,44 @@ Responsive
   }
 }
 @media screen and (max-width: 500px) {
-  .search-wrapper{
-    .search-list{
+  .search-wrapper {
+    .search-list {
       width: 95%;
-      .search{
-        .search-wrapper-body{
+      .search {
+        .search-wrapper-body {
           width: calc(100% - 10px);
-          .search-box{
+          .search-box {
             padding: 0;
-            .player-wrapper{
-              .player{
+            .player-wrapper {
+              .player {
                 width: 100%;
                 grid-template-columns: 50px 1fr;
-                .img-wrapper{
+                .img-wrapper {
                   margin: 0;
-                  .player-img{
+                  .player-img {
                     width: 50px;
                     height: 50px;
 
-                    .logo{
-                      i{
+                    .logo {
+                      i {
                         font-size: 15px;
                       }
                     }
                   }
-                  
                 }
-                .player-body{
+                .player-body {
                   width: 100px;
                   margin-left: 5px;
-                  h1{
+                  h1 {
                     font-size: 18px;
                   }
-                  p{
+                  p {
                     font-size: 10px;
                   }
                 }
               }
-              .profileButton{
-                button{
+              .profileButton {
+                button {
                   width: 100px;
                   height: 40px;
                   border-radius: 30px;
@@ -2738,20 +2752,17 @@ Responsive
       }
     }
   }
-  .editarperfil-wrapper{
-    .editarperfil{
+  .editarperfil-wrapper {
+    .editarperfil {
       width: 90%;
       margin: 0;
-      .editarperfil-body{
-
-        .editarperfil-inputs{
-          
-          .editarperfil-body-wrapper{
+      .editarperfil-body {
+        .editarperfil-inputs {
+          .editarperfil-body-wrapper {
             margin: 0 20px;
           }
         }
       }
-      
     }
   }
 }
@@ -2809,7 +2820,7 @@ Responsive
       width: 90%;
       margin: 20px;
     }
-    .trofeos-wrapper{
+    .trofeos-wrapper {
       width: 90%;
       margin-bottom: 40px;
     }
