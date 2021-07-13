@@ -463,6 +463,9 @@ function Movimientos(a,b,sel){
                 if(Movimiento[p][q] == true){ 
                     if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
                         //veo que piezas pueden comer el jaque
+                        if(p != jaque.x || q != jaque.y){
+                            Movimiento[p][q] = null;
+                            }
                         for(var o = 1; o <= 8; o++){
                             for(var u = 1; u <= 8; u++){
                                 if(TableroJaque[o][u] == true){ 
@@ -1742,7 +1745,11 @@ function JaqueMate(){
     }
     resetMovimientos();
 }
-
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
 function Derrota(){
     $.ajax({
         url: "/ChessUY/Modal/modalDerrota.php",
