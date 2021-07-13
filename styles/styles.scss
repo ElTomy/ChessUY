@@ -1752,6 +1752,8 @@ Buscar Jugadores
             position: absolute;
             z-index: 4;
             font-size: 2rem;
+
+            transition: .5s;
           }
           .board-number {
             font-size: 0.9rem;
@@ -1763,6 +1765,9 @@ Buscar Jugadores
             position: absolute;
             color: #ffffff80;
           }
+        }
+        .cell:hover > i, .cell2:hover > i{
+          transform: scale(1.3);
         }
         .cell:nth-child(1) {
           border-radius: 10px 0 0 0;
@@ -1866,12 +1871,13 @@ Buscar Jugadores
         width: 95%;
         height: 100%;
         overflow: auto;
+        background-color: #444;
+        border-radius: 30px;
       }
       table {
         width: 100%;
         max-height: 100%;
         background-color: #333;
-        border-radius: 30px;
 
         tr {
           th {
@@ -1898,12 +1904,27 @@ Buscar Jugadores
             }
           }
         }
-        tr:nth-last-child(1) td:nth-last-child(2) {
-          border-radius: 0 0 0 30px;
+      }
+
+      button{
+        background-color: #0076be;
+        width: 250px;
+        height: 80px;
+        margin: 10px;
+
+        color: white;
+        border: none;
+        border-radius: 2em;
+        cursor: pointer;
+        transition: .5s;
+
+        i{
+          margin: 0 5px;
         }
-        tr:nth-last-child(1) td:nth-last-child(1) {
-          border-radius: 0 0 30px 0;
-        }
+      }
+      button:hover{
+        background-color: #009dff;
+        font-size: 1em;
       }
 
       .movimientos-img {
