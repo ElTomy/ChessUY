@@ -143,7 +143,8 @@ for($y = 1; $y <= 8; $y++){
 En la parte donde hace el <a href="/ChessUY/Profile/ByJuanii <-- aca hay que poner el nombre del Usuario ej: "ByJuanii";
 
 */
-$Ajedrez .='            </div>
+$Ajedrez .='
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -321,7 +322,7 @@ $Ajedrez .='            </div>
                         }
                         $Ajedrez .=' </table>
                 </div>
-
+                <button onclick="Derrota">Rendirse</button>
                 </div>';
 
 echo $Ajedrez;

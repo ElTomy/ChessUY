@@ -280,13 +280,25 @@ function seleccionar(x,y){
                         simbolo =  "=";
                     }
                }else{
-                    if((y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)||(y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)) {
-                        ColocoPieza(null,null,x,5);
-                        simbolo = "x";
-                    }else{
-                        if((y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)||(y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)){
-                            ColocoPieza(null,null,x,4);
+                   if(x != 8){
+                    xx = x + 1;
+                   }
+                   if(x != 1){
+                    xy = x - 1;
+                   }
+                    if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
+                        if(Tablero[x][5].Piezas != null){
+                            ColocoPieza(null,null,x,5);
                             simbolo = "x";
+                            console.log(Tablero[x][5].Piezas)
+                        }
+                    }else{
+                        if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
+                            if(Tablero[x][4].Piezas != null){
+                                ColocoPieza(null,null,x,4);
+                                simbolo = "x";
+                                console.log(Tablero[x][4].Piezas)
+                            }
                         }
                     }
                 }
@@ -1718,6 +1730,7 @@ function JaqueMate(){
    
     if(jaqueMate == true){
         console.log("JAQUE MATE")
+        simbolo = "#";
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
             type: "POST",
@@ -1728,6 +1741,17 @@ function JaqueMate(){
           });
     }
     resetMovimientos();
+}
+
+function Derrota(){
+    $.ajax({
+        url: "/ChessUY/Modal/modalDerrota.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
 }
 //
 //
