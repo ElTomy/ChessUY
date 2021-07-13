@@ -93,7 +93,6 @@ function estadisticasInicial(){
 }
 
 function guardoESTI(x){
-
   let us = sessionStorage.getItem('usuario');
   let user = new Usuario();
   var guardo = user.guardoEST_I(us, x);
