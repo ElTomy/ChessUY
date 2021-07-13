@@ -7,32 +7,6 @@
   $usuario_info = $server->PerfilUsuario($usuario);
 
   list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
-
-
-  if($ELO == null){
-    $ELO = 0;
-  }
-  if($Victorias == null){
-    $Victorias = 0;
-  }
-  if($Derrotas == null){
-    $Derrotas = 0;
-  }
-  if($Tablas == null){
-    $Tablas = 0;
-  }
-  if($Coronaciones == null){
-    $Coronaciones = 0;
-  }
-  if($Comidas == null){
-    $Comidas = 0;
-  }
-  if($Menos_Tiempo == null){
-    $Menos_Tiempo = 0;
-  }
-  if($Menos_Movimientos == null){
-    $Menos_Movimientos = 0;
-  }
 ?>
 
 <!DOCTYPE html>
