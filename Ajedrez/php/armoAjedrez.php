@@ -4,10 +4,16 @@ $mov = $_POST['Movimiento'];
 if(isset($_POST['Jugadas'])){
     $jugadas = $_POST['Jugadas'];
 }
+if(isset($_POST['Turno'])){
 $Turnos = $_POST['Turno'];
-
-
-
+if($Turnos%2 == 0){
+$colorJugador =  "";
+$colorJugador2 ="style= 'color: #ffaa00'"; 
+}else{
+    $colorJugador ="style= 'color: #ffaa00'"; 
+    $colorJugador2 =""; 
+}
+}
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
 $Ajedrez = '    <div class="mobile-img">
@@ -169,7 +175,7 @@ $Ajedrez .='
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="jugador-body">
-                                <h1>ByJuanii</h1>
+                                <h1 '.$colorJugador.' >ByJuanii</h1>
                                 <p><i class="fas fa-star"></i> Administrador</p>
                             </div>
                         </div>
@@ -178,7 +184,7 @@ $Ajedrez .='
                     <a href="/ChessUY/Profile/ByJuanii">
                         <div class="JugadorDos">
                             <div class="jugador-body">
-                                <h1>Jugador 2</h1>
+                                <h1 '.$colorJugador2.'>Jugador 2</h1>
                                 <p><i class="fas fa-chess-knight"></i> Jugador</p>
                             </div>
                             <div class="jugador-img">
@@ -322,7 +328,7 @@ $Ajedrez .='
                         }
                         $Ajedrez .=' </table>
                 </div>
-                <button onclick="Derrota"><i class="fas fa-flag"></i> Rendirse</button>
+                <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
                 </div>';
 
 echo $Ajedrez;

@@ -6,7 +6,8 @@
                     </div>
                     <div class='modal-content'>
                         <h1>Victoria</h1>
-                        <hr>
+                        <hr><div class='modal-trofeo'>
+                        <img src='/ChessUY/media/images/Trofeo.png'></div>
                         <p>El ganador fue:</p>
                         <h1 id ='jugador'> EL TOMY</h1>
                         <a onclick='cerrar()'><i class='fas fa-times-circle'></i> Cerrar</a>

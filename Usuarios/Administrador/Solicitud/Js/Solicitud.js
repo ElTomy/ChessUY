@@ -10,8 +10,7 @@ $(document).ready(function () {
             var solic = JSON.parse(response);
 
             while(x <= 0) {
-
-                if (solic[len] == undefined) {
+                if (solic[len] == undefined || solic[len].usuario == null) {
                     x = 1;
                 } else {
                     console.log("Len:" + len);
@@ -38,7 +37,7 @@ $(document).ready(function () {
                     console.log("Len:" + len);
                 }
             }
-            if(solic[0] == undefined){
+            if(x == 1){
                 $(".Solicitudes-wrapper").hide();
                 $("#nohaysolicitudes").show();
             }else{
