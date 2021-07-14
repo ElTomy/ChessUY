@@ -200,7 +200,8 @@ $Ajedrez .='
                             <th>Pieza</th>
                             <th>Movimiento</th>
                         </tr>';
-                        for($i = 1;$i<$Turnos;$i++){
+                        for($a = 1;$a<$Turnos;$a++){
+                            $i = $Turnos - $a;
                         $s = $jugadas[$i]['simbolo'];
                         switch($jugadas[$i]['Piezas']){
     
