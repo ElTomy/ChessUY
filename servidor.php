@@ -273,10 +273,10 @@ class servidor
         $stmts->bind_param("s", $usuario);
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($NumeroIcono,$Color);
+            $stmts->bind_result($NumeroIcono,$ColorIcono,$ColorFondo);
             $stmts->fetch();
             $stmts->close();
-            return array($NumeroIcono,$Color);
+            return array($NumeroIcono,$ColorIcono,$ColorFondo);
 
         }
         return false;
@@ -286,13 +286,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function GuardoFotoPerfil($Usuario, $NumeroIcono, $Color){
+    function GuardoFotoPerfil($Usuario, $NumeroIcono, $ColorIcono, $ColorFondo){
         $conn = $this->conectar();
-        $sql = "CALL GuardoFotoPerfil(?,?,?)";
+        $sql = "CALL GuardoFotoPerfil(?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("sis",$Usuario,$NumeroIcono,$Color);
+        $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
         }
