@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 $index ='
 
 <!DOCTYPE html>
@@ -17,8 +19,12 @@ $index ='
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
-    <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Javascript/functionIndex2.js"></script>
+    <script src="/ChessUY/Javascript/Loader.js"></script>';
+    if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
+      $index .='<script src="/ChessUY/Javascript/functionIndex2.js"></script>';
+    }
+    
+$index .='
     <script src="/ChessUY/Usuarios/js/Usuario.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
  
