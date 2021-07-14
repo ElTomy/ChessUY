@@ -478,6 +478,20 @@ footer .footer-body .cyberhydra img {
           flex-direction: column;
 }
 
+.modal .modal-wrapper .modal-content .modal-trofeo {
+  width: 100%;
+}
+
+.modal .modal-wrapper .modal-content .modal-trofeo img {
+  width: 50%;
+  -webkit-animation: trofeo-animation 2s infinite linear alternate;
+          animation: trofeo-animation 2s infinite linear alternate;
+}
+
+.modal .modal-wrapper .modal-content #jugador {
+  color: #ffaa00;
+}
+
 .modal .modal-wrapper .modal-content h1 {
   color: #0076be;
   margin: 0;
@@ -2580,8 +2594,8 @@ Buscar Jugadores
   position: absolute;
   z-index: 4;
   font-size: 2rem;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number,
@@ -2598,7 +2612,8 @@ Buscar Jugadores
   color: #ffffff80;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:hover > i, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:hover > i {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:hover > i,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:hover > i {
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
 }
@@ -2768,8 +2783,8 @@ Buscar Jugadores
   border: none;
   border-radius: 2em;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .board-wrapper .board .movimientos button i {
@@ -3325,6 +3340,27 @@ Responsive
 
 
 */
+@-webkit-keyframes trofeo-animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes trofeo-animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
 @media screen and (max-width: 1700px) {
   .profile-wrapper .profile-body .profile-grid {
     -ms-grid-columns: 1fr 25vw;

@@ -328,7 +328,7 @@ $Ajedrez .='
                         }
                         $Ajedrez .=' </table>
                 </div>
-                <button onclick="Derrota"><i class="fas fa-flag"></i> Rendirse</button>
+                <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
                 </div>';
 
 echo $Ajedrez;
