@@ -264,6 +264,45 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function TraigoFotoPerfil($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoFotoPerfil(?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($NumeroIcono,$Color);
+            $stmts->fetch();
+            $stmts->close();
+            return array($NumeroIcono,$Color);
+
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function GuardoFotoPerfil($Usuario, $NumeroIcono, $Color){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoFotoPerfil(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sii",$Usuario,$NumeroIcono,$Color);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos){
         $conn = $this->conectar();
         $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
