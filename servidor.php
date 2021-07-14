@@ -292,7 +292,7 @@ class servidor
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("sii",$Usuario,$NumeroIcono,$Color);
+        $stmts->bind_param("sis",$Usuario,$NumeroIcono,$Color);
         if($stmts->execute()){
             $execute = true;
         }
