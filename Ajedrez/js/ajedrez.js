@@ -461,7 +461,8 @@ function Movimientos(a,b,sel){
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-                    if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
+                    console.log(seleccionado.Contenido)
+                    if(seleccionado.Contenido != 'r' && seleccionado.Contenido != 'rn'){
                         //veo que piezas pueden comer el jaque
                         if(p != jaque.x || q != jaque.y){
                             Movimiento[p][q] = null;
