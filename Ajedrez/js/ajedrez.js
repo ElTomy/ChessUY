@@ -290,14 +290,12 @@ function seleccionar(x,y){
                         if(Tablero[x][5].Piezas != null){
                             ColocoPieza(null,null,x,5);
                             simbolo = "x";
-                            console.log(Tablero[x][5].Piezas)
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
                             if(Tablero[x][4].Piezas != null){
                                 ColocoPieza(null,null,x,4);
                                 simbolo = "x";
-                                console.log(Tablero[x][4].Piezas)
                             }
                         }
                     }
@@ -461,7 +459,7 @@ function Movimientos(a,b,sel){
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-                    if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
+                    if(seleccionado.Contenido != 'r' && seleccionado.Contenido != 'rn'){
                         //veo que piezas pueden comer el jaque
                         if(p != jaque.x || q != jaque.y){
                             Movimiento[p][q] = null;
@@ -1224,7 +1222,6 @@ function Jaque(x,y, sel){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
-                    console.log("JAQUE")
                     if(simbolo != null){
                         simbolo = simbolo + "+";
                     }else{
@@ -1732,7 +1729,6 @@ function JaqueMate(){
     }
    
     if(jaqueMate == true){
-        console.log("JAQUE MATE")
         simbolo = "#";
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
