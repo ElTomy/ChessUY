@@ -986,15 +986,18 @@ Loading Screen
 
 .noticias-wrapper .noticias-grid {
   width: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .noticias-wrapper .noticias-grid .noticia-wrapper {
   padding: 20px 0;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -708,12 +708,12 @@ Loading Screen
 
   .noticias-grid {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
     .noticia-wrapper {
       padding: 20px 0;
-      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
