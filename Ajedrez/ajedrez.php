@@ -1,9 +1,3 @@
-<?php
-  /*include '../servidor.php';
-  $server= new servidor();
-  session_start();
-  $server->VerificoSesion($_SESSION['0']);*/
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

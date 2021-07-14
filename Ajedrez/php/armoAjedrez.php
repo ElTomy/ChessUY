@@ -25,7 +25,7 @@ $Ajedrez = '    <div class="mobile-img">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="profile-avatar-body">
-                            <h1>ByJuanii</h1>
+                            <h1>'.'</h1>
                             <p><i class="fas fa-chess-knight"></i> Jugador</p>
                         </div>
                     </div>
