@@ -2272,6 +2272,186 @@ Editar perfil
 /*
 
 
+Avatar Profile
+
+
+*/
+.avatar-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .avatar-profile{
+    width: 80%;
+    height: 100%;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    border-radius: 1em;
+
+    .avatar-profile-wrapper{
+      width: 100%;
+      max-width: 200px;
+
+      margin: 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .avatar{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #0076be;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .5s;
+
+        i{
+          color: white;
+          font-size: 3em;
+          transition: .5s;
+        }
+      }
+    }
+    .avatar-icons{
+      width: 100%;
+      max-width: 600px;
+
+      margin: 20px;
+
+      h1{
+        color: white;
+        margin: 10px 0;
+      }
+      .iconos-wrapper{
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px;
+
+        background-color: #222;
+        border-radius: 1em;
+
+        .icono{
+          width: 50px;
+          height: 50px;
+
+          margin: 10px;
+          cursor: pointer;
+
+          background-color: #0076be;
+          border: none;
+          border-radius: 50%;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          transition: .5s;
+
+          i{
+            color: white;
+            font-size: 1.5em;
+            transition: .5s;
+          }
+        }
+        .icono:hover{
+          transform: scale(1.1);
+          background-color: #009dff;
+        }
+      }
+      .avatar-colors{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        background-color: #222;
+        border-radius: 1em;
+
+
+        .color{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          margin: 10px;
+
+          input[type="color"]{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 10px auto;
+    
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+    
+            transition: .5s;
+          }
+          input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0; 
+          }
+          input[type="color"]::-webkit-color-swatch {
+            border: 2px solid white;
+            border-radius: 100%;
+          }
+          input[type="color"]:hover{
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .guardar{
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button{
+          background-color: #0076be;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 200px;
+          height: 40px;
+          border-radius: 2em;
+          
+          color: white;
+
+          transition: .5s;
+        }
+        button:hover{
+          background-color: #009dff;
+          width: calc(200px + 10%);
+        }
+      }
+      
+    }
+  }
+}
+/*
+
+
+
+
+
+*/
+//----------------------------------------------------------//
+/*
+
+
 Administrador
 
 

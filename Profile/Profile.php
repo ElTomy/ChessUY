@@ -4,9 +4,11 @@
   session_start();
 
   $usuario = $_GET['Usuario'];
-  $usuario_info = $server->PerfilUsuario($usuario);
 
+  $usuario_info = $server->PerfilUsuario($usuario);
   list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+
+  list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($usuario);
 ?>
 
 <!DOCTYPE html>
@@ -70,25 +72,26 @@
             <a href="/ChessUY/Index">
               <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
             </a>
-            <div class="profile-avatar">
-                  <div class="profile-flex">
-                    <div class="profile-body-picture">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="profile-avatar-body">
-                    <?php
-                      echo "<p>" . $usuario_info['usuario'] . "</p>";
-                      if($usuario_info['tipo'] == 0){
-                        $tipo = "<i class='fas fa-star'></i> Administrador";
-                      }else if($usuario_info['tipo'] == 1){
-                        $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
-                      }else if($usuario_info['tipo'] == 2){
-                        $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-                      }else if($usuario_info['tipo'] == 3){
-                        $tipo = "<i class='fas fa-microphone'></i> Periodista";
-                      }
-                      echo "<p class='tipo-profile'>$tipo</p>";
-                    ?>
+            <?php
+              echo '<div class="profile-avatar">
+                <div class="profile-flex">
+                  <div class="profile-body-picture" style="background-color: '. $ColorFondo .'">
+                    <i class="' . $Icono . '" style="color: '.$ColorIcono.'"></i>
+                  </div>
+
+                  <div class="profile-avatar-body">';
+                    echo "<p>" . $usuario_info['usuario'] . "</p>";
+                    if($usuario_info['tipo'] == 0){
+                      $tipo = "<i class='fas fa-star'></i> Administrador";
+                    }else if($usuario_info['tipo'] == 1){
+                      $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                    }else if($usuario_info['tipo'] == 2){
+                      $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                    }else if($usuario_info['tipo'] == 3){
+                      $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                    }
+                    echo "<p class='tipo-profile'>$tipo</p>";
+                  ?>
                     </div>
                   </div>
                   <?php

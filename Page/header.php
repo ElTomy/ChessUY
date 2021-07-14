@@ -2,7 +2,10 @@
     <div class="header-logo">
 
         <?php
+            include '../servidor.php';
+            $server= new servidor();
             session_start();
+            list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($_SESSION['usuario']);
             
             if(isset($_SESSION['usuario'])){
                 echo '  <a href="/ChessUY/Inicio">
@@ -25,7 +28,7 @@
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
                                 <a class='profile' href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'>
-                                    <div class='session-image'><i class='fas fa-user'></i></div>
+                                    <div class='session-image' style='background-color: ". $ColorFondo ."'><i class='" . $Icono ."' style='color: ". $ColorIcono ."'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
                                     if($_SESSION['tipo'] == 0){

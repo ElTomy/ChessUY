@@ -6,6 +6,8 @@ $usuario = $_SESSION['usuario'];
 
 $usuario_info = $server->PerfilUsuario($usuario);
 
+list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($_SESSION['usuario']);
+
 $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-chess-knight'></i> Jugador", "<i class='fas fa-ruler-horizontal'></i> Árbitro", "<i class='fas fa-microphone'></i> Periodista")
 ?>
 
@@ -62,10 +64,10 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                 <div class="editarperfil-inputs">
                     <div class="img-wrapper">
                         <div class="img-editarperfil">
-                            <div class="editarperfil-img">
-                                <i class="fas fa-user"></i>
+                            <div class="editarperfil-img" style="background-color: '. $ColorFondo .'">
+                                <i class="' . $Icono . '" style="color: '. $ColorIcono .'"></i>
                             </div>
-                            <a href="" class="editarpefil-img-hover">
+                            <a href="/ChessUY/Profile/Editar/Avatar/Perfil" class="editarpefil-img-hover">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </div>
