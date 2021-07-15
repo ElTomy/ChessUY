@@ -81,6 +81,12 @@ class servidor
                 } else {
                     $stmts->close();
                     session_start();
+
+                    /*$_SESSION['icono'] = $Icono;
+                    $_SESSION['coloricono'] = $ColorIcono;
+                    $_SESSION['colorfondo'] = $ColorFondo;*/
+
+
                     $_SESSION['usuario'] = $us;
                     $_SESSION['tipo'] = $tipo;
                     $info = array('error' => false, 'usuario' => $us, 'tipo' => $tipo);

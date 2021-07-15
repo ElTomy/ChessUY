@@ -81,6 +81,7 @@ $index .='
               <div class="admin-buttons">
                 <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
                 <a href="/ChessUY/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
               </div>
             </section>';
     }

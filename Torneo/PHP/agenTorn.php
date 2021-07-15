@@ -12,10 +12,10 @@ if(isset($_POST['_month']) && isset($_POST['_year'])) {
     $year = date('Y');
     $cantdias = date('t');
 }
-echo "<div style='width: 100%; height: 10%; display: flex;'>";
-echo "<button style='width: 10%;' onclick='resMes()'> < </button>";
+echo "<div class='calendar-header'>";
+echo "<button class='previous-month' onclick='resMes()'><i class='fas fa-angle-left'></i></button>";
 echo "<p style='width: 90%; text-align: center;'>" . $year . " - " . $mesLetr . "</p>";
-echo "<button style='width: 10%;' onclick='sumMes()'> > </button>";
+echo "<button class='next-month' onclick='sumMes()'><i class='fas fa-angle-right'></i></button>";
 echo "</div>";
 echo "<div style='width: 100%; height: 90%;'>";
 echo "<table style='height: 100%; width: 100%;'> <tr>";

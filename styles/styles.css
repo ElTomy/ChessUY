@@ -3523,6 +3523,8 @@ Administrador
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -3562,6 +3564,428 @@ Administrador
   background-color: #333;
   color: #ffaa00;
   font-weight: lighter;
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
+Torneos
+
+
+*/
+.torneos-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper .torneos {
+  background-color: #111;
+  width: 90%;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.torneos-wrapper .torneos .torneos-titulo {
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1em;
+  margin: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-titulo h1 {
+  font-size: 1.6em;
+  color: white;
+  margin: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.torneos-wrapper .torneos .torneos-titulo i {
+  color: #ffaa00;
+}
+
+.torneos-wrapper .torneos .torneos-content {
+  padding: 20px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 1em;
+  padding: 10px;
+  margin: 10px;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu h2 {
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu form select {
+  width: 220px;
+  height: 30px;
+  background-color: #0076be;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 1em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu form select option:disabled {
+  color: #bbb;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config {
+  width: 77%;
+  min-height: 500px;
+  margin: 10px;
+  background-color: #222;
+  border-radius: 1em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config {
+  width: 100%;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 1em;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper {
+  width: 300px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar {
+  width: 100%;
+  height: 320px;
+  border-radius: 1em;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: #0076be;
+  border-radius: 1em 1em 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  color: #0076be;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
+  font-size: 1.2em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month {
+  left: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+  right: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references .reference {
+  margin: 10px;
+  text-align: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .hora {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  border-radius: 1em;
+  padding: 10px;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .hora input {
+  width: 80px;
+  height: 30px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  border-radius: 1em;
+  color: white;
+  background-color: #0076be;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 1em;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper .tiempo {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper .tiempo input {
+  width: 100%;
+  height: 40px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .advanced-wrapper {
+  width: 100%;
+  height: 400px;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 0, 0, 0.1);
+  text-align: center;
+  font-size: 2em;
+  color: grey;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio {
+  background-color: #333;
+  border-radius: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio input {
+  width: 100%;
+  height: 40px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button {
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 1em;
+  background-color: #0076be;
+  color: white;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button:hover {
+  background-color: #009dff;
 }
 
 /*

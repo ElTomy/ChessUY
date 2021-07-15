@@ -2,7 +2,7 @@ function confTipo(opt) {
     opt = opt.value;
     $.ajax({
         type: "POST",
-        url: "../PHP/tipoTorn.php",
+        url: "/ChessUY/Torneo/PHP/tipoTorn.php",
         data: { opt:opt },
         success: function (html) {
             document.getElementById("hola").innerHTML = html;
@@ -14,7 +14,7 @@ function opcReser(reser) {
     reser = reser.value;
     $.ajax({
         type: "POST",
-        url: "../PHP/resoNo.php",
+        url: "/ChessUY/Torneo/PHP/resoNo.php",
         data: { reser:reser },
         success: function (html) {
             document.getElementById("penultOpt").innerHTML = html;
@@ -27,7 +27,7 @@ function cantFech(ultopt) {
     ultopt = ultopt.value;
     $.ajax({
         type: "POST",
-        url: "../PHP/cantFech.php",
+        url: "/ChessUY/Torneo/PHP/cantFech.php",
         data: { ultopt:ultopt },
         success: function (html) {
             document.getElementById("ultOpt").innerHTML = html;
@@ -38,7 +38,7 @@ function cantFech(ultopt) {
 function quehacerRes() {
     if(document.getElementById('siLim').checked) {
         $.ajax({
-            url: "../PHP/quehacerRes.php",
+            url: "/ChessUY/Torneo/PHP/quehacerRes.php",
             success: function (html) {
                 $("#quehacerRes").html(html);
             }
@@ -51,7 +51,7 @@ function quehacerRes() {
 
 function cargAgen() {
     $.ajax({
-        url: "../PHP/agenTorn.php",
+        url: "/ChessUY/Torneo/PHP/agenTorn.php",
         success: function (html) {
             $("#agenTorn").html(html);
         }
@@ -72,7 +72,7 @@ function resMes() {
         month = 11;
     }
     $.ajax({
-        url: "../PHP/agenTorn.php",
+        url: "/ChessUY/Torneo/PHP/agenTorn.php",
         type: "post",
         data: {_month:month,_year:year},
         success: function (html) {
@@ -89,7 +89,7 @@ function sumMes() {
         month = 0;
     }
     $.ajax({
-        url: "../PHP/agenTorn.php",
+        url: "/ChessUY/Torneo/PHP/agenTorn.php",
         type: "post",
         data: {_month:month,_year:year},
         success: function (html) {
@@ -115,7 +115,7 @@ function guarFech(clicked_id) {
     }
     if(num <= 3) {
         $.ajax({
-            url: "../PHP/marcFech.php",
+            url: "/ChessUY/Torneo/PHP/marcFech.php",
             type: "post",
             data: {reserv:reserv, num:num},
             success: function (styles) {
@@ -189,7 +189,7 @@ function envaPHP() {
     
     if(transf) {
         $.ajax({
-            url: "../PHP/tornaBD.php",
+            url: "/ChessUY/Torneo/PHP/tornaBD.php",
             type: "post",
             data: { tiempo : tempJug, 
                     ELO_Min : eloMin,

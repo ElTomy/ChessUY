@@ -4,24 +4,20 @@ if(isset($_POST['opt'])) {
 }
 //Codigo de agenda
 $agenHTML = '
-<div style="width: 60%; height: 100%;">
-    <div id="agenTorn" style="width: 98%; height: 78%; border: solid grey; border-width: 1px; border-radius: 20px; padding: 1%;">
-    </div>
-    <div style="width: 98%; height: 16%; padding: 4% 0% 0% 0%; text-align: center;">
-        <p>A que hora debe cambiar?</p>
-        <input id="hrCom" type="time">
+<div class="calendar-wrapper">
+    <div id="agenTorn" class="calendar">
     </div>
 </div>
-<div style="width: 38%; height: 100%; padding: 2%;">
-    <div style="width: 100%; height: 26.6%; text-align: center;">
+<div class="calendar-references">
+    <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: red; margin: auto;"></div>
         Comienzo de las inscripciones
     </div>
-    <div style="width: 100%; height: 26.6%; text-align: center;">
+    <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: orange; margin: auto;"></div>
         Fin de las inscripciones
     </div>
-    <div style="width: 100%; height: 26.6%; text-align: center;">
+    <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: green; margin: auto;"></div>
         Comienzo del torneo
     </div>
@@ -30,16 +26,16 @@ $agenHTML = '
 
 //Codigo de los tiempos
 $tiemHTML = '
-<div>
-    Tiempo para descalificar
+<div class="tiempo">
+    <p>Tiempo para descalificar</p>
     <input type="text" id="tempDesc">
 </div>
-<div>
-    Tiempo total por jugador
+<div class="tiempo">
+    <p>Tiempo total por jugador</p>
     <input type="text" id="tempJug" required>
 </div>
-<div>
-    Cantidad de partidas por dia
+<div class="tiempo">
+    <p>Cantidad de partidas por día</p>
     <input type="number" id="partDia" required>
 </div>
 ';
@@ -95,34 +91,40 @@ $avanHTML = '
 
 //Codigo de premio
 $premHTML = '
-Premio
+<p><i class="fas fa-gift"></i> Premio</p>
 <input type="text" id="prem" required>
 ';
 
 //Codigo para guardar y crear
 $guCrHTML = '
-<button>Guardar</button>
-<button onclick="envaPHP()">Crear</button>
+<div class="torneo-buttons">
+    <button><i class="fas fa-save"></i> Guardar</button>
+    <button onclick="envaPHP()"><i class="fas fa-calendar-plus"></i> Crear</button>
+</div>
 ';
 
 if($opt == 'norm') {
 
     echo '
-    <div style="width: 50%; height: 100%;">
-        <div style="height: 68%; border-radius: 20px; padding: 1%; display: flex;">'.
+    <div class="config-left">
+        <div class="calendar-config">'.
 //          Aca va la agenda
             $agenHTML
       .'</div>
-        <div style="height: 28%; border-radius: 20px; padding: 1%;">'.
+        <div class="hora">
+            <p><i class="fas fa-clock"></i> ¿A que hora debe cambiar?</p>
+            <input id="hrCom" type="time">
+        </div>
+        <div class="tiempo-wrapper">'.
 //          temp
             $tiemHTML
       .'</div>
     </div>
-    <div style="width: 50%; height: 100%;">
-        <div style="height: 58%; background-color: rgba(255, 0, 0, 0.1); text-align: center; color: grey; border-radius: 20px; padding: 1%;">
-            (deshabilitado)
+    <div class="config-right">
+        <div class="advanced-wrapper">
+            <p><i class="fas fa-ban"></i> Deshabilitado</p>
         </div>
-        <div style="height: 18%; border-radius: 20px; padding: 10% 0% 0% 1%;">'.
+        <div class="premio">'.
 //          Premio
             $premHTML
       .'</div>
