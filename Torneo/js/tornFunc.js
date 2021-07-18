@@ -1,13 +1,21 @@
 class Torneo{
-    //cantidad rondas?
-    //cantJug, Numero_Participantes?
-    //1,2,3 lugar?
-    constructor(Fecha_inicio, Fecha_fin, eloMin, eloMax, tiempo){
+        constructor(Fecha_inicio, Fecha_fin, eloMin, eloMax, cantJug, tiempo, tempDesc, partDia, cantRes, locTorn, edaMin, edaMax, comTorn, finInsc, comInsc, hrCom){
         this.Fecha_inicio=Fecha_inicio;
         this.Fecha_fin=Fecha_fin;
         this.eloMin=eloMin;
         this.eloMax=eloMax;
+        this.cantJug=cantJug;
         this.tiempo=tiempo;
+        this.tempDesc=tempDesc;
+        this.partDia=partDia;
+        this.cantRes=cantRes;
+        this.locTorn=locTorn;
+        this.edaMin=edaMin;
+        this.edaMax=edaMax;
+        this.comTorn=comTorn;
+        this.finInsc=finInsc;
+        this.comInsc=comInsc;
+        this.hrCom=hrCom;
     }
     get Fi(){
         return this.Fecha_inicio;
@@ -15,7 +23,96 @@ class Torneo{
     set Fi(x){
         this.Fecha_inicio=x;
     }
-    
+    get Ff(){
+        return this.Fecha_fin;
+    }
+    set Ff(x){
+        this.Fecha_fin=x;
+    }
+    get ELOminimo(){
+        return this.eloMin;
+    }
+    set ELOminimo(x){
+        this.eloMin=x;
+    }
+    get ELOmaximo(){
+        return this.eloMax;
+    }
+    set ELOmaximo(x){
+        this.eloMax=x;
+    }
+    get cantidadJugadores(){
+        return this.cantJug;
+    }
+    set cantidadJugadores(x){
+        this.cantJug=x;
+    }
+    get time(){
+        return this.tiempo;
+    }
+    set time(x){
+        this.tiempo=x;
+    }
+    get tiempoDesc(){
+        return this.tempDesc;
+    }
+    set tiempoDesc(x){
+        this.tempDesc=x;
+    }
+    get partidasDia(){
+        return this.partDia;
+    }
+    set partidasDia(x){
+        this.partDia=x;
+    }
+    get cantidadRes(){
+        return this.cantRes;
+    }
+    set cantidadRes(x){
+        this.cantRes=x;
+    }
+    get locali(){
+        return this.locTorn;
+    }
+    set locali(x){
+        this.locTorn=x;
+    }
+    get edadmin(){
+        return this.edaMin;
+    }
+    set edadmin(x){
+        this.edaMin=x;
+    }
+    get edadmax(){
+        return this.edaMax;
+    }
+    set edadmax(x){
+        this.edaMax=x;
+    }
+    get comienzoTorneo(){
+        return this.comTorn;
+    }
+    set comienzoTorneo(x){
+        this.comTorn=x;
+    }
+    get finInscripciones(){
+        return this.finInsc;
+    }
+    set finInscripciones(x){
+        this.finInsc=x;
+    }
+    get comienzoInscripciones(){
+        return this.comInsc;
+    }
+    set comienzoInscripciones(x){
+        this.comInsc=x;
+    }
+    get horacomienzo(){
+        return this.hrCom;
+    }
+    set horacomienzo(x){
+        this.hrCom=x;
+    }
 }
 //---------------------------------
 function confTipo(opt) {
