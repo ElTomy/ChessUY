@@ -1,3 +1,23 @@
+class Torneo{
+    //cantidad rondas?
+    //cantJug, Numero_Participantes?
+    //1,2,3 lugar?
+    constructor(Fecha_inicio, Fecha_fin, eloMin, eloMax, tiempo){
+        this.Fecha_inicio=Fecha_inicio;
+        this.Fecha_fin=Fecha_fin;
+        this.eloMin=eloMin;
+        this.eloMax=eloMax;
+        this.tiempo=tiempo;
+    }
+    get Fi(){
+        return this.Fecha_inicio;
+    }
+    set Fi(x){
+        this.Fecha_inicio=x;
+    }
+    
+}
+//---------------------------------
 function confTipo(opt) {
     opt = opt.value;
     $.ajax({
