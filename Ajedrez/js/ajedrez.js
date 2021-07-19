@@ -43,6 +43,8 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
+var TurnoDinamico = 1;
+var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
@@ -388,9 +390,40 @@ function seleccionar(x,y){
             a = 1;
         }
         armoAjedrez();
-      
+        ultTurn = true;
+        this.TurnoDinamico = Turno;
     }
 }
+
+var totlsec1 = 900;
+var totlsec2 = 900;
+window.setInterval(function tiempo() {
+    if(TurnoDinamico%2 == 0) {
+        if(ultTurn) {
+            totlsec2 = totlsec2 + 5;
+            ultTurn = false;
+        } else {
+            totlsec1--;
+        }
+    } else {
+        if(ultTurn) {
+            totlsec1 = totlsec1 + 5;
+            ultTurn = false;
+        } else {
+            totlsec2--;
+        }
+    }
+    var sec1 = new Date(0);
+    sec1.setSeconds(totlsec1);
+    var minsec1 = sec1.toISOString().substr(14, 5);
+    var sec2 = new Date(0);
+    sec2.setSeconds(totlsec2);
+    var minsec2 = sec2.toISOString().substr(14, 5);
+    document.getElementById("tempJug1").innerHTML = minsec1;
+    document.getElementById("tempJug2").innerHTML = minsec2;
+}, 1000);
+
+
 //
 //
 /*------------------------------------------------------------------------------------------*/

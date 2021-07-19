@@ -37,6 +37,10 @@
     </div>
 
     <section class="board-wrapper">
+      <div style="width: 5%">
+        <div id="tempJug1" style="background-color: white;"></div>
+        <div id="tempJug2" style="background-color: white;"></div>
+      </div>
       <div class="board" id="ArmoAjedrez">
       </div>
     </section>
