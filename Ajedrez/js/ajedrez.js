@@ -4,6 +4,7 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
+    init();
 });
 //
 //
@@ -43,8 +44,6 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
-var TurnoDinamico = 1;
-var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
@@ -58,6 +57,7 @@ var jaque = {
    y: null,
 }
 var colJugador;
+var socket;
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -386,44 +386,13 @@ function seleccionar(x,y){
                 simbolo: simbolo,
             }
             simbolo = null;
-            Turno = Turno + 1;
+            Turno++;
             a = 1;
         }
+        send();
         armoAjedrez();
-        ultTurn = true;
-        this.TurnoDinamico = Turno;
     }
 }
-
-var totlsec1 = 900;
-var totlsec2 = 900;
-window.setInterval(function tiempo() {
-    if(TurnoDinamico%2 == 0) {
-        if(ultTurn) {
-            totlsec2 = totlsec2 + 5;
-            ultTurn = false;
-        } else {
-            totlsec1--;
-        }
-    } else {
-        if(ultTurn) {
-            totlsec1 = totlsec1 + 5;
-            ultTurn = false;
-        } else {
-            totlsec2--;
-        }
-    }
-    var sec1 = new Date(0);
-    sec1.setSeconds(totlsec1);
-    var minsec1 = sec1.toISOString().substr(14, 5);
-    var sec2 = new Date(0);
-    sec2.setSeconds(totlsec2);
-    var minsec2 = sec2.toISOString().substr(14, 5);
-    document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
-    document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
-}, 1000);
-
-
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1794,3 +1763,89 @@ function Derrota(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function init(){
+    socket = new WebSocket("ws://localhost:25005")
+    
+    socket.onopen = function(msg) {
+        //alert("Welcome - status "+this.readyState);
+        };
+        socket.onmessage = function(msg) {
+        //alert("Received: "+msg.data);
+        reciboTablero(msg.data)
+        };
+        socket.onclose = function(msg) {
+        //alert("Disconnected - status "+this.readyState);
+        };
+    }
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function send(msg){
+    var tab = "tab:" +JSON.stringify(Tablero);
+    var jug = "jug:" +JSON.stringify(Jugadas);
+    console.log("turno " + Turno)
+    console.log(Jugadas)
+    if(tab.length > 0) {
+        socket.send(tab);
+        socket.send(jug);
+        socket.send(Turno);
+    }  
+}
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function reciboTablero(data){
+    console.log(".")
+    var tipo;
+    var pp = 8;
+    var qq = 8;
+
+    if(data.includes("tab:")){
+        var tab = data.slice(4)
+        tipo = 1;
+    }else if(data.includes("jug:")){
+        var jug = data.slice(4)
+        tipo = 2;
+    }else{tipo = 3;}
+    
+    switch(tipo){
+        case 1:
+            var tab2 = JSON.parse(tab);
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[pp][qq] = tab2[p][q];
+                    qq = qq-1;
+                }
+                qq = 8;
+                pp = pp-1;
+            }
+            break;
+        case 2:
+            var jug2 = JSON.parse(jug);
+                console.log(Jugadas)
+                console.log(Jugadas.length)
+                console.log(jug2)
+                console.log(jug2.length)
+                console.log("======================================")
+            for(var p = 1; p <= jug2.length; p++){
+                console.log("p:" + p)
+                console.log(jug2[p])
+                console.log("---------")
+                Jugadas[p] = jug2[p];
+            }
+              console.log("jugadas:");
+              console.log(Jugadas)
+            break;
+        case 3:
+            console.log("turno:" + data )
+            Turno = data;
+            break;
+    }
+    resetMovimientos();
+    resetTableroJaque();
+    armoAjedrez();
+}
