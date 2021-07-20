@@ -419,8 +419,8 @@ window.setInterval(function tiempo() {
     var sec2 = new Date(0);
     sec2.setSeconds(totlsec2);
     var minsec2 = sec2.toISOString().substr(14, 5);
-    document.getElementById("tempJug1").innerHTML = minsec1;
-    document.getElementById("tempJug2").innerHTML = minsec2;
+    document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
+    document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
 }, 1000);
 
 

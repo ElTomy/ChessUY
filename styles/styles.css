@@ -2393,6 +2393,26 @@ Buscar Jugadores
   height: calc(98vh - 100px);
 }
 
+.board-wrapper #tempJug1, .board-wrapper #tempJug2 {
+  height: 30px;
+  background-color: #222;
+  border-radius: 1em;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper #tempJug1 i, .board-wrapper #tempJug2 i {
+  margin-right: 5px;
+}
+
 .board-wrapper .board {
   display: -ms-grid;
   display: grid;
@@ -2832,7 +2852,26 @@ Buscar Jugadores
 
 .board-wrapper .board .movimientos .jugadores a {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
+}
+
+.board-wrapper .board .movimientos .jugadores a #tempJug1 {
+  width: 100%;
+  height: 30px;
+  color: white;
 }
 
 .board-wrapper .board .movimientos .jugadores .JugadorUno,
@@ -3643,7 +3682,6 @@ Torneos
 
 .torneos-wrapper .torneos .torneos-content .torneo-menu {
   width: 100%;
-  max-width: 250px;
   border-radius: 1em;
   padding: 10px;
   margin: 10px;
@@ -3657,20 +3695,38 @@ Torneos
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo {
+  width: 200px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-menu h2 {
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo h2 {
   font-size: 1.2em;
   font-weight: lighter;
   margin-bottom: 10px;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-menu form select {
-  width: 220px;
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo form select {
+  width: 100%;
   height: 30px;
   background-color: #0076be;
   color: white;
@@ -3679,12 +3735,19 @@ Torneos
   border-radius: 1em;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-menu form select option:disabled {
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo form select option:disabled {
   color: #bbb;
 }
 
+.torneos-wrapper .torneos .torneos-content .torneo-menu .presets {
+  width: 500px;
+  height: 100%;
+  border-radius: 1em;
+  background-color: #333;
+}
+
 .torneos-wrapper .torneos .torneos-content .torneo-config {
-  width: 77%;
+  width: 100%;
   min-height: 500px;
   margin: 10px;
   background-color: #222;
@@ -3692,25 +3755,17 @@ Torneos
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper {
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left {
-  width: 100%;
-  max-width: 500px;
   height: 100%;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3802,7 +3857,6 @@ Torneos
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references {
-  width: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3817,8 +3871,21 @@ Torneos
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references .reference {
+  width: 120px;
+  height: 100px;
   margin: 10px;
   text-align: center;
+  font-size: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .hora {
@@ -3887,8 +3954,6 @@ Torneos
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right {
-  width: 100%;
-  max-width: 500px;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3902,7 +3967,6 @@ Torneos
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .advanced-wrapper {
-  width: 100%;
   height: 400px;
   margin: 10px 0;
   display: -webkit-box;
