@@ -980,6 +980,7 @@ function cambioCoronacion(x, y, pieza, col){
     $(".modal").hide();
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
+    Jaque(x,y,pieza);
 }
 window.onresize = boardsize;
 //
@@ -1255,6 +1256,7 @@ function Jaque(x,y, sel){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
+                    console.log("JAQUE")
                     if(simbolo != null){
                         simbolo = simbolo + "+";
                     }else{
@@ -1354,7 +1356,7 @@ function Jaque(x,y, sel){
                             if(jaque.y == reyY){
                                 var l=jaque.x
                                 if(jaque.x > reyX){
-                                    for(l; l > reyX; l++){
+                                    for(l; l > reyX; l--){
                                         TableroJaque[l][jaque.y] = true;
                                     }
                                 }else{
