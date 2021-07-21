@@ -43,6 +43,8 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
+var TurnoDinamico = 1;
+var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
@@ -388,9 +390,40 @@ function seleccionar(x,y){
             a = 1;
         }
         armoAjedrez();
-      
+        ultTurn = true;
+        this.TurnoDinamico = Turno;
     }
 }
+
+var totlsec1 = 900;
+var totlsec2 = 900;
+window.setInterval(function tiempo() {
+    if(TurnoDinamico%2 == 0) {
+        if(ultTurn) {
+            totlsec2 = totlsec2 + 5;
+            ultTurn = false;
+        } else {
+            totlsec1--;
+        }
+    } else {
+        if(ultTurn) {
+            totlsec1 = totlsec1 + 5;
+            ultTurn = false;
+        } else {
+            totlsec2--;
+        }
+    }
+    var sec1 = new Date(0);
+    sec1.setSeconds(totlsec1);
+    var minsec1 = sec1.toISOString().substr(14, 5);
+    var sec2 = new Date(0);
+    sec2.setSeconds(totlsec2);
+    var minsec2 = sec2.toISOString().substr(14, 5);
+    document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
+    document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
+}, 1000);
+
+
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -947,6 +980,7 @@ function cambioCoronacion(x, y, pieza, col){
     $(".modal").hide();
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
+    Jaque(x,y,pieza);
 }
 window.onresize = boardsize;
 //
@@ -1222,6 +1256,7 @@ function Jaque(x,y, sel){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
+                    console.log("JAQUE")
                     if(simbolo != null){
                         simbolo = simbolo + "+";
                     }else{
@@ -1321,7 +1356,7 @@ function Jaque(x,y, sel){
                             if(jaque.y == reyY){
                                 var l=jaque.x
                                 if(jaque.x > reyX){
-                                    for(l; l > reyX; l++){
+                                    for(l; l > reyX; l--){
                                         TableroJaque[l][jaque.y] = true;
                                     }
                                 }else{

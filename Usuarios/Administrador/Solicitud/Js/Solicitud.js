@@ -8,9 +8,9 @@ $(document).ready(function () {
         success: function (response) {
 
             var solic = JSON.parse(response);
-
+            console.log(solic[len].usuario)
             while(x <= 0) {
-                if (solic[len] == undefined || solic[len].usuario == null) {
+                if (solic[len].usuario == undefined && solic[len].usuario == null) {
                     x = 1;
                 } else {
                     console.log("Len:" + len);

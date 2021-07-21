@@ -162,6 +162,7 @@ $Ajedrez .='
                     <h1>ByJuanii</h1>
                     <p><i class="fas fa-chess-knight"></i> Jugador</p>
                     </div>
+                    <div id="tempJug1" style="background-color: white;"></div>
                 </div>
 
                 <div class="movimientos">
@@ -179,6 +180,7 @@ $Ajedrez .='
                                 <p><i class="fas fa-star"></i> Administrador</p>
                             </div>
                         </div>
+                        <div id="tempJug1"></div>
                     </a>
                     <h1>-</h1>
                     <a href="/ChessUY/Profile/ByJuanii">

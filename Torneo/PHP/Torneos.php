@@ -49,15 +49,17 @@
         <div class="torneos-content">
 
           <div class="torneo-menu">
-            <h2>Tipo de Torneo:</h2>
-            <form>
-              <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
-                <option disabled selected>Selecciona un tipo de torneo</option>
-                <option value="norm">Normal</option>
-                <option value="avan">Avanzado</option>
-                <option value="pres">Crear preset??</option>
-              </select>
-            </form>
+            <div class="tipo-torneo">
+              <h2>Tipo de Torneo:</h2>
+              <form>
+                <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
+                  <option disabled selected>Selecciona un tipo de torneo</option>
+                  <option value="norm">Normal</option>
+                  <option value="avan">Avanzado</option>
+                  <option value="pres">Crear preset??</option>
+                </select>
+              </form>
+            </div>
           </div>
 
           <div class="torneo-config">
