@@ -254,7 +254,7 @@ function seleccionar(x,y){
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
-            if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
+            if((Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)||(Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)){
                 seleccionado = {
                     Ejex: x,
                     Ejey: y,
@@ -359,7 +359,7 @@ function seleccionar(x,y){
         }else{
             //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
-                if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
+                if((Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)||(Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)){
                     seleccionado = {
                         Ejex: x,
                         Ejey: y,
@@ -535,41 +535,7 @@ function Peon(x,y, sel){
            }
          }}
         
-    }else{
-            yy = y-1;
-            //movimiento: 2-adelante
-            if(y == 7 && Tablero[x][5].Piezas == null && Tablero[x][yy].Piezas == null){
-                comer(x,5,selecc);
-            }
-            if(yy>=1){
-             //movimiento: 1-adelante
-             if(Tablero[x][yy].Piezas == null){
-                comer(x,yy,selecc);
-             }
-             if(xx<=8){
-                 if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
-                //Peon al paso derecha
-                comer(xb,3,selecc);
-            }
-                //movimiento: comer-d
-                if(Tablero[xx][yy].Piezas != null){
-                    comer(xx,yy,selecc);
-                }
-             }
-             xx = x -1;
-             if(xx>=1){
-                if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
-                    //Peon al paso izquierda
-                    comer(xa,3,selecc);
-                }
-                //movimiento: comer-i
-               if(Tablero[xx][yy].Piezas != null){
-                comer(xx,yy,selecc);
-               }
-             }
     }
-}
-  
 }
 //
 //
