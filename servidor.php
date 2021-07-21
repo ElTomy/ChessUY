@@ -72,7 +72,7 @@ class servidor
         $us = "";
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID, $Icono, $ColorIcono, $ColorFondo);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail,  $Icono, $ColorIcono, $ColorFondo);
             if ($stmts->fetch()) {
                 if ($us == null) {
                     $stmts->close();
@@ -195,7 +195,7 @@ class servidor
             $stmts->store_result();
             $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'ID' => $ID , 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 $info[] = $data;
             }
             $stmts->close();
@@ -218,7 +218,7 @@ class servidor
             $stmts->store_result();
             $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'ID' => $ID, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 return $data;
             }
             $stmts->close();
