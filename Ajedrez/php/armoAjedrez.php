@@ -1,4 +1,19 @@
 <?php
+session_start();
+$usu = $_SESSION["usuario"];
+$Icon = $_SESSION["icono"];
+$colFondo = $_SESSION["colorfondo"];
+$colIcon = $_SESSION["coloricono"];
+
+if($_SESSION['tipo'] == 0){
+    $tipo = "<i class='fas fa-star'></i> Administrador";
+  }else if($_SESSION['tipo'] == 1){
+    $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+  }else if($_SESSION['tipo'] == 2){
+    $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+  }else if($_SESSION['tipo'] == 3){
+    $tipo = "<i class='fas fa-microphone'></i> Periodista";
+  }
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
 if(isset($_POST['Jugadas'])){
@@ -170,27 +185,27 @@ $Ajedrez .='
                     <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <div class="jugadores">
-                    <a href="/ChessUY/Profile/ByJuanii">
+                    <a href="/ChessUY/Profile/'.$usu.'">
                         <div class="JugadorUno">
-                            <div class="jugador-img">
-                                <i class="fas fa-user"></i>
+                            <div class="jugador-img" style="background-color:'.$colFondo.'">
+                                <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
                             </div>
                             <div class="jugador-body">
-                                <h1 '.$colorJugador.' >ByJuanii</h1>
-                                <p><i class="fas fa-star"></i> Administrador</p>
+                                <h1 '.$colorJugador.' >'.$usu.'</h1>
+                                <p>'.$tipo.'</p>
                             </div>
                         </div>
-                        <div id="tempJug1"></div>
+                      
                     </a>
                     <h1>-</h1>
-                    <a href="/ChessUY/Profile/ByJuanii">
+                    <a href="/ChessUY/Profile/BOT">
                         <div class="JugadorDos">
                             <div class="jugador-body">
-                                <h1 '.$colorJugador2.'>Jugador 2</h1>
-                                <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                                <h1 '.$colorJugador2.'>ALFI ᴮᴼᵀ</h1>
+                                <p><i class="fas fa-robot"></i> BOT</p>
                             </div>
-                            <div class="jugador-img">
-                                <i class="fas fa-user"></i>
+                            <div class="jugador-img" style="background-color:#ffffff">
+                                <i class="fas fa-robot"  style="color:#000000"></i>
                             </div>
                         </div>
                     </a>
