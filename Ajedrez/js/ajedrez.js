@@ -48,7 +48,6 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
-var TurnoDinamico = 1;
 var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
@@ -312,26 +311,26 @@ function seleccionar(x,y){
                    if(seleccionado.Contenido == Piezas.BRey){
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.BTorre){
                             //0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.BTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }else{
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.NTorre){
                             //0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.NTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
@@ -392,40 +391,50 @@ function seleccionar(x,y){
             }
             simbolo = null;
             Turno = Turno + 1;
+            ultTurn = true;
             a = 1;
         }
         armoAjedrez();
-        ultTurn = true;
-        this.TurnoDinamico = Turno;
     }
 }
 
 var totlsec1 = 900;
 var totlsec2 = 900;
+var finalizado = false;
 window.setInterval(function tiempo() {
-    if(TurnoDinamico%2 == 0) {
-        if(ultTurn) {
-            totlsec2 = totlsec2 + 5;
-            ultTurn = false;
+    if(!finalizado || !jaqueMate){
+        if(Turno%2 == 0) {
+            if(ultTurn) {
+                totlsec2 = totlsec2 + 5;
+                ultTurn = false;
+            } else {
+                totlsec1--;
+                if(totlsec1 < 1){
+                    Derrota();
+                }
+            }
         } else {
-            totlsec1--;
+            if(ultTurn) {
+                totlsec1 = totlsec1 + 5;
+                ultTurn = false;
+            } else {
+                totlsec2--;
+                if(totlsec2 < 1){
+                    Derrota();
+                }
+            }
         }
+        var sec1 = new Date(0);
+        sec1.setSeconds(totlsec1);
+        var minsec1 = sec1.toISOString().substr(14, 5);
+        var sec2 = new Date(0);
+        sec2.setSeconds(totlsec2);
+        var minsec2 = sec2.toISOString().substr(14, 5);
+        document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
+        document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
     } else {
-        if(ultTurn) {
-            totlsec1 = totlsec1 + 5;
-            ultTurn = false;
-        } else {
-            totlsec2--;
-        }
+
     }
-    var sec1 = new Date(0);
-    sec1.setSeconds(totlsec1);
-    var minsec1 = sec1.toISOString().substr(14, 5);
-    var sec2 = new Date(0);
-    sec2.setSeconds(totlsec2);
-    var minsec2 = sec2.toISOString().substr(14, 5);
-    document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
-    document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
 }, 1000);
 
 
@@ -905,11 +914,11 @@ function Rey(x,y,sel){
         selecc = sel;
     }
     if(x == 5 && (y == 1 || y == 8)){
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null && Tablero[7][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
         }
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null && Tablero[3][y].Piezas == null){
             //0-0-0
             comer(3,y,selecc);
         }
@@ -1787,6 +1796,7 @@ function JaqueMate(){
 //
 //
 function Derrota(){
+    finalizado = true;
     $.ajax({
         url: "/ChessUY/Modal/modalDerrota.php",
         type: "POST",
