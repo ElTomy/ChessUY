@@ -20,6 +20,7 @@ else
         echo "+----------------------------------------------------+"
         echo ""
         echo "[1] Cambiar nombre"
+        echo "[2] Cambiar password"
         echo "[2] Agregar a grupo"
         echo "[3] Eliminar de grupo"
         echo "[4] Cambiar grupo primario"
@@ -31,12 +32,13 @@ else
 
         case "$opc" in
             "1") . ./admin/ABML/modif/cambnom.sh;;
-            "2") . ./admin/ABML/modif/agragrup.sh;;
-            "3") . ./admin/ABML/modif/elimgrup.sh;;
-            "4") . ./admin/ABML/modif/gruprim.sh;;
-            "5") . ./admin/ABML/modif/movehome.sh;;
-            "6") . ./admin/ABML/modif/lokuser.sh;;
-            "7") . ./admin/ABML/modif/unkuser.sh;;
+            "2") passwd $usu;;
+            "3") . ./admin/ABML/modif/agragrup.sh;;
+            "4") . ./admin/ABML/modif/elimgrup.sh;;
+            "5") . ./admin/ABML/modif/gruprim.sh;;
+            "6") . ./admin/ABML/modif/movehome.sh;;
+            "7") . ./admin/ABML/modif/lokuser.sh;;
+            "8") . ./admin/ABML/modif/unkuser.sh;;
         esac
     else
         echo ""

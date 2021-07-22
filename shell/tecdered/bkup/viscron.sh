@@ -8,9 +8,5 @@ echo "[q] Volver"
 echo ""
 read -p ">_ " opc
 
-if opc == q
-then
-    . ./bkup.sh
-else
-    crontab -e $opc
-fi
+crontab -e
+. ./tecdered/bkup/bkup.sh
