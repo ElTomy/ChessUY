@@ -62,7 +62,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                 <div class="editarperfil-inputs">
                     <div class="img-wrapper">
                         <div class="img-editarperfil">
-                            <div class="editarperfil-img" style="background-color: '. $usuario_info['ColorFcono'] .'">
+                            <div class="editarperfil-img" style="background-color: '. $usuario_info['ColorFondo'] .'">
                                 <i class="' . $usuario_info['Icono'] . '" style="color: '. $usuario_info['ColorIcono'] .'"></i>
                             </div>
                             <a href="/ChessUY/Profile/Editar/Avatar/Perfil" class="editarpefil-img-hover">
