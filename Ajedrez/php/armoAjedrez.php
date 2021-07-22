@@ -216,7 +216,7 @@ $Ajedrez .='
 
                 
                 <div class="menu-bottom">
-                    <div class="select-wrapper">
+                    <div class="select-wrapper" id="select-wrapper">
                         <div class="box-type">
                             <button id="movimiento" class="box-button active" onclick="box('. $movimientos .')"><i class="fas fa-chess"></i> Movimientos</button>
                             <button id="chat" class="box-button" onclick="box('. $chat .')"><i class="fas fa-comment"></i> Chat</button>
