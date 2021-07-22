@@ -10,6 +10,9 @@ $( document ).ready(function(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function algo(){
+    alert(document.getElementById('movimiento'));
+}
  function armoAjedrez(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
@@ -20,6 +23,8 @@ $( document ).ready(function(){
             boardsize();
         }
     });
+    
+    algo();
  }
  var Color = {
     Blanco:'b',
@@ -1796,3 +1801,18 @@ function Derrota(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function box(boxcontent){
+    if(boxcontent == "chat"){
+        $(".table-wrapper").hide();
+        $(".chat").show();
+        $("#chat").addClass('active');
+        $("#movimiento").removeClass('active');
+    }
+    else{
+        $(".chat").hide();
+        $(".table-wrapper").show();
+        $("#chat").removeClass('active');
+        $("#movimiento").addClass('active');
+    }
+
+}

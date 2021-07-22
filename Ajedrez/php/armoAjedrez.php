@@ -164,6 +164,9 @@ for($y = 1; $y <= 8; $y++){
 En la parte donde hace el <a href="/ChessUY/Profile/ByJuanii <-- aca hay que poner el nombre del Usuario ej: "ByJuanii";
 
 */
+$movimientos = "'movimientos'";
+$chat = "'chat'";
+
 $Ajedrez .='
                     </div>
                         </div>
@@ -197,7 +200,7 @@ $Ajedrez .='
                         </div>
                       
                     </a>
-                    <h1>-</h1>
+                    <h1>vs</h1>
                     <a href="/ChessUY/Profile/BOT">
                         <div class="JugadorDos">
                             <div class="jugador-body">
@@ -210,143 +213,183 @@ $Ajedrez .='
                         </div>
                     </a>
                 </div>
-                <h1>Movimientos</h1>
-                <div class="table-wrapper">
-                    <table>
-                        <tr>
-                            <th>Pieza</th>
-                            <th>Movimiento</th>
-                        </tr>';
-                        for($a = 1;$a<$Turnos;$a++){
-                            $i = $Turnos - $a;
-                        $s = $jugadas[$i]['simbolo'];
-                        switch($jugadas[$i]['Piezas']){
-    
-                            case "t":
-                                $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
-                                break;
-                            case "tn":
-                                $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
-                                break;
-            
-                            case "c":
-                                $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
-                                break;
-                            case "cn":
-                                $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
-                                break;
-            
-                            case "a":
-                                $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
-                                break;
-                            case "an":
-                                $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
-                                break;
-        
-                            case "d":
-                                $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
-                                break;
-                            case "dn":
-                                $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
-                                break;
-    
-                            case "r":
-                                $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
-                                break;
-                            case "rn":
-                                $img = "<i class='fas fa-chess-king' id='Negro'></i>";
-                                break;
 
-                            case "p":
-                                $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
-                                break;
-                            case "pn":
-                                $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
-                                break;
-
-                                default:
-                                $img = "";
-                            }
-                            switch($jugadas[$i]['Ejey']){
-
-                                case 1:
-                                    $p = 8;
-                                    break;
-                                case 2:
-                                    $p = 7;
-                                    break;
                 
-                                case 3:
-                                    $p = 6;
-                                    break;
-                                case 4:
-                                    $p = 5;
-                                    break;
-                
-                                case 5:
-                                    $p = 4;
-                                    break;
-                                case 6:
-                                    $p = 3;
-                                    break;
+                <div class="menu-bottom">
+                    <div class="select-wrapper">
+                        <div class="box-type">
+                            <button id="movimiento" class="box-button active" onclick="box('. $movimientos .')"><i class="fas fa-chess"></i> Movimientos</button>
+                            <button id="chat" class="box-button" onclick="box('. $chat .')"><i class="fas fa-comment"></i> Chat</button>
+                        </div>
+                        <div class="box-content" id="box">
+
+
+                            <div class="table-wrapper">
+                                <table>
+                                    <tr>
+                                        <th>Pieza</th>
+                                        <th>Movimiento</th>
+                                    </tr>';
+                                for($a = 1;$a<$Turnos;$a++){
+                                    $i = $Turnos - $a;
+                                $s = $jugadas[$i]['simbolo'];
+                                switch($jugadas[$i]['Piezas']){
             
-                                case 7:
-                                    $p = 2;
-                                    break;
-                                case 8:
-                                    $p = 1;
-                                    break;
-                            }
-                            switch($jugadas[$i]['Ejex']){
-
-                                case 1:
-                                    $j = "A";
-                                    break;
-                                case 2:
-                                    $j = "B";
-                                    break;
+                                    case "t":
+                                        $img = "<i class='fas fa-chess-rook' id='Blanco'></i>";
+                                        break;
+                                    case "tn":
+                                        $img = "<i class='fas fa-chess-rook' id='Negro'></i>";
+                                        break;
+                    
+                                    case "c":
+                                        $img = "<i class='fas fa-chess-knight' id='Blanco'></i>";
+                                        break;
+                                    case "cn":
+                                        $img = "<i class='fas fa-chess-knight' id='Negro'></i>";
+                                        break;
+                    
+                                    case "a":
+                                        $img = "<i class='fas fa-chess-bishop' id='Blanco'></i>";
+                                        break;
+                                    case "an":
+                                        $img = "<i class='fas fa-chess-bishop' id='Negro'></i>";
+                                        break;
                 
-                                case 3:
-                                    $j = "C";
-                                    break;
-                                case 4:
-                                    $j = "D";
-                                    break;
-                
-                                case 5:
-                                    $j = "E";
-                                    break;
-                                case 6:
-                                    $j = "F";
-                                    break;
+                                    case "d":
+                                        $img = "<i class='fas fa-chess-queen' id='Blanco'></i>";
+                                        break;
+                                    case "dn":
+                                        $img = "<i class='fas fa-chess-queen' id='Negro'></i>";
+                                        break;
             
-                                case 7:
-                                    $j = "G";
-                                    break;
-                                case 8:
-                                    $j = "H";
-                                    break;
-                            }
-                            $Ajedrez .=' <tr>
-                            <td>'.$img.'</td>';
-                            if($s == 'x'){
-                                $Ajedrez .='<td>'.$s.$j.$p.'</td>';
-                            }else{
-                               if($s == 'x+'){
-                                $Ajedrez .='<td>'.'x'.$j.$p.'+'.'</td>';
-                               }elseif ($s == 'x=') {
-                                $Ajedrez .='<td>'.'x'.$j.$p.'='.'</td>';
-                               }elseif ($s == '0-0' || $s == '0-0-0'){
-                                $Ajedrez .='<td>'.$s.'</td>';
-                               }else{
-                                $Ajedrez .='<td>'.$j.$p.$s.'</td>';
-                            }}
-                            
-                            $Ajedrez .='</tr>';
-                        }
-                        $Ajedrez .=' </table>
+                                    case "r":
+                                        $img = "<i class='fas fa-chess-king' id='Blanco'></i>";
+                                        break;
+                                    case "rn":
+                                        $img = "<i class='fas fa-chess-king' id='Negro'></i>";
+                                        break;
+
+                                    case "p":
+                                        $img = "<i class='fas fa-chess-pawn' id='Blanco'></i>";
+                                        break;
+                                    case "pn":
+                                        $img = "<i class='fas fa-chess-pawn' id='Negro'></i>";
+                                        break;
+
+                                        default:
+                                        $img = "";
+                                    }
+                                    switch($jugadas[$i]['Ejey']){
+
+                                        case 1:
+                                            $p = 8;
+                                            break;
+                                        case 2:
+                                            $p = 7;
+                                            break;
+                        
+                                        case 3:
+                                            $p = 6;
+                                            break;
+                                        case 4:
+                                            $p = 5;
+                                            break;
+                        
+                                        case 5:
+                                            $p = 4;
+                                            break;
+                                        case 6:
+                                            $p = 3;
+                                            break;
+                    
+                                        case 7:
+                                            $p = 2;
+                                            break;
+                                        case 8:
+                                            $p = 1;
+                                            break;
+                                    }
+                                    switch($jugadas[$i]['Ejex']){
+
+                                        case 1:
+                                            $j = "A";
+                                            break;
+                                        case 2:
+                                            $j = "B";
+                                            break;
+                        
+                                        case 3:
+                                            $j = "C";
+                                            break;
+                                        case 4:
+                                            $j = "D";
+                                            break;
+                        
+                                        case 5:
+                                            $j = "E";
+                                            break;
+                                        case 6:
+                                            $j = "F";
+                                            break;
+                    
+                                        case 7:
+                                            $j = "G";
+                                            break;
+                                        case 8:
+                                            $j = "H";
+                                            break;
+                                    }
+                                    $Ajedrez .=' <tr>
+                                    <td>'.$img.'</td>';
+                                    if($s == 'x'){
+                                        $Ajedrez .='<td>'.$s.$j.$p.'</td>';
+                                    }else{
+                                    if($s == 'x+'){
+                                        $Ajedrez .='<td>'.'x'.$j.$p.'+'.'</td>';
+                                    }elseif ($s == 'x=') {
+                                        $Ajedrez .='<td>'.'x'.$j.$p.'='.'</td>';
+                                    }elseif ($s == '0-0' || $s == '0-0-0'){
+                                        $Ajedrez .='<td>'.$s.'</td>';
+                                    }else{
+                                        $Ajedrez .='<td>'.$j.$p.$s.'</td>';
+                                    }}
+                                    
+                                    $Ajedrez .='</tr>';
+                                }
+                                $Ajedrez .=' </table>
+                            </div>
+
+                            <div class="chat">
+                                <div class="chat-box">
+                                    <div class="mensaje1-wrapper">
+                                        <div class="mensaje1">
+                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensaje2-wrapper">
+                                        <div class="mensaje2">
+                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit assumenda asperiores dolores explicabo rem recusandae unde aut alias rerum soluta!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensaje1-wrapper">
+                                        <div class="mensaje1">
+                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Escribe un mensaje aquí">
+                                    <button><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
                 </div>
-                <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
                 </div>';
 
 echo $Ajedrez;
