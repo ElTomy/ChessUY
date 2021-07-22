@@ -148,11 +148,11 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo){
+    function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
         $conn = $this->conectar();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
+        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, 'fas fa-code', '#f8b703', '#222222');
         $stmts->execute();
     }
     //
@@ -169,9 +169,9 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => sha1($Contraseña), 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => sha1($Contraseña), 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
                 $info[] = $data;
             }
             $stmts->close();

@@ -306,26 +306,26 @@ function seleccionar(x,y){
                    if(seleccionado.Contenido == Piezas.BRey){
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.BTorre){
                             //0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.BTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }else{
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.NTorre){
                             //0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.NTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
@@ -909,11 +909,11 @@ function Rey(x,y,sel){
         selecc = sel;
     }
     if(x == 5 && (y == 1 || y == 8)){
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null && Tablero[7][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
         }
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null && Tablero[3][y].Piezas == null){
             //0-0-0
             comer(3,y,selecc);
         }
