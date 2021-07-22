@@ -397,30 +397,41 @@ function seleccionar(x,y){
 
 var totlsec1 = 900;
 var totlsec2 = 900;
+var finalizado = false;
 window.setInterval(function tiempo() {
-    if(TurnoDinamico%2 == 0) {
-        if(ultTurn) {
-            totlsec2 = totlsec2 + 5;
-            ultTurn = false;
+    if(!finalizado || !jaqueMate){
+        if(TurnoDinamico%2 == 0) {
+            if(ultTurn) {
+                totlsec2 = totlsec2 + 5;
+                ultTurn = false;
+            } else {
+                totlsec1--;
+                if(totlsec1 < 1){
+                    Derrota();
+                }
+            }
         } else {
-            totlsec1--;
+            if(ultTurn) {
+                totlsec1 = totlsec1 + 5;
+                ultTurn = false;
+            } else {
+                totlsec2--;
+                if(totlsec2 < 1){
+                    Derrota();
+                }
+            }
         }
+        var sec1 = new Date(0);
+        sec1.setSeconds(totlsec1);
+        var minsec1 = sec1.toISOString().substr(14, 5);
+        var sec2 = new Date(0);
+        sec2.setSeconds(totlsec2);
+        var minsec2 = sec2.toISOString().substr(14, 5);
+        document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
+        document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
     } else {
-        if(ultTurn) {
-            totlsec1 = totlsec1 + 5;
-            ultTurn = false;
-        } else {
-            totlsec2--;
-        }
+
     }
-    var sec1 = new Date(0);
-    sec1.setSeconds(totlsec1);
-    var minsec1 = sec1.toISOString().substr(14, 5);
-    var sec2 = new Date(0);
-    sec2.setSeconds(totlsec2);
-    var minsec2 = sec2.toISOString().substr(14, 5);
-    document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
-    document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
 }, 1000);
 
 
@@ -1782,6 +1793,7 @@ function JaqueMate(){
 //
 //
 function Derrota(){
+    finalizado = true;
     $.ajax({
         url: "/ChessUY/Modal/modalDerrota.php",
         type: "POST",
