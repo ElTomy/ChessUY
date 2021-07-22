@@ -25,5 +25,5 @@ case "$opc" in
         echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"
         echo "+-------------------------------------+"
         sleep 3s
-        . ./tecdered/tecdered.sh
+        . ./tecdered/red/servdered.sh
 esac
