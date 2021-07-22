@@ -422,7 +422,7 @@ footer .footer-body .cyberhydra img {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 10;
   width: 100%;
@@ -2393,7 +2393,8 @@ Buscar Jugadores
   height: calc(98vh - 100px);
 }
 
-.board-wrapper #tempJug1, .board-wrapper #tempJug2 {
+.board-wrapper #tempJug1,
+.board-wrapper #tempJug2 {
   height: 30px;
   background-color: #222;
   border-radius: 1em;
@@ -2409,7 +2410,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper #tempJug1 i, .board-wrapper #tempJug2 i {
+.board-wrapper #tempJug1 i,
+.board-wrapper #tempJug2 i {
   margin-right: 5px;
 }
 
@@ -3341,15 +3343,15 @@ Avatar Profile
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-profile-wrapper .avatar i {
   color: white;
   font-size: 3em;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons {
@@ -3398,15 +3400,15 @@ Avatar Profile
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono i {
   color: white;
   font-size: 1.5em;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono:hover {
@@ -3455,8 +3457,8 @@ Avatar Profile
   border: none;
   background-color: transparent;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"]::-webkit-color-swatch-wrapper {
@@ -3496,8 +3498,8 @@ Avatar Profile
   height: 40px;
   border-radius: 2em;
   color: white;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .guardar button:hover {
@@ -3834,7 +3836,8 @@ Torneos
           align-items: center;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -3844,7 +3847,8 @@ Torneos
   color: #0076be;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
   font-size: 1.2em;
 }
 
@@ -4044,8 +4048,8 @@ Torneos
   color: white;
   border: none;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button:hover {
