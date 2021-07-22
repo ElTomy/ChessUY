@@ -43,7 +43,6 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
-var TurnoDinamico = 1;
 var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
@@ -387,11 +386,10 @@ function seleccionar(x,y){
             }
             simbolo = null;
             Turno = Turno + 1;
+            ultTurn = true;
             a = 1;
         }
         armoAjedrez();
-        ultTurn = true;
-        this.TurnoDinamico = Turno;
     }
 }
 
@@ -400,7 +398,7 @@ var totlsec2 = 900;
 var finalizado = false;
 window.setInterval(function tiempo() {
     if(!finalizado || !jaqueMate){
-        if(TurnoDinamico%2 == 0) {
+        if(Turno%2 == 0) {
             if(ultTurn) {
                 totlsec2 = totlsec2 + 5;
                 ultTurn = false;
