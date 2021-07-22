@@ -57,7 +57,7 @@ $(document).ready(function () {
 function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
     $.ajax({
         type: "Post",
-        url: "PHP/Aprobar.php",
+        url: "Usuarios/Administrador/Solicitud/PHP/Aprobar.php",
         data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tip, año: año, contacto: con, nacimiento: nac, contraseña: pas },
         success: function (response) {
             console.log(response);
@@ -67,7 +67,7 @@ function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
 function rechazar(data, usr, nom,mai) {
     $.ajax({
         type: "Post",
-        url: "PHP/Rechazar.php",
+        url: "Usuarios/Administrador/Solicitud/PHP/Rechazar.php",
         data: { usuario: usr, nombre: nom ,mail:mai},
         success: function (response) {
             console.log(response);
