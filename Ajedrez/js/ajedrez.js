@@ -10,6 +10,12 @@ $( document ).ready(function(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function boxHeight(){
+    var boxHeight = document.getElementById("box").clientHeight;
+    console.log(boxHeight);
+
+    $("#box").css("max-height", boxHeight);
+}
  function armoAjedrez(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
@@ -18,6 +24,7 @@ $( document ).ready(function(){
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
+            boxHeight();
         }
     });
  }
@@ -82,7 +89,6 @@ function boardsize(){
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-            $(".movimientos").css ('height', board_height);
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
             $(".board-number").css ('margin-top', board_text_margin);
@@ -94,7 +100,6 @@ function boardsize(){
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-            $(".movimientos").css ('height', (board_height - 20));
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
             $(".board-number").css ('margin-bottom', board_text_margin);
@@ -129,7 +134,7 @@ function boardsize(){
         $(".board-number").css ('margin-left', board_text_margin);
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
-    }    
+    }
 }
 //
 //
@@ -1806,3 +1811,18 @@ function Derrota(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function box(boxcontent){
+    if(boxcontent == "chat"){
+        $(".table-wrapper").hide();
+        $(".chat").show();
+        $("#chat").addClass('active');
+        $("#movimiento").removeClass('active');
+    }
+    else{
+        $(".chat").hide();
+        $(".table-wrapper").show();
+        $("#chat").removeClass('active');
+        $("#movimiento").addClass('active');
+    }
+
+}

@@ -46,5 +46,11 @@
     </section>
 
     <div id="footer"></div>
+    <script>
+      $( document ).ready(function(){
+          var boxHeight = document.getElementById("box").clientHeight;
+          console.log(boxHeight);
+      });
+    </script>
   </body>
 </html>
