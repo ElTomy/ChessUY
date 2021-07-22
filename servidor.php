@@ -85,10 +85,9 @@ class servidor
                     $_SESSION['icono'] = $Icono;
                     $_SESSION['coloricono'] = $ColorIcono;
                     $_SESSION['colorfondo'] = $ColorFondo;
-
-
                     $_SESSION['usuario'] = $us;
                     $_SESSION['tipo'] = $tipo;
+
                     $info = array('error' => false, 'usuario' => $us, 'tipo' => $tipo);
                     return $info;
                 }
@@ -111,7 +110,7 @@ class servidor
         $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
         if ($stmts->execute()) {
             $resultado = $conn->query('SELECT @x as p_out');
             $x = $resultado->fetch_assoc();
@@ -216,7 +215,7 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID, $Icono, $ColorIcono, $ColorFondo);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
                 $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 return $data;
@@ -279,6 +278,9 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
+            $_SESSION['icono'] = $NumeroIcono;
+            $_SESSION['coloricono'] = $ColorIcono;
+            $_SESSION['colorfondo'] = $ColorFondo;
         }
         return $execute;
     }
