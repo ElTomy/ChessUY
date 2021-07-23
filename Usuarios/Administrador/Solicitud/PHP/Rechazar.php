@@ -30,7 +30,7 @@ $mail->Password = 'hugoturbio667';
 
 $mail->From = "cyberhydrauy@gmail.com";
 $mail->FromName = "CyberHydra";
-$mail->addAddress('thewolfmodzyt@gmail.com', 'Juanii');
+$mail->addAddress($mailUsuario, $nombre);
 $mail->isHTML(true);
 $mail->Subject = "Solicitud de usuario";
 $mail->Body = " <div style='width: 500px; height: 400px; padding: 20px; background-color: #111111; border-radius: 30px;
