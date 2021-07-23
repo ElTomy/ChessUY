@@ -1,5 +1,5 @@
 <?php
-include '/cyberhydra/servidor.php';
+include '../../servidor.php';
 $servidor = new servidor();
 
 $tipo = $_POST['tipo'];
@@ -18,7 +18,7 @@ if($tipo == 1){
     $contraseña = sha1($contraseña);
 }
 
-$x = $servidor->Register($tipo, $usuario, $cedula, $año, $apellido, $institucion, $nombre, $celular, $contraseña, $nacimiento, $email);
+$x = $servidor->Register($tipo, $usuario, $cedula, $año, $apellido, $institucion, $nombre, $celular, $contraseña, $nacimiento, $email, 'fas fa-user', '#ffffff', '#0076be');
 
 echo $x;
 return $x;
