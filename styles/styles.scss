@@ -315,7 +315,7 @@ footer {
 .modal {
   position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 16;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -1856,7 +1856,7 @@ Buscar Jugadores
       align-items: center;
       flex-direction: column;
 
-      .menu-bottom{
+      .menu-bottom {
         width: 100%;
         height: 100%;
         margin: 10px 0;
@@ -1867,37 +1867,37 @@ Buscar Jugadores
         flex-direction: column;
       }
 
-      .select-wrapper{
+      .select-wrapper {
         width: 95%;
         height: 100%;
         background-color: #444;
         border-radius: 30px;
-        .box-type{
+        .box-type {
           width: 100%;
           height: 50px;
           background-color: #333;
           border-radius: 30px 30px 0 0;
-  
+
           display: grid;
           grid-template-columns: 1fr 1fr;
-  
-          button{
+
+          button {
             position: relative;
             width: 100%;
             height: 100%;
             margin: 0;
             border-radius: 0;
-            background-color: transparent; 
+            background-color: transparent;
             border-radius: 30px 30px 0 0;
           }
-          .active{
+          .active {
             background-color: #444;
             z-index: 15;
             font-size: 14px;
             box-shadow: 0px 5px 15px 0 rgba($color: #000000, $alpha: 0.5);
           }
         }
-        .box-content{
+        .box-content {
           position: relative;
           z-index: 15;
           width: 100%;
@@ -1905,7 +1905,7 @@ Buscar Jugadores
           max-height: 330px;
           overflow: auto;
 
-          .chat{
+          .chat {
             position: relative;
             display: none;
             width: 100%;
@@ -1913,76 +1913,75 @@ Buscar Jugadores
 
             background-color: #444;
             border-radius: 0 0 30px 30px;
-            
-            .chat-box{
+
+            .chat-box {
               width: 100%;
               height: calc(100% - 50px);
               overflow: auto;
 
-              .mensaje1-wrapper{
+              .mensaje1-wrapper {
                 width: 100%;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
 
-                .mensaje1{
+                .mensaje1 {
                   position: relative;
                   max-width: 300px;
                   margin: 10px;
                   padding: 5px 10px;
                   background-color: #333;
                   border-radius: 20px 20px 20px 0;
-  
-                  a{
+
+                  a {
                     font-size: 15px;
                     margin: 0;
                     text-decoration: none;
                     color: #009dff;
-                    transition: .5s;
+                    transition: 0.5s;
                   }
-                  a:hover{
+                  a:hover {
                     color: rgb(0, 255, 242);
                   }
-  
-                  p{
+
+                  p {
                     color: white;
                   }
                 }
               }
 
-              .mensaje2-wrapper{
+              .mensaje2-wrapper {
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
 
-                .mensaje2{
+                .mensaje2 {
                   position: relative;
                   max-width: 300px;
                   margin: 10px;
                   padding: 5px 10px;
                   background-color: #0076be;
                   border-radius: 20px 20px 0 20px;
-  
-                  a{
+
+                  a {
                     font-size: 15px;
                     margin: 0;
                     text-decoration: none;
                     color: #222;
-                    transition: .5s;
+                    transition: 0.5s;
                   }
-                  a:hover{
+                  a:hover {
                     color: #000;
                   }
-  
-                  p{
+
+                  p {
                     color: white;
                   }
                 }
               }
-              
             }
-            .chat-input{
+            .chat-input {
               position: absolute;
               bottom: 0;
               left: 0;
@@ -1996,7 +1995,7 @@ Buscar Jugadores
               background-color: #333;
               border-radius: 0 0 30px 30px;
 
-              input{
+              input {
                 width: calc(100% - 70px);
                 height: 35px;
 
@@ -2006,9 +2005,9 @@ Buscar Jugadores
                 outline: none;
                 text-indent: 10px;
                 background-color: white;
-                font-family: 'Roboto', 'sans-serif';
+                font-family: "Roboto", "sans-serif";
               }
-              button{
+              button {
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
@@ -2022,7 +2021,7 @@ Buscar Jugadores
             width: 100%;
             max-height: 100%;
             background-color: #333;
-    
+
             tr {
               th {
                 color: white;
@@ -2035,7 +2034,7 @@ Buscar Jugadores
                 color: white;
                 text-align: center;
                 font-weight: lighter;
-    
+
                 #Negro {
                   background-color: grey;
                   -webkit-background-clip: text;
@@ -2050,10 +2049,7 @@ Buscar Jugadores
             }
           }
         }
-        
-
       }
-      
 
       .match-players {
         margin: 20px 0;
@@ -2087,7 +2083,6 @@ Buscar Jugadores
             margin: 0;
           }
         }
-        
       }
 
       h1 {
@@ -2095,7 +2090,6 @@ Buscar Jugadores
         margin: 10px 0;
         font-weight: lighter;
       }
-      
 
       button {
         background-color: #0076be;
@@ -3143,7 +3137,7 @@ Responsive
         margin: 0 auto;
       }
       .movimientos {
-        .jugadores{
+        .jugadores {
           display: none;
         }
         .movimientos-img {
