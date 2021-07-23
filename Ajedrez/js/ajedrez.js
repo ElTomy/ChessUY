@@ -362,6 +362,9 @@ function seleccionar(x,y){
             ColocoPieza(null,null,seleccionado.Ejex,seleccionado.Ejey);
             var a = 0;
             armoAjedrez();
+            sel= seleccionado.Contenido;
+            selc= seleccionado.color;
+            Jaque(x,y, sel);
         }else{
             //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
@@ -377,11 +380,10 @@ function seleccionar(x,y){
                 }
             }
         }
-        sel= seleccionado.Contenido;
-        selc= seleccionado.color;
+       
         seleccionado = null;
         resetMovimientos(); 
-        Jaque(x,y, sel);
+   
 
         if(a == 0){
             Jugadas[Turno] = {
