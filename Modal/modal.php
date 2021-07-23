@@ -75,6 +75,7 @@ switch($numero_mensaje){
         break;
 }
 
+
 $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -91,5 +92,6 @@ $modal = "  <div class='modal'>
 
 echo $modal;
 return $modal;
+
 ?>
 
