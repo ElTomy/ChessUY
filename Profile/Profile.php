@@ -1,38 +1,12 @@
 <?php
-  include '../servidor.php';
+  include '/cyberhydra/servidor.php';
   $server= new servidor();
   session_start();
 
   $usuario = $_GET['Usuario'];
+
   $usuario_info = $server->PerfilUsuario($usuario);
-
   list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
-
-
-  if($ELO == null){
-    $ELO = 0;
-  }
-  if($Victorias == null){
-    $Victorias = 0;
-  }
-  if($Derrotas == null){
-    $Derrotas = 0;
-  }
-  if($Tablas == null){
-    $Tablas = 0;
-  }
-  if($Coronaciones == null){
-    $Coronaciones = 0;
-  }
-  if($Comidas == null){
-    $Comidas = 0;
-  }
-  if($Menos_Tiempo == null){
-    $Menos_Tiempo = 0;
-  }
-  if($Menos_Movimientos == null){
-    $Menos_Movimientos = 0;
-  }
 ?>
 
 <!DOCTYPE html>
@@ -96,25 +70,26 @@
             <a href="/cyberhydra/Index">
               <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
             </a>
-            <div class="profile-avatar">
-                  <div class="profile-flex">
-                    <div class="profile-body-picture">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="profile-avatar-body">
-                    <?php
-                      echo "<p>" . $usuario_info['usuario'] . "</p>";
-                      if($usuario_info['tipo'] == 0){
-                        $tipo = "<i class='fas fa-star'></i> Administrador";
-                      }else if($usuario_info['tipo'] == 1){
-                        $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
-                      }else if($usuario_info['tipo'] == 2){
-                        $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-                      }else if($usuario_info['tipo'] == 3){
-                        $tipo = "<i class='fas fa-microphone'></i> Periodista";
-                      }
-                      echo "<p class='tipo-profile'>$tipo</p>";
-                    ?>
+            <?php
+              echo '<div class="profile-avatar">
+                <div class="profile-flex">
+                  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                    <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                  </div>
+
+                  <div class="profile-avatar-body">';
+                    echo "<p>" . $usuario_info['usuario'] . "</p>";
+                    if($usuario_info['tipo'] == 0){
+                      $tipo = "<i class='fas fa-star'></i> Administrador";
+                    }else if($usuario_info['tipo'] == 1){
+                      $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                    }else if($usuario_info['tipo'] == 2){
+                      $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                    }else if($usuario_info['tipo'] == 3){
+                      $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                    }
+                    echo "<p class='tipo-profile'>$tipo</p>";
+                  ?>
                     </div>
                   </div>
                   <?php

@@ -1,5 +1,5 @@
 <?php
-include '../servidor.php';
+include '/cyberhydra/servidor.php';
 $server= new servidor();
 session_start();
 $usuario = $_SESSION['usuario'];
@@ -62,10 +62,10 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                 <div class="editarperfil-inputs">
                     <div class="img-wrapper">
                         <div class="img-editarperfil">
-                            <div class="editarperfil-img">
-                                <i class="fas fa-user"></i>
+                            <div class="editarperfil-img" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                                <i class="' . $usuario_info['Icono'] . '" style="color: '. $usuario_info['ColorIcono'] .'"></i>
                             </div>
-                            <a href="" class="editarpefil-img-hover">
+                            <a href="/cyberhydra/Profile/Editar/Avatar/Perfil" class="editarpefil-img-hover">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </div>
