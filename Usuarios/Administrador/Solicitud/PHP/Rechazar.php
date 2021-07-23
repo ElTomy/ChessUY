@@ -10,10 +10,10 @@ require '../../../../PHPMailer-6.3.0/src/SMTP.php';
 /*------------------------------------------------------------------------------------------*/
 // probando mailer...
 //
-/*$mailUsuario = $_POST['mail'];
+$mailUsuario = $_POST['mail'];
 $nombre = $_POST['nombre'];
 $servidor = new servidor();
-$servidor->BorarSolicitud($_POST['usuario']);*/
+$servidor->BorarSolicitud($_POST['usuario']);
 //
 /*------------------------------------------------------------------------------------------*/
 $mail = new PHPMailer(true);
@@ -26,7 +26,7 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;// TCP port to connect to
 $mail->CharSet = 'UTF-8';
 $mail->Username ='cyberhydrauy@gmail.com'; 
-$mail->Password = 'hugoturbio666'; 
+$mail->Password = 'hugoturbio667'; 
 
 $mail->From = "cyberhydrauy@gmail.com";
 $mail->FromName = "CyberHydra";

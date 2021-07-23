@@ -149,10 +149,13 @@ class servidor
     //
     //
     function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
+        $Icono='fas fa-code';
+        $ColorIcono='#f8b703';
+        $ColorFondo='#222222';
         $conn = $this->conectar();
-        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, 'fas fa-code', '#f8b703', '#222222');
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono,  $ColorIcono ,   $ColorFondo);
         $stmts->execute();
     }
     //
