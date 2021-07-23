@@ -7,6 +7,7 @@
 
     <div class="style">
     </div>
+    <div id="modal"></div>
 
     <script
       src="https://kit.fontawesome.com/1e193e3a23.js"
@@ -40,33 +41,32 @@
     </div>
 
 
-    <section class="landing-page">
-      <div style='background-color: #292929; width: 85%; height: 700px; border-radius: 30px; padding: 1%; margin: 1% 0% 1% 0%;'>
-        <div style='text-align: center; padding: 1%; color: white;'>
-          <h1>Crear Torneo</h1>
+    <section class="torneos-wrapper">
+      <div class="torneos">
+        <div class="torneos-titulo">
+          <h1><i class="fas fa-trophy"></i> Crear Torneo</h1>
         </div>
-        <hr>
-        <div style='padding-top: 2%; color: white; display: flex;'>
-          <div style='width: 20%; height: 600px; border: solid #292929; border-width: 1px;'>
-            Tipo de Torneo:
-            <form>
-              <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
-                <option disabled selected>Selecciona un tipo de torneo</option>
-                <option value="norm">Normal</option>
-                <option value="avan">Avanzado</option>
-                <option value="pres">Crear preset??</option>
-              </select>
-            </form>
-            <div style='width: 100%; height: 91%; margin-top: 5%; background-color: #353535; border-radius: 20px;'>
+        <div class="torneos-content">
 
+          <div class="torneo-menu">
+            <div class="tipo-torneo">
+              <h2>Tipo de Torneo:</h2>
+              <form>
+                <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
+                  <option disabled selected>Selecciona un tipo de torneo</option>
+                  <option value="norm">Normal</option>
+                  <option value="avan">Avanzado</option>
+                  <option value="pres">Crear preset??</option>
+                </select>
+              </form>
             </div>
           </div>
-          <div style='width: 80%; height: 600px; margin-left: 1%; border: solid grey; border-width: 1px; border-radius: 20px;'>
-            <form style="height: 100%; width: 100%;" action="../PHP/crTorn.php" method="post">
-              <div style="width: 100%; height: 100%; display: flex;" id="hola">
-              </div>
-            </form>
+
+          <div class="torneo-config">
+            <div class="config-wrapper" id="hola">
+            </div>
           </div>
+
         </div>
       </div>
     </section>
