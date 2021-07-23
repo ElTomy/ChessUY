@@ -2771,6 +2771,7 @@ Buscar Jugadores
   z-index: 15;
   width: 100%;
   height: calc(100% - 50px);
+  max-height: 330px;
   overflow: auto;
 }
 

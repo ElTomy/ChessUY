@@ -16,6 +16,7 @@ function boxHeight(){
 
     $("#box").css("max-height", boxHeight);
 }
+
  function armoAjedrez(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
@@ -24,10 +25,11 @@ function boxHeight(){
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
-            boxHeight();
         }
     });
  }
+
+ 
  var Color = {
     Blanco:'b',
     Negro:'n',
