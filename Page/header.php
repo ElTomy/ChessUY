@@ -2,12 +2,21 @@
     <div class="header-logo">
 
         <?php
+            include '/cyberhydra/servidor.php';
+            $server= new servidor();
             session_start();
+       
+            if(isset($_SESSION['usuario'])){
+            $Icono = $_SESSION['icono']; 
+            $ColorIcono = $_SESSION['coloricono'];
+            $ColorFondo = $_SESSION['colorfondo'];
+            }
             
             if(isset($_SESSION['usuario'])){
                 echo '  <a href="/cyberhydra/Inicio">
                             <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
+                     
             }else{
                 echo '  <a href="/cyberhydra/Index.php">
                             <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
@@ -25,7 +34,7 @@
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
                                 <a class='profile' href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'>
-                                    <div class='session-image'><i class='fas fa-user'></i></div>
+                                    <div class='session-image' style='background-color: ". $ColorFondo ."'><i class='" . $Icono ."' style='color: ". $ColorIcono ."'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
                                     if($_SESSION['tipo'] == 0){
@@ -44,8 +53,8 @@
                             </div>";
                 }else{
                     echo "<div class='loginregister'>
-                            <a class='login-button' href='/cyberhydra/Form/login.html'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
-                            <a class='register-button' href='/cyberhydra/Form/register-user.html'><i class='fas fa-user-plus'></i> REGISTER</a>
+                            <a class='login-button' href='/cyberhydra/Form/Login'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
+                            <a class='register-button' href='/cyberhydra/Form/Register-User'><i class='fas fa-user-plus'></i> REGISTER</a>
                           </div>";
                 }
             ?>
@@ -80,7 +89,7 @@
                     echo "<h2>Invitado</h2>";
                 }
             ?>            
-            <a href="/cyberhydra/index.php"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/cyberhydra/Index"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "  <a href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
@@ -88,8 +97,8 @@
                             <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{
                     echo "<a class='search' href='/cyberhydra/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
-                          <a href='/cyberhydra/Form/login'><i class='fas fa-sign-in-alt'></i> Login</a>
-                          <a href='/cyberhydra/Form/register-user'><i class='fas fa-user-plus'></i> Register</a>";
+                          <a href='/cyberhydra/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
+                          <a href='/cyberhydra/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
         </div>
