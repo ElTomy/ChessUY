@@ -1726,6 +1726,7 @@ function Mov_Prohibido(x,y,sel){
 //
 function JaqueMate(){
     var jaqueMate = true;
+    var F_rey = true;
     //creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
@@ -1754,6 +1755,8 @@ function JaqueMate(){
                     case Piezas.NRey:
                     case Piezas.BRey:
                            Rey(p,q,Tablero[p][q].Piezas);
+                           var Xrey = p;
+                           var Yrey = q;
                     break;
             }}
         }
@@ -1767,7 +1770,6 @@ function JaqueMate(){
                     for(var u = 1; u <= 8; u++){
                         //recorro TableroJaque
                         if(TableroJaque[o][u] == true){
-                            //si coinciden jaqueMate es false
                             if(o == p && u == q){
                                 jaqueMate = false;
                                 break;
@@ -1778,8 +1780,20 @@ function JaqueMate(){
             }
         }
     }
-   
     if(jaqueMate == true){
+        resetMovimientos();
+        Rey(Xrey,Yrey,Tablero[Xrey][Yrey].Piezas);
+        for(var o = 1; o <= 8; o++){
+            for(var u = 1; u <= 8; u++){
+                if(Movimiento[o][u] == true){
+                    F_rey = false;
+                    console.log("no mate")
+                }
+            }
+        }
+    }
+        
+    if(jaqueMate == true && F_rey == true){
         simbolo = "#";
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
@@ -1788,7 +1802,7 @@ function JaqueMate(){
             success: function (data) {
                 document.getElementById("modal").innerHTML = data;
             }
-          });
+          });   
     }
     resetMovimientos();
 }
