@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_POST['turno']%2 == 0){
+    $jugador = "ALFI ᴮᴼᵀ";
+}else{
+    $jugador = $_SESSION['usuario'];
+}
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -9,7 +15,7 @@
                         <hr><div class='modal-trofeo'>
                         <img src='/ChessUY/media/images/Trofeo.png'></div>
                         <p>El ganador fue:</p>
-                        <h1 id ='jugador'> EL TOMY</h1>
+                        <h1 id ='jugador'>".$jugador."</h1>
                         <a onclick='cerrar()'><i class='fas fa-times-circle'></i> Cerrar</a>
                     </div>
                 </div>

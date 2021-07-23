@@ -1787,7 +1787,6 @@ function JaqueMate(){
             for(var u = 1; u <= 8; u++){
                 if(Movimiento[o][u] == true){
                     F_rey = false;
-                    console.log("no mate")
                 }
             }
         }
@@ -1798,7 +1797,7 @@ function JaqueMate(){
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
             type: "POST",
-            data: {},
+            data: {turno:Turno},
             success: function (data) {
                 document.getElementById("modal").innerHTML = data;
             }
@@ -1816,7 +1815,7 @@ function Derrota(){
     $.ajax({
         url: "/ChessUY/Modal/modalDerrota.php",
         type: "POST",
-        data: {},
+        data: {turno:Turno},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
         }
