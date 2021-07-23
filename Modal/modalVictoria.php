@@ -1,9 +1,9 @@
 <?php
 session_start();
 if($_POST['turno']%2 == 0){
-    $jugador = "ALFI ᴮᴼᵀ";
+   $jugador = $_SESSION['usuario'];
 }else{
-    $jugador = $_SESSION['usuario'];
+    $jugador = "ALFI ᴮᴼᵀ";
 }
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
