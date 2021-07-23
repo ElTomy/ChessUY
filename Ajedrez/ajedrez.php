@@ -1,9 +1,3 @@
-<?php
-  /*include '../servidor.php';
-  $server= new servidor();
-  session_start();
-  $server->VerificoSesion($_SESSION['0']);*/
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,16 +10,16 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="../Javascript/Loader.js"></script>
     <script src="js/ajedrez.js"></script>
     <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
     
     <link
       rel="shortcut icon"
-      href="/cyberhydra/media/svg/Logo/Favicon.svg"
+      href="../media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
 
     <title>ChessUY | Championship</title>
   </head>
@@ -38,11 +32,15 @@
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
 
     <section class="board-wrapper">
+      <div style="width: 5%">
+        <div id="tempJug1"></div>
+        <div id="tempJug2"></div>
+      </div>
       <div class="board" id="ArmoAjedrez">
       </div>
     </section>

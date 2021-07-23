@@ -10,6 +10,13 @@ $( document ).ready(function(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function boxHeight(){
+    var boxHeight = document.getElementById("box").clientHeight;
+    console.log(boxHeight);
+
+    $("#box").css("max-height", boxHeight);
+}
+
  function armoAjedrez(){
     $.ajax({
         url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
@@ -21,38 +28,42 @@ $( document ).ready(function(){
         }
     });
  }
+
+ 
  var Color = {
     Blanco:'b',
     Negro:'n',
 }
- var blan;
- var neg;
+var blan;
+var neg;
 const Piezas = {
-    BRey: 'r', 
-    BDama: 'd',
-    BCaballo: 'c',
-    BAlfil: 'a',
-    BTorre:'t', 
-    BPeon:'p',
-    NRey: 'rn', 
-    NDama: 'dn',
-    NCaballo: 'cn',
-    NAlfil: 'an',
-    NTorre:'tn', 
-    NPeon:'pn',  
+   BRey: 'r', 
+   BDama: 'd',
+   BCaballo: 'c',
+   BAlfil: 'a',
+   BTorre:'t', 
+   BPeon:'p',
+   NRey: 'rn', 
+   NDama: 'dn',
+   NCaballo: 'cn',
+   NAlfil: 'an',
+   NTorre:'tn', 
+   NPeon:'pn',  
 }
 var Jugadas = [];
 var Turno = 1;
+var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
 var seleccionado = null;
 var  Movimiento = [];
 var jaque = {
-    jaque: null,
-    pieza: null,
-    x: null,
-    y: null,
+   jaque: null,
+   pieza: null,
+   color: null,
+   x: null,
+   y: null,
 }
 var colJugador;
 //
@@ -80,7 +91,6 @@ function boardsize(){
 
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-            $(".movimientos").css ('height', board_height);
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
             $(".board-number").css ('margin-top', board_text_margin);
@@ -92,7 +102,6 @@ function boardsize(){
             board_text_margin = -cell_width + ((30 * cell_width) / 100);
             $(".cell").css ('width', cell_width);
             $(".cell").css ('height', cell_width);
-            $(".movimientos").css ('height', (board_height - 20));
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
             $(".board-number").css ('margin-bottom', board_text_margin);
@@ -127,7 +136,7 @@ function boardsize(){
         $(".board-number").css ('margin-left', board_text_margin);
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
-    }    
+    }
 }
 //
 //
@@ -279,13 +288,23 @@ function seleccionar(x,y){
                         simbolo =  "=";
                     }
                }else{
-                    if((y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)||(y == 6 && Tablero[x][5].Piezas != null && Tablero[x][y].Piezas == null)) {
-                        ColocoPieza(null,null,x,5);
-                        simbolo = "x";
-                    }else{
-                        if((y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)||(y == 3 && Tablero[x][4].Piezas != null && Tablero[x][y].Piezas == null)){
-                            ColocoPieza(null,null,x,4);
+                   if(x != 8){
+                    xx = x + 1;
+                   }
+                   if(x != 1){
+                    xy = x - 1;
+                   }
+                    if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
+                        if(Tablero[x][5].Piezas != null){
+                            ColocoPieza(null,null,x,5);
                             simbolo = "x";
+                        }
+                    }else{
+                        if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
+                            if(Tablero[x][4].Piezas != null){
+                                ColocoPieza(null,null,x,4);
+                                simbolo = "x";
+                            }
                         }
                     }
                 }
@@ -294,26 +313,26 @@ function seleccionar(x,y){
                    if(seleccionado.Contenido == Piezas.BRey){
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.BTorre){
                             //0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.BTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.BTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.BTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
                     }else{
                         if(x == 7 && Tablero[8][y].Piezas == Piezas.NTorre){
                             //0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,6,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,6,y);
                             ColocoPieza(null,null,8,y);
                             simbolo = "0-0";
                         }
                         if(x == 3 && Tablero[1][y].Piezas == Piezas.NTorre){
                             //0-0-0
-                            ColocoPieza(Piezas.NTorre,seleccionado.Color,4,y);
+                            ColocoPieza(Piezas.NTorre,seleccionado.color,4,y);
                             ColocoPieza(null,null,1,y);
                             simbolo = "0-0-0";
                         }
@@ -330,6 +349,7 @@ function seleccionar(x,y){
                                 jaque = {
                                     jaque: null,
                                     pieza: null,
+                                    color: null,
                                     x: null,
                                     y: null,
                                 }
@@ -342,6 +362,9 @@ function seleccionar(x,y){
             ColocoPieza(null,null,seleccionado.Ejex,seleccionado.Ejey);
             var a = 0;
             armoAjedrez();
+            sel= seleccionado.Contenido;
+            selc= seleccionado.color;
+            Jaque(x,y, sel);
         }else{
             //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
@@ -357,11 +380,10 @@ function seleccionar(x,y){
                 }
             }
         }
-        sel= seleccionado.Contenido;
-        selc= seleccionado.color;
+       
         seleccionado = null;
         resetMovimientos(); 
-        Jaque(x,y, sel);
+   
 
         if(a == 0){
             Jugadas[Turno] = {
@@ -373,12 +395,53 @@ function seleccionar(x,y){
             }
             simbolo = null;
             Turno = Turno + 1;
+            ultTurn = true;
             a = 1;
         }
         armoAjedrez();
-      
     }
 }
+
+var totlsec1 = 900;
+var totlsec2 = 900;
+var finalizado = false;
+window.setInterval(function tiempo() {
+    if(!finalizado || !jaqueMate){
+        if(Turno%2 == 0) {
+            if(ultTurn) {
+                totlsec2 = totlsec2 + 5;
+                ultTurn = false;
+            } else {
+                totlsec1--;
+                if(totlsec1 < 1){
+                    Derrota();
+                }
+            }
+        } else {
+            if(ultTurn) {
+                totlsec1 = totlsec1 + 5;
+                ultTurn = false;
+            } else {
+                totlsec2--;
+                if(totlsec2 < 1){
+                    Derrota();
+                }
+            }
+        }
+        var sec1 = new Date(0);
+        sec1.setSeconds(totlsec1);
+        var minsec1 = sec1.toISOString().substr(14, 5);
+        var sec2 = new Date(0);
+        sec2.setSeconds(totlsec2);
+        var minsec2 = sec2.toISOString().substr(14, 5);
+        document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
+        document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
+    } else {
+
+    }
+}, 1000);
+
+
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -447,11 +510,11 @@ function Movimientos(a,b,sel){
         for( p = 1; p <= 8; p++){
             for( q = 1; q <= 8; q++){
                 if(Movimiento[p][q] == true){ 
-                    if(seleccionado.Contenido != 'r' || seleccionado.Contenido != 'r'){
+                    if(seleccionado.Contenido != 'r' && seleccionado.Contenido != 'rn'){
                         //veo que piezas pueden comer el jaque
                         if(p != jaque.x || q != jaque.y){
-                        Movimiento[p][q] = null;
-                        }
+                            Movimiento[p][q] = null;
+                            }
                         for(var o = 1; o <= 8; o++){
                             for(var u = 1; u <= 8; u++){
                                 if(TableroJaque[o][u] == true){ 
@@ -466,7 +529,7 @@ function Movimientos(a,b,sel){
             }
         }
     }
-    if(jaque.jaque != true && seleccionado != null && (seleccionado != Piezas.NRey || seleccionado != Piezas.BRey)){
+    if(jaque.jaque != true && seleccionado != null && (seleccionado.Contenido != Piezas.NRey || seleccionado.Contenido != Piezas.BRey)){
         let x = seleccionado.Ejex
         let y = seleccionado.Ejey;
         let sel = seleccionado.Contenido;
@@ -855,11 +918,11 @@ function Rey(x,y,sel){
         selecc = sel;
     }
     if(x == 5 && (y == 1 || y == 8)){
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null && Tablero[7][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
         }
-        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null){
+        if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[4][y].Piezas == null && Tablero[2][y].Piezas == null && Tablero[3][y].Piezas == null){
             //0-0-0
             comer(3,y,selecc);
         }
@@ -935,6 +998,7 @@ function cambioCoronacion(x, y, pieza, col){
     $(".modal").hide();
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
+    Jaque(x,y,pieza);
 }
 window.onresize = boardsize;
 //
@@ -1019,7 +1083,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
                     Movimiento[x][y] = null
-                    Movimiento[x-2][y] = null
+                    if(x >= 3 ){
+                        Movimiento[x-2][y] = null
+                    }
                 }
                 break;
             }
@@ -1032,8 +1098,10 @@ function JaqueRey(x,y, sel){
             ix = x - i;
             if(Tablero[ix][y].Piezas != null){
                 if(Tablero[ix][y].Piezas == colorD ||Tablero[ix][y].Piezas == colorT){
-                    Movimiento[x][y] = null
-                    Movimiento[x+2][y] = null
+                    Movimiento[x][y] = null;
+                    if(x <= 6 ){
+                        Movimiento[x+2][y] = null
+                    }
                 }
                 break;
             }
@@ -1046,7 +1114,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null
-                    Movimiento[x][y+2] = null
+                    if(y <= 6 ){
+                        Movimiento[x][y+2] = null
+                    }
                 }
                 break;
             }
@@ -1060,7 +1130,9 @@ function JaqueRey(x,y, sel){
             if(Tablero[x][iy].Piezas != null){
                 if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
                     Movimiento[x][y] = null 
-                    Movimiento[x][y-2] = null
+                    if(y >= 3 ){
+                        Movimiento[x][y-2] = null
+                    }
                 }
                 break;
             }
@@ -1077,7 +1149,9 @@ for(i = 1; i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x+2][y+2] = null
+                if(x <= 6 && y <= 6){
+                    Movimiento[x+2][y+2] = null
+                }
             }
             break;
         }
@@ -1092,7 +1166,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x+2][y-2] = null
+                if(x <= 6 && y >= 3){
+                    Movimiento[x+2][y-2] = null
+                }
             }
             break;
         }
@@ -1107,7 +1183,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x-2][y+2] = null
+                if(x >= 3 && y <= 6){
+                    Movimiento[x-2][y+2] = null
+                }
             }
             break;
         }
@@ -1122,7 +1200,9 @@ for(i = 1;i <= 8; i++){
         if(Tablero[ix][iy].Piezas != null){
             if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
                 Movimiento[x][y] = null
-                Movimiento[x-2][y-2] = null
+                if(x >= 3 && y >= 3){
+                    Movimiento[x-2][y-2] = null
+                }
             }
             break;
         }
@@ -1185,8 +1265,10 @@ function Jaque(x,y, sel){
     Movimientos(x,y, sel);
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
+        var color = "n"
     }else{
         var colorR = "rn";
+        var color = "b"
     }
     for(var p = 1; p <= 8; p++){
         for(var q = 1; q <= 8; q++){
@@ -1203,6 +1285,7 @@ function Jaque(x,y, sel){
                     jaque = {
                         jaque: true,
                         pieza:sel,
+                        color: color,
                         x: x,
                         y: y,
                     }
@@ -1214,6 +1297,14 @@ function Jaque(x,y, sel){
 
        if(jaque.jaque == true){
             switch(sel){
+                case Piezas.NCaballo:
+                case Piezas.BCaballo:
+                    TableroJaque[x][y] = true;
+                break;
+                case Piezas.NPeon:
+                case Piezas.BPeon:
+                        TableroJaque[x][y] = true;
+                break;
                 case Piezas.NTorre:
                 case Piezas.BTorre:
                     if(jaque.y == reyY){
@@ -1283,7 +1374,7 @@ function Jaque(x,y, sel){
                             if(jaque.y == reyY){
                                 var l=jaque.x
                                 if(jaque.x > reyX){
-                                    for(l; l > reyX; l++){
+                                    for(l; l > reyX; l--){
                                         TableroJaque[l][jaque.y] = true;
                                     }
                                 }else{
@@ -1342,7 +1433,7 @@ function Jaque(x,y, sel){
             }
     }
        resetMovimientos();
-
+      if(jaque.jaque == true){JaqueMate();} 
 }
 //
 //
@@ -1637,24 +1728,118 @@ function Mov_Prohibido(x,y,sel){
 //
 function JaqueMate(){
     var jaqueMate = true;
+    var F_rey = true;
+    //creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
+            if(Tablero[p][q].Piezas != null && Tablero[p][q].color != jaque.color){
+                switch(Tablero[p][q].Piezas){
+                    case Piezas.NTorre:
+                    case Piezas.BTorre:
+                            Torre(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NCaballo:
+                    case Piezas.BCaballo:
+                            Caballo(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NAlfil:
+                    case Piezas.BAlfil:
+                            Alfil(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NPeon:
+                    case Piezas.BPeon:
+                            Peon(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NDama:
+                    case Piezas.BDama:
+                            Dama(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NRey:
+                    case Piezas.BRey:
+                           Rey(p,q,Tablero[p][q].Piezas);
+                           var Xrey = p;
+                           var Yrey = q;
+                    break;
+            }}
+        }
+    }
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+            //recorro todos los movimientos
             if(Movimiento[p][q] == true){ 
-                jaqueMate = false;
+                //si existen los movimientos los comparo con el TableroJaque
+                for(var o = 1; o <= 8; o++){
+                    for(var u = 1; u <= 8; u++){
+                        //recorro TableroJaque
+                        if(TableroJaque[o][u] == true){
+                            if(o == p && u == q){
+                                jaqueMate = false;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-
     if(jaqueMate == true){
-        console.log("==================================")
-        console.log("JAQUE MATE")
-        console.log("==================================")
-    }else{
-        console.log("no mate")
+        resetMovimientos();
+        Rey(Xrey,Yrey,Tablero[Xrey][Yrey].Piezas);
+        for(var o = 1; o <= 8; o++){
+            for(var u = 1; u <= 8; u++){
+                if(Movimiento[o][u] == true){
+                    F_rey = false;
+                }
+            }
+        }
     }
+        
+    if(jaqueMate == true && F_rey == true){
+        simbolo = "#";
+        $.ajax({
+            url: "/cyberhydra/Modal/modalVictoria.php",
+            type: "POST",
+            data: {turno:Turno},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+          });   
+    }
+    resetMovimientos();
 }
 //
 //
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function Derrota(){
+    finalizado = true;
+    $.ajax({
+        url: "/cyberhydra/Modal/modalDerrota.php",
+        type: "POST",
+        data: {turno:Turno},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
+}
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function box(boxcontent){
+    if(boxcontent == "chat"){
+        $(".table-wrapper").hide();
+        $(".chat").show();
+        $("#chat").addClass('active');
+        $("#movimiento").removeClass('active');
+    }
+    else{
+        $(".chat").hide();
+        $(".table-wrapper").show();
+        $("#chat").removeClass('active');
+        $("#movimiento").addClass('active');
+    }
+
+}
