@@ -1,3 +1,4 @@
+
 $( document ).ready(function(){
     $.ajax({
         url: "/cyberhydra/Profile/PHP/buscar.php",
