@@ -254,7 +254,7 @@ function seleccionar(x,y){
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
-            if((Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)||(Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)){
+            if((Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)||(Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)){
                 seleccionado = {
                     Ejex: x,
                     Ejey: y,
@@ -1732,7 +1732,7 @@ function Derrota(){
 //
 //
 function init(){
-    socket = new WebSocket("ws://localhost:25005")
+    socket = new WebSocket("ws://192.168.4.66:25005")
     
     socket.onopen = function(msg) {
         //alert("Welcome - status "+this.readyState);
