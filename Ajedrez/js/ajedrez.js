@@ -406,7 +406,7 @@ var totlsec1 = 900;
 var totlsec2 = 900;
 var finalizado = false;
 window.setInterval(function tiempo() {
-    if(!finalizado || !jaqueMate){
+    if(!finalizado){
         if(Turno%2 == 0) {
             if(ultTurn) {
                 totlsec2 = totlsec2 + 5;
@@ -1795,6 +1795,7 @@ function JaqueMate(){
     }
         
     if(jaqueMate == true && F_rey == true){
+        finalizado = true;
         simbolo = "#";
         $.ajax({
             url: "/ChessUY/Modal/modalVictoria.php",
