@@ -25,7 +25,7 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;// TCP port to connect to
 $mail->CharSet = 'UTF-8';
 $mail->Username ='cyberhydrauy@gmail.com'; 
-$mail->Password = 'hugoturbio666'; 
+$mail->Password = 'hugoturbio667'; 
 //
 /*------------------------------------------------------------------------------------------*/ 
 //
