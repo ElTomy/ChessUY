@@ -313,9 +313,9 @@ footer {
   }
 }
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 16;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -1641,7 +1641,8 @@ Buscar Jugadores
   width: 100%;
   height: calc(98vh - 100px);
 
-  #tempJug1, #tempJug2{
+  #tempJug1,
+  #tempJug2 {
     height: 30px;
     background-color: #222;
     border-radius: 1em;
@@ -1651,7 +1652,7 @@ Buscar Jugadores
     justify-content: center;
     align-items: center;
 
-    i{
+    i {
       margin-right: 5px;
     }
   }
@@ -1851,10 +1852,204 @@ Buscar Jugadores
       height: 100%;
       background-color: #222;
       border-radius: 30px;
-      margin: 10px;
       display: flex;
       align-items: center;
       flex-direction: column;
+
+      .menu-bottom {
+        width: 100%;
+        height: 100%;
+        margin: 10px 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .select-wrapper {
+        width: 95%;
+        height: 100%;
+        background-color: #444;
+        border-radius: 30px;
+        .box-type {
+          width: 100%;
+          height: 50px;
+          background-color: #333;
+          border-radius: 30px 30px 0 0;
+
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+
+          button {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border-radius: 0;
+            background-color: transparent;
+            border-radius: 30px 30px 0 0;
+          }
+          .active {
+            background-color: #444;
+            z-index: 15;
+            font-size: 14px;
+            box-shadow: 0px 5px 15px 0 rgba($color: #000000, $alpha: 0.5);
+          }
+        }
+        .box-content {
+          position: relative;
+          z-index: 15;
+          width: 100%;
+          height: calc(100% - 50px);
+          max-height: 330px;
+          overflow: auto;
+
+          .chat {
+            position: relative;
+            display: none;
+            width: 100%;
+            height: 100%;
+
+            background-color: #444;
+            border-radius: 0 0 30px 30px;
+
+            .chat-box {
+              width: 100%;
+              height: calc(100% - 50px);
+              overflow: auto;
+
+              .mensaje1-wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                .mensaje1 {
+                  position: relative;
+                  max-width: 300px;
+                  margin: 10px;
+                  padding: 5px 10px;
+                  background-color: #333;
+                  border-radius: 20px 20px 20px 0;
+
+                  a {
+                    font-size: 15px;
+                    margin: 0;
+                    text-decoration: none;
+                    color: #009dff;
+                    transition: 0.5s;
+                  }
+                  a:hover {
+                    color: rgb(0, 255, 242);
+                  }
+
+                  p {
+                    color: white;
+                  }
+                }
+              }
+
+              .mensaje2-wrapper {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                .mensaje2 {
+                  position: relative;
+                  max-width: 300px;
+                  margin: 10px;
+                  padding: 5px 10px;
+                  background-color: #0076be;
+                  border-radius: 20px 20px 0 20px;
+
+                  a {
+                    font-size: 15px;
+                    margin: 0;
+                    text-decoration: none;
+                    color: #222;
+                    transition: 0.5s;
+                  }
+                  a:hover {
+                    color: #000;
+                  }
+
+                  p {
+                    color: white;
+                  }
+                }
+              }
+            }
+            .chat-input {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              height: 50px;
+              width: 100%;
+
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+
+              background-color: #333;
+              border-radius: 0 0 30px 30px;
+
+              input {
+                width: calc(100% - 70px);
+                height: 35px;
+
+                margin-left: 10px;
+                border-radius: 30px;
+                border: none;
+                outline: none;
+                text-indent: 10px;
+                background-color: white;
+                font-family: "Roboto", "sans-serif";
+              }
+              button {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin: 0;
+                margin-right: 5px;
+              }
+            }
+          }
+
+          table {
+            width: 100%;
+            max-height: 100%;
+            background-color: #333;
+
+            tr {
+              th {
+                color: white;
+                text-align: center;
+                font-weight: lighter;
+              }
+              td {
+                height: 30px;
+                background-color: #444;
+                color: white;
+                text-align: center;
+                font-weight: lighter;
+
+                #Negro {
+                  background-color: grey;
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                }
+                #Blanco {
+                  background-color: #fcba03;
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
 
       .match-players {
         margin: 20px 0;
@@ -1895,50 +2090,12 @@ Buscar Jugadores
         margin: 10px 0;
         font-weight: lighter;
       }
-      .table-wrapper {
-        width: 95%;
-        height: 100%;
-        overflow: auto;
-        background-color: #444;
-        border-radius: 30px;
-      }
-      table {
-        width: 100%;
-        max-height: 100%;
-        background-color: #333;
-
-        tr {
-          th {
-            color: white;
-            text-align: center;
-            font-weight: lighter;
-          }
-          td {
-            height: 30px;
-            background-color: #444;
-            color: white;
-            text-align: center;
-            font-weight: lighter;
-
-            #Negro {
-              background-color: grey;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-            }
-            #Blanco {
-              background-color: #fcba03;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-            }
-          }
-        }
-      }
 
       button {
         background-color: #0076be;
-        width: 250px;
-        height: 80px;
-        margin: 10px;
+        width: 150px;
+        height: 60px;
+        margin-top: 10px;
 
         color: white;
         border: none;
@@ -1980,7 +2137,7 @@ Buscar Jugadores
           align-items: center;
           text-decoration: none;
 
-          #tempJug1{
+          #tempJug1 {
             width: 100%;
             height: 30px;
             color: white;
@@ -2299,13 +2456,13 @@ Avatar Profile
 
 
 */
-.avatar-wrapper{
+.avatar-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .avatar-profile{
+  .avatar-profile {
     width: 80%;
     height: 100%;
     background-color: #111;
@@ -2315,7 +2472,7 @@ Avatar Profile
 
     border-radius: 1em;
 
-    .avatar-profile-wrapper{
+    .avatar-profile-wrapper {
       width: 100%;
       max-width: 200px;
 
@@ -2325,7 +2482,7 @@ Avatar Profile
       justify-content: center;
       align-items: center;
 
-      .avatar{
+      .avatar {
         width: 150px;
         height: 150px;
         border-radius: 50%;
@@ -2334,26 +2491,26 @@ Avatar Profile
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: .5s;
+        transition: 0.5s;
 
-        i{
+        i {
           color: white;
           font-size: 3em;
-          transition: .5s;
+          transition: 0.5s;
         }
       }
     }
-    .avatar-icons{
+    .avatar-icons {
       width: 100%;
       max-width: 600px;
 
       margin: 20px;
 
-      h1{
+      h1 {
         color: white;
         margin: 10px 0;
       }
-      .iconos-wrapper{
+      .iconos-wrapper {
         margin: 10px 0;
         display: flex;
         justify-content: space-evenly;
@@ -2364,7 +2521,7 @@ Avatar Profile
         background-color: #222;
         border-radius: 1em;
 
-        .icono{
+        .icono {
           width: 50px;
           height: 50px;
 
@@ -2379,20 +2536,20 @@ Avatar Profile
           justify-content: center;
           align-items: center;
 
-          transition: .5s;
+          transition: 0.5s;
 
-          i{
+          i {
             color: white;
             font-size: 1.5em;
-            transition: .5s;
+            transition: 0.5s;
           }
         }
-        .icono:hover{
+        .icono:hover {
           transform: scale(1.1);
           background-color: #009dff;
         }
       }
-      .avatar-colors{
+      .avatar-colors {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -2401,48 +2558,47 @@ Avatar Profile
         background-color: #222;
         border-radius: 1em;
 
-
-        .color{
+        .color {
           display: flex;
           justify-content: center;
           flex-direction: column;
           text-align: center;
           margin: 10px;
 
-          input[type="color"]{
+          input[type="color"] {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             margin: 10px auto;
-    
+
             outline: none;
             border: none;
             background-color: transparent;
             cursor: pointer;
-    
-            transition: .5s;
+
+            transition: 0.5s;
           }
           input[type="color"]::-webkit-color-swatch-wrapper {
-            padding: 0; 
+            padding: 0;
           }
           input[type="color"]::-webkit-color-swatch {
             border: 2px solid white;
             border-radius: 100%;
           }
-          input[type="color"]:hover{
+          input[type="color"]:hover {
             transform: scale(1.2);
           }
         }
       }
 
-      .guardar{
+      .guardar {
         width: 100%;
         margin-top: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        button{
+        button {
           background-color: #0076be;
           border: none;
           outline: none;
@@ -2450,17 +2606,16 @@ Avatar Profile
           width: 200px;
           height: 40px;
           border-radius: 2em;
-          
+
           color: white;
 
-          transition: .5s;
+          transition: 0.5s;
         }
-        button:hover{
+        button:hover {
           background-color: #009dff;
           width: calc(200px + 10%);
         }
       }
-      
     }
   }
 }
@@ -2559,20 +2714,20 @@ Torneos
 
 
 */
-.torneos-wrapper{
+.torneos-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .torneos{
+  .torneos {
     background-color: #111;
     width: 90%;
     border-radius: 30px;
     padding: 20px;
     margin: 10px 0;
 
-    .torneos-titulo{
+    .torneos-titulo {
       background-color: #222;
       display: flex;
       justify-content: center;
@@ -2580,39 +2735,39 @@ Torneos
       border-radius: 1em;
       margin: 10px;
 
-      h1{
+      h1 {
         font-size: 1.6em;
         color: white;
         margin: 20px;
         letter-spacing: 2px;
         text-align: center;
       }
-      i{
+      i {
         color: #ffaa00;
       }
     }
-    .torneos-content{
+    .torneos-content {
       padding: 20px;
       color: white;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
-      .torneo-menu{
-       width: 100%;
+      .torneo-menu {
+        width: 100%;
 
         border-radius: 1em;
         padding: 10px;
         margin: 10px;
 
         background-color: #222;
-        
+
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
 
-        .tipo-torneo{
+        .tipo-torneo {
           width: 200px;
           margin: 20px;
 
@@ -2622,13 +2777,13 @@ Torneos
           flex-direction: column;
           flex-wrap: wrap;
 
-          h2{
+          h2 {
             font-size: 1.2em;
             font-weight: lighter;
             margin-bottom: 10px;
           }
-          form{
-            select{
+          form {
+            select {
               width: 100%;
               height: 30px;
 
@@ -2639,33 +2794,33 @@ Torneos
               border: none;
               border-radius: 1em;
 
-              option:disabled{
+              option:disabled {
                 color: #bbb;
               }
             }
           }
         }
-        .presets{
+        .presets {
           width: 500px;
           height: 100%;
           border-radius: 1em;
           background-color: #333;
         }
       }
-      .torneo-config{
+      .torneo-config {
         width: 100%;
         min-height: 500px;
         margin: 10px;
         background-color: #222;
         border-radius: 1em;
 
-        .config-wrapper{
+        .config-wrapper {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 10px;
           padding: 10px;
 
-          .config-left{
+          .config-left {
             height: 100%;
 
             margin: 0 auto;
@@ -2673,7 +2828,7 @@ Torneos
             display: flex;
             flex-wrap: wrap;
 
-            .calendar-config{
+            .calendar-config {
               width: 100%;
               border-radius: 20px;
 
@@ -2688,10 +2843,10 @@ Torneos
               border-radius: 1em;
               background-color: #333;
 
-              .calendar-wrapper{
+              .calendar-wrapper {
                 width: 300px;
 
-                .calendar{
+                .calendar {
                   width: 100%;
                   height: 320px;
                   border-radius: 1em;
@@ -2703,7 +2858,7 @@ Torneos
                   align-items: center;
                   flex-direction: column;
 
-                  .calendar-header{
+                  .calendar-header {
                     position: relative;
                     width: 100%;
                     height: 40px;
@@ -2714,7 +2869,8 @@ Torneos
                     justify-content: center;
                     align-items: center;
 
-                    .previous-month, .next-month{
+                    .previous-month,
+                    .next-month {
                       position: absolute;
                       width: 30px;
                       height: 30px;
@@ -2725,26 +2881,26 @@ Torneos
                       background-color: white;
                       color: #0076be;
 
-                      i{
+                      i {
                         font-size: 1.2em;
                       }
                     }
-                    .previous-month{
+                    .previous-month {
                       left: 10px;
                     }
-                    .next-month{
+                    .next-month {
                       right: 20px;
                     }
                   }
                 }
               }
-              .calendar-references{
+              .calendar-references {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-wrap: wrap;
 
-                .reference{
+                .reference {
                   width: 120px;
                   height: 100px;
                   margin: 10px;
@@ -2756,7 +2912,7 @@ Torneos
                 }
               }
             }
-            .hora{
+            .hora {
               width: 100%;
 
               display: flex;
@@ -2770,7 +2926,7 @@ Torneos
               padding: 10px;
               background-color: #333;
 
-              input{
+              input {
                 width: 80px;
                 height: 30px;
 
@@ -2785,7 +2941,7 @@ Torneos
                 background-color: #0076be;
               }
             }
-            .tiempo-wrapper{
+            .tiempo-wrapper {
               width: 100%;
 
               margin: 10px 0;
@@ -2794,14 +2950,14 @@ Torneos
               display: flex;
               flex-direction: column;
 
-              border-radius: 1em;              
+              border-radius: 1em;
               background-color: #333;
 
-              .tiempo{
+              .tiempo {
                 margin: 10px;
                 display: flex;
 
-                input{
+                input {
                   width: 100%;
                   height: 40px;
                   background-color: #222;
@@ -2815,14 +2971,14 @@ Torneos
               }
             }
           }
-          .config-right{
+          .config-right {
             height: 100%;
 
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
 
-            .advanced-wrapper{
+            .advanced-wrapper {
               height: 400px;
               margin: 10px 0;
 
@@ -2834,19 +2990,19 @@ Torneos
 
               text-align: center;
               font-size: 2em;
-              color: grey; 
+              color: grey;
 
-              border-radius: 20px; 
+              border-radius: 20px;
               padding: 1%;
             }
-            .premio{
+            .premio {
               background-color: #333;
               border-radius: 1em;
 
               display: flex;
               padding: 20px;
-              
-              p{
+
+              p {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -2854,7 +3010,7 @@ Torneos
                 margin-right: 10px;
               }
 
-              input{
+              input {
                 width: 100%;
                 height: 40px;
                 background-color: #222;
@@ -2866,7 +3022,7 @@ Torneos
                 text-indent: 10px;
               }
             }
-            .torneo-buttons{
+            .torneo-buttons {
               width: 100%;
               display: flex;
               justify-content: center;
@@ -2874,7 +3030,7 @@ Torneos
               flex-wrap: wrap;
               margin: 20px;
 
-              button{
+              button {
                 width: 150px;
                 height: 40px;
 
@@ -2887,9 +3043,9 @@ Torneos
                 border: none;
                 cursor: pointer;
 
-                transition: .5s;
+                transition: 0.5s;
               }
-              button:hover{
+              button:hover {
                 background-color: #009dff;
               }
             }
@@ -2981,6 +3137,9 @@ Responsive
         margin: 0 auto;
       }
       .movimientos {
+        .jugadores {
+          display: none;
+        }
         .movimientos-img {
           display: none;
         }

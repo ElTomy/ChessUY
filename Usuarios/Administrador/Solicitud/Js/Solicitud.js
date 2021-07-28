@@ -1,17 +1,19 @@
 var len = 0;
 var x = 0;
+var y = true;
 var ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas;
 $(document).ready(function () {
+    $(".Solicitudes-wrapper").hide();
+    $(".nohaysolicitudes-wrapper").hide();
     $.ajax({
         type: "Post",
         url: "/ChessUY/Usuarios/Administrador/Solicitud/PHP/Solicitud.php",
         success: function (response) {
 
             var solic = JSON.parse(response);
-            console.log(solic[len].usuario)
-            while(x <= 0) {
-                if (solic[len].usuario == undefined && solic[len].usuario == null) {
-                    x = 1;
+            while(y) {
+                if (typeof solic[len] === 'undefined') {
+                    y = false;
                 } else {
                     console.log("Len:" + len);
                     console.log("Otro: " + solic[len]["ci"]);
@@ -35,10 +37,13 @@ $(document).ready(function () {
                     console.log("----------")
                     len++;
                     console.log("Len:" + len);
+                    x = 1;
                 }
             }
-            if(x == 1){
+            console.log(x);
+            if(x == 0){
                 $(".Solicitudes-wrapper").hide();
+                $(".nohaysolicitudes-wrapper").show();
                 $("#nohaysolicitudes").show();
             }else{
                 $(".Solicitudes-wrapper").show();
@@ -52,7 +57,7 @@ $(document).ready(function () {
 function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
     $.ajax({
         type: "Post",
-        url: "PHP/Aprobar.php",
+        url: "Usuarios/Administrador/Solicitud/PHP/Aprobar.php",
         data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tip, año: año, contacto: con, nacimiento: nac, contraseña: pas },
         success: function (response) {
             console.log(response);
@@ -62,7 +67,7 @@ function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
 function rechazar(data, usr, nom,mai) {
     $.ajax({
         type: "Post",
-        url: "PHP/Rechazar.php",
+        url: "Usuarios/Administrador/Solicitud/PHP/Rechazar.php",
         data: { usuario: usr, nombre: nom ,mail:mai},
         success: function (response) {
             console.log(response);

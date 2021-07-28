@@ -21,7 +21,7 @@ abstract class WebSocketServer {
     $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)  or die("Failed: socket_create()");
     socket_set_option($this->master, SOL_SOCKET, SO_REUSEADDR, 1) or die("Failed: socket_option()");
     socket_bind($this->master, $addr, $port)                      or die("Failed: socket_bind()");
-    socket_listen($this->master,3)                               or die("Failed: socket_listen()");
+    socket_listen($this->master,2)                               or die("Failed: socket_listen()");
     $this->sockets['m'] = $this->master;
     $this->stdout("Server started\nListening on: $addr:$port\nMaster socket: ".$this->master);
 

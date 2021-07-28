@@ -5,12 +5,18 @@
             include '../servidor.php';
             $server= new servidor();
             session_start();
-            list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($_SESSION['usuario']);
+       
+            if(isset($_SESSION['usuario'])){
+            $Icono = $_SESSION['icono']; 
+            $ColorIcono = $_SESSION['coloricono'];
+            $ColorFondo = $_SESSION['colorfondo'];
+            }
             
             if(isset($_SESSION['usuario'])){
                 echo '  <a href="/ChessUY/Inicio">
                             <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
+                     
             }else{
                 echo '  <a href="/ChessUY/Index.php">
                             <img src="/ChessUY/media/svg/Logo/CyberHydra.svg" alt="">

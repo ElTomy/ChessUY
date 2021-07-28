@@ -12,8 +12,8 @@ echo ""
 read -p ">_ " opc
 
 case "$opc" in
-    "1") . ./tecdered/bkup/;;
-    "2") . ./tecdered/bkup/;;
+    "1") . ./tecdered/bkup/hacbkup.sh;;
+    "2") . ./tecdered/bkup/viscron.sh;;
     "q") . ./shellscript.sh;;
     *)  echo "+-------------------------------------+"
         echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"

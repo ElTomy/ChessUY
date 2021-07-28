@@ -105,12 +105,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
+    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo){
         $conn = $this->conectar();
-        $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,@x)";
+        $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
         if ($stmts->execute()) {
             $resultado = $conn->query('SELECT @x as p_out');
             $x = $resultado->fetch_assoc();
@@ -149,10 +149,13 @@ class servidor
     //
     //
     function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
+        $Icono='fas fa-code';
+        $ColorIcono='#f8b703';
+        $ColorFondo='#222222';
         $conn = $this->conectar();
-        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono,  $ColorIcono ,   $ColorFondo);
         $stmts->execute();
     }
     //
@@ -192,9 +195,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'ID' => $ID);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 $info[] = $data;
             }
             $stmts->close();
@@ -215,9 +218,9 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'ID' => $ID);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 return $data;
             }
             $stmts->close();
@@ -269,28 +272,6 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function TraigoFotoPerfil($usuario){
-        $conn = $this->conectar();
-        $info = array();
-        $sql = "CALL TraigoFotoPerfil(?)";
-        $stmts = $conn->prepare($sql);
-
-        $stmts->bind_param("s", $usuario);
-        if ($stmts->execute()) {
-            $stmts->store_result();
-            $stmts->bind_result($NumeroIcono,$ColorIcono,$ColorFondo);
-            $stmts->fetch();
-            $stmts->close();
-            return array($NumeroIcono,$ColorIcono,$ColorFondo);
-
-        }
-        return false;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
     function GuardoFotoPerfil($Usuario, $NumeroIcono, $ColorIcono, $ColorFondo){
         $conn = $this->conectar();
         $sql = "CALL GuardoFotoPerfil(?,?,?,?)";
@@ -300,6 +281,9 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
+            $_SESSION['icono'] = $NumeroIcono;
+            $_SESSION['coloricono'] = $ColorIcono;
+            $_SESSION['colorfondo'] = $ColorFondo;
         }
         return $execute;
     }

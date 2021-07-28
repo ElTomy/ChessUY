@@ -3,7 +3,9 @@ include '../servidor.php';
 $server= new servidor();
 session_start();
 $usuario = $_SESSION['usuario'];
-list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($_SESSION['usuario']);
+$Icono = $_SESSION['icono']; 
+$ColorIcono = $_SESSION['coloricono'];
+$ColorFondo = $_SESSION['colorfondo'];
 
 $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-chess-knight'></i> Jugador", "<i class='fas fa-ruler-horizontal'></i> Árbitro", "<i class='fas fa-microphone'></i> Periodista")
 ?>

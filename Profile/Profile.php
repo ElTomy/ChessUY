@@ -7,8 +7,6 @@
 
   $usuario_info = $server->PerfilUsuario($usuario);
   list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
-
-  list($Icono, $ColorIcono, $ColorFondo) = $server->TraigoFotoPerfil($usuario);
 ?>
 
 <!DOCTYPE html>
@@ -75,8 +73,8 @@
             <?php
               echo '<div class="profile-avatar">
                 <div class="profile-flex">
-                  <div class="profile-body-picture" style="background-color: '. $ColorFondo .'">
-                    <i class="' . $Icono . '" style="color: '.$ColorIcono.'"></i>
+                  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                    <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
                   </div>
 
                   <div class="profile-avatar-body">';

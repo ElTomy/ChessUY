@@ -139,22 +139,22 @@ if($opt == 'norm') {
 } elseif($opt == 'avan') {
     
     echo '
-    <div style="width: 50%; height: 100%;">
-        <div style="height: 68%; border-radius: 20px; padding: 1%; display: flex;">'.
+    <div class="config-left">
+        <div class="calendar-config">'.
 //          Aca va la agenda
             $agenHTML
       .'</div>
-        <div style="height: 28%; border-radius: 20px; padding: 1%;">'.
+        <div class="tiempo-wrapper">'.
 //          temp
             $tiemHTML
       .'</div>
     </div>
-    <div style="width: 50%; height: 100%;">
+    <div class="config-right">
         <div style="height: 58%; border-radius: 20px; padding: 1%;">'.
 //          Aca va la parte avanzada
             $avanHTML
       .'</div>
-        <div style="height: 18%; border-radius: 20px; padding: 10% 0% 0% 1%;">'.
+        <div class="premio">'.
 //          Premio
             $premHTML
       .'</div>

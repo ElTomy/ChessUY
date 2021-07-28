@@ -3,7 +3,6 @@ class Fixture{
     this.ronda=ronda;
     this.usuario1=usuario1;
     this.usuario2=usuario2;
-
 }
 get rond(){
     return this.ronda;

@@ -422,9 +422,9 @@ footer .footer-body .cyberhydra img {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 16;
   width: 100%;
   height: 100vh;
   display: -webkit-box;
@@ -2393,7 +2393,8 @@ Buscar Jugadores
   height: calc(98vh - 100px);
 }
 
-.board-wrapper #tempJug1, .board-wrapper #tempJug2 {
+.board-wrapper #tempJug1,
+.board-wrapper #tempJug2 {
   height: 30px;
   background-color: #222;
   border-radius: 1em;
@@ -2409,7 +2410,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper #tempJug1 i, .board-wrapper #tempJug2 i {
+.board-wrapper #tempJug1 i,
+.board-wrapper #tempJug2 i {
   margin-right: 5px;
 }
 
@@ -2697,7 +2699,6 @@ Buscar Jugadores
   height: 100%;
   background-color: #222;
   border-radius: 30px;
-  margin: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2708,6 +2709,234 @@ Buscar Jugadores
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.board-wrapper .board .movimientos .menu-bottom {
+  width: 100%;
+  height: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.board-wrapper .board .movimientos .select-wrapper {
+  width: 95%;
+  height: 100%;
+  background-color: #444;
+  border-radius: 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  border-radius: 30px 30px 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent;
+  border-radius: 30px 30px 0 0;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type .active {
+  background-color: #444;
+  z-index: 15;
+  font-size: 14px;
+  -webkit-box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  height: calc(100% - 50px);
+  max-height: 330px;
+  overflow: auto;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  border-radius: 0 0 30px 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box {
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: auto;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 {
+  position: relative;
+  max-width: 300px;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  border-radius: 20px 20px 20px 0;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 a {
+  font-size: 15px;
+  margin: 0;
+  text-decoration: none;
+  color: #009dff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 a:hover {
+  color: #00fff2;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 p {
+  color: white;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 {
+  position: relative;
+  max-width: 300px;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #0076be;
+  border-radius: 20px 20px 0 20px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 a {
+  font-size: 15px;
+  margin: 0;
+  text-decoration: none;
+  color: #222;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 a:hover {
+  color: #000;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 p {
+  color: white;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #333;
+  border-radius: 0 0 30px 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input input {
+  width: calc(100% - 70px);
+  height: 35px;
+  margin-left: 10px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  text-indent: 10px;
+  background-color: white;
+  font-family: "Roboto", "sans-serif";
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table {
+  width: 100%;
+  max-height: 100%;
+  background-color: #333;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr th {
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td {
+  height: 30px;
+  background-color: #444;
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td #Negro {
+  background-color: grey;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td #Blanco {
+  background-color: #fcba03;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .board-wrapper .board .movimientos .match-players {
@@ -2757,51 +2986,11 @@ Buscar Jugadores
   font-weight: lighter;
 }
 
-.board-wrapper .board .movimientos .table-wrapper {
-  width: 95%;
-  height: 100%;
-  overflow: auto;
-  background-color: #444;
-  border-radius: 30px;
-}
-
-.board-wrapper .board .movimientos table {
-  width: 100%;
-  max-height: 100%;
-  background-color: #333;
-}
-
-.board-wrapper .board .movimientos table tr th {
-  color: white;
-  text-align: center;
-  font-weight: lighter;
-}
-
-.board-wrapper .board .movimientos table tr td {
-  height: 30px;
-  background-color: #444;
-  color: white;
-  text-align: center;
-  font-weight: lighter;
-}
-
-.board-wrapper .board .movimientos table tr td #Negro {
-  background-color: grey;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.board-wrapper .board .movimientos table tr td #Blanco {
-  background-color: #fcba03;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .board-wrapper .board .movimientos button {
   background-color: #0076be;
-  width: 250px;
-  height: 80px;
-  margin: 10px;
+  width: 150px;
+  height: 60px;
+  margin-top: 10px;
   color: white;
   border: none;
   border-radius: 2em;
@@ -3341,15 +3530,15 @@ Avatar Profile
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-profile-wrapper .avatar i {
   color: white;
   font-size: 3em;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons {
@@ -3398,15 +3587,15 @@ Avatar Profile
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono i {
   color: white;
   font-size: 1.5em;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono:hover {
@@ -3455,8 +3644,8 @@ Avatar Profile
   border: none;
   background-color: transparent;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"]::-webkit-color-swatch-wrapper {
@@ -3496,8 +3685,8 @@ Avatar Profile
   height: 40px;
   border-radius: 2em;
   color: white;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .avatar-wrapper .avatar-profile .avatar-icons .guardar button:hover {
@@ -3834,7 +4023,8 @@ Torneos
           align-items: center;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -3844,7 +4034,8 @@ Torneos
   color: #0076be;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
   font-size: 1.2em;
 }
 
@@ -4044,8 +4235,8 @@ Torneos
   color: white;
   border: none;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button:hover {
@@ -4145,6 +4336,9 @@ Responsive
   }
   .board-wrapper .board .ajedrez-wrapper {
     margin: 0 auto;
+  }
+  .board-wrapper .board .movimientos .jugadores {
+    display: none;
   }
   .board-wrapper .board .movimientos .movimientos-img {
     display: none;
