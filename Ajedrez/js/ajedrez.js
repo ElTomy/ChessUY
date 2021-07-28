@@ -262,7 +262,7 @@ function seleccionar(x,y){
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
-            if((Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)||(Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)){
+            if((Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 1)||(Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 0)){
                 seleccionado = {
                     Ejex: x,
                     Ejey: y,
@@ -396,7 +396,7 @@ function seleccionar(x,y){
                 simbolo: simbolo,
             }
             simbolo = null;
-            Turno = Turno + 1;
+            Turno++;
             ultTurn = true;
             a = 1;
         }
@@ -587,7 +587,41 @@ function Peon(x,y, sel){
            }
          }}
         
+    }else{
+            yy = y-1;
+            //movimiento: 2-adelante
+            if(y == 7 && Tablero[x][5].Piezas == null && Tablero[x][yy].Piezas == null){
+                comer(x,5,selecc);
+            }
+            if(yy>=1){
+             //movimiento: 1-adelante
+             if(Tablero[x][yy].Piezas == null){
+                comer(x,yy,selecc);
+             }
+             if(xx<=8){
+                 if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
+                //Peon al paso derecha
+                comer(xb,3,selecc);
+            }
+                //movimiento: comer-d
+                if(Tablero[xx][yy].Piezas != null){
+                    comer(xx,yy,selecc);
+                }
+             }
+             xx = x -1;
+             if(xx>=1){
+                if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
+                    //Peon al paso izquierda
+                    comer(xa,3,selecc);
+                }
+                //movimiento: comer-i
+               if(Tablero[xx][yy].Piezas != null){
+                comer(xx,yy,selecc);
+               }
+             }
     }
+}
+  
 }
 //
 //
@@ -1801,7 +1835,8 @@ function Derrota(){
 //
 function init(){
     socket = new WebSocket("ws://192.168.4.66:25005")
-    
+    //socket = new WebSocket("ws://192.168.0.118:25005")
+
     socket.onopen = function(msg) {
         //alert("Welcome - status "+this.readyState);
         };
@@ -1821,12 +1856,11 @@ function init(){
 function send(msg){
     var tab = "tab:" +JSON.stringify(Tablero);
     var jug = "jug:" +JSON.stringify(Jugadas);
-    console.log("turno " + Turno)
-    console.log("jaque", jaque)
-    console.log(Jugadas)
+    var jaq = "jaq:" +JSON.stringify(jaque);
     if(tab.length > 0) {
         socket.send(tab);
         socket.send(jug);
+        socket.send(jaq);
         socket.send(Turno);
     }  
 }
@@ -1847,7 +1881,11 @@ function reciboTablero(data){
     }else if(data.includes("jug:")){
         var jug = data.slice(4)
         tipo = 2;
-    }else{tipo = 3;}
+    }else if(data.includes("jaq:")){
+        var jaq = data.slice(4)
+        console.log(jaq)
+        tipo = 3;
+    }else{tipo = 4;}
     
     switch(tipo){
         case 1:
@@ -1868,6 +1906,10 @@ function reciboTablero(data){
             }
             break;
         case 3:
+            var jaq2 = JSON.parse(jaq);
+            jaque = jaq2;
+            break;
+        case 4:
             Turno = data;
             break;
     }
