@@ -1754,6 +1754,7 @@ function send(msg){
     var tab = "tab:" +JSON.stringify(Tablero);
     var jug = "jug:" +JSON.stringify(Jugadas);
     console.log("turno " + Turno)
+    console.log("jaque", jaque)
     console.log(Jugadas)
     if(tab.length > 0) {
         socket.send(tab);
@@ -1794,22 +1795,11 @@ function reciboTablero(data){
             break;
         case 2:
             var jug2 = JSON.parse(jug);
-                console.log(Jugadas)
-                console.log(Jugadas.length)
-                console.log(jug2)
-                console.log(jug2.length)
-                console.log("======================================")
             for(var p = 1; p <= jug2.length; p++){
-                console.log("p:" + p)
-                console.log(jug2[p])
-                console.log("---------")
                 Jugadas[p] = jug2[p];
             }
-              console.log("jugadas:");
-              console.log(Jugadas)
             break;
         case 3:
-            console.log("turno:" + data )
             Turno = data;
             break;
     }
