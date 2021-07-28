@@ -72,7 +72,7 @@ class servidor
         $us = "";
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $ID);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail,  $Icono, $ColorIcono, $ColorFondo);
             if ($stmts->fetch()) {
                 if ($us == null) {
                     $stmts->close();
@@ -82,13 +82,12 @@ class servidor
                     $stmts->close();
                     session_start();
 
-                    /*$_SESSION['icono'] = $Icono;
+                    $_SESSION['icono'] = $Icono;
                     $_SESSION['coloricono'] = $ColorIcono;
-                    $_SESSION['colorfondo'] = $ColorFondo;*/
-
-
+                    $_SESSION['colorfondo'] = $ColorFondo;
                     $_SESSION['usuario'] = $us;
                     $_SESSION['tipo'] = $tipo;
+
                     $info = array('error' => false, 'usuario' => $us, 'tipo' => $tipo);
                     return $info;
                 }
