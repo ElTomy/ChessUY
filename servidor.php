@@ -3,7 +3,7 @@ class servidor
 {
     function conectar()
     {
-        if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')) {
+        if (!$conexion = mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')) {
             echo "No se pudo conectar a la base de datos";
             exit;
         } else {
