@@ -697,6 +697,234 @@ Loading Screen
   }
 }
 
+//----------------------------------------------------------
+
+//                     Torneos (Index)
+
+//----------------------------------------------------------
+
+.torneos-wrapper-index{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  background-color: rgba(51, 51, 51, 0.7);
+
+  .torneos-grid{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .torneo-reciente, .mejores-jugadores{
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background-color: #222;
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .torneo-reciente{
+      .torneo-reciente-header{
+        display: flex;
+        align-items: center;
+        height: 40px;
+        h1{
+          color: #0076be;
+        }
+      }
+      
+      hr{
+        border: 1px solid #0076be;
+        margin: 10px 0;
+      }
+      .torneo{
+        display: grid;
+        grid-template-columns: 30% 1fr;
+        .torneo-left{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          img{
+            width: 90%;
+            max-width: 200px;
+          }
+          .participantes{
+            p{
+              color: white;
+            }
+          }
+        }
+        .torneo-right{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+
+          .torneo-info{
+            h2{
+              color: #ffaa00;
+              font-weight: normal;
+              margin: 10px 0;
+            }
+            p{
+              color: white;
+            }
+
+          }
+          .torneo-buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            a{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              
+              text-decoration: none;
+
+              margin: 5px;
+              width: 150px;
+              height: 40px;
+              background-color: #0076be;
+              color: white;
+              border-radius: 20px;
+
+              transition: .5s;
+
+              i{
+                margin: 0 5px;
+              }
+            }
+            a:hover{
+              background-color: #009dff;
+              width: 170px;
+            }
+          }
+        }
+      }
+    }
+    .mejores-jugadores{
+      .mejores-jugadores-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        h1{
+          color: #0076be;
+        }
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          text-decoration: none;
+
+          width: 150px;
+          height: 40px;
+          background-color: #0076be;
+          color: white;
+          border-radius: 20px;
+
+          transition: .5s;
+        }
+        a:hover{
+          background-color: #009dff;
+        }
+      }
+      
+      hr{
+        border: 1px solid #0076be;
+        margin: 10px 0;
+      }
+
+      .jugadores-table{
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        tbody{
+          width: 100%;
+        }
+
+        tr{
+          width: 100%;
+          height: 50px;
+
+          display: flex;
+          align-items: center;
+
+          #posicion{
+            width: 30px;
+            margin: 0 10px;
+            color: white;
+          }
+          #img{
+            width: 40px;
+            .user-img{
+              width: 40px;
+              height: 40px;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              background-color: #0076be;
+              border-radius: 50%;
+            }
+          }
+          #nombre{
+            width: 100%;
+            margin: 0 10px;
+
+            a{
+              text-decoration: none;
+              color: white;
+            }
+          }
+          #puntaje{
+            margin: 0 10px;
+            color: white;
+          }
+        }
+        tr:nth-child(1){
+          #posicion, #nombre a, #puntaje{
+            color: #ce8900;
+          }
+        }
+        tr:nth-child(2){
+          #posicion, #nombre a, #puntaje{
+            color: #a15b00;
+          }
+        }
+        tr:nth-child(3){
+          #posicion, #nombre a, #puntaje{
+            color: #7e7e7e;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//----------------------------------------------------------
+
+//                     Noticias (Index)
+
+//----------------------------------------------------------
+
 .noticias-wrapper {
   width: 100%;
   display: flex;
@@ -3108,6 +3336,28 @@ Responsive
     }
   }
 }
+@media screen and (max-width: 1220px) {
+  .torneos-wrapper-index{
+    .torneos-grid{
+      .torneo-reciente{
+        .torneo{
+          grid-template-columns: 1fr;
+          .torneo-right{
+            text-align: center;
+          }
+        }
+      }
+      .mejores-jugadores{
+        .mejores-jugadores-header{
+          height: 45px;
+          a{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 1050px) {
   .search-wrapper {
     .search-list {
@@ -3181,6 +3431,26 @@ Responsive
       }
       .mobile-img {
         display: flex;
+      }
+    }
+  }
+  .torneos-wrapper-index{
+    .torneos-grid{
+      grid-template-columns: 1fr;
+      .torneo-reciente{
+        .torneo{
+          .torneo-right{
+            text-align: center;
+          }
+        }
+      }
+      .mejores-jugadores{
+        .mejores-jugadores-header{
+          height: 45px;
+          a{
+            display: none;
+          }
+        }
       }
     }
   }
