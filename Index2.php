@@ -27,6 +27,7 @@ $index ='
 $index .='
     <script src="/ChessUY/Usuarios/js/Usuario.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
  
     <link
       rel="shortcut icon"
@@ -124,98 +125,57 @@ $index .='
                       <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
                     </div>
                     <hr>
-                    <table class="jugadores-table">
-
-                      <tr>
-
-                        <td id="posicion">
-                          #1
-                        </td>
-
-                        <td id="img">
-                          <div class="user-img">
-                            <i class="fas fa-user"></i>
-                          </div>
-                        </td>
-
-                        <td id="nombre">
-                          <a href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
-                        </td>
-
-                        <td id="puntaje">
-                          2500
-                        </td>
-                        
-                      </tr>
-
-                      <tr>
-
-                        <td id="posicion">
-                          #2
-                        </td>
-
-                        <td id="img">
-                          <div class="user-img">
-                            <i class="fas fa-user"></i>
-                          </div>
-                        </td>
-
-                        <td id="nombre">
-                          <a href="/ChessUY/Profile/EL7Seven">EL7Seven</a>
-                        </td>
-
-                        <td id="puntaje">
-                          1650
-                        </td>
-                        
-                      </tr>
-
-                      <tr>
-
-                        <td id="posicion">
-                          #3
-                        </td>
-
-                        <td id="img">
-                          <div class="user-img">
-                            <i class="fas fa-user"></i>
-                          </div>
-                        </td>
-
-                        <td id="nombre">
-                          <a href="/ChessUY/Profile/maty">maty</a>
-                        </td>
-
-                        <td id="puntaje">
-                          1020
-                        </td>
-                        
-                      </tr>
-
-                      <tr>
-
-                        <td id="posicion">
-                          #4
-                        </td>
-
-                        <td id="img">
-                          <div class="user-img">
-                            <i class="fas fa-user"></i>
-                          </div>
-                        </td>
-
-                        <td id="nombre">
-                          <a href="/ChessUY/Profile/El_Tomy">El_Tomy</a>
-                        </td>
-
-                        <td id="puntaje">
-                          -1
-                        </td>
-                        
-                      </tr>
-
-                    </table>
+                    <div class="jugadores-table" id="tabla-estadisticas">
+                    </div>
                   </div>
+                </div>
+                <div class="torneos-recientes-wrapper">
+
+                  <h1>Torneos</h1>
+                  <hr>
+
+                  <div class="torneos-recientes">
+                    <div class="torneo">
+                      <div class="torneo-left-side">
+                        <img src="/ChessUY/media/images/Trofeo.png">
+                      </div>
+                      <div class="torneo-right-side">
+                        <h1>Nombre del Torneo</h1>
+                        <p><i class="fas fa-users"></i> 12 Participantes</p>
+                        <div class="torneo-right-buttons">
+                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
+                          <button><i class="fas fa-info-circle"></i> Información</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="torneo">
+                      <div class="torneo-left-side">
+                        <img src="/ChessUY/media/images/Trofeo.png">
+                      </div>
+                      <div class="torneo-right-side">
+                        <h1>Nombre del Torneo</h1>
+                        <p><i class="fas fa-users"></i> 12 Participantes</p>
+                        <div class="torneo-right-buttons">
+                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
+                          <button><i class="fas fa-info-circle"></i> Información</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="torneo">
+                      <div class="torneo-left-side">
+                        <img src="/ChessUY/media/images/Trofeo.png">
+                      </div>
+                      <div class="torneo-right-side">
+                        <h1>Nombre del Torneo</h1>
+                        <p><i class="fas fa-users"></i> 12 Participantes</p>
+                        <div class="torneo-right-buttons">
+                          <button><i class="fas fa-chart-line"></i> Estadisticas</button>
+                          <button><i class="fas fa-info-circle"></i> Información</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </section>
 
