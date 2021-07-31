@@ -204,6 +204,29 @@ class servidor
         }
         return $info;
     }
+     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoTorneo(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoTorneo()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo);
+            while ($stmts->fetch()) {
+                $data = array('tiempo' => $tiempo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Numero_Participantes' => $Numero_Participantes, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'InicioTorneo' => $InicioTorneo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
     //
     //
     /*------------------------------------------------------------------------------------------*/
