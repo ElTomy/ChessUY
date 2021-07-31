@@ -209,12 +209,11 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Top($usuario){
+    function Top(){
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL Top(?)";
+        $sql = "CALL Top()";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("s", $usuario);
         if ($stmts->execute()) {
             
             $stmts->store_result();
