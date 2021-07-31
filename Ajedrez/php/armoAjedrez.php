@@ -388,7 +388,10 @@ $Ajedrez .='
                             </div>
                         </div>
                     </div>
-                    <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
+                    <div class="ajedrez-buttons">
+                        <button onclick="Acuerdo_Mutuo()"><i class="fas fa-border-all"></i> Tablas</button>
+                        <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
+                    </div>
                 </div>
                 </div>';
 
