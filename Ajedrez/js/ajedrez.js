@@ -1938,8 +1938,6 @@ function rechazar_tablas(){
         }
         });
 }
-
-
 function Triple_Repeticion(){
     console.log("3rep")
     //ultimos 3 movs ==
