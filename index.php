@@ -58,7 +58,6 @@ if(isset($_SESSION['usuario'])){
         </div>
       </div>
     </section>
-
     <section class="torneos-wrapper-index" id="ArmoTorneos">
       <div class="torneos-grid">
         <div class="torneo-reciente">
