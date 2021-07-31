@@ -1927,8 +1927,10 @@ Buscar Jugadores
       }
 
       .search-box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
         padding: 10px;
 
@@ -2013,6 +2015,21 @@ Buscar Jugadores
               background-color: #333;
               color: #fcba03;
             }
+          }
+        }
+        .player-not-found{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          height: 200px;
+
+          h1{
+            color: #ffaa00;
+          }
+          p{
+            color: white;
           }
         }
       }
