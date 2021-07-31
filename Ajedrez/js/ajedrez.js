@@ -1844,3 +1844,14 @@ function box(boxcontent){
     }
 
 }
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function tablas(){
+    //Rey-Haogado
+    //Acuerdo-Mutuo
+    //Triple-Repeticion
+    //Insuficiencia-de-Piezas
+}
