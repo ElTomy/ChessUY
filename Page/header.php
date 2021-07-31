@@ -69,10 +69,11 @@
     <div id="links-mobile" style="transform: translateY(-120%);">
         
         <div class="links-wrapper">
-            <div class="profile-picture">
-                <i class="fas fa-user"></i>
-            </div>
             <?php
+            echo '  <div class="profile-picture" style="background-color: '. $ColorFondo .'">
+                        <i class="'.$Icono.'" style="color: '.$ColorIcono.'"></i>
+                    </div>';
+            
                 if(isset($_SESSION['usuario'])){
                     echo "<h2>" . $_SESSION['usuario'] . "</h2>";
                     if($_SESSION['tipo'] == 0){
