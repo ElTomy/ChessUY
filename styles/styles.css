@@ -1043,6 +1043,7 @@ Loading Screen
 .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo {
   display: -ms-grid;
   display: grid;
+  height: 100%;
   -ms-grid-columns: 30% 1fr;
       grid-template-columns: 30% 1fr;
 }
@@ -1076,9 +1077,9 @@ Loading Screen
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

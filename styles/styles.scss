@@ -758,6 +758,7 @@ Loading Screen
       }
       .torneo {
         display: grid;
+        height: 100%;
         grid-template-columns: 30% 1fr;
         .torneo-left {
           display: flex;
@@ -777,7 +778,7 @@ Loading Screen
         }
         .torneo-right {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           flex-direction: column;
 
