@@ -218,9 +218,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo);
+            $stmts->bind_result($ID_Torneo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $Primero, $Segundo, $Tercero, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $tiempo, $InicioTorneo);
             while ($stmts->fetch()) {
-                $data = array('tiempo' => $tiempo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Numero_Participantes' => $Numero_Participantes, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'InicioTorneo' => $InicioTorneo);
+                $data = array('ID_Torneo' => $ID_Torneo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Fecha_fin' => $Fecha_fin, 'Numero_Participantes' => $Numero_Participantes, 'Primero' => $Primero, 'Segundo' => $Segundo, 'Tercero' => $Tercero, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'tiempo' => $tiempo, 'InicioTorneo' => $InicioTorneo);
                 $info[] = $data;
             }
             $stmts->close();
