@@ -1851,7 +1851,56 @@ function box(boxcontent){
 //
 function tablas(){
     //Rey-Haogado
+    Rey_Haogado('b');
+    Rey_Haogado('n');
     //Acuerdo-Mutuo
     //Triple-Repeticion
     //Insuficiencia-de-Piezas
+
+}
+function Rey_Haogado(color){
+    var tablas = true;
+    //creo todos los movimientos posibles
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+            if(Tablero[p][q].Piezas != null && Tablero[p][q].color == color){
+                switch(Tablero[p][q].Piezas){
+                    case Piezas.NTorre:
+                    case Piezas.BTorre:
+                            Torre(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NCaballo:
+                    case Piezas.BCaballo:
+                            Caballo(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NAlfil:
+                    case Piezas.BAlfil:
+                            Alfil(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NPeon:
+                    case Piezas.BPeon:
+                            Peon(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NDama:
+                    case Piezas.BDama:
+                            Dama(p,q,Tablero[p][q].Piezas);
+                    break;
+                    case Piezas.NRey:
+                    case Piezas.BRey:
+                           Rey(p,q,Tablero[p][q].Piezas);
+                    break;
+            }}
+        }
+    }
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+            if(Movimiento[p][q] == true){ 
+                tablas = false;
+                break;
+            }
+        }
+    }
+    if(tablas == true){
+        //empate
+    }
 }
