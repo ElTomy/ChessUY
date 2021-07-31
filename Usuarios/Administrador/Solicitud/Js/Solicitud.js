@@ -46,7 +46,7 @@ $(document).ready(function () {
                 $(".nohaysolicitudes-wrapper").show();
                 $("#nohaysolicitudes").show();
             }else{
-                $(".Solicitudes-wrapper").show();
+                $(".Solicitudes-wrapper").css("display", "flex");
                 $("#nohaysolicitudes").hide();
             }
         }

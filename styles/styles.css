@@ -659,6 +659,11 @@ footer .footer-body .cyberhydra img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: -100px;
+}
+
+.Solicitudes-wrapper img {
+  max-width: 400px;
 }
 
 .Solicitudes-wrapper h1 {
@@ -749,6 +754,14 @@ footer .footer-body .cyberhydra img {
 .Solicitudes-wrapper table tr td:nth-child(8) {
   display: block;
   width: 150px;
+}
+
+.Solicitudes-wrapper tr:nth-last-child(1) td:nth-child(1) {
+  border-radius: 0 0 0 30px;
+}
+
+.Solicitudes-wrapper tr:nth-last-child(1) td:nth-child(8) {
+  border-radius: 0 0 30px 0;
 }
 
 #nohaysolicitudes {
@@ -1270,6 +1283,7 @@ Loading Screen
   margin: 0 auto;
   margin-bottom: 20px;
   padding: 20px;
+  border-radius: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
