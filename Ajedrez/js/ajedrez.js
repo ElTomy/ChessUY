@@ -1855,6 +1855,7 @@ function tablas(){
     Rey_Haogado('n');
     //Acuerdo-Mutuo
     //Triple-Repeticion
+    Triple_Repeticion();
     //Insuficiencia-de-Piezas
 
 }
@@ -1909,7 +1910,7 @@ function Acuerdo_Mutuo(){
     //muestro modal al jugador2
     //si acepta empate
     //si no se sigue
-    
+
     // $.ajax({
     //     url: "/ChessUY/Modal/Tablas.php",
     //     type: "POST",
@@ -1918,4 +1919,7 @@ function Acuerdo_Mutuo(){
     //         document.getElementById("modal").innerHTML = data;
     //     }
     //   });
+}
+function Triple_Repeticion(){
+    //ultimos 3 movs ==
 }
