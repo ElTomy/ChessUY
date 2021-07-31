@@ -966,6 +966,299 @@ Loading Screen
   min-height: 100vh;
 }
 
+.torneos-wrapper-index {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 40px;
+  background-color: rgba(51, 51, 51, 0.7);
+}
+
+.torneos-wrapper-index .torneos-grid {
+  width: 90%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente, .torneos-wrapper-index .torneos-grid .mejores-jugadores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo-reciente-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo-reciente-header h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 1fr;
+      grid-template-columns: 30% 1fr;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left img {
+  width: 90%;
+  max-width: 200px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left .participantes p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-info h2 {
+  color: #ffaa00;
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-info p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  margin: 5px;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a i {
+  margin: 0 5px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a:hover {
+  background-color: #009dff;
+  width: 170px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a:hover {
+  background-color: #009dff;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tbody {
+  width: 100%;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #posicion {
+  width: 30px;
+  margin: 0 10px;
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #img {
+  width: 40px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #img .user-img {
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #0076be;
+  border-radius: 50%;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #nombre {
+  width: 100%;
+  margin: 0 10px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #nombre a {
+  text-decoration: none;
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #puntaje {
+  margin: 0 10px;
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #puntaje {
+  color: #ce8900;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #puntaje {
+  color: #a15b00;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #puntaje {
+  color: #7e7e7e;
+}
+
 .noticias-wrapper {
   width: 100%;
   display: -webkit-box;
@@ -4308,6 +4601,22 @@ Responsive
   }
 }
 
+@media screen and (max-width: 1220px) {
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+    text-align: center;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+    height: 45px;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1050px) {
   .search-wrapper .search-list {
     width: 500px;
@@ -4399,6 +4708,19 @@ Responsive
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .torneos-wrapper-index .torneos-grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+    text-align: center;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+    height: 45px;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+    display: none;
   }
 }
 
