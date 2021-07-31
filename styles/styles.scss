@@ -865,7 +865,6 @@ Loading Screen
         height: 100%;
 
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
 
@@ -962,6 +961,99 @@ Loading Screen
         }
         a:hover {
           background-color: #009dff;
+        }
+      }
+    }
+  }
+  .torneos-recientes-wrapper {
+    width: 85%;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background-color: #222;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    h1{
+      color: #0076be;
+    }
+    hr{
+      border: 1px solid #0076be;
+      margin: 10px 0;
+    }
+
+    .torneos-recientes{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .torneo {
+      width: 400px;
+      margin: 20px;
+      padding: 10px;
+      background-color: #2b2b2b;
+      border-radius: 30px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .torneo-left-side {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img {
+          width: 100%;
+        }
+      }
+      .torneo-right-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        h1{
+          color: #ffaa00;
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+        p{
+          color: white;
+        }
+
+        .torneo-right-buttons {
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+
+          button {
+            width: 120px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #0076be;
+            color: white;
+            border-radius: 20px;
+
+            border: none;
+            outline: none;
+
+            transition: 0.5s;
+          }
+          button:hover {
+            background-color: #009dff;
+          }
         }
       }
     }

@@ -1197,9 +1197,6 @@ Loading Screen
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1322,6 +1319,150 @@ Loading Screen
 }
 
 .torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a:hover {
+  background-color: #009dff;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper {
+  width: 85%;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneos-recientes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo {
+  width: 400px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-left-side {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-left-side img {
+  width: 100%;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side h1 {
+  color: #ffaa00;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons button {
+  width: 120px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons button:hover {
   background-color: #009dff;
 }
 
