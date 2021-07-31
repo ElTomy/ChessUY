@@ -365,6 +365,7 @@ function seleccionar(x,y){
             sel= seleccionado.Contenido;
             selc= seleccionado.color;
             Jaque(x,y, sel);
+            tablas();
         }else{
             //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
@@ -1857,9 +1858,10 @@ function tablas(){
     //Triple-Repeticion
     Triple_Repeticion();
     //Insuficiencia-de-Piezas
-
+    Falta_de_Piezas();
 }
 function Rey_Haogado(color){
+    console.log("Rh")
     var tablas = true;
     //creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
@@ -1902,24 +1904,72 @@ function Rey_Haogado(color){
         }
     }
     if(tablas == true){
-        //empate
+        llamoTablas();
     }
 }
-function Acuerdo_Mutuo(){
-    //muestro modal de espera
-    //muestro modal al jugador2
-    //si acepta empate
-    //si no se sigue
-
-    // $.ajax({
-    //     url: "/ChessUY/Modal/Tablas.php",
-    //     type: "POST",
-    //     data: {},
-    //     success: function (data) {
-    //         document.getElementById("modal").innerHTML = data;
-    //     }
-    //   });
+function Acuerdo_Mutuo(){   
+    $.ajax({
+        url:  "/ChessUY/Modal/modalEsperoTablas.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
 }
+function aceptar_tablas(){
+    finalizado = true;
+    $.ajax({
+        url: "/ChessUY/Modal/modalTablasAceptadas.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+        });
+}
+function rechazar_tablas(){
+    $.ajax({
+        url: "/ChessUY/Modal/modalTablasRechazadas.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+        });
+}
+
+
 function Triple_Repeticion(){
+    console.log("3rep")
     //ultimos 3 movs ==
+}
+function Falta_de_Piezas(){
+    var fp = true;
+    var piezas_tablero = '';
+    for( p = 1; p <= 8; p++){
+        for( q = 1; q <= 8; q++){
+           if(Tablero[p][q].Piezas != null){
+                piezas_tablero = piezas_tablero + Tablero[p][q].Piezas +"-"; 
+           }
+        }
+    }
+    if( piezas_tablero.includes('d') || piezas_tablero.includes('dn') || piezas_tablero.includes('t') || 
+        piezas_tablero.includes('tn') || piezas_tablero.includes('p') || piezas_tablero.includes('pn')) {
+        fp = false;
+    }
+    if(fp == true){
+        llamoTablas();
+    }
+}
+function llamoTablas(){
+    finalizado = true;
+    $.ajax({
+        url: "/ChessUY/Modal/modalTablas.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+        });
 }
