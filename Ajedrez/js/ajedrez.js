@@ -1904,3 +1904,18 @@ function Rey_Haogado(color){
         //empate
     }
 }
+function Acuerdo_Mutuo(){
+    //muestro modal de espera
+    //muestro modal al jugador2
+    //si acepta empate
+    //si no se sigue
+    
+    // $.ajax({
+    //     url: "/ChessUY/Modal/Tablas.php",
+    //     type: "POST",
+    //     data: {},
+    //     success: function (data) {
+    //         document.getElementById("modal").innerHTML = data;
+    //     }
+    //   });
+}
