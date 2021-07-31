@@ -71,6 +71,10 @@ $index .='
           </a>
         </div>
       </div>
+    </section>
+    <section class="anuncio">
+      <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+      <p>Este espacio está reservado para anuncios.</p>
     </section>';
 
     if($_SESSION['tipo'] == 0){
@@ -109,7 +113,7 @@ $index .='
                         </div>
                         <div class="torneo-buttons">
                           <a href=""><i class="fas fa-plus-circle"></i> Unirse</a>
-                          <a href=""><i class="fas fa-chart-line"></i> Estadisticas</a>
+                          <a href="/ChessUY/Usuarios/EstadisticasTorneo.php"><i class="fas fa-chart-line"></i> Estadisticas</a>
                         </div>
                       </div>
                     </div>
@@ -117,7 +121,7 @@ $index .='
                   <div class="mejores-jugadores">
                     <div class="mejores-jugadores-header">
                       <h1>Mejores Jugadores</h1>
-                      <a href=""><i class="fas fa-user-friends"></i> Ver Todos</a>
+                      <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
                     </div>
                     <hr>
                     <table class="jugadores-table">
@@ -214,8 +218,20 @@ $index .='
                   </div>
                 </div>
               </section>
+
+              <section class="anuncio">
+                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                <p>Este espacio está reservado para anuncios.</p>
+              </section>
+
               <section class="noticias-wrapper" id="ArmoNoticias">
               </section>
+
+              <section class="anuncio">
+                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                <p>Este espacio está reservado para anuncios.</p>
+              </section>
+              
             <div id="footer"></div>
           </body>
         </html>';

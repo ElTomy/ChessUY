@@ -10,44 +10,129 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../Javascript/Loader.js"></script>
-    <script src="js/ajedrez.js"></script>
+    
+    <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+
     
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/ChessUY/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Championship</title>
+    <title>ChessUY | Estadisticas Globales</title>
   </head>
   <body>
+    
     <div id="header"></div>
-    <div id="modal"></div>
+
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <section class="board-wrapper">
-      <div style="width: 5%">
-        <div id="tempJug1"></div>
-        <div id="tempJug2"></div>
-      </div>
-      <div class="board" id="ArmoAjedrez">
-      </div>
-    </section>
 
-    <section class="anuncio">
-      <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-      <p>Este espacio está reservado para anuncios.</p>
+    <section class="estadisticas-globales-wrapper">
+        <div class="estadisticas-list">
+            <div class="estadisticas-logo">
+                <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            </div>
+            <h1><i class="fas fa-globe-americas"></i> Estadisticas Globales</h1>
+            <hr>
+            <div class="estadisticas">
+                    <!--<div class="search-bar-wrapper">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar Jugador" id="buscador">
+                        </div>
+                    </div>-->
+                    <div class="stats-box" id="stats-box">
+
+                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
+
+                            <div class="info-left">
+                                <p class="posicion">#1</p>
+                                <div class="player-img">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <p class="nombre">ByJuanii_</p>
+                            </div>
+                            <div class="puntaje">
+                                2800
+                            </div>
+
+                        </a>
+
+                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
+
+                            <div class="info-left">
+                                <p class="posicion">#2</p>
+                                <div class="player-img">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <p class="nombre">ByJuanii_</p>
+                            </div>
+                            <div class="puntaje">
+                                2800
+                            </div>
+
+                        </a>
+
+                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
+
+                            <div class="info-left">
+                                <p class="posicion">#3</p>
+                                <div class="player-img">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <p class="nombre">ByJuanii_</p>
+                            </div>
+                            <div class="puntaje">
+                                2800
+                            </div>
+
+                        </a>
+
+                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
+
+                            <div class="info-left">
+                                <p class="posicion">#4</p>
+                                <div class="player-img">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <p class="nombre">ByJuanii_</p>
+                            </div>
+                            <div class="puntaje">
+                                2800
+                            </div>
+
+                        </a>
+
+                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
+
+                            <div class="info-left">
+                                <p class="posicion">#5</p>
+                                <div class="player-img">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <p class="nombre">ByJuanii_</p>
+                            </div>
+                            <div class="puntaje">
+                                2800
+                            </div>
+
+                        </a>
+
+                    </div>
+            </div>
+        </div>
     </section>
 
     <div id="footer"></div>
