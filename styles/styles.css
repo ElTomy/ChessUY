@@ -1276,6 +1276,44 @@ Loading Screen
   color: #7e7e7e;
 }
 
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile {
+  display: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a:hover {
+  background-color: #009dff;
+}
+
 .anuncio {
   background-color: rgba(51, 51, 51, 0.7);
   width: 80%;
@@ -2750,7 +2788,11 @@ Estadisticas Globales
 
 .estadisticas-globales-wrapper .estadisticas-list .estadisticas-logo {
   margin: 20px;
-  width: 300px;
+  max-width: 300px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas-logo img {
+  width: 100%;
 }
 
 .estadisticas-globales-wrapper .estadisticas-list h1 {
@@ -4866,6 +4908,11 @@ Responsive
   }
   .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
     display: none;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 

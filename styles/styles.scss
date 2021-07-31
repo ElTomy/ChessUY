@@ -932,6 +932,33 @@ Loading Screen
           }
         }
       }
+      .mas-mobile{
+        display: none;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          text-decoration: none;
+
+          width: 150px;
+          height: 40px;
+          background-color: #0076be;
+          color: white;
+          border-radius: 20px;
+
+          transition: .5s;
+        }
+        a:hover{
+          background-color: #009dff;
+        }
+      }
     }
   }
 }
@@ -1933,7 +1960,11 @@ Estadisticas Globales
 
     .estadisticas-logo{
       margin: 20px;
-      width: 300px;
+      max-width: 300px;
+
+      img{
+        width: 100%;
+      }
     }
     h1{
       color: white;
@@ -3565,6 +3596,9 @@ Responsive
           a{
             display: none;
           }
+        }
+        .mas-mobile{
+          display: flex;
         }
       }
     }

@@ -188,6 +188,9 @@ if(isset($_SESSION['usuario'])){
             </tr>
 
           </table>
+          <div class="mas-mobile">
+            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+          </div>
         </div>
       </div>
     </section>
