@@ -5,11 +5,14 @@ $server = new servidor();
 
 $torneos = $server->InfoTorneo();
 
+$sinTorn = false;
+
 if(count($torneos) < 1) {
-    echo "No hay torneos";
+    $sinTorn = true;
 } else {
     for($i=0;$i<count($torneos);$i++) {
-        echo "
+        if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) > date('Ymd') && str_replace('-', '', $torneos[$i]['Fecha_inicio']) > date('Ymd')) {
+            echo "
 
         <div class='torneo-left'>
             <img src='/ChessUY/media/images/Trofeo.png' alt=''>
@@ -29,9 +32,14 @@ if(count($torneos) < 1) {
         </div>
         
         ";
+        } else {
+            $sinTorn = true;
+        }
     }
 
 }
-
+if($sinTorn) {
+    echo "manco";
+}
 
 ?>
