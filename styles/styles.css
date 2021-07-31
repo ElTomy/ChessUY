@@ -1006,7 +1006,8 @@ Loading Screen
       grid-template-columns: 1fr 1fr;
 }
 
-.torneos-wrapper-index .torneos-grid .torneo-reciente, .torneos-wrapper-index .torneos-grid .mejores-jugadores {
+.torneos-wrapper-index .torneos-grid .torneo-reciente,
+.torneos-wrapper-index .torneos-grid .mejores-jugadores {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1129,8 +1130,8 @@ Loading Screen
   background-color: #0076be;
   color: white;
   border-radius: 20px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a i {
@@ -1176,8 +1177,8 @@ Loading Screen
   background-color: #0076be;
   color: white;
   border-radius: 20px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a:hover {
@@ -1192,7 +1193,6 @@ Loading Screen
 .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table {
   width: 100%;
   height: 100%;
-  border-collapse: collapse;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1202,36 +1202,29 @@ Loading Screen
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tbody {
-  width: 100%;
-}
-
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr {
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player {
   width: 100%;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-decoration: none;
+  border-radius: 30px;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #posicion {
-  width: 30px;
-  margin: 0 10px;
-  color: white;
-}
-
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #img {
-  width: 40px;
-}
-
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #img .user-img {
-  width: 40px;
-  height: 40px;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1241,47 +1234,64 @@ Loading Screen
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #0076be;
-  border-radius: 50%;
+  margin-left: 10px;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #img .user-img i {
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .posicion {
   color: white;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #nombre {
-  width: 100%;
-  margin: 0 10px;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .player-img {
+  width: 35px;
+  height: 35px;
+  background-color: #0076be;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #nombre a {
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .player-img i {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .nombre {
   text-decoration: none;
   color: white;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr #puntaje {
-  margin: 0 10px;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .puntaje {
   color: white;
+  margin-right: 10px;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(1) #puntaje {
-  color: #ce8900;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:hover {
+  background-color: #333;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(2) #puntaje {
-  color: #a15b00;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(1) .posicion {
+  color: #f7c045;
 }
 
-.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #posicion, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #nombre a, .torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table tr:nth-child(3) #puntaje {
-  color: #7e7e7e;
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(2) .posicion {
+  color: #a4b4b8;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(3) .posicion {
+  color: #b1835d;
 }
 
 .torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile {
-  display: none;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1306,8 +1316,8 @@ Loading Screen
   background-color: #0076be;
   color: white;
   border-radius: 20px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a:hover {
@@ -2940,15 +2950,15 @@ Estadisticas Globales
 }
 
 .estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(1) .posicion {
-  color: #F7C045;
+  color: #f7c045;
 }
 
 .estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(2) .posicion {
-  color: #A4B4B8;
+  color: #a4b4b8;
 }
 
 .estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(3) .posicion {
-  color: #B1835D;
+  color: #b1835d;
 }
 
 /*

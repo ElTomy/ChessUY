@@ -1,3 +1,12 @@
+<?php
+  include '../servidor.php';
+  $server= new servidor();
+
+  $usuarios_info = $server->Top();
+
+  $numero_usuarios = count($usuarios_info);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,80 +64,23 @@
                     </div>-->
                     <div class="stats-box" id="stats-box">
 
-                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
-
-                            <div class="info-left">
-                                <p class="posicion">#1</p>
-                                <div class="player-img">
-                                    <i class="fas fa-user"></i>
+                    <?php
+                      for($x = 1; $x <= $numero_usuarios; $x++){
+                        echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+                                <div class="info-left">
+                                    <p class="posicion">#'.$x.'</p>
+                                    <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
+                                        <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
+                                    </div>
+                                    <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
                                 </div>
-                                <p class="nombre">ByJuanii_</p>
-                            </div>
-                            <div class="puntaje">
-                                2800
-                            </div>
-
-                        </a>
-
-                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
-
-                            <div class="info-left">
-                                <p class="posicion">#2</p>
-                                <div class="player-img">
-                                    <i class="fas fa-user"></i>
+                                <div class="puntaje">
+                                  '.$usuarios_info[($x - 1)]['ELO'].'
                                 </div>
-                                <p class="nombre">ByJuanii_</p>
-                            </div>
-                            <div class="puntaje">
-                                2800
-                            </div>
 
-                        </a>
-
-                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
-
-                            <div class="info-left">
-                                <p class="posicion">#3</p>
-                                <div class="player-img">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <p class="nombre">ByJuanii_</p>
-                            </div>
-                            <div class="puntaje">
-                                2800
-                            </div>
-
-                        </a>
-
-                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
-
-                            <div class="info-left">
-                                <p class="posicion">#4</p>
-                                <div class="player-img">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <p class="nombre">ByJuanii_</p>
-                            </div>
-                            <div class="puntaje">
-                                2800
-                            </div>
-
-                        </a>
-
-                        <a class="player" href="/ChessUY/Profile/ByJuanii_">
-
-                            <div class="info-left">
-                                <p class="posicion">#5</p>
-                                <div class="player-img">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <p class="nombre">ByJuanii_</p>
-                            </div>
-                            <div class="puntaje">
-                                2800
-                            </div>
-
-                        </a>
+                            </a>';
+                      }
+                    ?>
 
                     </div>
             </div>

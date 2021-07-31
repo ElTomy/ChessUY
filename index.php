@@ -23,6 +23,7 @@ if(isset($_SESSION['usuario'])){
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
     <script src="Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
     
     <link
       rel="shortcut icon"
@@ -97,97 +98,8 @@ if(isset($_SESSION['usuario'])){
             <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
           <hr>
-          <table class="jugadores-table">
-
-            <tr>
-
-              <td id="posicion">
-                #1
-              </td>
-
-              <td id="img">
-                <div class="user-img">
-                  <i class="fas fa-user"></i>
-                </div>
-              </td>
-
-              <td id="nombre">
-                <a href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
-              </td>
-
-              <td id="puntaje">
-                2500
-              </td>
-              
-            </tr>
-
-            <tr>
-
-              <td id="posicion">
-                #2
-              </td>
-
-              <td id="img">
-                <div class="user-img">
-                  <i class="fas fa-user"></i>
-                </div>
-              </td>
-
-              <td id="nombre">
-                <a href="/ChessUY/Profile/EL7Seven">EL7Seven</a>
-              </td>
-
-              <td id="puntaje">
-                1650
-              </td>
-              
-            </tr>
-
-            <tr>
-
-              <td id="posicion">
-                #3
-              </td>
-
-              <td id="img">
-                <div class="user-img">
-                  <i class="fas fa-user"></i>
-                </div>
-              </td>
-
-              <td id="nombre">
-                <a href="/ChessUY/Profile/maty">maty</a>
-              </td>
-
-              <td id="puntaje">
-                1020
-              </td>
-              
-            </tr>
-
-            <tr>
-
-              <td id="posicion">
-                #4
-              </td>
-
-              <td id="img">
-                <div class="user-img">
-                  <i class="fas fa-user"></i>
-                </div>
-              </td>
-
-              <td id="nombre">
-                <a href="/ChessUY/Profile/El_Tomy">El_Tomy</a>
-              </td>
-
-              <td id="puntaje">
-                -1
-              </td>
-              
-            </tr>
-
-          </table>
+          <div class="jugadores-table" id="tabla-estadisticas">
+          </div>
           <div class="mas-mobile">
             <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
