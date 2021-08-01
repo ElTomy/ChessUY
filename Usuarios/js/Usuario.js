@@ -118,7 +118,7 @@ class Usuario{
         $.ajax({
             async: false,
             type: "POST",
-            url: "/ChessUY/Usuarios/php/comprueboRegistro.php",
+            url: "/cyberhydra/Usuarios/php/comprueboRegistro.php",
             data: {usuario:usuario},
             success: function(est){
                 var txt = est;
@@ -136,7 +136,7 @@ class Usuario{
         $.ajax({
             async: false,
             type: "POST",
-            url: "/ChessUY/Usuarios/php/guardoEsti.php",
+            url: "/cyberhydra/Usuarios/php/guardoEsti.php",
             data: {usuario:usuario, nivel:nivel},
             success: function(est){
                 var txt = est;

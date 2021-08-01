@@ -20,10 +20,10 @@ if(isset($_SESSION['usuario'])){
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Noticias/js/noticias.js"></script>
+    <script src="/cyberhydra/Noticias/js/noticias.js"></script>
     <script src="Javascript/Loader.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-    <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Usuarios/js/armoEstadisticas.js"></script>
     
     <link
       rel="shortcut icon"
@@ -80,13 +80,13 @@ if(isset($_SESSION['usuario'])){
         <div class="mejores-jugadores">
           <div class="mejores-jugadores-header">
             <h1>Mejores Jugadores</h1>
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/cyberhydra/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
           <hr>
           <div class="jugadores-table" id="tabla-estadisticas">
           </div>
           <div class="mas-mobile">
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/cyberhydra/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
         </div>
         
@@ -99,7 +99,7 @@ if(isset($_SESSION['usuario'])){
                   <div class="torneos-recientes">
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>
@@ -112,7 +112,7 @@ if(isset($_SESSION['usuario'])){
                     </div>
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>
@@ -125,7 +125,7 @@ if(isset($_SESSION['usuario'])){
                     </div>
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>

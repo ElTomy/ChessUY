@@ -119,7 +119,7 @@ function confTipo(opt) {
     opt = opt.value;
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Torneo/PHP/tipoTorn.php",
+        url: "/cyberhydra/Torneo/PHP/tipoTorn.php",
         data: { opt:opt },
         success: function (html) {
             document.getElementById("hola").innerHTML = html;
@@ -131,7 +131,7 @@ function opcReser(reser) {
     reser = reser.value;
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Torneo/PHP/resoNo.php",
+        url: "/cyberhydra/Torneo/PHP/resoNo.php",
         data: { reser:reser },
         success: function (html) {
             document.getElementById("penultOpt").innerHTML = html;
@@ -156,7 +156,7 @@ function quehacerRes() {
 if(document.getElementById('siLim').checked) {
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Torneo/PHP/cantFech.php",
+        url: "/cyberhydra/Torneo/PHP/cantFech.php",
         data: { ultopt:ultopt },
         success: function (html) {
             $("#quehacerRes").html(html);
@@ -171,7 +171,7 @@ if(document.getElementById('siLim').checked) {
 function quehacerRes() {
     if(document.getElementById('siLim').checked) {
         $.ajax({
-            url: "/ChessUY/Torneo/PHP/quehacerRes.php",
+            url: "/cyberhydra/Torneo/PHP/quehacerRes.php",
             success: function (html) {
                 $("#quehacerRes").html(html);
             }
@@ -184,7 +184,7 @@ function quehacerRes() {
 
 function cargAgen() {
     $.ajax({
-        url: "/ChessUY/Torneo/PHP/agenTorn.php",
+        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
         success: function (html) {
             $("#agenTorn").html(html);
         }
@@ -248,7 +248,7 @@ if(repe == false && num < 3) {
 }
 if(num <= 3) {
     $.ajax({
-        url: "/ChessUY/Torneo/PHP/agenTorn.php",
+        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
         type: "post",
         data: {reserv:reserv, num:num},
         success: function (styles) {
@@ -322,7 +322,7 @@ if(opt == 'avan') {
 
 if(transf) {
     $.ajax({
-        url: "/ChessUY/Torneo/PHP/agenTorn.php",
+        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
         type: "post",
         data: { tiempo : tempJug, 
                 ELO_Min : eloMin,
@@ -380,7 +380,7 @@ if(modo == 'simple') {
     }
     if(num <= 3) {
         $.ajax({
-            url: "/ChessUY/Torneo/PHP/marcFech.php",
+            url: "/cyberhydra/Torneo/PHP/marcFech.php",
             type: "post",
             data: {reserv:reserv, num:num},
             success: function (styles) {
@@ -454,7 +454,7 @@ function envaPHP() {
     
     if(transf) {
         $.ajax({
-            url: "/ChessUY/Torneo/PHP/tornaBD.php",
+            url: "/cyberhydra/Torneo/PHP/tornaBD.php",
             type: "post",
             data: { tiempo : tempJug, 
                     ELO_Min : eloMin,
@@ -473,7 +473,7 @@ function envaPHP() {
                   },
             success: function (exec) {
                 $.ajax({
-                    url: "/ChessUY/Modal/modalCrTorn.php",
+                    url: "/cyberhydra/Modal/modalCrTorn.php",
                     type: "POST",
                     data: {exec:exec},
                     success: function (data) {
@@ -529,3 +529,4 @@ function setVar(vari, modo) {
 function cerrar(){
     document.getElementById("modal").innerHTML = "";
   }
+}

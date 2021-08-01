@@ -22,7 +22,7 @@ $( document ).ready(function(){
 
 function buscador(nombre){
     $.ajax({
-        url: "/ChessUY/Profile/PHP/buscar.php",
+        url: "/cyberhydra/Profile/PHP/buscar.php",
         type: "POST",
         data: {Nombre: nombre},
         success: function (data) {

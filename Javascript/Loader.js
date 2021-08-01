@@ -1,10 +1,10 @@
 window.onload = function(){
     $(".loader-wrapper").fadeOut("slow");
 
-    $("#header").load("/ChessUY/Page/header.php");
-    $("#footer").load("/ChessUY/Page/footer.html");
+    $("#header").load("/cyberhydra/Page/header.php");
+    $("#footer").load("/cyberhydra/Page/footer.html");
 
-    $("#torn-InscAct").load("/ChessUY/Torneo/PHP/mostTorn.php");
+    $("#torn-InscAct").load("/cyberhydra/Torneo/PHP/mostTorn.php");
 };
 
 function Modal(numero_mensaje){

@@ -188,7 +188,7 @@ $Ajedrez .='
                     <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                 </div>
                 <div class="jugadores">
-                    <a href="/ChessUY/Profile/'.$usu.'">
+                    <a href="/cyberhydra/Profile/'.$usu.'">
                         <div class="JugadorUno">
                             <div class="jugador-img" style="background-color:'.$colFondo.'">
                                 <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
@@ -201,7 +201,7 @@ $Ajedrez .='
                       
                     </a>
                     <h1>vs</h1>
-                    <a href="/ChessUY/Profile/BOT">
+                    <a href="/cyberhydra/Profile/BOT">
                         <div class="JugadorDos">
                             <div class="jugador-body">
                                 <h1 '.$colorJugador2.'>ALFI ᴮᴼᵀ</h1>
@@ -364,19 +364,19 @@ $Ajedrez .='
                                 <div class="chat-box">
                                     <div class="mensaje1-wrapper">
                                         <div class="mensaje1">
-                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
                                         </div>
                                     </div>
                                     <div class="mensaje2-wrapper">
                                         <div class="mensaje2">
-                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit assumenda asperiores dolores explicabo rem recusandae unde aut alias rerum soluta!</p>
                                         </div>
                                     </div>
                                     <div class="mensaje1-wrapper">
                                         <div class="mensaje1">
-                                            <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                                            <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
                                         </div>
                                     </div>

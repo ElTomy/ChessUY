@@ -18,16 +18,16 @@ $index ='
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Noticias/js/noticias.js"></script>
-    <script src="/ChessUY/Javascript/Loader.js"></script>';
+    <script src="/cyberhydra/Noticias/js/noticias.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>';
     if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
-      $index .='<script src="/ChessUY/Javascript/functionIndex2.js"></script>';
+      $index .='<script src="/cyberhydra/Javascript/functionIndex2.js"></script>';
     }
     
 $index .='
-    <script src="/ChessUY/Usuarios/js/Usuario.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-    <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
+    <script src="/cyberhydra/Usuarios/js/Usuario.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Usuarios/js/armoEstadisticas.js"></script>
  
     <link
       rel="shortcut icon"
@@ -84,9 +84,9 @@ $index .='
               <p class="admin"><i class="fas fa-user"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/ChessUY/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/cyberhydra/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/cyberhydra/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/cyberhydra/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
               </div>
             </section>';
     }
@@ -102,7 +102,7 @@ $index .='
                     <hr>
                     <div class="torneo">
                       <div class="torneo-left">
-                        <img src="/ChessUY/media/images/Trofeo.png" alt="">
+                        <img src="/cyberhydra/media/images/Trofeo.png" alt="">
                         <div class="participantes">
                           <p>12 <i class="fas fa-users"></i></p>
                         </div>
@@ -114,7 +114,7 @@ $index .='
                         </div>
                         <div class="torneo-buttons">
                           <a href=""><i class="fas fa-plus-circle"></i> Unirse</a>
-                          <a href="/ChessUY/Usuarios/EstadisticasTorneo.php"><i class="fas fa-chart-line"></i> Estadisticas</a>
+                          <a href="/cyberhydra/Usuarios/EstadisticasTorneo.php"><i class="fas fa-chart-line"></i> Estadisticas</a>
                         </div>
                       </div>
                     </div>
@@ -122,7 +122,7 @@ $index .='
                   <div class="mejores-jugadores">
                     <div class="mejores-jugadores-header">
                       <h1>Mejores Jugadores</h1>
-                      <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+                      <a href="/cyberhydra/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
                     </div>
                     <hr>
                     <div class="jugadores-table" id="tabla-estadisticas">
@@ -137,7 +137,7 @@ $index .='
                   <div class="torneos-recientes">
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>
@@ -150,7 +150,7 @@ $index .='
                     </div>
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>
@@ -163,7 +163,7 @@ $index .='
                     </div>
                     <div class="torneo">
                       <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
+                        <img src="/cyberhydra/media/images/Trofeo.png">
                       </div>
                       <div class="torneo-right-side">
                         <h1>Nombre del Torneo</h1>

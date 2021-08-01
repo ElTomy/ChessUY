@@ -33,7 +33,7 @@
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
-                                <a class='profile' href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'>
+                                <a class='profile' href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'>
                                     <div class='session-image' style='background-color: ". $ColorFondo ."'><i class='" . $Icono ."' style='color: ". $ColorIcono ."'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";

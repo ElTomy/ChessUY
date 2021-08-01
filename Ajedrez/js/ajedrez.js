@@ -1799,7 +1799,7 @@ function JaqueMate(){
         finalizado = true;
         simbolo = "#";
         $.ajax({
-            url: "/ChessUY/Modal/modalVictoria.php",
+            url: "/cyberhydra/Modal/modalVictoria.php",
             type: "POST",
             data: {turno:Turno},
             success: function (data) {
@@ -1817,7 +1817,7 @@ function JaqueMate(){
 function Derrota(){
     finalizado = true;
     $.ajax({
-        url: "/ChessUY/Modal/modalDerrota.php",
+        url: "/cyberhydra/Modal/modalDerrota.php",
         type: "POST",
         data: {turno:Turno},
         success: function (data) {
@@ -1909,7 +1909,7 @@ function Rey_Haogado(color){
 }
 function Acuerdo_Mutuo(){   
     $.ajax({
-        url:  "/ChessUY/Modal/modalEsperoTablas.php",
+        url:  "/cyberhydra/Modal/modalEsperoTablas.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -1920,7 +1920,7 @@ function Acuerdo_Mutuo(){
 function aceptar_tablas(){
     finalizado = true;
     $.ajax({
-        url: "/ChessUY/Modal/modalTablasAceptadas.php",
+        url: "/cyberhydra/Modal/modalTablasAceptadas.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -1930,7 +1930,7 @@ function aceptar_tablas(){
 }
 function rechazar_tablas(){
     $.ajax({
-        url: "/ChessUY/Modal/modalTablasRechazadas.php",
+        url: "/cyberhydra/Modal/modalTablasRechazadas.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -1963,7 +1963,7 @@ function Falta_de_Piezas(){
 function llamoTablas(){
     finalizado = true;
     $.ajax({
-        url: "/ChessUY/Modal/modalTablas.php",
+        url: "/cyberhydra/Modal/modalTablas.php",
         type: "POST",
         data: {},
         success: function (data) {

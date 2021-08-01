@@ -16,7 +16,7 @@ function log(){
       var log = user.login(usuario, contra);
       
         if(log == true){
-          location.href = "/ChessUY/Inicio";
+          location.href = "/cyberhydra/Inicio";
       }else{
         var numero_mensaje = 1;
 
@@ -78,7 +78,7 @@ function estadisticasInicial(){
 
     if(est == true){
       $.ajax({
-        url: "/ChessUY/Modal/modalELO.php",
+        url: "/cyberhydra/Modal/modalELO.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -87,8 +87,8 @@ function estadisticasInicial(){
     });
     }else{
       $(".loader-wrapper").fadeOut("slow");
-      $("#header").load("/ChessUY/Page/header.php");
-      $("#footer").load("/ChessUY/Page/footer.html");
+      $("#header").load("/cyberhydra/Page/header.php");
+      $("#footer").load("/cyberhydra/Page/footer.html");
     }
 }
 
@@ -100,7 +100,7 @@ function guardoESTI(x){
   if(guardo == true){
     $(".modal").hide();
     $(".loader-wrapper").fadeOut("slow");
-    $("#header").load("/ChessUY/Page/header.php");
-    $("#footer").load("/ChessUY/Page/footer.html");
+    $("#header").load("/cyberhydra/Page/header.php");
+    $("#footer").load("/cyberhydra/Page/footer.html");
   }
 }

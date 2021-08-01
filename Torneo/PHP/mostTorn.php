@@ -15,7 +15,7 @@ if(count($torneos) < 1) {
             echo "
 
         <div class='torneo-left'>
-            <img src='/ChessUY/media/images/Trofeo.png' alt=''>
+            <img src='/cyberhydra/media/images/Trofeo.png' alt=''>
             <div class='participantes'>
                 <p>". $torneos[$i]['Numero_Participantes'] ." <i class='fas fa-users'></i></p>
             </div>
@@ -27,7 +27,7 @@ if(count($torneos) < 1) {
             </div>
             <div class='torneo-buttons'>
                 <a href=''><i class='fas fa-plus-circle'></i> Unirse</a>
-                <a href='/ChessUY/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
+                <a href='/cyberhydra/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
             </div>
         </div>
         
