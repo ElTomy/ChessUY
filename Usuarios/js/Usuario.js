@@ -96,18 +96,55 @@ class Usuario{
             data: {usuario:usuario,pass:pass},
             success: function(log){
                 var txt = log;
-                var log2 = JSON.parse(txt);
-                if(log2.error == true){
+                var est2 = JSON.parse(txt);
+
+                if(est2.error == true){
                     x = false;
                 }else{
-                    sessionStorage.setItem("usuario", log2.usuario);
-                    sessionStorage.setItem("tipo", log2.tipo);
+                    sessionStorage.setItem("usuario", est2.usuario);
+                    sessionStorage.setItem("tipo", est2.tipo);
                     x = true;
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 alert("Status: " + textStatus); alert("Error: " + errorThrown); 
             }   
+        });
+        return x;
+    }
+
+    comprueboEstadisticas(usuario){ 
+        var x= false;
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/ChessUY/Usuarios/php/comprueboRegistro.php",
+            data: {usuario:usuario},
+            success: function(est){
+                var txt = est;
+                var est2 = JSON.parse(txt);
+                if(est2[0] == null){
+                    x = true;
+                }
+            },  
+        });
+        return x;
+    }
+
+    guardoEST_I(usuario, nivel){ 
+        var x= false;
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/ChessUY/Usuarios/php/guardoEsti.php",
+            data: {usuario:usuario, nivel:nivel},
+            success: function(est){
+                var txt = est;
+                var est2 = JSON.parse(txt);
+                if(est2 == true){
+                    x = true;
+                }
+            },  
         });
         return x;
     }

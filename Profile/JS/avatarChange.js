@@ -32,7 +32,7 @@ function guardar(session){
     var color_fondo = document.getElementById("colorbackground").value;
 
     $.ajax({
-        url: "/cyberhydra/Profile/PHP/enviarAvatar.php",
+        url: "/ChessUY/Profile/PHP/enviarAvatar.php",
         type: "POST",
         data: {Usuario: usuario, Icono: icono, ColorIcono: color_icono ,ColorFondo: color_fondo},
         success: function (execute) {

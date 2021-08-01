@@ -4,8 +4,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 RewriteRule ^Inicio Index2.php
-RewriteRule ^Admin /cyberhydra/Usuarios/Administrador/Solicitud/PruebaSolicitudes.php
-RewriteRule ^Lista /cyberhydra/Usuarios/Administrador/EditarUsuarios/ListaUsuarios.html
+RewriteRule ^Admin /ChessUY/Usuarios/Administrador/Solicitud/PruebaSolicitudes.php
+RewriteRule ^Lista /ChessUY/Usuarios/Administrador/EditarUsuarios/ListaUsuarios.html
+RewriteRule ^Torneos /ChessUY/Torneo/PHP/Torneos.php
 
 
 ErrorDocument 404 /cyberhydra/Error/404.html

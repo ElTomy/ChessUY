@@ -2,7 +2,7 @@
     <div class="header-logo">
 
         <?php
-            include '/cyberhydra/servidor.php';
+            include '../servidor.php';
             $server= new servidor();
             session_start();
        
@@ -33,7 +33,7 @@
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
-                                <a class='profile' href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'>
+                                <a class='profile' href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'>
                                     <div class='session-image' style='background-color: ". $ColorFondo ."'><i class='" . $Icono ."' style='color: ". $ColorIcono ."'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
@@ -69,10 +69,11 @@
     <div id="links-mobile" style="transform: translateY(-120%);">
         
         <div class="links-wrapper">
-            <div class="profile-picture">
-                <i class="fas fa-user"></i>
-            </div>
             <?php
+            echo '  <div class="profile-picture" style="background-color: '. $ColorFondo .'">
+                        <i class="'.$Icono.'" style="color: '.$ColorIcono.'"></i>
+                    </div>';
+            
                 if(isset($_SESSION['usuario'])){
                     echo "<h2>" . $_SESSION['usuario'] . "</h2>";
                     if($_SESSION['tipo'] == 0){

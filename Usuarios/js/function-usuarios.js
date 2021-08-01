@@ -16,26 +16,7 @@ function log(){
       var log = user.login(usuario, contra);
       
         if(log == true){
-          var tipo = sessionStorage.getItem("tipo");
-          var mensaje;
-          switch (tipo) {
-            case "0": //admin
-              mensaje = 4;
-              break;
-            case "1": //jugador
-              mensaje = 4;
-              break;
-            case "2": //arbitro
-              mensaje = 4;
-              break;
-            case "3": //periodista
-              mensaje = 4;
-              break;
-              default:
-                
-                console.log('error');
-          }
-          location.href = "/cyberhydra/Inicio";
+          location.href = "/ChessUY/Inicio";
       }else{
         var numero_mensaje = 1;
 
@@ -88,4 +69,38 @@ function enterLogin(){
             log();
            }
           }
+}
+function estadisticasInicial(){
+
+    let us = sessionStorage.getItem('usuario');
+    let user = new Usuario();
+    var est = user.comprueboEstadisticas(us);
+
+    if(est == true){
+      $.ajax({
+        url: "/ChessUY/Modal/modalELO.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+    });
+    }else{
+      $(".loader-wrapper").fadeOut("slow");
+      $("#header").load("/ChessUY/Page/header.php");
+      $("#footer").load("/ChessUY/Page/footer.html");
+    }
+}
+
+function guardoESTI(x){
+  let us = sessionStorage.getItem('usuario');
+  let user = new Usuario();
+  var guardo = user.guardoEST_I(us, x);
+  //modal avisando que se guardo
+  if(guardo == true){
+    $(".modal").hide();
+    $(".loader-wrapper").fadeOut("slow");
+    $("#header").load("/ChessUY/Page/header.php");
+    $("#footer").load("/ChessUY/Page/footer.html");
+  }
 }

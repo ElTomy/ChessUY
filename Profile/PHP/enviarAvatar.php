@@ -1,5 +1,5 @@
 <?php
-    include '/cyberhydra/servidor.php';
+    include '../../servidor.php';
     $server= new servidor();
     session_start();
 

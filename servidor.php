@@ -1,8 +1,9 @@
 <?php
 class servidor
 {
-    function conectar(){
-        if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')) {
+    function conectar()
+    {
+        if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra') /*mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')*/) {
             echo "No se pudo conectar a la base de datos";
             exit;
         } else {
@@ -71,7 +72,7 @@ class servidor
         $us = "";
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail,  $Icono, $ColorIcono, $ColorFondo);
             if ($stmts->fetch()) {
                 if ($us == null) {
                     $stmts->close();
@@ -80,8 +81,13 @@ class servidor
                 } else {
                     $stmts->close();
                     session_start();
+
+                    $_SESSION['icono'] = $Icono;
+                    $_SESSION['coloricono'] = $ColorIcono;
+                    $_SESSION['colorfondo'] = $ColorFondo;
                     $_SESSION['usuario'] = $us;
                     $_SESSION['tipo'] = $tipo;
+
                     $info = array('error' => false, 'usuario' => $us, 'tipo' => $tipo);
                     return $info;
                 }
@@ -99,12 +105,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
+    function Register($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo){
         $conn = $this->conectar();
-        $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,@x)";
+        $sql = "CALL Register(?,?,?,?,?,?,?,?,?,?,?,?,?,?,@x)";
         $stmts = $conn->prepare($sql);
 
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
         if ($stmts->execute()) {
             $resultado = $conn->query('SELECT @x as p_out');
             $x = $resultado->fetch_assoc();
@@ -143,10 +149,13 @@ class servidor
     //
     //
     function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
+        $Icono='fas fa-code';
+        $ColorIcono='#f8b703';
+        $ColorFondo='#222222';
         $conn = $this->conectar();
-        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("isiisssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+        $stmts->bind_param("isiissssssssss", $tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono,  $ColorIcono ,   $ColorFondo);
         $stmts->execute();
     }
     //
@@ -186,9 +195,54 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoTorneo(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoTorneo()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($ID_Torneo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $Primero, $Segundo, $Tercero, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $tiempo, $InicioTorneo);
+            while ($stmts->fetch()) {
+                $data = array('ID_Torneo' => $ID_Torneo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Fecha_fin' => $Fecha_fin, 'Numero_Participantes' => $Numero_Participantes, 'Primero' => $Primero, 'Segundo' => $Segundo, 'Tercero' => $Tercero, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'tiempo' => $tiempo, 'InicioTorneo' => $InicioTorneo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function Top(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL Top()";
+        $stmts = $conn->prepare($sql);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo, $ELO);
+            while ($stmts->fetch()) {
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo, 'ELO'  => $ELO);
                 $info[] = $data;
             }
             $stmts->close();
@@ -209,9 +263,9 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail);
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo);
             while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail);
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo);
                 return $data;
             }
             $stmts->close();
@@ -229,8 +283,12 @@ class servidor
         $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
+        $execute = false;
         $stmts->bind_param("iiissisiisiis",$tiempo,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo);
-        $stmts->execute();
+        if($stmts->execute()) {
+            $execute = true;
+        }
+        echo $execute;
     }
     //
     //
@@ -259,12 +317,36 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function GuardoFotoPerfil($Usuario, $NumeroIcono, $ColorIcono, $ColorFondo){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoFotoPerfil(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
+        if($stmts->execute()){
+            $execute = true;
+            $_SESSION['icono'] = $NumeroIcono;
+            $_SESSION['coloricono'] = $ColorIcono;
+            $_SESSION['colorfondo'] = $ColorFondo;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function AgregarEstadistica($Usuario, $ELO, $Victorias, $Derrotas, $Tablas, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos){
         $conn = $this->conectar();
         $sql = "CALL AgregarEstadistica(?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
+        $execute = false;
 
         $stmts->bind_param("isiiiiiii",$ELO,$Usuario,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos);
-        $stmts->execute();
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
     }
 }

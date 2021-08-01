@@ -422,9 +422,9 @@ footer .footer-body .cyberhydra img {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 16;
   width: 100%;
   height: 100vh;
   display: -webkit-box;
@@ -476,6 +476,20 @@ footer .footer-body .cyberhydra img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.modal .modal-wrapper .modal-content .modal-trofeo {
+  width: 100%;
+}
+
+.modal .modal-wrapper .modal-content .modal-trofeo img {
+  width: 50%;
+  -webkit-animation: trofeo-animation 2s infinite linear alternate;
+          animation: trofeo-animation 2s infinite linear alternate;
+}
+
+.modal .modal-wrapper .modal-content #jugador {
+  color: #ffaa00;
 }
 
 .modal .modal-wrapper .modal-content h1 {
@@ -555,7 +569,8 @@ footer .footer-body .cyberhydra img {
 }
 
 .modal .modal-wrapper .modal-content .button-wrapper button #Negro {
-  color: linear-gradient(90deg, #bebebe 0%, #262626 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#262626));
+  background: linear-gradient(90deg, #bebebe 0%, #262626 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -593,8 +608,8 @@ footer .footer-body .cyberhydra img {
   border-radius: 3em;
   color: white;
   cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .modal .modal-wrapper .modal-content .card button:hover {
@@ -644,6 +659,11 @@ footer .footer-body .cyberhydra img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: -100px;
+}
+
+.Solicitudes-wrapper img {
+  max-width: 400px;
 }
 
 .Solicitudes-wrapper h1 {
@@ -736,6 +756,14 @@ footer .footer-body .cyberhydra img {
   width: 150px;
 }
 
+.Solicitudes-wrapper tr:nth-last-child(1) td:nth-child(1) {
+  border-radius: 0 0 0 30px;
+}
+
+.Solicitudes-wrapper tr:nth-last-child(1) td:nth-child(8) {
+  border-radius: 0 0 30px 0;
+}
+
 #nohaysolicitudes {
   width: 100%;
   height: calc(100vh - 100px);
@@ -809,7 +837,7 @@ Loading Screen
 .loader-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 3;
   top: 0;
   left: 0;
@@ -951,6 +979,525 @@ Loading Screen
   min-height: 100vh;
 }
 
+.torneos-wrapper-index {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+  background-color: rgba(51, 51, 51, 0.7);
+}
+
+.torneos-wrapper-index .torneos-grid {
+  width: 90%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente,
+.torneos-wrapper-index .torneos-grid .mejores-jugadores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo-reciente-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 40px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo-reciente-header h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  -ms-grid-columns: 30% 1fr;
+      grid-template-columns: 30% 1fr;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left img {
+  width: 90%;
+  max-width: 200px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-left .participantes p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-info h2 {
+  color: #ffaa00;
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-info p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  margin: 5px;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a i {
+  margin: 0 5px;
+}
+
+.torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right .torneo-buttons a:hover {
+  background-color: #009dff;
+  width: 170px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a:hover {
+  background-color: #009dff;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .posicion {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .player-img {
+  width: 35px;
+  height: 35px;
+  background-color: #0076be;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .player-img i {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .info-left .nombre {
+  text-decoration: none;
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player .puntaje {
+  color: white;
+  margin-right: 10px;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:hover {
+  background-color: #333;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(1) .posicion {
+  color: #f7c045;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(2) .posicion {
+  color: #a4b4b8;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .jugadores-table .player:nth-child(3) .posicion {
+  color: #b1835d;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile {
+  width: 100%;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile a:hover {
+  background-color: #009dff;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper {
+  width: 85%;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneos-recientes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo {
+  width: 400px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #2b2b2b;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-left-side {
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-left-side img {
+  width: 100%;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side h1 {
+  color: #ffaa00;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side p {
+  color: white;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons button {
+  width: 120px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper-index .torneos-recientes-wrapper .torneo .torneo-right-side .torneo-right-buttons button:hover {
+  background-color: #009dff;
+}
+
+.anuncio {
+  background-color: rgba(51, 51, 51, 0.7);
+  width: 80%;
+  height: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.anuncio h1 {
+  color: #ffaa00;
+}
+
+.anuncio p {
+  color: #aaa;
+}
+
 .noticias-wrapper {
   width: 100%;
   display: -webkit-box;
@@ -966,20 +1513,24 @@ Loading Screen
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 20px;
   background-color: rgba(51, 51, 51, 0.7);
 }
 
 .noticias-wrapper .noticias-grid {
   width: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .noticias-wrapper .noticias-grid .noticia-wrapper {
   padding: 20px 0;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2208,10 +2759,17 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list .search .search-box {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 10px;
 }
 
@@ -2336,6 +2894,31 @@ Buscar Jugadores
   color: #fcba03;
 }
 
+.search-wrapper .search-list .search .search-box .player-not-found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 200px;
+}
+
+.search-wrapper .search-list .search .search-box .player-not-found h1 {
+  color: #ffaa00;
+}
+
+.search-wrapper .search-list .search .search-box .player-not-found p {
+  color: white;
+}
+
 .search-wrapper .search-list h1 {
   color: white;
   font-weight: lighter;
@@ -2345,6 +2928,211 @@ Buscar Jugadores
   margin: 20px 0;
   width: 80%;
   border: 1px solid white;
+}
+
+/*
+
+
+Estadisticas Globales
+
+
+*/
+.estadisticas-globales-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list {
+  width: 100%;
+  max-width: 700px;
+  background-color: #111;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas-logo {
+  margin: 20px;
+  max-width: 300px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas-logo img {
+  width: 100%;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list h1 {
+  color: white;
+  font-weight: normal;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list hr {
+  width: 90%;
+  margin: 20px 0;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo {
+  width: 90%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40% 1fr;
+      grid-template-columns: 40% 1fr;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-left img {
+  max-width: 150px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-left p {
+  color: white;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-right h1 {
+  margin-top: 10px;
+  color: #ffaa00;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .torneo .torneo-right p {
+  color: #aaa;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas {
+  width: 95%;
+  background-color: #222;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box {
+  margin: 10px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .info-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 10px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .info-left .posicion {
+  color: white;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .info-left .player-img {
+  width: 35px;
+  height: 35px;
+  background-color: #0076be;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .info-left .player-img i {
+  color: white;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .info-left .nombre {
+  text-decoration: none;
+  color: white;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player .puntaje {
+  color: white;
+  margin-right: 10px;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:hover {
+  background-color: #333;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(1) .posicion {
+  color: #f7c045;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(2) .posicion {
+  color: #a4b4b8;
+}
+
+.estadisticas-globales-wrapper .estadisticas-list .estadisticas .stats-box .player:nth-child(3) .posicion {
+  color: #b1835d;
 }
 
 /*
@@ -2373,6 +3161,29 @@ Buscar Jugadores
           align-items: center;
   width: 100%;
   height: calc(98vh - 100px);
+  margin-bottom: 20px;
+}
+
+.board-wrapper #tempJug1,
+.board-wrapper #tempJug2 {
+  height: 30px;
+  background-color: #222;
+  border-radius: 1em;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper #tempJug1 i,
+.board-wrapper #tempJug2 i {
+  margin-right: 5px;
 }
 
 .board-wrapper .board {
@@ -2403,7 +3214,8 @@ Buscar Jugadores
   margin: 2%;
 }
 
-.board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+.board-wrapper .board .first-player-mobile,
+.board-wrapper .board .second-player-mobile {
   margin: 10px 30px;
   display: none;
   -webkit-box-pack: start;
@@ -2414,7 +3226,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .first-player-wrapper, .board-wrapper .board .second-player-mobile .first-player-wrapper {
+.board-wrapper .board .first-player-mobile .first-player-wrapper,
+.board-wrapper .board .second-player-mobile .first-player-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2426,7 +3239,8 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .profile-body-picture, .board-wrapper .board .second-player-mobile .profile-body-picture {
+.board-wrapper .board .first-player-mobile .profile-body-picture,
+.board-wrapper .board .second-player-mobile .profile-body-picture {
   background-color: #0076be;
   width: 40px;
   height: 40px;
@@ -2442,22 +3256,26 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .first-player-mobile .profile-body-picture i, .board-wrapper .board .second-player-mobile .profile-body-picture i {
+.board-wrapper .board .first-player-mobile .profile-body-picture i,
+.board-wrapper .board .second-player-mobile .profile-body-picture i {
   color: white;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body, .board-wrapper .board .second-player-mobile .profile-avatar-body {
+.board-wrapper .board .first-player-mobile .profile-avatar-body,
+.board-wrapper .board .second-player-mobile .profile-avatar-body {
   margin: 0 10px;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body h1, .board-wrapper .board .second-player-mobile .profile-avatar-body h1 {
+.board-wrapper .board .first-player-mobile .profile-avatar-body h1,
+.board-wrapper .board .second-player-mobile .profile-avatar-body h1 {
   margin: 0;
   font-size: 1rem;
   font-weight: lighter;
   color: white;
 }
 
-.board-wrapper .board .first-player-mobile .profile-avatar-body p, .board-wrapper .board .second-player-mobile .profile-avatar-body p {
+.board-wrapper .board .first-player-mobile .profile-avatar-body p,
+.board-wrapper .board .second-player-mobile .profile-avatar-body p {
   font-size: 0.8rem;
   margin: 0;
   color: #0076be;
@@ -2520,7 +3338,8 @@ Buscar Jugadores
       grid-template-rows: repeat(8, 1fr);
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2534,7 +3353,8 @@ Buscar Jugadores
   text-align: center;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .seleccionado, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .seleccionado {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .seleccionado,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .seleccionado {
   width: 100%;
   height: 100%;
   display: none;
@@ -2550,7 +3370,8 @@ Buscar Jugadores
           flex-direction: column;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .celda, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .celda {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .celda,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .celda {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2564,22 +3385,37 @@ Buscar Jugadores
   text-align: center;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell i, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell i,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 i {
   position: absolute;
   z-index: 4;
   font-size: 2rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-number,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-number {
   font-size: 0.9rem;
   position: absolute;
   color: #ffffff80;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell .board-text,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 .board-text {
   font-size: 0.9rem;
   position: absolute;
   color: #ffffff80;
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:hover > i,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2:hover > i {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .board-wrapper .board .ajedrez-wrapper .ajedrez .cell:nth-child(1) {
@@ -2598,14 +3434,16 @@ Buscar Jugadores
   border-radius: 0 0 10px 0;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Negro,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Negro {
   background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#262626));
   background: linear-gradient(90deg, #bebebe 0%, #262626 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Blanco, .board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Blanco {
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell #Blanco,
+.board-wrapper .board .ajedrez-wrapper .ajedrez .cell2 #Blanco {
   background: -webkit-gradient(linear, left top, right top, from(#ffaa00), to(#814e00));
   background: linear-gradient(90deg, #ffaa00 0%, #814e00 100%);
   -webkit-background-clip: text;
@@ -2632,7 +3470,6 @@ Buscar Jugadores
   height: 100%;
   background-color: #222;
   border-radius: 30px;
-  margin: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2643,6 +3480,234 @@ Buscar Jugadores
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.board-wrapper .board .movimientos .menu-bottom {
+  width: 100%;
+  height: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.board-wrapper .board .movimientos .select-wrapper {
+  width: 95%;
+  height: 100%;
+  background-color: #444;
+  border-radius: 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  border-radius: 30px 30px 0 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  background-color: transparent;
+  border-radius: 30px 30px 0 0;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-type .active {
+  background-color: #444;
+  z-index: 15;
+  font-size: 14px;
+  -webkit-box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  height: calc(100% - 50px);
+  max-height: 330px;
+  overflow: auto;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  border-radius: 0 0 30px 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box {
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: auto;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 {
+  position: relative;
+  max-width: 300px;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  border-radius: 20px 20px 20px 0;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 a {
+  font-size: 15px;
+  margin: 0;
+  text-decoration: none;
+  color: #009dff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 a:hover {
+  color: #00fff2;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje1-wrapper .mensaje1 p {
+  color: white;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 {
+  position: relative;
+  max-width: 300px;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #0076be;
+  border-radius: 20px 20px 0 20px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 a {
+  font-size: 15px;
+  margin: 0;
+  text-decoration: none;
+  color: #222;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 a:hover {
+  color: #000;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-box .mensaje2-wrapper .mensaje2 p {
+  color: white;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #333;
+  border-radius: 0 0 30px 30px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input input {
+  width: calc(100% - 70px);
+  height: 35px;
+  margin-left: 10px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  text-indent: 10px;
+  background-color: white;
+  font-family: "Roboto", "sans-serif";
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content .chat .chat-input button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table {
+  width: 100%;
+  max-height: 100%;
+  background-color: #333;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr th {
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td {
+  height: 30px;
+  background-color: #444;
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td #Negro {
+  background-color: grey;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.board-wrapper .board .movimientos .select-wrapper .box-content table tr td #Blanco {
+  background-color: #fcba03;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .board-wrapper .board .movimientos .match-players {
@@ -2692,51 +3757,26 @@ Buscar Jugadores
   font-weight: lighter;
 }
 
-.board-wrapper .board .movimientos .table-wrapper {
-  width: 95%;
-  height: 100%;
-  overflow: auto;
-}
-
-.board-wrapper .board .movimientos table {
-  width: 100%;
-  max-height: 100%;
-  background-color: #333;
-  border-radius: 30px;
-}
-
-.board-wrapper .board .movimientos table tr th {
+.board-wrapper .board .movimientos button {
+  background-color: #0076be;
+  width: 150px;
+  height: 60px;
+  margin-top: 10px;
   color: white;
-  text-align: center;
-  font-weight: lighter;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.board-wrapper .board .movimientos table tr td {
-  height: 30px;
-  background-color: #444;
-  color: white;
-  text-align: center;
-  font-weight: lighter;
+.board-wrapper .board .movimientos button i {
+  margin: 0 5px;
 }
 
-.board-wrapper .board .movimientos table tr td #Negro {
-  background-color: grey;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.board-wrapper .board .movimientos table tr td #Blanco {
-  background-color: #fcba03;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.board-wrapper .board .movimientos table tr:nth-last-child(1) td:nth-last-child(2) {
-  border-radius: 0 0 0 30px;
-}
-
-.board-wrapper .board .movimientos table tr:nth-last-child(1) td:nth-last-child(1) {
-  border-radius: 0 0 30px 0;
+.board-wrapper .board .movimientos button:hover {
+  background-color: #009dff;
+  font-size: 1em;
 }
 
 .board-wrapper .board .movimientos .movimientos-img {
@@ -2772,10 +3812,30 @@ Buscar Jugadores
 
 .board-wrapper .board .movimientos .jugadores a {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno, .board-wrapper .board .movimientos .jugadores .JugadorDos {
+.board-wrapper .board .movimientos .jugadores a #tempJug1 {
+  width: 100%;
+  height: 30px;
+  color: white;
+}
+
+.board-wrapper .board .movimientos .jugadores .JugadorUno,
+.board-wrapper .board .movimientos .jugadores .JugadorDos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2788,7 +3848,8 @@ Buscar Jugadores
   margin: 0 15px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img {
   width: 50px;
   height: 50px;
   background-color: #0076be;
@@ -2805,16 +3866,19 @@ Buscar Jugadores
           align-items: center;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img i, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img i {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-img i,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-img i {
   color: white;
   font-size: 20px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body {
   width: 110px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body h1, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body h1 {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body h1,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body h1 {
   color: white;
   margin: 0;
   white-space: nowrap;
@@ -2825,13 +3889,15 @@ Buscar Jugadores
   transition: 0.2s;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body p, .board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body p {
+.board-wrapper .board .movimientos .jugadores .JugadorUno .jugador-body p,
+.board-wrapper .board .movimientos .jugadores .JugadorDos .jugador-body p {
   margin: 2px 0;
   color: #0076be;
   font-size: 13px;
 }
 
-.board-wrapper .board .movimientos .jugadores .JugadorUno:hover h1, .board-wrapper .board .movimientos .jugadores .JugadorDos:hover h1 {
+.board-wrapper .board .movimientos .jugadores .JugadorUno:hover h1,
+.board-wrapper .board .movimientos .jugadores .JugadorDos:hover h1 {
   color: #0076be;
 }
 
@@ -3174,13 +4240,248 @@ Editar perfil
 /*
 
 
+Avatar Profile
+
+
+*/
+.avatar-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.avatar-wrapper .avatar-profile {
+  width: 80%;
+  height: 100%;
+  background-color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 1em;
+}
+
+.avatar-wrapper .avatar-profile .avatar-profile-wrapper {
+  width: 100%;
+  max-width: 200px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.avatar-wrapper .avatar-profile .avatar-profile-wrapper .avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #0076be;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-profile-wrapper .avatar i {
+  color: white;
+  font-size: 3em;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons h1 {
+  color: white;
+  margin: 10px 0;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 1em;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #0076be;
+  border: none;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono i {
+  color: white;
+  font-size: 1.5em;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .iconos-wrapper .icono:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: #009dff;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #222;
+  border-radius: 1em;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  margin: 10px;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px auto;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"]::-webkit-color-swatch {
+  border: 2px solid white;
+  border-radius: 100%;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .avatar-colors .color input[type="color"]:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .guardar {
+  width: 100%;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .guardar button {
+  background-color: #0076be;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  border-radius: 2em;
+  color: white;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.avatar-wrapper .avatar-profile .avatar-icons .guardar button:hover {
+  background-color: #009dff;
+  width: calc(200px + 10%);
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
 Administrador
 
 
 */
 .administrador-wrapper {
   padding: 40px 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3221,6 +4522,8 @@ Administrador
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -3272,10 +4575,480 @@ Administrador
 /*
 
 
+Torneos
+
+
+*/
+.torneos-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper .torneos {
+  background-color: #111;
+  width: 90%;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.torneos-wrapper .torneos .torneos-titulo {
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1em;
+  margin: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-titulo h1 {
+  font-size: 1.6em;
+  color: white;
+  margin: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.torneos-wrapper .torneos .torneos-titulo i {
+  color: #ffaa00;
+}
+
+.torneos-wrapper .torneos .torneos-content {
+  padding: 20px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu {
+  width: 100%;
+  border-radius: 1em;
+  padding: 10px;
+  margin: 10px;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo {
+  width: 200px;
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo h2 {
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo form select {
+  width: 100%;
+  height: 30px;
+  background-color: #0076be;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 1em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .tipo-torneo form select option:disabled {
+  color: #bbb;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-menu .presets {
+  width: 500px;
+  height: 100%;
+  border-radius: 1em;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config {
+  width: 100%;
+  min-height: 500px;
+  margin: 10px;
+  background-color: #222;
+  border-radius: 1em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left {
+  height: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config {
+  width: 100%;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 1em;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper {
+  width: 300px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar {
+  width: 100%;
+  height: 320px;
+  border-radius: 1em;
+  background-color: #222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: #0076be;
+  border-radius: 1em 1em 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  color: #0076be;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month i,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month i {
+  font-size: 1.2em;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .previous-month {
+  left: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-wrapper .calendar .calendar-header .next-month {
+  right: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .calendar-config .calendar-references .reference {
+  width: 120px;
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  font-size: 0.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .hora {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  border-radius: 1em;
+  padding: 10px;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .hora input {
+  width: 80px;
+  height: 30px;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  border-radius: 1em;
+  color: white;
+  background-color: #0076be;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 1em;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper .tiempo {
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-left .tiempo-wrapper .tiempo input {
+  width: 100%;
+  height: 40px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .advanced-wrapper {
+  height: 400px;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 0, 0, 0.1);
+  text-align: center;
+  font-size: 2em;
+  color: grey;
+  border-radius: 20px;
+  padding: 1%;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio {
+  background-color: #333;
+  border-radius: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .premio input {
+  width: 100%;
+  height: 40px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button {
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 1em;
+  background-color: #0076be;
+  color: white;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button:hover {
+  background-color: #009dff;
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
 Responsive
 
 
 */
+@-webkit-keyframes trofeo-animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes trofeo-animation {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
 @media screen and (max-width: 1700px) {
   .profile-wrapper .profile-body .profile-grid {
     -ms-grid-columns: 1fr 25vw;
@@ -3290,7 +5063,8 @@ Responsive
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .board-wrapper .board .movimientos .jugadores .JugadorUno, .board-wrapper .board .movimientos .jugadores .JugadorDos {
+  .board-wrapper .board .movimientos .jugadores .JugadorUno,
+  .board-wrapper .board .movimientos .jugadores .JugadorDos {
     width: 100%;
   }
   .board-wrapper .board .movimientos .jugadores .JugadorUno {
@@ -3302,6 +5076,27 @@ Responsive
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+    text-align: center;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+    height: 45px;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+    display: none;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mas-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
@@ -3325,13 +5120,17 @@ Responsive
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-  .board-wrapper .board .first-player-mobile, .board-wrapper .board .second-player-mobile {
+  .board-wrapper .board .first-player-mobile,
+  .board-wrapper .board .second-player-mobile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
   .board-wrapper .board .ajedrez-wrapper {
     margin: 0 auto;
+  }
+  .board-wrapper .board .movimientos .jugadores {
+    display: none;
   }
   .board-wrapper .board .movimientos .movimientos-img {
     display: none;
@@ -3345,7 +5144,8 @@ Responsive
         -ms-flex-align: initial;
             align-items: initial;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile, .board-wrapper .board .movimientos .match-players .second-player-mobile {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile {
     width: 100%;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
@@ -3362,7 +5162,8 @@ Responsive
             align-items: center;
     margin: 0 2%;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3373,20 +5174,36 @@ Responsive
         -ms-flex-align: center;
             align-items: center;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-body-picture, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-body-picture {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-body-picture,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-body-picture {
     width: 40px;
     height: 40px;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body {
     text-align: center;
   }
-  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body h1, .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body h1 {
+  .board-wrapper .board .movimientos .match-players .first-player-mobile .first-player-wrapper .profile-avatar-body h1,
+  .board-wrapper .board .movimientos .match-players .second-player-mobile .first-player-wrapper .profile-avatar-body h1 {
     margin: 5px 0;
   }
   .board-wrapper .board .mobile-img {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .torneos-wrapper-index .torneos-grid {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .torneos-wrapper-index .torneos-grid .torneo-reciente .torneo .torneo-right {
+    text-align: center;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header {
+    height: 45px;
+  }
+  .torneos-wrapper-index .torneos-grid .mejores-jugadores .mejores-jugadores-header a {
+    display: none;
   }
 }
 
