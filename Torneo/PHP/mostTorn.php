@@ -2,7 +2,7 @@
 
 include '../../servidor.php';
 $server = new servidor();
-
+date_default_timezone_set('America/Montevideo');
 $torneos = $server->InfoTorneo();
 
 $sinTorn = false;

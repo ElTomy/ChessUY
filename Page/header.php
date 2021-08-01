@@ -18,7 +18,7 @@
                         </a> ';
                      
             }else{
-                echo '  <a href="/cyberhydra/Index.php">
+                echo '  <a href="/cyberhydra/index.php">
                             <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
             }
@@ -53,8 +53,8 @@
                             </div>";
                 }else{
                     echo "<div class='loginregister'>
-                            <a class='login-button' href='/cyberhydra/Form/Login'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
-                            <a class='register-button' href='/cyberhydra/Form/Register-User'><i class='fas fa-user-plus'></i> REGISTER</a>
+                            <a class='login-button' href='/cyberhydra/Form/login.html'><i class='fas fa-sign-in-alt'></i> LOGIN</a>
+                            <a class='register-button' href='/cyberhydra/Form/register-user.html'><i class='fas fa-user-plus'></i> REGISTER</a>
                           </div>";
                 }
             ?>
@@ -90,7 +90,7 @@
                     echo "<h2>Invitado</h2>";
                 }
             ?>            
-            <a href="/cyberhydra/Index"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/cyberhydra/index"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "  <a href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
