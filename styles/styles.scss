@@ -3558,6 +3558,102 @@ Torneos
             flex-direction: column;
             flex-wrap: wrap;
 
+            .config-avanzada{
+              border-radius: 20px;
+              padding: 1%;
+
+              margin: 10px 0;
+              background-color: #333;
+
+              h1{
+                color: #0076be;
+              }
+              hr{
+                border: 1px solid #0076be;
+                margin: 10px 0;
+              }
+              .avanzada-wrapper{
+                margin: 10px 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+
+                .avanzada-left, .avanzada-right{
+                  background-color: #444;
+                  border-radius: 30px;
+                  padding: 10px;
+                  margin: 10px;
+                }
+                .avanzada-left{
+                  width: 100%;
+                  max-width: 300px;
+                  
+
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                  
+                  .limitar{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    margin: 10px 0;
+
+                    input{
+                      margin: 0 10px;
+                    }
+                  }
+                  div{
+                    input[type="number"]{
+                      display: block;
+                      background-color: transparent;
+                      border: 1px solid white;
+                      border-radius: 10px;
+                      outline: none;
+                      color: white;
+                      text-indent: 5px;
+
+                      margin-bottom: 10px;
+
+                      height: 30px;
+                    }
+                  }
+                  #quehacerRes{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    margin: 0 10px;
+                  }
+                }
+
+                .avanzada-right{
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+
+                  input, select{
+                    display: block;
+                    background-color: transparent;
+                    border: 1px solid white;
+                    border-radius: 10px;
+                    outline: none;
+                    color: white;
+                    text-indent: 5px;
+
+                    margin-bottom: 10px;
+
+                    height: 30px;
+                  }
+                  select{
+                    background-color: #0076be;
+                    border: none;
+                  }
+                }
+              }
+            }
+
             .advanced-wrapper {
               height: 400px;
               margin: 10px 0;
