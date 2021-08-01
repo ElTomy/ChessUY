@@ -43,10 +43,11 @@ $tiemHTML = '
 //Codigo de opciones avanzadas
 $avanHTML = '
 
-<p style="height: 10%; width: 100%;">Opciones avanzadas
-<div style="display: flex; height: 90%; width: 100%;">
-    <div style=" width: 50%; height: 100%;">
-        <div style="margin-bottom: 5%;">
+<h1>Opciones avanzadas</h1>
+<hr>
+<div class="avanzada-wrapper">
+    <div class="avanzada-left">
+        <div class="limitar">
             <p style="width: 100%;">Limitar Jugadores</p>
             <input type="checkbox" id="siLim" value="siLim" onclick="quehacerRes()">
         </div>
@@ -58,13 +59,13 @@ $avanHTML = '
             <p style="width: 100%;">ELO minimo</p>
             <input type="number" id="eloMin">
         </div>
-        <div id="quehacerRes" style="margin-top: 10%; width: 100%;">
+        <div id="quehacerRes">
             
         </div>
     </div>
 
-    <div style="width: 50%; height: 100%;">
-        <div style="margin-bottom: 5%;">
+    <div class="avanzada-right">
+        <div>
         <p style="width: 100%;">Localidad</p>
             <select id="locTorn">
                 <option disabled selected>Selecciona una localidad</option>
@@ -82,12 +83,14 @@ $avanHTML = '
             <p style="width: 100%;">Edad minima</p>
             <input type="number" id="edaMin">
         </div>
-        <div id="penultOpt" style="margin-top: 44%; width: 100%;">
-        </div>
     </div>
 </div>
 
 ';
+/*
+    <div id="penultOpt" style="margin-top: 44%; width: 100%;">
+    </div>
+*/
 
 //Codigo de premio
 $premHTML = '
@@ -150,7 +153,7 @@ if($opt == 'norm') {
       .'</div>
     </div>
     <div class="config-right">
-        <div style="height: 58%; border-radius: 20px; padding: 1%;">'.
+        <div class="config-avanzada">'.
 //          Aca va la parte avanzada
             $avanHTML
       .'</div>

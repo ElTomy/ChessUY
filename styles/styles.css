@@ -4928,6 +4928,131 @@ Torneos
       flex-wrap: wrap;
 }
 
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada {
+  border-radius: 20px;
+  padding: 1%;
+  margin: 10px 0;
+  background-color: #333;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada h1 {
+  color: #0076be;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper {
+  margin: 10px 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right {
+  background-color: #444;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left {
+  width: 100%;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left .limitar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left .limitar input {
+  margin: 0 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left div input[type="number"] {
+  display: block;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 5px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left #quehacerRes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 10px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right input, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right select {
+  display: block;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+  text-indent: 5px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right select {
+  background-color: #0076be;
+  border: none;
+}
+
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .advanced-wrapper {
   height: 400px;
   margin: 10px 0;
