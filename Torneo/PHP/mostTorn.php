@@ -49,6 +49,9 @@ if(count($torneos) < 1) {
             }
         }
     }
+    $com = str_replace('-', ' ', $torneos[$j]['InicioTorneo']);
+    $comTorn = explode(' ', $com);
+    $fechTorn = mktime(0, 0, 0, $comTorn[1], $comTorn[2], $comTorn[0]);
     echo "
     <div class='torneo-left'>
         <img src='/ChessUY/media/images/Trofeo.png' alt=''>
@@ -59,7 +62,11 @@ if(count($torneos) < 1) {
     <div class='torneo-right'>
         <div class='torneo-info'>
             <h2>Nombre del Torneo</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus dolores ducimus exercitationem eius laborum saepe facilis molestiae officia tempore totam?</p>
+            <p>Comienza el ".date('j', $fechTorn)." de ".date('F', $fechTorn)." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>
+            <p>ELO de ".$torneos[$j]['ELO_Min']." a ".$torneos[$j]['ELO_Max']."</p>
+            <p>Edad de ".$torneos[$j]['EdadMinima']." a ".$torneos[$j]['EdadMaxima']."</p>
+            <p>".$torneos[$j]['PartidasxDia']." partidas por dia</p>
+            <p>".$torneos[$j]['tiempo']." minutos por jugador</p>
         </div>
         <div class='torneo-buttons'>
             <a href=''><i class='fas fa-plus-circle'></i> Unirse</a>
