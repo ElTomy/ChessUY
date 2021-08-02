@@ -4,6 +4,7 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
+    armoJugadores();
 });
 //
 //
@@ -18,15 +19,68 @@ function boxHeight(){
 }
 
  function armoAjedrez(){
+
+    /* 
+    Armo Tablero     
+    */
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento, Jugadas:Jugadas ,Turno:Turno},
+        data: {Tablero:Tablero, Movimiento:Movimiento},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
         }
     });
+
+    /* 
+    Armo Tabla Movimientos     
+    */
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
+        data: {Jugadas:Jugadas, Turno:Turno},
+        success: function (data) {
+            document.getElementById("ArmoMovimientos").innerHTML = data;
+        }
+    });
+
+    /* 
+    Armo Tabla Jugador vs Jugador     
+    */
+    $.ajax({
+        type: "POST",
+        data: {Turno:Turno},
+        url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+        success: function (data) {
+            document.getElementById("ArmoJugadores").innerHTML = data;
+        }
+    });
+
+    /* 
+    Armo Chat     
+    */
+
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Ajedrez/php/armoChat.php",
+        success: function (data) {
+            document.getElementById("ArmoChat").innerHTML = data;
+            heightdiv();
+        }
+    });
+ }
+
+ function heightdiv(){
+    var height = ((window.innerHeight * 0.98) - 100);
+
+
+    $('#select-wrapper').height(height * 0.5);
+    console.log(height);
+ }
+
+ function armoJugadores(){
+     
  }
 
  
@@ -438,8 +492,9 @@ window.setInterval(function tiempo() {
         var sec2 = new Date(0);
         sec2.setSeconds(totlsec2);
         var minsec2 = sec2.toISOString().substr(14, 5);
-        document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
-        document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
+
+        $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+        $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
     } else {
 
     }

@@ -3164,35 +3164,12 @@ Estadisticas Globales
   margin-bottom: 20px;
 }
 
-.board-wrapper #tempJug1,
-.board-wrapper #tempJug2 {
-  height: 30px;
-  background-color: #222;
-  border-radius: 1em;
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.board-wrapper #tempJug1 i,
-.board-wrapper #tempJug2 i {
-  margin-right: 5px;
-}
-
 .board-wrapper .board {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 60% 1fr;
       grid-template-columns: 60% 1fr;
   width: 90%;
-  height: 100%;
   background-color: #111;
   border-radius: 30px;
 }
@@ -3292,6 +3269,7 @@ Estadisticas Globales
 }
 
 .board-wrapper .board .second-player-mobile {
+  width: 100%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -3480,6 +3458,42 @@ Estadisticas Globales
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.board-wrapper .board .movimientos .temp-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0;
+}
+
+.board-wrapper .board .movimientos .temp-wrapper #tempJug1,
+.board-wrapper .board .movimientos .temp-wrapper #tempJug2 {
+  padding: 0 10px;
+  height: 30px;
+  background-color: #444;
+  border-radius: 1em;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.board-wrapper .board .movimientos .temp-wrapper #tempJug1 i,
+.board-wrapper .board .movimientos .temp-wrapper #tempJug2 i {
+  margin-right: 5px;
 }
 
 .board-wrapper .board .movimientos .menu-bottom {
