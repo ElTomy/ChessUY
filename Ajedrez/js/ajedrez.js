@@ -1963,8 +1963,9 @@ function Rey_Haogado(color){
     }
 }
 function Acuerdo_Mutuo(){   
+    //cambiar a ESPERO
     $.ajax({
-        url:  "/ChessUY/Modal/modalEsperoTablas.php",
+        url:  "/ChessUY/Modal/modalPidoTablas.php",
         type: "POST",
         data: {},
         success: function (data) {
