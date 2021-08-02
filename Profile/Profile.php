@@ -72,12 +72,18 @@
             </a>
             <?php
               echo '<div class="profile-avatar">
-                <div class="profile-flex">
-                  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
-                    <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
-                  </div>
+                <div class="profile-flex">';
 
-                  <div class="profile-avatar-body">';
+                if($usuario == "ByJuanii_"){
+                  echo '  <div class="profile-body-picture" style="border: 2px solid #ffaa00; animation: spin 5s infinite linear; box-shadow: 0 0 15px 0 #ffaa00; background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }else{
+                  echo '  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }
+                  echo ' <div class="profile-avatar-body">';
                     echo "<p>" . $usuario_info['usuario'] . "</p>";
                     if($usuario_info['tipo'] == 0){
                       $tipo = "<i class='fas fa-star'></i> Administrador";

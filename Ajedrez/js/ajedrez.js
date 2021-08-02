@@ -52,6 +52,7 @@ const Piezas = {
 }
 var Jugadas = [];
 var Turno = 1;
+var rep = 0;
 var ultTurn = 0;
 var simbolo = null;
 const Tablero = [];
@@ -394,6 +395,8 @@ function seleccionar(x,y){
                 Ejey: y,
                 simbolo: simbolo,
             }
+            //Triple-Repeticion
+            Triple_Repeticion();
             simbolo = null;
             Turno = Turno + 1;
             ultTurn = true;
@@ -1855,13 +1858,10 @@ function tablas(){
     Rey_Haogado('b');
     Rey_Haogado('n');
     //Acuerdo-Mutuo
-    //Triple-Repeticion
-    Triple_Repeticion();
     //Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
 function Rey_Haogado(color){
-    console.log("Rh")
     var tablas = true;
     //creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
@@ -1940,8 +1940,22 @@ function rechazar_tablas(){
         });
 }
 function Triple_Repeticion(){
-    console.log("3rep")
-    //ultimos 3 movs ==
+    if(Turno > 4){
+        var p = Jugadas[Turno].Piezas;
+        var p2 = Jugadas[(Turno - 4)].Piezas;
+        var x = Jugadas[Turno].Ejex;
+        var x2 = Jugadas[(Turno - 4)].Ejex;
+        var y = Jugadas[Turno].Ejey;
+        var y2 = Jugadas[(Turno - 4)].Ejey;
+        if(p == p2 && x == x2 && y == y2){
+            rep++;
+            if(rep == 8){
+                llamoTablas();
+            }
+        }else{
+            rep = 0;
+        }
+    }
 }
 function Falta_de_Piezas(){
     var fp = true;
