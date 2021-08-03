@@ -4,7 +4,6 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
-    armoJugadores();
 });
 //
 //
@@ -79,8 +78,8 @@ function boxHeight(){
     console.log(height);
  }
 
- function armoJugadores(){
-     
+ function barraProgreso(porcentaje){
+     $('.bar').css("width", porcentaje + "%");     
  }
 
  

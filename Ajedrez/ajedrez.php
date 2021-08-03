@@ -65,10 +65,14 @@
             </div>
 
             <div class="jugadores" id="ArmoJugadores"></div>
-            
+
             <div class="temp-wrapper">
               <div id="tempJug1"></div> <!-- Tiempo Jugador Uno -->
               <div id="tempJug2"></div> <!-- Tiempo Jugador Dos -->
+            </div>
+
+            <div class="win-bar">
+              <div class="bar"></div>
             </div>
     
           <div class="menu-bottom">

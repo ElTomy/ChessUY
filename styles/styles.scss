@@ -2446,6 +2446,20 @@ Estadisticas Globales
         }
       }
 
+      .win-bar{
+        width: 80%;
+        min-height: 10px;
+        border-radius: 1em;
+        background-color: #333;
+
+        .bar{
+          width: 30%;
+          height: 10px;
+          border-radius: 1em;
+          background-color: #555;
+        }
+      }
+
       .menu-bottom {
         width: 100%;
         height: 100%;
@@ -2494,6 +2508,7 @@ Estadisticas Globales
           height: calc(100% - 50px);
           max-height: 330px;
           overflow: auto;
+          border-radius: 0 0 30px 30px;
 
           .chat {
             position: relative;
@@ -2610,13 +2625,15 @@ Estadisticas Globales
           table {
             width: 100%;
             max-height: 100%;
-            background-color: #333;
+            border-collapse: collapse;
 
             tr {
+              border: 1px solid #333;
               th {
                 color: white;
                 text-align: center;
                 font-weight: lighter;
+                background-color: #333;
               }
               td {
                 height: 30px;
