@@ -3170,6 +3170,7 @@ Estadisticas Globales
   -ms-grid-columns: 60% 1fr;
       grid-template-columns: 60% 1fr;
   width: 90%;
+  height: 100%;
   background-color: #111;
   border-radius: 30px;
 }
@@ -3501,13 +3502,33 @@ Estadisticas Globales
   min-height: 10px;
   border-radius: 1em;
   background-color: #333;
+  position: relative;
 }
 
 .board-wrapper .board .movimientos .win-bar .bar {
   width: 30%;
   height: 10px;
   border-radius: 1em;
-  background-color: #555;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffaa00), to(#814e00));
+  background: linear-gradient(#ffaa00 0%, #814e00 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: .5s;
+          animation: .5s;
+}
+
+.board-wrapper .board .movimientos .win-bar .bar2 {
+  width: 30%;
+  height: 10px;
+  border-radius: 1em;
+  background: -webkit-gradient(linear, left top, right top, from(#bebebe), to(#646464));
+  background: linear-gradient(90deg, #bebebe 0%, #646464 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-animation: .5s;
+          animation: .5s;
 }
 
 .board-wrapper .board .movimientos .menu-bottom {

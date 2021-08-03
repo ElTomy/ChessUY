@@ -4,6 +4,7 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
+    barraProgreso(50);
 });
 //
 //
@@ -79,7 +80,18 @@ function boxHeight(){
  }
 
  function barraProgreso(porcentaje){
-     $('.bar').css("width", porcentaje + "%");     
+    $('.bar').css("width", porcentaje + "%");
+    $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     if(porcentaje >= 50){
+        $('.bar').css("z-index", "5");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     }else{
+        $('.bar').css("width", (porcentaje + 5) + "%");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("z-index", "5");
+        $('.bar2').css("width", (100 - porcentaje) + "%");
+     }
  }
 
  
@@ -494,6 +506,7 @@ window.setInterval(function tiempo() {
 
         $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
         $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+        
     } else {
 
     }

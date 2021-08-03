@@ -73,6 +73,7 @@
 
             <div class="win-bar">
               <div class="bar"></div>
+              <div class="bar2"></div>
             </div>
     
           <div class="menu-bottom">
