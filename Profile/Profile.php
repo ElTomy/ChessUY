@@ -74,8 +74,8 @@
               echo '<div class="profile-avatar">
                 <div class="profile-flex">';
 
-                if($usuario == "ByJuanii_"){
-                  echo '  <div class="profile-body-picture" style="border: 2px solid #ffaa00; animation: spin 5s infinite linear; box-shadow: 0 0 15px 0 #ffaa00; background-color: '. $usuario_info['ColorFondo'] .'">
+                if($usuario_info['tipo'] == "0"){
+                  echo '  <div class="profile-body-picture" style="border: 2px solid '.$usuario_info['ColorIcono'].'; animation: spin 4s infinite linear ; box-shadow: 0 0 15px 0 '.$usuario_info['ColorIcono'].'; background-color: '. $usuario_info['ColorFondo'] .'">
                             <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
                           </div>';
                 }else{
