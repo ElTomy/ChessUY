@@ -233,7 +233,7 @@
                       </div>
                     </div>
                   </div>
-                  <a class="ver-logros" href=""><i class="fas fa-medal"></i>Ver todos los logros</a>
+                  <a class="ver-logros" href="/ChessUY/Logros/Logros"><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
         </div>

@@ -3514,8 +3514,8 @@ Estadisticas Globales
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-animation: .5s;
-          animation: .5s;
+  -webkit-animation: 0.5s;
+          animation: 0.5s;
 }
 
 .board-wrapper .board .movimientos .win-bar .bar2 {
@@ -3527,8 +3527,8 @@ Estadisticas Globales
   position: absolute;
   top: 0;
   right: 0;
-  -webkit-animation: .5s;
-          animation: .5s;
+  -webkit-animation: 0.5s;
+          animation: 0.5s;
 }
 
 .board-wrapper .board .movimientos .menu-bottom {
@@ -3966,6 +3966,178 @@ Estadisticas Globales
   margin: 20px;
   border-radius: 20px;
   background-color: #333;
+}
+
+/*
+
+
+          Logros
+
+
+*/
+.logros-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.logros-wrapper .logros {
+  width: 90%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #111;
+  border-radius: 30px;
+}
+
+.logros-wrapper .logros h1 {
+  color: #0076be;
+  margin: 10px 0;
+  font-size: 30px;
+}
+
+.logros-wrapper .logros .logros-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.logros-wrapper .logros .logros-header p {
+  color: white;
+  margin: 0 10px;
+}
+
+.logros-wrapper .logros hr {
+  border: 1px solid #0076be;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.logros-wrapper .logros .logros-content {
+  width: 100%;
+  background-color: #222;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.logros-wrapper .logros .logros-content .logro {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background-color: #252525;
+  border-radius: 30px;
+  -webkit-box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.logros-wrapper .logros .logros-content .logro .logro-img {
+  border-radius: 50%;
+  background-color: #333;
+  width: 150px;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.logros-wrapper .logros .logros-content .logro .logro-img img {
+  width: 80%;
+}
+
+.logros-wrapper .logros .logros-content .logro .logro-img #locked {
+  display: none;
+  color: white;
+  font-size: 40px;
+}
+
+.logros-wrapper .logros .logros-content .logro h1 {
+  margin: 5px 10px;
+  font-weight: normal;
+}
+
+.logros-wrapper .logros .logros-content .logro .desc {
+  margin: 2px 10px;
+  color: white;
+}
+
+.logros-wrapper .logros .logros-content .logro p {
+  margin: 2px 10px;
+  color: #737373;
+}
+
+.logros-wrapper .logros .logros-content .locked .logro-img img {
+  display: none;
+}
+
+.logros-wrapper .logros .logros-content .locked .logro-img #locked {
+  display: block;
+}
+
+.logros-wrapper .logros .logros-content .locked h1 {
+  color: #737373;
 }
 
 /*
@@ -5010,7 +5182,8 @@ Torneos
           justify-content: space-evenly;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-left,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right {
   background-color: #444;
   border-radius: 30px;
   padding: 10px;
@@ -5091,7 +5264,8 @@ Torneos
           flex-direction: column;
 }
 
-.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right input, .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right select {
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right input,
+.torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .config-avanzada .avanzada-wrapper .avanzada-right select {
   display: block;
   background-color: transparent;
   border: 1px solid white;
