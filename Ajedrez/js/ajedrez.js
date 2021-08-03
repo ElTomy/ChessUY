@@ -115,6 +115,8 @@ const Piezas = {
    NTorre:'tn', 
    NPeon:'pn',  
 }
+var porcentaje = 39;
+var barra = 50;
 var Jugadas = [];
 var Turno = 1;
 var rep = 0;
@@ -344,6 +346,7 @@ function seleccionar(x,y){
             sel= seleccionado.Contenido;
             if(Tablero[x][y].Piezas != null){
                 simbolo = "x";
+                Porcentaje(Tablero[x][y].Piezas,0);
             }
            if(seleccionado.Contenido == "p"||seleccionado.Contenido == "pn"){
                if(y == 1||y == 8){
@@ -362,12 +365,14 @@ function seleccionar(x,y){
                    }
                     if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
                         if(Tablero[x][5].Piezas != null){
+                            Porcentaje(Tablero[x][5].Piezas,0);
                             ColocoPieza(null,null,x,5);
                             simbolo = "x";
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
                             if(Tablero[x][4].Piezas != null){
+                                Porcentaje(Tablero[x][4].Piezas,0);
                                 ColocoPieza(null,null,x,4);
                                 simbolo = "x";
                             }
@@ -988,7 +993,7 @@ function Rey(x,y,sel){
     }else{
         selecc = sel;
     }
-    if(x == 5 && (y == 1 || y == 8)){
+    if(x == 5 && (y == 1 || y == 8)  && jaque.jaque == null){
         if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null && Tablero[7][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
@@ -1067,6 +1072,7 @@ function Coronacion(x,y,sel){
 
 function cambioCoronacion(x, y, pieza, col){
     $(".modal").hide();
+    Porcentaje(pieza,1);
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
@@ -2053,3 +2059,52 @@ function llamoTablas(){
         }
         });
 }
+function Porcentaje(pieza,cor){
+    var suma = 0;
+    switch(pieza){
+        case Piezas.NTorre:
+            suma = 5;
+        break;
+        case Piezas.BTorre:
+            suma =  -5;
+        break;
+        case Piezas.NCaballo:
+            suma =  +3;
+        break;
+        case Piezas.BCaballo:
+            suma =  -3;
+        break;
+        case Piezas.NAlfil:
+            suma =  +3;
+        break;
+        case Piezas.BAlfil:
+            suma =  -3;
+        break;
+        case Piezas.NPeon:
+            suma = 1;
+        break;    
+        case Piezas.BPeon:
+            suma = -1;       
+        break;
+        case Piezas.NDama:
+            suma = 9;
+        break;
+        case Piezas.BDama:
+            suma = -9;
+        break;
+    }
+    if(cor == 1){suma = suma * -1}
+    console.log(porcentaje)
+    porcentaje = porcentaje + suma;
+    console.log(porcentaje)
+    if(porcentaje>78){
+        barra = 100;
+    }else{
+        if(porcentaje<0){
+            barra = 0;
+        }else{
+            barra = (100/78)*porcentaje;
+        }
+    }
+    barraProgreso(barra);
+} 
