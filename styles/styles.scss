@@ -352,6 +352,29 @@ footer {
       #jugador {
         color: #ffaa00;
       }
+
+      h3{
+        color: #bbb;
+        font-weight: normal;
+        font-size: 11px;
+      }
+      .eliminar{
+        color: #ffaa00;
+        font-size: 20px;
+      }
+      .eliminar-buttons{
+        width: 100%;
+        margin: 10px 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        a{
+          margin: 5px;
+        }
+      }
       h1 {
         color: #0076be;
         margin: 0;
@@ -1994,7 +2017,7 @@ Buscar Jugadores
           }
           .profileButton {
             margin: 10px;
-            button {
+            button, .eliminar{
               display: flex;
               justify-content: center;
               align-items: center;
@@ -2006,10 +2029,15 @@ Buscar Jugadores
               border: none;
               cursor: pointer;
               transition: 0.5s;
+              margin: 10px 0;
+              margin-right: 10px;
 
               i {
                 margin-right: 10px;
               }
+            }
+            .eliminar{
+              background-color: #9e3f3f;
             }
             button:hover {
               background-color: #333;

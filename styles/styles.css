@@ -492,6 +492,37 @@ footer .footer-body .cyberhydra img {
   color: #ffaa00;
 }
 
+.modal .modal-wrapper .modal-content h3 {
+  color: #bbb;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.modal .modal-wrapper .modal-content .eliminar {
+  color: #ffaa00;
+  font-size: 20px;
+}
+
+.modal .modal-wrapper .modal-content .eliminar-buttons {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.modal .modal-wrapper .modal-content .eliminar-buttons a {
+  margin: 5px;
+}
+
 .modal .modal-wrapper .modal-content h1 {
   color: #0076be;
   margin: 0;
@@ -2864,7 +2895,7 @@ Buscar Jugadores
   margin: 10px;
 }
 
-.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button {
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button, .search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2883,10 +2914,16 @@ Buscar Jugadores
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  margin: 10px 0;
+  margin-right: 10px;
 }
 
-.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button i {
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button i, .search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar i {
   margin-right: 10px;
+}
+
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar {
+  background-color: #9e3f3f;
 }
 
 .search-wrapper .search-list .search .search-box .player-wrapper .profileButton button:hover {

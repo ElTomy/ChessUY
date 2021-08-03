@@ -72,21 +72,38 @@ $index .='
           </a>
         </div>
       </div>
-    </section>
-    <section class="anuncio">
-      <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-      <p>Este espacio está reservado para anuncios.</p>
     </section>';
+
+    if($_SESSION['tipo'] != 0){
+      $index .= '<section class="anuncio">
+                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                <p>Este espacio está reservado para anuncios.</p>
+              </section>';
+    }
+    
 
     if($_SESSION['tipo'] == 0){
       $index .= '<section class="administrador-wrapper">
               <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
-              <p class="admin"><i class="fas fa-user"></i> ' . $_SESSION["usuario"] . '</p>
+              <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
                 <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/ChessUY/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
                 <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+              </div>
+            </section>';
+    }
+    if($_SESSION['tipo'] == 3){
+      $index .= '
+              <section class="administrador-wrapper">
+              <h1><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
+              <p class="admin"><i class="fas fa-newspaper"></i> ' . $_SESSION["usuario"] . '</p>
+              <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <div class="admin-buttons">
+                <a href=""><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
               </div>
             </section>';
     }
@@ -177,22 +194,26 @@ $index .='
                   </div>
 
                 </div>
-              </section>
+              </section>';
 
-              <section class="anuncio">
-                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-                <p>Este espacio está reservado para anuncios.</p>
-              </section>
-
+              if($_SESSION['tipo'] != 0){
+                $index .= '<section class="anuncio">
+                          <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                          <p>Este espacio está reservado para anuncios.</p>
+                        </section>';
+              }
+              $index .= '
               <section class="noticias-wrapper" id="ArmoNoticias">
-              </section>
+              </section>';
 
-              <section class="anuncio">
-                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-                <p>Este espacio está reservado para anuncios.</p>
-              </section>
+              if($_SESSION['tipo'] != 0){
+                $index .= '<section class="anuncio">
+                          <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                          <p>Este espacio está reservado para anuncios.</p>
+                        </section>';
+              }
               
-            <div id="footer"></div>
+            $index .= '<div id="footer"></div>
           </body>
         </html>';
 

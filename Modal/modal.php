@@ -53,7 +53,7 @@ switch($numero_mensaje){
     case 9:
         $mensaje_2 = "Error:";
         $link = "";
-        $mensaje = "Hubo un error inesperado, vuelve a intentarlo.";
+        $mensaje = "Hubo un error inesperado, o el nombre de usuario ya está en uso. Vuelve a intentarlo y si el error persiste contacte a un Administrador.";
         break;
 
     case 10:
@@ -72,6 +72,12 @@ switch($numero_mensaje){
         $mensaje_2 = "Register:";
         $link = "";
         $mensaje = "La cedula no es válida, debe tener 8 digitos.";
+        break;
+
+    case 13:
+        $mensaje_2 = "Register:";
+        $link = "";
+        $mensaje = "El nombre de usuario no está disponible o contiene caracteres no permitidos";
         break;
 }
 
