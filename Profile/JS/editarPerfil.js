@@ -63,6 +63,7 @@ function guardar(usuario_actual){
             url: "/ChessUY/Profile/PHP/guardar.php",
             data: {Usuario_Actual: usuario_actual, usuario: Usuario, nombre: Nombre, apellido: Apellido, email: Email, institucion: Institucion, año: Año, documento: Documento, celular: Celular},
             success: function (data) {
+                console.log(data);
                 if(data == 0){
                     location.href = "/ChessUY/Profile/Editar/" + Usuario;
                 }else{
