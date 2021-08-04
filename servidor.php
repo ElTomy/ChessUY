@@ -1,4 +1,6 @@
 <?php
+//mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')
+//mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')
 class servidor
 {
     function conectar()
@@ -204,6 +206,51 @@ class servidor
         }
         return $info;
     }
+     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoTorneo(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoTorneo()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($ID_Torneo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $Primero, $Segundo, $Tercero, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $tiempo, $InicioTorneo);
+            while ($stmts->fetch()) {
+                $data = array('ID_Torneo' => $ID_Torneo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Fecha_fin' => $Fecha_fin, 'Numero_Participantes' => $Numero_Participantes, 'Primero' => $Primero, 'Segundo' => $Segundo, 'Tercero' => $Tercero, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'tiempo' => $tiempo, 'InicioTorneo' => $InicioTorneo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function Top(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL Top()";
+        $stmts = $conn->prepare($sql);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo, $ELO);
+            while ($stmts->fetch()) {
+                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo, 'ELO'  => $ELO);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
     //
     //
     /*------------------------------------------------------------------------------------------*/
@@ -304,9 +351,13 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
-            $_SESSION['icono'] = $NumeroIcono;
-            $_SESSION['coloricono'] = $ColorIcono;
-            $_SESSION['colorfondo'] = $ColorFondo;
+
+            if($Usuario == $_SESSION['usuario']){
+                $_SESSION['icono'] = $NumeroIcono;
+                $_SESSION['coloricono'] = $ColorIcono;
+                $_SESSION['colorfondo'] = $ColorFondo;
+            }
+            
         }
         return $execute;
     }
@@ -326,5 +377,60 @@ class servidor
             $execute = true;
         }
         return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BorrarUsuario($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL BorrarUsuario(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambioNombre($nombre, $usuario){
+        $conn = $this->conectar();
+        $sql = "CALL CambioNombre(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $nombre, $usuario);
+        if($stmts->execute()){
+            $_SESSION['usuario'] = $nombre;
+        }
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizarUsuario($Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto){
+        $conn = $this->conectar();
+        $sql = "CALL ActualizarUsuario(?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sssssiis",$Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambiarContraseña($usuario, $contraNueva){
+        $conn = $this->conectar();
+        $sql = "CALL CambiarContrasenia(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $usuario, $contraNueva);
+        $stmts->execute();
     }
 }

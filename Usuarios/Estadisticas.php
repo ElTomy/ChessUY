@@ -1,3 +1,12 @@
+<?php
+  include '../servidor.php';
+  $server= new servidor();
+
+  $usuarios_info = $server->Top();
+
+  $numero_usuarios = count($usuarios_info);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,21 +18,23 @@
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../Javascript/Loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="/ChessUY/Javascript/Loader.js"></script>
+    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
 
+    
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/ChessUY/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <script src="js/Form.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Register</title>
+    <title>ChessUY | Estadisticas Globales</title>
   </head>
   <body>
-
+    
     <div id="header"></div>
 
     <div class="loader-wrapper">
@@ -32,46 +43,51 @@
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
-        <div class="register-wrapper">
-        
-            <div class="register-logo">
-              <a href="/ChessUY/Index.php">
-                <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="" />
-              </a>   
-            </div>
 
-            <div class="radio-user">
-              <input type="radio" name="select" id="option-1" checked>
-              <input type="radio" name="select" id="option-2">
-              <input type="radio" name="select" id="option-3">
-                <label for="option-1" class="option option-1">
-                  <div class="dot"></div>
-                   <span>Jugador</span>
-                   </label>
-                <label for="option-2" class="option option-2">
-                  <div class="dot"></div>
-                   <span>Arbitro</span>
-                </label>
-                <label for="option-3" class="option option-3">
-                  <div class="dot"></div>
-                   <span>Periodista</span>
-                </label>
-             </div>
-             <div class="register-button">
-              <a href="#" onclick="TipoUsuario()">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <i class="fas fa-arrow-alt-circle-right"></i>Siguiente
-              </a>
+
+    <section class="estadisticas-globales-wrapper">
+        <div class="estadisticas-list">
+            <div class="estadisticas-logo">
+                <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            </div>
+            <h1><i class="fas fa-globe-americas"></i> Estadisticas Globales</h1>
+            <hr>
+            <div class="estadisticas">
+                    <!--<div class="search-bar-wrapper">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar Jugador" id="buscador">
+                        </div>
+                    </div>-->
+                    <div class="stats-box" id="stats-box">
+
+                    <?php
+                      for($x = 1; $x <= $numero_usuarios; $x++){
+                        echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+                                <div class="info-left">
+                                    <p class="posicion">#'.$x.'</p>
+                                    <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
+                                        <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
+                                    </div>
+                                    <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
+                                </div>
+                                <div class="puntaje">
+                                  '.$usuarios_info[($x - 1)]['ELO'].'
+                                </div>
+
+                            </a>';
+                      }
+                    ?>
+
+                    </div>
             </div>
         </div>
+    </section>
 
-        <div id="footer"></div>
+    <div id="footer"></div>
   </body>
 </html>
 

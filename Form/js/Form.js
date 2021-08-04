@@ -34,6 +34,15 @@ function Register() {
                 document.getElementById("modal").innerHTML = data;
             }
           });
+    }else if(usuario.includes(".") || usuario.includes("<") || usuario.includes(">") || usuario.includes("'") || usuario.includes("(") || usuario.includes(")")){
+        $.ajax({
+            url: "/ChessUY/Modal/modal.php",
+            type: "POST",
+            data: { numero_mensaje: 13},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+        });
     }else if(!año.match(numeros) || año > 6 || año < 1){
         $.ajax({
             url: "/ChessUY/Modal/modal.php",
@@ -82,7 +91,6 @@ function Register() {
                 contraseña: contraseña
                 },
                 success: function (data) {
-                    console.log(data);
                     var mensaje_modal;
         
                     if(data == 1){

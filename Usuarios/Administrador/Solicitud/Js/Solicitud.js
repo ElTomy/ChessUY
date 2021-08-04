@@ -15,8 +15,6 @@ $(document).ready(function () {
                 if (typeof solic[len] === 'undefined') {
                     y = false;
                 } else {
-                    console.log("Len:" + len);
-                    console.log("Otro: " + solic[len]["ci"]);
                     ci = solic[len].ci;
                     usr = solic[len].usuario;
                     nom = solic[len].Nombre;
@@ -34,19 +32,16 @@ $(document).ready(function () {
                         tip = "Arbitro";
                     }
                     document.getElementById("tablaprueba").insertRow(-1).innerHTML = '<td>' + ci + '</td> <td id="user' + len + '">' + usr + '</td> <td>' + nom + '</td> <td>' + ape + '</td> <td>' + ins + '</td> <td>' + mai + '</td> <td>' + tip + '</td><td><div class="botones-solicitudes"><button id="aprobar" onclick="aprobar(' + len + ',' + "'" + ci + "'" + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" + ',' + "'" + ape + "'" + ',' + "'" + ins + "'" + ',' + "'" + mai + "'" + ',' + "'" + tip + "'" + ',' + "'" + año + "'" + ',' + "'" + con + "'" + ',' + "'" + nac + "'" + ',' + "'" + pas + "'" + ');">✓</button><button id="rechazar" onclick="rechazar(' + len + ',' + "'" + usr + "'" + ',' + "'" + nom + "'" +  ',' + "'" + mai + "'" +');">✖</button></div></td>';
-                    console.log("----------")
                     len++;
-                    console.log("Len:" + len);
                     x = 1;
                 }
             }
-            console.log(x);
             if(x == 0){
                 $(".Solicitudes-wrapper").hide();
                 $(".nohaysolicitudes-wrapper").show();
                 $("#nohaysolicitudes").show();
             }else{
-                $(".Solicitudes-wrapper").show();
+                $(".Solicitudes-wrapper").css("display", "flex");
                 $("#nohaysolicitudes").hide();
             }
         }
@@ -55,12 +50,16 @@ $(document).ready(function () {
 });
 
 function aprobar(data, ci, usr, nom, ape, ins, mai, tip, año, con, nac, pas) {
+    if(tip == 'Periodista'){
+        var tipp = 3;
+    }else if(tip == 'Arbitro'){
+        var tipp = 2
+    }
     $.ajax({
         type: "Post",
         url: "Usuarios/Administrador/Solicitud/PHP/Aprobar.php",
-        data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tip, año: año, contacto: con, nacimiento: nac, contraseña: pas },
+        data: { ci: ci, usuario: usr, nombre: nom, apellido: ape, institucion: ins, mail: mai, tipo: tipp, año: año, contacto: con, nacimiento: nac, contraseña: pas },
         success: function (response) {
-            console.log(response);
         }
     });
 }
@@ -70,7 +69,6 @@ function rechazar(data, usr, nom,mai) {
         url: "Usuarios/Administrador/Solicitud/PHP/Rechazar.php",
         data: { usuario: usr, nombre: nom ,mail:mai},
         success: function (response) {
-            console.log(response);
         }
     });
 }

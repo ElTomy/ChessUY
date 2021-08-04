@@ -1,5 +1,5 @@
 RewriteEngine on
 
 RewriteRule ^([a-zA-Z0-9_]+)$ Profile.php?Usuario=$1
-RewriteRule ^Editar/([a-zA-Z0-9_\.]+)$ editarPerfil.php
-RewriteRule ^Editar/Avatar/Perfil avatarChange.php
+RewriteRule ^Editar/([a-zA-Z0-9_\.]+)$ editarPerfil.php?Usuario=$1
+RewriteRule ^Editar/Avatar/Perfil/([a-zA-Z0-9_\.]+)$ avatarChange.php?Usuario=$1

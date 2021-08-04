@@ -352,6 +352,29 @@ footer {
       #jugador {
         color: #ffaa00;
       }
+
+      h3{
+        color: #bbb;
+        font-weight: normal;
+        font-size: 11px;
+      }
+      .eliminar{
+        color: #ffaa00;
+        font-size: 20px;
+      }
+      .eliminar-buttons{
+        width: 100%;
+        margin: 10px 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        a{
+          margin: 5px;
+        }
+      }
       h1 {
         color: #0076be;
         margin: 0;
@@ -482,6 +505,12 @@ footer {
   align-items: center;
   flex-direction: column;
 
+  margin-top: -100px;
+
+  img {
+    max-width: 400px;
+  }
+
   h1 {
     color: white;
     font-size: 30px;
@@ -556,6 +585,14 @@ footer {
       }
     }
   }
+  tr:nth-last-child(1) {
+    td:nth-child(1) {
+      border-radius: 0 0 0 30px;
+    }
+    td:nth-child(8) {
+      border-radius: 0 0 30px 0;
+    }
+  }
 }
 
 #nohaysolicitudes {
@@ -613,7 +650,7 @@ Loading Screen
 .loader-wrapper {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   z-index: 3;
   top: 0;
   left: 0;
@@ -697,12 +734,400 @@ Loading Screen
   }
 }
 
+//----------------------------------------------------------
+
+//                     Torneos (Index)
+
+//----------------------------------------------------------
+
+.torneos-wrapper-index {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  background-color: rgba(51, 51, 51, 0.7);
+
+  .torneos-grid {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .torneo-reciente,
+    .mejores-jugadores {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background-color: #222;
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+    .torneo-reciente {
+      .torneo-reciente-header {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        h1 {
+          color: #0076be;
+        }
+      }
+
+      hr {
+        border: 1px solid #0076be;
+        margin: 10px 0;
+      }
+      .torneo {
+        display: grid;
+        height: 100%;
+        grid-template-columns: 30% 1fr;
+        .torneo-left {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          img {
+            width: 90%;
+            max-width: 200px;
+          }
+          .participantes {
+            p {
+              color: white;
+            }
+          }
+        }
+        .torneo-right {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .torneo-info {
+            h2 {
+              color: #ffaa00;
+              font-weight: normal;
+              margin: 10px 0;
+            }
+            p {
+              color: white;
+            }
+          }
+          .torneo-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 10px 0;
+            a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              text-decoration: none;
+
+              margin: 5px;
+              width: 150px;
+              height: 40px;
+              background-color: #0076be;
+              color: white;
+              border-radius: 20px;
+
+              transition: 0.5s;
+
+              i {
+                margin: 0 5px;
+              }
+            }
+            a:hover {
+              background-color: #009dff;
+              width: 170px;
+            }
+          }
+        }
+      }
+    }
+    .mejores-jugadores {
+      .mejores-jugadores-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        h1 {
+          color: #0076be;
+        }
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          text-decoration: none;
+
+          width: 150px;
+          height: 40px;
+          background-color: #0076be;
+          color: white;
+          border-radius: 20px;
+
+          transition: 0.5s;
+        }
+        a:hover {
+          background-color: #009dff;
+        }
+      }
+
+      hr {
+        border: 1px solid #0076be;
+        margin: 10px 0;
+      }
+
+      .jugadores-table {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .player {
+          width: 100%;
+          height: 50px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          text-decoration: none;
+          border-radius: 30px;
+
+          .info-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-left: 10px;
+
+            .posicion {
+              color: white;
+            }
+
+            .player-img {
+              width: 35px;
+              height: 35px;
+
+              background-color: #0076be;
+              border-radius: 50%;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              margin-left: 20px;
+              margin-right: 10px;
+
+              i {
+                color: white;
+              }
+            }
+            .nombre {
+              text-decoration: none;
+              color: white;
+            }
+          }
+          .puntaje {
+            color: white;
+            margin-right: 10px;
+          }
+        }
+        .player:hover {
+          background-color: #333;
+        }
+        .player:nth-child(1) {
+          .posicion {
+            color: #f7c045;
+          }
+        }
+        .player:nth-child(2) {
+          .posicion {
+            color: #a4b4b8;
+          }
+        }
+        .player:nth-child(3) {
+          .posicion {
+            color: #b1835d;
+          }
+        }
+      }
+      .mas-mobile {
+        width: 100%;
+
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          text-decoration: none;
+
+          width: 150px;
+          height: 40px;
+          background-color: #0076be;
+          color: white;
+          border-radius: 20px;
+
+          transition: 0.5s;
+        }
+        a:hover {
+          background-color: #009dff;
+        }
+      }
+    }
+  }
+  .torneos-recientes-wrapper {
+    width: 85%;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    background-color: #222;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    h1 {
+      color: #0076be;
+    }
+    hr {
+      border: 1px solid #0076be;
+      margin: 10px 0;
+    }
+
+    .torneos-recientes {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .torneo {
+      width: 400px;
+      margin: 20px;
+      padding: 10px;
+      background-color: #2b2b2b;
+      border-radius: 30px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .torneo-left-side {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img {
+          width: 100%;
+        }
+      }
+      .torneo-right-side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        h1 {
+          color: #ffaa00;
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+        p {
+          color: white;
+        }
+
+        .torneo-right-buttons {
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+
+          button {
+            width: 120px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #0076be;
+            color: white;
+            border-radius: 20px;
+
+            border: none;
+            outline: none;
+
+            transition: 0.5s;
+          }
+          button:hover {
+            background-color: #009dff;
+          }
+        }
+      }
+    }
+  }
+}
+//----------------------------------------------------------
+
+//                        Anuncios
+
+//----------------------------------------------------------
+
+.anuncio {
+  background-color: rgba(51, 51, 51, 0.7);
+  width: 80%;
+  height: 150px;
+
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  h1 {
+    color: #ffaa00;
+  }
+  p {
+    color: #aaa;
+  }
+}
+
+//----------------------------------------------------------
+
+//                     Noticias (Index)
+
+//----------------------------------------------------------
+
 .noticias-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  margin-bottom: 20px;
 
   background-color: rgba(51, 51, 51, 0.7);
 
@@ -772,6 +1197,12 @@ Loading Screen
     }
   }
 }
+
+//----------------------------------------------------------
+
+//                     Landing Page
+
+//----------------------------------------------------------
 
 .landing-page {
   display: flex;
@@ -1519,8 +1950,10 @@ Buscar Jugadores
       }
 
       .search-box {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
         padding: 10px;
 
@@ -1584,7 +2017,7 @@ Buscar Jugadores
           }
           .profileButton {
             margin: 10px;
-            button {
+            button, .eliminar{
               display: flex;
               justify-content: center;
               align-items: center;
@@ -1596,15 +2029,35 @@ Buscar Jugadores
               border: none;
               cursor: pointer;
               transition: 0.5s;
+              margin: 10px 0;
+              margin-right: 10px;
 
               i {
                 margin-right: 10px;
               }
             }
+            .eliminar{
+              background-color: #9e3f3f;
+            }
             button:hover {
               background-color: #333;
               color: #fcba03;
             }
+          }
+        }
+        .player-not-found {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          height: 200px;
+
+          h1 {
+            color: #ffaa00;
+          }
+          p {
+            color: white;
           }
         }
       }
@@ -1617,6 +2070,159 @@ Buscar Jugadores
       margin: 20px 0;
       width: 80%;
       border: 1px solid white;
+    }
+  }
+}
+
+/*
+
+
+Estadisticas Globales
+
+
+*/
+
+.estadisticas-globales-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .estadisticas-list {
+    width: 100%;
+    max-width: 700px;
+    background-color: #111;
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .estadisticas-logo {
+      margin: 20px;
+      max-width: 300px;
+
+      img {
+        width: 100%;
+      }
+    }
+    h1 {
+      color: white;
+      font-weight: normal;
+    }
+    hr {
+      width: 90%;
+      margin: 20px 0;
+    }
+
+    .torneo {
+      width: 90%;
+      display: grid;
+      grid-template-columns: 40% 1fr;
+
+      .torneo-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img {
+          max-width: 150px;
+        }
+        p {
+          color: white;
+        }
+      }
+      .torneo-right {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        h1 {
+          margin-top: 10px;
+          color: #ffaa00;
+        }
+        p {
+          color: #aaa;
+        }
+      }
+    }
+    .estadisticas {
+      width: 95%;
+      background-color: #222;
+      border-radius: 30px;
+      margin-bottom: 20px;
+
+      .stats-box {
+        margin: 10px;
+        .player {
+          width: 100%;
+          height: 50px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          text-decoration: none;
+          border-radius: 30px;
+
+          .info-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-left: 10px;
+
+            .posicion {
+              color: white;
+            }
+
+            .player-img {
+              width: 35px;
+              height: 35px;
+
+              background-color: #0076be;
+              border-radius: 50%;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              margin-left: 20px;
+              margin-right: 10px;
+
+              i {
+                color: white;
+              }
+            }
+            .nombre {
+              text-decoration: none;
+              color: white;
+            }
+          }
+          .puntaje {
+            color: white;
+            margin-right: 10px;
+          }
+        }
+        .player:hover {
+          background-color: #333;
+        }
+        .player:nth-child(1) {
+          .posicion {
+            color: #f7c045;
+          }
+        }
+        .player:nth-child(2) {
+          .posicion {
+            color: #a4b4b8;
+          }
+        }
+        .player:nth-child(3) {
+          .posicion {
+            color: #b1835d;
+          }
+        }
+      }
     }
   }
 }
@@ -1641,21 +2247,7 @@ Buscar Jugadores
   width: 100%;
   height: calc(98vh - 100px);
 
-  #tempJug1,
-  #tempJug2 {
-    height: 30px;
-    background-color: #222;
-    border-radius: 1em;
-    color: white;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    i {
-      margin-right: 5px;
-    }
-  }
+  margin-bottom: 20px;
   .board {
     display: grid;
     grid-template-columns: 60% 1fr;
@@ -1720,6 +2312,7 @@ Buscar Jugadores
       }
     }
     .second-player-mobile {
+      width: 100%;
       justify-content: flex-end;
     }
 
@@ -1856,6 +2449,73 @@ Buscar Jugadores
       align-items: center;
       flex-direction: column;
 
+      .temp-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        margin: 10px 0;
+
+        #tempJug1,
+        #tempJug2 {
+          padding: 0 10px;
+          height: 30px;
+          background-color: #444;
+          border-radius: 1em;
+          color: white;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .win-bar {
+        width: 80%;
+        min-height: 10px;
+        border-radius: 1em;
+        background-color: #333;
+
+        position: relative;
+
+        .bar {
+          width: 30%;
+          height: 10px;
+          border-radius: 1em;
+          background: linear-gradient(
+            rgba(255, 170, 0, 1) 0%,
+            rgba(129, 78, 0, 1) 100%
+          );
+
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          animation: 0.5s;
+        }
+        .bar2 {
+          width: 30%;
+          height: 10px;
+          border-radius: 1em;
+          background: linear-gradient(
+            90deg,
+            rgba(190, 190, 190, 1) 0%,
+            rgb(100, 100, 100) 100%
+          );
+
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          animation: 0.5s;
+        }
+      }
+
       .menu-bottom {
         width: 100%;
         height: 100%;
@@ -1904,6 +2564,7 @@ Buscar Jugadores
           height: calc(100% - 50px);
           max-height: 330px;
           overflow: auto;
+          border-radius: 0 0 30px 30px;
 
           .chat {
             position: relative;
@@ -2020,13 +2681,15 @@ Buscar Jugadores
           table {
             width: 100%;
             max-height: 100%;
-            background-color: #333;
+            border-collapse: collapse;
 
             tr {
+              border: 1px solid #333;
               th {
                 color: white;
                 text-align: center;
                 font-weight: lighter;
+                background-color: #333;
               }
               td {
                 height: 30px;
@@ -2211,6 +2874,136 @@ Buscar Jugadores
 /*
 
 
+          Logros
+
+
+*/
+
+.logros-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .logros {
+    width: 90%;
+
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #111;
+    border-radius: 30px;
+
+    h1 {
+      color: #0076be;
+      margin: 10px 0;
+      font-size: 30px;
+    }
+    .logros-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      p {
+        color: white;
+        margin: 0 10px;
+      }
+    }
+
+    hr {
+      border: 1px solid #0076be;
+      margin: 10px 0;
+
+      width: 100%;
+    }
+
+    .logros-content {
+      width: 100%;
+      background-color: #222;
+      border-radius: 30px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      .logro {
+        width: 300px;
+        height: 300px;
+
+        margin: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        background-color: #252525;
+
+        border-radius: 30px;
+
+        box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: .5);
+
+        .logro-img {
+          border-radius: 50%;
+          background-color: #333;
+          width: 150px;
+          height: 150px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          img {
+            width: 80%;
+          }
+          #locked {
+            display: none;
+            color: white;
+            font-size: 40px;
+          }
+        }
+        h1 {
+          margin: 5px 10px;
+          font-weight: normal;
+        }
+        .desc {
+          margin: 2px 10px;
+          color: white;
+        }
+        p {
+          margin: 2px 10px;
+          color: #737373;
+        }
+      }
+      .locked{
+        .logro-img{
+          img{
+            display: none;
+          }
+          #locked{
+            display: block;
+          }
+        }
+        h1{
+          color: #737373;
+        }
+      }
+    }
+  }
+}
+
+/*
+
+
 Editar perfil
 
 
@@ -2377,11 +3170,7 @@ Editar perfil
           justify-content: flex-end;
           align-items: center;
 
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+          button {
             width: 200px;
             height: 50px;
             margin: 10px 0;
@@ -2391,13 +3180,15 @@ Editar perfil
             color: white;
             text-decoration: none;
 
+            cursor: pointer;
+            border: none;
             transition: 0.5s;
 
             i {
               margin-right: 10px;
             }
           }
-          a:hover {
+          button:hover {
             background-color: #00436d;
           }
         }
@@ -2407,14 +3198,12 @@ Editar perfil
           justify-content: center;
           align-items: center;
 
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+          button {
             width: 200px;
             height: 50px;
 
+            border: none;
+            cursor: pointer;
             background-color: #0076be;
             border-radius: 30px;
             color: white;
@@ -2426,7 +3215,7 @@ Editar perfil
               margin-right: 10px;
             }
           }
-          a:hover {
+          button:hover {
             background-color: #00436d;
           }
         }
@@ -2637,7 +3426,7 @@ Administrador
 
 .administrador-wrapper {
   padding: 40px 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   width: 100%;
   display: flex;
@@ -2978,6 +3767,103 @@ Torneos
             flex-direction: column;
             flex-wrap: wrap;
 
+            .config-avanzada {
+              border-radius: 20px;
+              padding: 1%;
+
+              margin: 10px 0;
+              background-color: #333;
+
+              h1 {
+                color: #0076be;
+              }
+              hr {
+                border: 1px solid #0076be;
+                margin: 10px 0;
+              }
+              .avanzada-wrapper {
+                margin: 10px 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+
+                .avanzada-left,
+                .avanzada-right {
+                  background-color: #444;
+                  border-radius: 30px;
+                  padding: 10px;
+                  margin: 10px;
+                }
+                .avanzada-left {
+                  width: 100%;
+                  max-width: 300px;
+
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+
+                  .limitar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    margin: 10px 0;
+
+                    input {
+                      margin: 0 10px;
+                    }
+                  }
+                  div {
+                    input[type="number"] {
+                      display: block;
+                      background-color: transparent;
+                      border: 1px solid white;
+                      border-radius: 10px;
+                      outline: none;
+                      color: white;
+                      text-indent: 5px;
+
+                      margin-bottom: 10px;
+
+                      height: 30px;
+                    }
+                  }
+                  #quehacerRes {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    margin: 0 10px;
+                  }
+                }
+
+                .avanzada-right {
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+
+                  input,
+                  select {
+                    display: block;
+                    background-color: transparent;
+                    border: 1px solid white;
+                    border-radius: 10px;
+                    outline: none;
+                    color: white;
+                    text-indent: 5px;
+
+                    margin-bottom: 10px;
+
+                    height: 30px;
+                  }
+                  select {
+                    background-color: #0076be;
+                    border: none;
+                  }
+                }
+              }
+            }
+
             .advanced-wrapper {
               height: 400px;
               margin: 10px 0;
@@ -3070,6 +3956,14 @@ Responsive
 
 
 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @keyframes trofeo-animation {
   0% {
@@ -3103,6 +3997,31 @@ Responsive
           .JugadorDos {
             justify-content: flex-end;
           }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1220px) {
+  .torneos-wrapper-index {
+    .torneos-grid {
+      .torneo-reciente {
+        .torneo {
+          grid-template-columns: 1fr;
+          .torneo-right {
+            text-align: center;
+          }
+        }
+      }
+      .mejores-jugadores {
+        .mejores-jugadores-header {
+          height: 45px;
+          a {
+            display: none;
+          }
+        }
+        .mas-mobile {
+          display: flex;
         }
       }
     }
@@ -3181,6 +4100,26 @@ Responsive
       }
       .mobile-img {
         display: flex;
+      }
+    }
+  }
+  .torneos-wrapper-index {
+    .torneos-grid {
+      grid-template-columns: 1fr;
+      .torneo-reciente {
+        .torneo {
+          .torneo-right {
+            text-align: center;
+          }
+        }
+      }
+      .mejores-jugadores {
+        .mejores-jugadores-header {
+          height: 45px;
+          a {
+            display: none;
+          }
+        }
       }
     }
   }

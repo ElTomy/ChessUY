@@ -72,12 +72,18 @@
             </a>
             <?php
               echo '<div class="profile-avatar">
-                <div class="profile-flex">
-                  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
-                    <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
-                  </div>
+                <div class="profile-flex">';
 
-                  <div class="profile-avatar-body">';
+                if($usuario_info['tipo'] == "0"){
+                  echo '  <div class="profile-body-picture" style="border: 2px solid '.$usuario_info['ColorIcono'].'; animation: spin 4s infinite linear ; box-shadow: 0 0 15px 0 '.$usuario_info['ColorIcono'].'; background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }else{
+                  echo '  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }
+                  echo ' <div class="profile-avatar-body">';
                     echo "<p>" . $usuario_info['usuario'] . "</p>";
                     if($usuario_info['tipo'] == 0){
                       $tipo = "<i class='fas fa-star'></i> Administrador";
@@ -95,8 +101,8 @@
                   <?php
 
                   if(isset($_SESSION['usuario'])){
-                    if($usuario_info['usuario'] == $_SESSION['usuario']){
-                      echo '<a href="/ChessUY/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
+                    if($usuario_info['usuario'] == $_SESSION['usuario'] || $_SESSION['tipo'] == 0){
+                      echo '<a href="/ChessUY/Profile/Editar/' . $usuario_info['usuario'] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 
@@ -227,7 +233,7 @@
                       </div>
                     </div>
                   </div>
-                  <a class="ver-logros" href=""><i class="fas fa-medal"></i>Ver todos los logros</a>
+                  <a class="ver-logros" href="/ChessUY/Logros/Logros"><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
         </div>
@@ -237,3 +243,42 @@
     </div>
   </body>
 </html>
+
+
+<!-- 
+
+                                                                                                    
+                                                          .&           &                                                    
+                                                          ,&&          &&                                                  
+                                                            #&&&         &&%                                                
+                                                            ,&&&&,       &&&.                                              
+                                                              &&&&&&      &&&&                                             
+                                                                &&&&&&&&    &&&&&                                           
+                                                                  &&&&&&&&&  #&&&&&                                         
+                                                                    &&&&&&&&&&&      &                                      
+                                                                      &&&&&&&&&&&&&&&&&&&&                                 
+                                                    *&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                            
+                                              (&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                         
+                                          &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                       
+                                      &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&    /&&&&&&&&&&&                      
+                                    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&         &&&&&&&&                     
+                                  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&,  &&&&&&&&&                  
+                                &&&&&&&&&&&&&&&                    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#         
+                              &&&&&&&&&&&&*                          &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/ 
+                            (&&&&&&&&&(                                &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                            &&&&&&&&                                     &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                          &&&&&&                                         &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                          &&&&                                              &&&&&&&&&&&&&&&&&&&&&&(&&&&&&&&&&&&&&&&&&&&&&&&%
+                        #&&                                                     #                           %&&&&&&&&&&&&( 
+                        &                                                                                        ,&&&&&&   
+                                                                                                                    /&& 
+
+   &&&&&&&&&&&&  *&&&&    &&&&, ,&&&&&&&&&&&&   &&&&&&&&&&&& &&&&&&&&&&&&#   &&&&      &&&& .&&&&    &&&&%  &&&&&&&&&&&    &&&&&&&&&&&&*      #&&&&&     
+  &&&&.     &&&&   &&&&  &&&&            &&&&   &&&&                  &&&&   &&&&      &&&&   &&&&  &&&&            &&&&&           &&&&     (&&&&&&&    
+                    &&&&&&&&    ,&&&&&&&&&&&(   &&&&&&&&&&,          &&&&&   &&&&&&&&&&&&&&    &&&&&&&&              &&&&         .&&&&&    #&&&( &&&&   
+ &&&&&               &&&&&&     ,&&&&,,,(&&&&   &&&&,,,,,,   &&&&&&&&&&(     &&&&,,,,,,&&&&     &&&&&&      &&&&     &&&&  &&&&&&&&&&.      &&&&   &&&&  
+  &&&&&    *&&&&      &&&&      ,&&&&    *&&&&  &&&&         &&&&   &&&&&    &&&&      &&&&      &&&&       &&&&    &&&&,  &&&&   &&&&#    &&&&&&&&&&&&& 
+   .&&&&&&&&&&/       &&&&      ,&&&&&&&&&&&&   &&&&&&&&&&&& &&&&    &&&&&   &&&&      &&&&      &&&&       &&&&&&&&&&(    &&&&    &&&&&  &&&&      &&&&&
+
+                                          Copyright © 2021 CyberHydra. Todos los derechos reservados.
+ -->

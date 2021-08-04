@@ -3,6 +3,8 @@ window.onload = function(){
 
     $("#header").load("/ChessUY/Page/header.php");
     $("#footer").load("/ChessUY/Page/footer.html");
+
+    $("#torn-InscAct").load("/ChessUY/Torneo/PHP/mostTorn.php");
 };
 
 function Modal(numero_mensaje){
