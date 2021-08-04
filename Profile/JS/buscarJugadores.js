@@ -41,6 +41,7 @@ function perfil(usuario){
 }
 
 function eliminar(usuario){
+    $('#modal').show();
     $.ajax({
         type: "POST",
         url: "/ChessUY/Modal/modalEliminarUsuario.php",

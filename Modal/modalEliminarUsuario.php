@@ -13,7 +13,7 @@
                         <h1>Eliminar</h1>
                         <hr><div class="modal-trofeo">
                         <p>¿Seguro que desea eliminar el siguiente usuario?</p>
-                        <p class="eliminar"><i class="fas fa-trash-alt"></i> $usuario</p>
+                        <p class="eliminar"><i class="fas fa-trash-alt"></i> '.$usuario.'</p>
                         <h3>(Se borrará completamente y se perderán todos los datos).</h3>
                         <div class="eliminar-buttons">
                             <a onclick="borrar('.$usuario2.')"><i class="fas fa-user-slash"></i> Borrar</a>
