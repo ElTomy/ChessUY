@@ -1583,6 +1583,21 @@ Loading Screen
             margin: 5px 0;
           }
         }
+        .estadisticas-empty{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          margin: 40px 0;
+
+          h1{
+            color: #ffaa00;
+          }
+          p{
+            color: white;
+          }
+        }
         .estadisticas-body {
           display: flex;
           justify-content: center;

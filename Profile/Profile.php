@@ -148,34 +148,44 @@
             <div class="profile-grid">
 
               <div class="estadisticas-wrapper">
-                <div class="estadisticas-header">
+              <?php
+
+              if($ELO !== null){
+                echo "
+                <div class='estadisticas-header'>
                   <h1>Estadisticas</h1>
                 </div>
-                <?php
-                  echo "  <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
-                          </div>";
+                <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                        </div>";
+              }else{
+                echo "<div class='estadisticas-empty'>
+                        <h1><i class='fas fa-exclamation'></i> Lo sentimos...</h1>
+                        <p>No hay estadisticas para mostrar.</p>
+                      </div>";
+              }
+                
                 ?>
                 
               </div>
