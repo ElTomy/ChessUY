@@ -2,10 +2,29 @@
 include '../servidor.php';
 $server= new servidor();
 session_start();
-$usuario = $_SESSION['usuario'];
-$Icono = $_SESSION['icono']; 
-$ColorIcono = $_SESSION['coloricono'];
-$ColorFondo = $_SESSION['colorfondo'];
+$usuario = $_GET['Usuario'];
+
+if($usuario !== $_SESSION['usuario']){
+  if(isset($_SESSION['tipo'])){
+    if($_SESSION['tipo'] !== 0){
+      header('Location: /ChessUY/');
+    }
+    if($_SESSION['tipo'] == 0){
+      $disabled = "";
+    }else{
+      $disabled = "disabled";
+    }
+  }else{
+    header('Location: /ChessUY/');
+  }
+}
+
+$usuario_info = $server->PerfilUsuario($usuario);
+
+
+$Icono = $usuario_info['Icono']; 
+$ColorIcono = $usuario_info['ColorIcono'];
+$ColorFondo = $usuario_info['ColorFondo'];
 
 $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-chess-knight'></i> Jugador", "<i class='fas fa-ruler-horizontal'></i> Árbitro", "<i class='fas fa-microphone'></i> Periodista")
 ?>
