@@ -4157,7 +4157,8 @@ Estadisticas Globales
 
 .logros-wrapper .logros .logros-content .logro .desc {
   margin: 2px 10px;
-  color: white;
+  font-size: 14px;
+  color: #bbb;
 }
 
 .logros-wrapper .logros .logros-content .logro p {
