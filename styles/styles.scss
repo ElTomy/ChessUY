@@ -3243,6 +3243,8 @@ Editar perfil
             width: 200px;
             height: 50px;
 
+            margin: 0 5px;
+
             border: none;
             cursor: pointer;
             background-color: #0076be;
@@ -3255,6 +3257,12 @@ Editar perfil
             i {
               margin-right: 10px;
             }
+          }
+          .deshabilitar{
+            background-color: #f54646;
+          }
+          .deshabilitar:hover{
+            background-color: #461212;
           }
           button:hover {
             background-color: #00436d;

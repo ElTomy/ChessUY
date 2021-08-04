@@ -148,6 +148,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                         <hr class="lineadivisora">
                         <div class="botonGuardar">
                             <button onclick="guardar('.$usuario2.')"><i class="fas fa-save"></i> Guardar Cambios</button>
+                            <button class="deshabilitar" onclick="eliminar('.$usuario2.')"><i class="fas fa-user-slash"></i> Deshabilitar Cuenta</button>
                         </div>
                     </div>
                 </div>

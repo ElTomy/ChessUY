@@ -124,3 +124,27 @@ function contraseña(usuario){
           });
     }
 }
+
+function eliminar(usuario){
+    $('#modal').show();
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Modal/modalEliminarUsuario.php",
+        data: {Usuario: usuario},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+    });
+}
+
+function borrar(usuario){
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Profile/PHP/borrar.php",
+        data: {Usuario: usuario},
+        success: function (response) {   
+            $('#modal').hide();
+            cargarJugadores();
+        }
+    });
+}
