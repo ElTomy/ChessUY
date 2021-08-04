@@ -328,7 +328,7 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
-
+            session_start();
             if($Usuario == $_SESSION['usuario']){
                 $_SESSION['icono'] = $NumeroIcono;
                 $_SESSION['coloricono'] = $ColorIcono;
@@ -378,8 +378,13 @@ class servidor
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("ss", $nombre, $usuario);
         if($stmts->execute()){
-            $_SESSION['usuario'] = $nombre;
+            $execute = true;
+            session_start();
+            if($usuario == $_SESSION['usuario']){
+                $_SESSION['usuario'] = $nombre;
+            }            
         }
+        return $execute;
     }
     //
     //
