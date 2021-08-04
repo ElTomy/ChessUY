@@ -410,4 +410,27 @@ class servidor
         $stmts->bind_param("ss", $usuario, $contraNueva);
         $stmts->execute();
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoLogros(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoLogros()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id, $descripcion, $imagen, $porcentaje, $nombre);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id, 'Descripcion' => $descripcion, 'Imagen' => $imagen, 'Porcentaje' => $porcentaje, 'Nombre' => $nombre);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
