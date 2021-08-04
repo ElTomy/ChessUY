@@ -256,29 +256,6 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function Top($usuario){
-        $conn = $this->conectar();
-        $info = array();
-        $sql = "CALL Top(?)";
-        $stmts = $conn->prepare($sql);
-        $stmts->bind_param("s", $usuario);
-        if ($stmts->execute()) {
-            
-            $stmts->store_result();
-            $stmts->bind_result($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail, $Icono, $ColorIcono, $ColorFondo, $ELO);
-            while ($stmts->fetch()) {
-                $data = array('tipo' => $tipo, 'usuario' => $us, 'ci' => $ci, 'año' => $año, 'apellido' => $apellido, 'Institucion' => $Institucion, 'Nombre' => $Nombre, 'Contacto' => $Contacto, 'Contraseña' => $Contraseña, 'Nacimiento' => $Nacimiento, 'Mail' => $Mail, 'Icono' => $Icono, 'ColorIcono'  => $ColorIcono, 'ColorFondo'  => $ColorFondo, 'ELO'  => $ELO);
-                $info[] = $data;
-            }
-            $stmts->close();
-        }
-        return $info;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
     function PerfilUsuario($user){
         $conn = $this->conectar();
         $info = array();
