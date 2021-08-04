@@ -377,7 +377,9 @@ class servidor
         $sql = "CALL CambioNombre(?,?)";
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("ss", $nombre, $usuario);
-        $stmts->execute();
+        if($stmts->execute()){
+            $_SESSION['usuario'] = $nombre;
+        }
     }
     //
     //
