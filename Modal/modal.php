@@ -79,6 +79,30 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "El nombre de usuario no está disponible o contiene caracteres no permitidos";
         break;
+
+    case 14:
+        $mensaje_2 = "Editar:";
+        $link = "";
+        $mensaje = "El nombre de usuario ya existe.";
+        break;
+
+    case 15:
+        $mensaje_2 = "Editar:";
+        $link = "";
+        $mensaje = "Debes completar ambos campos para cambiar la contraseña.";
+        break;
+
+    case 16:
+        $mensaje_2 = "Editar:";
+        $link = "";
+        $mensaje = "La contraseña actual no es correcta.";
+        break;
+
+    case 17:
+        $mensaje_2 = "Editar:";
+        $link = "";
+        $mensaje = "Se ha cambiado la contraseña con exito.";
+        break;
 }
 
 

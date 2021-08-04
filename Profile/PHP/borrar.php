@@ -1,8 +1,9 @@
 <?php
-session_start();
+    include '../../servidor.php';
+    $server= new servidor();
 
-$usuario = $_POST['Usuario'];
+    $usuario = $_POST['Usuario'];
 
-
+    $server->BorrarUsuario($usuario)
 
 ?>

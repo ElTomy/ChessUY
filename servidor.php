@@ -351,4 +351,57 @@ class servidor
         }
         return $execute;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BorrarUsuario($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL BorrarUsuario(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambioNombre($nombre, $usuario){
+        $conn = $this->conectar();
+        $sql = "CALL CambioNombre(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $nombre, $usuario);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizarUsuario($Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto){
+        $conn = $this->conectar();
+        $sql = "CALL ActualizarUsuario(?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sssssiis",$Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambiarContraseña($usuario, $contraNueva){
+        $conn = $this->conectar();
+        $sql = "CALL CambiarContrasenia(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $usuario, $contraNueva);
+        $stmts->execute();
+    }
 }

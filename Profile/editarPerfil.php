@@ -2,7 +2,35 @@
 include '../servidor.php';
 $server= new servidor();
 session_start();
-$usuario = $_SESSION['usuario'];
+
+$usuario = $_GET['Usuario'];
+
+$usuario2 = "'$usuario'";
+
+if($usuario !== $_SESSION['usuario']){
+  if(isset($_SESSION['tipo'])){
+    if($_SESSION['tipo'] !== 0){
+      header('Location: /ChessUY/');
+    }
+    if($_SESSION['tipo'] == 0){
+      $disabled = "";
+    }else{
+      $disabled = "disabled";
+    }
+  }else{
+    header('Location: /ChessUY/');
+  }
+}else{
+  if($_SESSION['tipo'] == 0){
+    $disabled = "";
+  }else{
+    $disabled = "disabled";
+  }
+}
+
+
+
+
 
 $usuario_info = $server->PerfilUsuario($usuario);
 
@@ -24,6 +52,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/ChessUY/Profile/JS/editarPerfil.js"></script>
 
     
     <link
@@ -48,6 +77,9 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
         <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
+
+    <div id="modal"></div>
+
     <?php
 
     $Perfil = '
@@ -77,45 +109,45 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                         <h1 class="titulos-divisiones">Nombre de Usuario</h1>
                         <hr class="lineadivisora">
                         <div class="inputs">
-                            <label>Usuario: </label> <input type="text" placeholder="Usuario" value="' . $usuario_info["usuario"] . '">
+                            <label>Usuario: </label> <input id="Usuario" type="text" placeholder="Usuario" value="' . $usuario_info["usuario"] . '">
                         </div>
                         <h1 class="titulos-divisiones">Información Personal</h1>
                         <hr class="lineadivisora">
                         <div class="inputs">
-                            <label>Nombre: </label> <input type="text" placeholder="Nombre" value="' . $usuario_info["Nombre"] . '" disabled>
+                            <label>Nombre: </label> <input id="Nombre" type="text" placeholder="Nombre" value="' . $usuario_info["Nombre"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Apellido: </label> <input type="text" placeholder="Apellido" value="' . $usuario_info["apellido"] . '" disabled>
+                            <label>Apellido: </label> <input id="Apellido" type="text" placeholder="Apellido" value="' . $usuario_info["apellido"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Correo Electrónico: </label> <input type="text" placeholder="Email" value="' . $usuario_info["Mail"] . '" disabled>
+                            <label>Correo Electrónico: </label> <input id="Email" type="text" placeholder="Email" value="' . $usuario_info["Mail"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Institución: </label> <input type="text" placeholder="Institución" value="' . $usuario_info["Institucion"] . '" disabled>
+                            <label>Institución: </label> <input id="Institucion" type="text" placeholder="Institución" value="' . $usuario_info["Institucion"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Año: </label> <input type="text" placeholder="Año" value="' . $usuario_info["año"] . '" disabled>
+                            <label>Año: </label> <input id="Año" type="text" placeholder="Año" value="' . $usuario_info["año"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Documento: </label> <input type="text" placeholder="Documento" value="' . $usuario_info["ci"] . '" disabled>
+                            <label>Documento: </label> <input id="Documento" type="text" placeholder="Documento" value="' . $usuario_info["ci"] . '" '.$disabled .'>
                         </div>
                         <div class="inputs">
-                            <label>Celular: </label> <input type="text" placeholder="Celular" value="' . $usuario_info["Contacto"] . '" disabled>
+                            <label>Celular: </label> <input id="Celular" type="text" placeholder="Celular" value="' . $usuario_info["Contacto"] . '" '.$disabled .'>
                         </div>
                         <h1 class="titulos-divisiones">Cambiar Contraseña</h1>
                         <hr class="lineadivisora">
                         <div class="inputs" id="contraseña-anterior">
-                            <label>Contraseña Anterior: </label> <input type="password" placeholder="Contraseña Anterior">
+                            <label>Contraseña Anterior: </label> <input id="ContraActual" type="password" placeholder="Contraseña Anterior">
                         </div>
                         <div class="inputs" id="contraseña-nueva">
-                            <label>Nueva Contraseña: </label> <input type="password" placeholder="Nueva Contraseña">
+                            <label>Nueva Contraseña: </label> <input id="ContraNueva" type="password" placeholder="Nueva Contraseña">
                         </div>
                         <div class="botonContra">
-                            <a href=""><i class="fas fa-key"></i> Cambiar Contraseña</a>
+                            <button onclick="contraseña('.$usuario2.')"><i class="fas fa-key"></i> Cambiar Contraseña</button>
                         </div>
                         <hr class="lineadivisora">
                         <div class="botonGuardar">
-                            <a href=""><i class="fas fa-save"></i> Guardar Cambios</a>
+                            <button onclick="guardar('.$usuario2.')"><i class="fas fa-save"></i> Guardar Cambios</button>
                         </div>
                     </div>
                 </div>

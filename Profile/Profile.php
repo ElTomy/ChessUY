@@ -101,8 +101,8 @@
                   <?php
 
                   if(isset($_SESSION['usuario'])){
-                    if($usuario_info['usuario'] == $_SESSION['usuario']){
-                      echo '<a href="/ChessUY/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
+                    if($usuario_info['usuario'] == $_SESSION['usuario'] || $_SESSION['tipo'] == 0){
+                      echo '<a href="/ChessUY/Profile/Editar/' . $usuario_info['usuario'] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 

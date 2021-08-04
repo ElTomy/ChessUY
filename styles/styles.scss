@@ -3170,11 +3170,7 @@ Editar perfil
           justify-content: flex-end;
           align-items: center;
 
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+          button {
             width: 200px;
             height: 50px;
             margin: 10px 0;
@@ -3184,13 +3180,15 @@ Editar perfil
             color: white;
             text-decoration: none;
 
+            cursor: pointer;
+            border: none;
             transition: 0.5s;
 
             i {
               margin-right: 10px;
             }
           }
-          a:hover {
+          button:hover {
             background-color: #00436d;
           }
         }
@@ -3200,14 +3198,12 @@ Editar perfil
           justify-content: center;
           align-items: center;
 
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+          button {
             width: 200px;
             height: 50px;
 
+            border: none;
+            cursor: pointer;
             background-color: #0076be;
             border-radius: 30px;
             color: white;
@@ -3219,7 +3215,7 @@ Editar perfil
               margin-right: 10px;
             }
           }
-          a:hover {
+          button:hover {
             background-color: #00436d;
           }
         }

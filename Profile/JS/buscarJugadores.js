@@ -56,9 +56,9 @@ function borrar(usuario){
         type: "POST",
         url: "/ChessUY/Profile/PHP/borrar.php",
         data: {Usuario: usuario},
-        success: function (response) {
-            cargarJugadores();
+        success: function (response) {   
             $('#modal').hide();
+            cargarJugadores();
         }
     });
 }
