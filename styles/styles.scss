@@ -1617,6 +1617,10 @@ Loading Screen
         border-radius: 30px;
         margin: 20px;
 
+        #logros{
+          width: 100%;
+        }
+
         .ver-logros {
           margin: 20px 0;
           display: flex;
@@ -1643,15 +1647,19 @@ Loading Screen
           display: flex;
           align-items: center;
           flex-direction: column;
+          margin: 20px 0;
+
 
           .logro {
+            width: 100%;
+
             display: flex;
             justify-content: left;
             align-items: center;
             flex-direction: column;
             margin: 5px 10px;
 
-            .imagen-logro {
+            .logro-img {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -1661,12 +1669,13 @@ Loading Screen
               height: 100px;
               border-radius: 100%;
 
-              .img-trofeo {
+              img {
                 width: 70px;
               }
               i {
                 color: white;
                 font-size: 30px;
+                display: none;
               }
             }
             .logro-body {
@@ -1677,8 +1686,9 @@ Loading Screen
                 margin: 0;
               }
               p {
-                color: white;
-                margin: 5px 0;
+                width: 80%;
+                color: #bbb;
+                margin: 5px auto;
               }
               .bloqueado {
                 color: grey;
@@ -1686,6 +1696,21 @@ Loading Screen
               .porcentaje {
                 color: grey;
                 font-size: 13px;
+              }
+            }
+          }
+          .locked{
+            .logro-img{
+              img{
+                display: none;
+              }
+              i{
+                display: block;
+              }
+            }
+            .logro-body{
+              h1{
+                color: #aaa;
               }
             }
           }
