@@ -20,16 +20,18 @@
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../Javascript/Loader.js"></script>
     <script src="../Usuarios/js/Usuario.js"></script>
     <script src="../Usuarios/js/function-usuarios.js"></script>
+    <script src="JS/Logros.js"></script>
 
     <link
       rel="shortcut icon"
       href="../media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="../styles/styles.css" />
 
     <title>ChessUY | 
@@ -182,58 +184,11 @@
                 <div class="logros-header">
                   <h1>Logros</h1><p>(1)</p>
                 </div>
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <img class="img-trofeo" src="/ChessUY/media/images/Logro.png" alt="">
-                      </div>
-                      <div class="logro-body">
-                        <h1>Primera Jugada</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">99% de los usuarios tienen este logro.</p>
-                      </div>
-                  </div>
-                  </div>
 
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                      <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">10% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
+                <div id="logros"></div>
 
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                      <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">0,05% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                        <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                        <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">1% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="ver-logros" href="/ChessUY/Logros/Logros"><i class="fas fa-medal"></i>Ver todos los logros</a>
+                <a class="ver-logros" href="/ChessUY/Logros/Logros"><i class="fas fa-medal"></i>Ver todos los logros</a>
+                
               </div>
             </div>
         </div>
