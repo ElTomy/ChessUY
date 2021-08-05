@@ -10,11 +10,14 @@ $Cantidad = count($ID_Logro);
 list($ELO,$Victorias,$Tablas,$Derrotas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($Usuario);
 $victoria = $_POST['victorias'];
 $Derrota = $_POST['derrotas'];
+$Tabla = $_POST['tablas'];
 $Tiempo = $_POST['menos_tiempo'];
-if($Tiempo > $Menos_Tiempo || $Derrota > 0){
+if($Tiempo > $Menos_Tiempo || $Derrota > 0 || $Tabla > 0){
     $Tiempo = $Menos_Tiempo;
 }
-$Tabla = $_POST['tablas'];
+if($Movimientos > $Menos_Movimientos || $Derrota > 0 || $Tabla > 0){
+    $Movimientos = $Menos_Movimientos;
+}
 $Coronacione = $_POST['coronaciones'];
 $Comida = $_POST['comidas'];
 $victoria = $victoria + $Victorias;
@@ -23,9 +26,6 @@ $Tabla = $Tabla + $Tablas;
 $Coronacione = $Coronacione + $Coronaciones;
 $Comida = $Comida + $Comidas;
 $Movimientos = $_POST['menos_movimientos'];
-if($Movimientos > $Menos_Movimientos){
-    $Movimientos = $Menos_Movimientos;
-}
 $server->AgregarEstadistica($Usuario, $ELO, $victoria, $Tabla, $Derrota, $Coronacione, $Comida, $Tiempo, $Movimientos);
 $Logros = [];
 $x = 1;
