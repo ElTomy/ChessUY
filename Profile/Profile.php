@@ -169,10 +169,10 @@
                           <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
                         </div>
                         <div class='estadisticas-body'>
                           <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
