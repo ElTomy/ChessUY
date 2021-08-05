@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function armoLogros(){
     $.ajax({
-        url: "PHP/armoLogros.php",
+        url: "../PHP/armoLogros.php",
         success: function (data) {
             $('#logros').html(data);
         }
