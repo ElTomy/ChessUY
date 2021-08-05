@@ -33,16 +33,16 @@ if($victoria>=100){
     $Logros[1]=1;
     $Logros[2]=2;
     $Logros[3]=3;
-    $x =+ 3;
+    $x =+ 4;
 }else{
     if($victoria>=10){
         $Logros[1]=1;
         $Logros[2]=2;
-        $x =+ 2;
+        $x =+ 3;
     }else{
         if($victoria>=1){
             $Logros[1]=1;
-            $x++;
+            $x=+ 2;
         }
     }
 }
