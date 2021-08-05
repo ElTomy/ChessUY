@@ -119,6 +119,7 @@ var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
 var Turno = 1;
+var Reloj = 0;
 var rep = 0;
 var ultTurn = 0;
 var comidas = 0;
@@ -496,7 +497,6 @@ window.setInterval(function tiempo() {
                 ultTurn = false;
             } else {
                 totlsec1--;
-                menos_tiempo++;
                 if(totlsec1 < 1){
                     Derrota();
                 }
@@ -507,7 +507,9 @@ window.setInterval(function tiempo() {
                 ultTurn = false;
             } else {
                 totlsec2--;
+                menos_tiempo++;
                 if(totlsec2 < 1){
+                    Reloj = 1;
                     Derrota();
                 }
             }
@@ -2129,7 +2131,7 @@ function ActualizarEstadisticas(){
     $.ajax({
         url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
         type: "POST",
-        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno},
+        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
         success: function (data) {
            console.log(data)
         }
