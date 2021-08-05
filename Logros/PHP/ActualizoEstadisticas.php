@@ -3,7 +3,8 @@
 include '../../servidor.php';
 $server= new servidor();
 session_start();
-
+////////////////////////////////////////////////////////////////////////////////
+// Actualizo las estadisticas
 $Usuario = $_SESSION['usuario'];
 $ID_Logro = $server->TraigoMisLogros($Usuario);
 $Cantidad = count($ID_Logro);
@@ -33,6 +34,8 @@ $Comida = $Comida + $Comidas;
 $reloj = $_POST["Reloj"];
 $Campeon = $_POST["Campeon"];
 $server->AgregarEstadistica($Usuario, $ELO, $victoria, $Tabla, $Derrota, $Coronacione, $Comida, $Tiempo, $Movimientos);
+////////////////////////////////////////////////////////////////////////////////
+// Verifico si desboqueaste logros
 $Logros = [];
 $x = 1;
 if($victoria>=100){
@@ -97,6 +100,17 @@ for($i = 1;$i<$x;$i++){
         $log = $Logros[$i];
         $server->NuevoLogro($Usuario,$log);
     }
+}
+////////////////////////////////////////////////////////////////////////////////
+// Actualizolos porcentajes de los logros
+$usuarios = $server->InfoUsuario();
+$numero_usuarios = count($usuarios);
+$Porcentaje = 0;
+for($y = 1;$y <= 10;$y++){
+    $log = $server->TraigoLogro($y);
+    $numero_log = count($log);
+    $Porcentaje = ($numero_log * 100) /  $numero_usuarios;
+    $server->ActualizoPorcentaje($y,$Porcentaje);
 }
 echo json_encode($server->InfoEstadisticas($Usuario));
 ?>

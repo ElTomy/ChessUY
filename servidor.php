@@ -466,12 +466,48 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function TraigoLogro($idl){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoLogro(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $idl);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function NuevoLogro($usuario,$Id){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL NuevoLogro(?,?)";
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("si", $usuario,$Id);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizoPorcentaje($Id,$por){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL ActualizoPorcentaje(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ii", $Id,$por);
         $stmts->execute();
     }
 }
