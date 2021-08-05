@@ -3,8 +3,11 @@ include '../../servidor.php';
 $server= new servidor();
 session_start();
 
+$
+
 $logros = $server->TraigoLogros();
 $numero_logros = count($logros);
+$mis_logros = $server->TraigoMisLogros();
 
 $logro = '';
 
