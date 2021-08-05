@@ -438,4 +438,40 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoMisLogros($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoMisLogros(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function NuevoLogro($usuario,$Id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL NuevoLogro(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("si", $usuario,$Id);
+        $stmts->execute();
+    }
 }
