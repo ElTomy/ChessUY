@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-    colorJugador();
+    armoOnline();
     CreoTablero();
     PosicionPiezas();
     resetMovimientos();
@@ -12,6 +12,37 @@ $( document ).ready(function(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function armoOnline(){
+console.log(usu1, usu2, col1, col2, turno, tablero)
+//usu1 y usu2 para cargar los usuarios 
+    if(partido == true){
+        console.log('creando')
+        if(numJugador == 1){
+            colJugador = col1;
+            blan = 1;
+            neg = 8;
+        }else{
+            colJugador = col2;
+            blan = 8;
+            neg = 1;
+        }
+         Turno = turno;
+     
+        //  var tablero2 = JSON.parse(tablero);
+        //  for(var p = 1; p <= 8; p++){
+        //      for(var q = 1; q <= 8; q++){
+        //          Tablero[p][q] = tablero2[p][q];   
+        //      }
+        //  }
+      
+    }else{
+        console.log("asd")
+        colorJugador();
+        armoAjedrez();
+        Turno = 1;
+    }
+}
+
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
     console.log(boxHeight);
@@ -119,7 +150,7 @@ const Piezas = {
 var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
-var Turno = 1;
+var Turno;
 var rep = 0;
 var ultTurn = 0;
 var simbolo = null;
@@ -1911,8 +1942,8 @@ function Derrota(){
 //
 //
 function init(){
-    socket = new WebSocket("ws://192.168.4.66:25005")
-    //socket = new WebSocket("ws://192.168.0.118:25005")
+    //socket = new WebSocket("ws://192.168.4.66:25005")
+    socket = new WebSocket("ws://192.168.0.118:25005")
 
     socket.onopen = function(msg) {
         //alert("Welcome - status "+this.readyState);

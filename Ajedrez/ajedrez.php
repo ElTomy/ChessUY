@@ -1,3 +1,66 @@
+<?php
+include '../servidor.php';
+$server= new servidor();
+session_start();
+$partidos = $server->TraigoPartidos();
+$partidoEncontrado = false;
+foreach ($partidos as $buscoPartido) {
+    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
+     //$partidoEncontrado = true;
+     if($buscoPartido['usu1'] == $_SESSION['usuario']){
+          echo '<script>
+                var numJugador = 1;
+                </script>';
+     }else{
+          echo '<script>
+                var numJugador = 2;
+                </script>';
+     }
+      echo '<script>
+            var usu1 = "'.$buscoPartido['usu1'].'";
+            var usu2 = "'.$buscoPartido['usu2'].'";
+            var turno = "'.$buscoPartido['turno'].'";
+            var col1 = "'.$buscoPartido['col1'].'";
+            var col2 = "'.$buscoPartido['col2'].'";
+            var tablero = "'.$buscoPartido['tablero'].'";
+            </script>';
+            break;
+    }
+}
+  if($partidoEncontrado == true){
+    //carga ese partido
+    echo '<script>
+          var partido = true;
+          </script>';
+  }else{
+    //busca si hay partido para unirse sino crea uno
+    echo '<script>
+          var partido = false;
+          </script>';
+
+    $encontrado = 1;
+
+    foreach ($partidos as $buscoPartido) {
+      if($buscoPartido['usu2'] == null && $buscoPartido['usu2'] != $_SESSION['usuario']){
+      $encontrado = 0;
+      $id = $buscoPartido['ID'];
+      $color1 = $buscoPartido['col1'];
+      break;
+      }
+    }
+    if($encontrado == 0){
+      //se une a un juego
+      //procedimietno unirse mando ID, usu, col2
+      if($color1 == 1){
+        $col2 = 0;
+      }else{$col2 =1;}
+      $server->UnirsePartidos($id, $_SESSION['usuario'], $col2);
+    }else{
+     //crea un juego
+     $server->CrearPartidos($_SESSION['usuario'], //color);
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
