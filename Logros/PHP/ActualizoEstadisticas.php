@@ -3,7 +3,8 @@
 include '../../servidor.php';
 $server= new servidor();
 session_start();
-
+////////////////////////////////////////////////////////////////////////////////
+// Actualizo las estadisticas
 $Usuario = $_SESSION['usuario'];
 $ID_Logro = $server->TraigoMisLogros($Usuario);
 $Cantidad = count($ID_Logro);
@@ -12,11 +13,16 @@ $victoria = $_POST['victorias'];
 $Derrota = $_POST['derrotas'];
 $Tabla = $_POST['tablas'];
 $Tiempo = $_POST['menos_tiempo'];
-if($Tiempo > $Menos_Tiempo || $Derrota > 0 || $Tabla > 0){
-    $Tiempo = $Menos_Tiempo;
+$Movimientos = $_POST['menos_movimientos'];
+if($Menos_Tiempo != 0){
+    if($Tiempo > $Menos_Tiempo || $Derrota > 0 || $Tabla > 0){
+        $Tiempo = $Menos_Tiempo;
+    }
 }
-if($Movimientos > $Menos_Movimientos || $Derrota > 0 || $Tabla > 0){
-    $Movimientos = $Menos_Movimientos;
+if($Menos_Movimientos != 0){
+    if($Movimientos > $Menos_Movimientos || $Derrota > 0 || $Tabla > 0){
+        $Movimientos = $Menos_Movimientos;
+    }
 }
 $Coronacione = $_POST['coronaciones'];
 $Comida = $_POST['comidas'];
@@ -25,8 +31,11 @@ $Derrota = $Derrota + $Derrotas;
 $Tabla = $Tabla + $Tablas;
 $Coronacione = $Coronacione + $Coronaciones;
 $Comida = $Comida + $Comidas;
-$Movimientos = $_POST['menos_movimientos'];
+$reloj = $_POST["Reloj"];
+$Campeon = $_POST["Campeon"];
 $server->AgregarEstadistica($Usuario, $ELO, $victoria, $Tabla, $Derrota, $Coronacione, $Comida, $Tiempo, $Movimientos);
+////////////////////////////////////////////////////////////////////////////////
+// Verifico si desboqueaste logros
 $Logros = [];
 $x = 1;
 if($victoria>=100){
@@ -46,13 +55,10 @@ if($victoria>=100){
         }
     }
 }
-/*if(isset($_POST("Reloj"))){
-    $reloj = $_POST("Reloj");
-    if($reloj = 0){
-        $Logros[$x]=4;
-        $x++;
-    }
-}*/
+if($reloj == 1){
+    $Logros[$x]=4;
+    $x++;
+}
 if($Coronacione>=10){
     $Logros[$x]=5;
     $x++;
@@ -67,18 +73,17 @@ if($Comida>=1000){
         $x++;
     }
 }
-if($Tiempo<=20){
+if($Tiempo<=15){
     $Logros[$x]=8;
     $x++;
 }
-if($Movimientos <= 4){
+if($Movimientos == 5){
     $Logros[$x]=9;
     $x++;
 }
-/*if(isset($_POST("Campeon"))){
-    $Campeon = $_POST("Campeon");
+if($Campeon == 1){
     $Logros[$x]=10;
-}*/
+}
 for($i = 1;$i<$x;$i++){
     if($Cantidad > 0){
         $a = 0;
@@ -95,6 +100,17 @@ for($i = 1;$i<$x;$i++){
         $log = $Logros[$i];
         $server->NuevoLogro($Usuario,$log);
     }
+}
+////////////////////////////////////////////////////////////////////////////////
+// Actualizolos porcentajes de los logros
+$usuarios = $server->InfoUsuario();
+$numero_usuarios = count($usuarios);
+$Porcentaje = 0;
+for($y = 1;$y <= 10;$y++){
+    $log = $server->TraigoLogro($y);
+    $numero_log = count($log);
+    $Porcentaje = ($numero_log * 100) /  $numero_usuarios;
+    $server->ActualizoPorcentaje($y,$Porcentaje);
 }
 echo json_encode($server->InfoEstadisticas($Usuario));
 ?>
