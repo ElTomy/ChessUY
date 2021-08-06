@@ -6,7 +6,7 @@
   $usuario = $_GET['Usuario'];
 
   $usuario_info = $server->PerfilUsuario($usuario);
-  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+  list($ELO,$Victorias,$Tablas,$Derrotas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
 
 
   $logros = $server->TraigoLogros();
@@ -181,10 +181,10 @@
                           <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                          <h1 class='estadisticas-titulo'>Victoria en menos tiempo:</h1><p>$Menos_Tiempo</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                          <h1 class='estadisticas-titulo'>Victoria en menos movimientos:</h1><p>$Menos_Movimientos</p>
                         </div>";
               }else{
                 echo "<div class='estadisticas-empty'>
