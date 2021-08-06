@@ -72,21 +72,38 @@ $index .='
           </a>
         </div>
       </div>
-    </section>
-    <section class="anuncio">
-      <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-      <p>Este espacio está reservado para anuncios.</p>
     </section>';
+
+    if($_SESSION['tipo'] != 0){
+      $index .= '<section class="anuncio">
+                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                <p>Este espacio está reservado para anuncios.</p>
+              </section>';
+    }
+    
 
     if($_SESSION['tipo'] == 0){
       $index .= '<section class="administrador-wrapper">
               <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
-              <p class="admin"><i class="fas fa-user"></i> ' . $_SESSION["usuario"] . '</p>
+              <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/cyberhydra/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/cyberhydra/Lista"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/cyberhydra/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+              </div>
+            </section>';
+    }
+    if($_SESSION['tipo'] == 3){
+      $index .= '
+              <section class="administrador-wrapper">
+              <h1><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
+              <p class="admin"><i class="fas fa-newspaper"></i> ' . $_SESSION["usuario"] . '</p>
+              <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <div class="admin-buttons">
+                <a href=""><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
               </div>
             </section>';
     }
@@ -100,23 +117,8 @@ $index .='
                       <h1>Torneo Reciente</h1>
                     </div>
                     <hr>
-                    <div class="torneo">
-                      <div class="torneo-left">
-                        <img src="/cyberhydra/media/images/Trofeo.png" alt="">
-                        <div class="participantes">
-                          <p>12 <i class="fas fa-users"></i></p>
-                        </div>
-                      </div>
-                      <div class="torneo-right">
-                        <div class="torneo-info">
-                          <h2>Nombre del Torneo</h2>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus dolores ducimus exercitationem eius laborum saepe facilis molestiae officia tempore totam?</p>
-                        </div>
-                        <div class="torneo-buttons">
-                          <a href=""><i class="fas fa-plus-circle"></i> Unirse</a>
-                          <a href="/cyberhydra/Usuarios/EstadisticasTorneo.php"><i class="fas fa-chart-line"></i> Estadisticas</a>
-                        </div>
-                      </div>
+                    <div class="torneo" id="torn-InscAct">
+                     
                     </div>
                   </div>
                   <div class="mejores-jugadores">
@@ -177,22 +179,26 @@ $index .='
                   </div>
 
                 </div>
-              </section>
+              </section>';
 
-              <section class="anuncio">
-                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-                <p>Este espacio está reservado para anuncios.</p>
-              </section>
-
+              if($_SESSION['tipo'] != 0){
+                $index .= '<section class="anuncio">
+                          <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                          <p>Este espacio está reservado para anuncios.</p>
+                        </section>';
+              }
+              $index .= '
               <section class="noticias-wrapper" id="ArmoNoticias">
-              </section>
+              </section>';
 
-              <section class="anuncio">
-                <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
-                <p>Este espacio está reservado para anuncios.</p>
-              </section>
+              if($_SESSION['tipo'] != 0){
+                $index .= '<section class="anuncio">
+                          <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+                          <p>Este espacio está reservado para anuncios.</p>
+                        </section>';
+              }
               
-            <div id="footer"></div>
+            $index .= '<div id="footer"></div>
           </body>
         </html>';
 

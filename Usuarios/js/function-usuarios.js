@@ -71,7 +71,6 @@ function enterLogin(){
           }
 }
 function estadisticasInicial(){
-
     let us = sessionStorage.getItem('usuario');
     let user = new Usuario();
     var est = user.comprueboEstadisticas(us);

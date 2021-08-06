@@ -6,7 +6,14 @@
   $usuario = $_GET['Usuario'];
 
   $usuario_info = $server->PerfilUsuario($usuario);
-  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+  list($ELO,$Victorias,$Tablas,$Derrotas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+
+
+  $logros = $server->TraigoLogros();
+  $numero_logros = count($logros);
+
+  $mislogros = $server->TraigoMisLogros($usuario);
+  $numero_mislogros = count($mislogros);
 ?>
 
 <!DOCTYPE html>
@@ -20,17 +27,19 @@
       src="https://kit.fontawesome.com/1e193e3a23.js"
       crossorigin="anonymous"
     ></script>
-    <script src="/cyberhydra/Javascript/Loader.js"></script>
-    <script src="/cyberhydra/Usuarios/js/Usuario.js"></script>
-    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Javascript/Loader.js"></script>
+    <script src="../Usuarios/js/Usuario.js"></script>
+    <script src="../Usuarios/js/function-usuarios.js"></script>
+    <script src="JS/Logros.js"></script>
 
     <link
       rel="shortcut icon"
       href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
+    
+    <link rel="stylesheet" href="../styles/styles.css" />
 
     <title>ChessUY | 
 
@@ -72,12 +81,18 @@
             </a>
             <?php
               echo '<div class="profile-avatar">
-                <div class="profile-flex">
-                  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
-                    <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
-                  </div>
+                <div class="profile-flex">';
 
-                  <div class="profile-avatar-body">';
+                if($usuario_info['tipo'] == "0"){
+                  echo '  <div class="profile-body-picture" style="border: 2px solid '.$usuario_info['ColorIcono'].'; animation: spin 4s infinite linear ; box-shadow: 0 0 15px 0 '.$usuario_info['ColorIcono'].'; background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }else{
+                  echo '  <div class="profile-body-picture" style="background-color: '. $usuario_info['ColorFondo'] .'">
+                            <i class="' . $usuario_info['Icono'] . '" style="color: '.$usuario_info['ColorIcono'].'"></i>
+                          </div>';
+                }
+                  echo ' <div class="profile-avatar-body">';
                     echo "<p>" . $usuario_info['usuario'] . "</p>";
                     if($usuario_info['tipo'] == 0){
                       $tipo = "<i class='fas fa-star'></i> Administrador";
@@ -95,8 +110,8 @@
                   <?php
 
                   if(isset($_SESSION['usuario'])){
-                    if($usuario_info['usuario'] == $_SESSION['usuario']){
-                      echo '<a href="/cyberhydra/Profile/Editar/' . $_SESSION["usuario"] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
+                    if($usuario_info['usuario'] == $_SESSION['usuario'] || $_SESSION['tipo'] == 0){
+                      echo '<a href="/ChessUY/Profile/Editar/' . $usuario_info['usuario'] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 
@@ -140,94 +155,108 @@
             <div class="profile-grid">
 
               <div class="estadisticas-wrapper">
-                <div class="estadisticas-header">
+              <?php
+
+              if($ELO !== null){
+                echo "
+                <div class='estadisticas-header'>
                   <h1>Estadisticas</h1>
                 </div>
-                <?php
-                  echo "  <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
-                          </div>
-                          <div class='estadisticas-body'>
-                            <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
-                          </div>";
-                ?>
-                
+                <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victoria en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                        </div>
+                        <div class='estadisticas-body'>
+                          <h1 class='estadisticas-titulo'>Victoria en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                        </div>";
+              }else{
+                echo "<div class='estadisticas-empty'>
+                        <h1><i class='fas fa-exclamation'></i> Lo sentimos...</h1>
+                        <p>No hay estadisticas para mostrar.</p>
+                      </div>";
+              }
+              
+              echo '
               </div>
 
               <div class="logros-wrapper">
                 <div class="logros-header">
-                  <h1>Logros</h1><p>(1)</p>
+                  <h1>Logros</h1><p>('.$numero_mislogros.')</p>
                 </div>
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <img class="img-trofeo" src="/cyberhydra/media/images/Logro.png" alt="">
-                      </div>
-                      <div class="logro-body">
-                        <h1>Primera Jugada</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">99% de los usuarios tienen este logro.</p>
-                      </div>
-                  </div>
-                  </div>
 
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                      <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">10% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
+                <div id="logros">';
+                $contador = 1;
 
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                      <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                      <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">0,05% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
+                do{
 
-                  <div class="logro-wrapper">
-                    <div class="logro">
-                      <div class="imagen-logro">
-                        <i class="fas fa-lock"></i>
-                      </div>
-                      <div class="logro-body">
-                        <h1 class="bloqueado">Nombre del Logro</h1>
-                        <p>Descripcion del Logro</p>
-                        <p class="porcentaje">1% de los usuarios tienen este logro.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="ver-logros" href=""><i class="fas fa-medal"></i>Ver todos los logros</a>
+                  for($x = 1; $x < $numero_logros; $x ++){
+                    if($contador <= 4){
+
+                      if(isset($mislogros[($contador - 1)]['ID'])){
+
+                        $ID = $mislogros[($contador - 1)]['ID'];
+    
+                        echo ' <div class="logro-wrapper">
+                                  <div class="logro">
+    
+                                      <div class="logro-img">
+                                          <img src="'. $logros[($ID - 1)]['Imagen'] .'" alt="">
+                                          <i class="fas fa-lock" id="locked"></i>
+                                      </div>
+    
+                                      <div class="logro-body">
+                                          <h1>'. $logros[($ID - 1)]['Nombre'] .'</h1>
+                                          <p>'. $logros[($ID - 1)]['Descripcion'] .'</p>
+                                          <p class="porcentaje">'. $logros[($ID - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                      </div>
+                                  </div>
+                              </div>';
+    
+                              $contador++;
+                      }else{
+                        echo ' <div class="logro-wrapper">
+                                  <div class="logro locked">
+    
+                                      <div class="logro-img">
+                                          <img src="'. $logros[($x - 1)]['Imagen'] .'" alt="">
+                                          <i class="fas fa-lock" id="locked"></i>
+                                      </div>
+    
+                                      <div class="logro-body">
+                                          <h1>'. $logros[($x - 1)]['Nombre'] .'</h1>
+                                          <p>'. $logros[($x - 1)]['Descripcion'] .'</p>
+                                          <p class="porcentaje">'. $logros[($x - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                      </div>
+                                  </div>
+                              </div>';
+    
+                              $contador++;
+                      }
+                    }
+                    
+                  }
+                } while($contador <= 4);
+
+
+                echo '</div>
+                <a class="ver-logros" href="/ChessUY/Profile/Logros/'.$usuario.'"><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
         </div>
@@ -236,7 +265,8 @@
     <div id="footer">
     </div>
   </body>
-</html>
+</html>';
+?>
 
 
 <!-- 

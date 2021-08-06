@@ -1,9 +1,11 @@
 <?php
+//mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')
+//mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')
 class servidor
 {
     function conectar()
     {
-        if (!$conexion = mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra') /*mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')*/) {
+        if (!$conexion = mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')) {
             echo "No se pudo conectar a la base de datos";
             exit;
         } else {
@@ -326,9 +328,13 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
-            $_SESSION['icono'] = $NumeroIcono;
-            $_SESSION['coloricono'] = $ColorIcono;
-            $_SESSION['colorfondo'] = $ColorFondo;
+            session_start();
+            if($Usuario == $_SESSION['usuario']){
+                $_SESSION['icono'] = $NumeroIcono;
+                $_SESSION['coloricono'] = $ColorIcono;
+                $_SESSION['colorfondo'] = $ColorFondo;
+            }
+            
         }
         return $execute;
     }
@@ -348,5 +354,160 @@ class servidor
             $execute = true;
         }
         return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BorrarUsuario($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL BorrarUsuario(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambioNombre($nombre, $usuario){
+        $conn = $this->conectar();
+        $sql = "CALL CambioNombre(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $nombre, $usuario);
+        if($stmts->execute()){
+            $execute = true;
+            session_start();
+            if($usuario == $_SESSION['usuario']){
+                $_SESSION['usuario'] = $nombre;
+            }            
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizarUsuario($Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto){
+        $conn = $this->conectar();
+        $sql = "CALL ActualizarUsuario(?,?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sssssiis",$Usuario, $Nombre, $Apellido, $Mail, $Institucion, $Año, $Cedula, $Contacto);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CambiarContraseña($usuario, $contraNueva){
+        $conn = $this->conectar();
+        $sql = "CALL CambiarContrasenia(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ss", $usuario, $contraNueva);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoLogros(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoLogros()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id, $descripcion, $imagen, $porcentaje, $nombre);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id, 'Descripcion' => $descripcion, 'Imagen' => $imagen, 'Porcentaje' => $porcentaje, 'Nombre' => $nombre);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoMisLogros($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoMisLogros(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoLogro($idl){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoLogro(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $idl);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function NuevoLogro($usuario,$Id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL NuevoLogro(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("si", $usuario,$Id);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizoPorcentaje($Id,$por){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL ActualizoPorcentaje(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ii", $Id,$por);
+        $stmts->execute();
     }
 }

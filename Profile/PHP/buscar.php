@@ -3,6 +3,12 @@
     $server= new servidor();
     session_start();
 
+    if(isset($_SESSION['tipo'])){
+        $tipo = $_SESSION['tipo'];
+    }else{
+        $tipo = 1;
+    }
+
     if(isset($_POST['Nombre'])){
         $nombre = $_POST['Nombre'];
     }else{
@@ -40,8 +46,12 @@
                                                     "</div>
                                                 </div>
                                                 <div class='profileButton'>
-                                                    <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>
-                                                </div>
+                                                    <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>";
+                                                
+                                                    if($tipo == 0){
+                                                        $jugador .= "<button class='eliminar' onclick='eliminar('" . $usuarios[($x - 1)]['usuario'] . "')'><i class='fas fa-user-slash'></i> Eliminar</button>";
+                                                    }
+                                    $jugador .= "</div>
                                             </div>";
             }else{
             }
@@ -55,6 +65,10 @@
         }
     }else{
         for($x = 1; $x <= $numero_usuarios; $x++){
+            $usuario = $usuarios[($x - 1)]['usuario'];
+
+            $usuario2 = "'$usuario'";
+
             $jugador .= "    <div class='player-wrapper'>
                                             <div class='player'>
                                                 <div class='img-wrapper'>
@@ -68,8 +82,12 @@
                                                 "</div>
                                             </div>
                                             <div class='profileButton'>
-                                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>
-                                            </div>
+                                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>";
+                                                
+                                                if($tipo == 0){
+                                                    $jugador .= '<button class="eliminar" onclick="eliminar(' . $usuario2 . ')"><i class="fas fa-user-slash"></i> Eliminar</button>';
+                                                }
+                                 $jugador .= "</div>
                                         </div>";
         }
     }

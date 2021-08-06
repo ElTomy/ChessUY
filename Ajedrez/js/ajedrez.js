@@ -4,6 +4,7 @@ $( document ).ready(function(){
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
+    barraProgreso(50);
 });
 //
 //
@@ -18,15 +19,79 @@ function boxHeight(){
 }
 
  function armoAjedrez(){
+
+    /* 
+    Armo Tablero     
+    */
     $.ajax({
         url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento, Jugadas:Jugadas ,Turno:Turno},
+        data: {Tablero:Tablero, Movimiento:Movimiento},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
         }
     });
+
+    /* 
+    Armo Tabla Movimientos     
+    */
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
+        data: {Jugadas:Jugadas, Turno:Turno},
+        success: function (data) {
+            document.getElementById("ArmoMovimientos").innerHTML = data;
+        }
+    });
+
+    /* 
+    Armo Tabla Jugador vs Jugador     
+    */
+    $.ajax({
+        type: "POST",
+        data: {Turno:Turno},
+        url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+        success: function (data) {
+            document.getElementById("ArmoJugadores").innerHTML = data;
+        }
+    });
+
+    /* 
+    Armo Chat     
+    */
+
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Ajedrez/php/armoChat.php",
+        success: function (data) {
+            document.getElementById("ArmoChat").innerHTML = data;
+            heightdiv();
+        }
+    });
+ }
+
+ function heightdiv(){
+    var height = ((window.innerHeight * 0.98) - 100);
+
+
+    $('#select-wrapper').height(height * 0.5);
+    console.log(height);
+ }
+
+ function barraProgreso(porcentaje){
+    $('.bar').css("width", porcentaje + "%");
+    $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     if(porcentaje >= 50){
+        $('.bar').css("z-index", "5");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     }else{
+        $('.bar').css("width", (porcentaje + 5) + "%");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("z-index", "5");
+        $('.bar2').css("width", (100 - porcentaje) + "%");
+     }
  }
 
  
@@ -50,9 +115,19 @@ const Piezas = {
    NTorre:'tn', 
    NPeon:'pn',  
 }
+var porcentaje = 39;
+var barra = 50;
 var Jugadas = [];
 var Turno = 1;
+var Reloj = 0;
+var rep = 0;
 var ultTurn = 0;
+var comidas = 0;
+var coronaciones = 0;
+var menos_tiempo = 0;
+var victoria = 0;
+var derrota = 0;
+var tabla = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
@@ -278,6 +353,8 @@ function seleccionar(x,y){
             sel= seleccionado.Contenido;
             if(Tablero[x][y].Piezas != null){
                 simbolo = "x";
+                Porcentaje(Tablero[x][y].Piezas,0);
+                comidas++;
             }
            if(seleccionado.Contenido == "p"||seleccionado.Contenido == "pn"){
                if(y == 1||y == 8){
@@ -296,14 +373,18 @@ function seleccionar(x,y){
                    }
                     if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
                         if(Tablero[x][5].Piezas != null){
+                            Porcentaje(Tablero[x][5].Piezas,0);
                             ColocoPieza(null,null,x,5);
                             simbolo = "x";
+                            comidas++;
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
                             if(Tablero[x][4].Piezas != null){
+                                Porcentaje(Tablero[x][4].Piezas,0);
                                 ColocoPieza(null,null,x,4);
                                 simbolo = "x";
+                                comidas++;
                             }
                         }
                     }
@@ -394,6 +475,8 @@ function seleccionar(x,y){
                 Ejey: y,
                 simbolo: simbolo,
             }
+            //Triple-Repeticion
+            Triple_Repeticion();
             simbolo = null;
             Turno = Turno + 1;
             ultTurn = true;
@@ -424,7 +507,9 @@ window.setInterval(function tiempo() {
                 ultTurn = false;
             } else {
                 totlsec2--;
+                menos_tiempo++;
                 if(totlsec2 < 1){
+                    Reloj = 1;
                     Derrota();
                 }
             }
@@ -435,8 +520,10 @@ window.setInterval(function tiempo() {
         var sec2 = new Date(0);
         sec2.setSeconds(totlsec2);
         var minsec2 = sec2.toISOString().substr(14, 5);
-        document.getElementById("tempJug1").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec1;
-        document.getElementById("tempJug2").innerHTML = "<i class='fas fa-stopwatch'></i>" + minsec2;
+
+        $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+        $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+        
     } else {
 
     }
@@ -918,7 +1005,7 @@ function Rey(x,y,sel){
     }else{
         selecc = sel;
     }
-    if(x == 5 && (y == 1 || y == 8)){
+    if(x == 5 && (y == 1 || y == 8)  && jaque.jaque == null){
         if((Tablero[1][y].Piezas == Piezas.NTorre || Tablero[1][y].Piezas == Piezas.BTorre)&& Tablero[6][y].Piezas == null && Tablero[7][y].Piezas == null){
             //0-0
             comer(7,y,selecc);
@@ -996,7 +1083,9 @@ function Coronacion(x,y,sel){
 }
 
 function cambioCoronacion(x, y, pieza, col){
+    coronaciones++;
     $(".modal").hide();
+    Porcentaje(pieza,1);
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
@@ -1806,6 +1895,8 @@ function JaqueMate(){
                 document.getElementById("modal").innerHTML = data;
             }
           });   
+        victoria++;
+        ActualizarEstadisticas();  
     }
     resetMovimientos();
 }
@@ -1824,6 +1915,8 @@ function Derrota(){
             document.getElementById("modal").innerHTML = data;
         }
       });
+    derrota++;  
+    ActualizarEstadisticas();
 }
 //
 //
@@ -1855,13 +1948,10 @@ function tablas(){
     Rey_Haogado('b');
     Rey_Haogado('n');
     //Acuerdo-Mutuo
-    //Triple-Repeticion
-    Triple_Repeticion();
     //Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
 function Rey_Haogado(color){
-    console.log("Rh")
     var tablas = true;
     //creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
@@ -1908,8 +1998,9 @@ function Rey_Haogado(color){
     }
 }
 function Acuerdo_Mutuo(){   
+    //cambiar a ESPERO
     $.ajax({
-        url:  "/cyberhydra/Modal/modalEsperoTablas.php",
+        url:  "/ChessUY/Modal/modalPidoTablas.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -1939,8 +2030,22 @@ function rechazar_tablas(){
         });
 }
 function Triple_Repeticion(){
-    console.log("3rep")
-    //ultimos 3 movs ==
+    if(Turno > 4){
+        var p = Jugadas[Turno].Piezas;
+        var p2 = Jugadas[(Turno - 4)].Piezas;
+        var x = Jugadas[Turno].Ejex;
+        var x2 = Jugadas[(Turno - 4)].Ejex;
+        var y = Jugadas[Turno].Ejey;
+        var y2 = Jugadas[(Turno - 4)].Ejey;
+        if(p == p2 && x == x2 && y == y2){
+            rep++;
+            if(rep == 8){
+                llamoTablas();
+            }
+        }else{
+            rep = 0;
+        }
+    }
 }
 function Falta_de_Piezas(){
     var fp = true;
@@ -1968,6 +2073,67 @@ function llamoTablas(){
         data: {},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+        }
+        });
+    tabla++;
+    ActualizarEstadisticas();
+}
+function Porcentaje(pieza,cor){
+    var suma = 0;
+    switch(pieza){
+        case Piezas.NTorre:
+            suma = 5;
+        break;
+        case Piezas.BTorre:
+            suma =  -5;
+        break;
+        case Piezas.NCaballo:
+            suma =  +3;
+        break;
+        case Piezas.BCaballo:
+            suma =  -3;
+        break;
+        case Piezas.NAlfil:
+            suma =  +3;
+        break;
+        case Piezas.BAlfil:
+            suma =  -3;
+        break;
+        case Piezas.NPeon:
+            suma = 1;
+        break;    
+        case Piezas.BPeon:
+            suma = -1;       
+        break;
+        case Piezas.NDama:
+            suma = 9;
+        break;
+        case Piezas.BDama:
+            suma = -9;
+        break;
+    }
+    if(cor == 1){suma = suma * -1}
+    console.log(porcentaje)
+    porcentaje = porcentaje + suma;
+    console.log(porcentaje)
+    if(porcentaje>78){
+        barra = 100;
+    }else{
+        if(porcentaje<0){
+            barra = 0;
+        }else{
+            barra = (100/78)*porcentaje;
+        }
+    }
+    barraProgreso(barra);
+} 
+function ActualizarEstadisticas(){
+    $.ajax({
+        url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
+        type: "POST",
+        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+        success: function (data) {
+           console.log(data)
         }
         });
 }

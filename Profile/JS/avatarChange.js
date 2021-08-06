@@ -25,8 +25,8 @@ function cambiarIcono(icono){
     document.getElementById("icon").className = clase;
 }
 
-function guardar(session){
-    var usuario = session;
+function guardar(user){
+    var usuario = user;
     var icono = document.getElementById("icon").className;
     var color_icono = document.getElementById("colorIcono").value;
     var color_fondo = document.getElementById("colorbackground").value;
