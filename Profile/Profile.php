@@ -6,7 +6,14 @@
   $usuario = $_GET['Usuario'];
 
   $usuario_info = $server->PerfilUsuario($usuario);
-  list($ELO,$Victorias,$Derrotas,$Tablas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+  list($ELO,$Victorias,$Tablas,$Derrotas,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos) = $server->InfoEstadisticas($usuario_info['usuario']);
+
+
+  $logros = $server->TraigoLogros();
+  $numero_logros = count($logros);
+
+  $mislogros = $server->TraigoMisLogros($usuario);
+  $numero_mislogros = count($mislogros);
 ?>
 
 <!DOCTYPE html>
@@ -162,10 +169,10 @@
                           <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
                         </div>
                         <div class='estadisticas-body'>
                           <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
@@ -174,10 +181,10 @@
                           <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victorias en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                          <h1 class='estadisticas-titulo'>Victoria en menos tiempo:</h1><p>$Menos_Tiempo</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victorias en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                          <h1 class='estadisticas-titulo'>Victoria en menos movimientos:</h1><p>$Menos_Movimientos</p>
                         </div>";
               }else{
                 echo "<div class='estadisticas-empty'>
@@ -185,20 +192,71 @@
                         <p>No hay estadisticas para mostrar.</p>
                       </div>";
               }
-                
-                ?>
-                
+              
+              echo '
               </div>
 
               <div class="logros-wrapper">
                 <div class="logros-header">
-                  <h1>Logros</h1><p>(1)</p>
+                  <h1>Logros</h1><p>('.$numero_mislogros.')</p>
                 </div>
 
-                <div id="logros"></div>
+                <div id="logros">';
+                $contador = 1;
 
-                <a class="ver-logros" href="/ChessUY/Logros/Logros"><i class="fas fa-medal"></i>Ver todos los logros</a>
-                
+                do{
+
+                  for($x = 1; $x < $numero_logros; $x ++){
+                    if($contador <= 4){
+
+                      if(isset($mislogros[($contador - 1)]['ID'])){
+
+                        $ID = $mislogros[($contador - 1)]['ID'];
+    
+                        echo ' <div class="logro-wrapper">
+                                  <div class="logro">
+    
+                                      <div class="logro-img">
+                                          <img src="'. $logros[($ID - 1)]['Imagen'] .'" alt="">
+                                          <i class="fas fa-lock" id="locked"></i>
+                                      </div>
+    
+                                      <div class="logro-body">
+                                          <h1>'. $logros[($ID - 1)]['Nombre'] .'</h1>
+                                          <p>'. $logros[($ID - 1)]['Descripcion'] .'</p>
+                                          <p class="porcentaje">'. $logros[($ID - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                      </div>
+                                  </div>
+                              </div>';
+    
+                              $contador++;
+                      }else{
+                        echo ' <div class="logro-wrapper">
+                                  <div class="logro locked">
+    
+                                      <div class="logro-img">
+                                          <img src="'. $logros[($x - 1)]['Imagen'] .'" alt="">
+                                          <i class="fas fa-lock" id="locked"></i>
+                                      </div>
+    
+                                      <div class="logro-body">
+                                          <h1>'. $logros[($x - 1)]['Nombre'] .'</h1>
+                                          <p>'. $logros[($x - 1)]['Descripcion'] .'</p>
+                                          <p class="porcentaje">'. $logros[($x - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                      </div>
+                                  </div>
+                              </div>';
+    
+                              $contador++;
+                      }
+                    }
+                    
+                  }
+                } while($contador <= 4);
+
+
+                echo '</div>
+                <a class="ver-logros" href="/ChessUY/Profile/Logros/'.$usuario.'"><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
         </div>
@@ -207,7 +265,8 @@
     <div id="footer">
     </div>
   </body>
-</html>
+</html>';
+?>
 
 
 <!-- 

@@ -119,8 +119,15 @@ var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
 var Turno = 1;
+var Reloj = 0;
 var rep = 0;
 var ultTurn = 0;
+var comidas = 0;
+var coronaciones = 0;
+var menos_tiempo = 0;
+var victoria = 0;
+var derrota = 0;
+var tabla = 0;
 var simbolo = null;
 const Tablero = [];
 const TableroJaque = [];
@@ -347,6 +354,7 @@ function seleccionar(x,y){
             if(Tablero[x][y].Piezas != null){
                 simbolo = "x";
                 Porcentaje(Tablero[x][y].Piezas,0);
+                comidas++;
             }
            if(seleccionado.Contenido == "p"||seleccionado.Contenido == "pn"){
                if(y == 1||y == 8){
@@ -368,6 +376,7 @@ function seleccionar(x,y){
                             Porcentaje(Tablero[x][5].Piezas,0);
                             ColocoPieza(null,null,x,5);
                             simbolo = "x";
+                            comidas++;
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
@@ -375,6 +384,7 @@ function seleccionar(x,y){
                                 Porcentaje(Tablero[x][4].Piezas,0);
                                 ColocoPieza(null,null,x,4);
                                 simbolo = "x";
+                                comidas++;
                             }
                         }
                     }
@@ -497,7 +507,9 @@ window.setInterval(function tiempo() {
                 ultTurn = false;
             } else {
                 totlsec2--;
+                menos_tiempo++;
                 if(totlsec2 < 1){
+                    Reloj = 1;
                     Derrota();
                 }
             }
@@ -1071,6 +1083,7 @@ function Coronacion(x,y,sel){
 }
 
 function cambioCoronacion(x, y, pieza, col){
+    coronaciones++;
     $(".modal").hide();
     Porcentaje(pieza,1);
     ColocoPieza(pieza,col,x,y);
@@ -1882,6 +1895,8 @@ function JaqueMate(){
                 document.getElementById("modal").innerHTML = data;
             }
           });   
+        victoria++;
+        ActualizarEstadisticas();  
     }
     resetMovimientos();
 }
@@ -1900,6 +1915,8 @@ function Derrota(){
             document.getElementById("modal").innerHTML = data;
         }
       });
+    derrota++;  
+    ActualizarEstadisticas();
 }
 //
 //
@@ -2058,6 +2075,8 @@ function llamoTablas(){
             document.getElementById("modal").innerHTML = data;
         }
         });
+    tabla++;
+    ActualizarEstadisticas();
 }
 function Porcentaje(pieza,cor){
     var suma = 0;
@@ -2108,3 +2127,13 @@ function Porcentaje(pieza,cor){
     }
     barraProgreso(barra);
 } 
+function ActualizarEstadisticas(){
+    $.ajax({
+        url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
+        type: "POST",
+        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+        success: function (data) {
+           console.log(data)
+        }
+        });
+}
