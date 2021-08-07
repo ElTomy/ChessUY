@@ -5,6 +5,7 @@ window.onload = function(){
     $("#footer").load("/ChessUY/Page/footer.html");
 
     $("#torn-InscAct").load("/ChessUY/Torneo/PHP/mostTorn.php");
+    $("#torn-Act").load("/ChessUY/Torneo/PHP/mostTorn.php");
 };
 
 function Modal(numero_mensaje){

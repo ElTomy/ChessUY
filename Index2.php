@@ -136,7 +136,7 @@ $index .='
                   <h1>Torneos</h1>
                   <hr>
 
-                  <div class="torneos-recientes">
+                  <div class="torneos-recientes" id="torn-Act">
                     <div class="torneo">
                       <div class="torneo-left-side">
                         <img src="/ChessUY/media/images/Trofeo.png">
