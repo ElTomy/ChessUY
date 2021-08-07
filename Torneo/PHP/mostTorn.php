@@ -24,7 +24,7 @@ if(count($torneos) < 1) {
             $j = $i;
             $prim = false;
         } else {
-            if(abs($diff) < abs($diffAnt)) {
+            if(abs($diff) <= abs($diffAnt)) {
                 $j = $i;
                 $diffAnt = $diff;
             }
@@ -33,6 +33,9 @@ if(count($torneos) < 1) {
     $com = str_replace('-', ' ', $torneos[$j]['InicioTorneo']);
     $comTorn = explode(' ', $com);
     $fechTorn = mktime(0, 0, 0, $comTorn[1], $comTorn[2], $comTorn[0]);
+
+    $comInsc = explode('-', $torneos[$j]['Fecha_inicio']);
+    $fechInsc = mktime(0, 0, 0, $comInsc[1], $comInsc[2], $comInsc[0]);
 
     $descUnid = 0;
 
@@ -80,7 +83,7 @@ if(count($torneos) < 1) {
 
     if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) > $fechaAct) {
         //Las inscripciones no empezaron
-        $estado = "<p style='color: white'>Inscripciones se abren el ".date('j', $fechTorn)." de ".date('F', $fechTorn)." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
+        $estado = "<p style='color: orange'>Las inscripciones se abren el ".date('j', $fechInsc)." de ".$mesesEsp[date('n', $fechInsc)]." del año ".date('Y', $fechInsc)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
     } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
         //Las inscripciones empezaron pero no terminaron
         $estado = "<p style='color: green'>Inscripciones abiertas</p>";
