@@ -2,12 +2,14 @@
 
 include '../../servidor.php';
 $server = new servidor();
-
+date_default_timezone_set("America/Montevideo");
 $torneos = $server->InfoTorneo();
 $fechaAct = date('Ymd');
 
 for($i=0;$i<count($torneos);$i++) {
     if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$i]['Fecha_fin']) > $fechaAct) {
+        $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
+        $fechTornP = $comTornP[0].$comTornP[1].$comTornP[2];
         $descUnid = 0;
 
         if($torneos[$i]['Numero_Participantes'] == 0) {
@@ -22,16 +24,26 @@ for($i=0;$i<count($torneos);$i++) {
 
         if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) > $fechaAct) {
             //Las inscripciones no empezaron
-            $estado = "<p style='color: white'>Inscripciones se abren el ".date('j', $fechTorn)." de ".date('F', $fechTorn)." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
-        } elseif(str_replace('-', '', $torneos[$i]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$i]['Fecha_fin']) > $fechaAct) {
+            $estado = "<p style='color: #ffaa00'>Las inscripciones se abren el ".date('j', $fechInsc)." de ".$mesesEsp[date('n', $fechInsc)]." del año ".date('Y', $fechInsc)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
+        } elseif(str_replace('-', '', $torneos[$i]['Fecha_inicio']) <= $fechaAct && str_replace('-', '', $torneos[$i]['Fecha_fin']) >= $fechaAct) {
             //Las inscripciones empezaron pero no terminaron
-            $estado = "<p style='color: green'>Inscripciones abiertas</p>";
+            if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                $estado = "<p style='color: white'>Inscripciones se abren hoy a las ".substr($comTorn[3], 0, -3)." horas</p>";
+            } elseif(str_replace('-', '', $torneos[$i]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+            } else {
+                $estado = "<p style='color: green'>Inscripciones abiertas</p>";
+            }
         } elseif(str_replace('-', '', $torneos[$i]['Fecha_fin']) < $fechaAct && $comTorn[0].$comTorn[1].$comTorn[2] > $fechaAct) {
             //Terminaron las inscripciones pero no comenzo el torneo
             $estado = "<p style='color: red'>Inscripciones cerradas</p>";
-        } elseif($comTorn[0].$comTorn[1].$comTorn[2] < $fechaAct) {
+        } elseif($comTorn[0].$comTorn[1].$comTorn[2] <= $fechaAct) {
             //Ya comenzo el torneo
-            $estado = "En curso";
+            if($comTorn[0].$comTorn[1].$comTorn[2] == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                $estado = "En curso";
+            } else {
+                $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+            }
         } else {
             //Error inesperado
             $estado = "La verdad ni idea";
