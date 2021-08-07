@@ -2079,6 +2079,7 @@ Buscar Jugadores
             .eliminar{
               background-color: #9e3f3f;
             }
+            
             button:hover {
               background-color: #333;
               color: #fcba03;
@@ -3275,6 +3276,169 @@ Editar perfil
         color: white;
       }
       p {
+      }
+    }
+  }
+}
+/*
+
+
+Noticias (Periodista)
+
+
+*/
+.noticia-wrapper{
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .noticia{
+    box-sizing: border-box;
+    width: 90%;
+    padding: 40px;
+    background-color: #111;
+    border-radius: 30px;
+    margin-bottom: 20px;
+
+    .logo-img{
+      max-width: 300px;
+
+      img{
+        width: 100%;
+      }
+    }
+    hr{
+      border: 1px solid #0076be;
+      margin: 10px 0;
+    }
+    .noticia-body{
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+
+      .editar-pencil, .editar-guardar{
+        background-color: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+
+        transition: .5s;
+
+        i{
+          font-size: 20px;
+        }
+      }
+      .editar-guardar{
+        display: none;
+      }
+
+      
+      input{
+        width: 100%;
+        height: 40px;
+        background-color: transparent;
+        border: 1px solid white;
+        outline: none;
+        border-radius: 30px;
+        text-indent: 10px;
+        color: white;
+        margin: 5px 0;
+      }
+
+      .editar-pencil:hover{
+        color: #888;
+      }
+
+      .header{
+        width: 100%;
+
+        text-align: center;
+        margin: 20px 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .titulo, .subtitulo{
+          width: 100%;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          #titulo-input, #subtitulo-input{
+            display: none;
+          }
+
+        }
+
+        h1{
+          color: white;
+          font-weight: lighter;
+          font-size: 40px;
+        }
+        h2{
+          color: #ccc;
+          font-size: 25px;
+          font-weight: lighter;
+        }
+      }
+      .noticia-img{
+        max-width: 600px;
+        margin: 10px auto;
+
+        img{
+          width: 100%;
+          border-radius: 30px;
+        }
+      }
+      .body{
+        h2{
+          color: #ddd;
+          margin: 5px 0;
+          font-weight: lighter;
+        }
+        p{
+          color: #bbb;
+          margin-top: 10px;
+          margin-bottom: 40px
+        }
+      }
+      .noticia-buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        button, .eliminar{
+          background-color: #0076be;
+          border-radius: 2em;
+          border: none;
+          cursor: pointer;
+
+          width: 150px;
+          height: 50px;
+
+          color: white;
+          margin: 10px 5px;
+
+          transition: 0.2s;
+        }
+        .eliminar{
+          background-color: #ff5959;
+        }
+        
+        button:hover{
+          background-color: #009dff;
+        }
+        .eliminar:hover{
+          background-color: #702c2c !important;
+          
+        }
       }
     }
   }
