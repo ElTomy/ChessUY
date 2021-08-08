@@ -549,4 +549,50 @@ class servidor
         }
         return false;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion){
+        $conn = $this->conectar();
+        $sql = "CALL CrearNoticia(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ssss",$Usuario, $Titulo, $Descripcion, $Informacion);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion){
+        $conn = $this->conectar();
+        $sql = "CALL ModificarNoticia(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sisss",$Usuario, $id, $Titulo, $Descripcion, $Informacion);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function EliminarNoticia($id){
+        $conn = $this->conectar();
+        $sql = "CALL EliminarNoticia(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+        $stmts->execute();
+    }
 }
