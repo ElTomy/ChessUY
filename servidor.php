@@ -509,4 +509,43 @@ class servidor
         $stmts->bind_param("ii", $Id,$por);
         $stmts->execute();
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function EditarParticipante($Usuario, $Puntos, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos, $id){
+        $conn = $this->conectar();
+        $sql = "CALL EditarParticipante(?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("siiiiii",$Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoParticipante($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoParticipante(?)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
+            $stmts->fetch();
+            $stmts->close();
+            return array($Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
+
+        }
+        return false;
+    }
 }

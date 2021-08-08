@@ -4,55 +4,48 @@ include '../../servidor.php';
 $server = new servidor();
 
 $torneos = $server->InfoTorneo();
-
+date_default_timezone_set("America/Montevideo");
 $sinTorn = false;
 $prim = true;
 $fechaAct = date('Ymd');
+
+$mesesEsp = array("1"=>"Enero", "2"=>"Febrero", "3"=>"Marzo", "4"=>"Abril", "5"=>"Mayo", "6"=>"Junio", "7"=>"Julio", "8"=>"Agosto", "9"=>"Setiembre", "10"=>"Octubre", "11"=>"Noviembre", "12"=>"Diciembre",);
 
 if(count($torneos) < 1) {
     $sinTorn = true;
 } else {
     for($i=0;$i<count($torneos);$i++) {
-        /*if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) > date('Ymd') && str_replace('-', '', $torneos[$i]['Fecha_inicio']) > date('Ymd')) {
-            echo "
-
-        <div class='torneo-left'>
-            <img src='/ChessUY/media/images/Trofeo.png' alt=''>
-            <div class='participantes'>
-                <p>". $torneos[$i]['Numero_Participantes'] ." <i class='fas fa-users'></i></p>
-            </div>
-        </div>
-        <div class='torneo-right'>
-            <div class='torneo-info'>
-                <h2>Nombre del Torneo</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus dolores ducimus exercitationem eius laborum saepe facilis molestiae officia tempore totam?</p>
-            </div>
-            <div class='torneo-buttons'>
-                <a href=''><i class='fas fa-plus-circle'></i> Unirse</a>
-                <a href='/ChessUY/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
-            </div>
-        </div>
-        
-        ";
-        } else {
-            $sinTorn = true;
-        }*/
-
-        $diff = str_replace('-', '', $torneos[$i]['Fecha_inicio']) - $fechaAct;
+        $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
+        $fechTornP = $comTornP[0].$comTornP[1].$comTornP[2];
+        $diff = $fechTornP - $fechaAct;
         if($prim) {
             $diffAnt = $diff;
             $j = $i;
             $prim = false;
         } else {
-            if(abs($diff) < abs($diffAnt)) {
+            if(abs($diff) <= abs($diffAnt)) {
                 $j = $i;
                 $diffAnt = $diff;
             }
         }
     }
-    $com = str_replace('-', ' ', $torneos[$j]['InicioTorneo']);
-    $comTorn = explode(' ', $com);
+    $comTorn = explode(' ', str_replace('-', ' ', $torneos[$j]['InicioTorneo']));
     $fechTorn = mktime(0, 0, 0, $comTorn[1], $comTorn[2], $comTorn[0]);
+
+    $comInsc = explode('-', $torneos[$j]['Fecha_inicio']);
+    $fechInsc = mktime(0, 0, 0, $comInsc[1], $comInsc[2], $comInsc[0]);
+
+    $descUnid = 0;
+
+    if($torneos[$j]['Numero_Participantes'] == 0) {
+        $descJug = "<p>".$descUnid."/∞ <i class='fas fa-users'></i></p>";
+    } else {
+        if($descUnid == $torneos[$j]['Numero_Participantes']) {
+            $descJug = "<p style='color: red'>".$descUnid."/".$descJug ." <i class='fas fa-users'></i></p>";
+        } else {
+            $descJug = "<p>".$descUnid."/".$descJug ." <i class='fas fa-users'></i></p>";
+        }
+    }
 
     if($torneos[$j]['ELO_Min'] == 0 && $torneos[$j]['ELO_Max'] == 0) {
         $descELO = "No tiene restricciones de ELO";
@@ -88,16 +81,26 @@ if(count($torneos) < 1) {
 
     if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) > $fechaAct) {
         //Las inscripciones no empezaron
-        $estado = "Estado: Inscripciones se abren el ".date('j', $fechTorn)." de ".date('F', $fechTorn)." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas";
-    } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
+        $estado = "<p style='color: #ffaa00'>Las inscripciones se abren el ".date('j', $fechInsc)." de ".$mesesEsp[date('n', $fechInsc)]." del año ".date('Y', $fechInsc)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
+    } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) <= $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) >= $fechaAct) {
         //Las inscripciones empezaron pero no terminaron
-        $estado = "Estado: Inscripciones abiertas";
+        if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+            $estado = "<p style='color: white'>Inscripciones se abren hoy a las ".substr($comTorn[3], 0, -3)." horas</p>";
+        } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+            $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+        } else {
+            $estado = "<p style='color: green'>Inscripciones abiertas</p>";
+        }
     } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) < $fechaAct && $comTorn[0].$comTorn[1].$comTorn[2] > $fechaAct) {
         //Terminaron las inscripciones pero no comenzo el torneo
-        $estado = "Inscripciones cerradas";
-    } elseif($comTorn[0].$comTorn[1].$comTorn[2] < $fechaAct) {
+        $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+    } elseif($comTorn[0].$comTorn[1].$comTorn[2] <= $fechaAct) {
         //Ya comenzo el torneo
-        $estado = "En curso";
+        if($comTorn[0].$comTorn[1].$comTorn[2] == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+            $estado = "En curso";
+        } else {
+            $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+        }
     } else {
         //Error inesperado
         $estado = "La verdad ni idea";
@@ -106,19 +109,19 @@ if(count($torneos) < 1) {
     echo "
     <div class='torneo-left'>
         <img src='/ChessUY/media/images/Trofeo.png' alt=''>
-        <div class='participantes'>
-            <p>". $torneos[$j]['Numero_Participantes'] ." <i class='fas fa-users'></i></p>
-        </div>
+        <div class='participantes'>"
+        .$descJug.
+        "</div>
     </div>
     <div class='torneo-right'>
         <div class='torneo-info'>
             <h2>Nombre del Torneo</h2>
-            <p>Comienza el ".date('j', $fechTorn)." de ".date('F', $fechTorn)." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>
+            <p>Comienza el ".date('j', $fechTorn)." de ".$mesesEsp[date('n', $fechTorn)]." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>
             <p>".$descELO."</p>
             <p>".$descEdad."</p>
             <p>".$descPart."</p>
             <p>".$descTemp."</p>
-            <p>".$estado."</p>
+            ".$estado."
         </div>
         <div class='torneo-buttons'>
             <a href=''><i class='fas fa-plus-circle'></i> Unirse</a>
