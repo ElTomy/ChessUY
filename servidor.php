@@ -520,7 +520,7 @@ class servidor
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("siiiiii",$Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
+        $stmts->bind_param("siiiiii",$Usuario,$Puntos,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
         if($stmts->execute()){
             $execute = true;
         }
