@@ -124,7 +124,7 @@ if(count($torneos) < 1) {
             ".$estado."
         </div>
         <div class='torneo-buttons'>
-            <a href=''><i class='fas fa-plus-circle'></i> Unirse</a>
+            <a onclick='uniraBD(".$torneos[$j]['ID_Torneo'].")'><i class='fas fa-plus-circle'></i> Unirse</a>
             <a href='/ChessUY/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
         </div>
     </div>  
