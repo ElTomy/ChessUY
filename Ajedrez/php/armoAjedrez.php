@@ -80,18 +80,18 @@ for($y = 1; $y <= 8; $y++){
         }
 
         if($jaque == true && ($Tablero[$x][$y]['Piezas'] == 'r' || $Tablero[$x][$y]['Piezas'] == 'rn')){
-            if($turno%2 == 0){
+            if($turno%2 == 0 && $Tablero[$x][$y]['color'] == 'n'){
                 $op = "style='display: flex'";
-                $circulo_jaque = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
+                $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
             }else{
                 $op = "style='display: flex'";
-                $circulo_jaque = "style = 'width: 80%; height: 80%; border-radius: 50%; background-color: red;'";
+                $punto = "style = 'width: 80%; height: 80%; border-radius: 50%; background-color: red;'";
             }
         }
 
         if($mov[$x][$y] == "true"){
 
-            if($Tablero[$x][$y]['Piezas'] != null){
+            if($Tablero[$x][$y]['Piezas'] != null && ($Tablero[$x][$y]['Piezas'] != 'r' && $Tablero[$x][$y]['Piezas'] != 'rn')){
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
             }else{
