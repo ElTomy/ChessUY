@@ -16,6 +16,8 @@ if($_SESSION['tipo'] == 0){
   }
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
+$jaque = $_POST['jaque'];
+$turno = $_POST['Turno'];
 if(isset($_POST['Jugadas'])){
     $jugadas = $_POST['Jugadas'];
 }
@@ -76,6 +78,17 @@ for($y = 1; $y <= 8; $y++){
                                     default:
                                     $img = "";
         }
+
+        if($jaque == true && ($Tablero[$x][$y]['Piezas'] == 'r' || $Tablero[$x][$y]['Piezas'] == 'rn')){
+            if($turno%2 == 0){
+                $op = "style='display: flex'";
+                $circulo_jaque = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
+            }else{
+                $op = "style='display: flex'";
+                $circulo_jaque = "style = 'width: 80%; height: 80%; border-radius: 50%; background-color: red;'";
+            }
+        }
+
         if($mov[$x][$y] == "true"){
 
             if($Tablero[$x][$y]['Piezas'] != null){
@@ -85,6 +98,7 @@ for($y = 1; $y <= 8; $y++){
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 20%; height: 20%; border-radius: 50%; background-color: rgba(255, 255, 255, 0.623);'";
             }
+
             
         }else{
             $op = "";
