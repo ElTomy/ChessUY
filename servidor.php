@@ -534,19 +534,26 @@ class servidor
     function InfoParticipante($usuario){
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL InfoParticipante(?)";
+        $sql = "CALL InfoParticipante(?,@x)";
         $stmts = $conn->prepare($sql);
 
         $stmts->bind_param("s", $usuario);
         if ($stmts->execute()) {
-            $stmts->store_result();
-            $stmts->bind_result($Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
-            $stmts->fetch();
-            $stmts->close();
-            return array($Usuario,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
-
+            $resultado = $conn->query('SELECT @x as p_out');
+            $x = $resultado->fetch_assoc();
+            if ($x['p_out'] == "1") {
+                $stmts->close();
+                $valor = 1;
+            } else {
+                if ($x['p_out'] == "0") {
+                    $stmts->close();
+                    $valor = 0;
+                } 
+            }
+        } else {
+            $valor = $stmts->error;
         }
-        return false;
+        return $valor;
     }
     //
     //
