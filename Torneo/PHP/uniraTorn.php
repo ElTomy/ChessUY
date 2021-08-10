@@ -1,38 +1,39 @@
 <?php
+if(isset($_POST['tornID'])) {
+    include '../../servidor.php';
+    $server = new servidor();
+    session_start();
+    $usuario = $_SESSION['usuario'];
+    $idTorneo = $_POST['tornID'];
+    $torneos = $server->InfoTorneo();
+    $partici = $server->InfoParticipante($usuario);
 
-include '../../servidor.php';
-$server = new servidor();
-session_start();
-$usuario = $_SESSION['usuario'];
-$torneos = $server->InfoTorneo();
+    $x = false;
+    $y = true;
 
-$x = false; 
-
-$prim = true;
-$fechaAct = date('Ymd');
-
-for($i=0;$i<count($torneos);$i++) {
+    $prim = true;
+    $fechaAct = date('Ymd');
     $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
-    $fechTornP = $comTornP[0].$comTornP[1].$comTornP[2];
-    $diff = $fechTornP - $fechaAct;
-    if($prim) {
-        $diffAnt = $diff;
-        $j = $i;
-        $prim = false;
-    } else {
-        if(abs($diff) <= abs($diffAnt)) {
-            $j = $i;
-            $diffAnt = $diff;
-        }
-    }
-}
 
-if(isset($_POST['tornID']) == $torneos[$j]['ID_Torneo']) {
-    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-    echo $x;
+    if($y) {
+        for($j=0;$j<count($torneos);$j++) {
+            if($idTorneo == $torneos[$j]['ID_Torneo']) {
+                if($torneos[$j]['Fecha_inicio'] < $fechaAct && $torneos[$j]['Fecha_fin'] > $fechaAct) {
+                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                } elseif($torneos[$j]['Fecha_inicio'] == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                } elseif($torneos[$j]['Fecha_fin'] == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
+                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                }
+                $j = count($torneos);
+            }
+        }
+        echo $x;
+    } else {
+        echo 'Mono tryhard cagon';
+    }
 } else {
-    echo $x;
-    //actualize la pagina e intente nuevamente
+    echo 'Mono hacker cagon';
 }
 
 ?>
