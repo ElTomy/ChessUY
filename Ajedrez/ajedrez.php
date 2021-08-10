@@ -57,7 +57,7 @@ foreach ($partidos as $buscoPartido) {
       $server->UnirsePartidos($id, $_SESSION['usuario'], $col2);
     }else{
      //crea un juego
-     $server->CrearPartidos($_SESSION['usuario'], //color);
+     $server->CrearPartidos($_SESSION['usuario']);
     }
   }
 ?>
