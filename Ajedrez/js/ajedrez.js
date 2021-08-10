@@ -26,7 +26,7 @@ function boxHeight(){
     $.ajax({
         url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque.jaque, Turno: Turno},
+        data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
