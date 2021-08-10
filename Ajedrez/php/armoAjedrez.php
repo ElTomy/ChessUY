@@ -16,6 +16,8 @@ if($_SESSION['tipo'] == 0){
   }
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
+$jaque = $_POST['jaque'];
+$turno = $_POST['Turno'];
 if(isset($_POST['Jugadas'])){
     $jugadas = $_POST['Jugadas'];
 }
@@ -76,19 +78,26 @@ for($y = 1; $y <= 8; $y++){
                                     default:
                                     $img = "";
         }
+
         if($mov[$x][$y] == "true"){
 
-            if($Tablero[$x][$y]['Piezas'] != null){
+            if($Tablero[$x][$y]['Piezas'] != null && ($Tablero[$x][$y]['Piezas'] != 'r' && $Tablero[$x][$y]['Piezas'] != 'rn')){
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
             }else{
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 20%; height: 20%; border-radius: 50%; background-color: rgba(255, 255, 255, 0.623);'";
             }
+
             
         }else{
             $op = "";
             $punto = "";
+        }
+        $xjaque = '<i class="fas fa-times"></i>';
+        if($jaque['jaque'] == true && ($Tablero[$x][$y]['Piezas'] == 'r' || $Tablero[$x][$y]['Piezas'] == 'rn') && $Tablero[$x][$y]['color'] != $jaque['color']){
+                $op = "style='display: flex'";
+                $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(217, 63, 71, 1); border-radius: 50%; background-color: none;'";
         }
 
         //if

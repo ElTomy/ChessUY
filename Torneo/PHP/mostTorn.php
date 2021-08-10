@@ -84,7 +84,7 @@ if(count($torneos) < 1) {
         $estado = "<p style='color: #ffaa00'>Las inscripciones se abren el ".date('j', $fechInsc)." de ".$mesesEsp[date('n', $fechInsc)]." del año ".date('Y', $fechInsc)." a las ".substr($comTorn[3], 0, -3)." horas</p>";
     } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) <= $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) >= $fechaAct) {
         //Las inscripciones empezaron pero no terminaron
-        if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+        if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
             $estado = "<p style='color: white'>Inscripciones se abren hoy a las ".substr($comTorn[3], 0, -3)." horas</p>";
         } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
             $estado = "<p style='color: red'>Inscripciones cerradas</p>";
