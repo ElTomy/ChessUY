@@ -41,7 +41,7 @@ foreach ($partidos as $buscoPartido) {
     $encontrado = 1;
 
     foreach ($partidos as $buscoPartido) {
-      if($buscoPartido['usu2'] == null && $buscoPartido['usu2'] != $_SESSION['usuario']){
+      if($buscoPartido['usu2'] == null && $buscoPartido['usu1'] != $_SESSION['usuario']){
       $encontrado = 0;
       $id = $buscoPartido['ID'];
       $color1 = $buscoPartido['col1'];
@@ -57,7 +57,9 @@ foreach ($partidos as $buscoPartido) {
       $server->UnirsePartidos($id, $_SESSION['usuario'], $col2);
     }else{
      //crea un juego
-     $server->CrearPartidos($_SESSION['usuario']);
+     $micolor = random_int(0,1);
+      echo $micolor;
+     $server->CrearPartidos($_SESSION['usuario'], $micolor);
     }
   }
 ?>
