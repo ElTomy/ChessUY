@@ -382,9 +382,7 @@ function uniraBD(tornID) {
     $.ajax({
         url: "/ChessUY/Torneo/PHP/uniraTorn.php",
         type: "post",
-        data: { 
-            tornID : tornID
-        },
+        data: {tornID : tornID},
         success: function (exec) {
             $.ajax({
                 url: "/ChessUY/Modal/unirTNotif.php",

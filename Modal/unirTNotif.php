@@ -111,5 +111,6 @@ if(isset($_POST['exec'])) {
             break;
     }
     echo $modal;
+}
 
 ?>

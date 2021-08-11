@@ -34,17 +34,17 @@ if(isset($_POST['tornID'])) {
             }
         }
         if($y) {
-            echo 3;
+            echo '3';
         } elseif(!$x) {
-            echo 2;
+            echo '2';
         } else {
-            echo 0;
+            echo '0';
         }
     } else {
-        echo 1;
+        echo '1';
     }
 } else {
-    echo 3;
+    echo '3';
 }
 
 ?>

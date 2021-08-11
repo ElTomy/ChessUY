@@ -42,6 +42,7 @@ if(isset($_SESSION['usuario'])){
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
     <div class="landing-video">
+    <div id="modal"></div>
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
         <source src="media/videos/Ajedrez.mp4" type="video/mp4" />
