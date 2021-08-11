@@ -13,11 +13,13 @@ if(isset($_POST['tornID'])) {
 
     $prim = true;
     $fechaAct = date('Ymd');
-    $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
+    
 
     if($partici == 1) {
         for($j=0;$j<count($torneos);$j++) {
             if($idTorneo == $torneos[$j]['ID_Torneo']) {
+                $comTornP = explode(' ', str_replace('-', ' ', $torneos[$j]['InicioTorneo']));
+
                 if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
                     $y = false;
