@@ -560,13 +560,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion){
+    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion, $img){
         $conn = $this->conectar();
-        $sql = "CALL CrearNoticia(?,?,?,?)";
+        $sql = "CALL CrearNoticia(?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("ssss",$Usuario, $Titulo, $Descripcion, $Informacion);
+        $stmts->bind_param("sssss",$Usuario, $Titulo, $Descripcion, $Informacion, $img);
         if($stmts->execute()){
             $execute = true;
         }
@@ -577,13 +577,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion){
+    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion, $img){
         $conn = $this->conectar();
-        $sql = "CALL ModificarNoticia(?,?,?,?,?)";
+        $sql = "CALL ModificarNoticia(?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("sisss",$Usuario, $id, $Titulo, $Descripcion, $Informacion);
+        $stmts->bind_param("sissss",$Usuario, $id, $Titulo, $Descripcion, $Informacion, $img);
         if($stmts->execute()){
             $execute = true;
         }
