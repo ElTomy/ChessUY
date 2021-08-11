@@ -378,6 +378,19 @@ function setVar(vari, modo) {
     return (vari);
 }
 
+function uniraBD(tornID) {
+    $.ajax({
+        url: "/ChessUY/Torneo/PHP/uniraTorn.php",
+        type: "post",
+        data: { 
+                tornID : tornID
+              },
+        success: function (exec) {
+            alert(exec);
+        }
+    })
+}
+
 function cerrar(){
     document.getElementById("modal").innerHTML = "";
   }

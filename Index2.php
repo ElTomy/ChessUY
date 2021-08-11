@@ -19,7 +19,8 @@ $index ='
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
-    <script src="/ChessUY/Javascript/Loader.js"></script>';
+    <script src="/ChessUY/Javascript/Loader.js"></script>
+    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>';
     if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
       $index .='<script src="/ChessUY/Javascript/functionIndex2.js"></script>';
     }
