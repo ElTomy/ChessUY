@@ -38,7 +38,7 @@
       </video>
     </div>
 
-    <section class="noticia-wrapper">
+    <section class="noticia-wrapper2">
       <div class="noticia">
         <div class="logo-img">
           <img

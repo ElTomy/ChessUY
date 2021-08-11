@@ -9,31 +9,44 @@ if(isset($_POST['tornID'])) {
     $partici = $server->InfoParticipante($usuario);
 
     $x = false;
-    $y = true;
+    $y;
 
     $prim = true;
     $fechaAct = date('Ymd');
     $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
 
-    if($y) {
+    if($partici == 1) {
         for($j=0;$j<count($torneos);$j++) {
             if($idTorneo == $torneos[$j]['ID_Torneo']) {
-                if($torneos[$j]['Fecha_inicio'] < $fechaAct && $torneos[$j]['Fecha_fin'] > $fechaAct) {
+                if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                } elseif($torneos[$j]['Fecha_inicio'] == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                    $y = false;
+                } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                } elseif($torneos[$j]['Fecha_fin'] == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
+                    $y = false;
+                } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                    $y = false;
+                } else {
+                    $y = false;
                 }
                 $j = count($torneos);
+            } else {
+                $y = true;
             }
         }
-        echo $x;
+        if($y) {
+            echo 'Ese torneo no existe';
+        } elseif(!$x) {
+            echo 'Ese torneos ya caduco papa';
+        } else {
+            echo 'Haz ingresado correctamente';
+        }
     } else {
         echo 'Mono tryhard cagon';
     }
 } else {
-    echo 'Mono hacker cagon';
+    echo 'Mono cagon';
 }
 
 ?>
