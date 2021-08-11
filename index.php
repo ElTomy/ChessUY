@@ -24,6 +24,7 @@ if(isset($_SESSION['usuario'])){
     <script src="Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
+    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
     
     <link
       rel="shortcut icon"
@@ -93,49 +94,11 @@ if(isset($_SESSION['usuario'])){
       </div>
       <div class="torneos-recientes-wrapper">
 
-                  <h1>Torneos</h1>
+                  <h1>Torneos Abiertos</h1>
                   <hr>
 
-                  <div class="torneos-recientes">
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/ChessUY/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-chart-line"></i> Estadisticas</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="torneos-recientes" id="torn-Act">
+                    
                   </div>
 
                 </div>

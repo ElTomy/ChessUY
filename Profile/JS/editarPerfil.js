@@ -63,6 +63,7 @@ function guardar(usuario_actual){
             url: "/ChessUY/Profile/PHP/guardar.php",
             data: {Usuario_Actual: usuario_actual, usuario: Usuario, nombre: Nombre, apellido: Apellido, email: Email, institucion: Institucion, año: Año, documento: Documento, celular: Celular},
             success: function (data) {
+                console.log(data);
                 if(data == 0){
                     location.href = "/ChessUY/Profile/Editar/" + Usuario;
                 }else{
@@ -122,4 +123,28 @@ function contraseña(usuario){
             }
           });
     }
+}
+
+function eliminar(usuario){
+    $('#modal').show();
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Modal/modalEliminarUsuario.php",
+        data: {Usuario: usuario},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+    });
+}
+
+function borrar(usuario){
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Profile/PHP/borrar.php",
+        data: {Usuario: usuario},
+        success: function (response) {   
+            $('#modal').hide();
+            cargarJugadores();
+        }
+    });
 }

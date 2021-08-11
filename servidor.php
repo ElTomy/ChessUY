@@ -220,9 +220,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($ID_Torneo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $Primero, $Segundo, $Tercero, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $tiempo, $InicioTorneo);
+            $stmts->bind_result($ID_Torneo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $Primero, $Segundo, $Tercero, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $tiempo, $InicioTorneo,$Preset);
             while ($stmts->fetch()) {
-                $data = array('ID_Torneo' => $ID_Torneo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Fecha_fin' => $Fecha_fin, 'Numero_Participantes' => $Numero_Participantes, 'Primero' => $Primero, 'Segundo' => $Segundo, 'Tercero' => $Tercero, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'tiempo' => $tiempo, 'InicioTorneo' => $InicioTorneo);
+                $data = array('ID_Torneo' => $ID_Torneo, 'ELO_Min' => $ELO_Min, 'ELO_Max' => $ELO_Max, 'Fecha_inicio' => $Fecha_inicio, 'Fecha_fin' => $Fecha_fin, 'Numero_Participantes' => $Numero_Participantes, 'Primero' => $Primero, 'Segundo' => $Segundo, 'Tercero' => $Tercero, 'TiempoDescalificar' => $TiempoDescalificar, 'PartidasxDia' => $PartidasxDia, 'CantidaddeReservas' => $CantidaddeReservas, 'Localidad' => $Localidad, 'EdadMinima' => $EdadMinima, 'EdadMaxima' => $EdadMaxima, 'tiempo' => $tiempo, 'InicioTorneo' => $InicioTorneo,'Preset' => $Preset);
                 $info[] = $data;
             }
             $stmts->close();
@@ -279,13 +279,14 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo){
+    function CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo,$Preset)
+    {
         $conn = $this->conectar();
-        $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "CALL CrearTorneo(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
 
         $execute = false;
-        $stmts->bind_param("iiissisiisiis",$tiempo,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo);
+        $stmts->bind_param("iiissisiisiisi",$tiempo,$ELO_Min,$ELO_Max,$Fecha_inicio,$Fecha_fin,$Numero_Participantes,$TiempoDescalificar,$PartidasxDia,$CantidaddeReservas,$Localidad,$EdadMinima,$EdadMaxima,$InicioTorneo,$Preset);
         if($stmts->execute()) {
             $execute = true;
         }
@@ -327,7 +328,6 @@ class servidor
         $stmts->bind_param("ssss",$Usuario,$NumeroIcono,$ColorIcono,$ColorFondo);
         if($stmts->execute()){
             $execute = true;
-
             if($Usuario == $_SESSION['usuario']){
                 $_SESSION['icono'] = $NumeroIcono;
                 $_SESSION['coloricono'] = $ColorIcono;
@@ -377,8 +377,13 @@ class servidor
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("ss", $nombre, $usuario);
         if($stmts->execute()){
-            $_SESSION['usuario'] = $nombre;
+            $execute = true;
+            session_start();
+            if($usuario == $_SESSION['usuario']){
+                $_SESSION['usuario'] = $nombre;
+            }            
         }
+        return $execute;
     }
     //
     //
@@ -449,6 +454,52 @@ class servidor
             $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado);
             while ($stmts->fetch()) {
                 $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado);
+                                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoMisLogros($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoMisLogros(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoLogro($idl){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoLogro(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $idl);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id);
                 $info[] = $data;
             }
             $stmts->close();
@@ -468,7 +519,45 @@ class servidor
 
         $stmts->bind_param("isi",$idp, $usu, $col2);
         if($stmts->execute()){
-            $execute = true;            
+            $execute = true;   
+        }
+        return $execute;
+    }         
+    function NuevoLogro($usuario,$Id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL NuevoLogro(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("si", $usuario,$Id);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ActualizoPorcentaje($Id,$por){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL ActualizoPorcentaje(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("ii", $Id,$por);
+        $stmts->execute();
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function EditarParticipante($Usuario, $Puntos, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos, $id){
+        $conn = $this->conectar();
+        $sql = "CALL EditarParticipante(?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("siiiiii",$Usuario,$Puntos,$Coronaciones,$Comidas,$Menos_Tiempo,$Menos_Movimientos,$id);
+        if($stmts->execute()){
+            $execute = true;
         }
         return $execute;
     }
@@ -488,5 +577,80 @@ class servidor
             $execute = true;            
         }
         return $execute;
+    }
+     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoParticipante($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoParticipante(?,@x)";
+        $stmts = $conn->prepare($sql);
+
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            $resultado = $conn->query('SELECT @x as p_out');
+            $x = $resultado->fetch_assoc();
+            if ($x['p_out'] == "1") {
+                $stmts->close();
+                $valor = 1;
+            } else {
+                if ($x['p_out'] == "0") {
+                    $stmts->close();
+                    $valor = 0;
+                } 
+            }
+        } else {
+            $valor = $stmts->error;
+        }
+        return $valor;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion){
+        $conn = $this->conectar();
+        $sql = "CALL CrearNoticia(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ssss",$Usuario, $Titulo, $Descripcion, $Informacion);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion){
+        $conn = $this->conectar();
+        $sql = "CALL ModificarNoticia(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("sisss",$Usuario, $id, $Titulo, $Descripcion, $Informacion);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function EliminarNoticia($id){
+        $conn = $this->conectar();
+        $sql = "CALL EliminarNoticia(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+        $stmts->execute();
     }
 }

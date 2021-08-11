@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv =»Cache-Control» content =»no-cache»/>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +38,7 @@
       </video>
     </div>
 
-    <section class="noticia-wrapper2">
+    <section class="noticia-wrapper">
       <div class="noticia">
         <div class="logo-img">
           <img
@@ -50,8 +49,19 @@
         <hr />
         <div class="noticia-body">
           <div class="header">
-            <h1>Titulo de la Noticia</h1>
-            <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, et?</h2>
+            <div class="titulo">
+                <h1 id="titulo-text">Titulo de la Noticia</h1>
+                <input id="titulo-input" type="text" name="Titulo" placeholder="Titulo de la Noticia">
+                <button class="editar-pencil" id="titulo-editar"><i class="fas fa-pencil-alt"></i></button>
+                <button class="editar-guardar" id="titulo-guardar"><i class="fas fa-save"></i></button>
+            </div>
+
+            <div class="subtitulo">
+                <h2 id="subtitulo-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae, et?</h2>
+                <input id="subtitulo-input" type="text" name="Subtitulo" placeholder="Subtitulo de la Noticia">
+                <button class="editar-pencil" id="subtitulo-editar"><i class="fas fa-pencil-alt"></i></button>
+                <button class="editar-guardar" id="subtitulo-guardar"><i class="fas fa-save"></i></button>
+            </div>
           </div>
 
           <div class="body">
@@ -99,8 +109,7 @@
 
           </div>
           <div class="noticia-buttons">
-            <button class="editar" onclick="editar(1)"><i class="fas fa-edit"></i> Editar</button>
-            <button class="eliminar" onclick="eliminarNoticia(1)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            <button><i class="fas fa-save"></i> Guardar</button>
           </div>
         </div>
       </div>
