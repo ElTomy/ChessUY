@@ -22,33 +22,29 @@ if(isset($_POST['tornID'])) {
 
                 if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                    $y = false;
                 } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                    $y = false;
                 } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
                     $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                    $y = false;
-                } else {
-                    $y = false;
                 }
+                $y = false;
                 $j = count($torneos);
             } else {
                 $y = true;
             }
         }
         if($y) {
-            echo 'Ese torneo no existe';
+            echo 3;
         } elseif(!$x) {
-            echo 'Ese torneos ya caduco papa';
+            echo 2;
         } else {
-            echo 'Haz ingresado correctamente';
+            echo 0;
         }
     } else {
-        echo 'Mono tryhard cagon';
+        echo 1;
     }
 } else {
-    echo 'Mono cagon';
+    echo 3;
 }
 
 ?>

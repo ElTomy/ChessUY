@@ -383,10 +383,17 @@ function uniraBD(tornID) {
         url: "/ChessUY/Torneo/PHP/uniraTorn.php",
         type: "post",
         data: { 
-                tornID : tornID
-              },
+            tornID : tornID
+        },
         success: function (exec) {
-            alert(exec);
+            $.ajax({
+                url: "/ChessUY/Modal/unirTNotif.php",
+                type: "post",
+                data: {exec : exec},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+            })
         }
     })
 }
