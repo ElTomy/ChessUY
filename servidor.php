@@ -601,4 +601,74 @@ class servidor
         $stmts->bind_param("i", $id);
         $stmts->execute();
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoNoticias($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoNoticias(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function MuestroNoticias(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL MuestroNoticias()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function NoticiasIndex(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL NoticiasIndex()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
