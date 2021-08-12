@@ -365,26 +365,47 @@ function seleccionar(x,y){
                         simbolo =  "=";
                     }
                }else{
-                   if(x != 8){
                     xx = x + 1;
-                   }
-                   if(x != 1){
                     xy = x - 1;
-                   }
-                    if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
+                    var l = 0;
+                    if(y == 6 && Tablero[x][y].Piezas == null) {
                         if(Tablero[x][5].Piezas != null){
-                            Porcentaje(Tablero[x][5].Piezas,0);
-                            ColocoPieza(null,null,x,5);
-                            simbolo = "x";
-                            comidas++;
-                        }
-                    }else{
-                        if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
-                            if(Tablero[x][4].Piezas != null){
-                                Porcentaje(Tablero[x][4].Piezas,0);
-                                ColocoPieza(null,null,x,4);
+                            if(xx != 9){
+                                if(Movimiento[xx][y] == true){
+                                    l = 1;
+                                }
+                            }
+                            if(xy != 0){
+                                if(Movimiento[xy][y] == true){
+                                    l = 1;
+                                }
+                            }
+                            if(l == 1){
+                                Porcentaje(Tablero[x][5].Piezas,0);
+                                ColocoPieza(null,null,x,5);
                                 simbolo = "x";
                                 comidas++;
+                            }
+                        }
+                    }else{
+                        if(y == 3 && Tablero[x][y].Piezas == null){
+                            if(Tablero[x][4].Piezas != null){
+                                if(xx != 9){
+                                    if(Movimiento[xx][y] == true){
+                                        l = 1;
+                                    }
+                                }
+                                if(xy != 0){
+                                    if(Movimiento[xy][y] == true){
+                                        l = 1;
+                                    }
+                                }
+                                if(l == 1){
+                                    Porcentaje(Tablero[x][4].Piezas,0);
+                                    ColocoPieza(null,null,x,4);
+                                    simbolo = "x";
+                                    comidas++;
+                                }
                             }
                         }
                     }
@@ -647,15 +668,16 @@ function Peon(x,y, sel){
         }
         if(yy<=8){
          //movimiento: 1-adelante
+         console.log(Tablero[x][yy].Piezas);
          if(Tablero[x][yy].Piezas == null){
             comer(x,yy,selecc);
          }
         if(xx<=8){
             if(y == 5 &&  (Tablero[xb][y].Piezas == "p" ||  Tablero[xb][y].Piezas == "pn") && Tablero[xb][6].Piezas == null) {
-                if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xa][y].Piezas != "pn")){
+                if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xb][y].Piezas != "pn")){
                     //Peon al paso derecha
                     comer(xb,6,selecc);
-                }
+                } 
             }
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
@@ -684,12 +706,13 @@ function Peon(x,y, sel){
             }
             if(yy>=1){
              //movimiento: 1-adelante
+             console.log(Tablero[x][yy].Piezas);
              if(Tablero[x][yy].Piezas == null){
                 comer(x,yy,selecc);
              }
              if(xx<=8){
                  if(y == 4 && (Tablero[xb][y].Piezas == "p" ||  Tablero[xb][y].Piezas == "pn") && Tablero[xb][3].Piezas == null) {
-                    if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xa][y].Piezas != "pn")){
+                    if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xb][y].Piezas != "pn")){
                         //Peon al paso derecha
                         comer(xb,3,selecc);
                     }
