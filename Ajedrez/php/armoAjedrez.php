@@ -1,5 +1,19 @@
 <?php
+include '../../servidor.php';
+$server= new servidor();
 session_start();
+$partidos = $server->TraigoPartidos();
+foreach ($partidos as $buscoPartido) {
+    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
+        if($buscoPartido['usu1'] == $_SESSION['usuario']){
+           $col =$buscoPartido['col1'];
+       }else{
+          $col =$buscoPartido['col2'];
+       }
+    }
+}
+
+
 $usu = $_SESSION["usuario"];
 $Icon = $_SESSION["icono"];
 $colFondo = $_SESSION["colorfondo"];
@@ -23,6 +37,12 @@ if(isset($_POST['Jugadas'])){
 }
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
+print_r($col);
+if($col == 1){
+    $letras_y = array_reverse($letras_y);
+    $numeros_x = array_reverse($numeros_x);
+}
+
 $Ajedrez = '<div class="ajedrez-flex">
                     <div class="ajedrez-wrapper">
                         <div class="ajedrez">';

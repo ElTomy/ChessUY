@@ -24,11 +24,9 @@ class Ajedrez extends WebSocketServer {
     //$chatServer = new Ajedrez("192.168.0.118","25005");
     //$chatServer = new Ajedrez("179.27.156.47","8080");
     try {
-        echo "try";
     $chatServer->run();
     }
     catch (Exception $e) {
-        echo "catch";
     $chatServer->stdout($e->getMessage());
     }   
 

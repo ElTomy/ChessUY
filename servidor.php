@@ -653,4 +653,26 @@ class servidor
         $stmts->bind_param("i", $id);
         $stmts->execute();
     }
+      //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function guardoTablero($Usuario, $Tablero){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoTablero(?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ss",$Usuario, $Tablero);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
 }
