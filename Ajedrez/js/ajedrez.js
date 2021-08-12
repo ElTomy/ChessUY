@@ -365,47 +365,22 @@ function seleccionar(x,y){
                         simbolo =  "=";
                     }
                }else{
-                    xx = x + 1;
-                    xy = x - 1;
-                    var l = 0;
                     if(y == 6 && Tablero[x][y].Piezas == null) {
-                        if(Tablero[x][5].Piezas != null){
-                            if(xx != 9){
-                                if(Movimiento[xx][y] == true){
-                                    l = 1;
-                                }
-                            }
-                            if(xy != 0){
-                                if(Movimiento[xy][y] == true){
-                                    l = 1;
-                                }
-                            }
-                            if(l == 1){
+                        console.log(Tablero[x][5]); 
+                        if(Tablero[x][5].Piezas != null && seleccionado.color != Tablero[x][5].color && seleccionado.Ejey == 5){
                                 Porcentaje(Tablero[x][5].Piezas,0);
                                 ColocoPieza(null,null,x,5);
                                 simbolo = "x";
                                 comidas++;
-                            }
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null){
-                            if(Tablero[x][4].Piezas != null){
-                                if(xx != 9){
-                                    if(Movimiento[xx][y] == true){
-                                        l = 1;
-                                    }
-                                }
-                                if(xy != 0){
-                                    if(Movimiento[xy][y] == true){
-                                        l = 1;
-                                    }
-                                }
-                                if(l == 1){
+                            console.log(Tablero[x][4]);
+                            if(Tablero[x][4].Piezas != null && seleccionado.color != Tablero[x][4].color && seleccionado.Ejey == 4){
                                     Porcentaje(Tablero[x][4].Piezas,0);
                                     ColocoPieza(null,null,x,4);
                                     simbolo = "x";
                                     comidas++;
-                                }
                             }
                         }
                     }
@@ -668,7 +643,6 @@ function Peon(x,y, sel){
         }
         if(yy<=8){
          //movimiento: 1-adelante
-         console.log(Tablero[x][yy].Piezas);
          if(Tablero[x][yy].Piezas == null){
             comer(x,yy,selecc);
          }
@@ -706,7 +680,6 @@ function Peon(x,y, sel){
             }
             if(yy>=1){
              //movimiento: 1-adelante
-             console.log(Tablero[x][yy].Piezas);
              if(Tablero[x][yy].Piezas == null){
                 comer(x,yy,selecc);
              }
