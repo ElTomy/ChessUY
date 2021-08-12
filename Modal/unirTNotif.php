@@ -88,6 +88,27 @@ if(isset($_POST['exec'])) {
                 </div>
             </div>";
             break;
+        case 4:
+            //No esta logeado
+            $modal =
+            "<div class='modal'>
+                <div class='modal-wrapper'>
+                    <div class='modal-logo'>
+                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                    </div>
+                    <div class='modal-content'>
+                        <h1>No esta logueado</h1>
+                        <hr>
+                        <p>Debe loguearse para inscribirse a un torneo.</p>
+                        <div class='container'>
+                        <div class='card'>
+                            <button onclick='cerrar()'>Ok</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+            break;
         default:
             //Error inesperado?
             $modal =
