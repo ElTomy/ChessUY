@@ -1,11 +1,11 @@
 $( document ).ready(function(){
     armoOnline();
-    CreoTablero();
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
     init();
     barraProgreso(50);
+    guardoTablero();
 });
 //
 //
@@ -13,34 +13,67 @@ $( document ).ready(function(){
 //
 //
 function armoOnline(){
-console.log(usu1, usu2, col1, col2, turno, tablero)
-//usu1 y usu2 para cargar los usuarios 
+    CreoTablero();
     if(partido == true){
-        console.log('creando')
+        traigoTablero();
         if(numJugador == 1){
-            colJugador = col1;
-            blan = 1;
-            neg = 8;
+            if(col1 == 1){
+                colJugador = col1;
+                blan = 8;
+                neg = 1;
+            }else{
+                colJugador = col1;
+                blan = 1;
+                neg = 8;
+            }
         }else{
-            colJugador = col2;
-            blan = 8;
-            neg = 1;
+            if(col2 == 1){
+                colJugador = col2;
+                blan = 8;
+                neg = 1;
+            }else{
+                colJugador = col2
+                blan = 1;
+                neg = 8;
+            }
         }
          Turno = turno;
-     
-        //  var tablero2 = JSON.parse(tablero);
-        //  for(var p = 1; p <= 8; p++){
-        //      for(var q = 1; q <= 8; q++){
-        //          Tablero[p][q] = tablero2[p][q];   
-        //      }
-        //  }
       
     }else{
-        console.log("asd")
         colorJugador();
         armoAjedrez();
         Turno = 1;
     }
+}
+
+function guardoTablero(){
+    var tab2 = JSON.stringify(Tablero);
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
+        type: "POST",
+        data: {tablero: tab2},
+        success: function (data) {
+           console.log("guardado")
+        }
+      });
+}
+function traigoTablero(){
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/traigoTablero.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+           console.log("traigo")
+           var tab = JSON.parse(data);
+           console.log(tab)
+           for(var p = 1; p <= 8; p++){
+            for(var q = 1; q <= 8; q++){
+                Tablero[p][q] = tab[p][q];
+                }
+            }
+            armoAjedrez();
+        }
+      });
 }
 
 function boxHeight(){
@@ -108,7 +141,6 @@ function boxHeight(){
 
 
     $('#select-wrapper').height(height * 0.5);
-    console.log(height);
  }
 
  function barraProgreso(porcentaje){
@@ -344,6 +376,7 @@ function resetTableroJaque(){
 //
 //
 function CreoTablero(){
+    console.log("creo tablero")
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
         TableroJaque[x] = [];
@@ -1959,8 +1992,8 @@ function Derrota(){
 //
 //
 function init(){
-    //socket = new WebSocket("ws://192.168.4.66:25005")
-    socket = new WebSocket("ws://192.168.0.118:25005")
+    //socket = new WebSocket("ws://192.168.4.66:8080")
+    socket = new WebSocket("ws://192.168.0.118:8080")
 
     socket.onopen = function(msg) {
         //alert("Welcome - status "+this.readyState);
@@ -1970,7 +2003,7 @@ function init(){
         reciboTablero(msg.data)
         };
         socket.onclose = function(msg) {
-        //alert("Disconnected - status "+this.readyState);
+        //si el usuario 2 es null se borra 
         };
     }
 //
@@ -1983,6 +2016,7 @@ function send(msg){
     var jug = "jug:" +JSON.stringify(Jugadas);
     var jaq = "jaq:" +JSON.stringify(jaque);
     if(tab.length > 0) {
+        guardoTablero();
         socket.send(tab);
         socket.send(jug);
         socket.send(jaq);

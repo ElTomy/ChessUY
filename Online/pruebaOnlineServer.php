@@ -20,8 +20,8 @@ class Ajedrez extends WebSocketServer {
     echo 'user disconnected'.PHP_EOL;
     }
 }
-    $chatServer = new Ajedrez("192.168.4.66","8080");
-    //$chatServer = new Ajedrez("192.168.0.118","25005");
+    //$chatServer = new Ajedrez("192.168.4.66","8080");
+    $chatServer = new Ajedrez("192.168.0.118","8080");
     //$chatServer = new Ajedrez("179.27.156.47","8080");
     try {
     $chatServer->run();

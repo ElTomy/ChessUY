@@ -37,7 +37,6 @@ if(isset($_POST['Jugadas'])){
 }
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
-print_r($col);
 if($col == 1){
     $letras_y = array_reverse($letras_y);
     $numeros_x = array_reverse($numeros_x);

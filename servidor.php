@@ -675,4 +675,26 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function traigoTablero($usuario){
+        $conn = $this->conectar();
+        $info = "error";
+        $sql = "CALL TraigoTablero(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Tablero);
+            while ($stmts->fetch()) {
+                $info =  $Tablero;
+            }
+            $stmts->close();
+        }
+        return $info;;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
 }
