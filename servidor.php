@@ -671,4 +671,86 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoPartidasAgendadas($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoPartidasAgendadas(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+            while ($stmts->fetch()) {
+                $data = array('idP' => $idPartidaAgendada, 'IDTorneo' => $IDTorneo, 'Usuario1' => $Usuario1, 'Usuario2' => $Usuario2, 'Estado' => $Estado, 'Ronda' => $Ronda, 'Fecha' => $Fecha);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function AgendoPartida($IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
+        $conn = $this->conectar();
+        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("issiis",$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ModificoPartidaAgendada($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
+        $conn = $this->conectar();
+        $sql = "CALL ModificoPartidaAgendada(?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("iissiis",$idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function FixturePuntos($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL FixturePuntos(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $Puntos, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos, $id);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario, 'Puntos' => $Puntos, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos, 'id' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
