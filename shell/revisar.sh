@@ -3,7 +3,7 @@
 if groups $USER | grep -q $1
 then
     case "$1" in
-        "admin") . ./admin/ABML.sh;;
+        "admin") . ./admin/admin.sh;;
         "tecdered") . ./tecdered/tecdered.sh;;
         "usuar") . ./usuar/usuar.sh;;
         *)  echo "+----------------------+"
