@@ -548,7 +548,7 @@ function seleccionar(x,y){
             ultTurn = true;
             a = 1;
         }
-        send();
+        //send();
         armoAjedrez();
     }
 }
@@ -1156,7 +1156,7 @@ function cambioCoronacion(x, y, pieza, col){
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
-    send();
+    //send();
 }
 window.onresize = boardsize;
 //
@@ -1992,18 +1992,20 @@ function Derrota(){
 //
 //
 function init(){
-    //socket = new WebSocket("ws://192.168.4.66:8080")
-    socket = new WebSocket("ws://192.168.0.118:8080")
+    let conn = new WebSocket("ws://localhost:8080/");
 
-    socket.onopen = function(msg) {
-        //alert("Welcome - status "+this.readyState);
+    conn.onopen = function(e) {
+        console.log('Nueva conexión establecida (WebSocket Ratchet)');
+        setInterval(function(){
+            conn.send('getFechas');
+        }, 5000);
+    };
+    conn.onmessage = function(e) {
+        console.log(e);
+        //reciboTablero(msg.data)
         };
-        socket.onmessage = function(msg) {
-        //alert("Received: "+msg.data);
-        reciboTablero(msg.data)
-        };
-        socket.onclose = function(msg) {
-        //si el usuario 2 es null se borra 
+    conn.onclose = function(e) {
+            console.log('Conexión websocket cerrada!');
         };
     }
 //
