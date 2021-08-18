@@ -1,11 +1,12 @@
 <?php
 //mysqli_connect('costatotal.com.uy', 'costat7_cyberhydra', 'cyberhydra-0192', 'costat7_cyberhydra')
 //mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')
+//mysqli_connect('179.27.156.47', 'UsuarioChessuy', 'AjedezChessuy', 'chessuy', '33061')
 class servidor
 {
     function conectar()
     {
-        if (!$conexion = mysqli_connect('179.27.156.47', 'cyberhydra', 'hugoturbio667', 'chessuy', '33061')) {
+        if (!$conexion = mysqli_connect('179.27.156.47', 'UsuarioChessuy', 'AjedezChessuy', 'chessuy', '33061')) {
             echo "No se pudo conectar a la base de datos";
             exit;
         } else {
@@ -612,13 +613,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion){
+    function CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion, $img){
         $conn = $this->conectar();
-        $sql = "CALL CrearNoticia(?,?,?,?)";
+        $sql = "CALL CrearNoticia(?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("ssss",$Usuario, $Titulo, $Descripcion, $Informacion);
+        $stmts->bind_param("sssss",$Usuario, $Titulo, $Descripcion, $Informacion, $img);
         if($stmts->execute()){
             $execute = true;
         }
@@ -629,13 +630,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion){
+    function ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion, $img){
         $conn = $this->conectar();
-        $sql = "CALL ModificarNoticia(?,?,?,?,?)";
+        $sql = "CALL ModificarNoticia(?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("sisss",$Usuario, $id, $Titulo, $Descripcion, $Informacion);
+        $stmts->bind_param("sissss",$Usuario, $id, $Titulo, $Descripcion, $Informacion, $img);
         if($stmts->execute()){
             $execute = true;
         }
@@ -653,7 +654,7 @@ class servidor
         $stmts->bind_param("i", $id);
         $stmts->execute();
     }
-      //
+    //
     //
     /*------------------------------------------------------------------------------------------*/
     //
@@ -669,6 +670,53 @@ class servidor
             $execute = true;
         }
         return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoNoticias($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoNoticias(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function MuestroNoticias(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL MuestroNoticias()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
     }
     //
     //
@@ -697,4 +745,104 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function NoticiasIndex(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL NoticiasIndex()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $ID, $Titulo, $Descripcion, $Informacion, $IMG);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $ID, 'Usuario' => $Usuario, 'Titulo' => $Titulo, 'Descripcion' => $Descripcion, 'Informacion' => $Informacion, 'IMG' => $IMG);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoPartidasAgendadas($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoPartidasAgendadas(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+            while ($stmts->fetch()) {
+                $data = array('idP' => $idPartidaAgendada, 'IDTorneo' => $IDTorneo, 'Usuario1' => $Usuario1, 'Usuario2' => $Usuario2, 'Estado' => $Estado, 'Ronda' => $Ronda, 'Fecha' => $Fecha);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function AgendoPartida($IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
+        $conn = $this->conectar();
+        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("issiis",$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function ModificoPartidaAgendada($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
+        $conn = $this->conectar();
+        $sql = "CALL ModificoPartidaAgendada(?,?,?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("iissiis",$idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function FixturePuntos($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL FixturePuntos(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $Puntos, $Coronaciones, $Comidas, $Menos_Tiempo, $Menos_Movimientos, $id);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario, 'Puntos' => $Puntos, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos, 'id' => $id);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }

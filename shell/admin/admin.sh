@@ -1,27 +1,23 @@
 #!/bin/bash
 
 . ./mostLogo.sh
-echo "| Bienvenido al ABML de usuarios, que desea hacer?   |"
+echo "| Bienvenido al menu del Administrador               |"
 echo "+----------------------------------------------------+"
 echo ""
-echo "[1] Agregar un usuario/grupo"
-echo "[2] Borrar un usuario/grupo"
-echo "[3] Modificar un usuario/grupo"
-echo "[4] Listar los usuarios/grupos"
+echo "[1] Entrar a ABML"
+echo "[2] Visualizar logs"
 echo ""
 echo "[q] Volver"
 echo ""
 read -p ">_ " opc
 
 case "$opc" in
-    "1") . ./ABML/agregar.sh;;
-    "2") . ./ABML/bajar.sh;;
-    "3") . ./ABML/modificar.sh;;
-    "4") . ./ABML/listar.sh;;
-    "q") echo "Hacer algo";;
+    "1") . ./admin/ABML.sh;;
+    "2") . ./admin/visLogs/visLogs.sh;;
+    "q") . ./shellscript.sh;;
     *)  echo "+-------------------------------------+"
         echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"
         echo "+-------------------------------------+"
         sleep 3s
-        . ./ABML.sh
+        . ./admin/admin.sh
 esac

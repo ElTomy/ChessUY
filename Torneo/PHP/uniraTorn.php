@@ -13,40 +13,40 @@ if(isset($_POST['tornID'])) {
 
     $prim = true;
     $fechaAct = date('Ymd');
-    $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
-
-    if($partici == 1) {
-        for($j=0;$j<count($torneos);$j++) {
-            if($idTorneo == $torneos[$j]['ID_Torneo']) {
-                if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
-                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+    
+    if($usuario != null) {
+        if($partici == 1) {
+            for($j=0;$j<count($torneos);$j++) {
+                if($idTorneo == $torneos[$j]['ID_Torneo']) {
+                    $comTornP = explode(' ', str_replace('-', ' ', $torneos[$j]['InicioTorneo']));
+                    if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$j]['Fecha_fin']) > $fechaAct) {
+                        $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                    } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
+                        $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                    } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
+                        $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
+                    }
                     $y = false;
-                } elseif(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
-                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                    $y = false;
-                } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
-                    $x = $server->EditarParticipante($usuario, 0, 0, 0, 0, 0, $_POST['tornID']);
-                    $y = false;
+                    $j = count($torneos);
                 } else {
-                    $y = false;
+                    $y = true;
                 }
-                $j = count($torneos);
-            } else {
-                $y = true;
             }
-        }
-        if($y) {
-            echo 'Ese torneo no existe';
-        } elseif(!$x) {
-            echo 'Ese torneos ya caduco papa';
+            if($y) {
+                echo '3';
+            } elseif(!$x) {
+                echo '2';
+            } else {
+                echo '0';
+            }
         } else {
-            echo 'Haz ingresado correctamente';
+            echo '1';
         }
     } else {
-        echo 'Mono tryhard cagon';
+        echo '4';
     }
 } else {
-    echo 'Mono cagon';
+    echo '3';
 }
 
 ?>
