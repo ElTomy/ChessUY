@@ -63,14 +63,19 @@ function traigoTablero(){
         type: "POST",
         data: {},
         success: function (data) {
-           console.log("traigo")
-           var tab = JSON.parse(data);
-           console.log(tab)
-           for(var p = 1; p <= 8; p++){
-            for(var q = 1; q <= 8; q++){
-                Tablero[p][q] = tab[p][q];
-                }
-            }
+           console.log("traigo" + numJugador)
+           if(numJugador == 1){
+            var tab = JSON.parse(data);
+            console.log(tab)
+            for(var p = 1; p <= 8; p++){
+             for(var q = 1; q <= 8; q++){
+                 Tablero[p][q] = tab[p][q];
+                 }
+             }
+           }else{
+               inviertoTablero(data);
+           }
+          
             armoAjedrez();
         }
       });
@@ -156,9 +161,7 @@ function boxHeight(){
         $('.bar2').css("z-index", "5");
         $('.bar2').css("width", (100 - porcentaje) + "%");
      }
- }
-
- 
+ } 
  var Color = {
     Blanco:'b',
     Negro:'n',
@@ -548,7 +551,7 @@ function seleccionar(x,y){
             ultTurn = true;
             a = 1;
         }
-        //send();
+        sendMessage(1);
         armoAjedrez();
     }
 }
@@ -1991,28 +1994,124 @@ function Derrota(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+var conn;
 function init(){
-    let conn = new WebSocket("ws://localhost:8080/");
+    conn = new WebSocket('ws://localhost:8080');
 
-    conn.onopen = function(e) {
-        console.log('Nueva conexión establecida (WebSocket Ratchet)');
-        setInterval(function(){
-            conn.send('getFechas');
-        }, 5000);
-    };
-    conn.onmessage = function(e) {
-        console.log(e);
-        //reciboTablero(msg.data)
+        conn.onopen = function (e) {
+            console.log("Connection established!");
+            // consultas cada x tiempo
+            // setInterval(function(){
+            //     conn.send('getFechas');
+            // }, 5000);
+
         };
-    conn.onclose = function(e) {
-            console.log('Conexión websocket cerrada!');
+        conn.onmessage = function(e) {
+            //reciboTablero(e.data)
+            receiveMessage(e);
         };
+        conn.onclose = function(e) {
+                console.log('Conexión websocket cerrada!');
+            };
     }
+
+    function sendMessage(e) {
+        console.log("mando")
+        console.log(e)
+        
+        if(e == 1){
+            var tab = "tab:" +JSON.stringify(Tablero);
+            var msg = {};
+            //cambiar a tablero??
+            msg["type"] = "message";
+            msg["message"] = tab;
+            conn.send(JSON.stringify(msg));
+            console.log('Mando tablero')
+
+            var jug = "jug:" +JSON.stringify(Jugadas);
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = jug;
+            conn.send(JSON.stringify(msg));
+            console.log('Mando tablero')
+
+            var jaq = "jaq:" +JSON.stringify(jaque);
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = jaq;
+            conn.send(JSON.stringify(msg));
+
+            var tur = "tur:" + Turno;
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = tur;
+            conn.send(JSON.stringify(msg));
+        }
+    };
+
+    function receiveMessage(e) {
+        console.log("recivo")
+        var jsonMessage = JSON.parse(e.data);
+        var json2 = jsonMessage['message']
+        if (jsonMessage.type === "message") {
+            
+            if(json2.includes("tab:")){
+                var tab = json2.slice(4)
+                tipo = 1;
+            }else if(json2.includes("jug:")){
+                var jug = json2.slice(4)
+                tipo = 2;
+            }else if(json2.includes("jaq:")){
+                var jaq = json2.slice(4)
+                tipo = 3;
+            }else if(json2.includes("tur:")){
+                var tur = json2.slice(4)
+                tipo = 4;
+            }
+
+            switch(tipo){
+                case 1:
+                    inviertoTablero(tab);
+                    break;
+                case 2:
+                    var jug2 = JSON.parse(jug);
+                    for(var p = 1; p <= jug2.length; p++){
+                        Jugadas[p] = jug2[p];
+                    }
+                    break;
+                case 3:
+                    var jaq2 = JSON.parse(jaq);
+                    jaque = jaq2;
+                    break;
+                case 4:
+                    Turno = tur;
+                    break;
+            }
+        }else{console.log("no mensaje")}
+
+        resetMovimientos();
+        resetTableroJaque();
+        armoAjedrez();
+    };
+    
 //
 //
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function inviertoTablero(tab){
+    var pp = 8;
+    var qq = 8;
+    var tab2 = JSON.parse(tab);
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[pp][qq] = tab2[p][q];
+                    qq = qq-1;
+                }
+                qq = 8;
+                pp = pp-1;
+            }
+}
 function send(msg){
     var tab = "tab:" +JSON.stringify(Tablero);
     var jug = "jug:" +JSON.stringify(Jugadas);

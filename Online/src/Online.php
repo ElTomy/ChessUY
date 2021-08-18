@@ -5,9 +5,13 @@ use Ratchet\ConnectionInterface;
 use \PDO;
 class Ajedrez implements MessageComponentInterface {
     protected $clients;
+    private $activeUsers;
+    private $activeConnections;
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
+        $this->activeUsers = [];
+        $this->activeConnections = [];
         echo 'Servidor Ratchet iniciado...';
     }
 
@@ -17,49 +21,59 @@ class Ajedrez implements MessageComponentInterface {
         echo "New connection! ({$conn->resourceId})\n";
     }
 
-    // FROM es un objeto, y MSG es la cadena que viene de conn.send();
-    public function onMessage(ConnectionInterface $from, $msg) {
-        try {
-            $fechas = array();
-            $db_attrs = array(PDO::ATTR_PERSISTENT => true);
-            $dsn = 'mysql:host=179.27.156.47;dbname=chessuy;charset=utf8';
-            $pdo = new PDO($dsn,'cyberhydra','hugoturbio667',$db_attrs);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $pdo->prepare('SELECT * FROM conf WHERE id=? ORDER BY id ASC LIMIT 1');
-            if ($stmt->execute([1])) {
-                if($stmt->rowCount() === 1) {
-                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $fechas['fecha1'] = $row['fecha_inicio'];
-                    $fechas['fecha2'] = $row['fecha_final'];
-                    $fechas['dias'] = $row['dias_de_transmision'];
-                }
-            }
 
+    public function onMessage(ConnectionInterface $from, $msg){
+        $jsonMsg = json_decode($msg);
+
+        // if ($jsonMsg->type == "login") {
+        //     $onlineUsers = [];
+        //     $onlineUsers['type'] = "onlineUsers";
+        //     $this->activeUsers[$from->resourceId] = $jsonMsg->name;
+        //     $onlineUsers['onlineUsers'] = $this->activeUsers;
+        //     $this->sendMessageToAll(json_encode($onlineUsers));
+        // } else
+
+        if ($jsonMsg->type == "message") {
+            $this->sendMessageToOthers($from, json_encode($jsonMsg));
         }
-        catch (Exception $e) {echo 'Excepción general: '.$e->getMessage();}
-        catch (PDOException $e) {echo 'Excepción PDO: '.$e->getMessage();}
-
-
-        // Justo aquí devuelvo al cliente el jSON con las fechas obtenidas de la BD
-        if ($msg === 'getFechas') {
-            $from->send(json_encode($fechas));
-        }
-        //Para devolver los mensajes en consola a todos los navegadores:
-        foreach ($this->clients as $client) {
-            if ($msg === 'getFechas') {
-                $client->send(json_encode($fechas));
-            }
-        }
-
-
     }
 
-    public function onClose(ConnectionInterface $conn) {
+    public function sendMessageToOthers($from, $msg){
+        foreach ($this->clients as $client) {
+            if ($from !== $client) {
+                $client->send($msg);
+            }
+        }
+    }
+
+    //cuando te conectas mandas mensaje a todos
+    public function sendMessageToAll($msg){
+        foreach ($this->clients as $client) {
+            $client->send($msg);
+        }
+    }
+
+    //----------------DESPUES PRUEBO ESTO----------------//
+    public function sendMessageToOne($from, $msg, $to){
+        foreach ($this->clients as $client) {
+            if ($to == $client) {
+                // enviar a un usuario solo
+                $client->send($msg);
+            }}}
+    //---------------------------------------------------//
+
+    public function onClose(ConnectionInterface $conn){
+        // The connection is closed, remove it, as we can no longer send it messages
         $this->clients->detach($conn);
+        unset($this->activeUsers[$conn->resourceId]);
+        //$onlineUsers = [];
+        //$onlineUsers['type'] = "onlineUsers";
+        //$onlineUsers['onlineUsers'] = $this->activeUsers;
+        //$this->sendMessageToOthers($conn, json_encode($onlineUsers));
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
-    public function onError(ConnectionInterface $conn, \Exception $e) {
+    public function onError(ConnectionInterface $conn, \Exception $e){
         echo "An error has occurred: {$e->getMessage()}\n";
         $conn->close();
     }
