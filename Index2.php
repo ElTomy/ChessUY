@@ -93,6 +93,7 @@ $index .='
                 <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
                 <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
                 <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/ChessUY/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
             </section>';
     }
