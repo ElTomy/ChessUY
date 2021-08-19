@@ -2000,7 +2000,7 @@ function Derrota(){
 //
 var conn;
 function init(){
-    conn = new WebSocket('ws://localhost:8080');
+    conn = new WebSocket('ws://179.27.156.47:8080');
 
         conn.onopen = function (e) {
             console.log("Connection established!");
