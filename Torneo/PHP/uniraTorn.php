@@ -3,18 +3,18 @@ if(isset($_POST['tornID'])) {
     include '../../servidor.php';
     $server = new servidor();
     session_start();
-    $usuario = $_SESSION['usuario'];
     $idTorneo = $_POST['tornID'];
     $torneos = $server->InfoTorneo();
-    $partici = $server->InfoParticipante($usuario);
+    
 
     $x = false;
     $y;
 
     $prim = true;
     $fechaAct = date('Ymd');
-    
-    if($usuario != null) {
+
+    if(isset($_SESSION['usuario'])) {
+        $partici = $server->InfoParticipante($usuario);
         if($partici == 1) {
             for($j=0;$j<count($torneos);$j++) {
                 if($idTorneo == $torneos[$j]['ID_Torneo']) {
