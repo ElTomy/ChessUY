@@ -12,7 +12,7 @@ class Ajedrez implements MessageComponentInterface {
         $this->clients = new \SplObjectStorage;
         $this->activeUsers = [];
         $this->activeConnections = [];
-        echo 'Servidor Ratchet iniciado...';
+        echo "Servidor Ratchet iniciado...\n";
     }
 
     public function onOpen(ConnectionInterface $conn) {
