@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('America/Montevideo');
+date_default_timezone_set("America/Montevideo");
 if(isset($_POST['_month']) && isset($_POST['_year'])) {
     $month = $_POST['_month'] + 1;
     $year = $_POST['_year'];

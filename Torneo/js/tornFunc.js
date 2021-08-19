@@ -526,6 +526,24 @@ function setVar(vari, modo) {
     return (vari);
 }
 
+function uniraBD(tornID) {
+    $.ajax({
+        url: "/ChessUY/Torneo/PHP/uniraTorn.php",
+        type: "post",
+        data: {tornID : tornID},
+        success: function (exec) {
+            $.ajax({
+                url: "/ChessUY/Modal/unirTNotif.php",
+                type: "post",
+                data: {exec : exec},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+            })
+        }
+    })
+}
+
 function cerrar(){
     document.getElementById("modal").innerHTML = "";
   }

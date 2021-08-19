@@ -5,6 +5,7 @@ window.onload = function(){
     $("#footer").load("/cyberhydra/Page/footer.html");
 
     $("#torn-InscAct").load("/cyberhydra/Torneo/PHP/mostTorn.php");
+    $("#torn-Act").load("/cyberhydra/Torneo/PHP/tornsAct.php");
 };
 
 function Modal(numero_mensaje){

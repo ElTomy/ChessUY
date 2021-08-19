@@ -1,3 +1,6 @@
+$( document ).ready(function(){
+    MuestroTorneos();
+});
 class Fixture{
     constructor(ronda, usuario1, usuario2){
     this.ronda=ronda;
@@ -22,4 +25,24 @@ get us2(){
 set us2(x){
     this.usuario2=x;
 }
+}
+function MuestroTorneos(){
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Torneo/PHP/TraigoTorneos.php",
+        data: {},
+        success: function (data) {
+            document.getElementById("Torneos").innerHTML = data;
+        }    
+    });    
+}
+function Ficture(id){
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Torneo/PHP/Fixture.php",
+        data: {id:id},
+        success: function (data) {
+            console.log(data)
+        }    
+    });   
 }

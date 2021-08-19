@@ -1,9 +1,5 @@
 <?php
-
 session_start();
-
-
-
 $index ='
 
 <!DOCTYPE html>
@@ -19,7 +15,8 @@ $index ='
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/cyberhydra/Noticias/js/noticias.js"></script>
-    <script src="/cyberhydra/Javascript/Loader.js"></script>';
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Torneo/js/tornFunc.js"></script>';
     if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
       $index .='<script src="/cyberhydra/Javascript/functionIndex2.js"></script>';
     }
@@ -45,6 +42,7 @@ $index .='
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
     <div class="landing-video">
+    <div id="modal"></div>
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
         <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
@@ -88,9 +86,10 @@ $index .='
               <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/cyberhydra/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/cyberhydra/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/cyberhydra/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/cyberhydra/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
             </section>';
     }
@@ -133,49 +132,11 @@ $index .='
                 </div>
                 <div class="torneos-recientes-wrapper">
 
-                  <h1>Torneos</h1>
+                  <h1>Torneos Abiertos</h1>
                   <hr>
 
-                  <div class="torneos-recientes">
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/cyberhydra/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/cyberhydra/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-plus-circle"></i> Unirse</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="torneo">
-                      <div class="torneo-left-side">
-                        <img src="/cyberhydra/media/images/Trofeo.png">
-                      </div>
-                      <div class="torneo-right-side">
-                        <h1>Nombre del Torneo</h1>
-                        <p><i class="fas fa-users"></i> 12 Participantes</p>
-                        <div class="torneo-right-buttons">
-                          <button><i class="fas fa-chart-line"></i> Estadisticas</button>
-                          <button><i class="fas fa-info-circle"></i> Información</button>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="torneos-recientes" id="torn-Act">
+                    
                   </div>
 
                 </div>

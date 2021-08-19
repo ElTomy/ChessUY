@@ -1,5 +1,19 @@
 <?php
+include '../../servidor.php';
+$server= new servidor();
 session_start();
+$partidos = $server->TraigoPartidos();
+foreach ($partidos as $buscoPartido) {
+    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
+        if($buscoPartido['usu1'] == $_SESSION['usuario']){
+           $col =$buscoPartido['col1'];
+       }else{
+          $col =$buscoPartido['col2'];
+       }
+    }
+}
+
+
 $usu = $_SESSION["usuario"];
 $Icon = $_SESSION["icono"];
 $colFondo = $_SESSION["colorfondo"];
@@ -16,11 +30,18 @@ if($_SESSION['tipo'] == 0){
   }
 $Tablero = $_POST['Tablero'];
 $mov = $_POST['Movimiento'];
+$jaque = $_POST['jaque'];
+$turno = $_POST['Turno'];
 if(isset($_POST['Jugadas'])){
     $jugadas = $_POST['Jugadas'];
 }
 $letras_y = array("A", "B", "C", "D", "E", "F", "G", "H");
 $numeros_x = array("8", "7", "6", "5", "4", "3", "2", "1");
+if($col == 1){
+    $letras_y = array_reverse($letras_y);
+    $numeros_x = array_reverse($numeros_x);
+}
+
 $Ajedrez = '<div class="ajedrez-flex">
                     <div class="ajedrez-wrapper">
                         <div class="ajedrez">';
@@ -76,19 +97,26 @@ for($y = 1; $y <= 8; $y++){
                                     default:
                                     $img = "";
         }
+
         if($mov[$x][$y] == "true"){
 
-            if($Tablero[$x][$y]['Piezas'] != null){
+            if($Tablero[$x][$y]['Piezas'] != null && ($Tablero[$x][$y]['Piezas'] != 'r' && $Tablero[$x][$y]['Piezas'] != 'rn')){
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(255, 255, 255, 0.623); border-radius: 50%; background-color: none;'";
             }else{
                 $op = "style='display: flex'";
                 $punto = "style = 'width: 20%; height: 20%; border-radius: 50%; background-color: rgba(255, 255, 255, 0.623);'";
             }
+
             
         }else{
             $op = "";
             $punto = "";
+        }
+        $xjaque = '<i class="fas fa-times"></i>';
+        if($jaque['jaque'] == true && ($Tablero[$x][$y]['Piezas'] == 'r' || $Tablero[$x][$y]['Piezas'] == 'rn') && $Tablero[$x][$y]['color'] != $jaque['color']){
+                $op = "style='display: flex'";
+                $punto = "style = 'width: 80%; height: 80%; border: 5px solid rgba(217, 63, 71, 1); border-radius: 50%; background-color: none;'";
         }
 
         //if

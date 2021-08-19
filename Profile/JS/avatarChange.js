@@ -39,7 +39,7 @@ function guardar(user){
             if(execute == true){
                 location.href = location.href;
             }else{
-                alert("Se pudrió.");
+                console.log(execute);
             }
         }
     });

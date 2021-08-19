@@ -101,8 +101,6 @@ class Usuario{
                 if(est2.error == true){
                     x = false;
                 }else{
-                    sessionStorage.setItem("usuario", est2.usuario);
-                    sessionStorage.setItem("tipo", est2.tipo);
                     x = true;
                 }
             },

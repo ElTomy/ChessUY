@@ -18,7 +18,7 @@ case "$opc" in
     "2") . ./admin/ABML/bajar.sh;;
     "3") . ./admin/ABML/modificar.sh;;
     "4") . ./admin/ABML/listar.sh;;
-    "q") . ./shellscript.sh;;
+    "q") . ./admin/admin.sh;;
     *)  echo "+-------------------------------------+"
         echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"
         echo "+-------------------------------------+"

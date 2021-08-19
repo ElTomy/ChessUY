@@ -1,16 +1,86 @@
 $( document ).ready(function(){
-    colorJugador();
-    CreoTablero();
+    armoOnline();
     PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
+    init();
     barraProgreso(50);
+    guardoTablero();
 });
 //
 //
 /*------------------------------------------------------------------------------------------*/
 //
 //
+function armoOnline(){
+    CreoTablero();
+    if(partido == true){
+        traigoTablero();
+        if(numJugador == 1){
+            if(col1 == 1){
+                colJugador = col1;
+                blan = 8;
+                neg = 1;
+            }else{
+                colJugador = col1;
+                blan = 1;
+                neg = 8;
+            }
+        }else{
+            if(col2 == 1){
+                colJugador = col2;
+                blan = 8;
+                neg = 1;
+            }else{
+                colJugador = col2
+                blan = 1;
+                neg = 8;
+            }
+        }
+         Turno = turno;
+      
+    }else{
+        colorJugador();
+        armoAjedrez();
+        Turno = 1;
+    }
+}
+
+function guardoTablero(){
+    var tab2 = JSON.stringify(Tablero);
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
+        type: "POST",
+        data: {tablero: tab2},
+        success: function (data) {
+           console.log("guardado")
+        }
+      });
+}
+function traigoTablero(){
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/traigoTablero.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+           console.log("traigo" + numJugador)
+           if(numJugador == 1){
+            var tab = JSON.parse(data);
+            console.log(tab)
+            for(var p = 1; p <= 8; p++){
+             for(var q = 1; q <= 8; q++){
+                 Tablero[p][q] = tab[p][q];
+                 }
+             }
+           }else{
+               inviertoTablero(data);
+           }
+          
+            armoAjedrez();
+        }
+      });
+}
+
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
     console.log(boxHeight);
@@ -26,7 +96,7 @@ function boxHeight(){
     $.ajax({
         url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
         type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento},
+        data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
         success: function (data) {
             document.getElementById("ArmoAjedrez").innerHTML = data;
             boardsize();
@@ -76,7 +146,6 @@ function boxHeight(){
 
 
     $('#select-wrapper').height(height * 0.5);
-    console.log(height);
  }
 
  function barraProgreso(porcentaje){
@@ -92,9 +161,7 @@ function boxHeight(){
         $('.bar2').css("z-index", "5");
         $('.bar2').css("width", (100 - porcentaje) + "%");
      }
- }
-
- 
+ } 
  var Color = {
     Blanco:'b',
     Negro:'n',
@@ -118,7 +185,7 @@ const Piezas = {
 var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
-var Turno = 1;
+var Turno;
 var Reloj = 0;
 var rep = 0;
 var ultTurn = 0;
@@ -141,6 +208,7 @@ var jaque = {
    y: null,
 }
 var colJugador;
+var socket;
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -311,6 +379,7 @@ function resetTableroJaque(){
 //
 //
 function CreoTablero(){
+    console.log("creo tablero")
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
         TableroJaque[x] = [];
@@ -335,7 +404,7 @@ function seleccionar(x,y){
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
         if(Tablero[x][y].Piezas != null){
-            if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
+            if((Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 1)||(Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 0)){
                 seleccionado = {
                     Ejex: x,
                     Ejey: y,
@@ -365,26 +434,22 @@ function seleccionar(x,y){
                         simbolo =  "=";
                     }
                }else{
-                   if(x != 8){
-                    xx = x + 1;
-                   }
-                   if(x != 1){
-                    xy = x - 1;
-                   }
-                    if(y == 6 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)) {
-                        if(Tablero[x][5].Piezas != null){
-                            Porcentaje(Tablero[x][5].Piezas,0);
-                            ColocoPieza(null,null,x,5);
-                            simbolo = "x";
-                            comidas++;
-                        }
-                    }else{
-                        if(y == 3 && Tablero[x][y].Piezas == null && (Movimiento[xx][y] == true || Movimiento[xy][y] == true)){
-                            if(Tablero[x][4].Piezas != null){
-                                Porcentaje(Tablero[x][4].Piezas,0);
-                                ColocoPieza(null,null,x,4);
+                    if(y == 6 && Tablero[x][y].Piezas == null) {
+                        console.log(Tablero[x][5]); 
+                        if(Tablero[x][5].Piezas != null && seleccionado.color != Tablero[x][5].color && seleccionado.Ejey == 5){
+                                Porcentaje(Tablero[x][5].Piezas,0);
+                                ColocoPieza(null,null,x,5);
                                 simbolo = "x";
                                 comidas++;
+                        }
+                    }else{
+                        if(y == 3 && Tablero[x][y].Piezas == null){
+                            console.log(Tablero[x][4]);
+                            if(Tablero[x][4].Piezas != null && seleccionado.color != Tablero[x][4].color && seleccionado.Ejey == 4){
+                                    Porcentaje(Tablero[x][4].Piezas,0);
+                                    ColocoPieza(null,null,x,4);
+                                    simbolo = "x";
+                                    comidas++;
                             }
                         }
                     }
@@ -450,7 +515,7 @@ function seleccionar(x,y){
         }else{
             //seleccionas una pieza y sus movimientos
             if(Tablero[x][y] != null){
-                if((Turno%2 != 0 && Tablero[x][y].color == "n")||(Turno%2 == 0 && Tablero[x][y].color == "b")){
+                if((Turno%2 != 0 && Tablero[x][y].color == "n" && colJugador == 1)||(Turno%2 == 0 && Tablero[x][y].color == "b" && colJugador == 0)){
                     seleccionado = {
                         Ejex: x,
                         Ejey: y,
@@ -478,10 +543,11 @@ function seleccionar(x,y){
             //Triple-Repeticion
             Triple_Repeticion();
             simbolo = null;
-            Turno = Turno + 1;
+            Turno++;
             ultTurn = true;
             a = 1;
         }
+        sendMessage(1);
         armoAjedrez();
     }
 }
@@ -651,9 +717,11 @@ function Peon(x,y, sel){
             comer(x,yy,selecc);
          }
         if(xx<=8){
-            if(y == 5 && Tablero[xb][y].Piezas == "pn" && Tablero[xb][6].Piezas == null) {
-                //Peon al paso derecha
-                comer(xb,6,selecc);
+            if(y == 5 &&  (Tablero[xb][y].Piezas == "p" ||  Tablero[xb][y].Piezas == "pn") && Tablero[xb][6].Piezas == null) {
+                if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xb][y].Piezas != "pn")){
+                    //Peon al paso derecha
+                    comer(xb,6,selecc);
+                } 
             }
             //movimiento: comer-d
             if(Tablero[xx][yy].Piezas != null){
@@ -662,9 +730,11 @@ function Peon(x,y, sel){
         }
         xx = x -1;
         if(xx>=1){
-            if(y == 5 && Tablero[xa][y].Piezas == "pn" && Tablero[xa][6].Piezas == null) {
-                //Peon al paso izquierda
-                comer(xa,6,selecc);
+            if(y == 5 &&  (Tablero[xa][y].Piezas == "p" ||  Tablero[xa][y].Piezas == "pn") && Tablero[xa][6].Piezas == null) {
+                if((seleccionado.color == "b" && Tablero[xa][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xa][y].Piezas != "pn")){
+                    //Peon al paso izquierda
+                    comer(xa,6,selecc);
+                }
             }
             //movimiento: comer-i
            if(Tablero[xx][yy].Piezas != null){
@@ -684,9 +754,11 @@ function Peon(x,y, sel){
                 comer(x,yy,selecc);
              }
              if(xx<=8){
-                 if(y == 4 && Tablero[xb][y].Piezas == "p" && Tablero[xb][3].Piezas == null) {
-                //Peon al paso derecha
-                comer(xb,3,selecc);
+                 if(y == 4 && (Tablero[xb][y].Piezas == "p" ||  Tablero[xb][y].Piezas == "pn") && Tablero[xb][3].Piezas == null) {
+                    if((seleccionado.color == "b" && Tablero[xb][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xb][y].Piezas != "pn")){
+                        //Peon al paso derecha
+                        comer(xb,3,selecc);
+                    }
             }
                 //movimiento: comer-d
                 if(Tablero[xx][yy].Piezas != null){
@@ -695,9 +767,11 @@ function Peon(x,y, sel){
              }
              xx = x -1;
              if(xx>=1){
-                if(y == 4 && Tablero[xa][y].Piezas == "p" && Tablero[xa][3].Piezas == null) {
-                    //Peon al paso izquierda
-                    comer(xa,3,selecc);
+                if(y == 4 && (Tablero[xa][y].Piezas == "p" ||  Tablero[xa][y].Piezas == "pn") && Tablero[xa][3].Piezas == null) {
+                    if((seleccionado.color == "b" && Tablero[xa][y].Piezas != "p")||(seleccionado.color == "n" && Tablero[xa][y].Piezas != "pn")){
+                        //Peon al paso izquierda
+                        comer(xa,3,selecc);
+                    }
                 }
                 //movimiento: comer-i
                if(Tablero[xx][yy].Piezas != null){
@@ -1089,6 +1163,7 @@ function cambioCoronacion(x, y, pieza, col){
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
+    //send();
 }
 window.onresize = boardsize;
 //
@@ -1917,6 +1992,194 @@ function Derrota(){
       });
     derrota++;  
     ActualizarEstadisticas();
+}
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+var conn;
+function init(){
+    conn = new WebSocket('ws://localhost:8080');
+
+        conn.onopen = function (e) {
+            console.log("Connection established!");
+            // consultas cada x tiempo
+            // setInterval(function(){
+            //     conn.send('getFechas');
+            // }, 5000);
+
+        };
+        conn.onmessage = function(e) {
+            //reciboTablero(e.data)
+            receiveMessage(e);
+        };
+        conn.onclose = function(e) {
+                console.log('Conexión websocket cerrada!');
+            };
+    }
+
+    function sendMessage(e) {
+        console.log("mando")
+        console.log(e)
+        
+        if(e == 1){
+            var tab = "tab:" +JSON.stringify(Tablero);
+            var msg = {};
+            //cambiar a tablero??
+            msg["type"] = "message";
+            msg["message"] = tab;
+            conn.send(JSON.stringify(msg));
+            console.log('Mando tablero')
+
+            var jug = "jug:" +JSON.stringify(Jugadas);
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = jug;
+            conn.send(JSON.stringify(msg));
+            console.log('Mando tablero')
+
+            var jaq = "jaq:" +JSON.stringify(jaque);
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = jaq;
+            conn.send(JSON.stringify(msg));
+
+            var tur = "tur:" + Turno;
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = tur;
+            conn.send(JSON.stringify(msg));
+        }
+    };
+
+    function receiveMessage(e) {
+        console.log("recivo")
+        var jsonMessage = JSON.parse(e.data);
+        var json2 = jsonMessage['message']
+        if (jsonMessage.type === "message") {
+            
+            if(json2.includes("tab:")){
+                var tab = json2.slice(4)
+                tipo = 1;
+            }else if(json2.includes("jug:")){
+                var jug = json2.slice(4)
+                tipo = 2;
+            }else if(json2.includes("jaq:")){
+                var jaq = json2.slice(4)
+                tipo = 3;
+            }else if(json2.includes("tur:")){
+                var tur = json2.slice(4)
+                tipo = 4;
+            }
+
+            switch(tipo){
+                case 1:
+                    inviertoTablero(tab);
+                    break;
+                case 2:
+                    var jug2 = JSON.parse(jug);
+                    for(var p = 1; p <= jug2.length; p++){
+                        Jugadas[p] = jug2[p];
+                    }
+                    break;
+                case 3:
+                    var jaq2 = JSON.parse(jaq);
+                    jaque = jaq2;
+                    break;
+                case 4:
+                    Turno = tur;
+                    break;
+            }
+        }else{console.log("no mensaje")}
+
+        resetMovimientos();
+        resetTableroJaque();
+        armoAjedrez();
+    };
+    
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function inviertoTablero(tab){
+    var pp = 8;
+    var qq = 8;
+    var tab2 = JSON.parse(tab);
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[pp][qq] = tab2[p][q];
+                    qq = qq-1;
+                }
+                qq = 8;
+                pp = pp-1;
+            }
+}
+function send(msg){
+    var tab = "tab:" +JSON.stringify(Tablero);
+    var jug = "jug:" +JSON.stringify(Jugadas);
+    var jaq = "jaq:" +JSON.stringify(jaque);
+    if(tab.length > 0) {
+        guardoTablero();
+        socket.send(tab);
+        socket.send(jug);
+        socket.send(jaq);
+        socket.send(Turno);
+    }  
+}
+//
+//
+/*------------------------------------------------------------------------------------------*/
+//
+//
+function reciboTablero(data){
+    console.log(".")
+    var tipo;
+    var pp = 8;
+    var qq = 8;
+
+    if(data.includes("tab:")){
+        var tab = data.slice(4)
+        tipo = 1;
+    }else if(data.includes("jug:")){
+        var jug = data.slice(4)
+        tipo = 2;
+    }else if(data.includes("jaq:")){
+        var jaq = data.slice(4)
+        console.log(jaq)
+        tipo = 3;
+    }else{tipo = 4;}
+    
+    switch(tipo){
+        case 1:
+            var tab2 = JSON.parse(tab);
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[pp][qq] = tab2[p][q];
+                    qq = qq-1;
+                }
+                qq = 8;
+                pp = pp-1;
+            }
+            break;
+        case 2:
+            var jug2 = JSON.parse(jug);
+            for(var p = 1; p <= jug2.length; p++){
+                Jugadas[p] = jug2[p];
+            }
+            break;
+        case 3:
+            var jaq2 = JSON.parse(jaq);
+            jaque = jaq2;
+            break;
+        case 4:
+            Turno = data;
+            break;
+    }
+    resetMovimientos();
+    resetTableroJaque();
+    armoAjedrez();
 }
 //
 //
