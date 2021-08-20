@@ -659,13 +659,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function guardoTablero($Usuario, $Tablero){
+    function guardoTablero($Usuario, $Tablero, $turno){
         $conn = $this->conectar();
-        $sql = "CALL GuardoTablero(?,?)";
+        $sql = "CALL GuardoTablero(?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("ss",$Usuario, $Tablero);
+        $stmts->bind_param("ssi",$Usuario, $Tablero, $turno);
         if($stmts->execute()){
             $execute = true;
         }
@@ -725,16 +725,17 @@ class servidor
     //
     function traigoTablero($usuario){
         $conn = $this->conectar();
-        $info = "error";
+        $info = array();
         $sql = "CALL TraigoTablero(?)";
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("s", $usuario);
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($Tablero);
+            $stmts->bind_result($Tablero, $Turno);
             while ($stmts->fetch()) {
-                $info =  $Tablero;
+                $data = array('tablero' => $Tablero, 'turno' => $Turno);
+                $info[] = $data;
             }
             $stmts->close();
         }

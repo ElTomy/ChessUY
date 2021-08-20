@@ -5,7 +5,6 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-    guardoTablero();
 });
 //
 //
@@ -42,6 +41,7 @@ function armoOnline(){
     }else{
         colorJugador();
         armoAjedrez();
+        guardoTablero();
         Turno = 1;
     }
 }
@@ -51,8 +51,9 @@ function guardoTablero(){
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {tablero: tab2},
+        data: {tablero: tab2, turno: Turno},
         success: function (data) {
+            console.log(data)
            console.log("guardado")
         }
       });
@@ -64,17 +65,26 @@ function traigoTablero(){
         data: {},
         success: function (data) {
            console.log("traigo" + numJugador)
-           if(numJugador == 1){
-            var tab = JSON.parse(data);
-            console.log(tab)
-            for(var p = 1; p <= 8; p++){
-             for(var q = 1; q <= 8; q++){
-                 Tablero[p][q] = tab[p][q];
+           var dat = JSON.parse(data);
+           console.log(" turno>" + dat[0]['turno'])
+           
+           if( numJugador == 1 && 2%2 == 0){
+               console.log("si")
+           }else{console.log("no")}
+
+            if(dat[0]['turno']%2 == 0 && numJugador == 1){
+                console.log("asd")
+                var tab = JSON.parse(dat[0]['tablero']);
+                console.log(tab)
+                for(var p = 1; p <= 8; p++){
+                 for(var q = 1; q <= 8; q++){
+                     Tablero[p][q] = tab[p][q];
+                     }
                  }
-             }
-           }else{
-               inviertoTablero(data);
-           }
+               }else{
+                   console.log("qwe")
+                   inviertoTablero(dat[0]['tablero']);
+               }
           
             armoAjedrez();
         }
@@ -2024,6 +2034,7 @@ function init(){
         console.log(e)
         
         if(e == 1){
+            guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
             //cambiar a tablero??
