@@ -109,6 +109,48 @@ if(isset($_POST['exec'])) {
                 </div>
             </div>";
             break;
+            case 5:
+                //No esta logeado
+                $modal =
+                "<div class='modal'>
+                    <div class='modal-wrapper'>
+                        <div class='modal-logo'>
+                            <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        </div>
+                        <div class='modal-content'>
+                            <h1>Su puntaje ELO es inadecuado para este torneo</h1>
+                            <hr>
+                            <p>Porfavor asegurese de tener el ELO adecuado para unirse al torneo.</p>
+                            <div class='container'>
+                            <div class='card'>
+                                <button onclick='cerrar()'>Ok</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+                break;
+                case 6:
+                    //No esta logeado
+                    $modal =
+                    "<div class='modal'>
+                        <div class='modal-wrapper'>
+                            <div class='modal-logo'>
+                                <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                            </div>
+                            <div class='modal-content'>
+                                <h1>Su edad es inadecuada para este torneo</h1>
+                                <hr>
+                                <p>Porfavor asegurese de tener la edad adecuada para unirse al torneo.</p>
+                                <div class='container'>
+                                <div class='card'>
+                                    <button onclick='cerrar()'>Ok</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>";
+                    break;
         default:
             //Error inesperado?
             $modal =
