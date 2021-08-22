@@ -452,9 +452,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos);
                                 $info[] = $data;
             }
             $stmts->close();
@@ -659,13 +659,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function guardoTablero($Usuario, $Tablero, $turno){
+    function guardoTablero($Usuario, $Tablero, $turno, $movimientos){
         $conn = $this->conectar();
-        $sql = "CALL GuardoTablero(?,?,?)";
+        $sql = "CALL GuardoTablero(?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("ssi",$Usuario, $Tablero, $turno);
+        $stmts->bind_param("ssis",$Usuario, $Tablero, $turno, $movimientos);
         if($stmts->execute()){
             $execute = true;
         }
@@ -732,9 +732,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($Tablero, $Turno);
+            $stmts->bind_result($Tablero, $Turno, $movimientos);
             while ($stmts->fetch()) {
-                $data = array('tablero' => $Tablero, 'turno' => $Turno);
+                $data = array('tablero' => $Tablero, 'turno' => $Turno, 'movimientos' => $movimientos);
                 $info[] = $data;
             }
             $stmts->close();
