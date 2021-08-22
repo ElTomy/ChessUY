@@ -15,7 +15,7 @@ foreach ($partidos as $buscoPartido) {
                 </script>";
      }else{
           echo "<script> var numJugador = 2; 
-          var jugador2 = '".$buscoPartido['usu2']."';
+          var jugador2 = '".$buscoPartido['usu1']."';
           </script>";
      }
       echo "<script>
