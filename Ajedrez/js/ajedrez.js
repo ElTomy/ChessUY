@@ -145,7 +145,7 @@ function boxHeight(){
     */
     $.ajax({
         type: "POST",
-        data: {Turno:Turno},
+        data: {Turno:Turno, jugador2: jugador2},
         url: "/ChessUY/Ajedrez/php/armoJugadores.php",
         success: function (data) {
             document.getElementById("ArmoJugadores").innerHTML = data;

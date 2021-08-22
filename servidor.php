@@ -846,4 +846,27 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BuscoJugador($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL BuscoJugador(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $icono, $colIcono, $colFondo, $tipo);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario, 'icono' => $icono, 'colIcono' => $colIcono, 'colFondo' => $colFondo, 'tipo' => $tipo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }

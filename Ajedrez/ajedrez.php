@@ -4,22 +4,24 @@ $server= new servidor();
 session_start();
 $partidos = $server->TraigoPartidos();
 $partidoEncontrado = false;
+$jugador2;
 //BUSCA SI YA ESTA EN UN PARTIDO
 foreach ($partidos as $buscoPartido) {
     if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
      $partidoEncontrado = true;
      if($buscoPartido['usu1'] == $_SESSION['usuario']){
-          echo '<script> var numJugador = 1; </script>';
+          echo "<script> var numJugador = 1; 
+                var jugador2 = '".$buscoPartido['usu2']."';
+                </script>";
      }else{
-          echo '<script> var numJugador = 2; </script>';
+          echo "<script> var numJugador = 2; 
+          var jugador2 = '".$buscoPartido['usu2']."';
+          </script>";
      }
       echo "<script>
-            var usu1 = '".$buscoPartido['usu1']."';
-            var usu2 = '".$buscoPartido['usu2']."';
             var turno = '".$buscoPartido['turno']."';
             var col1 = '".$buscoPartido['col1']."';
             var col2 = '".$buscoPartido['col2']."';
-            var tablero = '".$buscoPartido['tablero']."';
             </script>";
             break;
     }
