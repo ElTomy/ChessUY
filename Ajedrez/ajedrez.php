@@ -4,18 +4,14 @@ $server= new servidor();
 session_start();
 $partidos = $server->TraigoPartidos();
 $partidoEncontrado = false;
-//busca si ya esta en un partido
+//BUSCA SI YA ESTA EN UN PARTIDO
 foreach ($partidos as $buscoPartido) {
     if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
      $partidoEncontrado = true;
      if($buscoPartido['usu1'] == $_SESSION['usuario']){
-          echo '<script>
-                var numJugador = 1;
-                </script>';
+          echo '<script> var numJugador = 1; </script>';
      }else{
-          echo '<script>
-                var numJugador = 2;
-                </script>';
+          echo '<script> var numJugador = 2; </script>';
      }
       echo "<script>
             var usu1 = '".$buscoPartido['usu1']."';
@@ -30,17 +26,13 @@ foreach ($partidos as $buscoPartido) {
 }
   if($partidoEncontrado == true){
     //carga ese partido
-    echo '<script>
-          var partido = true;
-          </script>';
+    echo '<script> var partido_encontrado = true; </script>';
   }else{
     //busca si hay partido para unirse sino crea uno
-    echo '<script>
-          var partido = false;
-          </script>';
+    echo '<script> var partido_encontrado = false; </script>';
 
     $encontrado = 1;
-
+    //BUSCA SI HAY PARTIDOS LIBRES PARA UNIRSE
     foreach ($partidos as $buscoPartido) {
       if($buscoPartido['usu2'] == null && $buscoPartido['usu1'] != $_SESSION['usuario']){
       $encontrado = 0;
@@ -49,13 +41,46 @@ foreach ($partidos as $buscoPartido) {
       break;
       }
     }
+
     if($encontrado == 0){
       //SE UNE A UN PARTIDO QUE ESTE LIBRE
-      if($color1 == 1){ $col2 = 0; }else{ $col2 =1; }
+      if($color1 == 1){
+        $col2 = 0;
+        echo '<script>
+        console.log("color 1")
+        var colJugador = 1;
+        var blan = 8;
+        var neg = 1;
+        </script>'; 
+      }else{
+        $col2 =1;
+        echo '<script>
+        console.log("color 2")
+        var colJugador = 0;
+        var blan = 1;
+        var neg = 8;
+        </script>';
+      }
+  
       $server->UnirsePartidos($id, $_SESSION['usuario'], $col2);
     }else{
      //crea un juego
      $micolor = random_int(0,1);
+     if($micolor == 1){
+      echo '<script>
+      console.log("color 2")
+      var colJugador = 0;
+      var blan = 1;
+      var neg = 8;
+      </script>';
+    }else{
+      echo '<script>
+      console.log("color 1")
+      var colJugador = 1;
+      var blan = 8;
+      var neg = 1;
+      </script>'; 
+    }
      $server->CrearPartidos($_SESSION['usuario'], $micolor);
     }
   }

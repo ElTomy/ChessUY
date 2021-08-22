@@ -4,7 +4,6 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-    console.log("color jug = " + colJugador)
 });
 //
 //
@@ -14,7 +13,7 @@ $( document ).ready(function(){
 function armoOnline(){
     CreoTablero();
     //EXISTE EL PARTIDO
-    if(partido == true){
+    if(partido_encontrado == true){
         traigoTablero();
         if(numJugador == 1){
             if(col1 == 1){
@@ -41,7 +40,8 @@ function armoOnline(){
       
     }else{
         //CREA EL PARTIDO
-        colorJugador();
+        //colorJugador();
+        console.log("color jug = " + colJugador)
         PosicionPiezas();
         armoAjedrez();
         guardoTablero();
@@ -75,50 +75,49 @@ function traigoTablero(){
                Jugadas[p] = jug2[p];
            }
 
+           
            if(numJugador == 1){
             console.log("soy jugador 1")
-             if(dat[0]['turno']%2 == 0){
-                 console.log("turno par \n invierto" )
-                 inviertoTablero(dat[0]['tablero']);
-             }else{console.log("turno impar \n cargo" )
-             var tab = JSON.parse(dat[0]['tablero']);
-             console.log(tab)
-             for(var p = 1; p <= 8; p++){
-              for(var q = 1; q <= 8; q++){
-                  Tablero[p][q] = tab[p][q];
-                  }
-              }}
-        }else{
-             console.log("soy jugador 2")
-             if(dat[0]['turno']%2 == 0){
-                 console.log("turno par \n cargo" )
-                 var tab = JSON.parse(dat[0]['tablero']);
-                console.log(tab)
+    
+            if(dat[0]['turno' == 1]){
+                console.log("turno 1 \n invierto" )
+                inviertoTablero(dat[0]['tablero']);
+            }else if(dat[0]['turno']%2 == 0){
+    
+                console.log("turno impar \n cargo" )
+                var tab = JSON.parse(dat[0]['tablero']);
                 for(var p = 1; p <= 8; p++){
-                for(var q = 1; q <= 8; q++){
-                    Tablero[p][q] = tab[p][q];
+                    for(var q = 1; q <= 8; q++){
+                        Tablero[p][q] = tab[p][q];
                     }
                 }
-             }else{console.log("turno impar \n invierto" )
-             inviertoTablero(dat[0]['tablero']);}
-        }
-
-
-
-            // if(dat[0]['turno']%2 == 0 && numJugador == 1){
-            //     console.log("asd")
-            //     var tab = JSON.parse(dat[0]['tablero']);
-            //     console.log(tab)
-            //     for(var p = 1; p <= 8; p++){
-            //      for(var q = 1; q <= 8; q++){
-            //          Tablero[p][q] = tab[p][q];
-            //          }
-            //      }
-            //    }else{
-            //        console.log("qwe")
-            //        inviertoTablero(dat[0]['tablero']);
-            //    }
-          
+    
+            }else{
+    
+                console.log("turno par \n invierto" )
+                inviertoTablero(dat[0]['tablero']);
+                
+            }
+    }else{
+            console.log("soy jugador 2")
+    
+            if(dat[0]['turno']%2 == 0){
+                            
+                console.log("turno impar \n invierto" )
+                inviertoTablero(dat[0]['tablero']);
+                
+            }else{
+    
+                console.log("turno par \n cargo" )
+                var tab = JSON.parse(dat[0]['tablero']);
+                for(var p = 1; p <= 8; p++){
+                    for(var q = 1; q <= 8; q++){
+                        Tablero[p][q] = tab[p][q];
+                    }
+                }
+            }
+    }
+         
             armoAjedrez();
         }
       });
@@ -209,8 +208,6 @@ function boxHeight(){
     Blanco:'b',
     Negro:'n',
 }
-var blan;
-var neg;
 const Piezas = {
    BRey: 'r', 
    BDama: 'd',
@@ -250,7 +247,6 @@ var jaque = {
    x: null,
    y: null,
 }
-var colJugador;
 var socket;
 //
 //
@@ -422,7 +418,6 @@ function resetTableroJaque(){
 //
 //
 function CreoTablero(){
-    console.log("creo tablero")
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
         TableroJaque[x] = [];
