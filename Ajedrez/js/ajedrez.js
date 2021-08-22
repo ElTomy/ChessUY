@@ -4,7 +4,6 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-    console.log("color jug = " + colJugador)
 });
 //
 //
@@ -15,10 +14,8 @@ function armoOnline(){
     CreoTablero();
     //EXISTE EL PARTIDO
     if(partido_encontrado == true){
-        console.log("encontrado")
         traigoTablero();
         if(numJugador == 1){
-            console.log( "coljugador 1 = " + col1)
             if(col1 == 1){
                 colJugador = col1;
                 blan = 8;
@@ -29,7 +26,6 @@ function armoOnline(){
                 neg = 8;
             }
         }else{
-            console.log( "coljugador 2 = " + col2)
             if(col2 == 1){
                 colJugador = col2;
                 blan = 8;
@@ -79,14 +75,9 @@ function traigoTablero(){
 
            
            if(numJugador == 1){
-            console.log("soy jugador 1")
-
             if(dat[0]['turno'] == 1){
-                console.log("turno 1 \n invierto" )
                 inviertoTablero(dat[0]['tablero']);
             }else if(dat[0]['turno']%2 == 0){
-    
-                console.log("turno impar \n cargo" )
                 var tab = JSON.parse(dat[0]['tablero']);
                 for(var p = 1; p <= 8; p++){
                     for(var q = 1; q <= 8; q++){
@@ -95,22 +86,14 @@ function traigoTablero(){
                 }
     
             }else{
-    
-                console.log("turno par \n invierto" )
                 inviertoTablero(dat[0]['tablero']);
                 
             }
     }else{
-            console.log("soy jugador 2")
-    
             if(dat[0]['turno']%2 == 0){
-                            
-                console.log("turno impar \n invierto" )
                 inviertoTablero(dat[0]['tablero']);
                 
             }else{
-    
-                console.log("turno par \n cargo" )
                 var tab = JSON.parse(dat[0]['tablero']);
                 for(var p = 1; p <= 8; p++){
                     for(var q = 1; q <= 8; q++){
@@ -127,7 +110,6 @@ function traigoTablero(){
 
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
-    console.log(boxHeight);
 
     $("#box").css("max-height", boxHeight);
 }
@@ -475,7 +457,6 @@ function seleccionar(x,y){
                     }
                }else{
                     if(y == 6 && Tablero[x][y].Piezas == null) {
-                        console.log(Tablero[x][5]); 
                         if(Tablero[x][5].Piezas != null && seleccionado.color != Tablero[x][5].color && seleccionado.Ejey == 5){
                                 Porcentaje(Tablero[x][5].Piezas,0);
                                 ColocoPieza(null,null,x,5);
@@ -484,7 +465,6 @@ function seleccionar(x,y){
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null){
-                            console.log(Tablero[x][4]);
                             if(Tablero[x][4].Piezas != null && seleccionado.color != Tablero[x][4].color && seleccionado.Ejey == 4){
                                     Porcentaje(Tablero[x][4].Piezas,0);
                                     ColocoPieza(null,null,x,4);
@@ -1480,7 +1460,6 @@ function Jaque(x,y, sel){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
-                    console.log("JAQUE")
                     if(simbolo != null){
                         simbolo = simbolo + "+";
                     }else{
@@ -2061,8 +2040,6 @@ function init(){
     }
 
     function sendMessage(e) {
-        console.log("mando")
-        console.log(e)
         
         if(e == 1){
             //guardoTablero();
@@ -2072,14 +2049,12 @@ function init(){
             msg["type"] = "message";
             msg["message"] = tab;
             conn.send(JSON.stringify(msg));
-            console.log('Mando tablero')
 
             var jug = "jug:" +JSON.stringify(Jugadas);
             var msg = {};
             msg["type"] = "message";
             msg["message"] = jug;
             conn.send(JSON.stringify(msg));
-            console.log('Mando tablero')
 
             var jaq = "jaq:" +JSON.stringify(jaque);
             var msg = {};
@@ -2096,7 +2071,6 @@ function init(){
     };
 
     function receiveMessage(e) {
-        console.log("recivo")
         var jsonMessage = JSON.parse(e.data);
         var json2 = jsonMessage['message']
         if (jsonMessage.type === "message") {
@@ -2176,52 +2150,50 @@ function send(msg){
 //
 //
 function reciboTablero(data){
-    console.log(".")
-    var tipo;
-    var pp = 8;
-    var qq = 8;
+    // var tipo;
+    // var pp = 8;
+    // var qq = 8;
 
-    if(data.includes("tab:")){
-        var tab = data.slice(4)
-        tipo = 1;
-    }else if(data.includes("jug:")){
-        var jug = data.slice(4)
-        tipo = 2;
-    }else if(data.includes("jaq:")){
-        var jaq = data.slice(4)
-        console.log(jaq)
-        tipo = 3;
-    }else{tipo = 4;}
+    // if(data.includes("tab:")){
+    //     var tab = data.slice(4)
+    //     tipo = 1;
+    // }else if(data.includes("jug:")){
+    //     var jug = data.slice(4)
+    //     tipo = 2;
+    // }else if(data.includes("jaq:")){
+    //     var jaq = data.slice(4)
+    //     tipo = 3;
+    // }else{tipo = 4;}
     
-    switch(tipo){
-        case 1:
-            var tab2 = JSON.parse(tab);
-            for(var p = 1; p <= 8; p++){
-                for(var q = 1; q <= 8; q++){
-                    Tablero[pp][qq] = tab2[p][q];
-                    qq = qq-1;
-                }
-                qq = 8;
-                pp = pp-1;
-            }
-            break;
-        case 2:
-            var jug2 = JSON.parse(jug);
-            for(var p = 1; p <= jug2.length; p++){
-                Jugadas[p] = jug2[p];
-            }
-            break;
-        case 3:
-            var jaq2 = JSON.parse(jaq);
-            jaque = jaq2;
-            break;
-        case 4:
-            Turno = data;
-            break;
-    }
-    resetMovimientos();
-    resetTableroJaque();
-    armoAjedrez();
+    // switch(tipo){
+    //     case 1:
+    //         var tab2 = JSON.parse(tab);
+    //         for(var p = 1; p <= 8; p++){
+    //             for(var q = 1; q <= 8; q++){
+    //                 Tablero[pp][qq] = tab2[p][q];
+    //                 qq = qq-1;
+    //             }
+    //             qq = 8;
+    //             pp = pp-1;
+    //         }
+    //         break;
+    //     case 2:
+    //         var jug2 = JSON.parse(jug);
+    //         for(var p = 1; p <= jug2.length; p++){
+    //             Jugadas[p] = jug2[p];
+    //         }
+    //         break;
+    //     case 3:
+    //         var jaq2 = JSON.parse(jaq);
+    //         jaque = jaq2;
+    //         break;
+    //     case 4:
+    //         Turno = data;
+    //         break;
+    // }
+    // resetMovimientos();
+    // resetTableroJaque();
+    // armoAjedrez();
 }
 //
 //
@@ -2418,9 +2390,7 @@ function Porcentaje(pieza,cor){
         break;
     }
     if(cor == 1){suma = suma * -1}
-    console.log(porcentaje)
     porcentaje = porcentaje + suma;
-    console.log(porcentaje)
     if(porcentaje>78){
         barra = 100;
     }else{

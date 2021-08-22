@@ -47,7 +47,6 @@ foreach ($partidos as $buscoPartido) {
       if($color1 == 1){
         $col2 = 0;
         echo '<script>
-        console.log("color 0")
         var colJugador = 0;
         var blan = 1;
         var neg = 8;
@@ -55,7 +54,6 @@ foreach ($partidos as $buscoPartido) {
       }else{
         $col2 =1;
         echo '<script>
-        console.log("color 1")
         var colJugador = 1;
         var blan = 8;
         var neg = 1;
@@ -68,14 +66,12 @@ foreach ($partidos as $buscoPartido) {
      $micolor = random_int(0,1);
      if($micolor == 1){
       echo '<script>
-      console.log("color 1")
       var colJugador = 1;
       var blan = 8;
       var neg = 1;
       </script>';
     }else{
       echo '<script>
-      console.log("color 0")
       var colJugador = 0;
       var blan = 1;
       var neg = 8;
