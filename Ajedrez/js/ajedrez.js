@@ -1,10 +1,10 @@
 $( document ).ready(function(){
     armoOnline();
-    PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
     init();
     barraProgreso(50);
+    console.log("color jug = " + colJugador)
 });
 //
 //
@@ -13,6 +13,7 @@ $( document ).ready(function(){
 //
 function armoOnline(){
     CreoTablero();
+    //EXISTE EL PARTIDO
     if(partido == true){
         traigoTablero();
         if(numJugador == 1){
@@ -39,7 +40,9 @@ function armoOnline(){
          Turno = turno;
       
     }else{
+        //CREA EL PARTIDO
         colorJugador();
+        PosicionPiezas();
         armoAjedrez();
         guardoTablero();
         Turno = 1;
@@ -48,10 +51,11 @@ function armoOnline(){
 
 function guardoTablero(){
     var tab2 = JSON.stringify(Tablero);
+    var movs = JSON.stringify(Jugadas)
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {tablero: tab2, turno: Turno},
+        data: {tablero: tab2, turno: Turno, movimientos: movs},
         success: function (data) {
             console.log(data)
            console.log("guardado")
@@ -64,27 +68,56 @@ function traigoTablero(){
         type: "POST",
         data: {},
         success: function (data) {
-           console.log("traigo" + numJugador)
            var dat = JSON.parse(data);
-           console.log(" turno>" + dat[0]['turno'])
-           
-           if( numJugador == 1 && 2%2 == 0){
-               console.log("si")
-           }else{console.log("no")}
 
-            if(dat[0]['turno']%2 == 0 && numJugador == 1){
-                console.log("asd")
-                var tab = JSON.parse(dat[0]['tablero']);
+           var jug2 = JSON.parse(dat[0]['movimientos'])
+           for(var p = 1; p <= jug2.length; p++){
+               Jugadas[p] = jug2[p];
+           }
+
+           if(numJugador == 1){
+            console.log("soy jugador 1")
+             if(dat[0]['turno']%2 == 0){
+                 console.log("turno par \n invierto" )
+                 inviertoTablero(dat[0]['tablero']);
+             }else{console.log("turno impar \n cargo" )
+             var tab = JSON.parse(dat[0]['tablero']);
+             console.log(tab)
+             for(var p = 1; p <= 8; p++){
+              for(var q = 1; q <= 8; q++){
+                  Tablero[p][q] = tab[p][q];
+                  }
+              }}
+        }else{
+             console.log("soy jugador 2")
+             if(dat[0]['turno']%2 == 0){
+                 console.log("turno par \n cargo" )
+                 var tab = JSON.parse(dat[0]['tablero']);
                 console.log(tab)
                 for(var p = 1; p <= 8; p++){
-                 for(var q = 1; q <= 8; q++){
-                     Tablero[p][q] = tab[p][q];
-                     }
-                 }
-               }else{
-                   console.log("qwe")
-                   inviertoTablero(dat[0]['tablero']);
-               }
+                for(var q = 1; q <= 8; q++){
+                    Tablero[p][q] = tab[p][q];
+                    }
+                }
+             }else{console.log("turno impar \n invierto" )
+             inviertoTablero(dat[0]['tablero']);}
+        }
+
+
+
+            // if(dat[0]['turno']%2 == 0 && numJugador == 1){
+            //     console.log("asd")
+            //     var tab = JSON.parse(dat[0]['tablero']);
+            //     console.log(tab)
+            //     for(var p = 1; p <= 8; p++){
+            //      for(var q = 1; q <= 8; q++){
+            //          Tablero[p][q] = tab[p][q];
+            //          }
+            //      }
+            //    }else{
+            //        console.log("qwe")
+            //        inviertoTablero(dat[0]['tablero']);
+            //    }
           
             armoAjedrez();
         }
