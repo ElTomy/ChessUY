@@ -40,7 +40,6 @@ function armoOnline(){
       
     }else{
         //CREA EL PARTIDO
-        //colorJugador();
         PosicionPiezas();
         armoAjedrez();
         guardoTablero();
@@ -1184,7 +1183,7 @@ function cambioCoronacion(x, y, pieza, col){
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
-    //send();
+    sendMessage(1);
 }
 window.onresize = boardsize;
 //
@@ -2101,7 +2100,13 @@ function init(){
                     break;
                 case 3:
                     var jaq2 = JSON.parse(jaq);
-                    jaque = jaq2;
+
+                    if(jaq2.jaque == true){
+                         var jx = 9-jaq2.x;
+                         var jy = 9-jaq2.y;
+                        Jaque(jx, jy, Jugadas[Turno].Piezas)
+                    }else{jaque = jaq2}
+
                     break;
                 case 4:
                     Turno = tur;
@@ -2110,7 +2115,6 @@ function init(){
         }else{console.log("no mensaje")}
 
         resetMovimientos();
-        resetTableroJaque();
         armoAjedrez();
     };
     
