@@ -4,6 +4,7 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
+    console.log("color jug = " + colJugador)
 });
 //
 //
@@ -14,8 +15,10 @@ function armoOnline(){
     CreoTablero();
     //EXISTE EL PARTIDO
     if(partido_encontrado == true){
+        console.log("encontrado")
         traigoTablero();
         if(numJugador == 1){
+            console.log( "coljugador 1 = " + col1)
             if(col1 == 1){
                 colJugador = col1;
                 blan = 8;
@@ -26,6 +29,7 @@ function armoOnline(){
                 neg = 8;
             }
         }else{
+            console.log( "coljugador 2 = " + col2)
             if(col2 == 1){
                 colJugador = col2;
                 blan = 8;
@@ -41,7 +45,6 @@ function armoOnline(){
     }else{
         //CREA EL PARTIDO
         //colorJugador();
-        console.log("color jug = " + colJugador)
         PosicionPiezas();
         armoAjedrez();
         guardoTablero();
@@ -57,7 +60,6 @@ function guardoTablero(){
         type: "POST",
         data: {tablero: tab2, turno: Turno, movimientos: movs},
         success: function (data) {
-            console.log(data)
            console.log("guardado")
         }
       });
@@ -78,8 +80,8 @@ function traigoTablero(){
            
            if(numJugador == 1){
             console.log("soy jugador 1")
-    
-            if(dat[0]['turno' == 1]){
+
+            if(dat[0]['turno'] == 1){
                 console.log("turno 1 \n invierto" )
                 inviertoTablero(dat[0]['tablero']);
             }else if(dat[0]['turno']%2 == 0){
@@ -326,16 +328,16 @@ function boardsize(){
 //
 //
 function colorJugador(){
-    var random = Math.round(Math.random() * 1);
-    if(random == 1){
-        colJugador = 0;
-        blan = 1;
-        neg = 8;
-    }else{
-        colJugador = 1;
-        blan = 8;
-        neg = 1;
-    }
+    // var random = Math.round(Math.random() * 1);
+    // if(random == 1){
+    //     colJugador = 0;
+    //     blan = 1;
+    //     neg = 8;
+    // }else{
+    //     colJugador = 1;
+    //     blan = 8;
+    //     neg = 1;
+    // }
 }
 //
 //
@@ -585,6 +587,7 @@ function seleccionar(x,y){
             ultTurn = true;
             a = 1;
         }
+        guardoTablero();
         sendMessage(1);
         armoAjedrez();
     }
@@ -2062,7 +2065,7 @@ function init(){
         console.log(e)
         
         if(e == 1){
-            guardoTablero();
+            //guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
             //cambiar a tablero??
@@ -2156,16 +2159,16 @@ function inviertoTablero(tab){
             }
 }
 function send(msg){
-    var tab = "tab:" +JSON.stringify(Tablero);
-    var jug = "jug:" +JSON.stringify(Jugadas);
-    var jaq = "jaq:" +JSON.stringify(jaque);
-    if(tab.length > 0) {
-        guardoTablero();
-        socket.send(tab);
-        socket.send(jug);
-        socket.send(jaq);
-        socket.send(Turno);
-    }  
+    // var tab = "tab:" +JSON.stringify(Tablero);
+    // var jug = "jug:" +JSON.stringify(Jugadas);
+    // var jaq = "jaq:" +JSON.stringify(jaque);
+    // if(tab.length > 0) {
+    //     guardoTablero();
+    //     socket.send(tab);
+    //     socket.send(jug);
+    //     socket.send(jaq);
+    //     socket.send(Turno);
+    // }  
 }
 //
 //
