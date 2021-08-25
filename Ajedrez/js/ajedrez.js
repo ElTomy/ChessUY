@@ -1,4 +1,24 @@
 $( document ).ready(function(){
+    console.log("hola")
+    $.ajax({
+        async: false,
+        url:  "/ChessUY/Ajedrez/php/buscoPartido.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            partido = JSON.parse(data)
+            numJugador = partido['numJugador'];
+            jugador2 = partido['jugador2'];
+            turno = partido['turno'];
+            col1 = partido['col1'];
+            col2 = partido['col2'];
+            partido_encontrado = partido['partido_encontrado'];
+            colJugador = partido['colJugador'];
+            blan = partido['blan'];
+            neg = partido['neg'];
+        }
+      });
+
     armoOnline();
     resetMovimientos();
     armoAjedrez();
@@ -13,6 +33,7 @@ $( document ).ready(function(){
 function armoOnline(){
     CreoTablero();
     //EXISTE EL PARTIDO
+    console.log("asdasd")
     if(partido_encontrado == true){
         traigoTablero();
         if(numJugador == 1){
@@ -68,6 +89,7 @@ function traigoTablero(){
            var dat = JSON.parse(data);
 
            var jug2 = JSON.parse(dat[0]['movimientos'])
+           console.log("movimientos")
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
@@ -131,6 +153,7 @@ function boxHeight(){
     /* 
     Armo Tabla Movimientos     
     */
+   console.log("armo movs")
     $.ajax({
         type: "POST",
         url: "/ChessUY/Ajedrez/php/armoMovimientos.php",

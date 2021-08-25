@@ -29,7 +29,8 @@ if(isset($_POST['Turno'])){
         $colorJugador2 =""; 
     }
 }
-if(isset($_POST['jugador2'])){
+
+if($_POST['jugador2'] != null){
     $Jug2 = $server->BuscoJugador($_POST['jugador2']);
     $usu2 = $Jug2[0]['Usuario'];
     $colFondo2 = $Jug2[0]['colFondo'];
@@ -38,9 +39,9 @@ if(isset($_POST['jugador2'])){
     $tipo2 = $Jug2[0]['tipo'];
 }else{
     $usu2 = 'Jugador2';
-    $colFondo2 = '#ffffff';
+    $colIcon2 = '#ffffff';
     $Icon2 = 'fas fa-user';
-    $colIcon2 =  '475AB8';
+    $colFondo2 =  '#0076be';
     $tipo2 = 1;
 }
 
