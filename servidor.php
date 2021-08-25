@@ -677,64 +677,6 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoPartidasAgendadas($id){
-        $conn = $this->conectar();
-        $info = array();
-        $sql = "CALL InfoPartidasAgendadas(?)";
-        $stmts = $conn->prepare($sql);
-        $stmts->bind_param("i", $id);
-
-        if ($stmts->execute()) {
-            
-            $stmts->store_result();
-            $stmts->bind_result($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
-            while ($stmts->fetch()) {
-                $data = array('idP' => $idPartidaAgendada, 'IDTorneo' => $IDTorneo, 'Usuario1' => $Usuario1, 'Usuario2' => $Usuario2, 'Estado' => $Estado, 'Ronda' => $Ronda, 'Fecha' => $Fecha);
-                $info[] = $data;
-            }
-            $stmts->close();
-        }
-        return $info;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
-    function AgendoPartida($IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
-        $conn = $this->conectar();
-        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
-        $stmts = $conn->prepare($sql);
-        $execute = false;
-
-        $stmts->bind_param("issiis",$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
-        if($stmts->execute()){
-            $execute = true;
-        }
-        return $execute;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
-    function ModificoPartidaAgendada($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
-        $conn = $this->conectar();
-        $sql = "CALL ModificoPartidaAgendada(?,?,?,?,?,?,?)";
-        $stmts = $conn->prepare($sql);
-        $execute = false;
-
-        $stmts->bind_param("iissiis",$idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
-        if($stmts->execute()){
-            $execute = true;
-        }
-        return $execute;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
     function FixturePuntos($id){
         $conn = $this->conectar();
         $info = array();
@@ -749,6 +691,29 @@ class servidor
             while ($stmts->fetch()) {
                 $data = array('Usuario' => $Usuario, 'Puntos' => $Puntos, 'Coronaciones' => $Coronaciones, 'Comidas' => $Comidas, 'Menos_Tiempo' => $Menos_Tiempo, 'Menos_Movimientos' => $Menos_Movimientos, 'id' => $id);
                 $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoPartidos(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoPartidos()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo);
+                                $info[] = $data;
             }
             $stmts->close();
         }
