@@ -16,8 +16,13 @@ if(isset($_POST['id'])){
         }
     }
     if($col == 0){
-        for($i = 1;$i <= $cantParticipantes;$i++){
-
+        for($x = 1;$x <= $cantParticipantes;$x++){
+            if($x%2 != 0){
+                $Usu1 = $Participantes[$x]['Usuario'];
+                $Usu2 = $Participantes[($x-1)]['Usuario'];
+            }else{
+                $server->AgendoPartida($Usu1, $Usu2,"1","2",$IDT);
+            }
         }
     }
 }

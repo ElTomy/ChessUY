@@ -719,4 +719,21 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT){
+        $conn = $this->conectar();
+        $sql = "CALL AgendoPartida(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ssssi",$Usuario1, $Usuario2, $Color1, $Color2,$IDT);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
 }
