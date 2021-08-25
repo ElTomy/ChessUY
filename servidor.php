@@ -452,9 +452,9 @@ class servidor
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo);
                                 $info[] = $data;
             }
             $stmts->close();
@@ -788,40 +788,7 @@ class servidor
         }
         return $info;
     }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
-    function AgendoPartida($IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
-        $conn = $this->conectar();
-        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
-        $stmts = $conn->prepare($sql);
-        $execute = false;
 
-        $stmts->bind_param("issiis",$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
-        if($stmts->execute()){
-            $execute = true;
-        }
-        return $execute;
-    }
-    //
-    //
-    /*------------------------------------------------------------------------------------------*/
-    //
-    //
-    function ModificoPartidaAgendada($idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha){
-        $conn = $this->conectar();
-        $sql = "CALL ModificoPartidaAgendada(?,?,?,?,?,?,?)";
-        $stmts = $conn->prepare($sql);
-        $execute = false;
-
-        $stmts->bind_param("iissiis",$idPartidaAgendada,$IDTorneo,$Usuario1,$Usuario2,$Estado,$Ronda,$Fecha);
-        if($stmts->execute()){
-            $execute = true;
-        }
-        return $execute;
-    }
     //
     //
     /*------------------------------------------------------------------------------------------*/
