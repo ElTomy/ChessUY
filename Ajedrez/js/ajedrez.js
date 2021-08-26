@@ -18,7 +18,6 @@ $( document ).ready(function(){
             neg = partido['neg'];
         }
       });
-
     armoOnline();
     resetMovimientos();
     armoAjedrez();
