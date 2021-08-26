@@ -72,6 +72,8 @@ $index .='
             <span></span>
             <i class="fas fa-chess-knight"></i>Jugar
           </a>
+          <a id="partiTorn">
+          </a>
         </div>
       </div>
     </section>';
