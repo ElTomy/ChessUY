@@ -1,5 +1,4 @@
 $( document ).ready(function(){
-    console.log("hola")
     $.ajax({
         async: false,
         url:  "/ChessUY/Ajedrez/php/buscoPartido.php",
@@ -23,6 +22,16 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
+      console.log('asd')
+    $.ajax({
+        url: "/ChessUY/Ajedrez/php/ELO.php",
+        type: "POST",
+        data: {jugador2:jugador2},
+        success: function (data) {
+            console.log("ELO")
+           console.log(data)
+        }
+        });
 });
 //
 //
@@ -2045,28 +2054,21 @@ function init(){
 
         conn.onopen = function (e) {
             console.log("Connection established!");
-            // consultas cada x tiempo
-            // setInterval(function(){
-            //     conn.send('getFechas');
-            // }, 5000);
-
         };
         conn.onmessage = function(e) {
-            //reciboTablero(e.data)
             receiveMessage(e);
         };
         conn.onclose = function(e) {
-                console.log('Conexión websocket cerrada!');
-            };
+            console.log('Conexión websocket cerrada!');
+        };
     }
 
     function sendMessage(e) {
         
         if(e == 1){
-            //guardoTablero();
+            guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
-            //cambiar a tablero??
             msg["type"] = "message";
             msg["message"] = tab;
             conn.send(JSON.stringify(msg));
@@ -2157,69 +2159,6 @@ function inviertoTablero(tab){
                 qq = 8;
                 pp = pp-1;
             }
-}
-function send(msg){
-    // var tab = "tab:" +JSON.stringify(Tablero);
-    // var jug = "jug:" +JSON.stringify(Jugadas);
-    // var jaq = "jaq:" +JSON.stringify(jaque);
-    // if(tab.length > 0) {
-    //     guardoTablero();
-    //     socket.send(tab);
-    //     socket.send(jug);
-    //     socket.send(jaq);
-    //     socket.send(Turno);
-    // }  
-}
-//
-//
-/*------------------------------------------------------------------------------------------*/
-//
-//
-function reciboTablero(data){
-    // var tipo;
-    // var pp = 8;
-    // var qq = 8;
-
-    // if(data.includes("tab:")){
-    //     var tab = data.slice(4)
-    //     tipo = 1;
-    // }else if(data.includes("jug:")){
-    //     var jug = data.slice(4)
-    //     tipo = 2;
-    // }else if(data.includes("jaq:")){
-    //     var jaq = data.slice(4)
-    //     tipo = 3;
-    // }else{tipo = 4;}
-    
-    // switch(tipo){
-    //     case 1:
-    //         var tab2 = JSON.parse(tab);
-    //         for(var p = 1; p <= 8; p++){
-    //             for(var q = 1; q <= 8; q++){
-    //                 Tablero[pp][qq] = tab2[p][q];
-    //                 qq = qq-1;
-    //             }
-    //             qq = 8;
-    //             pp = pp-1;
-    //         }
-    //         break;
-    //     case 2:
-    //         var jug2 = JSON.parse(jug);
-    //         for(var p = 1; p <= jug2.length; p++){
-    //             Jugadas[p] = jug2[p];
-    //         }
-    //         break;
-    //     case 3:
-    //         var jaq2 = JSON.parse(jaq);
-    //         jaque = jaq2;
-    //         break;
-    //     case 4:
-    //         Turno = data;
-    //         break;
-    // }
-    // resetMovimientos();
-    // resetTableroJaque();
-    // armoAjedrez();
 }
 //
 //
@@ -2429,6 +2368,7 @@ function Porcentaje(pieza,cor){
     barraProgreso(barra);
 } 
 function ActualizarEstadisticas(){
+    
     $.ajax({
         url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
         type: "POST",
