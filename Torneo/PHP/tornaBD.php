@@ -18,7 +18,7 @@ if(isset($_POST['tiempo']) && isset($_POST['ELO_Min']) && isset($_POST['ELO_Max'
     $InicioTorneo = substr_replace(substr_replace($_POST['InicioTorneo'],"/",-4, 0),"/",-2, 0).':'.$_POST['hrCom'].':00';
 }
 
-$x = $servidor->CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $InicioTorneo, 0);
+$x = $servidor->CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $InicioTorneo, 0,'torneo manco');
 
 echo $x;
 
