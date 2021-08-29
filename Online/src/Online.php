@@ -3,6 +3,7 @@ namespace MyApp;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use \PDO;
+session_start();
 class Ajedrez implements MessageComponentInterface {
     protected $clients;
     private $activeUsers;
@@ -19,19 +20,20 @@ class Ajedrez implements MessageComponentInterface {
         // Store the new connection to send messages to later
         $this->clients->attach($conn);
         echo "New connection! ({$conn->resourceId})\n";
+
     }
 
 
     public function onMessage(ConnectionInterface $from, $msg){
         $jsonMsg = json_decode($msg);
 
-        // if ($jsonMsg->type == "login") {
-        //     $onlineUsers = [];
-        //     $onlineUsers['type'] = "onlineUsers";
-        //     $this->activeUsers[$from->resourceId] = $jsonMsg->name;
-        //     $onlineUsers['onlineUsers'] = $this->activeUsers;
-        //     $this->sendMessageToAll(json_encode($onlineUsers));
-        // } else
+        if ($jsonMsg->type == "login") {
+            $onlineUsers = [];
+            $onlineUsers['type'] = "onlineUsers";
+            $this->activeUsers[$from->resourceId] = $jsonMsg->name;
+            $onlineUsers['onlineUsers'] = $this->activeUsers;
+            $this->sendMessageToAll(json_encode($onlineUsers));
+        } else
 
         if ($jsonMsg->type == "message") {
             $this->sendMessageToOthers($from, json_encode($jsonMsg));

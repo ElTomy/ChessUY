@@ -2037,6 +2037,7 @@ function init(){
 
         conn.onopen = function (e) {
             console.log("Connection established!");
+            sendConnection();
         };
         conn.onmessage = function(e) {
             receiveMessage(e);
@@ -2044,6 +2045,13 @@ function init(){
         conn.onclose = function(e) {
             console.log('Conexión websocket cerrada!');
         };
+    }
+
+    function sendConnection(e){
+        console.log("conectando")
+        console.log(sessionStorage.getItem('usuario') )
+        name = sessionStorage.getItem('usuario') 
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
     }
 
     function sendMessage(e) {
@@ -2078,6 +2086,7 @@ function init(){
 
     function receiveMessage(e) {
         var jsonMessage = JSON.parse(e.data);
+        console.log(jsonMessage)
         var json2 = jsonMessage['message']
         if (jsonMessage.type === "message") {
             

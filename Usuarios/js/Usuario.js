@@ -98,11 +98,12 @@ class Usuario{
             success: function(log){
                 var txt = log;
                 var est2 = JSON.parse(txt);
-
+                
                 if(est2.error == true){
                     x = false;
                 }else{
                     x = true;
+                    sessionStorage.setItem('usuario',  est2['usuario']);
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
