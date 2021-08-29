@@ -827,4 +827,56 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function AgregoUsuarioOnline($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL AgregoUsuOnline(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BorroUsuarioOnline($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL BorroUsuOnline(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BuscoUsuarioOnline(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL BuscoUsuOnline()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($Usuario);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
