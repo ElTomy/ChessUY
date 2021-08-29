@@ -22,15 +22,7 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-    $.ajax({
-        url: "/ChessUY/Ajedrez/php/ELO.php",
-        type: "POST",
-        data: {jugador2:jugador2},
-        success: function (data) {
-            console.log("ELO")
-           console.log(data)
-        }
-        });
+
 });
 //
 //
@@ -2496,7 +2488,16 @@ function Porcentaje(pieza,cor){
     barraProgreso(barra);
 } 
 function ActualizarEstadisticas(resultado){
-    //elo
+    $.ajax({
+        url: "/ChessUY/Ajedrez/php/ELO.php",
+        type: "POST",
+        data: {jugador2:jugador2, resultado:resultado},
+        success: function (data) {
+            console.log("ELO")
+           console.log(data)
+        }
+        });
+
     $.ajax({
         url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
         type: "POST",

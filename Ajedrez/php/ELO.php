@@ -2,8 +2,7 @@
 include '../../servidor.php';
 session_start();
 $server= new servidor();
-//$Po = $_POST['resultado'];
-$Po = 1;
+$Po = $_POST['resultado'];
 
 //TRAIGO LOS ELOS DE LOS JUGADORES
 $jug1 = $server->InfoEstadisticas($_SESSION['usuario']);
@@ -22,9 +21,7 @@ if($ELOa > 2400){
 
 //CALCULO LA PUNTUACION ESPERADA
 $a = ($ELOb-$ELOa)/400;
-//$b = ($ELOa-$ELOb)/400;
 $Ea = 1/(1+pow(10,$a));
-//$Eb = 1/(1+pow(10,$b));
 
 //CALCULO EL NUEVO ELO
 $ELO = $ELOa + $k*($Po-$Ea); 
