@@ -22,7 +22,6 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-
 });
 //
 //
