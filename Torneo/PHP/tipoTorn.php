@@ -109,8 +109,8 @@ $premHTML = '
 //Codigo para guardar y crear
 $guCrHTML = '
 <div class="torneo-buttons">
-    <button><i class="fas fa-save"></i> Guardar como preset</button>
-    <button style="background-color: green" onclick="envaPHP()"><i class="fas fa-calendar-plus"></i> Crear</button>
+    <button onclick="envaPHP(1)"><i class="fas fa-save"></i> Guardar como preset</button>
+    <button style="background-color: green" onclick="envaPHP(0)"><i class="fas fa-calendar-plus"></i> Crear</button>
 </div>
 ';
 
