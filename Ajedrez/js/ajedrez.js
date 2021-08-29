@@ -339,23 +339,6 @@ function boardsize(){
 /*------------------------------------------------------------------------------------------*/
 //
 //
-function colorJugador(){
-    // var random = Math.round(Math.random() * 1);
-    // if(random == 1){
-    //     colJugador = 0;
-    //     blan = 1;
-    //     neg = 8;
-    // }else{
-    //     colJugador = 1;
-    //     blan = 8;
-    //     neg = 1;
-    // }
-}
-//
-//
-/*------------------------------------------------------------------------------------------*/
-//
-//
 function ColocoPieza(Pieza,Color,x,y){
     Tablero[x][y] = {
         Piezas: Pieza,
