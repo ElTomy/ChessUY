@@ -65,13 +65,12 @@ class Ajedrez implements MessageComponentInterface {
     //---------------------------------------------------//
 
     public function onClose(ConnectionInterface $conn){
-        // The connection is closed, remove it, as we can no longer send it messages
         $this->clients->detach($conn);
         unset($this->activeUsers[$conn->resourceId]);
-        //$onlineUsers = [];
-        //$onlineUsers['type'] = "onlineUsers";
-        //$onlineUsers['onlineUsers'] = $this->activeUsers;
-        //$this->sendMessageToOthers($conn, json_encode($onlineUsers));
+        $onlineUsers = [];
+        $onlineUsers['type'] = "onlineUsers";
+        $onlineUsers['onlineUsers'] = $this->activeUsers;
+        $this->sendMessageToOthers($conn, json_encode($onlineUsers));
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 

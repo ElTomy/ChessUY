@@ -2093,9 +2093,12 @@ function init(){
 
     function receiveMessage(e) {
         var jsonMessage = JSON.parse(e.data);
-        console.log(jsonMessage)
         var json2 = jsonMessage['message']
-        if (jsonMessage.type === "message") {
+        if(jsonMessage.type === "onlineUsers"){
+            console.log(jsonMessage)
+            console.log(json2)
+            
+        }else if (jsonMessage.type === "message") {
             
             if(json2.includes("tab:")){
                 var tab = json2.slice(4)
@@ -2135,7 +2138,7 @@ function init(){
                     Turno = tur;
                     break;
             }
-        }else{console.log("no mensaje")}
+        }else{console.log("ERROR")}
 
         resetMovimientos();
         armoAjedrez();
