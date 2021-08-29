@@ -6,8 +6,8 @@
                     </div>
                     <div class='modal-content'>
                         <h1>Esperando</h1>
-                        <hr><div class='modal-trofeo' style='animation: spin 4s infinite linear; '>
-                            <i class='fas fa-spinner' style='color: #ffaa00'></i>
+                        <hr><div>
+                            <i class='fas fa-spinner' style='color: #ffaa00; animation: spin 3s infinite linear; font-size:200px'></i>
                           </div>
                         </div>
                         <p>Esperando a que se conecte un jugador</p>
