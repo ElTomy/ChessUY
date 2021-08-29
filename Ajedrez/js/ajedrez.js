@@ -2038,6 +2038,14 @@ function init(){
         conn.onopen = function (e) {
             console.log("Connection established!");
             sendConnection();
+            $.ajax({
+                url:  "/ChessUY/Modal/modalEspera.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+              });
         };
         conn.onmessage = function(e) {
             receiveMessage(e);
@@ -2049,7 +2057,6 @@ function init(){
 
     function sendConnection(e){
         console.log("conectando")
-        console.log(sessionStorage.getItem('usuario') )
         name = sessionStorage.getItem('usuario') 
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
     }
