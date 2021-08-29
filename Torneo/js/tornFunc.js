@@ -249,6 +249,7 @@ function envaPHP() {
     opt = document.getElementById("tipTorn").value;
     reserv.sort();
     if(opt == 'norm' || opt == 'avan') {
+        var nomTemp = setVar('nomDesc', 'oblig');
         var tempDesc = setVar('tempDesc', 'oblig');
         var tempJug = setVar('tempJug', 'oblig');
         var partDia = setVar('partDia', 'oblig');
@@ -321,7 +322,9 @@ function envaPHP() {
                     EdadMinima : edaMin,
                     EdadMaxima : edaMax,
                     InicioTorneo : comTorn,
-                    hrCom : hrCom
+                    hrCom : hrCom,
+
+                    nomTorn : nomTorn
                   },
             success: function (exec) {
                 $.ajax({
