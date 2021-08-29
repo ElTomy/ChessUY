@@ -1,4 +1,5 @@
 <?php
+session_start();
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
@@ -8,9 +9,9 @@
                         <h1>Tablas</h1>
                         <hr><div class='modal-trofeo'>
                         <img src='/ChessUY/media/images/Trofeo.png'></div>
-                        <h1 id ='jugador'>".$_POST['jugador2']."</h1>
-                        <p>Acepto las Tablas</p>
-                        <p>EMPATE</p>
+                        <h1 id ='jugador'>".$_SESSION['usuario']."</h1>
+                        <p>Has rechazo las Tablas</p>
+                        <p>Se sigue el juego</p>
                         <a onclick='cerrar()'><i class='fas fa-times-circle'></i> Cerrar</a>
                     </div>
                 </div>
