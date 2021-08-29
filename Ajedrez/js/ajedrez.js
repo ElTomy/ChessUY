@@ -22,7 +22,6 @@ $( document ).ready(function(){
     armoAjedrez();
     init();
     barraProgreso(50);
-      console.log('asd')
     $.ajax({
         url: "/ChessUY/Ajedrez/php/ELO.php",
         type: "POST",
@@ -2037,7 +2036,6 @@ function init(){
 
         conn.onopen = function (e) {
             console.log("Connection established!");
-            sendConnection();
             $.ajax({
                 url:  "/ChessUY/Modal/modalEspera.php",
                 type: "POST",
@@ -2046,6 +2044,16 @@ function init(){
                     document.getElementById("modal").innerHTML = data;
                 }
               });
+            $.ajax({
+            async: false,
+            url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+            type: "POST",
+            data: {action:'agregar'},
+            success: function (data) {
+               console.log("agregado")
+            }
+            });
+            sendConnection();
         };
         conn.onmessage = function(e) {
             receiveMessage(e);
@@ -2095,9 +2103,20 @@ function init(){
         var jsonMessage = JSON.parse(e.data);
         var json2 = jsonMessage['message']
         if(jsonMessage.type === "onlineUsers"){
-            console.log(jsonMessage)
-            console.log(json2)
-            
+            $.ajax({
+                url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
+                type: "POST",
+                data: {jugador2:jugador2},
+                success: function (data) {
+                    console.log("busco : " + data)
+                    if(data == 'true'){
+                        $(".modal").hide();
+                    }
+                }
+                });
+
+                //si lo esta saco el modal
+
         }else if (jsonMessage.type === "message") {
             
             if(json2.includes("tab:")){
