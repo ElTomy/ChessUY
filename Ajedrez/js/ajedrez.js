@@ -1994,16 +1994,10 @@ function JaqueMate(){
     if(jaqueMate == true && F_rey == true){
         finalizado = true;
         simbolo = "#";
-        $.ajax({
-            url: "/ChessUY/Modal/modalVictoria.php",
-            type: "POST",
-            data: {turno:Turno},
-            success: function (data) {
-                document.getElementById("modal").innerHTML = data;
-            }
-          });   
+        Victoria(); 
         victoria++;
-        ActualizarEstadisticas();  
+        sendResultado(1)
+        ActualizarEstadisticas(1);  
     }
     resetMovimientos();
 }
@@ -2017,13 +2011,28 @@ function Derrota(){
     $.ajax({
         url: "/ChessUY/Modal/modalDerrota.php",
         type: "POST",
-        data: {turno:Turno},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
         }
       });
     derrota++;  
-    ActualizarEstadisticas();
+    sendResultado(2)
+    ActualizarEstadisticas(0);
+}
+function Victoria(){
+    finalizado = true;
+    $.ajax({
+        url: "/ChessUY/Modal/modalVictoria.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });   
+    victoria++;
+    sendResultado(1)
+    ActualizarEstadisticas(1); 
 }
 //
 //
@@ -2069,6 +2078,60 @@ function init(){
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
     }
 
+    function sendResultado(e){
+
+        switch(e){
+            case 1:
+                //VICTORIA
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "vitoria";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 2:
+                //DERROTA
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "derrota";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 3:
+                //PIDO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Pido_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 4:
+                //ACEPTO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Acepto_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 5:
+                //RECHAZO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Rechazo_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 6:
+                //TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 7:
+                //RESPONDO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Respondo_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+        }
+    }
     function sendMessage(e) {
         
         if(e == 1){
@@ -2115,11 +2178,52 @@ function init(){
                 }
                 });
 
-                //si lo esta saco el modal
-
         }else if (jsonMessage.type === "message") {
-            
-            if(json2.includes("tab:")){
+            tipo = 0;
+            if(json2.includes("victoria")){
+                Derrota();
+            }else if(json2.includes("derrota")){
+                Victoria();
+            }else if(json2.includes("Pido_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalPidoTablas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });   
+            }else if(json2.includes("Acepto_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablasAceptadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Rechazo_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablasRechazadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablas.php",
+                    type: "POST",
+                    data: {turno:Turno},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Respondo_tablas")){
+                console.log("respondo")
+
+            }else if(json2.includes("tab:")){
                 var tab = json2.slice(4)
                 tipo = 1;
             }else if(json2.includes("jug:")){
@@ -2210,7 +2314,6 @@ function tablas(){
     //Rey-Haogado
     Rey_Haogado('b');
     Rey_Haogado('n');
-    //Acuerdo-Mutuo
     //Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
@@ -2263,32 +2366,35 @@ function Rey_Haogado(color){
 function Acuerdo_Mutuo(){   
     //cambiar a ESPERO
     $.ajax({
-        url:  "/ChessUY/Modal/modalPidoTablas.php",
+        url:  "/ChessUY/Modal/modalEsperoTablas.php",
         type: "POST",
         data: {},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(3);
         }
       });
 }
 function aceptar_tablas(){
     finalizado = true;
     $.ajax({
-        url: "/ChessUY/Modal/modalTablasAceptadas.php",
+        url: "/ChessUY/Modal/modalAceptoTablas.php",
         type: "POST",
-        data: {},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(4)
         }
         });
 }
 function rechazar_tablas(){
     $.ajax({
-        url: "/ChessUY/Modal/modalTablasRechazadas.php",
+        url: "/ChessUY/Modal/modalRechazoTablas.php",
         type: "POST",
-        data: {},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(5);
         }
         });
 }
@@ -2336,10 +2442,11 @@ function llamoTablas(){
         data: {},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(6)
         }
         });
     tabla++;
-    ActualizarEstadisticas();
+    ActualizarEstadisticas(0.5);
 }
 function Porcentaje(pieza,cor){
     var suma = 0;
@@ -2388,8 +2495,8 @@ function Porcentaje(pieza,cor){
     }
     barraProgreso(barra);
 } 
-function ActualizarEstadisticas(){
-    
+function ActualizarEstadisticas(resultado){
+    //elo
     $.ajax({
         url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
         type: "POST",
