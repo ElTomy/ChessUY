@@ -91,7 +91,7 @@
               </div>
               <div class="ajedrez-buttons">
                   <button onclick="Acuerdo_Mutuo()"><i class="fas fa-border-all"></i> Tablas</button>
-                  <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
+                  <button onclick="Derrota(),this.disabled='disabled'"><i class="fas fa-flag"></i> Rendirse</button>
               </div>
           </div>
         </div>
