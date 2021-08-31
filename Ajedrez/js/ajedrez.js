@@ -229,6 +229,7 @@ const Piezas = {
 var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
+var elo;
 var Turno;
 var Reloj = 0;
 var rep = 0;
@@ -2492,15 +2493,16 @@ function ActualizarEstadisticas(resultado){
         type: "POST",
         data: {jugador2:jugador2, resultado:resultado},
         success: function (data) {
+            elo = data;
             console.log("ELO")
-           console.log(data)
+           console.log(elo)
         }
         });
 
     $.ajax({
         url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
         type: "POST",
-        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+        data: {ELO:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
         success: function (data) {
            console.log(data)
         }
