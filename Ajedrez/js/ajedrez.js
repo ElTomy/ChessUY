@@ -229,7 +229,7 @@ const Piezas = {
 var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
-var elo;
+var elo = 0;
 var Turno;
 var Reloj = 0;
 var rep = 0;
@@ -2501,17 +2501,12 @@ function ActualizarEstadisticas(resultado){
         data: {jugador2:jugador2, resultado:resultado},
         success: function (data) {
             elo = data;
-            console.log("ELO")
-           console.log(elo)
-        }
-        });
-
-    $.ajax({
-        url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
-        type: "POST",
-        data: {ELO:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
-        success: function (data) {
-           console.log(data)
+            $.ajax({
+                url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
+                type: "POST",
+                data: {puntaje:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+                success: function (data) {}
+                });
         }
         });
 }
