@@ -2,6 +2,14 @@
 if(isset($_POST['opt'])) {
     $opt = $_POST['opt'];
 }
+//Codigo del Nombre
+$nomTorn = '
+<div class="nombreTorn">
+    <p>Nombre del Torneo</p>
+    <input type="text" id="nomDesc">
+</div>
+';
+
 //Codigo de agenda
 $agenHTML = '
 <div class="calendar-wrapper">
@@ -101,15 +109,16 @@ $premHTML = '
 //Codigo para guardar y crear
 $guCrHTML = '
 <div class="torneo-buttons">
-    <button><i class="fas fa-save"></i> Guardar</button>
-    <button onclick="envaPHP()"><i class="fas fa-calendar-plus"></i> Crear</button>
+    <button onclick="envaPHP(1)"><i class="fas fa-save"></i> Guardar como preset</button>
+    <button style="background-color: green" onclick="envaPHP(0)"><i class="fas fa-calendar-plus"></i> Crear</button>
 </div>
 ';
 
 if($opt == 'norm') {
 
-    echo '
-    <div class="config-left">
+    echo 
+    '<div class="config-left">'
+    .$nomTorn.'
         <div class="calendar-config">'.
 //          Aca va la agenda
             $agenHTML
@@ -141,8 +150,9 @@ if($opt == 'norm') {
 
 } elseif($opt == 'avan') {
     
-    echo '
-    <div class="config-left">
+    echo 
+    '<div class="config-left">'
+    .$nomTorn.'
         <div class="calendar-config">'.
 //          Aca va la agenda
             $agenHTML

@@ -241,6 +241,7 @@ var victoria = 0;
 var derrota = 0;
 var tabla = 0;
 var simbolo = null;
+var spam = 0;
 const Tablero = [];
 const TableroJaque = [];
 var seleccionado = null;
@@ -426,6 +427,7 @@ function CreoTablero(){
 //
 //
 function seleccionar(x,y){
+    if(derrota == 0 && tabla == 0 && victoria == 0){
     var sel;
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
@@ -576,7 +578,7 @@ function seleccionar(x,y){
         armoAjedrez();
     }
 }
-
+}
 var totlsec1 = 900;
 var totlsec2 = 900;
 var finalizado = false;
@@ -2356,16 +2358,19 @@ function Rey_Haogado(color){
     }
 }
 function Acuerdo_Mutuo(){   
-    //cambiar a ESPERO
-    $.ajax({
-        url:  "/ChessUY/Modal/modalEsperoTablas.php",
-        type: "POST",
-        data: {},
-        success: function (data) {
-            document.getElementById("modal").innerHTML = data;
-            sendResultado(3);
-        }
-      });
+    if(spam < 3 && derrota == 0 && tabla == 0 && victoria == 0){
+        spam++;
+        //cambiar a ESPERO
+        $.ajax({
+            url:  "/ChessUY/Modal/modalEsperoTablas.php",
+            type: "POST",
+            data: {},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+                sendResultado(3);
+            }
+        });
+    }
 }
 function aceptar_tablas(){
     finalizado = true;
@@ -2378,6 +2383,8 @@ function aceptar_tablas(){
             sendResultado(4)
         }
         });
+    tabla++;
+    ActualizarEstadisticas();
 }
 function rechazar_tablas(){
     $.ajax({
