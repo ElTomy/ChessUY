@@ -10,6 +10,10 @@
             $Icono = $_SESSION['icono']; 
             $ColorIcono = $_SESSION['coloricono'];
             $ColorFondo = $_SESSION['colorfondo'];
+            }else{
+                $Icono = 'fas fa-user'; 
+                $ColorIcono = '#ffffff';
+                $ColorFondo = '#0076be';
             }
             
             if(isset($_SESSION['usuario'])){
