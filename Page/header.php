@@ -94,7 +94,7 @@
                     echo "<h2>Invitado</h2>";
                 }
             ?>            
-            <a href="/ChessUY/Index"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/ChessUY/Index.php"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "  <a href='/ChessUY/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
