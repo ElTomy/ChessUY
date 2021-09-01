@@ -12,8 +12,8 @@ for($x=0;$x<$numero_Torneos;$x++){
         $nombre = $Torneos[$x]['nombre'];
         $return .='
         <a>'.$nombre.'</a>
-        <div class="buttons" style="margin: 0;">
-            <a onclick="Ficture('.$id.')">Fixture</a>
+        <div class="button-fixture" style="margin: 0;">
+            <a class="boton-fixture" onclick="Ficture('.$id.')">Fixture</a>
         </div>';
     }else{
         $return .='<a>No hay Torneos o sus inscripciones estan abiertas</a>';

@@ -73,6 +73,10 @@ $index .='
             <i class="fas fa-chess-knight"></i>Jugar
           </a>
           <a id="partiTorn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </a>
         </div>
       </div>
@@ -106,7 +110,7 @@ $index .='
               <p class="admin"><i class="fas fa-newspaper"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href=""><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href="Usuarios/Periodista/PHP/crearNoticia.php"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
                 <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
                 <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
               </div>
