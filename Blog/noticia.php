@@ -1,6 +1,6 @@
 <?php
 
-include '../../../servidor.php';
+include '../servidor.php';
 $server= new servidor();
 session_start();
 
@@ -8,11 +8,13 @@ $id = $_GET['ID'];
 
 $noticia = $server->TraigoNoticias($id);
 
+echo '
 
 
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv =»Cache-Control» content =»no-cache»/>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,7 +28,6 @@ echo '<!DOCTYPE html>
     <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     <script src="/ChessUY/Usuarios/Periodista/js/function-noticias.js"></script>
-    <script src="/ChessUY/Usuarios/Periodista/js/jquery.richtext.js"></script>
 
     <link
       rel="shortcut icon"
@@ -34,7 +35,6 @@ echo '<!DOCTYPE html>
       type="image/x-icon"
     />
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
-    <link rel="stylesheet" href="/ChessUY/Usuarios/Periodista/css/richtext.css">
 
     <title>ChessUY | Noticia</title>
   </head>
@@ -49,11 +49,10 @@ echo '<!DOCTYPE html>
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
         <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
-        
       </video>
-    </div>
+    </div>';
 
-    <section class="noticia-wrapper2">
+    echo '<section class="noticia-wrapper2">
       <div class="noticia">
         <div class="logo-img">
           <img
@@ -62,26 +61,10 @@ echo '<!DOCTYPE html>
           />
         </div>
         <hr />
-
         <div class="noticia-body">
-
-        <h1 class="body-titulo">Editar Noticia</h1>
-        <hr>
-
           <div class="header">
-            <div class="titulo">
-                <h1 id="titulo-text">'. $noticia[0]['Titulo'] .'</h1>
-                <input id="titulo-input" type="text" name="Titulo" placeholder="Titulo de la Noticia">
-                <button class="editar-pencil" id="titulo-editar"><i class="fas fa-pencil-alt"></i></button>
-                <button class="editar-guardar" id="titulo-guardar"><i class="fas fa-save"></i></button>
-            </div>
-
-            <div class="subtitulo">
-                <h2 id="subtitulo-text">'. $noticia[0]['Descripcion'] .'</h2>
-                <input id="subtitulo-input" type="text" name="Subtitulo" placeholder="Subtitulo de la Noticia">
-                <button class="editar-pencil" id="subtitulo-editar"><i class="fas fa-pencil-alt"></i></button>
-                <button class="editar-guardar" id="subtitulo-guardar"><i class="fas fa-save"></i></button>
-            </div>
+            <h1>'. $noticia[0]['Titulo'] .'</h1>
+            <h2>'. $noticia[0]['Descripcion'] .'</h2>
           </div>
 
           <div class="body">
@@ -89,24 +72,26 @@ echo '<!DOCTYPE html>
             <div class="noticia-img">
               <img src="/ChessUY/media/images/Noticia.png" alt="">
             </div>
-            <input type="file" id="img" name="img" accept="image/*">
-            <input type="text" id="RichText">
 
-          </div>
-          <div class="noticia-buttons">';
+            <div class="noticia-info">'. $noticia[0]['Informacion'] .'</div>
 
-              session_start();
-              $nombre = $_SESSION['usuario'];
-              $nombre2 = "'$nombre'";
+          </div>';
 
-              echo '<button onclick="guardar('.$nombre2.')"><i class="fas fa-save"></i> Guardar</button>';
+          if(isset($_SESSION['tipo'])){
+            if($_SESSION['tipo'] == 0 || $_SESSION['tipo'] == 3){
 
-          echo '</div>
+              echo '<div class="noticia-buttons">
+                      <button class="editar" onclick="editar('.$id.')"><i class="fas fa-edit"></i> Editar</button>
+                      <button class="eliminar" onclick="eliminarNoticia(1)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </div>';
+            }
+          }
+          echo '
         </div>
       </div>
-    </section>
+    </section>';
 
-    <section class="anuncio">
+    echo '<section class="anuncio">
       <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
       <p>Este espacio está reservado para anuncios.</p>
     </section>
@@ -114,6 +99,3 @@ echo '<!DOCTYPE html>
     <div id="footer"></div>
   </body>
 </html>';
-
-?>
-
