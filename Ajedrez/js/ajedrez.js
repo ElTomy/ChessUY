@@ -2147,4 +2147,24 @@ function ActualizarEstadisticas(){
            console.log(data)
         }
         });
-}
+    }
+    window.addEventListener("load",function(){
+        document.getElementById("movimiento").addEventListener("click",SondioFondo);
+        document.getElementById("movimiento").addEventListener("click",SilenciarSonido);			
+    });
+    
+    function SondioFondo(){
+        var sonido = document.createElement("iframe");
+        sonido.setAttribute("src","/chessuy/media/audio/Background.mp3");
+        document.body.appendChild(sonido);
+        document.getElementById("movimiento").removeEventListener("click",SondioFondo);
+    }
+    
+    function SilenciarSonido(){
+        var iframe = document.getElementsByTagName("iframe");
+    
+        if (iframe.length > 0){
+            iframe[0].parentNode.removeChild(iframe[0]);
+            document.getElementById("movimiento").addEventListener("click",SondioFondo);
+        }
+    }
