@@ -460,8 +460,8 @@ function seleccionar(x,y){
                 }
             }
         }
-        SonidoPiezas(x,y);
-        SilenciarPieza(x,y);
+        //SonidoPiezas(x,y);
+        //SilenciarPieza(x,y);
         seleccionado = null;
         resetMovimientos(); 
    
