@@ -460,7 +460,8 @@ function seleccionar(x,y){
                 }
             }
         }
-       
+        SonidoPiezas(x,y);
+        SilenciarPieza(x,y);
         seleccionado = null;
         resetMovimientos(); 
    
@@ -2148,7 +2149,7 @@ function ActualizarEstadisticas(){
         }
         });
     }
-    window.addEventListener("load",function(){
+    /*window.addEventListener("load",function(){
         document.getElementById("movimiento").addEventListener("click",SondioFondo);
         document.getElementById("movimiento").addEventListener("click",SilenciarSonido);			
     });
@@ -2168,3 +2169,17 @@ function ActualizarEstadisticas(){
             document.getElementById("movimiento").addEventListener("click",SondioFondo);
         }
     }
+    function SonidoPiezas(x,y){
+        var sonido = document.createElement("iframe");
+        sonido.setAttribute("src","/chessuy/media/audio/chess-.mp3");
+        document.body.appendChild(sonido);
+        document.getElementById("chat").removeEventListener("click",SonidoPiezas);
+    }
+    function SilenciarPieza(x,y){
+        var iframe = document.getElementsByTagName("iframe");
+    
+        if (iframe.length > 0){
+            iframe[0].parentNode.removeChild(iframe[0]);
+            document.getElementById("chat").addEventListener("click",SonidoPiezas);
+        }
+    }*/
