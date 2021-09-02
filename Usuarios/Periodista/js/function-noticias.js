@@ -2,6 +2,7 @@
  $(document).ready(function () {
 
     $('#RichText').richText();
+    $('#RichText').val("<div>asd</div>")
 
     /*
 
@@ -84,7 +85,7 @@
  });
 
 function editar(id_noticia){
-    location.href = "/ChessUY/Usuarios/Periodista/php/editarNoticia.php";
+    location.href = "/ChessUY/Usuarios/Periodista/php/editarNoticia/" + id_noticia;
 }
 
 function prueba(usuario){
