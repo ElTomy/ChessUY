@@ -264,7 +264,12 @@ function envaPHP(preset) {
                 var finInsc = reserv[1].slice(4);
                 var comTorn = reserv[2].slice(4);
             }
+        } else {
+            var comInsc = 0;
+            var finInsc = 0;
+            var comTorn = 0;
         }
+
         var eloMax = setVar('eloMax', 'def');
         var eloMin = setVar('eloMin', 'def');
         var edaMax = setVar('edaMax', 'def');
