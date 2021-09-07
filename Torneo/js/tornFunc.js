@@ -366,6 +366,7 @@ function envaPHP(preset) {
 }
 
 function setVar(vari, modo) {
+    
     if(modo == 'simple') {
         if(document.getElementById(vari).value == "") {
             vari = null;
@@ -379,7 +380,21 @@ function setVar(vari, modo) {
             vari = null;
             transf = false;
         } else {
-            vari = document.getElementById(vari).value;
+            if(vari == 'tempDesc' || vari == 'tempJug' || vari == 'partDia'){
+                var numeros = /[0-9]/gi;
+                var letras = /[A-Z]/gi;
+                var h = document.getElementById(vari).value;
+              
+                if(h.match(numeros) && !h.match(letras) ){
+                    console.log("tiene numeros y no letras")
+                    vari = document.getElementById(vari).value;
+                }else{
+                console.log("tiene letras")
+                vari = null
+                transf = false;
+            }}else{
+                vari = document.getElementById(vari).value;
+            }
         }
     }
     if(modo == "def") {
