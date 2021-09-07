@@ -703,6 +703,30 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function InfoPartida($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL InfoPartida(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($ID_Torneo, $Jugador1, $Jugador2, $Fecha, $ronda);
+            while ($stmts->fetch()) {
+                $data = array('ID_Torneo' => $ID_Torneo, 'Jugador1' => $Jugador1, 'Jugador2' => $Jugador2, 'Fecha' => $Fecha, 'ronda' => $ronda);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function TraigoPartidos(){
         $conn = $this->conectar();
         $info = array();
