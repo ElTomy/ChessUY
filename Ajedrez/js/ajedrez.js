@@ -2074,7 +2074,6 @@ function init(){
     }
 
     function sendResultado(e){
-
         switch(e){
             case 1:
                 //VICTORIA
@@ -2128,7 +2127,6 @@ function init(){
         }
     }
     function sendMessage(e) {
-        
         if(e == 1){
             guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
@@ -2159,21 +2157,46 @@ function init(){
 
     function receiveMessage(e) {
         var jsonMessage = JSON.parse(e.data);
-        var json2 = jsonMessage['message']
         if(jsonMessage.type === "onlineUsers"){
+            var count = 0;
+                var usuarios = [];
+                $.each(jsonMessage.onlineUsers, function (key, val) {
+                    if (count === 0) {
+                        usuarios.push(val)
+                    } else {
+                        usuarios.push(val)
+                    }
+                    count++;
+                });
+                console.log(usuarios)
+
+                if(usuarios.length == 1){
+                    $.ajax({
+                        async: false,
+                        url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+                        type: "POST",
+                        data: {action:'borrar'},
+                        success: function (data) {
+                           console.log("borro")
+                        }
+                        });
+                }
             $.ajax({
                 url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
-                data: {jugador2:jugador2},
+                data: {},
                 success: function (data) {
-                    console.log("busco : " + data)
+                    console.log("busco", data)
                     if(data == 'true'){
                         $(".modal").hide();
+                    }else if(data == 'false'){
+                        $(".modal").show();
                     }
                 }
                 });
 
         }else if (jsonMessage.type === "message") {
+        var json2 = jsonMessage['message']
             tipo = 0;
             if(json2.includes("victoria")){
                 Derrota();
