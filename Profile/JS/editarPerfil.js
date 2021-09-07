@@ -1,3 +1,5 @@
+var numeros = /[0-9]/gi;
+var letras = /[A-Z]/gi;
 function guardar(usuario_actual){
 
     var Usuario = $('#Usuario').val();
@@ -9,8 +11,7 @@ function guardar(usuario_actual){
     var Documento = $('#Documento').val();
     var Celular = $('#Celular').val();
 
-    var numeros = /[0-9]/gi;
-    var letras = /[A-Z]/gi;
+  
 
     if(Nombre == "" || Apellido == "" || Institucion == "" || Año == "" || Documento == "" || Celular == "" || Usuario == "" || Email == ""){
         $.ajax({
@@ -96,32 +97,44 @@ function contraseña(usuario){
           }
         });
     }else{
-        $.ajax({
-            url: "/ChessUY/Profile/PHP/contraseña.php",
-            type: "POST",
-            data: { Usuario: usuario, ContraActual: contraActual, Contra: contraNueva},
-            success: function (data) {
-                if(data == 1){
-                    $.ajax({
-                        url: "/ChessUY/Modal/modal.php",
-                        type: "POST",
-                        data: { numero_mensaje: 16},
-                        success: function (data) {
-                            document.getElementById("modal").innerHTML = data;
-                        }
-                      });
-                }else if(data == 0){
-                    $.ajax({
-                        url: "/ChessUY/Modal/modal.php",
-                        type: "POST",
-                        data: { numero_mensaje: 17},
-                        success: function (data) {
-                            document.getElementById("modal").innerHTML = data;
-                        }
-                      });
+        if(contraNueva.length > 8 && contraNueva.match(numeros) && contraNueva.match(letras)){   
+            $.ajax({
+                url: "/ChessUY/Profile/PHP/contraseña.php",
+                type: "POST",
+                data: { Usuario: usuario, ContraActual: contraActual, Contra: contraNueva},
+                success: function (data) {
+                    if(data == 1){
+                        $.ajax({
+                            url: "/ChessUY/Modal/modal.php",
+                            type: "POST",
+                            data: { numero_mensaje: 16},
+                            success: function (data) {
+                                document.getElementById("modal").innerHTML = data;
+                            }
+                          });
+                    }else if(data == 0){
+                        $.ajax({
+                            url: "/ChessUY/Modal/modal.php",
+                            type: "POST",
+                            data: { numero_mensaje: 17},
+                            success: function (data) {
+                                document.getElementById("modal").innerHTML = data;
+                            }
+                          });
+                    }
                 }
-            }
-          });
+              });
+        }
+        else{
+            $.ajax({
+                url: "/ChessUY/Modal/modal.php",
+                type: "POST",
+                data: { numero_mensaje: 8},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+              });
+        }
     }
 }
 
