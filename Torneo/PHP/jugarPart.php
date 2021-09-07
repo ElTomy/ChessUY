@@ -1,6 +1,6 @@
 <?php
 
-include '../../servidor.php';
+/*include '../../servidor.php';
 $server = new servidor();
 session_start();
 $idTorneo = $_POST['tornID'];
@@ -8,7 +8,7 @@ $idTorneo = $_POST['tornID'];
 for($i) {
     $partAgen = $server->InfoPartidasAgendadas($i);
     if
-}
+}*/
 
 
 echo "
@@ -16,7 +16,7 @@ echo "
     <span></span>
     <span></span>
     <span></span>
-    <i class='fas fa-chess-knight'></i>Torneo
+    <i class='fas fa-trophy'></i>Torneo
 ";
 
 ?>

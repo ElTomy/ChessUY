@@ -1,16 +1,4 @@
-<?php
-
-include '../../../servidor.php';
-$server= new servidor();
-session_start();
-
-$id = $_GET['ID'];
-
-$noticia = $server->TraigoNoticias($id);
-
-
-
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,7 +24,7 @@ echo '<!DOCTYPE html>
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
     <link rel="stylesheet" href="/ChessUY/Usuarios/Periodista/css/richtext.css">
 
-    <title>ChessUY | Noticia</title>
+    <title>ChessUY | Crear Noticia</title>
   </head>
   <body>
     <div id="header"></div>
@@ -53,6 +41,8 @@ echo '<!DOCTYPE html>
       </video>
     </div>
 
+    <div id="modal"></div>
+
     <section class="noticia-wrapper2">
       <div class="noticia">
         <div class="logo-img">
@@ -61,47 +51,62 @@ echo '<!DOCTYPE html>
             alt=""
           />
         </div>
+
         <hr />
 
-        <div class="noticia-body">
+        <div class="crear-noticia-body">
 
-        <h1 class="body-titulo">Editar Noticia</h1>
+        <h1 class="body-titulo">Crear Noticia</h1>
         <hr>
 
           <div class="header">
             <div class="titulo">
-                <h1 id="titulo-text">'. $noticia[0]['Titulo'] .'</h1>
                 <input id="titulo-input" type="text" name="Titulo" placeholder="Titulo de la Noticia">
-                <button class="editar-pencil" id="titulo-editar"><i class="fas fa-pencil-alt"></i></button>
-                <button class="editar-guardar" id="titulo-guardar"><i class="fas fa-save"></i></button>
             </div>
 
             <div class="subtitulo">
-                <h2 id="subtitulo-text">'. $noticia[0]['Descripcion'] .'</h2>
                 <input id="subtitulo-input" type="text" name="Subtitulo" placeholder="Subtitulo de la Noticia">
-                <button class="editar-pencil" id="subtitulo-editar"><i class="fas fa-pencil-alt"></i></button>
-                <button class="editar-guardar" id="subtitulo-guardar"><i class="fas fa-save"></i></button>
             </div>
           </div>
 
           <div class="body">
 
-            <div class="noticia-img">
-              <img src="/ChessUY/media/images/Noticia.png" alt="">
+          <!--<div class="Foto">
+            <div id="drop_file_zone" ondrop="upload_file(event,1)" ondragover="return false" style="width: 200px; height: 100px;">
+                <div id="drag_upload_file">
+                    <p>Arrastra y suelta el archivo aquí</p>                    
+                </div>
             </div>
-            <input type="file" id="img" name="img" accept="image/*">
+            <div class="Foto" id="fprincipal">
+              
+            </div>
+          </div>
+
+            <div class="Foto">
+              <form action="uploadIMG.php" method="post" enctype="multipart/form-data">
+                <input type="file" accept="image/x-png,image/jpg,image/jpeg" onchange="cambiar()" name="fileToUpload" id="fileToUpload1" />
+                <label for="fileToUpload"><i class="fa">&#xf03e;</i> Seleccionar Imagen</label><br>
+                  <label>
+                    <input type="submit" class="button" hidden="hidden">Subir Imagen
+                  </label>
+              </form>
+            </div>
+            <p class="noticia-desc">
+                Aquí podrá subir una imagen para la noticia, el formato de la imagen debe ser JPG / JPEG / PNG.
+            </p>-->
+
             <input type="text" id="RichText">
 
           </div>
-          <div class="noticia-buttons">';
-
+          <div class="noticia-buttons">
+            <?php
               session_start();
               $nombre = $_SESSION['usuario'];
               $nombre2 = "'$nombre'";
 
-              echo '<button onclick="guardar('.$nombre2.')"><i class="fas fa-save"></i> Guardar</button>';
-
-          echo '</div>
+              echo '<button onclick="crear('.$nombre2.')"><i class="fas fa-plus-circle"></i> Crear</button>';
+            ?>
+          </div>
         </div>
       </div>
     </section>
@@ -113,7 +118,4 @@ echo '<!DOCTYPE html>
 
     <div id="footer"></div>
   </body>
-</html>';
-
-?>
-
+</html>

@@ -24,6 +24,7 @@
     <title>ChessUY | Championship</title>
   </head>
   <body>
+    <audio src="/chessuy/media/audio/Background.mp3" autoplay="true" loop="true"></audio>
     <div id="header"></div>
     <div id="modal"></div>
     <div class="loader-wrapper">
@@ -91,7 +92,7 @@
               </div>
               <div class="ajedrez-buttons">
                   <button onclick="Acuerdo_Mutuo()"><i class="fas fa-border-all"></i> Tablas</button>
-                  <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
+                  <button onclick="Derrota(),this.disabled='disabled'"><i class="fas fa-flag"></i> Rendirse</button>
               </div>
           </div>
         </div>
