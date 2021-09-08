@@ -2186,11 +2186,17 @@ function init(){
                 type: "POST",
                 data: {},
                 success: function (data) {
-                    console.log("busco", data)
                     if(data == 'true'){
                         $(".modal").hide();
                     }else if(data == 'false'){
-                        $(".modal").show();
+                        $.ajax({
+                            url: "/ChessUY/Modal/modalDesconeccion.php",
+                            type: "POST",
+                            data: {jugador2:jugador2},
+                            success: function (data) {
+                                document.getElementById("modal").innerHTML = data;
+                            }
+                        });   
                     }
                 }
                 });
