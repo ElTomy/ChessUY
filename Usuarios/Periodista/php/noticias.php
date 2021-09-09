@@ -22,16 +22,16 @@ echo '
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-    <script src="/ChessUY/Usuarios/Periodista/js/function-noticias.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Usuarios/Periodista/js/function-noticias.js"></script>
 
     <link
       rel="shortcut icon"
-      href="/ChessUY/media/svg/Logo/Favicon.svg"
+      href="/cyberhydra/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
+    <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
     <title>ChessUY | Noticia</title>
   </head>
@@ -45,7 +45,7 @@ echo '
     <div class="landing-video">
       <div class="background-opacity"></div>
       <video autoplay="" loop="" muted="">
-        <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
+        <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>';
 
@@ -53,7 +53,7 @@ echo '
       <div class="noticia">
         <div class="logo-img">
           <img
-            src="/ChessUY/media/svg/Logo/ChessUY_NewsForDarkVersion.svg"
+            src="/cyberhydra/media/svg/Logo/ChessUY_NewsForDarkVersion.svg"
             alt=""
           />
         </div>
@@ -67,7 +67,7 @@ echo '
           <div class="body">
 
             <div class="noticia-img">
-              <img src="/ChessUY/media/images/Noticia.png" alt="">
+              <img src="/cyberhydra/media/images/Noticia.png" alt="">
             </div>
 
 

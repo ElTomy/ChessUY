@@ -10,7 +10,7 @@ $usuario2 = "'$usuario'";
 if($usuario !== $_SESSION['usuario']){
   if(isset($_SESSION['tipo'])){
     if($_SESSION['tipo'] !== 0){
-      header('Location: /ChessUY/');
+      header('Location: /cyberhydra/');
     }
     if($_SESSION['tipo'] == 0){
       $disabled = "";
@@ -18,7 +18,7 @@ if($usuario !== $_SESSION['usuario']){
       $disabled = "disabled";
     }
   }else{
-    header('Location: /ChessUY/');
+    header('Location: /cyberhydra/');
   }
 }else{
   if($_SESSION['tipo'] == 0){
@@ -50,9 +50,9 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-    <script src="/ChessUY/Profile/JS/editarPerfil.js"></script>
+    <script src="/cyberhydra/Javascript/Loader.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Profile/JS/editarPerfil.js"></script>
 
     
     <link
@@ -97,7 +97,7 @@ $tipo = array("<i class='fas fa-star'></i> Administrador", "<i class='fas fa-che
                             <div class="editarperfil-img" style="background-color: '. $usuario_info['ColorFondo'] .'">
                                 <i class="' . $usuario_info['Icono'] . '" style="color: '. $usuario_info['ColorIcono'] .'"></i>
                             </div>
-                            <a href="/ChessUY/Profile/Editar/Avatar/Perfil/'.$usuario.'" class="editarpefil-img-hover">
+                            <a href="/cyberhydra/Profile/Editar/Avatar/Perfil/'.$usuario.'" class="editarpefil-img-hover">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </div>

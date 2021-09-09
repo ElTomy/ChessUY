@@ -1,8 +1,8 @@
 window.onload = function(){
     estadisticasInicial()
     
-    $("#torn-InscAct").load("/ChessUY/Torneo/PHP/mostTorn.php");
-    $("#torn-Act").load("/ChessUY/Torneo/PHP/tornsAct.php");
-    $("#partiTorn").load("/ChessUY/Torneo/PHP/jugarPart.php");
+    $("#torn-InscAct").load("/cyberhydra/Torneo/PHP/mostTorn.php");
+    $("#torn-Act").load("/cyberhydra/Torneo/PHP/tornsAct.php");
+    $("#partiTorn").load("/cyberhydra/Torneo/PHP/jugarPart.php");
 
 };

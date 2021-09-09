@@ -52,7 +52,7 @@ for($i=0;$i<count($torneos);$i++) {
         echo "
         <div class='torneo'>
             <div class='torneo-left-side'>
-                <img src='/ChessUY/media/images/Trofeo.png'>
+                <img src='/cyberhydra/media/images/Trofeo.png'>
             </div>
             <div class='torneo-right-side'>
                 <h1>Nombre del Torneo</h1>

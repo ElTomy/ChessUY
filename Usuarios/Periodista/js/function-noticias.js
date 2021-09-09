@@ -85,7 +85,7 @@
  });
 
 function editar(id_noticia){
-    location.href = "/ChessUY/Usuarios/Periodista/php/editarNoticia/" + id_noticia;
+    location.href = "/cyberhydra/Usuarios/Periodista/php/editarNoticia/" + id_noticia;
 }
 
 function prueba(usuario){
@@ -117,7 +117,7 @@ function crear(usuario){
         console.log("hola");
         $.ajax({
             type: "POST",
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             data: { numero_mensaje: 18},
             success: function (data) {
                 document.getElementById("modal").innerHTML = data;
@@ -126,13 +126,13 @@ function crear(usuario){
     }else{
         $.ajax({
             type: "POST",
-            url: "/ChessUY/Usuarios/Periodista/PHP/crear.php",
+            url: "/cyberhydra/Usuarios/Periodista/PHP/crear.php",
             data: {Usuario: usuario, Titulo: titulo, Descripcion: subtitulo, Informacion: contenido, img: imagen},
             success: function (response) {
                 console.log(response);
                 $.ajax({
                     type: "POST",
-                    url: "/ChessUY/Modal/modal.php",
+                    url: "/cyberhydra/Modal/modal.php",
                     data: { numero_mensaje: 19},
                     success: function (data) {
                         document.getElementById("modal").innerHTML = data;
@@ -187,7 +187,7 @@ function ajax_file_upload(file_obj,tipo) {
         form_data.append('tipo',tipo);//tipo 1 es imagen principal, se graba en datosProyecto la url
         $.ajax({
             type: 'POST',
-            url: '/ChessUY/Usuarios/Periodista/imagenes_noticias/uploadIMG.php',
+            url: '/cyberhydra/Usuarios/Periodista/imagenes_noticias/uploadIMG.php',
             contentType: false,
             processData: false,
             data: form_data,
@@ -203,7 +203,7 @@ function TraigoFoto(idp, tipo){
  
     $.ajax({
         type: 'POST',
-        url: '/ChessUY/Usuarios/Periodista/imagenes_noticias/downloadIMG.php',
+        url: '/cyberhydra/Usuarios/Periodista/imagenes_noticias/downloadIMG.php',
         data: {idp: idp, tipo: tipo},
         success:function(msg) {
           

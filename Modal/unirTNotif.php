@@ -10,7 +10,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Te has unido al torneo</h1>
@@ -31,7 +31,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Ya formas parte de un torneo</h1>
@@ -52,7 +52,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Desafortunadamente no llegaste a tiempo</h1>
@@ -73,7 +73,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Hubo un error</h1>
@@ -94,7 +94,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>No esta logueado</h1>
@@ -115,7 +115,7 @@ if(isset($_POST['exec'])) {
                 "<div class='modal'>
                     <div class='modal-wrapper'>
                         <div class='modal-logo'>
-                            <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                            <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                         </div>
                         <div class='modal-content'>
                             <h1>Su puntaje ELO es inadecuado para este torneo</h1>
@@ -136,7 +136,7 @@ if(isset($_POST['exec'])) {
                     "<div class='modal'>
                         <div class='modal-wrapper'>
                             <div class='modal-logo'>
-                                <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                                <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                             </div>
                             <div class='modal-content'>
                                 <h1>Su edad es inadecuada para este torneo</h1>
@@ -157,7 +157,7 @@ if(isset($_POST['exec'])) {
             "<div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Te has unido al torneo</h1>

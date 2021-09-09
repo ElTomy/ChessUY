@@ -7,7 +7,7 @@ $usuario = $_GET['Usuario'];
 if($usuario !== $_SESSION['usuario']){
   if(isset($_SESSION['tipo'])){
     if($_SESSION['tipo'] !== 0){
-      header('Location: /ChessUY/');
+      header('Location: /cyberhydra/');
     }
     if($_SESSION['tipo'] == 0){
       $disabled = "";
@@ -15,7 +15,7 @@ if($usuario !== $_SESSION['usuario']){
       $disabled = "disabled";
     }
   }else{
-    header('Location: /ChessUY/');
+    header('Location: /cyberhydra/');
   }
 }
 

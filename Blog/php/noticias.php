@@ -13,7 +13,7 @@ for($x = 0; $x < $noticialength; $x++){
 
     $noticias .= '  <div class="noticia">
                         <div class="noticia-img">
-                            <img src="/ChessUY/media/images/Noticia.png" alt="" />
+                            <img src="/cyberhydra/media/images/Noticia.png" alt="" />
                         </div>
                         <div class="noticia-body">
                             <h1>'.$noticia[$x]['Titulo'].'</h1>

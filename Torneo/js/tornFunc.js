@@ -553,13 +553,13 @@ function setVar(vari, modo) {
 
 function uniraBD(tornID) {
     $.ajax({
-        url: "/ChessUY/Torneo/PHP/uniraTorn.php",
+        url: "/cyberhydra/Torneo/PHP/uniraTorn.php",
         type: "post",
         data: {tornID : tornID},
         success: function (exec) {
             alert(exec);
             $.ajax({
-                url: "/ChessUY/Modal/unirTNotif.php",
+                url: "/cyberhydra/Modal/unirTNotif.php",
                 type: "post",
                 data: {exec : exec},
                 success: function (data) {

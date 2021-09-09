@@ -24,7 +24,7 @@
     <title>ChessUY | Championship</title>
   </head>
   <body>
-    <!--<audio src="/chessuy/media/audio/Background.mp3" autoplay="true" loop="true"></audio>-->
+    <!--<audio src="/cyberhydra/media/audio/Background.mp3" autoplay="true" loop="true"></audio>-->
     <div id="header"></div>
     <div id="modal"></div>
     <div class="loader-wrapper">

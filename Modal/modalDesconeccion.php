@@ -2,7 +2,7 @@
     $modal = "  <div class='modal'>
                 <div class='modal-wrapper'>
                     <div class='modal-logo'>
-                        <img src='/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
+                        <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
                         <h1>Esperando</h1>
@@ -12,7 +12,7 @@
                         </div>
                         <p>".$_POST['jugador2']." se a desconectado!</p>
                         <p>Puedes esperalo a que se reconecte o volver al menu.</p>
-                        <a href='/ChessUY/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
+                        <a href='/cyberhydra/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
                         </div>
                 </div>
             </div>";
