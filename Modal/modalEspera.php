@@ -10,7 +10,7 @@
                             <i class='fas fa-spinner' style='color: #ffaa00; animation: spin 3s infinite linear; font-size:200px'></i>
                           </div>
                         </div>
-                        <p>Esperando a que se conecte un jugador</p>
+                        <p class='modal-p'>Esperando a que se conecte un jugador</p>
                         </div>
                 </div>
             </div>";

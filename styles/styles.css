@@ -648,6 +648,11 @@ footer .footer-body .cyberhydra img {
   color: #009dff;
 }
 
+.modal .modal-wrapper .modal-p {
+  color: white;
+  text-align: center;
+}
+
 @-webkit-keyframes modalAnim {
   from {
     -webkit-transform: translateY(-110%);
