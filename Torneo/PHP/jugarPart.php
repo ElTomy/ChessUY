@@ -4,7 +4,6 @@ include '../../servidor.php';
 $server = new servidor();
 $partid = $server->TraigoPartidosTorneo();
 session_start();
-$listo = false;
 
 // Ver si esta en algun torneo y en cual
 if(isset($_SESSION['usuario'])) {
@@ -12,7 +11,7 @@ if(isset($_SESSION['usuario'])) {
     for($i=0;$i<count($partid);$i++) {
         if($partid[$i]['usu1'] == $usuarioLog || $partid[$i]['usu2'] == $usuarioLog && $partid[$i]['Torneo'] != 0) {
             $idTornUnid = $partid[$i]['Torneo'];
-            
+
             // Info adicional del torneo
             $infoAdi = $server->InfoTorneo();
             for($i=0;$i<count($infoAdi);$i++) {

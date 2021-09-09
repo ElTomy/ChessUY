@@ -14,6 +14,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
 
@@ -52,7 +53,7 @@
             <div class="tipo-torneo">
               <h2>Tipo de Torneo:</h2>
               <form>
-                <select name="tipTorn" id="tipTorn" onchange='confTipo(this); cargAgen();'>
+                <select name="tipTorn" id="tipTorn" onchange='confTipo(this);'>
                   <option disabled selected>Selecciona un tipo de torneo</option>
                   <option value="norm">Normal</option>
                   <option value="avan">Avanzado</option>
