@@ -450,7 +450,7 @@ class servidor
         $stmts = $conn->prepare($sql);
 
         if ($stmts->execute()) {
-            
+
             $stmts->store_result();
             $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
             while ($stmts->fetch()) {
@@ -523,7 +523,12 @@ class servidor
             $execute = true;   
         }
         return $execute;
-    }         
+    }   
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //       
     function NuevoLogro($usuario,$Id){
         $conn = $this->conectar();
         $info = array();
@@ -811,6 +816,28 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function InfoPartida($id){
+        $sql = "CALL InfoPartida(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+
+            $stmts->store_result();
+            $stmts->bind_result($ID_Torneo, $Jugador1, $Jugador2, $Fecha, $ronda);
+            while ($stmts->fetch()) {
+                $data = array('ID_Torneo' => $ID_Torneo, 'Jugador1' => $Jugador1, 'Jugador2' => $Jugador2, 'Fecha' => $Fecha, 'ronda' => $ronda);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function BuscoJugador($usuario){
         $conn = $this->conectar();
         $info = array();
@@ -876,6 +903,29 @@ class servidor
             while ($stmts->fetch()) {
                 $data = array('Usuario' => $Usuario);
                 $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoPartidosTorneo(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoPartidosTorneo()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+
+            $stmts->store_result();
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo);
+                                $info[] = $data;
             }
             $stmts->close();
         }

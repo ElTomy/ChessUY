@@ -110,7 +110,7 @@ if(isset($_POST['exec'])) {
             </div>";
             break;
             case 5:
-                //No esta logeado
+                //Puntaje elo inadecaudo
                 $modal =
                 "<div class='modal'>
                     <div class='modal-wrapper'>
@@ -131,7 +131,7 @@ if(isset($_POST['exec'])) {
                 </div>";
                 break;
                 case 6:
-                    //No esta logeado
+                    //Edad inadecuada
                     $modal =
                     "<div class='modal'>
                         <div class='modal-wrapper'>
@@ -160,9 +160,9 @@ if(isset($_POST['exec'])) {
                         <img src='/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg' alt=''>
                     </div>
                     <div class='modal-content'>
-                        <h1>Te has unido al torneo</h1>
+                        <h1>Hackeaste todo guachin</h1>
                         <hr>
-                        <p>Ahora solo falta esperar a que el torneo empiece.</p>
+                        <p>Ahora prepara el ojete.</p>
                         <div class='container'>
                         <div class='card'>
                             <button onclick='cerrar()'>Ok</button>
