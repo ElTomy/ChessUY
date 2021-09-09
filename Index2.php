@@ -64,7 +64,7 @@ $index .='
           </p>
         </div>
 
-        <div class="buttons" style="margin: 0;">
+        <div class="buttons" style="margin: 0; display: flex;">
           <a href="Ajedrez/ajedrez.php">
             <span></span>
             <span></span>
@@ -72,12 +72,8 @@ $index .='
             <span></span>
             <i class="fas fa-chess-knight"></i>Jugar
           </a>
-          <a id="partiTorn">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
+          <div id="partiTorn">
+          </div>
         </div>
       </div>
     </section>';
