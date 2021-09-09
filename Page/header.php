@@ -17,7 +17,7 @@
             }
             
             if(isset($_SESSION['usuario'])){
-                echo '  <a href="/cyberhydra/Inicio">
+                echo '  <a href="/cyberhydra/Index2.php">
                             <img src="/cyberhydra/media/svg/Logo/CyberHydra.svg" alt="">
                         </a> ';
                      

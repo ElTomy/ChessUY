@@ -92,9 +92,9 @@ $index .='
               <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
               <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/cyberhydra/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/cyberhydra/Usuarios/Administrador/Solicitud/pruebasolicitudes.php"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
                 <a href="/cyberhydra/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/cyberhydra/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/cyberhydra/Torneo/PHP/Torneos.php"><i class="fas fa-trophy"></i> Crear Torneo</a>
                 <a href="/cyberhydra/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
             </section>';
