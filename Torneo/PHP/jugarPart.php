@@ -9,8 +9,8 @@ $listo = false;
 // Ver si esta en algun torneo y en cual
 if(isset($_SESSION['usuario'])) {
     $usuarioLog = $_SESSION['usuario'];
-    for($i=1;$i<count($partid);$i++) {
-        if($partid[$i]['usu1'] == $usuarioLog || $partid[$i]['usu2'] == $usuarioLog) {
+    for($i=0;$i<count($partid);$i++) {
+        if($partid[$i]['usu1'] == $usuarioLog || $partid[$i]['usu2'] == $usuarioLog && $partid[$i]['Torneo'] != 0) {
             $idTornUnid = $partid[$i]['Torneo'];
             
             // Info adicional del torneo
@@ -22,7 +22,7 @@ if(isset($_SESSION['usuario'])) {
                     $i = count($infoAdi);
                 }
             }
-
+            
             // Ver si hay una partida para hoy
             $tomyxd = $server->InfoPartida($idTornUnid);
             if($tomyxd[0]['Fecha'] == date('Y-m-d')) {
