@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST['tornID'])) {
+    date_default_timezone_set("America/Montevideo");
     include '../../servidor.php';
     $server = new servidor();
     session_start();

@@ -2,9 +2,21 @@
 include '../../servidor.php';
 session_start();
 $server= new servidor();
-$jugador2 = $_POST['jugador2'];
 $info = $server->BuscoUsuarioOnline();
+$partidos = $server->TraigoPartidos();
+$partidoEncontrado = false;
 $encontrado = false;
+
+foreach ($partidos as $buscoPartido) {
+    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
+     $partidoEncontrado = true;
+     if($buscoPartido['usu1'] == $_SESSION['usuario']){
+            $jugador2 = $buscoPartido['usu2'];
+     }else{
+            $jugador2 = $buscoPartido['usu1'];
+     }
+    }
+}
 
 foreach ($info as $jug2) {
     if($jug2['Usuario'] == $jugador2){
