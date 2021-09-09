@@ -152,9 +152,9 @@ class servidor
     //
     //
     function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
-        $Icono='fas fa-code';
-        $ColorIcono='#f8b703';
-        $ColorFondo='#222222';
+        $Icono='fas fa-user';
+        $ColorIcono='#ffffff';
+        $ColorFondo='#0076be';
         $conn = $this->conectar();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
@@ -443,6 +443,29 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function TraigoPartidos(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoPartidos()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            while ($stmts->fetch()) {
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo);
+                                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function TraigoMisLogros($usuario){
         $conn = $this->conectar();
         $info = array();
@@ -489,6 +512,18 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function UnirsePartidos($idp, $usu, $col2){
+        $conn = $this->conectar();
+        $sql = "CALL UnirsePartidos(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("isi",$idp, $usu, $col2);
+        if($stmts->execute()){
+            $execute = true;   
+        }
+        return $execute;
+    }         
     function NuevoLogro($usuario,$Id){
         $conn = $this->conectar();
         $info = array();
@@ -528,6 +563,23 @@ class servidor
         return $execute;
     }
     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function CrearPartidos($usu, $col1){
+        $conn = $this->conectar();
+        $sql = "CALL CrearPartidos(?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("si",$usu, $col1);
+        if($stmts->execute()){
+            $execute = true;            
+        }
+        return $execute;
+    }
+     //
     //
     /*------------------------------------------------------------------------------------------*/
     //
@@ -609,6 +661,23 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function guardoTablero($Usuario, $Tablero, $turno, $movimientos){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoTablero(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("ssis",$Usuario, $Tablero, $turno, $movimientos);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function TraigoNoticias($id){
         $conn = $this->conectar();
         $info = array();
@@ -650,6 +719,29 @@ class servidor
             $stmts->close();
         }
         return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function traigoTablero($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoTablero(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($Tablero, $Turno, $movimientos);
+            while ($stmts->fetch()) {
+                $data = array('tablero' => $Tablero, 'turno' => $Turno, 'movimientos' => $movimientos);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;;
     }
     //
     //
@@ -703,10 +795,73 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function TraigoPartidos(){
+    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT){
+        $conn = $this->conectar();
+        $sql = "CALL AgendoPartida(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+        $stmts->bind_param("ssssi",$Usuario1, $Usuario2, $Color1, $Color2,$IDT);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoPartida($id){
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL TraigoPartidos()";
+        $sql = "CALL InfoPartida(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($ID_Torneo, $Jugador1, $Jugador2, $Fecha, $ronda);
+            while ($stmts->fetch()) {
+                $data = array('ID_Torneo' => $ID_Torneo, 'Jugador1' => $Jugador1, 'Jugador2' => $Jugador2, 'Fecha' => $Fecha, 'ronda' => $ronda);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BuscoJugador($usuario){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL BuscoJugador(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($Usuario, $icono, $colIcono, $colFondo, $tipo);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario, 'icono' => $icono, 'colIcono' => $colIcono, 'colFondo' => $colFondo, 'tipo' => $tipo);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+     //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoPartidosTorneo(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoPartidosTorneo()";
         $stmts = $conn->prepare($sql);
 
         if ($stmts->execute()) {
@@ -726,16 +881,51 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT){
+    function AgregoUsuarioOnline($usuario){
         $conn = $this->conectar();
-        $sql = "CALL AgendoPartida(?,?,?,?,?)";
+        $sql = "CALL AgregoUsuOnline(?)";
         $stmts = $conn->prepare($sql);
-        $execute = false;
-
-        $stmts->bind_param("ssssi",$Usuario1, $Usuario2, $Color1, $Color2,$IDT);
+        $stmts->bind_param("s", $usuario);
         if($stmts->execute()){
-            $execute = true;
+            return true;
         }
-        return $execute;
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BorroUsuarioOnline($usuario){
+        $conn = $this->conectar();
+        $sql = "CALL BorroUsuOnline(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $usuario);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function BuscoUsuarioOnline(){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL BuscoUsuOnline()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($Usuario);
+            while ($stmts->fetch()) {
+                $data = array('Usuario' => $Usuario);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
     }
 }
