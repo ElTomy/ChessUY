@@ -1,4 +1,4 @@
-class Fixture{
+class Noticias{
     constructor(titulo, descripcion, informacion, podcast, imagen){
     this.titulo=titulo;
     this.descripcion=descripcion;

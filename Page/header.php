@@ -10,6 +10,10 @@
             $Icono = $_SESSION['icono']; 
             $ColorIcono = $_SESSION['coloricono'];
             $ColorFondo = $_SESSION['colorfondo'];
+            }else{
+                $Icono = 'fas fa-user'; 
+                $ColorIcono = '#ffffff';
+                $ColorFondo = '#0076be';
             }
             
             if(isset($_SESSION['usuario'])){
@@ -90,7 +94,7 @@
                     echo "<h2>Invitado</h2>";
                 }
             ?>            
-            <a href="/cyberhydra/index"><i class="fas fa-home"></i> Inicio</a>
+            <a href="/cyberhydra/Index.php"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
                     echo "  <a href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>

@@ -392,24 +392,32 @@ if(modo == 'simple') {
 
 var transf = true;
 
-function envaPHP() {
+function envaPHP(preset) {
     transf = true;
     opt = document.getElementById("tipTorn").value;
     reserv.sort();
     if(opt == 'norm' || opt == 'avan') {
+        var nomTorn = setVar('nomDesc', 'oblig');
         var tempDesc = setVar('tempDesc', 'oblig');
         var tempJug = setVar('tempJug', 'oblig');
         var partDia = setVar('partDia', 'oblig');
         var prem = setVar('prem', 'oblig');
         var hrCom = setVar('hrCom', 'oblig');
-        if(reserv.length < 3) {
-            alert("Asegurese de que las fechas estan seleccionadas");
-            transf = false;
+        if(preset == 0) {
+            if(reserv.length < 3) {
+                alert("Asegurese de que las fechas estan seleccionadas");
+                transf = false;
+            } else {
+                var comInsc = reserv[0].slice(4);
+                var finInsc = reserv[1].slice(4);
+                var comTorn = reserv[2].slice(4);
+            }
         } else {
-            var comInsc = reserv[0].slice(4);
-            var finInsc = reserv[1].slice(4);
-            var comTorn = reserv[2].slice(4);
+            var comInsc = 0;
+            var finInsc = 0;
+            var comTorn = 0;
         }
+
         var eloMax = setVar('eloMax', 'def');
         var eloMin = setVar('eloMin', 'def');
         var edaMax = setVar('edaMax', 'def');
@@ -469,7 +477,9 @@ function envaPHP() {
                     EdadMinima : edaMin,
                     EdadMaxima : edaMax,
                     InicioTorneo : comTorn,
-                    hrCom : hrCom
+                    hrCom : hrCom,
+                    preset : preset,
+                    nomTorn : nomTorn
                   },
             success: function (exec) {
                 $.ajax({
@@ -504,6 +514,7 @@ function envaPHP() {
 }
 
 function setVar(vari, modo) {
+    
     if(modo == 'simple') {
         if(document.getElementById(vari).value == "") {
             vari = null;
@@ -517,7 +528,21 @@ function setVar(vari, modo) {
             vari = null;
             transf = false;
         } else {
-            vari = document.getElementById(vari).value;
+            if(vari == 'tempDesc' || vari == 'tempJug' || vari == 'partDia'){
+                var numeros = /[0-9]/gi;
+                var letras = /[A-Z]/gi;
+                var h = document.getElementById(vari).value;
+              
+                if(h.match(numeros) && !h.match(letras) ){
+                    console.log("tiene numeros y no letras")
+                    vari = document.getElementById(vari).value;
+                }else{
+                console.log("tiene letras")
+                vari = null
+                transf = false;
+            }}else{
+                vari = document.getElementById(vari).value;
+            }
         }
     }
     if(modo == "def") {
@@ -532,6 +557,7 @@ function uniraBD(tornID) {
         type: "post",
         data: {tornID : tornID},
         success: function (exec) {
+            alert(exec);
             $.ajax({
                 url: "/ChessUY/Modal/unirTNotif.php",
                 type: "post",

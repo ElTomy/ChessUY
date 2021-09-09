@@ -1199,6 +1199,85 @@ Loading Screen
   }
 }
 
+.blog{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  h1{
+    color: #0076be;
+    font-size: 30px;
+    margin: 10px;
+  }
+  hr{
+    width: 200px;
+    border: 1px solid #0076be;
+    margin: 10px;
+  }
+  .noticia-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .noticia{
+      background-color: #222;
+      border-radius: 20px;
+      padding: 10px;
+      width: 320px;
+      margin: 10px;
+      .noticia-img{
+        width: 95%;
+        margin: 10px auto;
+        height: 200px;
+        overflow: hidden;
+  
+        img{
+          object-fit: cover;
+          border-radius: 10px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .noticia-body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 20px;
+        h1{
+          color: #009dff;
+          margin: 0 !important;
+        }
+        hr{
+          width: 90%;
+          margin: 10px 0;
+          border: 1px solid #0076be;
+        }
+        h3{
+          color: #ccc;
+        }
+        .autor{
+          color: #ffaa00;
+        }
+        .ver-mas{
+          background-color: #0076be;
+          border: none;
+          width: 120px;
+          height: 40px;
+          border-radius: 30px;
+          color: white;
+          margin: 10px auto;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
 //----------------------------------------------------------
 
 //                     Landing Page
@@ -1924,6 +2003,32 @@ Buscar Jugadores
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    #Torneos{
+      .button-fixture{
+        .boton-fixture{
+          background-color: #0076be;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 120px;
+          height: 40px;
+          border-radius: 2em;
+
+          margin: 0 auto;
+
+          color: white;
+
+          transition: 0.5s;
+        }
+        .boton-fixture:hover {
+          background-color: #009dff;
+        }
+      }
+    }
 
     .search-logo {
       margin-bottom: 20px;
@@ -3303,6 +3408,12 @@ Noticias (Periodista)
     border-radius: 30px;
     margin-bottom: 20px;
 
+    .body-titulo{
+      color: white;
+      font-weight: normal;
+      font-size: 30px;
+    }
+
     .logo-img{
       max-width: 300px;
 
@@ -3314,7 +3425,7 @@ Noticias (Periodista)
       border: 1px solid #0076be;
       margin: 10px 0;
     }
-    .noticia-body{
+    .noticia-body, .crear-noticia-body{
       width: 100%;
       max-width: 800px;
       margin: 20px auto;
@@ -3408,6 +3519,19 @@ Noticias (Periodista)
           margin-top: 10px;
           margin-bottom: 40px
         }
+
+        input[type="file"]{
+          background-color: transparent;
+          border: none;
+          outline: none;
+          border-radius: none;
+          margin: 10px 0;
+          text-align: center;
+        }
+        .noticia-info{
+          color: white;
+          margin: 20px 0;
+        }
       }
       .noticia-buttons{
         display: flex;
@@ -3439,6 +3563,53 @@ Noticias (Periodista)
         .eliminar:hover{
           background-color: #702c2c !important;
           
+        }
+      }
+    }
+    .crear-noticia-body{
+
+      .body-titulo{
+        color: white;
+        font-weight: normal;
+        font-size: 30px;
+      }
+      .header{
+        .titulo{
+          input{
+            display: block !important;
+            border-radius: 15px;
+            font-size: 30px;
+          }
+          input::placeholder{
+            color: #ccc;
+          }
+        }
+        .subtitulo{
+          input{
+            display: block !important;
+            border-radius: 15px;
+          }
+          input::placeholder{
+            color: #ccc;
+          }
+        }
+      }
+      .body{
+        .noticia-img{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: none !important;
+          #img{
+            width: min-content !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+          }
+        }
+        .noticia-desc{
+          text-align: center;
+          color: #0076be !important;
         }
       }
     }

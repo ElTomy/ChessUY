@@ -12,6 +12,7 @@ list($ELO,$Victorias,$Tablas,$Derrotas,$Coronaciones,$Comidas,$Menos_Tiempo,$Men
 $victoria = $_POST['victorias'];
 $Derrota = $_POST['derrotas'];
 $Tabla = $_POST['tablas'];
+$ELOO = $_POST['puntaje'];
 $Tiempo = $_POST['menos_tiempo'];
 $Movimientos = $_POST['menos_movimientos'];
 if($Menos_Tiempo != 0){
@@ -33,7 +34,7 @@ $Coronacione = $Coronacione + $Coronaciones;
 $Comida = $Comida + $Comidas;
 $reloj = $_POST["Reloj"];
 $Campeon = $_POST["Campeon"];
-$server->AgregarEstadistica($Usuario, $ELO, $victoria, $Tabla, $Derrota, $Coronacione, $Comida, $Tiempo, $Movimientos);
+$server->AgregarEstadistica($Usuario, $ELOO, $victoria, $Tabla, $Derrota, $Coronacione, $Comida, $Tiempo, $Movimientos);
 ////////////////////////////////////////////////////////////////////////////////
 // Verifico si desboqueaste logros
 $Logros = [];
