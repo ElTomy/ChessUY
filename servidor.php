@@ -152,9 +152,9 @@ class servidor
     //
     //
     function AgregarUsuario($tipo, $us, $ci, $año, $apellido, $Institucion, $Nombre, $Contacto, $Contraseña, $Nacimiento, $Mail){
-        $Icono='fas fa-code';
-        $ColorIcono='#f8b703';
-        $ColorFondo='#222222';
+        $Icono='fas fa-user';
+        $ColorIcono='#ffffff';
+        $ColorFondo='#0076be';
         $conn = $this->conectar();
         $sql = "CALL AgregarUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
