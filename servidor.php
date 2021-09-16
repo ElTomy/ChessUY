@@ -817,6 +817,8 @@ class servidor
     //
     //
     function InfoPartida($id){
+        $conn = $this->conectar();
+        $info = array();
         $sql = "CALL InfoPartida(?)";
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("i", $id);
