@@ -46,21 +46,20 @@ class Ajedrez implements MessageComponentInterface {
         }
     }
 
-    //cuando te conectas mandas mensaje a todos
     public function sendMessageToAll($msg){
         foreach ($this->clients as $client) {
             $client->send($msg);
         }
     }
 
-    //----------------DESPUES PRUEBO ESTO----------------//
+    //!----------------DESPUES PRUEBO ESTO----------------//
     public function sendMessageToOne($from, $msg, $to){
         foreach ($this->clients as $client) {
             if ($to == $client) {
                 // enviar a un usuario solo
                 $client->send($msg);
             }}}
-    //---------------------------------------------------//
+    //!---------------------------------------------------//
 
     public function onClose(ConnectionInterface $conn){
         $this->clients->detach($conn);

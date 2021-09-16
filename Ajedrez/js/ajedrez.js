@@ -30,7 +30,7 @@ $( document ).ready(function(){
 //
 function armoOnline(){
     CreoTablero();
-    //EXISTE EL PARTIDO
+    //:EXISTE EL PARTIDO
     console.log("asdasd")
     if(partido_encontrado == true){
         traigoTablero();
@@ -58,7 +58,7 @@ function armoOnline(){
          Turno = turno;
       
     }else{
-        //CREA EL PARTIDO
+        //:CREA EL PARTIDO
         PosicionPiezas();
         armoAjedrez();
         guardoTablero();
@@ -357,25 +357,25 @@ function PosicionPiezas(){
             ColocoPieza(Piezas.NPeon,Color.Negro,x,2);
         }
     }
-    //Torres
+    //:Torres
     ColocoPieza(Piezas.BTorre,Color.Blanco,1,blan);
     ColocoPieza(Piezas.NTorre,Color.Negro,1,neg);
     ColocoPieza(Piezas.BTorre,Color.Blanco,8,blan);
     ColocoPieza(Piezas.NTorre,Color.Negro,8,neg);
-    //Caballo
+    //:Caballo
     ColocoPieza(Piezas.BCaballo,Color.Blanco,2,blan);
     ColocoPieza(Piezas.NCaballo,Color.Negro,2,neg);
     ColocoPieza(Piezas.BCaballo,Color.Blanco,7,blan);
     ColocoPieza(Piezas.NCaballo,Color.Negro,7,neg);
-    //Alfil
+    //:Alfil
     ColocoPieza(Piezas.BAlfil,Color.Blanco,3,blan);
     ColocoPieza(Piezas.NAlfil,Color.Negro,3,neg);
     ColocoPieza(Piezas.BAlfil,Color.Blanco,6,blan);
     ColocoPieza(Piezas.NAlfil,Color.Negro,6,neg);
-    //Dama
+    //:Dama
     ColocoPieza(Piezas.BDama,Color.Blanco,4,blan);
     ColocoPieza(Piezas.NDama,Color.Negro,4,neg);
-    //Rey
+    //:Rey
     ColocoPieza(Piezas.BRey,Color.Blanco,5,blan);
     ColocoPieza(Piezas.NRey,Color.Negro,5,neg);
 }
@@ -1239,7 +1239,7 @@ function JaqueRey(x,y, sel){
         var colorR = "rn";
     }
     
-    //Caballo
+    //:Caballo
     //←↑
     if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
     yy = y+1;
@@ -1267,8 +1267,8 @@ function JaqueRey(x,y, sel){
     //↑←
     if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}};
     
-    //----------------------------------------------------------------------------------
-    //Torre y Reina
+    //?----------------------------------------------------------------------------------
+    //:Torre y Reina
     //derecha→
     for(i = 1;i <= 8; i++){
         ix  = i +x;
@@ -1331,8 +1331,8 @@ function JaqueRey(x,y, sel){
             }
         }
     }
-    //----------------------------------------------------------------------------------
-    //Alfil y Reina
+    //?----------------------------------------------------------------------------------
+    //:Alfil y Reina
 
     //ArribaIzquierda↑←
 for(i = 1; i <= 8; i++){
@@ -1402,8 +1402,8 @@ for(i = 1;i <= 8; i++){
     }
 }   
 
-  //----------------------------------------------------------------------------------
-    //Peon y Reina
+  //?----------------------------------------------------------------------------------
+    //:Peon y Reina
     xx = x-1;
     yy = y-1;
     if(col == "n"){
@@ -1454,7 +1454,7 @@ for(i = 1;i <= 8; i++){
 //
 //
 function Jaque(x,y, sel){
-    // llamo a movimiento para generar movimiento en nueva posicion
+    //: llamo a movimiento para generar movimiento en nueva posicion
     Movimientos(x,y, sel);
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
@@ -1653,7 +1653,7 @@ function Mov_Prohibido(x,y,sel){
         var colorAop = "an"; 
     }
     //----------------------------------------------------------------------------------
-    //Torre y Reina
+    //:Torre y Reina
 
     //derecha→
     for(i = 1;i <= 8; i++){
@@ -1779,8 +1779,8 @@ function Mov_Prohibido(x,y,sel){
             }
         }
     }
-//----------------------------------------------------------------------------------
-    //Alfil y Reina
+//?----------------------------------------------------------------------------------
+    //:Alfil y Reina
 
     //ArribaIzquierda↑←
     for(i = 1; i <= 8; i++){
@@ -1921,7 +1921,7 @@ function Mov_Prohibido(x,y,sel){
 function JaqueMate(){
     var jaqueMate = true;
     var F_rey = true;
-    //creo todos los movimientos posibles
+    //:creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
             if(Tablero[p][q].Piezas != null && Tablero[p][q].color != jaque.color){
@@ -1957,12 +1957,12 @@ function JaqueMate(){
     }
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
-            //recorro todos los movimientos
+            //:recorro todos los movimientos
             if(Movimiento[p][q] == true){ 
-                //si existen los movimientos los comparo con el TableroJaque
+                //:si existen los movimientos los comparo con el TableroJaque
                 for(var o = 1; o <= 8; o++){
                     for(var u = 1; u <= 8; u++){
-                        //recorro TableroJaque
+                        //:recorro TableroJaque
                         if(TableroJaque[o][u] == true){
                             if(o == p && u == q){
                                 jaqueMate = false;
@@ -2076,49 +2076,49 @@ function init(){
     function sendResultado(e){
         switch(e){
             case 1:
-                //VICTORIA
+                //:VICTORIA
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "vitoria";
                 conn.send(JSON.stringify(msg));
             break;
             case 2:
-                //DERROTA
+                //:DERROTA
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "derrota";
                 conn.send(JSON.stringify(msg));
             break;
             case 3:
-                //PIDO TABLAS
+                //:PIDO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Pido_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 4:
-                //ACEPTO TABLAS
+                //:ACEPTO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Acepto_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 5:
-                //RECHAZO TABLAS
+                //:RECHAZO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Rechazo_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 6:
-                //TABLAS
+                //:TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 7:
-                //RESPONDO TABLAS
+                //:RESPONDO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Respondo_tablas";
@@ -2335,15 +2335,15 @@ function box(boxcontent){
 //
 //
 function tablas(){
-    //Rey-Haogado
+    //:Rey-Haogado
     Rey_Haogado('b');
     Rey_Haogado('n');
-    //Insuficiencia-de-Piezas
+    //:Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
 function Rey_Haogado(color){
     var tablas = true;
-    //creo todos los movimientos posibles
+    //:creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
             if(Tablero[p][q].Piezas != null && Tablero[p][q].color == color){
@@ -2390,7 +2390,7 @@ function Rey_Haogado(color){
 function Acuerdo_Mutuo(){   
     if(spam < 3 && derrota == 0 && tabla == 0 && victoria == 0){
         spam++;
-        //cambiar a ESPERO
+        //:cambiar a ESPERO
         $.ajax({
             url:  "/ChessUY/Modal/modalEsperoTablas.php",
             type: "POST",

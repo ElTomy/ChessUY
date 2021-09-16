@@ -10,7 +10,5 @@ if(isset($_POST['turno'])){
 if(isset($_POST['movimientos'])){
     $movimientos = $_POST['movimientos'];
 }else{$movimientos = '';}
-//temp 1 
-//temp 2
 echo $server->guardoTablero($_SESSION['usuario'], $tablero, $turno, $movimientos); 
 ?>
