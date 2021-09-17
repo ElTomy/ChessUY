@@ -7,6 +7,7 @@ $partidos = $server->TraigoPartidos();
 $partidoEncontrado = false;
 $encontrado = false;
 
+//:BUSCO SI ESTA CONECTADO EL JUGADOR 2
 foreach ($partidos as $buscoPartido) {
     if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
      $partidoEncontrado = true;
@@ -17,13 +18,15 @@ foreach ($partidos as $buscoPartido) {
      }
     }
 }
-
-foreach ($info as $jug2) {
-    if($jug2['Usuario'] == $jugador2){
-     $encontrado = true;
-     break;
+if($jugador2 == null){
+    $encontrado = null;
+}else{
+    foreach ($info as $jug2) {
+        if($jug2['Usuario'] == $jugador2){
+         $encontrado = true;
+         break;
+        }
     }
 }
-
 echo json_encode($encontrado); 
 ?>

@@ -1,5 +1,13 @@
 $( document ).ready(function(){
     $.ajax({
+        url:  "/ChessUY/Modal/modalEspera.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
+    $.ajax({
         async: false,
         url:  "/ChessUY/Ajedrez/php/buscoPartido.php",
         type: "POST",
