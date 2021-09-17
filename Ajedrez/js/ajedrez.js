@@ -39,7 +39,6 @@ $( document ).ready(function(){
 function armoOnline(){
     CreoTablero();
     //:EXISTE EL PARTIDO
-    console.log("asdasd")
     if(partido_encontrado == true){
         traigoTablero();
         if(numJugador == 1){
@@ -81,9 +80,7 @@ function guardoTablero(){
         url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
         type: "POST",
         data: {tablero: tab2, turno: Turno, movimientos: movs},
-        success: function (data) {
-           console.log("guardado")
-        }
+        success: function (data) {}
       });
 }
 function traigoTablero(){
@@ -95,7 +92,6 @@ function traigoTablero(){
            var dat = JSON.parse(data);
 
            var jug2 = JSON.parse(dat[0]['movimientos'])
-           console.log("movimientos")
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
@@ -159,7 +155,6 @@ function boxHeight(){
     /* 
     Armo Tabla Movimientos     
     */
-   console.log("armo movs")
     $.ajax({
         type: "POST",
         url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
@@ -2061,9 +2056,7 @@ function init(){
             url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
             type: "POST",
             data: {action:'agregar'},
-            success: function (data) {
-               console.log("agregado")
-            }
+            success: function (data) {}
             });
             sendConnection();
         };
@@ -2076,7 +2069,6 @@ function init(){
     }
 
     function sendConnection(e){
-        console.log("conectando")
         name = sessionStorage.getItem('usuario') 
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
     }
@@ -2176,7 +2168,6 @@ function init(){
                     }
                     count++;
                 });
-                console.log(usuarios)
 
                 if(usuarios.length == 1){
                     $.ajax({
@@ -2184,9 +2175,7 @@ function init(){
                         url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
                         type: "POST",
                         data: {action:'borrar'},
-                        success: function (data) {
-                           console.log("borro")
-                        }
+                        success: function (data) {}
                         });
                 }
             $.ajax({
@@ -2253,7 +2242,7 @@ function init(){
                     }
                 });
             }else if(json2.includes("Respondo_tablas")){
-                console.log("respondo")
+                //console.log("respondo")
 
             }else if(json2.includes("tab:")){
                 var tab = json2.slice(4)
@@ -2533,6 +2522,7 @@ function Porcentaje(pieza,cor){
     barraProgreso(barra);
 } 
 function ActualizarEstadisticas(resultado){
+    console.log("actualizo")
     $.ajax({
         url: "/ChessUY/Ajedrez/php/ELO.php",
         type: "POST",
