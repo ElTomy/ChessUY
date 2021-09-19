@@ -1,23 +1,24 @@
 #!/bin/bash
 
 . ./mostLogo.sh
-echo "| Backup, que desea hacer?                           |"
+echo "| Menu de rutinas de backup                          |"
 echo "+----------------------------------------------------+"
 echo ""
-echo "[1] Backup de BD"
-echo "[2] Backup de tabla"
-echo "[3] Rutinas de backup"
-echo "[4] Visualizar crontab"
+echo "[1] Rutina para BD"
+echo "[2] Rutina para tabla"
 echo ""
 echo "[q] Volver"
 echo ""
-read -p ">_ " opc
+read -p ">_ " qbkup
 
-case "$opc" in
-    "1") . ./tecdered/bkup/hacbkup.sh;;
-    "2") . ./tecdered/bkup/tablbkup.sh;;
-    "3") . ./tecdered/bkup/rutbkup.sh;;
-    "4") . ./tecdered/bkup/viscron.sh;;
+case "$qbkup" in
+    "1") . ./tecdered/bkup/rutbkupfunc/hrbkup.sh;;
+    "2") 
+        echo ""
+        echo "De que tabla debe ser el backup?"
+        echo ""
+        read -p ">_ " tabkup
+        . ./tecdered/bkup/rutbkupfunc/hrbkup.sh;;
     "q") . ./shellscript.sh;;
     *)  echo "+-------------------------------------+"
         echo -e "| ${red}Porfavor, ingrese una opcion valida${nc} |"
