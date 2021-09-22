@@ -11,9 +11,9 @@ echo "[4] No especificar"
 echo ""
 echo "[q] Volver"
 echo ""
-read -p ">_ " diabkup
+read -p ">_ " diabkupdec
 
-case "$diabkup" in
+case "$diabkupdec" in
     "1") 
         echo ""
         echo "Que dia del mes?"
@@ -54,9 +54,8 @@ case "$diabkup" in
             sleep 3s
             . ./tecdered/bkup/rutbkupfunc/diabkup.sh
         else
-            . ./tecdered/bkup/rutbkupfunc/acron.sh
+            . ./tecdered/bkup/rutbkupfunc/mesbkup.sh
         fi;;
-    "4") hrbkup="NE"
-        . ./tecdered/bkup/rutbkupfunc/mesbkup.sh;;
+    "4") . ./tecdered/bkup/rutbkupfunc/mesbkup.sh;;
     "q") . ./tecdered/bkup/bkup.sh;;
 esac

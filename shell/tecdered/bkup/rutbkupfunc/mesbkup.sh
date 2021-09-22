@@ -10,9 +10,9 @@ echo "[3] No especificar"
 echo ""
 echo "[q] Volver"
 echo ""
-read -p ">_ " mesbkup
+read -p ">_ " mesbkupdec
 
-case "$mesbkup" in
+case "$mesbkupdec" in
     "1") 
         echo ""
         echo "Que mes?"
@@ -34,7 +34,6 @@ case "$mesbkup" in
         read -p ">_ " meseSbkup
         if [ "$meseSbkup" -eq "$meseSbkup" ] 2>/dev/null
         then
-            mesbkup=null
             . ./tecdered/bkup/rutbkupfunc/acron.sh
         else
             echo ""
@@ -42,7 +41,6 @@ case "$mesbkup" in
             sleep 3s
             . ./tecdered/bkup/rutbkupfunc/mesbkup.sh
         fi;;
-    "3") hrbkup="NE"
-        . ./tecdered/bkup/rutbkupfunc/acron.sh;;
+    "3") . ./tecdered/bkup/rutbkupfunc/acron.sh;;
     "q") . ./tecdered/bkup/bkup.sh;;
 esac

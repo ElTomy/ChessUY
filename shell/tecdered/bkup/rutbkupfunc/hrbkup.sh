@@ -11,48 +11,32 @@ echo "[3]     No especificar"
 echo ""
 echo "[q] Volver"
 echo ""
-read -p ">_ " hrbkup
+read -p ">_ " hrbkupdec
 
-case "$hrbkup" in
+case "$hrbkupdec" in
     "1") 
         echo ""
         echo "Cada cuantas horas?"
         echo ""
         read -p ">_ " hrbkup
-        if [ $hrbkup -gt 23 ] || [ $hrbkup -lt 0 ]
-        then
-            echo ""
-            echo "El numero ingresado no es valido"
-            sleep 3s
-            . ./tecdered/bkup/rutbkupfunc/hrbkup.sh
-        else
-            . ./tecdered/bkup/rutbkupfunc/acron.sh
-        fi;;
+        . ./tecdered/bkup/rutbkupfunc/acron.sh
+
     "2") 
-        hrbkup=null
         echo ""
         echo "Cada cuantos minutos?"
         echo ""
         read -p ">_ " minbkup
-        if [ $minbkup -gt 60 ] || [ $minbkup -lt 0 ]
-        then
-            echo ""
-            echo "El numero ingresado no es valido"
-            sleep 3s
-            . ./tecdered/bkup/rutbkupfunc/hrbkup.sh
-        else
-            . ./tecdered/bkup/rutbkupfunc/acron.sh
-        fi;;
-    "3") hrbkup="NE"
-        . ./tecdered/bkup/rutbkupfunc/diabkup.sh;;
+        . ./tecdered/bkup/rutbkupfunc/acron.sh
+
+    "3") . ./tecdered/bkup/rutbkupfunc/diabkup.sh;;
     "q") . ./tecdered/bkup/bkup.sh;;
 esac
 
 
-if [ $hrbkup == *":"* ]
+if [ $hrbkupdec == *":"* ]
 then
     IFS=':'
-    read -ra arr <<< "$hrbkup"
+    read -ra arr <<< "$hrbkupdec"
 
     if [ ${arr[0]} -gt 23 ] || [ ${arr[0]} -lt 0 ] || [ ${arr[1]} -gt 59 ] || [ ${arr[1]} -lt 0 ]
     then
@@ -60,11 +44,11 @@ then
         echo "La hora que ingreso no es valida"
         sleep 3s
         . ./tecdered/bkup/rutbkupfunc/hrbkup.sh
-    else
-        hrbkup=null
+    else 
         . ./tecdered/bkup/rutbkupfunc/diabkup.sh
     fi
-else
+else if [ "$hrbkupdec" != "1" ] || [ "$hrbkupdec" != "2" ] || [ "$hrbkupdec" != "3" ] [ "$hrbkupdec" != "q" ]
+then
     echo "+-----------------------------------+"
     echo -e "| ${red}Porfavor, ingrese una hora valida${nc} |"
     echo "+-----------------------------------+"
