@@ -15,6 +15,7 @@ $( document ).ready(function(){
         success: function (data) {
             partido = JSON.parse(data)
             numJugador = partido['numJugador'];
+            jugador1 = partido['jugador1'];
             jugador2 = partido['jugador2'];
             turno = partido['turno'];
             col1 = partido['col1'];
@@ -2178,12 +2179,32 @@ function init(){
                         success: function (data) {}
                         });
                 }
+                console.log("jug2" , jugador2)
             $.ajax({
                 url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
                 data: {},
                 success: function (data) {
                     if(data == 'true'){
+                        if(jugador2 == null){
+                            if(usuarios[0] == jugador1){
+                                jugador2 = usuarios[1];
+                            }else if(usuarios[1] == jugador1){
+                                jugador2 = usuarios[0];
+                            }
+
+                            if(jugador2 != null){
+                                $.ajax({
+                                    type: "POST",
+                                    data: {Turno:Turno, jugador2: jugador2},
+                                    url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+                                    success: function (data) {
+                                        document.getElementById("ArmoJugadores").innerHTML = data;
+                                    }
+                                });
+                            }
+                        }
+                        
                         $(".modal").hide();
                     }else if(data == 'false'){
                         $.ajax({
