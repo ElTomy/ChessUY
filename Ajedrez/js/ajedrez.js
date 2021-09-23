@@ -24,6 +24,8 @@ $( document ).ready(function(){
             colJugador = partido['colJugador'];
             blan = partido['blan'];
             neg = partido['neg'];
+            console.log(partido);
+            console.log("NJ",numJugador)
         }
       });
     armoOnline();
@@ -128,6 +130,29 @@ function traigoTablero(){
     }
          
             armoAjedrez();
+        }
+      });
+}
+function guardoJaque(){
+  var jaq = JSON.stringify(jaque);
+  console.log(jaq)
+  console.log("nj",numJugador);
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/guardoJaque.php",
+        type: "POST",
+        data: {numJugador:numJugador, jaq:jaq},
+        success: function (data) {
+            console.log('guardoJaque');
+        }
+      });
+}
+function traigoJaque(){
+    $.ajax({
+        url:  "/ChessUY/Ajedrez/php/traigoJaque.php",
+        type: "POST",
+        data: {numJugador:numJugador},
+        success: function (data) {
+            console.log('traigoJaque', data);
         }
       });
 }
@@ -530,6 +555,7 @@ function seleccionar(x,y){
                                     y: null,
                                 }
                                 resetTableroJaque();
+                                guardoJaque();
                             } 
                         }
                     }
@@ -1997,6 +2023,8 @@ function JaqueMate(){
         victoria++;
         sendResultado(1)
         ActualizarEstadisticas(1);  
+    }else{
+        guardoJaque();
     }
     resetMovimientos();
 }
@@ -2035,9 +2063,7 @@ function Victoria(){
 }
 //
 //
-/*------------------------------------------------------------------------------------------*/
-//
-//
+//:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
     conn = new WebSocket('ws://localhost:8080');
@@ -2179,7 +2205,7 @@ function init(){
                         success: function (data) {}
                         });
                 }
-                console.log("jug2" , jugador2)
+
             $.ajax({
                 url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
@@ -2291,12 +2317,16 @@ function init(){
                     break;
                 case 3:
                     var jaq2 = JSON.parse(jaq);
-
+                    console.log(jaq2);
                     if(jaq2.jaque == true){
                          var jx = 9-jaq2.x;
                          var jy = 9-jaq2.y;
                         Jaque(jx, jy, Jugadas[Turno].Piezas)
                     }else{jaque = jaq2}
+
+                    if(jaque.jaque == null){
+                        guardoJaque();
+                    }else{console.log('no null');}
 
                     break;
                 case 4:
@@ -2308,10 +2338,7 @@ function init(){
         resetMovimientos();
         armoAjedrez();
     };
-    
-//
-//
-/*------------------------------------------------------------------------------------------*/
+//:------------------------------------------------------------------------------------------/
 //
 //
 function inviertoTablero(tab){
@@ -2554,42 +2581,17 @@ function ActualizarEstadisticas(resultado){
                 url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
                 type: "POST",
                 data: {puntaje:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
-                success: function (data) {}
+                success: function (data) {
+                    $.ajax({
+                        url: "/ChessUY/Ajedrez/php/cambioEstado.php",
+                        type: "POST",
+                        data: {numJugador:numJugador},
+                        success: function (data) {
+                            console.log('cambioestado')
+                        }
+                        });
+                }
                 });
         }
         });
-    }
-    /*window.addEventListener("load",function(){
-        document.getElementById("movimiento").addEventListener("click",SondioFondo);
-        document.getElementById("movimiento").addEventListener("click",SilenciarSonido);			
-    });
-    
-    function SondioFondo(){
-        var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","/chessuy/media/audio/Background.mp3");
-        document.body.appendChild(sonido);
-        document.getElementById("movimiento").removeEventListener("click",SondioFondo);
-    }
-    
-    function SilenciarSonido(){
-        var iframe = document.getElementsByTagName("iframe");
-    
-        if (iframe.length > 0){
-            iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("movimiento").addEventListener("click",SondioFondo);
-        }
-    }
-    function SonidoPiezas(x,y){
-        var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","/chessuy/media/audio/chess-.mp3");
-        document.body.appendChild(sonido);
-        document.getElementById("chat").removeEventListener("click",SonidoPiezas);
-    }
-    function SilenciarPieza(x,y){
-        var iframe = document.getElementsByTagName("iframe");
-    
-        if (iframe.length > 0){
-            iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("chat").addEventListener("click",SonidoPiezas);
-        }
-    }*/
+}

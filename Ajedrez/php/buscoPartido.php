@@ -22,13 +22,13 @@ foreach ($partidos as $buscoPartido) {
     }
 }
   if($partidoEncontrado == true){
-    //:carga ese partido
+    //:CARGO EL PARTIDO
     $partido_encontrado = true;
     $colJugador = null;
     $blan = null;
     $neg = null;
   }else{
-    //:busca si hay partido para unirse sino crea uno
+    //:BUSCA SI HAY UN PARTIDO PARA UNIRSE, SI NO CREA UNO
     $numJugador = null;
     $jugador2 = null;
     $turno = null;  
@@ -60,10 +60,10 @@ foreach ($partidos as $buscoPartido) {
         $blan = 8;
         $neg = 1;
       }
-  
+      $numJugador = 2;
       $server->UnirsePartidos($id, $_SESSION['usuario'], $colr2);
     }else{
-     //:crea un juego
+     //:CREA UN JUEGO
      $micolor = random_int(0,1);
      if($micolor == 1){
         $colJugador = 1;
@@ -74,7 +74,8 @@ foreach ($partidos as $buscoPartido) {
         $blan = 1;
         $neg = 8;
     }
-     $server->CrearPartidos($_SESSION['usuario'], $micolor);
+      $numJugador = 1;
+      $server->CrearPartidos($_SESSION['usuario'], $micolor);
     }
   }
 
