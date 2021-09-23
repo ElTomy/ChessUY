@@ -2,7 +2,6 @@
 
 include '../../../servidor.php';
 $server= new servidor();
-session_start();
 
 $id = $_GET['ID'];
 
@@ -26,7 +25,6 @@ echo '<!DOCTYPE html>
     <script src="/ChessUY/Javascript/Loader.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     <script src="/ChessUY/Usuarios/Periodista/js/function-noticias.js"></script>
-    <script src="/ChessUY/Usuarios/Periodista/js/jquery.richtext.js"></script>
 
     <link
       rel="shortcut icon"
@@ -87,10 +85,10 @@ echo '<!DOCTYPE html>
           <div class="body">
 
             <div class="noticia-img">
-              <img src="/ChessUY/media/images/Noticia.png" alt="">
+              <img src="'. $noticia[0]['IMG'] .'" alt="">
             </div>
-            <input type="file" id="img" name="img" accept="image/*">
-            <input type="text" id="RichText">
+            
+            <textarea placeholder="Contenido del Post" name="Contenido" id="contenido" required></textarea>
 
           </div>
           <div class="noticia-buttons">';
@@ -99,7 +97,10 @@ echo '<!DOCTYPE html>
               $nombre = $_SESSION['usuario'];
               $nombre2 = "'$nombre'";
 
-              echo '<button onclick="guardar('.$nombre2.')"><i class="fas fa-save"></i> Guardar</button>';
+              $img = $noticia[0]['IMG'];
+              $img2 = "'$img'";
+
+              echo '<button onclick="guardar('.$nombre2.', '.$id.', '. $img2.')"><i class="fas fa-save"></i> Guardar</button>';
 
           echo '</div>
         </div>
@@ -112,6 +113,13 @@ echo '<!DOCTYPE html>
     </section>
 
     <div id="footer"></div>
+
+    <script src="../../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("contenido");
+      CKEDITOR.instances.contenido.setData("'. $noticia[0]['Informacion'] .'");
+    </script>
+
   </body>
 </html>';
 
