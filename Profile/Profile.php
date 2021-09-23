@@ -31,7 +31,6 @@
     <script src="../Javascript/Loader.js"></script>
     <script src="../Usuarios/js/Usuario.js"></script>
     <script src="../Usuarios/js/function-usuarios.js"></script>
-    <script src="JS/Logros.js"></script>
 
     <link
       rel="shortcut icon"
