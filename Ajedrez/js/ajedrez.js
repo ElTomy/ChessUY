@@ -652,8 +652,6 @@ window.setInterval(function tiempo() {
 
     }
 }, 1000);
-
-
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -2571,6 +2569,7 @@ function Porcentaje(pieza,cor){
 } 
 function ActualizarEstadisticas(resultado){
     console.log("actualizo")
+    console.log('comidas=> ', comidas);
     $.ajax({
         url: "/ChessUY/Ajedrez/php/ELO.php",
         type: "POST",
