@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if cp ../BD/ChessUY.sql ../BD/ChessUY_backup.sql
+if cp ../BD/ChessUY.sql ../BD/ChessUY_backup.sql >/dev/null 2>&1
 then
     echo ""
     echo "+-------------------+"

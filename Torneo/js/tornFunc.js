@@ -123,6 +123,7 @@ function confTipo(opt) {
         data: { opt:opt },
         success: function (html) {
             document.getElementById("hola").innerHTML = html;
+            cargAgen();
         }
     });
 }
@@ -167,12 +168,7 @@ function quehacerRes() {
 }
 
 function cargAgen() {
-    $.ajax({
-        url: "/ChessUY/Torneo/PHP/agenTorn.php",
-        success: function (html) {
-            $("#agenTorn").html(html);
-        }
-    })
+    $("#agenTorn").load("/ChessUY/Torneo/PHP/agenTorn.php");
 }
 
 var date = new Date();

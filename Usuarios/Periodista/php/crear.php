@@ -2,11 +2,35 @@
 include '../../../servidor.php';
 $servidor = new servidor();
 
-$Usuario = $_POST['Usuario'];
-$Titulo = $_POST['Titulo'];
-$Descripcion = $_POST['Descripcion'];
-$Informacion = $_POST['Informacion'];
-$img = $_POST['img'];
+if(isset($_POST['Autor'], $_POST['Titulo'], $_POST['Subtitulo'], $_POST['Contenido'])){
 
-echo json_encode($servidor->CrearNoticia($Usuario, $Titulo, $Descripcion, $Informacion, $img));
+    $Titulo = $_POST['Titulo'];
+    $Subtitulo = $_POST['Subtitulo'];
+    $Contenido = $_POST['Contenido'];
+    $Autor = $_POST['Autor'];
+
+}
+
+if(isset($_FILES['file']['name'])){
+
+    $Imagen = '/ChessUY/Usuarios/Periodista/imagenes_noticias/' . $_FILES['file']['name'];
+
+    if ( $_FILES['file']['error'] > 0 ){
+        echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+    }
+    else {
+        if(move_uploaded_file($_FILES['file']['tmp_name'], '../imagenes_noticias/' . $_FILES['file']['name']))
+        {
+            $funciona = true;
+        }
+    }
+}else{
+    echo "No Funca che.";
+}
+
+if($funciona == true){
+    $noticia = $servidor->CrearNoticia($Autor, $Titulo, $Subtitulo, $Contenido, $Imagen);
+
+    echo "Noticia: " . $noticia;
+}
 ?>

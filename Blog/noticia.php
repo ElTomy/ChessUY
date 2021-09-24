@@ -50,7 +50,11 @@ echo '
       <video autoplay="" loop="" muted="">
         <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
-    </div>';
+    </div>
+    
+    <div id="modal"></div>';
+
+    
 
     echo '<section class="noticia-wrapper2">
       <div class="noticia">
@@ -70,7 +74,7 @@ echo '
           <div class="body">
 
             <div class="noticia-img">
-              <img src="/ChessUY/media/images/Noticia.png" alt="">
+              <img src="'.$noticia[0]['IMG'].'" alt="">
             </div>
 
             <div class="noticia-info">'. $noticia[0]['Informacion'] .'</div>
@@ -82,7 +86,7 @@ echo '
 
               echo '<div class="noticia-buttons">
                       <button class="editar" onclick="editar('.$id.')"><i class="fas fa-edit"></i> Editar</button>
-                      <button class="eliminar" onclick="eliminarNoticia(1)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                      <button class="eliminar" onclick="eliminarNoticia('.$id.')"><i class="fas fa-trash-alt"></i> Eliminar</button>
                     </div>';
             }
           }
