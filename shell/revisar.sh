@@ -1,5 +1,5 @@
 #!/bin/bash
-# Hecho por el seven
+
 if groups $USER | grep -q $1
 then
     case "$1" in
