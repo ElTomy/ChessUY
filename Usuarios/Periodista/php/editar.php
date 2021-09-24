@@ -9,5 +9,6 @@ $Descripcion = $_POST['Descripcion'];
 $Informacion = $_POST['Informacion'];
 $img = $_POST['img'];
 
-$servidor->ModificarNoticia($Usuario, $id, $Titulo, $Descripcion, $Informacion, $img);
+$servidor->ModificarNoticia($Usuario, $Id, $Titulo, $Descripcion, $Informacion, $img);
+
 ?>
