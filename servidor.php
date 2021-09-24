@@ -957,7 +957,7 @@ class servidor
     //
     function traigoJaque($usuario, $jug){
         $conn = $this->conectar();
-        $info = array();
+        $info = 'ERROR';
         $sql = "CALL TraigoJaque(?,?)";
         $stmts = $conn->prepare($sql);
         $stmts->bind_param("si", $usuario, $jug);
@@ -966,12 +966,11 @@ class servidor
             $stmts->store_result();
             $stmts->bind_result($jaque);
             while ($stmts->fetch()) {
-                $data = array('jaque'=> $jaque);
-                $info[] = $data;
+                $info = $jaque;
             }
             $stmts->close();
         }
-        return $info;;
+        return $info;
     }
     //
     //

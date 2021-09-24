@@ -24,8 +24,16 @@ $( document ).ready(function(){
             colJugador = partido['colJugador'];
             blan = partido['blan'];
             neg = partido['neg'];
-            console.log(partido);
-            console.log("NJ",numJugador)
+            //:Veo si habian quedado en jaque
+            $.ajax({
+                url:  "/ChessUY/Ajedrez/php/traigoJaque.php",
+                type: "POST",
+                data: {numJugador:numJugador},
+                success: function (data) {
+                    tjaque = JSON.parse(data);
+                    jaque = tjaque;
+                }
+              });
         }
       });
     armoOnline();
@@ -135,15 +143,11 @@ function traigoTablero(){
 }
 function guardoJaque(){
   var jaq = JSON.stringify(jaque);
-  console.log(jaq)
-  console.log("nj",numJugador);
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/guardoJaque.php",
         type: "POST",
         data: {numJugador:numJugador, jaq:jaq},
-        success: function (data) {
-            console.log('guardoJaque');
-        }
+        success: function (data) {}
       });
 }
 function traigoJaque(){
@@ -151,9 +155,7 @@ function traigoJaque(){
         url:  "/ChessUY/Ajedrez/php/traigoJaque.php",
         type: "POST",
         data: {numJugador:numJugador},
-        success: function (data) {
-            console.log('traigoJaque', data);
-        }
+        success: function (data) {}
       });
 }
 
@@ -2315,7 +2317,6 @@ function init(){
                     break;
                 case 3:
                     var jaq2 = JSON.parse(jaq);
-                    console.log(jaq2);
                     if(jaq2.jaque == true){
                          var jx = 9-jaq2.x;
                          var jy = 9-jaq2.y;
@@ -2324,7 +2325,7 @@ function init(){
 
                     if(jaque.jaque == null){
                         guardoJaque();
-                    }else{console.log('no null');}
+                    }
 
                     break;
                 case 4:
@@ -2568,8 +2569,6 @@ function Porcentaje(pieza,cor){
     barraProgreso(barra);
 } 
 function ActualizarEstadisticas(resultado){
-    console.log("actualizo")
-    console.log('comidas=> ', comidas);
     $.ajax({
         url: "/ChessUY/Ajedrez/php/ELO.php",
         type: "POST",
@@ -2585,9 +2584,7 @@ function ActualizarEstadisticas(resultado){
                         url: "/ChessUY/Ajedrez/php/cambioEstado.php",
                         type: "POST",
                         data: {numJugador:numJugador},
-                        success: function (data) {
-                            console.log('cambioestado')
-                        }
+                        success: function (data) {}
                         });
                 }
                 });

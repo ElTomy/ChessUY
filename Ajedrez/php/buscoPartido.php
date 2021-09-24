@@ -21,6 +21,7 @@ foreach ($partidos as $buscoPartido) {
         $col2 = $buscoPartido['col2'];
     }
 }
+
   if($partidoEncontrado == true){
     //:CARGO EL PARTIDO
     $partido_encontrado = true;
