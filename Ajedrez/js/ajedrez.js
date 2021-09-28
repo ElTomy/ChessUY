@@ -2575,6 +2575,7 @@ function ActualizarEstadisticas(resultado){
         data: {jugador2:jugador2, resultado:resultado},
         success: function (data) {
             elo = data;
+            console.log('ELO => ', elo);
             $.ajax({
                 url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
                 type: "POST",

@@ -49,8 +49,15 @@
         </div>
         <div class="torneos-content">
           <div class="torneo-config">
-            <div class="config-wrapper" id="partidos">
-            </div>
+            <!-- <div class="config-wrapper" id="partidos">
+            </div> -->
+            <div >
+              <img src = "../media/images/verPartido.png">
+              <img src = "../media/images/verPartido.png">
+              <img src = "../media/images/verPartido.png">
+              <img src = "../media/images/verPartido.png">
+              <img src = "../media/images/verPartido.png">
+              
           </div>
 
         </div>
