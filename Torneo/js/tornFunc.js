@@ -405,7 +405,6 @@ function uniraBD(tornID) {
         type: "post",
         data: {tornID : tornID},
         success: function (exec) {
-            alert(exec);
             $.ajax({
                 url: "/ChessUY/Modal/unirTNotif.php",
                 type: "post",
