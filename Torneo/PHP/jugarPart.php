@@ -24,7 +24,21 @@ if(isset($_SESSION['usuario'])) {
             if($partid[$i]['Fecha'] == date('Y-m-d')) {
                 $timeDiff = str_replace(':', '', $horaTorn) - date('gis');
                 // Ver si la partida para hoy esta a 30 min de empezar
-                if($timeDiff < 3000 && $timeDiff > 0) {
+                if($timeDiff <= 3000 && $timeDiff >= 0) {
+                    // Mostrar boton
+                    echo "
+                    <a>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <i class='fas fa-trophy'></i>Torneo
+                    </a>
+                    ";       
+                }
+            }elseif($partid[$i]['Fecha'] == date('Y-m-d', strtotime("tomorrow"))) {
+                // Ver si la partida para hoy esta a 30 min de empezar
+                if(str_replace(':', '', $horaTorn) <= 3000) {
                     // Mostrar boton
                     echo "
                     <a>
