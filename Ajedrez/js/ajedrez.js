@@ -165,67 +165,67 @@ function boxHeight(){
     $("#box").css("max-height", boxHeight);
 }
 
- function armoAjedrez(){
+function armoAjedrez(){
 
-    /* 
-    Armo Tablero     
-    */
-    $.ajax({
-        url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
-        type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
-        success: function (data) {
-            document.getElementById("ArmoAjedrez").innerHTML = data;
-            boardsize();
-        }
-    });
+/* 
+Armo Tablero     
+*/
+$.ajax({
+    url: "/ChessUY/Ajedrez/php/armoAjedrez.php",
+    type: "POST",
+    data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
+    success: function (data) {
+        document.getElementById("ArmoAjedrez").innerHTML = data;
+        boardsize();
+    }
+});
 
-    /* 
-    Armo Tabla Movimientos     
-    */
-    $.ajax({
-        type: "POST",
-        url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
-        data: {Jugadas:Jugadas, Turno:Turno},
-        success: function (data) {
-            document.getElementById("ArmoMovimientos").innerHTML = data;
-        }
-    });
+/* 
+Armo Tabla Movimientos     
+*/
+$.ajax({
+    type: "POST",
+    url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
+    data: {Jugadas:Jugadas, Turno:Turno},
+    success: function (data) {
+        document.getElementById("ArmoMovimientos").innerHTML = data;
+    }
+});
 
-    /* 
-    Armo Tabla Jugador vs Jugador     
-    */
-    $.ajax({
-        type: "POST",
-        data: {Turno:Turno, jugador2: jugador2},
-        url: "/ChessUY/Ajedrez/php/armoJugadores.php",
-        success: function (data) {
-            document.getElementById("ArmoJugadores").innerHTML = data;
-        }
-    });
+/* 
+Armo Tabla Jugador vs Jugador     
+*/
+$.ajax({
+    type: "POST",
+    data: {Turno:Turno, jugador2: jugador2},
+    url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+    success: function (data) {
+        document.getElementById("ArmoJugadores").innerHTML = data;
+    }
+});
 
-    /* 
-    Armo Chat     
-    */
+/* 
+Armo Chat     
+*/
 
-    $.ajax({
-        type: "POST",
-        url: "/ChessUY/Ajedrez/php/armoChat.php",
-        success: function (data) {
-            document.getElementById("ArmoChat").innerHTML = data;
-            heightdiv();
-        }
-    });
- }
+$.ajax({
+    type: "POST",
+    url: "/ChessUY/Ajedrez/php/armoChat.php",
+    success: function (data) {
+        document.getElementById("ArmoChat").innerHTML = data;
+        heightdiv();
+    }
+});
+}
 
- function heightdiv(){
-    var height = ((window.innerHeight * 0.98) - 100);
+function heightdiv(){
+var height = ((window.innerHeight * 0.98) - 100);
 
 
-    $('#select-wrapper').height(height * 0.5);
- }
+$('#select-wrapper').height(height * 0.5);
+}
 
- function barraProgreso(porcentaje){
+function barraProgreso(porcentaje){
     $('.bar').css("width", porcentaje + "%");
     $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
      if(porcentaje >= 50){
@@ -238,7 +238,7 @@ function boxHeight(){
         $('.bar2').css("z-index", "5");
         $('.bar2').css("width", (100 - porcentaje) + "%");
      }
- } 
+} 
  var Color = {
     Blanco:'b',
     Negro:'n',

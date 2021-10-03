@@ -37,7 +37,7 @@ class Ajedrez implements MessageComponentInterface {
 //?-----------------------------------------------------------------------
             $this->sendMessageToAll(json_encode($onlineUsers));
         } else if ($jsonMsg->type == "message") {
-            $this->sendMessageToOthers($from, json_encode($jsonMsg));
+            $this->sendMessageToRoom($from, json_encode($jsonMsg));
         }
     }
 
@@ -60,7 +60,7 @@ class Ajedrez implements MessageComponentInterface {
 //:===================================================://
 
 //:==================MANDAR A ROOMS===================://
-    public function sendMessageToOne($from, $msg){
+    public function sendMessageToRoom($from, $msg){
         $roomID = $this->rooms[$from->resourceId];
         $arrayUs = array_keys($this->rooms, $roomID);
 
