@@ -79,7 +79,8 @@ foreach ($partidos as $buscoPartido) {
     }
       $numJugador = 1;
       $server->CrearPartidos($_SESSION['usuario'], $micolor);
-      //PROCEDIMIETNO TRAER ULTIMO ID
+      //:TRAIGO LA ID DEL NUEVO JUEGO
+      $ID_partido = $server->TraigoUltimaIDpartido();
     }
   }
 

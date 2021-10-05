@@ -989,4 +989,30 @@ class servidor
         }
         return $execute;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoUltimaIDpartido(){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoUltimaIDpartido()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $info = $id;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
 }

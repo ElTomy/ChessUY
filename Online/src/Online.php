@@ -33,12 +33,12 @@ class Ajedrez implements MessageComponentInterface {
             $this->activeUsers[$from->resourceId] = $jsonMsg->name;
             $onlineUsers['onlineUsers'] = $this->activeUsers; 
 //?-----------------------------------------------------------------------
-            //$this->rooms[$from->resourceId] = $jsonMsg->room; 
+            $this->rooms[$from->resourceId] = $jsonMsg->room; 
 //?-----------------------------------------------------------------------
             $this->sendMessageToAll(json_encode($onlineUsers));
         } else if ($jsonMsg->type == "message") {
-            $this->sendMessageToOthers($from, json_encode($jsonMsg));
-            //$this->sendMessageToRoom($from, json_encode($jsonMsg));
+            //$this->sendMessageToOthers($from, json_encode($jsonMsg));
+            $this->sendMessageToRoom($from, json_encode($jsonMsg));
         }
     }
 
@@ -89,7 +89,7 @@ class Ajedrez implements MessageComponentInterface {
         $this->clients->detach($conn);
         unset($this->activeUsers[$conn->resourceId]);
         //?-----------------------------------------
-        //unset($this->rooms[$conn->resourceId]);
+        unset($this->rooms[$conn->resourceId]);
         //?-----------------------------------------
         $onlineUsers = [];
         $onlineUsers['type'] = "onlineUsers";

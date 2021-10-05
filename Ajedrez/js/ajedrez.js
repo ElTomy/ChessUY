@@ -2099,8 +2099,8 @@ function init(){
 
     function sendConnection(e){
         name = sessionStorage.getItem('usuario') 
-        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
-        //conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+        room = ID_partido;
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
 
     }
 
