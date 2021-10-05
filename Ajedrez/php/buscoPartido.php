@@ -4,11 +4,13 @@ $server= new servidor();
 session_start();
 $partidos = $server->TraigoPartidos();
 $partidoEncontrado = false;
+$ID_partido = null;
 
 //:BUSCA SI YA ESTA EN UN PARTIDO
 foreach ($partidos as $buscoPartido) {
     if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
      $partidoEncontrado = true;
+     $ID_partido = $buscoPartido['ID'];
      if($buscoPartido['usu1'] == $_SESSION['usuario']){
                 $numJugador = 1;
                 $jugador2 = $buscoPartido['usu2'];
@@ -42,7 +44,7 @@ foreach ($partidos as $buscoPartido) {
     foreach ($partidos as $buscoPartido) {
       if($buscoPartido['usu2'] == null && $buscoPartido['usu1'] != $_SESSION['usuario']){
       $encontrado = 0;
-      $id = $buscoPartido['ID'];
+      $ID_partido = $buscoPartido['ID'];
       $color1 = $buscoPartido['col1'];
       break;
       }
@@ -62,7 +64,7 @@ foreach ($partidos as $buscoPartido) {
         $neg = 1;
       }
       $numJugador = 2;
-      $server->UnirsePartidos($id, $_SESSION['usuario'], $colr2);
+      $server->UnirsePartidos($ID_partido, $_SESSION['usuario'], $colr2);
     }else{
      //:CREA UN JUEGO
      $micolor = random_int(0,1);
@@ -77,9 +79,10 @@ foreach ($partidos as $buscoPartido) {
     }
       $numJugador = 1;
       $server->CrearPartidos($_SESSION['usuario'], $micolor);
+      //PROCEDIMIETNO TRAER ULTIMO ID
     }
   }
 
-  $partido = array('numJugador' => $numJugador,'jugador1'=> $_SESSION['usuario'],'jugador2' => $jugador2, 'turno' => $turno, 'col1' => $col1, 'col2' => $col2, 'partido_encontrado' => $partido_encontrado, 'colJugador' => $colJugador, 'blan' => $blan, 'neg' => $neg);
+  $partido = array('ID_partido' => $ID_partido,'numJugador' => $numJugador,'jugador1'=> $_SESSION['usuario'],'jugador2' => $jugador2, 'turno' => $turno, 'col1' => $col1, 'col2' => $col2, 'partido_encontrado' => $partido_encontrado, 'colJugador' => $colJugador, 'blan' => $blan, 'neg' => $neg);
   echo json_encode($partido);
 ?>

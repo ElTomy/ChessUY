@@ -14,6 +14,8 @@ $( document ).ready(function(){
         data: {},
         success: function (data) {
             partido = JSON.parse(data)
+            console.log(partido);
+            ID_partido = partido['ID_partido'];
             numJugador = partido['numJugador'];
             jugador1 = partido['jugador1'];
             jugador2 = partido['jugador2'];
@@ -2098,6 +2100,8 @@ function init(){
     function sendConnection(e){
         name = sessionStorage.getItem('usuario') 
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
+        //conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+
     }
 
     function sendResultado(e){
