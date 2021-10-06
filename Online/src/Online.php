@@ -7,11 +7,13 @@ class Ajedrez implements MessageComponentInterface {
     protected $clients;
     private $activeUsers;
     private $activeConnections;
+    private $rooms;
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
         $this->activeUsers = [];
         $this->activeConnections = [];
+        $this->rooms = [];
         echo "Servidor Ratchet iniciado...\n";
     }
 
@@ -29,15 +31,18 @@ class Ajedrez implements MessageComponentInterface {
             $onlineUsers = [];
             $onlineUsers['type'] = "onlineUsers";
             $this->activeUsers[$from->resourceId] = $jsonMsg->name;
-            $onlineUsers['onlineUsers'] = $this->activeUsers;
+            $onlineUsers['onlineUsers'] = $this->activeUsers; 
+//?-----------------------------------------------------------------------
+            $this->rooms[$from->resourceId] = $jsonMsg->room; 
+//?-----------------------------------------------------------------------
             $this->sendMessageToAll(json_encode($onlineUsers));
-        } else
-
-        if ($jsonMsg->type == "message") {
-            $this->sendMessageToOthers($from, json_encode($jsonMsg));
+        } else if ($jsonMsg->type == "message") {
+            //$this->sendMessageToOthers($from, json_encode($jsonMsg));
+            $this->sendMessageToRoom($from, json_encode($jsonMsg));
         }
     }
 
+//:==================MANDAR A OTROS===================://
     public function sendMessageToOthers($from, $msg){
         foreach ($this->clients as $client) {
             if ($from !== $client) {
@@ -45,32 +50,51 @@ class Ajedrez implements MessageComponentInterface {
             }
         }
     }
+//:===================================================://
 
-    //cuando te conectas mandas mensaje a todos
+//:==================MANDAR A TODOS===================://
     public function sendMessageToAll($msg){
         foreach ($this->clients as $client) {
             $client->send($msg);
         }
     }
+//:===================================================://
 
-    //----------------DESPUES PRUEBO ESTO----------------//
-    public function sendMessageToOne($from, $msg, $to){
-        foreach ($this->clients as $client) {
-            if ($to == $client) {
-                // enviar a un usuario solo
-                $client->send($msg);
-            }}}
-    //---------------------------------------------------//
+//:==================MANDAR A ROOMS===================://
+    public function sendMessageToRoom($from, $msg){
+        $roomID = $this->rooms[$from->resourceId];
+        $arrayUs = array_keys($this->rooms, $roomID);
+
+        foreach ($arrayUs as $us) {
+            foreach ($this->clients as $client) {
+                if ($client->resourceId == $us && $from !== $client) {
+                    $client->send($msg);
+                }
+            }
+        } 
+    }
+//:===================================================://
+
+//?==================CHAT PRIVADO??===================?//
+        // $key = array_search($to,$this->activeUsers);
+        // foreach ($this->clients as $client) {
+        //     if ($client->resourceId == $key) {
+        //         $client->send($msg);
+        //     }
+        // }
+//?===================================================?//
+
 
     public function onClose(ConnectionInterface $conn){
         $this->clients->detach($conn);
         unset($this->activeUsers[$conn->resourceId]);
+        //?-----------------------------------------
+        unset($this->rooms[$conn->resourceId]);
+        //?-----------------------------------------
         $onlineUsers = [];
         $onlineUsers['type'] = "onlineUsers";
         $onlineUsers['onlineUsers'] = $this->activeUsers;
         $this->sendMessageToOthers($conn, json_encode($onlineUsers));
-
-        //borro usuario de la bd conectado
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 

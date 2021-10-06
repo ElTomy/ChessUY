@@ -1,12 +1,23 @@
 $( document ).ready(function(){
     $.ajax({
+        url:  "/cyberhydra/Modal/modalEspera.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });
+    $.ajax({
         async: false,
         url:  "/cyberhydra/Ajedrez/php/buscoPartido.php",
         type: "POST",
         data: {},
         success: function (data) {
             partido = JSON.parse(data)
+            console.log(partido);
+            ID_partido = partido['ID_partido'];
             numJugador = partido['numJugador'];
+            jugador1 = partido['jugador1'];
             jugador2 = partido['jugador2'];
             turno = partido['turno'];
             col1 = partido['col1'];
@@ -15,6 +26,16 @@ $( document ).ready(function(){
             colJugador = partido['colJugador'];
             blan = partido['blan'];
             neg = partido['neg'];
+            //:Veo si habian quedado en jaque
+            $.ajax({
+                url:  "/cyberhydra/Ajedrez/php/traigoJaque.php",
+                type: "POST",
+                data: {numJugador:numJugador},
+                success: function (data) {
+                    tjaque = JSON.parse(data);
+                    jaque = tjaque;
+                }
+              });
         }
       });
     armoOnline();
@@ -30,8 +51,7 @@ $( document ).ready(function(){
 //
 function armoOnline(){
     CreoTablero();
-    //EXISTE EL PARTIDO
-    console.log("asdasd")
+    //:EXISTE EL PARTIDO
     if(partido_encontrado == true){
         traigoTablero();
         if(numJugador == 1){
@@ -58,7 +78,7 @@ function armoOnline(){
          Turno = turno;
       
     }else{
-        //CREA EL PARTIDO
+        //:CREA EL PARTIDO
         PosicionPiezas();
         armoAjedrez();
         guardoTablero();
@@ -73,10 +93,7 @@ function guardoTablero(){
         url:  "/cyberhydra/Ajedrez/php/guardoTablero.php",
         type: "POST",
         data: {tablero: tab2, turno: Turno, movimientos: movs},
-        success: function (data) {
-            console.log(data)
-           console.log("guardado")
-        }
+        success: function (data) {}
       });
 }
 function traigoTablero(){
@@ -88,7 +105,6 @@ function traigoTablero(){
            var dat = JSON.parse(data);
 
            var jug2 = JSON.parse(dat[0]['movimientos'])
-           console.log("movimientos")
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
@@ -127,6 +143,23 @@ function traigoTablero(){
         }
       });
 }
+function guardoJaque(){
+  var jaq = JSON.stringify(jaque);
+    $.ajax({
+        url:  "/cyberhydra/Ajedrez/php/guardoJaque.php",
+        type: "POST",
+        data: {numJugador:numJugador, jaq:jaq},
+        success: function (data) {}
+      });
+}
+function traigoJaque(){
+    $.ajax({
+        url:  "/cyberhydra/Ajedrez/php/traigoJaque.php",
+        type: "POST",
+        data: {numJugador:numJugador},
+        success: function (data) {}
+      });
+}
 
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
@@ -134,68 +167,67 @@ function boxHeight(){
     $("#box").css("max-height", boxHeight);
 }
 
- function armoAjedrez(){
+function armoAjedrez(){
 
-    /* 
-    Armo Tablero     
-    */
-    $.ajax({
-        url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
-        type: "POST",
-        data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
-        success: function (data) {
-            document.getElementById("ArmoAjedrez").innerHTML = data;
-            boardsize();
-        }
-    });
+/* 
+Armo Tablero     
+*/
+$.ajax({
+    url: "/cyberhydra/Ajedrez/php/armoAjedrez.php",
+    type: "POST",
+    data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
+    success: function (data) {
+        document.getElementById("ArmoAjedrez").innerHTML = data;
+        boardsize();
+    }
+});
 
-    /* 
-    Armo Tabla Movimientos     
-    */
-   console.log("armo movs")
-    $.ajax({
-        type: "POST",
-        url: "/cyberhydra/Ajedrez/php/armoMovimientos.php",
-        data: {Jugadas:Jugadas, Turno:Turno},
-        success: function (data) {
-            document.getElementById("ArmoMovimientos").innerHTML = data;
-        }
-    });
+/* 
+Armo Tabla Movimientos     
+*/
+$.ajax({
+    type: "POST",
+    url: "/cyberhydra/Ajedrez/php/armoMovimientos.php",
+    data: {Jugadas:Jugadas, Turno:Turno},
+    success: function (data) {
+        document.getElementById("ArmoMovimientos").innerHTML = data;
+    }
+});
 
-    /* 
-    Armo Tabla Jugador vs Jugador     
-    */
-    $.ajax({
-        type: "POST",
-        data: {Turno:Turno, jugador2: jugador2},
-        url: "/cyberhydra/Ajedrez/php/armoJugadores.php",
-        success: function (data) {
-            document.getElementById("ArmoJugadores").innerHTML = data;
-        }
-    });
+/* 
+Armo Tabla Jugador vs Jugador     
+*/
+$.ajax({
+    type: "POST",
+    data: {Turno:Turno, jugador2: jugador2},
+    url: "/cyberhydra/Ajedrez/php/armoJugadores.php",
+    success: function (data) {
+        document.getElementById("ArmoJugadores").innerHTML = data;
+    }
+});
 
-    /* 
-    Armo Chat     
-    */
+/* 
+Armo Chat     
+*/
 
-    $.ajax({
-        type: "POST",
-        url: "/cyberhydra/Ajedrez/php/armoChat.php",
-        success: function (data) {
-            document.getElementById("ArmoChat").innerHTML = data;
-            heightdiv();
-        }
-    });
- }
+$.ajax({
+    type: "POST",
+    url: "/cyberhydra/Ajedrez/php/armoChat.php",
+    success: function (data) {
+        document.getElementById("ArmoChat").innerHTML = data;
+        heightdiv();
+    }
+});
+}
 
- function heightdiv(){
-    var height = ((window.innerHeight * 0.98) - 100);
+function heightdiv(){
+var height = ((window.innerHeight * 0.98) - 100);
 
 
-    $('#select-wrapper').height(height * 0.5);
- }
+$('#select-wrapper').height(height * 0.5);
+}
 
- function barraProgreso(porcentaje){
+function barraProgreso(porcentaje){
     $('.bar').css("width", porcentaje + "%");
     $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
      if(porcentaje >= 50){
@@ -208,7 +240,7 @@ function boxHeight(){
         $('.bar2').css("z-index", "5");
         $('.bar2').css("width", (100 - porcentaje) + "%");
      }
- } 
+} 
  var Color = {
     Blanco:'b',
     Negro:'n',
@@ -358,25 +390,25 @@ function PosicionPiezas(){
             ColocoPieza(Piezas.NPeon,Color.Negro,x,2);
         }
     }
-    //Torres
+    //:Torres
     ColocoPieza(Piezas.BTorre,Color.Blanco,1,blan);
     ColocoPieza(Piezas.NTorre,Color.Negro,1,neg);
     ColocoPieza(Piezas.BTorre,Color.Blanco,8,blan);
     ColocoPieza(Piezas.NTorre,Color.Negro,8,neg);
-    //Caballo
+    //:Caballo
     ColocoPieza(Piezas.BCaballo,Color.Blanco,2,blan);
     ColocoPieza(Piezas.NCaballo,Color.Negro,2,neg);
     ColocoPieza(Piezas.BCaballo,Color.Blanco,7,blan);
     ColocoPieza(Piezas.NCaballo,Color.Negro,7,neg);
-    //Alfil
+    //:Alfil
     ColocoPieza(Piezas.BAlfil,Color.Blanco,3,blan);
     ColocoPieza(Piezas.NAlfil,Color.Negro,3,neg);
     ColocoPieza(Piezas.BAlfil,Color.Blanco,6,blan);
     ColocoPieza(Piezas.NAlfil,Color.Negro,6,neg);
-    //Dama
+    //:Dama
     ColocoPieza(Piezas.BDama,Color.Blanco,4,blan);
     ColocoPieza(Piezas.NDama,Color.Negro,4,neg);
-    //Rey
+    //:Rey
     ColocoPieza(Piezas.BRey,Color.Blanco,5,blan);
     ColocoPieza(Piezas.NRey,Color.Negro,5,neg);
 }
@@ -527,6 +559,7 @@ function seleccionar(x,y){
                                     y: null,
                                 }
                                 resetTableroJaque();
+                                guardoJaque();
                             } 
                         }
                     }
@@ -623,8 +656,6 @@ window.setInterval(function tiempo() {
 
     }
 }, 1000);
-
-
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -1240,7 +1271,7 @@ function JaqueRey(x,y, sel){
         var colorR = "rn";
     }
     
-    //Caballo
+    //:Caballo
     //←↑
     if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
     yy = y+1;
@@ -1268,8 +1299,8 @@ function JaqueRey(x,y, sel){
     //↑←
     if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}};
     
-    //----------------------------------------------------------------------------------
-    //Torre y Reina
+    //?----------------------------------------------------------------------------------
+    //:Torre y Reina
     //derecha→
     for(i = 1;i <= 8; i++){
         ix  = i +x;
@@ -1332,8 +1363,8 @@ function JaqueRey(x,y, sel){
             }
         }
     }
-    //----------------------------------------------------------------------------------
-    //Alfil y Reina
+    //?----------------------------------------------------------------------------------
+    //:Alfil y Reina
 
     //ArribaIzquierda↑←
 for(i = 1; i <= 8; i++){
@@ -1403,8 +1434,8 @@ for(i = 1;i <= 8; i++){
     }
 }   
 
-  //----------------------------------------------------------------------------------
-    //Peon y Reina
+  //?----------------------------------------------------------------------------------
+    //:Peon y Reina
     xx = x-1;
     yy = y-1;
     if(col == "n"){
@@ -1455,7 +1486,7 @@ for(i = 1;i <= 8; i++){
 //
 //
 function Jaque(x,y, sel){
-    // llamo a movimiento para generar movimiento en nueva posicion
+    //: llamo a movimiento para generar movimiento en nueva posicion
     Movimientos(x,y, sel);
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var colorR = "r";
@@ -1654,7 +1685,7 @@ function Mov_Prohibido(x,y,sel){
         var colorAop = "an"; 
     }
     //----------------------------------------------------------------------------------
-    //Torre y Reina
+    //:Torre y Reina
 
     //derecha→
     for(i = 1;i <= 8; i++){
@@ -1780,8 +1811,8 @@ function Mov_Prohibido(x,y,sel){
             }
         }
     }
-//----------------------------------------------------------------------------------
-    //Alfil y Reina
+//?----------------------------------------------------------------------------------
+    //:Alfil y Reina
 
     //ArribaIzquierda↑←
     for(i = 1; i <= 8; i++){
@@ -1922,7 +1953,7 @@ function Mov_Prohibido(x,y,sel){
 function JaqueMate(){
     var jaqueMate = true;
     var F_rey = true;
-    //creo todos los movimientos posibles
+    //:creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
             if(Tablero[p][q].Piezas != null && Tablero[p][q].color != jaque.color){
@@ -1958,12 +1989,12 @@ function JaqueMate(){
     }
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
-            //recorro todos los movimientos
+            //:recorro todos los movimientos
             if(Movimiento[p][q] == true){ 
-                //si existen los movimientos los comparo con el TableroJaque
+                //:si existen los movimientos los comparo con el TableroJaque
                 for(var o = 1; o <= 8; o++){
                     for(var u = 1; u <= 8; u++){
-                        //recorro TableroJaque
+                        //:recorro TableroJaque
                         if(TableroJaque[o][u] == true){
                             if(o == p && u == q){
                                 jaqueMate = false;
@@ -1994,6 +2025,8 @@ function JaqueMate(){
         victoria++;
         sendResultado(1)
         ActualizarEstadisticas(1);  
+    }else{
+        guardoJaque();
     }
     resetMovimientos();
 }
@@ -2032,9 +2065,7 @@ function Victoria(){
 }
 //
 //
-/*------------------------------------------------------------------------------------------*/
-//
-//
+//:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
     conn = new WebSocket('ws://179.27.156.47:8080');
@@ -2054,9 +2085,7 @@ function init(){
             url:  "/cyberhydra/Ajedrez/php/UsuOnline.php",
             type: "POST",
             data: {action:'agregar'},
-            success: function (data) {
-               console.log("agregado")
-            }
+            success: function (data) {}
             });
             sendConnection();
         };
@@ -2069,57 +2098,58 @@ function init(){
     }
 
     function sendConnection(e){
-        console.log("conectando")
         name = sessionStorage.getItem('usuario') 
-        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
+        room = ID_partido;
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+
     }
 
     function sendResultado(e){
         switch(e){
             case 1:
-                //VICTORIA
+                //:VICTORIA
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "vitoria";
                 conn.send(JSON.stringify(msg));
             break;
             case 2:
-                //DERROTA
+                //:DERROTA
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "derrota";
                 conn.send(JSON.stringify(msg));
             break;
             case 3:
-                //PIDO TABLAS
+                //:PIDO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Pido_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 4:
-                //ACEPTO TABLAS
+                //:ACEPTO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Acepto_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 5:
-                //RECHAZO TABLAS
+                //:RECHAZO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Rechazo_tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 6:
-                //TABLAS
+                //:TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "tablas";
                 conn.send(JSON.stringify(msg));
             break;
             case 7:
-                //RESPONDO TABLAS
+                //:RESPONDO TABLAS
                 var msg = {};
                 msg["type"] = "message";
                 msg["message"] = "Respondo_tablas";
@@ -2169,7 +2199,6 @@ function init(){
                     }
                     count++;
                 });
-                console.log(usuarios)
 
                 if(usuarios.length == 1){
                     $.ajax({
@@ -2177,17 +2206,35 @@ function init(){
                         url:  "/cyberhydra/Ajedrez/php/UsuOnline.php",
                         type: "POST",
                         data: {action:'borrar'},
-                        success: function (data) {
-                           console.log("borro")
-                        }
+                        success: function (data) {}
                         });
                 }
+
             $.ajax({
                 url:  "/cyberhydra/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
                 data: {},
                 success: function (data) {
                     if(data == 'true'){
+                        if(jugador2 == null){
+                            if(usuarios[0] == jugador1){
+                                jugador2 = usuarios[1];
+                            }else if(usuarios[1] == jugador1){
+                                jugador2 = usuarios[0];
+                            }
+
+                            if(jugador2 != null){
+                                $.ajax({
+                                    type: "POST",
+                                    data: {Turno:Turno, jugador2: jugador2},
+                                    url: "/cyberhydra/Ajedrez/php/armoJugadores.php",
+                                    success: function (data) {
+                                        document.getElementById("ArmoJugadores").innerHTML = data;
+                                    }
+                                });
+                            }
+                        }
+                        
                         $(".modal").hide();
                     }else if(data == 'false'){
                         $.ajax({
@@ -2246,7 +2293,7 @@ function init(){
                     }
                 });
             }else if(json2.includes("Respondo_tablas")){
-                console.log("respondo")
+                //console.log("respondo")
 
             }else if(json2.includes("tab:")){
                 var tab = json2.slice(4)
@@ -2274,12 +2321,15 @@ function init(){
                     break;
                 case 3:
                     var jaq2 = JSON.parse(jaq);
-
                     if(jaq2.jaque == true){
                          var jx = 9-jaq2.x;
                          var jy = 9-jaq2.y;
                         Jaque(jx, jy, Jugadas[Turno].Piezas)
                     }else{jaque = jaq2}
+
+                    if(jaque.jaque == null){
+                        guardoJaque();
+                    }
 
                     break;
                 case 4:
@@ -2291,10 +2341,7 @@ function init(){
         resetMovimientos();
         armoAjedrez();
     };
-    
-//
-//
-/*------------------------------------------------------------------------------------------*/
+//:------------------------------------------------------------------------------------------/
 //
 //
 function inviertoTablero(tab){
@@ -2336,15 +2383,15 @@ function box(boxcontent){
 //
 //
 function tablas(){
-    //Rey-Haogado
+    //:Rey-Haogado
     Rey_Haogado('b');
     Rey_Haogado('n');
-    //Insuficiencia-de-Piezas
+    //:Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
 function Rey_Haogado(color){
     var tablas = true;
-    //creo todos los movimientos posibles
+    //:creo todos los movimientos posibles
     for( p = 1; p <= 8; p++){
         for( q = 1; q <= 8; q++){
             if(Tablero[p][q].Piezas != null && Tablero[p][q].color == color){
@@ -2391,7 +2438,7 @@ function Rey_Haogado(color){
 function Acuerdo_Mutuo(){   
     if(spam < 3 && derrota == 0 && tabla == 0 && victoria == 0){
         spam++;
-        //cambiar a ESPERO
+        //:cambiar a ESPERO
         $.ajax({
             url:  "/cyberhydra/Modal/modalEsperoTablas.php",
             type: "POST",
@@ -2532,46 +2579,20 @@ function ActualizarEstadisticas(resultado){
         data: {jugador2:jugador2, resultado:resultado},
         success: function (data) {
             elo = data;
+            console.log('ELO => ', elo);
             $.ajax({
                 url: "/cyberhydra/Logros/PHP/ActualizoEstadisticas.php",
                 type: "POST",
                 data: {puntaje:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
-                success: function (data) {}
+                success: function (data) {
+                    $.ajax({
+                        url: "/cyberhydra/Ajedrez/php/cambioEstado.php",
+                        type: "POST",
+                        data: {numJugador:numJugador},
+                        success: function (data) {}
+                        });
+                }
                 });
         }
         });
-    }
-    /*window.addEventListener("load",function(){
-        document.getElementById("movimiento").addEventListener("click",SondioFondo);
-        document.getElementById("movimiento").addEventListener("click",SilenciarSonido);			
-    });
-    
-    function SondioFondo(){
-        var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","/cyberhydra/media/audio/Background.mp3");
-        document.body.appendChild(sonido);
-        document.getElementById("movimiento").removeEventListener("click",SondioFondo);
-    }
-    
-    function SilenciarSonido(){
-        var iframe = document.getElementsByTagName("iframe");
-    
-        if (iframe.length > 0){
-            iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("movimiento").addEventListener("click",SondioFondo);
-        }
-    }
-    function SonidoPiezas(x,y){
-        var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","/cyberhydra/media/audio/chess-.mp3");
-        document.body.appendChild(sonido);
-        document.getElementById("chat").removeEventListener("click",SonidoPiezas);
-    }
-    function SilenciarPieza(x,y){
-        var iframe = document.getElementsByTagName("iframe");
-    
-        if (iframe.length > 0){
-            iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("chat").addEventListener("click",SonidoPiezas);
-        }
-    }*/
+}

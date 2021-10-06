@@ -71,31 +71,11 @@
 
           <div class="body">
 
-          <!--<div class="Foto">
-            <div id="drop_file_zone" ondrop="upload_file(event,1)" ondragover="return false" style="width: 200px; height: 100px;">
-                <div id="drag_upload_file">
-                    <p>Arrastra y suelta el archivo aquí</p>                    
-                </div>
-            </div>
-            <div class="Foto" id="fprincipal">
-              
-            </div>
+          <div class="Foto">
+            <input name="uploadedfile" type="file" id="pic" /> 
           </div>
 
-            <div class="Foto">
-              <form action="uploadIMG.php" method="post" enctype="multipart/form-data">
-                <input type="file" accept="image/x-png,image/jpg,image/jpeg" onchange="cambiar()" name="fileToUpload" id="fileToUpload1" />
-                <label for="fileToUpload"><i class="fa">&#xf03e;</i> Seleccionar Imagen</label><br>
-                  <label>
-                    <input type="submit" class="button" hidden="hidden">Subir Imagen
-                  </label>
-              </form>
-            </div>
-            <p class="noticia-desc">
-                Aquí podrá subir una imagen para la noticia, el formato de la imagen debe ser JPG / JPEG / PNG.
-            </p>-->
-
-            <input type="text" id="RichText">
+            <textarea placeholder="Contenido del Post" name="Contenido" id="contenido" required></textarea>
 
           </div>
           <div class="noticia-buttons">
@@ -117,5 +97,11 @@
     </section>
 
     <div id="footer"></div>
+
+    <script src="../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace('contenido');
+    </script>
+
   </body>
 </html>

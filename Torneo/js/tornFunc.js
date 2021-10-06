@@ -557,7 +557,6 @@ function uniraBD(tornID) {
         type: "post",
         data: {tornID : tornID},
         success: function (exec) {
-            alert(exec);
             $.ajax({
                 url: "/cyberhydra/Modal/unirTNotif.php",
                 type: "post",

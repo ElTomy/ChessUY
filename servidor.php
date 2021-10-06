@@ -452,9 +452,9 @@ class servidor
         if ($stmts->execute()) {
 
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'Torneo' => $Torneo);
                                 $info[] = $data;
             }
             $stmts->close();
@@ -816,10 +816,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoPartida($id){
+    function InfoPartida($Nombre){
+        $conn = $this->conectar();
+        $info = array();
         $sql = "CALL InfoPartida(?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("i", $id);
+        $stmts->bind_param("s", $Nombre);
 
         if ($stmts->execute()) {
 
@@ -931,4 +933,86 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function guardoJaque($Usuario, $jug, $jaque){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoJaque(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("iss",$jug, $jaque, $Usuario);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function traigoJaque($usuario, $jug){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoJaque(?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("si", $usuario, $jug);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($jaque);
+            while ($stmts->fetch()) {
+                $info = $jaque;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function cambioEstado($Usuario, $jug){
+        $conn = $this->conectar();
+        $sql = "CALL terminoPartido(?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("is",$jug, $Usuario);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoUltimaIDpartido(){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoUltimaIDpartido()";
+        $stmts = $conn->prepare($sql);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($id);
+            while ($stmts->fetch()) {
+                $info = $id;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
 }

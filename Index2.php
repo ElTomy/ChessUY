@@ -93,6 +93,13 @@ $index .='
                 <a href="/cyberhydra/Torneo/PHP/Torneos.php"><i class="fas fa-trophy"></i> Crear Torneo</a>
                 <a href="/cyberhydra/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
+              <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <div class="admin-buttons">
+                <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+                <a href="Usuarios/Periodista/PHP/crearNoticia.php"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
+                </div>
             </section>';
     }
     if($_SESSION['tipo'] == 3){
