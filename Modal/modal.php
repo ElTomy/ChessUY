@@ -103,6 +103,24 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "Se ha cambiado la contraseña con exito.";
         break;
+
+    case 18:
+        $mensaje_2 = "Noticia:";
+        $link = "";
+        $mensaje = "Debe completar todos los campos.";
+        break;
+
+    case 19:
+        $mensaje_2 = "Noticia:";
+        $link = "";
+        $mensaje = "La noticia se ha creado con exito.";
+        break;
+
+    case 20:
+        $mensaje_2 = "Noticia:";
+        $link = "";
+        $mensaje = "La noticia se ha editado con exito.";
+        break;
 }
 
 

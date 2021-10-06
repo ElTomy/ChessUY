@@ -1,80 +1,3 @@
-<?php
-include '../servidor.php';
-$server= new servidor();
-session_start();
-$partidos = $server->TraigoPartidos();
-$partidoEncontrado = false;
-//busca si ya esta en un partido
-foreach ($partidos as $buscoPartido) {
-    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
-     $partidoEncontrado = true;
-     echo '<script>
-          console.log("encontrado");
-          </script>';
-     if($buscoPartido['usu1'] == $_SESSION['usuario']){
-          echo '<script>
-                var numJugador = 1;
-                </script>';
-     }else{
-          echo '<script>
-                var numJugador = 2;
-                </script>';
-     }
-      echo "<script>
-            var usu1 = '".$buscoPartido['usu1']."';
-            var usu2 = '".$buscoPartido['usu2']."';
-            var turno = '".$buscoPartido['turno']."';
-            var col1 = '".$buscoPartido['col1']."';
-            var col2 = '".$buscoPartido['col2']."';
-            var tablero = '".$buscoPartido['tablero']."';
-            </script>";
-            break;
-    }
-}
-  if($partidoEncontrado == true){
-    //carga ese partido
-    echo '<script>
-          var partido = true;
-          </script>';
-  }else{
-    //busca si hay partido para unirse sino crea uno
-    echo '<script>
-          var partido = false;
-          </script>';
-
-    $encontrado = 1;
-
-    foreach ($partidos as $buscoPartido) {
-      if($buscoPartido['usu2'] == null && $buscoPartido['usu1'] != $_SESSION['usuario']){
-      $encontrado = 0;
-      $id = $buscoPartido['ID'];
-      $color1 = $buscoPartido['col1'];
-      break;
-      }
-    }
-    if($encontrado == 0){
-
-
-      echo '<script>
-      console.log("partido libre");
-      </script>';
-      //se une a un juego
-
-
-      if($color1 == 1){
-        $col2 = 0;
-      }else{$col2 =1;}
-      $server->UnirsePartidos($id, $_SESSION['usuario'], $col2);
-    }else{
-      echo '<script>
-      console.log("partido creado");
-      </script>';
-     //crea un juego
-     $micolor = random_int(0,1);
-     $server->CrearPartidos($_SESSION['usuario'], $micolor);
-    }
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -101,6 +24,7 @@ foreach ($partidos as $buscoPartido) {
     <title>ChessUY | Championship</title>
   </head>
   <body>
+    <!--<audio src="/cyberhydra/media/audio/Background.mp3" autoplay="true" loop="true"></audio>-->
     <div id="header"></div>
     <div id="modal"></div>
     <div class="loader-wrapper">
@@ -168,7 +92,7 @@ foreach ($partidos as $buscoPartido) {
               </div>
               <div class="ajedrez-buttons">
                   <button onclick="Acuerdo_Mutuo()"><i class="fas fa-border-all"></i> Tablas</button>
-                  <button onclick="Derrota()"><i class="fas fa-flag"></i> Rendirse</button>
+                  <button onclick="Derrota(),this.disabled='disabled'"><i class="fas fa-flag"></i> Rendirse</button>
               </div>
           </div>
         </div>

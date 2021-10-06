@@ -2,19 +2,19 @@
  $chat = '  <div class="chat-box">
                 <div class="mensaje1-wrapper">
                     <div class="mensaje1">
-                        <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                        <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
                     </div>
                 </div>
                 <div class="mensaje2-wrapper">
                     <div class="mensaje2">
-                        <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                        <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit assumenda asperiores dolores explicabo rem recusandae unde aut alias rerum soluta!</p>
                     </div>
                 </div>
                 <div class="mensaje1-wrapper">
                     <div class="mensaje1">
-                        <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
+                        <a class="nombre" href="/cyberhydra/Profile/ByJuanii_">ByJuanii_</a>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, quasi?</p>
                     </div>
                 </div>

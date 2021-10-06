@@ -1,11 +1,27 @@
 $( document ).ready(function(){
+    $.ajax({
+        async: false,
+        url:  "/cyberhydra/Ajedrez/php/buscoPartido.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            partido = JSON.parse(data)
+            numJugador = partido['numJugador'];
+            jugador2 = partido['jugador2'];
+            turno = partido['turno'];
+            col1 = partido['col1'];
+            col2 = partido['col2'];
+            partido_encontrado = partido['partido_encontrado'];
+            colJugador = partido['colJugador'];
+            blan = partido['blan'];
+            neg = partido['neg'];
+        }
+      });
     armoOnline();
-    PosicionPiezas();
     resetMovimientos();
     armoAjedrez();
     init();
     barraProgreso(50);
-    guardoTablero();
 });
 //
 //
@@ -14,7 +30,9 @@ $( document ).ready(function(){
 //
 function armoOnline(){
     CreoTablero();
-    if(partido == true){
+    //EXISTE EL PARTIDO
+    console.log("asdasd")
+    if(partido_encontrado == true){
         traigoTablero();
         if(numJugador == 1){
             if(col1 == 1){
@@ -40,42 +58,71 @@ function armoOnline(){
          Turno = turno;
       
     }else{
-        colorJugador();
+        //CREA EL PARTIDO
+        PosicionPiezas();
         armoAjedrez();
+        guardoTablero();
         Turno = 1;
     }
 }
 
 function guardoTablero(){
     var tab2 = JSON.stringify(Tablero);
+    var movs = JSON.stringify(Jugadas)
     $.ajax({
-        url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
+        url:  "/cyberhydra/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {tablero: tab2},
+        data: {tablero: tab2, turno: Turno, movimientos: movs},
         success: function (data) {
+            console.log(data)
            console.log("guardado")
         }
       });
 }
 function traigoTablero(){
     $.ajax({
-        url:  "/ChessUY/Ajedrez/php/traigoTablero.php",
+        url:  "/cyberhydra/Ajedrez/php/traigoTablero.php",
         type: "POST",
         data: {},
         success: function (data) {
-           console.log("traigo" + numJugador)
-           if(numJugador == 1){
-            var tab = JSON.parse(data);
-            console.log(tab)
-            for(var p = 1; p <= 8; p++){
-             for(var q = 1; q <= 8; q++){
-                 Tablero[p][q] = tab[p][q];
-                 }
-             }
-           }else{
-               inviertoTablero(data);
+           var dat = JSON.parse(data);
+
+           var jug2 = JSON.parse(dat[0]['movimientos'])
+           console.log("movimientos")
+           for(var p = 1; p <= jug2.length; p++){
+               Jugadas[p] = jug2[p];
            }
-          
+
+           
+           if(numJugador == 1){
+            if(dat[0]['turno'] == 1){
+                inviertoTablero(dat[0]['tablero']);
+            }else if(dat[0]['turno']%2 == 0){
+                var tab = JSON.parse(dat[0]['tablero']);
+                for(var p = 1; p <= 8; p++){
+                    for(var q = 1; q <= 8; q++){
+                        Tablero[p][q] = tab[p][q];
+                    }
+                }
+    
+            }else{
+                inviertoTablero(dat[0]['tablero']);
+                
+            }
+    }else{
+            if(dat[0]['turno']%2 == 0){
+                inviertoTablero(dat[0]['tablero']);
+                
+            }else{
+                var tab = JSON.parse(dat[0]['tablero']);
+                for(var p = 1; p <= 8; p++){
+                    for(var q = 1; q <= 8; q++){
+                        Tablero[p][q] = tab[p][q];
+                    }
+                }
+            }
+    }
+         
             armoAjedrez();
         }
       });
@@ -83,7 +130,6 @@ function traigoTablero(){
 
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
-    console.log(boxHeight);
 
     $("#box").css("max-height", boxHeight);
 }
@@ -106,9 +152,10 @@ function boxHeight(){
     /* 
     Armo Tabla Movimientos     
     */
+   console.log("armo movs")
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Ajedrez/php/armoMovimientos.php",
+        url: "/cyberhydra/Ajedrez/php/armoMovimientos.php",
         data: {Jugadas:Jugadas, Turno:Turno},
         success: function (data) {
             document.getElementById("ArmoMovimientos").innerHTML = data;
@@ -120,8 +167,8 @@ function boxHeight(){
     */
     $.ajax({
         type: "POST",
-        data: {Turno:Turno},
-        url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+        data: {Turno:Turno, jugador2: jugador2},
+        url: "/cyberhydra/Ajedrez/php/armoJugadores.php",
         success: function (data) {
             document.getElementById("ArmoJugadores").innerHTML = data;
         }
@@ -133,7 +180,7 @@ function boxHeight(){
 
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Ajedrez/php/armoChat.php",
+        url: "/cyberhydra/Ajedrez/php/armoChat.php",
         success: function (data) {
             document.getElementById("ArmoChat").innerHTML = data;
             heightdiv();
@@ -166,8 +213,6 @@ function boxHeight(){
     Blanco:'b',
     Negro:'n',
 }
-var blan;
-var neg;
 const Piezas = {
    BRey: 'r', 
    BDama: 'd',
@@ -185,6 +230,7 @@ const Piezas = {
 var porcentaje = 39;
 var barra = 50;
 var Jugadas = [];
+var elo = 0;
 var Turno;
 var Reloj = 0;
 var rep = 0;
@@ -196,6 +242,7 @@ var victoria = 0;
 var derrota = 0;
 var tabla = 0;
 var simbolo = null;
+var spam = 0;
 const Tablero = [];
 const TableroJaque = [];
 var seleccionado = null;
@@ -207,7 +254,6 @@ var jaque = {
    x: null,
    y: null,
 }
-var colJugador;
 var socket;
 //
 //
@@ -279,23 +325,6 @@ function boardsize(){
         $(".board-number").css ('margin-left', board_text_margin);
         $(".ajedrez-wrapper").css ('height', boardtotal);
         $(".ajedrez-wrapper").css ('width', boardtotal);
-    }
-}
-//
-//
-/*------------------------------------------------------------------------------------------*/
-//
-//
-function colorJugador(){
-    var random = Math.round(Math.random() * 1);
-    if(random == 1){
-        colJugador = 0;
-        blan = 1;
-        neg = 8;
-    }else{
-        colJugador = 1;
-        blan = 8;
-        neg = 1;
     }
 }
 //
@@ -379,7 +408,6 @@ function resetTableroJaque(){
 //
 //
 function CreoTablero(){
-    console.log("creo tablero")
     for(let x = 1; x <= 8; x += 1){
         Tablero[x] = [];
         TableroJaque[x] = [];
@@ -400,6 +428,7 @@ function CreoTablero(){
 //
 //
 function seleccionar(x,y){
+    if(derrota == 0 && tabla == 0 && victoria == 0){
     var sel;
     // seleccionas las piezas y sus movimientos
     if(seleccionado == null){
@@ -435,7 +464,6 @@ function seleccionar(x,y){
                     }
                }else{
                     if(y == 6 && Tablero[x][y].Piezas == null) {
-                        console.log(Tablero[x][5]); 
                         if(Tablero[x][5].Piezas != null && seleccionado.color != Tablero[x][5].color && seleccionado.Ejey == 5){
                                 Porcentaje(Tablero[x][5].Piezas,0);
                                 ColocoPieza(null,null,x,5);
@@ -444,7 +472,6 @@ function seleccionar(x,y){
                         }
                     }else{
                         if(y == 3 && Tablero[x][y].Piezas == null){
-                            console.log(Tablero[x][4]);
                             if(Tablero[x][4].Piezas != null && seleccionado.color != Tablero[x][4].color && seleccionado.Ejey == 4){
                                     Porcentaje(Tablero[x][4].Piezas,0);
                                     ColocoPieza(null,null,x,4);
@@ -527,7 +554,8 @@ function seleccionar(x,y){
                 }
             }
         }
-       
+        //SonidoPiezas(x,y);
+        //SilenciarPieza(x,y);
         seleccionado = null;
         resetMovimientos(); 
    
@@ -547,11 +575,12 @@ function seleccionar(x,y){
             ultTurn = true;
             a = 1;
         }
+        guardoTablero();
         sendMessage(1);
         armoAjedrez();
     }
 }
-
+}
 var totlsec1 = 900;
 var totlsec2 = 900;
 var finalizado = false;
@@ -1163,7 +1192,7 @@ function cambioCoronacion(x, y, pieza, col){
     ColocoPieza(pieza,col,x,y);
     armoAjedrez();
     Jaque(x,y,pieza);
-    //send();
+    sendMessage(1);
 }
 window.onresize = boardsize;
 //
@@ -1439,7 +1468,6 @@ function Jaque(x,y, sel){
         for(var q = 1; q <= 8; q++){
             if(Movimiento[p][q] == true){
                 if(Tablero[p][q].Piezas == colorR){
-                    console.log("JAQUE")
                     if(simbolo != null){
                         simbolo = simbolo + "+";
                     }else{
@@ -1962,16 +1990,10 @@ function JaqueMate(){
     if(jaqueMate == true && F_rey == true){
         finalizado = true;
         simbolo = "#";
-        $.ajax({
-            url: "/cyberhydra/Modal/modalVictoria.php",
-            type: "POST",
-            data: {turno:Turno},
-            success: function (data) {
-                document.getElementById("modal").innerHTML = data;
-            }
-          });   
+        Victoria(); 
         victoria++;
-        ActualizarEstadisticas();  
+        sendResultado(1)
+        ActualizarEstadisticas(1);  
     }
     resetMovimientos();
 }
@@ -1985,13 +2007,28 @@ function Derrota(){
     $.ajax({
         url: "/cyberhydra/Modal/modalDerrota.php",
         type: "POST",
-        data: {turno:Turno},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
         }
       });
     derrota++;  
-    ActualizarEstadisticas();
+    sendResultado(2)
+    ActualizarEstadisticas(0);
+}
+function Victoria(){
+    finalizado = true;
+    $.ajax({
+        url: "/cyberhydra/Modal/modalVictoria.php",
+        type: "POST",
+        data: {},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
+        }
+      });   
+    victoria++;
+    sendResultado(1)
+    ActualizarEstadisticas(1); 
 }
 //
 //
@@ -2004,40 +2041,106 @@ function init(){
 
         conn.onopen = function (e) {
             console.log("Connection established!");
-            // consultas cada x tiempo
-            // setInterval(function(){
-            //     conn.send('getFechas');
-            // }, 5000);
-
+            $.ajax({
+                url:  "/cyberhydra/Modal/modalEspera.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+              });
+            $.ajax({
+            async: false,
+            url:  "/cyberhydra/Ajedrez/php/UsuOnline.php",
+            type: "POST",
+            data: {action:'agregar'},
+            success: function (data) {
+               console.log("agregado")
+            }
+            });
+            sendConnection();
         };
         conn.onmessage = function(e) {
-            //reciboTablero(e.data)
             receiveMessage(e);
         };
         conn.onclose = function(e) {
-                console.log('Conexión websocket cerrada!');
-            };
+            console.log('Conexión websocket cerrada!');
+        };
     }
 
+    function sendConnection(e){
+        console.log("conectando")
+        name = sessionStorage.getItem('usuario') 
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\"}")
+    }
+
+    function sendResultado(e){
+        switch(e){
+            case 1:
+                //VICTORIA
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "vitoria";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 2:
+                //DERROTA
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "derrota";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 3:
+                //PIDO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Pido_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 4:
+                //ACEPTO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Acepto_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 5:
+                //RECHAZO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Rechazo_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 6:
+                //TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+            case 7:
+                //RESPONDO TABLAS
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Respondo_tablas";
+                conn.send(JSON.stringify(msg));
+            break;
+        }
+    }
     function sendMessage(e) {
-        console.log("mando")
-        console.log(e)
-        
         if(e == 1){
+            guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
-            //cambiar a tablero??
             msg["type"] = "message";
             msg["message"] = tab;
             conn.send(JSON.stringify(msg));
-            console.log('Mando tablero')
 
             var jug = "jug:" +JSON.stringify(Jugadas);
             var msg = {};
             msg["type"] = "message";
             msg["message"] = jug;
             conn.send(JSON.stringify(msg));
-            console.log('Mando tablero')
 
             var jaq = "jaq:" +JSON.stringify(jaque);
             var msg = {};
@@ -2054,12 +2157,98 @@ function init(){
     };
 
     function receiveMessage(e) {
-        console.log("recivo")
         var jsonMessage = JSON.parse(e.data);
+        if(jsonMessage.type === "onlineUsers"){
+            var count = 0;
+                var usuarios = [];
+                $.each(jsonMessage.onlineUsers, function (key, val) {
+                    if (count === 0) {
+                        usuarios.push(val)
+                    } else {
+                        usuarios.push(val)
+                    }
+                    count++;
+                });
+                console.log(usuarios)
+
+                if(usuarios.length == 1){
+                    $.ajax({
+                        async: false,
+                        url:  "/cyberhydra/Ajedrez/php/UsuOnline.php",
+                        type: "POST",
+                        data: {action:'borrar'},
+                        success: function (data) {
+                           console.log("borro")
+                        }
+                        });
+                }
+            $.ajax({
+                url:  "/cyberhydra/Ajedrez/php/BuscoUsuOnline.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    if(data == 'true'){
+                        $(".modal").hide();
+                    }else if(data == 'false'){
+                        $.ajax({
+                            url: "/cyberhydra/Modal/modalDesconeccion.php",
+                            type: "POST",
+                            data: {jugador2:jugador2},
+                            success: function (data) {
+                                document.getElementById("modal").innerHTML = data;
+                            }
+                        });   
+                    }
+                }
+                });
+
+        }else if (jsonMessage.type === "message") {
         var json2 = jsonMessage['message']
-        if (jsonMessage.type === "message") {
-            
-            if(json2.includes("tab:")){
+            tipo = 0;
+            if(json2.includes("victoria")){
+                Derrota();
+            }else if(json2.includes("derrota")){
+                Victoria();
+            }else if(json2.includes("Pido_tablas")){
+                $.ajax({
+                    url: "/cyberhydra/Modal/modalPidoTablas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });   
+            }else if(json2.includes("Acepto_tablas")){
+                $.ajax({
+                    url: "/cyberhydra/Modal/modalTablasAceptadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Rechazo_tablas")){
+                $.ajax({
+                    url: "/cyberhydra/Modal/modalTablasRechazadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("tablas")){
+                $.ajax({
+                    url: "/cyberhydra/Modal/modalTablas.php",
+                    type: "POST",
+                    data: {turno:Turno},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Respondo_tablas")){
+                console.log("respondo")
+
+            }else if(json2.includes("tab:")){
                 var tab = json2.slice(4)
                 tipo = 1;
             }else if(json2.includes("jug:")){
@@ -2085,16 +2274,21 @@ function init(){
                     break;
                 case 3:
                     var jaq2 = JSON.parse(jaq);
-                    jaque = jaq2;
+
+                    if(jaq2.jaque == true){
+                         var jx = 9-jaq2.x;
+                         var jy = 9-jaq2.y;
+                        Jaque(jx, jy, Jugadas[Turno].Piezas)
+                    }else{jaque = jaq2}
+
                     break;
                 case 4:
                     Turno = tur;
                     break;
             }
-        }else{console.log("no mensaje")}
+        }else{console.log("ERROR")}
 
         resetMovimientos();
-        resetTableroJaque();
         armoAjedrez();
     };
     
@@ -2115,71 +2309,6 @@ function inviertoTablero(tab){
                 qq = 8;
                 pp = pp-1;
             }
-}
-function send(msg){
-    var tab = "tab:" +JSON.stringify(Tablero);
-    var jug = "jug:" +JSON.stringify(Jugadas);
-    var jaq = "jaq:" +JSON.stringify(jaque);
-    if(tab.length > 0) {
-        guardoTablero();
-        socket.send(tab);
-        socket.send(jug);
-        socket.send(jaq);
-        socket.send(Turno);
-    }  
-}
-//
-//
-/*------------------------------------------------------------------------------------------*/
-//
-//
-function reciboTablero(data){
-    console.log(".")
-    var tipo;
-    var pp = 8;
-    var qq = 8;
-
-    if(data.includes("tab:")){
-        var tab = data.slice(4)
-        tipo = 1;
-    }else if(data.includes("jug:")){
-        var jug = data.slice(4)
-        tipo = 2;
-    }else if(data.includes("jaq:")){
-        var jaq = data.slice(4)
-        console.log(jaq)
-        tipo = 3;
-    }else{tipo = 4;}
-    
-    switch(tipo){
-        case 1:
-            var tab2 = JSON.parse(tab);
-            for(var p = 1; p <= 8; p++){
-                for(var q = 1; q <= 8; q++){
-                    Tablero[pp][qq] = tab2[p][q];
-                    qq = qq-1;
-                }
-                qq = 8;
-                pp = pp-1;
-            }
-            break;
-        case 2:
-            var jug2 = JSON.parse(jug);
-            for(var p = 1; p <= jug2.length; p++){
-                Jugadas[p] = jug2[p];
-            }
-            break;
-        case 3:
-            var jaq2 = JSON.parse(jaq);
-            jaque = jaq2;
-            break;
-        case 4:
-            Turno = data;
-            break;
-    }
-    resetMovimientos();
-    resetTableroJaque();
-    armoAjedrez();
 }
 //
 //
@@ -2210,7 +2339,6 @@ function tablas(){
     //Rey-Haogado
     Rey_Haogado('b');
     Rey_Haogado('n');
-    //Acuerdo-Mutuo
     //Insuficiencia-de-Piezas
     Falta_de_Piezas();
 }
@@ -2261,34 +2389,42 @@ function Rey_Haogado(color){
     }
 }
 function Acuerdo_Mutuo(){   
-    //cambiar a ESPERO
-    $.ajax({
-        url:  "/ChessUY/Modal/modalPidoTablas.php",
-        type: "POST",
-        data: {},
-        success: function (data) {
-            document.getElementById("modal").innerHTML = data;
-        }
-      });
+    if(spam < 3 && derrota == 0 && tabla == 0 && victoria == 0){
+        spam++;
+        //cambiar a ESPERO
+        $.ajax({
+            url:  "/cyberhydra/Modal/modalEsperoTablas.php",
+            type: "POST",
+            data: {},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+                sendResultado(3);
+            }
+        });
+    }
 }
 function aceptar_tablas(){
     finalizado = true;
     $.ajax({
-        url: "/cyberhydra/Modal/modalTablasAceptadas.php",
+        url: "/cyberhydra/Modal/modalAceptoTablas.php",
         type: "POST",
-        data: {},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(4)
         }
         });
+    tabla++;
+    ActualizarEstadisticas();
 }
 function rechazar_tablas(){
     $.ajax({
-        url: "/cyberhydra/Modal/modalTablasRechazadas.php",
+        url: "/cyberhydra/Modal/modalRechazoTablas.php",
         type: "POST",
-        data: {},
+        data: {jugador2:jugador2},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(5);
         }
         });
 }
@@ -2336,10 +2472,11 @@ function llamoTablas(){
         data: {},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
+            sendResultado(6)
         }
         });
     tabla++;
-    ActualizarEstadisticas();
+    ActualizarEstadisticas(0.5);
 }
 function Porcentaje(pieza,cor){
     var suma = 0;
@@ -2376,9 +2513,7 @@ function Porcentaje(pieza,cor){
         break;
     }
     if(cor == 1){suma = suma * -1}
-    console.log(porcentaje)
     porcentaje = porcentaje + suma;
-    console.log(porcentaje)
     if(porcentaje>78){
         barra = 100;
     }else{
@@ -2390,13 +2525,53 @@ function Porcentaje(pieza,cor){
     }
     barraProgreso(barra);
 } 
-function ActualizarEstadisticas(){
+function ActualizarEstadisticas(resultado){
     $.ajax({
-        url: "/ChessUY/Logros/PHP/ActualizoEstadisticas.php",
+        url: "/cyberhydra/Ajedrez/php/ELO.php",
         type: "POST",
-        data: {victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+        data: {jugador2:jugador2, resultado:resultado},
         success: function (data) {
-           console.log(data)
+            elo = data;
+            $.ajax({
+                url: "/cyberhydra/Logros/PHP/ActualizoEstadisticas.php",
+                type: "POST",
+                data: {puntaje:elo,victorias:victoria,derrotas:derrota,tablas:tabla,coronaciones:coronaciones,comidas:comidas,menos_tiempo:menos_tiempo,menos_movimientos:Turno,Reloj:Reloj,Campeon:0},
+                success: function (data) {}
+                });
         }
         });
-}
+    }
+    /*window.addEventListener("load",function(){
+        document.getElementById("movimiento").addEventListener("click",SondioFondo);
+        document.getElementById("movimiento").addEventListener("click",SilenciarSonido);			
+    });
+    
+    function SondioFondo(){
+        var sonido = document.createElement("iframe");
+        sonido.setAttribute("src","/cyberhydra/media/audio/Background.mp3");
+        document.body.appendChild(sonido);
+        document.getElementById("movimiento").removeEventListener("click",SondioFondo);
+    }
+    
+    function SilenciarSonido(){
+        var iframe = document.getElementsByTagName("iframe");
+    
+        if (iframe.length > 0){
+            iframe[0].parentNode.removeChild(iframe[0]);
+            document.getElementById("movimiento").addEventListener("click",SondioFondo);
+        }
+    }
+    function SonidoPiezas(x,y){
+        var sonido = document.createElement("iframe");
+        sonido.setAttribute("src","/cyberhydra/media/audio/chess-.mp3");
+        document.body.appendChild(sonido);
+        document.getElementById("chat").removeEventListener("click",SonidoPiezas);
+    }
+    function SilenciarPieza(x,y){
+        var iframe = document.getElementsByTagName("iframe");
+    
+        if (iframe.length > 0){
+            iframe[0].parentNode.removeChild(iframe[0]);
+            document.getElementById("chat").addEventListener("click",SonidoPiezas);
+        }
+    }*/

@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 session_start();
 
 if(isset($_SESSION['usuario'])){
-  header('location: /cyberhydra/Inicio');
+  header('location: Index2.php');
 }
 
 ?>

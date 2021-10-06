@@ -16,7 +16,7 @@ function log(){
       var log = user.login(usuario, contra);
       
         if(log == true){
-          location.href = "/cyberhydra/Inicio";
+          location.href = "/cyberhydra/Index2.php";
       }else{
         var numero_mensaje = 1;
 

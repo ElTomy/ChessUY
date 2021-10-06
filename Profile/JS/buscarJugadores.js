@@ -16,7 +16,7 @@ $( document ).ready(function(){
 
 function cargarJugadores(){
     $.ajax({
-        url: "/ChessUY/Profile/PHP/buscar.php",
+        url: "/cyberhydra/Profile/PHP/buscar.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -45,7 +45,7 @@ function eliminar(usuario){
     $('#modal').show();
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Modal/modalEliminarUsuario.php",
+        url: "/cyberhydra/Modal/modalEliminarUsuario.php",
         data: {Usuario: usuario},
         success: function (data) {
             document.getElementById("modal").innerHTML = data;
@@ -56,7 +56,7 @@ function eliminar(usuario){
 function borrar(usuario){
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Profile/PHP/borrar.php",
+        url: "/cyberhydra/Profile/PHP/borrar.php",
         data: {Usuario: usuario},
         success: function (response) {   
             $('#modal').hide();

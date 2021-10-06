@@ -25,17 +25,17 @@ $logro = '<!DOCTYPE html>
                 ></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 
-                <script src="/ChessUY/Javascript/Loader.js"></script>
-                <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
-                <script src="/ChessUY/Profile/JS/Logros2.js"></script>
+                <script src="/cyberhydra/Javascript/Loader.js"></script>
+                <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
+                <script src="/cyberhydra/Profile/JS/Logros2.js"></script>
 
                 
                 <link
                   rel="shortcut icon"
-                  href="/ChessUY/media/svg/Logo/Favicon.svg"
+                  href="/cyberhydra/media/svg/Logo/Favicon.svg"
                   type="image/x-icon"
                 />
-                <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
+                <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
                 <title>ChessUY | Logros</title>
               </head>
@@ -49,7 +49,7 @@ $logro = '<!DOCTYPE html>
                 <div class="landing-video">
                   <div class="background-opacity"></div>
                   <video autoplay="" loop="" muted="">
-                    <source src="/ChessUY/media/videos/Ajedrez.mp4" type="video/mp4" />
+                    <source src="/cyberhydra/media/videos/Ajedrez.mp4" type="video/mp4" />
                   </video>
                 </div>
 

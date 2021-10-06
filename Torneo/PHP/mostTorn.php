@@ -115,7 +115,7 @@ if(count($torneos) < 1) {
     </div>
     <div class='torneo-right'>
         <div class='torneo-info'>
-            <h2>Nombre del Torneo</h2>
+            <h2>".$torneos[$j]['nombre']."</h2>
             <p>Comienza el ".date('j', $fechTorn)." de ".$mesesEsp[date('n', $fechTorn)]." del año ".date('Y', $fechTorn)." a las ".substr($comTorn[3], 0, -3)." horas</p>
             <p>".$descELO."</p>
             <p>".$descEdad."</p>

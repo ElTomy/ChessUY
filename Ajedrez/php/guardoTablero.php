@@ -3,5 +3,14 @@ include '../../servidor.php';
 session_start();
 $server= new servidor();
 $tablero = $_POST["tablero"];
-echo $server->guardoTablero($_SESSION['usuario'], $tablero); 
+
+if(isset($_POST['turno'])){
+    $turno = $_POST['turno'];
+}else{$turno = 1;}
+if(isset($_POST['movimientos'])){
+    $movimientos = $_POST['movimientos'];
+}else{$movimientos = '';}
+//temp 1 
+//temp 2
+echo $server->guardoTablero($_SESSION['usuario'], $tablero, $turno, $movimientos); 
 ?>

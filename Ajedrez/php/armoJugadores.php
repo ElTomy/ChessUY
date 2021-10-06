@@ -1,5 +1,8 @@
 <?php
+include '../../servidor.php';
 session_start();
+$server= new servidor();
+
 $usu = $_SESSION["usuario"];
 $Icon = $_SESSION["icono"];
 $colFondo = $_SESSION["colorfondo"];
@@ -27,7 +30,32 @@ if(isset($_POST['Turno'])){
     }
 }
 
-$jugadores = '  <a href="/ChessUY/Profile/'.$usu.'">
+if($_POST['jugador2'] != null){
+    $Jug2 = $server->BuscoJugador($_POST['jugador2']);
+    $usu2 = $Jug2[0]['Usuario'];
+    $colFondo2 = $Jug2[0]['colFondo'];
+    $Icon2 = $Jug2[0]['icono'];
+    $colIcon2 =  $Jug2[0]['colIcono'];
+    $tipo2 = $Jug2[0]['tipo'];
+}else{
+    $usu2 = 'Jugador2';
+    $colIcon2 = '#ffffff';
+    $Icon2 = 'fas fa-user';
+    $colFondo2 =  '#0076be';
+    $tipo2 = 1;
+}
+
+if($tipo2 == 0){
+    $tipo2 = "<i class='fas fa-star'></i> Administrador";
+}else if($tipo2 == 1){
+    $tipo2 = "<i class='fas fa-chess-knight'></i> Jugador";
+}else if($tipo2 == 2){
+    $tipo2 = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+}else if($tipo2 == 3){
+    $tipo2 = "<i class='fas fa-microphone'></i> Periodista";
+}
+
+$jugadores = '  <a href="/cyberhydra/Profile/'.$usu.'">
                     <div class="JugadorUno">
                         <div class="jugador-img" style="background-color:'.$colFondo.'">
                             <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
@@ -40,14 +68,14 @@ $jugadores = '  <a href="/ChessUY/Profile/'.$usu.'">
 
                 </a>
                     <h1>vs</h1>
-                    <a href="/ChessUY/Profile/BOT">
+                    <a href="/cyberhydra/Profile/'.$usu2.'">
                     <div class="JugadorDos">
-                        <div class="jugador-body">
-                            <h1 '.$colorJugador2.'>ALFI ᴮᴼᵀ</h1>
-                            <p><i class="fas fa-robot"></i> BOT</p>
+                        <div class="jugador-img" style="background-color:'.$colFondo2.'">
+                            <i class="'.$Icon2.'" style="color:'.$colIcon2.'"></i>
                         </div>
-                        <div class="jugador-img" style="background-color:#ffffff">
-                            <i class="fas fa-robot"  style="color:#000000"></i>
+                        <div class="jugador-body">
+                            <h1 '.$colorJugador2.' >'.$usu2.'</h1>
+                            <p>'.$tipo2.'</p>
                         </div>
                     </div>
                 </a>';

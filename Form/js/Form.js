@@ -36,7 +36,7 @@ function Register() {
           });
     }else if(usuario.includes(".") || usuario.includes("<") || usuario.includes(">") || usuario.includes("'") || usuario.includes("(") || usuario.includes(")")){
         $.ajax({
-            url: "/ChessUY/Modal/modal.php",
+            url: "/cyberhydra/Modal/modal.php",
             type: "POST",
             data: { numero_mensaje: 13},
             success: function (data) {

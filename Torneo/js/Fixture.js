@@ -29,7 +29,7 @@ set us2(x){
 function MuestroTorneos(){
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Torneo/PHP/TraigoTorneos.php",
+        url: "/cyberhydra/Torneo/PHP/TraigoTorneos.php",
         data: {},
         success: function (data) {
             document.getElementById("Torneos").innerHTML = data;
@@ -39,7 +39,7 @@ function MuestroTorneos(){
 function Ficture(id){
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Torneo/PHP/Fixture.php",
+        url: "/cyberhydra/Torneo/PHP/Fixture.php",
         data: {id:id},
         success: function (data) {
             console.log(data)
