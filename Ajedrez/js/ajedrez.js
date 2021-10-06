@@ -2100,7 +2100,8 @@ function init(){
     function sendConnection(e){
         name = sessionStorage.getItem('usuario') 
         room = ID_partido;
-        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+        team = "CYBER";
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\",\"team\":\"" + team + "\"}")
 
     }
 
@@ -2109,6 +2110,7 @@ function init(){
             case 1:
                 //:VICTORIA
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "vitoria";
                 conn.send(JSON.stringify(msg));
@@ -2116,6 +2118,7 @@ function init(){
             case 2:
                 //:DERROTA
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "derrota";
                 conn.send(JSON.stringify(msg));
@@ -2123,6 +2126,7 @@ function init(){
             case 3:
                 //:PIDO TABLAS
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "Pido_tablas";
                 conn.send(JSON.stringify(msg));
@@ -2130,6 +2134,7 @@ function init(){
             case 4:
                 //:ACEPTO TABLAS
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "Acepto_tablas";
                 conn.send(JSON.stringify(msg));
@@ -2137,6 +2142,7 @@ function init(){
             case 5:
                 //:RECHAZO TABLAS
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "Rechazo_tablas";
                 conn.send(JSON.stringify(msg));
@@ -2144,6 +2150,7 @@ function init(){
             case 6:
                 //:TABLAS
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "tablas";
                 conn.send(JSON.stringify(msg));
@@ -2151,6 +2158,7 @@ function init(){
             case 7:
                 //:RESPONDO TABLAS
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "Respondo_tablas";
                 conn.send(JSON.stringify(msg));
@@ -2162,24 +2170,28 @@ function init(){
             guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
+            msg["team"] = "CYBER";
             msg["type"] = "message";
             msg["message"] = tab;
             conn.send(JSON.stringify(msg));
 
             var jug = "jug:" +JSON.stringify(Jugadas);
             var msg = {};
+            msg["team"] = "CYBER";
             msg["type"] = "message";
             msg["message"] = jug;
             conn.send(JSON.stringify(msg));
 
             var jaq = "jaq:" +JSON.stringify(jaque);
             var msg = {};
+            msg["team"] = "CYBER";
             msg["type"] = "message";
             msg["message"] = jaq;
             conn.send(JSON.stringify(msg));
 
             var tur = "tur:" + Turno;
             var msg = {};
+            msg["team"] = "CYBER";
             msg["type"] = "message";
             msg["message"] = tur;
             conn.send(JSON.stringify(msg));
@@ -2188,6 +2200,7 @@ function init(){
 
     function receiveMessage(e) {
         var jsonMessage = JSON.parse(e.data);
+        console.log(jsonMessage);
         if(jsonMessage.type === "onlineUsers"){
             var count = 0;
                 var usuarios = [];
