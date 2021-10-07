@@ -4384,6 +4384,20 @@ Ver Partidos
         background-color: #222;
         border-radius: 20px;
 
+        .partido-top{
+          height: 150px;
+          overflow: hidden;
+          border-radius: 20px;
+
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+            
+          }
+        }
+
         .partido-bottom{
           width: 100%;
           height: 100px;
@@ -4416,6 +4430,15 @@ Ver Partidos
               height: 80px;
               border-radius: 50%;
               background-color: #444;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              i{
+                color: #ffaa00;
+                font-size: 1.5em;
+              }
             }
 
             h2{

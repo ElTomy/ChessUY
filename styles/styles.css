@@ -5961,6 +5961,21 @@ Ver Partidos
   border-radius: 20px;
 }
 
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-top {
+  height: 150px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-top img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+
 .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom {
   width: 100%;
   height: 100px;
@@ -6006,6 +6021,20 @@ Ver Partidos
   height: 80px;
   border-radius: 50%;
   background-color: #444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1 i, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 i {
+  color: #ffaa00;
+  font-size: 1.5em;
 }
 
 .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs h2 {
