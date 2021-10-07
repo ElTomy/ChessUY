@@ -12,9 +12,15 @@ for($x=0;$x<$numero_Torneos;$x++){
         $id = $Torneos[$x]['ID_Torneo'];
         $nombre = $Torneos[$x]['nombre'];
         $return .='
-        <div style="background-color:#554E4E; padding: 5px">
-            <a style="color: white" >'.$nombre.'</a>
-            <a style="color: white" onclick="Ficture('.$id.')">Fixture</a>
+        <div class="Torneo">
+            <div class="img">
+             <img src="/ChessUY/media/images/Trofeo.png"></img>
+            </div>
+            <div class="info">
+                <h2>'.$nombre.'</h2>
+                <a class="boton-fixture" style="color: white" onclick="Ficture('.$id.')">Fixture</a>
+            </div>
+            
         </div>';
         $a = 1;
     }

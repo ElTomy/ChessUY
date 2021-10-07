@@ -2858,7 +2858,59 @@ Buscar Jugadores
           flex-direction: column;
 }
 
-.search-wrapper .search-list #Torneos .button-fixture .boton-fixture {
+.search-wrapper .search-list #Torneos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-width: 300px;
+  width: 100%;
+  background-color: #222;
+  padding: 10px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .img {
+  max-width: 100px;
+  width: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .img img {
+  width: 100%;
+  height: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .info h2 {
+  color: #ffaa00;
+  font-weight: 500;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .info .boton-fixture {
   background-color: #0076be;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2875,13 +2927,13 @@ Buscar Jugadores
   width: 120px;
   height: 40px;
   border-radius: 2em;
-  margin: 0 auto;
+  margin: 10px auto;
   color: white;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.search-wrapper .search-list #Torneos .button-fixture .boton-fixture:hover {
+.search-wrapper .search-list #Torneos .Torneo .info .boton-fixture:hover {
   background-color: #009dff;
 }
 
