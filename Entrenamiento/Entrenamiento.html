@@ -10,19 +10,22 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../Javascript/Loader.js"></script>
+
+    <script src="/ChessUY/Javascript/Loader.js"></script>
+    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/ChessUY/Entrenamiento/js/Problemas.js"></script>
 
     <link
       rel="shortcut icon"
-      href="../media/svg/Logo/Favicon.svg"
+      href="/ChessUY/media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Championship</title>
+    <title>ChessUY | Entrenamientos</title>
   </head>
   <body>
-
+    <div id="header"></div>
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
@@ -32,20 +35,56 @@
         <source src="../media/videos/Ajedrez.mp4" type="video/mp4" />
       </video>
     </div>
-
-
-    <section class="landing-page">
-      <div class="landing-overlay">
-        <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" />
-
-        <div class="index-info">
-          <h1>Entrenamiento</h1>
-          <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, in.</b>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, sed accusamus illum molestiae vitae assumenda architecto rerum voluptatum laborum placeat aperiam maiores dolor modi quisquam necessitatibus voluptatem dolorum excepturi. Quo, sit tempore velit aperiam at culpa maxime dolor quisquam provident assumenda similique ab doloribus soluta impedit in corporis dolorum, ea vel excepturi voluptatem earum. Quia ex deserunt officiis laboriosam sit aliquam quaerat vitae maiores minus nesciunt magni, consequatur culpa vel dolore iure corporis nam in eaque rerum libero! Exercitationem minus optio alias veritatis aliquid voluptate accusamus ratione, sit praesentium. Aut asperiores earum eligendi, cumque reiciendis sapiente animi dicta accusantium similique.</p>
+      <div id="MuestroDificultades"></div>
+      <section class="board-wrapper">
+        <div class="board">
+  
+            <div class="mobile-img">
+                <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+            </div>
+  
+            <div class="first-player-mobile">
+                <div class="first-player-wrapper">
+                    <div class="profile-body-picture">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-avatar-body">
+                        <h1>'.'</h1>
+                        <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                    </div>
+                </div>
+                <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
+            </div>
+  
+            <div class="ajedrez-flex" id="ArmoAjedrez"></div>
+  
+            <div class="movimientos">
+  
+              <div class="movimientos-img">
+                <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+              </div>
+  
+              <div class="jugadores" id="ArmoJugadores"></div>
+            <div class="menu-bottom">
+                <div class="select-wrapper" id="select-wrapper">
+                    <div class="box-type">
+                        <button id="movimiento" class="box-button active" onclick="box('movimientos')"><i class="fas fa-chess"></i> Movimientos</button>
+                    </div>
+                    <div class="box-content" id="box">
+  
+                      <div class="table-wrapper" id="ArmoMovimientos"></div>
+                      <div class="chat" id="ArmoChat"></div>
+                        
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
-
-      </div>
+      </section>
+    <section class="anuncio">
+      <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
+      <p>Este espacio está reservado para anuncios.</p>
     </section>
-
     <div id="footer"></div>
   </body>
 </html>
