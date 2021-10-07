@@ -5886,6 +5886,156 @@ Torneos
 /*
 
 
+Ver Partidos
+
+
+*/
+.verpartidos-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos {
+  width: 90%;
+  padding: 20px 10px;
+  border-radius: 20px;
+  background-color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos .title {
+  color: white;
+}
+
+.verpartidos-wrapper .verpartidos hr {
+  margin: 10px 0;
+  width: 90%;
+}
+
+.verpartidos-wrapper .verpartidos .partidos {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido {
+  max-width: 400px;
+  width: 100%;
+  margin: 10px;
+  position: relative;
+  height: 240px;
+  background-color: #222;
+  border-radius: 20px;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  padding: 10px 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 0 20px 20px;
+  background-color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  margin-top: -25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #444;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs h2 {
+  color: #ffaa00;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom button {
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  font-size: 1.1em;
+  position: relative;
+  margin-bottom: -40px;
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
 Responsive
 
 
