@@ -2858,7 +2858,59 @@ Buscar Jugadores
           flex-direction: column;
 }
 
-.search-wrapper .search-list #Torneos .button-fixture .boton-fixture {
+.search-wrapper .search-list #Torneos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-width: 350px;
+  width: 100%;
+  background-color: #222;
+  padding: 10px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .img {
+  max-width: 120px;
+  width: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .img img {
+  width: 100%;
+  height: 100%;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .info h2 {
+  color: #ffaa00;
+  font-weight: 500;
+}
+
+.search-wrapper .search-list #Torneos .Torneo .info .boton-fixture {
   background-color: #0076be;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2875,13 +2927,13 @@ Buscar Jugadores
   width: 120px;
   height: 40px;
   border-radius: 2em;
-  margin: 0 auto;
+  margin: 10px auto;
   color: white;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.search-wrapper .search-list #Torneos .button-fixture .boton-fixture:hover {
+.search-wrapper .search-list #Torneos .Torneo .info .boton-fixture:hover {
   background-color: #009dff;
 }
 
@@ -5874,6 +5926,239 @@ Torneos
 
 .torneos-wrapper .torneos .torneos-content .torneo-config .config-wrapper .config-right .torneo-buttons button:hover {
   background-color: #009dff;
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
+Ver Partidos
+
+
+*/
+.verpartidos-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos {
+  width: 90%;
+  padding: 20px 10px;
+  border-radius: 20px;
+  background-color: #111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos .title {
+  color: white;
+}
+
+.verpartidos-wrapper .verpartidos hr {
+  margin: 10px 0;
+  width: 90%;
+}
+
+.verpartidos-wrapper .verpartidos .partidos {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido {
+  max-width: 400px;
+  width: 100%;
+  margin: 10px;
+  position: relative;
+  height: 240px;
+  background-color: #222;
+  border-radius: 20px;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-top {
+  height: 150px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-top img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  padding: 10px 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 0 0 20px 20px;
+  background-color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  margin-top: -25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1 i, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 i {
+  color: #ffaa00;
+  font-size: 1.5em;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs h2 {
+  color: #ffaa00;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom button {
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  font-size: 1.1em;
+  position: relative;
+  margin-bottom: -40px;
+}
+
+/*
+
+
+
+
+
+*/
+/*
+
+
+Error 404 & 403
+
+
+*/
+.error-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.error-wrapper h1 {
+  margin: 5px 20px;
+  color: #ffaa00;
+  font-size: 8em;
+}
+
+.error-wrapper p {
+  margin: 0 20px;
+  color: white;
+  font-size: 2em;
+}
+
+.error-wrapper a {
+  background-color: #ffaa00;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 15px;
+  margin: 10px 0;
 }
 
 /*

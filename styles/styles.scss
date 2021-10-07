@@ -2005,29 +2005,66 @@ Buscar Jugadores
     flex-direction: column;
 
     #Torneos{
-      .button-fixture{
-        .boton-fixture{
-          background-color: #0076be;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          width: 120px;
-          height: 40px;
-          border-radius: 2em;
+      display:flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap; 
+      width: 100%;
 
-          margin: 0 auto;
+      .Torneo{
+        box-sizing: border-box;
+        max-width: 350px;
+        width: 100%;
 
-          color: white;
+        background-color: #222;
+        padding: 10px;
+        border-radius: 20px;
 
-          transition: 0.5s;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 10px;
+
+        .img{
+          max-width: 120px;
+          width: 100%;
+          img{
+            width: 100%;
+            height: 100%;
+          }
         }
-        .boton-fixture:hover {
-          background-color: #009dff;
+        .info{
+          h2{
+            color: #ffaa00;
+            font-weight: 500;
+          }
+          .boton-fixture{
+            background-color: #0076be;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 120px;
+            height: 40px;
+            border-radius: 2em;
+  
+            margin: 10px auto;
+  
+            color: white;
+  
+            transition: 0.5s;
+          }
+          .boton-fixture:hover {
+            background-color: #009dff;
+          }
         }
       }
+
+      
     }
 
     .search-logo {
@@ -4324,6 +4361,193 @@ Torneos
         }
       }
     }
+  }
+}
+/*
+
+
+
+
+
+*/
+//----------------------------------------------------------//
+/*
+
+
+Ver Partidos
+
+
+*/
+
+.verpartidos-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .verpartidos{
+    width: 90%;
+    padding: 20px 10px;
+    border-radius: 20px;
+    background-color: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title{
+      color: white;
+    }
+    hr{
+      margin: 10px 0;
+      width: 90%;
+    }
+    .partidos{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .partido{
+        max-width: 400px;
+        width: 100%;
+        margin: 10px;
+        position: relative;
+
+        height: 240px;
+        background-color: #222;
+        border-radius: 20px;
+
+        .partido-top{
+          height: 150px;
+          overflow: hidden;
+          border-radius: 20px;
+
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+            
+          }
+        }
+
+        .partido-bottom{
+          width: 100%;
+          height: 100px;
+          position: absolute;
+
+          padding: 10px 0;
+          left: 0;
+          bottom: 0;
+          border-radius: 0 0 20px 20px;
+
+          background-color: #333;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .vs{
+            width: 100%;
+            position: absolute;
+            top: 0;
+            margin-top: -25px;
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .player1, .player2{
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              background-color: #444;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              i{
+                color: #ffaa00;
+                font-size: 1.5em;
+              }
+            }
+
+            h2{
+              color: #ffaa00;
+            }
+
+          }
+
+          button{
+            background-color: #0076be;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            width: 90px;
+            height: 40px;
+            font-size: 1.1em;
+
+            position: relative;
+            margin-bottom: -40px;
+          }
+        }
+      }
+    }
+    
+  }
+}
+/*
+
+
+
+
+
+*/
+//----------------------------------------------------------//
+/*
+
+
+Error 404 & 403
+
+
+*/
+.error-wrapper{
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  h1{
+    margin: 5px 20px;
+    color: #ffaa00;
+    font-size: 8em;
+  }
+  p{
+    margin: 0 20px;
+    color: white;
+    font-size: 2em;
+  }
+  a{
+    background-color: #ffaa00;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    margin: 10px 0;
   }
 }
 /*
