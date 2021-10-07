@@ -2876,7 +2876,7 @@ Buscar Jugadores
 .search-wrapper .search-list #Torneos .Torneo {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 300px;
+  max-width: 350px;
   width: 100%;
   background-color: #222;
   padding: 10px;
@@ -2896,7 +2896,7 @@ Buscar Jugadores
 }
 
 .search-wrapper .search-list #Torneos .Torneo .img {
-  max-width: 100px;
+  max-width: 120px;
   width: 100%;
 }
 
