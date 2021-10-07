@@ -29,6 +29,7 @@ class online implements MessageComponentInterface {
         $this->clients->attach($conn);
         $this->CYBERclients->attach($conn);
         echo "New connection! ({$conn->resourceId})\n";
+
     }
 
     public function onMessage(ConnectionInterface $from, $msg){

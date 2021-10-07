@@ -96,18 +96,15 @@ echo '<!DOCTYPE html>
               session_start();
               $nombre = $_SESSION['usuario'];
               $nombre2 = "'$nombre'";
-
               $img = $noticia[0]['IMG'];
               $img2 = "'$img'";
 
               echo '<button onclick="guardar('.$nombre2.', '.$id.', '. $img2.')"><i class="fas fa-save"></i> Guardar</button>';
+              echo '<button onclick="guardar('.$nombre2.')"><i class="fas fa-save"></i> Guardar</button>';
 
           echo '</div>
         </div>
       </div>
-    </section>
-
-    <section class="anuncio">
       <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
       <p>Este espacio está reservado para anuncios.</p>
     </section>

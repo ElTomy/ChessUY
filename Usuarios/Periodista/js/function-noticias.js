@@ -1,6 +1,9 @@
 
  $(document).ready(function () {
 
+    $('#RichText').richText();
+    $('#RichText').val("<div>asd</div>")
+
     /*
 
         Editar Titulo
@@ -184,7 +187,6 @@ function crear(usuario){
                         document.getElementById("modal").innerHTML = data;
                     }
                 });
-
             }
         });
     }

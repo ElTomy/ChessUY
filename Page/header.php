@@ -102,8 +102,8 @@
                             <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{
                     echo "<a class='search' href='/cyberhydra/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
-                          <a href='/cyberhydra/Form/Login'><i class='fas fa-sign-in-alt'></i> Login</a>
-                          <a href='/cyberhydra/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
+                          <a href='/cyberhydra/Form/login.html'><i class='fas fa-sign-in-alt'></i> Login</a>
+                          <a href='/cyberhydra/Form/register-user.html'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
         </div>
