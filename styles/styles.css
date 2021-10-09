@@ -3139,7 +3139,8 @@ Buscar Jugadores
   margin: 10px;
 }
 
-.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button, .search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar {
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button,
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3162,7 +3163,8 @@ Buscar Jugadores
   margin-right: 10px;
 }
 
-.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button i, .search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar i {
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton button i,
+.search-wrapper .search-list .search .search-box .player-wrapper .profileButton .eliminar i {
   margin-right: 10px;
 }
 
@@ -4783,31 +4785,40 @@ Noticias (Periodista)
   margin: 10px 0;
 }
 
-.noticia-wrapper2 .noticia .noticia-body, .noticia-wrapper2 .noticia .crear-noticia-body {
+.noticia-wrapper2 .noticia .noticia-body,
+.noticia-wrapper2 .noticia .crear-noticia-body {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .editar-pencil, .noticia-wrapper2 .noticia .noticia-body .editar-guardar, .noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil, .noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar {
+.noticia-wrapper2 .noticia .noticia-body .editar-pencil,
+.noticia-wrapper2 .noticia .noticia-body .editar-guardar,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar {
   background-color: transparent;
   color: white;
   border: none;
   cursor: pointer;
   margin-left: 10px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .editar-pencil i, .noticia-wrapper2 .noticia .noticia-body .editar-guardar i, .noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil i, .noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar i {
+.noticia-wrapper2 .noticia .noticia-body .editar-pencil i,
+.noticia-wrapper2 .noticia .noticia-body .editar-guardar i,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil i,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar i {
   font-size: 20px;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .editar-guardar, .noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar {
+.noticia-wrapper2 .noticia .noticia-body .editar-guardar,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-guardar {
   display: none;
 }
 
-.noticia-wrapper2 .noticia .noticia-body input, .noticia-wrapper2 .noticia .crear-noticia-body input {
+.noticia-wrapper2 .noticia .noticia-body input,
+.noticia-wrapper2 .noticia .crear-noticia-body input {
   width: 100%;
   height: 40px;
   background-color: transparent;
@@ -4819,11 +4830,13 @@ Noticias (Periodista)
   margin: 5px 0;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .editar-pencil:hover, .noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil:hover {
+.noticia-wrapper2 .noticia .noticia-body .editar-pencil:hover,
+.noticia-wrapper2 .noticia .crear-noticia-body .editar-pencil:hover {
   color: #888;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .header, .noticia-wrapper2 .noticia .crear-noticia-body .header {
+.noticia-wrapper2 .noticia .noticia-body .header,
+.noticia-wrapper2 .noticia .crear-noticia-body .header {
   width: 100%;
   text-align: center;
   margin: 20px 0;
@@ -4842,7 +4855,10 @@ Noticias (Periodista)
           flex-direction: column;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .header .titulo, .noticia-wrapper2 .noticia .noticia-body .header .subtitulo, .noticia-wrapper2 .noticia .crear-noticia-body .header .titulo, .noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo {
+.noticia-wrapper2 .noticia .noticia-body .header .titulo,
+.noticia-wrapper2 .noticia .noticia-body .header .subtitulo,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .titulo,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4855,45 +4871,59 @@ Noticias (Periodista)
           align-items: center;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .header .titulo #titulo-input, .noticia-wrapper2 .noticia .noticia-body .header .titulo #subtitulo-input, .noticia-wrapper2 .noticia .noticia-body .header .subtitulo #titulo-input, .noticia-wrapper2 .noticia .noticia-body .header .subtitulo #subtitulo-input, .noticia-wrapper2 .noticia .crear-noticia-body .header .titulo #titulo-input, .noticia-wrapper2 .noticia .crear-noticia-body .header .titulo #subtitulo-input, .noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo #titulo-input, .noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo #subtitulo-input {
+.noticia-wrapper2 .noticia .noticia-body .header .titulo #titulo-input,
+.noticia-wrapper2 .noticia .noticia-body .header .titulo #subtitulo-input,
+.noticia-wrapper2 .noticia .noticia-body .header .subtitulo #titulo-input,
+.noticia-wrapper2 .noticia .noticia-body .header .subtitulo #subtitulo-input,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .titulo #titulo-input,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .titulo #subtitulo-input,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo #titulo-input,
+.noticia-wrapper2 .noticia .crear-noticia-body .header .subtitulo #subtitulo-input {
   display: none;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .header h1, .noticia-wrapper2 .noticia .crear-noticia-body .header h1 {
+.noticia-wrapper2 .noticia .noticia-body .header h1,
+.noticia-wrapper2 .noticia .crear-noticia-body .header h1 {
   color: white;
   font-weight: lighter;
   font-size: 40px;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .header h2, .noticia-wrapper2 .noticia .crear-noticia-body .header h2 {
+.noticia-wrapper2 .noticia .noticia-body .header h2,
+.noticia-wrapper2 .noticia .crear-noticia-body .header h2 {
   color: #ccc;
   font-size: 25px;
   font-weight: lighter;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-img, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-img {
+.noticia-wrapper2 .noticia .noticia-body .noticia-img,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-img {
   max-width: 600px;
   margin: 10px auto;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-img img, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-img img {
+.noticia-wrapper2 .noticia .noticia-body .noticia-img img,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-img img {
   width: 100%;
   border-radius: 30px;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .body h2, .noticia-wrapper2 .noticia .crear-noticia-body .body h2 {
+.noticia-wrapper2 .noticia .noticia-body .body h2,
+.noticia-wrapper2 .noticia .crear-noticia-body .body h2 {
   color: #ddd;
   margin: 5px 0;
   font-weight: lighter;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .body p, .noticia-wrapper2 .noticia .crear-noticia-body .body p {
+.noticia-wrapper2 .noticia .noticia-body .body p,
+.noticia-wrapper2 .noticia .crear-noticia-body .body p {
   color: #bbb;
   margin-top: 10px;
   margin-bottom: 40px;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .body input[type="file"], .noticia-wrapper2 .noticia .crear-noticia-body .body input[type="file"] {
+.noticia-wrapper2 .noticia .noticia-body .body input[type="file"],
+.noticia-wrapper2 .noticia .crear-noticia-body .body input[type="file"] {
   background-color: transparent;
   border: none;
   outline: none;
@@ -4902,12 +4932,14 @@ Noticias (Periodista)
   text-align: center;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .body .noticia-info, .noticia-wrapper2 .noticia .crear-noticia-body .body .noticia-info {
+.noticia-wrapper2 .noticia .noticia-body .body .noticia-info,
+.noticia-wrapper2 .noticia .crear-noticia-body .body .noticia-info {
   color: white;
   margin: 20px 0;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-buttons, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons {
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4921,7 +4953,10 @@ Noticias (Periodista)
       flex-wrap: wrap;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-buttons button, .noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons button, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar {
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons button,
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons button,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar {
   background-color: #0076be;
   border-radius: 2em;
   border: none;
@@ -4934,15 +4969,18 @@ Noticias (Periodista)
   transition: 0.2s;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar {
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar {
   background-color: #ff5959;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-buttons button:hover, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons button:hover {
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons button:hover,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons button:hover {
   background-color: #009dff;
 }
 
-.noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar:hover, .noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar:hover {
+.noticia-wrapper2 .noticia .noticia-body .noticia-buttons .eliminar:hover,
+.noticia-wrapper2 .noticia .crear-noticia-body .noticia-buttons .eliminar:hover {
   background-color: #702c2c !important;
 }
 
@@ -6073,11 +6111,11 @@ Ver Partidos
           align-items: center;
 }
 
-.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 {
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1,
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #444;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6089,8 +6127,8 @@ Ver Partidos
           align-items: center;
 }
 
-.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1 i, .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 i {
-  color: #ffaa00;
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player1 i,
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom .vs .player2 i {
   font-size: 1.5em;
 }
 
@@ -6099,6 +6137,20 @@ Ver Partidos
 }
 
 .verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom button {
+  background-color: #0076be;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 90px;
+  height: 40px;
+  font-size: 1.1em;
+  position: relative;
+  margin-bottom: -40px;
+}
+
+.verpartidos-wrapper .verpartidos .partidos .partido .partido-bottom a {
   background-color: #0076be;
   color: white;
   border-radius: 20px;
