@@ -4,8 +4,14 @@ $( document ).ready(function(){
         type: "POST",
         data: {},
         success: function (data) {
-            console.log(data)
             document.getElementById("partidos").innerHTML = data;
         }
       });
 });
+
+var id_partido = "";
+function verPartido(id){
+    console.log("id", id)
+    sessionStorage.setItem('id_partido', id)
+    window.location.href = '/ChessUY/SalaEspectadores/ajedrezEspectadores.php?ID='+id;
+}

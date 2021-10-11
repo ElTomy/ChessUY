@@ -5,13 +5,6 @@ session_start();
 //$partidos_Online = $server->PartidosOnline();
 $partidos = $server->TraigoPartidos();
 
-/**
- * ID
- * USU1
- * USU2
- * COL1
- * COL2
- */
 $info = "";
 
 foreach($partidos as $part){
@@ -34,15 +27,13 @@ foreach($partidos as $part){
                     <i class="'.$Jug2[0]['icono'].'" style="color: '.$Jug2[0]['colIcono'].'" "></i>
                     </div>
                 </div>
-
-                <a href="/ChessUY/SalaEspectadores/ajedrezEspectadores.php">Ver</a>
-
+                <button onclick="verPartido('.$part["ID"].')">Ver</button>
                 </div>
             </div>';
     
 }
-
-            
+//<a href="/ChessUY/SalaEspectadores/ajedrezEspectadores.php?id='.$part["ID"].'">Ver</a>  
+     
 
 //echo json_encode($partidos[0]["ID"]);
 echo $info;
