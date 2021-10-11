@@ -452,9 +452,9 @@ class servidor
         if ($stmts->execute()) {
 
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo, $barra, $tiempo1, $tiempo2);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'Torneo' => $Torneo);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'Torneo' => $Torneo, 'barra' => $barra, 'tiempo1' => $tiempo1, 'tiempo2' => $tiempo2);
                                 $info[] = $data;
             }
             $stmts->close();
@@ -666,13 +666,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function guardoTablero($Usuario, $Tablero, $turno, $movimientos){
+    function guardoTablero($id_partido, $Tablero, $turno, $movimientos, $barra, $tiempo1, $tiempo2){
         $conn = $this->conectar();
-        $sql = "CALL GuardoTablero(?,?,?,?)";
+        $sql = "CALL GuardoTablero(?,?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("ssis",$Usuario, $Tablero, $turno, $movimientos);
+        $stmts->bind_param("isisiss",$id_partido, $Tablero, $turno, $movimientos,$barra,$tiempo1,$tiempo2);
         if($stmts->execute()){
             $execute = true;
         }
@@ -730,23 +730,23 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function traigoTablero($usuario){
+    function traigoTablero($id){
         $conn = $this->conectar();
         $info = array();
         $sql = "CALL TraigoTablero(?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("s", $usuario);
+        $stmts->bind_param("i", $id);
         if ($stmts->execute()) {
             
             $stmts->store_result();
-            $stmts->bind_result($Tablero, $Turno, $movimientos);
+            $stmts->bind_result($Tablero, $Turno, $movimientos, $barra, $tiempo1, $tiempo2);
             while ($stmts->fetch()) {
-                $data = array('tablero' => $Tablero, 'turno' => $Turno, 'movimientos' => $movimientos);
+                $data = array('tablero' => $Tablero, 'turno' => $Turno, 'movimientos' => $movimientos, 'barra' => $barra, 'tiempo1' => $tiempo1, 'tiempo2' => $tiempo2);
                 $info[] = $data;
             }
             $stmts->close();
         }
-        return $info;;
+        return $info;
     }
     //
     //
@@ -1109,9 +1109,9 @@ class servidor
         if ($stmts->execute()) {
 
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo, $barra, $tiempo1, $tiempo2);
             while ($stmts->fetch()) {
-                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2);
+                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2);
                                 $info[] = $data;
             }
             $stmts->close();

@@ -84,14 +84,14 @@ function armoOnline(){
         Turno = 1;
     }
 }
-
+var ID_partido;
 function guardoTablero(){
     var tab2 = JSON.stringify(Tablero);
     var movs = JSON.stringify(Jugadas)
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {tablero: tab2, turno: Turno, movimientos: movs},
+        data: {id_partido:ID_partido,tablero: tab2, turno: Turno, movimientos: movs, barra:barra, temp1:minsec1, temp2:minsec2},
         success: function (data) {}
       });
 }
@@ -99,16 +99,22 @@ function traigoTablero(){
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/traigoTablero.php",
         type: "POST",
-        data: {},
+        data: {id_partido:ID_partido},
         success: function (data) {
            var dat = JSON.parse(data);
 
+        //:movimientos
            var jug2 = JSON.parse(dat[0]['movimientos'])
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
-
            
+        //:barra
+        barra = JSON.parse(dat[0]['barra']);
+        barraProgreso(barra);
+        //TIEMPO??
+
+        //:tablero   
            if(numJugador == 1){
             if(dat[0]['turno'] == 1){
                 inviertoTablero(dat[0]['tablero']);
@@ -159,7 +165,6 @@ function traigoJaque(){
         success: function (data) {}
       });
 }
-
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
 
@@ -616,6 +621,8 @@ function seleccionar(x,y){
 var totlsec1 = 900;
 var totlsec2 = 900;
 var finalizado = false;
+var minsec1;
+var minsec2;
 window.setInterval(function tiempo() {
     if(!finalizado){
         if(Turno%2 == 0) {
@@ -643,10 +650,10 @@ window.setInterval(function tiempo() {
         }
         var sec1 = new Date(0);
         sec1.setSeconds(totlsec1);
-        var minsec1 = sec1.toISOString().substr(14, 5);
+        minsec1 = sec1.toISOString().substr(14, 5);
         var sec2 = new Date(0);
         sec2.setSeconds(totlsec2);
-        var minsec2 = sec2.toISOString().substr(14, 5);
+        minsec2 = sec2.toISOString().substr(14, 5);
 
         $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
         $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
@@ -2461,7 +2468,7 @@ function aceptar_tablas(){
         }
         });
     tabla++;
-    ActualizarEstadisticas();
+    ActualizarEstadisticas(0.5);
 }
 function rechazar_tablas(){
     $.ajax({
