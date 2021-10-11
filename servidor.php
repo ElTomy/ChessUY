@@ -666,13 +666,13 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function guardoTablero($id_partido, $Tablero, $turno, $movimientos, $barra, $tiempo1, $tiempo2){
+    function guardoTablero($id_partido, $Tablero, $turno, $movimientos, $barra){
         $conn = $this->conectar();
-        $sql = "CALL GuardoTablero(?,?,?,?,?,?,?)";
+        $sql = "CALL GuardoTablero(?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
         $execute = false;
 
-        $stmts->bind_param("isisiss",$id_partido, $Tablero, $turno, $movimientos,$barra,$tiempo1,$tiempo2);
+        $stmts->bind_param("isisi",$id_partido, $Tablero, $turno, $movimientos,$barra);
         if($stmts->execute()){
             $execute = true;
         }
@@ -1111,12 +1111,29 @@ class servidor
             $stmts->store_result();
             $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo, $barra, $tiempo1, $tiempo2);
             while ($stmts->fetch()) {
-                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2);
+                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'barra' => $barra, 'tiempo1' => $tiempo1, 'tiempo2' => $tiempo2);
                                 $info[] = $data;
             }
             $stmts->close();
         }
         return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function guardoTiempo($id_partido,$jug, $tiempo){
+        $conn = $this->conectar();
+        $sql = "CALL GuardoTiempo(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $execute = false;
+
+        $stmts->bind_param("iis",$id_partido, $jug, $tiempo);
+        if($stmts->execute()){
+            $execute = true;
+        }
+        return $execute;
     }
     //
     //

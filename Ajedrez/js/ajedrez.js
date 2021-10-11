@@ -91,8 +91,15 @@ function guardoTablero(){
     $.ajax({
         url:  "/ChessUY/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {id_partido:ID_partido,tablero: tab2, turno: Turno, movimientos: movs, barra:barra, temp1:minsec1, temp2:minsec2},
-        success: function (data) {}
+        data: {id_partido:ID_partido,tablero: tab2, turno: Turno, movimientos: movs, barra:barra},
+        success: function (data) {
+            $.ajax({
+                url:  "/ChessUY/Ajedrez/php/guardoTiempo.php",
+                type: "POST",
+                data: {id_partido:ID_partido,numJugador:numJugador, temp:minsec1},
+                success: function (data) {}
+              });
+        }
       });
 }
 function traigoTablero(){
@@ -110,9 +117,18 @@ function traigoTablero(){
            }
            
         //:barra
-        barra = JSON.parse(dat[0]['barra']);
+        barra = dat[0]['barra'];
+        console.log('barra', barra);
         barraProgreso(barra);
+
         //TIEMPO??
+        minsec1 = dat[0]['tiempo1'];
+        minsec2 = dat[0]['tiempo2'];
+        console.log("tmp1 ", minsec1);
+        console.log("tmp2 ", minsec2);
+
+        $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+        $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
 
         //:tablero   
            if(numJugador == 1){
