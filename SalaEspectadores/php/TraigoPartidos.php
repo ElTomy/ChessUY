@@ -9,6 +9,7 @@ $info = "";
 
 foreach($partidos as $part){
     //foreach partidos online
+    if($part['usu2'] != null){   
     $Jug1 = $server->BuscoJugador($part['usu1']);
     $Jug2 = $server->BuscoJugador($part['usu2']);
     
@@ -30,6 +31,7 @@ foreach($partidos as $part){
                 <button onclick="verPartido('.$part["ID"].')">Ver</button>
                 </div>
             </div>';
+        }
     
 }
 //<a href="/ChessUY/SalaEspectadores/ajedrezEspectadores.php?id='.$part["ID"].'">Ver</a>  
