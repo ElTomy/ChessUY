@@ -1,32 +1,31 @@
 <?php
-include '../../servidor.php';
-session_start();
-$server= new servidor();
-$info = $server->BuscoUsuarioOnline();
-$partidos = $server->TraigoPartidos();
-$partidoEncontrado = false;
-$encontrado = false;
+$Jug1_encontrado = false;
+$Jug2_encontrado = false;
+$usuarios = array();
 
-//:BUSCO SI ESTA CONECTADO EL JUGADOR 2
-foreach ($partidos as $buscoPartido) {
-    if($buscoPartido['usu1'] == $_SESSION['usuario'] || $buscoPartido['usu2'] == $_SESSION['usuario']){
-     $partidoEncontrado = true;
-     if($buscoPartido['usu1'] == $_SESSION['usuario']){
-            $jugador2 = $buscoPartido['usu2'];
-     }else{
-            $jugador2 = $buscoPartido['usu1'];
-     }
+$jugador1 = $_POST['jug1'];
+$jugador2 = $_POST['jug2'];
+
+if(isset($_POST['arUsuarios'])){
+    $usuarios = json_decode($_POST['arUsuarios']);
+}
+
+foreach ($usuarios as $usu) {
+    if($usu == $jugador1){
+        $Jug1_encontrado = true;
+    }else if($usu == $jugador2){
+        $Jug2_encontrado = true;
     }
 }
-if($jugador2 == null){
-    $encontrado = null;
+
+if($Jug1_encontrado == true && $Jug2_encontrado == true){
+    $info = array('usuarios_conectados' => true);
 }else{
-    foreach ($info as $jug2) {
-        if($jug2['Usuario'] == $jugador2){
-         $encontrado = true;
-         break;
-        }
+    if($Jug1_encontrado != true){
+        $info = array('usuarios_conectados' => false, 'usuario_desconectado' => $jugador1);
+    }else{
+        $info = array('usuarios_conectados' => false, 'usuario_desconectado' => $jugador2);
     }
 }
-echo json_encode($encontrado); 
+echo json_encode($info); 
 ?>

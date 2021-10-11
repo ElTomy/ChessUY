@@ -2259,29 +2259,19 @@ function init(){
                     count++;
                 });
 
-                if(usuarios.length == 1){
-                    $.ajax({
-                        async: false,
-                        url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
-                        type: "POST",
-                        data: {action:'borrar'},
-                        success: function (data) {}
-                        });
-                }
-
+                arUsuarios = JSON.stringify(usuarios)
+                
             $.ajax({
                 url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
-                data: {},
+                data: {arUsuarios:arUsuarios},
                 success: function (data) {
-                    if(data == 'true'){
-                        if(jugador2 == null){
-                            if(usuarios[0] == jugador1){
-                                jugador2 = usuarios[1];
-                            }else if(usuarios[1] == jugador1){
-                                jugador2 = usuarios[0];
-                            }
+                    console.log(data);
+                    var dat = JSON.parse(data);
 
+                    if(dat['encontrado'] == true){
+                        if(jugador2 == null){
+                             jugador2 = dat['jugador2'];
                             if(jugador2 != null){
                                 $.ajax({
                                     type: "POST",
@@ -2292,10 +2282,10 @@ function init(){
                                     }
                                 });
                             }
-                        }
-                        
+                    }
                         $(".modal").hide();
-                    }else if(data == 'false'){
+
+                    }else if(dat['encontrado'] == false){
                         $.ajax({
                             url: "/ChessUY/Modal/modalDesconeccion.php",
                             type: "POST",

@@ -9,7 +9,7 @@ $( document ).ready(function(){
         var partido = JSON.parse(data)
         console.log(partido);
         jug1 = partido[0]['usu1'];
-        jug2 = partido[0]['usu2'];
+        jugador2 = partido[0]['usu2'];
         col1 = partido[0]['col1'];
         turno = partido[0]['turno'];
         tablero = partido[0]['tablero'];
@@ -19,6 +19,7 @@ $( document ).ready(function(){
         tiempo2 = partido[0]['tiempo2'];
 
         Turno = turno;
+        console.log("jug2",jugador2);
     }
   });
   CreoTablero();
@@ -57,6 +58,8 @@ var jaque = {
    x: null,
    y: null,
 }
+var jug1="";
+var jug2="";
 
 function armoTablero(tablero, barra, col){
     var tab = JSON.parse(tablero);
@@ -362,8 +365,7 @@ function init(){
 
     }
 
-    function sendMessage(e) {
-    };
+    function sendMessage(e) {};
 
     function receiveMessage(e) {
         var jsonMessage = JSON.parse(e.data);
@@ -379,47 +381,21 @@ function init(){
                     count++;
                 });
 
-                if(usuarios.length == 1){
-                    $.ajax({
-                        async: false,
-                        url:  "/ChessUY/SalaEspectadores/php/UsuOnline.php",
-                        type: "POST",
-                        data: {action:'borrar'},
-                        success: function (data) {}
-                        });
-                }
-
+                arUsuarios = JSON.stringify(usuarios)
+                
             $.ajax({
                 url:  "/ChessUY/SalaEspectadores/php/BuscoUsuOnline.php",
                 type: "POST",
-                data: {},
+                data: {arUsuarios:arUsuarios, jug1:jug1, jug2:jugador2},
                 success: function (data) {
-                    if(data == 'true'){
-                        if(jugador2 == null){
-                            if(usuarios[0] == jugador1){
-                                jugador2 = usuarios[1];
-                            }else if(usuarios[1] == jugador1){
-                                jugador2 = usuarios[0];
-                            }
+                    console.log(data);
+                    var dat = JSON.parse(data);
 
-                            if(jugador2 != null){
-                                $.ajax({
-                                    type: "POST",
-                                    data: {Turno:Turno, jugador2: jug2},
-                                    url: "/ChessUY/SalaEspectadores/php/armoJugadores.php",
-                                    success: function (data) {
-                                        document.getElementById("ArmoJugadores").innerHTML = data;
-                                    }
-                                });
-                            }
-                        }
-                        
-                        $(".modal").hide();
-                    }else if(data == 'false'){
+                     if(dat['usuarios_conectados'] == false){
                         $.ajax({
                             url: "/ChessUY/Modal/modalDesconeccion.php",
                             type: "POST",
-                            data: {jugador2:jug2},
+                            data: {jugador2:dat['usuario_desconectado']},
                             success: function (data) {
                                 document.getElementById("modal").innerHTML = data;
                             }
