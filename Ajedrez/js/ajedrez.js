@@ -86,6 +86,7 @@ function armoOnline(){
 }
 var ID_partido;
 function guardoTablero(){
+    console.log("GUARDO");
     var tab2 = JSON.stringify(Tablero);
     var movs = JSON.stringify(Jugadas)
     $.ajax({
@@ -115,50 +116,68 @@ function traigoTablero(){
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
-           
-        //:barra
-        barra = dat[0]['barra'];
-        console.log('barra', barra);
-        barraProgreso(barra);
 
-        //TIEMPO??
+        //?TIEMPO??
         minsec1 = dat[0]['tiempo1'];
         minsec2 = dat[0]['tiempo2'];
-        console.log("tmp1 ", minsec1);
-        console.log("tmp2 ", minsec2);
 
         $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
         $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
 
-        //:tablero   
-           if(numJugador == 1){
+        //:tablero y barra
+        barra = dat[0]['barra'];
+         
+        if(numJugador == 1){
+
             if(dat[0]['turno'] == 1){
-                inviertoTablero(dat[0]['tablero']);
-            }else if(dat[0]['turno']%2 == 0){
-                var tab = JSON.parse(dat[0]['tablero']);
-                for(var p = 1; p <= 8; p++){
-                    for(var q = 1; q <= 8; q++){
-                        Tablero[p][q] = tab[p][q];
+                if(jugador2 == null){
+                    var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
                     }
+                }else{
+                    inviertoTablero(dat[0]['tablero']);
                 }
-    
+               
             }else{
-                inviertoTablero(dat[0]['tablero']);
-                
+                if(dat[0]['turno']%2 == 0){
+                    var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
+                    }
+                }else{
+                    inviertoTablero(dat[0]['tablero']);
+                    
+                }
             }
-    }else{
+        }else{
+            if(dat[0]['turno'] == 1){
+                var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
+                    }
+               
+            }else{
+
             if(dat[0]['turno']%2 == 0){
                 inviertoTablero(dat[0]['tablero']);
                 
             }else{
+                
                 var tab = JSON.parse(dat[0]['tablero']);
-                for(var p = 1; p <= 8; p++){
-                    for(var q = 1; q <= 8; q++){
-                        Tablero[p][q] = tab[p][q];
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
                     }
-                }
-            }
-    }
+            }}
+        }
          
             armoAjedrez();
         }
@@ -627,9 +646,10 @@ function seleccionar(x,y){
             Turno++;
             ultTurn = true;
             a = 1;
+            guardoTablero();
+            sendMessage(1);
         }
-        guardoTablero();
-        sendMessage(1);
+        
         armoAjedrez();
     }
 }
@@ -2181,7 +2201,7 @@ function init(){
     }
     function sendMessage(e) {
         if(e == 1){
-            guardoTablero();
+            //guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
             msg["type"] = "message";
