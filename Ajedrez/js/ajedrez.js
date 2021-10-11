@@ -116,15 +116,8 @@ function traigoTablero(){
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
-
-        //?TIEMPO??
-        minsec1 = dat[0]['tiempo1'];
-        minsec2 = dat[0]['tiempo2'];
-
-        $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-        $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
-        //:tablero y barra
+        
+        //:tablero, barra y tiempo
         barra = dat[0]['barra'];
          
         if(numJugador == 1){
@@ -149,9 +142,23 @@ function traigoTablero(){
                             Tablero[p][q] = tab[p][q];
                         }
                     }
+                    barraProgreso(barra)
+
+                    minsec1 = dat[0]['tiempo1'];
+                    minsec2 = dat[0]['tiempo2'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
                 }else{
                     inviertoTablero(dat[0]['tablero']);
-                    
+                    barra = 100-barra;
+                    barraProgreso(barra)
+
+                    minsec1 = dat[0]['tiempo2'];
+                    minsec2 = dat[0]['tiempo1'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
                 }
             }
         }else{
@@ -162,21 +169,32 @@ function traigoTablero(){
                             Tablero[p][q] = tab[p][q];
                         }
                     }
-               
             }else{
+                if(dat[0]['turno']%2 == 0){
+                    inviertoTablero(dat[0]['tablero']);
+                    barra = 100-barra;
+                    barraProgreso(barra)
 
-            if(dat[0]['turno']%2 == 0){
-                inviertoTablero(dat[0]['tablero']);
-                
-            }else{
-                
-                var tab = JSON.parse(dat[0]['tablero']);
-                    for(var p = 1; p <= 8; p++){
-                        for(var q = 1; q <= 8; q++){
-                            Tablero[p][q] = tab[p][q];
+                    minsec1 = dat[0]['tiempo2'];
+                    minsec2 = dat[0]['tiempo1'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
+                }else{
+                    var tab = JSON.parse(dat[0]['tablero']);
+                        for(var p = 1; p <= 8; p++){
+                            for(var q = 1; q <= 8; q++){
+                                Tablero[p][q] = tab[p][q];
+                            }
                         }
-                    }
-            }}
+                    barraProgreso(barra)
+                    
+                    minsec1 = dat[0]['tiempo1'];
+                    minsec2 = dat[0]['tiempo2'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+                }
+            }
         }
          
             armoAjedrez();
@@ -325,7 +343,6 @@ var jaque = {
    x: null,
    y: null,
 }
-var socket;
 //
 //
 /*------------------------------------------------------------------------------------------*/
