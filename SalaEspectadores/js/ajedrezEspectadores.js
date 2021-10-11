@@ -1,16 +1,4 @@
-/**
- * Con la ID traigo la info de la bd y armo:
- * 
- * tablero X
- * jugadores X
- * movimientos X
- * turno X
- * tiempo
- * 
- * y hago el INIT
- * 
- */
- $( document ).ready(function(){
+$( document ).ready(function(){
    var id_partido = sessionStorage.getItem('id_partido');
  
    $.ajax({
@@ -35,6 +23,7 @@
   armoMovimientos(movimientos);
   armoAjedrez();
   init();
+  barraProgreso(50);
 
 });
 var Color = {
@@ -249,6 +238,69 @@ function boardsize(){
     }
 }
 
+function box(boxcontent){
+    if(boxcontent == "chat"){
+        $(".table-wrapper").hide();
+        $(".chat").show();
+        $("#chat").addClass('active');
+        $("#movimiento").removeClass('active');
+    }
+    else{
+        $(".chat").hide();
+        $(".table-wrapper").show();
+        $("#chat").removeClass('active');
+        $("#movimiento").addClass('active');
+    }
+
+}
+
+function Porcentaje(pieza,cor){
+    var suma = 0;
+    switch(pieza){
+        case Piezas.NTorre:
+            suma = 5;
+        break;
+        case Piezas.BTorre:
+            suma =  -5;
+        break;
+        case Piezas.NCaballo:
+            suma =  +3;
+        break;
+        case Piezas.BCaballo:
+            suma =  -3;
+        break;
+        case Piezas.NAlfil:
+            suma =  +3;
+        break;
+        case Piezas.BAlfil:
+            suma =  -3;
+        break;
+        case Piezas.NPeon:
+            suma = 1;
+        break;    
+        case Piezas.BPeon:
+            suma = -1;       
+        break;
+        case Piezas.NDama:
+            suma = 9;
+        break;
+        case Piezas.BDama:
+            suma = -9;
+        break;
+    }
+    if(cor == 1){suma = suma * -1}
+    porcentaje = porcentaje + suma;
+    if(porcentaje>78){
+        barra = 100;
+    }else{
+        if(porcentaje<0){
+            barra = 0;
+        }else{
+            barra = (100/78)*porcentaje;
+        }
+    }
+    barraProgreso(barra);
+} 
 //:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
@@ -357,7 +409,7 @@ function init(){
                 $.ajax({
                     url: "/ChessUY/Modal/modalPidoTablas.php",
                     type: "POST",
-                    data: {jugador2:jugador2},
+                    data: {jugador2:jug2},
                     success: function (data) {
                         document.getElementById("modal").innerHTML = data;
                     }
@@ -366,7 +418,7 @@ function init(){
                 $.ajax({
                     url: "/ChessUY/Modal/modalTablasAceptadas.php",
                     type: "POST",
-                    data: {jugador2:jugador2},
+                    data: {jugador2:jug2},
                     success: function (data) {
                         document.getElementById("modal").innerHTML = data;
                     }
@@ -375,7 +427,7 @@ function init(){
                 $.ajax({
                     url: "/ChessUY/Modal/modalTablasRechazadas.php",
                     type: "POST",
-                    data: {jugador2:jugador2},
+                    data: {jugador2:jug2},
                     success: function (data) {
                         document.getElementById("modal").innerHTML = data;
                     }
