@@ -467,7 +467,7 @@ function MovimientoCorrecto(x,y,p){
             if(xp != 0 && xp != 9){
                 movimientoCorrect = 1;
             }else{
-                if(xp == 0){
+                if(xp == 0){ 
                     $.ajax({
                         url: "/ChessUY/Modal/modal.php",
                         type: "POST",
