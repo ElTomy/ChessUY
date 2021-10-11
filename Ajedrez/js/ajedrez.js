@@ -2260,7 +2260,7 @@ function init(){
                 });
 
                 arUsuarios = JSON.stringify(usuarios)
-                
+
             $.ajax({
                 url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
