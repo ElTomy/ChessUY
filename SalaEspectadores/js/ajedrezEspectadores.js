@@ -1,6 +1,5 @@
 $( document ).ready(function(){
    var id_partido = sessionStorage.getItem('id_partido');
- 
    $.ajax({
     async: false,
     url:  "/ChessUY/SalaEspectadores/php/cargoPartido.php",
@@ -11,25 +10,25 @@ $( document ).ready(function(){
         console.log(partido);
         jug1 = partido[0]['usu1'];
         jug2 = partido[0]['usu2'];
+        col1 = partido[0]['col1'];
         turno = partido[0]['turno'];
         tablero = partido[0]['tablero'];
         movimientos = partido[0]['movimientos'];
+        barra = partido[0]['barra'];
+        tiempo1 = partido[0]['tiempo1'];
+        tiempo2 = partido[0]['tiempo2'];
 
         Turno = turno;
     }
   });
   CreoTablero();
-  armoTablero(tablero);
+  armoTablero(tablero, barra, col1);
   armoMovimientos(movimientos);
+  barraProgreso(barra);
   armoAjedrez();
   init();
-  barraProgreso(50);
-
 });
-var Color = {
-    Blanco:'b',
-    Negro:'n',
-}
+
 const Piezas = {
    BRey: 'r', 
    BDama: 'd',
@@ -49,11 +48,7 @@ var barra = 50;
 var Jugadas = [];
 var Turno;
 var Reloj = 0;
-var rep = 0;
-var ultTurn = 0;
-var menos_tiempo = 0;
 const Tablero = [];
-var seleccionado = null;
 var  Movimiento = [];
 var jaque = {
    jaque: null,
@@ -62,20 +57,40 @@ var jaque = {
    x: null,
    y: null,
 }
-var socket;
 
-function armoTablero(tablero){
+function armoTablero(tablero, barra, col){
     var tab = JSON.parse(tablero);
-    if(Turno%2 == 0){
-        for(var p = 1; p <= 8; p++){
-            for(var q = 1; q <= 8; q++){
-                Tablero[p][q] = tab[p][q];
+
+    if(col == 0){
+        if(Turno%2 == 0){
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[p][q] = tab[p][q];
+                }
             }
+            barraProgreso(barra);
+        }else{
+            inviertoTablero(tab);
+            barra = 100-barra;
+            barraProgreso(barra);
         }
-    }else{
-        
-        inviertoTablero(tab);
+
+    }else if(col == 1){
+        if(Turno%2 == 0){
+            inviertoTablero(tab);
+            barra = 100-barra;
+            barraProgreso(barra);
+        }else{
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[p][q] = tab[p][q];
+                }
+            }
+            barraProgreso(barra);
+        }
     }
+
+    
 }
 
 function armoMovimientos(movimientos){
@@ -301,6 +316,21 @@ function Porcentaje(pieza,cor){
     }
     barraProgreso(barra);
 } 
+
+function barraProgreso(porcentaje){
+    $('.bar').css("width", porcentaje + "%");
+    $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     if(porcentaje >= 50){
+        $('.bar').css("z-index", "5");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("width", ((100 - porcentaje) + 5) + "%");
+     }else{
+        $('.bar').css("width", (porcentaje + 5) + "%");
+        $('.bar').css("border-radius", "1em");
+        $('.bar2').css("z-index", "5");
+        $('.bar2').css("width", (100 - porcentaje) + "%");
+     }
+} 
 //:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
@@ -310,7 +340,7 @@ function init(){
             console.log("Connection established!");
             $.ajax({
             async: false,
-            url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+            url:  "/ChessUY/SalaEspectadores/php/UsuOnline.php",
             type: "POST",
             data: {action:'agregar'},
             success: function (data) {}});
@@ -352,7 +382,7 @@ function init(){
                 if(usuarios.length == 1){
                     $.ajax({
                         async: false,
-                        url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+                        url:  "/ChessUY/SalaEspectadores/php/UsuOnline.php",
                         type: "POST",
                         data: {action:'borrar'},
                         success: function (data) {}
@@ -360,7 +390,7 @@ function init(){
                 }
 
             $.ajax({
-                url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
+                url:  "/ChessUY/SalaEspectadores/php/BuscoUsuOnline.php",
                 type: "POST",
                 data: {},
                 success: function (data) {
@@ -375,8 +405,8 @@ function init(){
                             if(jugador2 != null){
                                 $.ajax({
                                     type: "POST",
-                                    data: {Turno:Turno, jugador2: jugador2},
-                                    url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+                                    data: {Turno:Turno, jugador2: jug2},
+                                    url: "/ChessUY/SalaEspectadores/php/armoJugadores.php",
                                     success: function (data) {
                                         document.getElementById("ArmoJugadores").innerHTML = data;
                                     }
@@ -389,7 +419,7 @@ function init(){
                         $.ajax({
                             url: "/ChessUY/Modal/modalDesconeccion.php",
                             type: "POST",
-                            data: {jugador2:jugador2},
+                            data: {jugador2:jug2},
                             success: function (data) {
                                 document.getElementById("modal").innerHTML = data;
                             }

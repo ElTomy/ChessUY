@@ -1111,7 +1111,7 @@ class servidor
             $stmts->store_result();
             $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo, $barra, $tiempo1, $tiempo2);
             while ($stmts->fetch()) {
-                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'barra' => $barra, 'tiempo1' => $tiempo1, 'tiempo2' => $tiempo2);
+                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'col1' => $Color1, 'col2' => $Color2, 'turno' => $Turno, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2, 'barra' => $barra, 'tiempo1' => $tiempo1, 'tiempo2' => $tiempo2);
                                 $info[] = $data;
             }
             $stmts->close();
