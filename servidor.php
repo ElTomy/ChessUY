@@ -1094,4 +1094,33 @@ class servidor
         }
         return false;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function cargoPartido($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL cargoPartido(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+
+            $stmts->store_result();
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $jaque1, $jaque2, $Torneo);
+            while ($stmts->fetch()) {
+                $data = array('usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'movimientos' => $movimientos, 'jaque1' => $jaque1, 'jaque2' => $jaque2);
+                                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
 }
