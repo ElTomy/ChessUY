@@ -1,10 +1,10 @@
 /**
  * Con la ID traigo la info de la bd y armo:
  * 
- * tablero
- * jugadores
- * movimientos
- * turno
+ * tablero X
+ * jugadores X
+ * movimientos X
+ * turno X
  * tiempo
  * 
  * y hago el INIT
@@ -34,6 +34,7 @@
   armoTablero(tablero);
   armoMovimientos(movimientos);
   armoAjedrez();
+  init();
 
 });
 var Color = {
@@ -77,13 +78,14 @@ var socket;
 function armoTablero(tablero){
     var tab = JSON.parse(tablero);
     if(Turno%2 == 0){
-        inviertoTablero(tab);
-    }else{
         for(var p = 1; p <= 8; p++){
             for(var q = 1; q <= 8; q++){
                 Tablero[p][q] = tab[p][q];
             }
         }
+    }else{
+        
+        inviertoTablero(tab);
     }
 }
 
@@ -172,74 +174,44 @@ function armoAjedrez(){
             heightdiv();
         }
     });
-    }
+}
 
-    function heightdiv(){
-        var height = ((window.innerHeight * 0.98) - 100);
-        
-        
-        $('#select-wrapper').height(height * 0.5);
-    }
+function heightdiv(){
+    var height = ((window.innerHeight * 0.98) - 100);   
+    $('#select-wrapper').height(height * 0.5);
+}
 
-    function boardsize(){
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-       
-        if(width > 900){
-            var board_width = (90 * width) / 100;
-            var board_wrapper = (60 * board_width) / 100;
-            var board_margin2 = (5 * board_wrapper) / 100;
-            var boardtotal_width = board_wrapper - (board_margin2 * 2);
-            var board_height = ((98 * height) / 100) - 100;
-            var board_margin = (5 * board_height) / 100;
-            var boardtotal = board_height - (board_margin * 2);
-            var cell_width = boardtotal / 8;
+function boardsize(){
+    var width = window.innerWidth;
+    var height = window.innerHeight;
     
-            if(boardtotal >= boardtotal_width){
-                cell_width = boardtotal_width / 8;
-                board_text_margin = -cell_width + ((30 * cell_width) / 100);
-    
-                $(".cell").css ('width', cell_width);
-                $(".cell").css ('height', cell_width);
-                $(".board-text").css ('margin-top', board_text_margin);
-                $(".board-text").css ('margin-right', board_text_margin);
-                $(".board-number").css ('margin-top', board_text_margin);
-                $(".board-number").css ('margin-right', board_text_margin);
-                $(".ajedrez-wrapper").css ('height', boardtotal_width);
-                $(".ajedrez-wrapper").css ('width', boardtotal_width);
-    
-            }else{
-                board_text_margin = -cell_width + ((30 * cell_width) / 100);
-                $(".cell").css ('width', cell_width);
-                $(".cell").css ('height', cell_width);
-                $(".board-text").css ('margin-top', board_text_margin);
-                $(".board-text").css ('margin-right', board_text_margin);
-                $(".board-number").css ('margin-bottom', board_text_margin);
-                $(".board-number").css ('margin-left', board_text_margin);
-                $(".ajedrez-wrapper").css ('height', boardtotal);
-                $(".ajedrez-wrapper").css ('width', boardtotal);
-            }
+    if(width > 900){
+        var board_width = (90 * width) / 100;
+        var board_wrapper = (60 * board_width) / 100;
+        var board_margin2 = (5 * board_wrapper) / 100;
+        var boardtotal_width = board_wrapper - (board_margin2 * 2);
+        var board_height = ((98 * height) / 100) - 100;
+        var board_margin = (5 * board_height) / 100;
+        var boardtotal = board_height - (board_margin * 2);
+        var cell_width = boardtotal / 8;
+
+        if(boardtotal >= boardtotal_width){
+            cell_width = boardtotal_width / 8;
+            board_text_margin = -cell_width + ((30 * cell_width) / 100);
+
+            $(".cell").css ('width', cell_width);
+            $(".cell").css ('height', cell_width);
+            $(".board-text").css ('margin-top', board_text_margin);
+            $(".board-text").css ('margin-right', board_text_margin);
+            $(".board-number").css ('margin-top', board_text_margin);
+            $(".board-number").css ('margin-right', board_text_margin);
+            $(".ajedrez-wrapper").css ('height', boardtotal_width);
+            $(".ajedrez-wrapper").css ('width', boardtotal_width);
+
         }else{
-            var board_width = (98 * width) / 100;
-            var board_height = ((98 * height) / 100) - 100;
-    
-            if(board_width > board_height){
-                var board_margin = (2 * board_height) / 100;
-                var boardtotal = board_height - (board_margin * 2);
-                var cell_height = boardtotal / 8;
-    
-                $(".cell").css ('width', cell_height);
-                $(".cell").css ('height', cell_height);
-            }else{
-                var board_margin = (2 * board_width) / 100;
-                var boardtotal = board_width - (board_margin * 2);
-                var cell_height = boardtotal / 8;
-    
-                $(".cell").css ('width', cell_height);
-                $(".cell").css ('height', cell_height);
-            }
-            board_text_margin = -cell_height + ((40 * cell_height) / 100);
-    
+            board_text_margin = -cell_width + ((30 * cell_width) / 100);
+            $(".cell").css ('width', cell_width);
+            $(".cell").css ('height', cell_width);
             $(".board-text").css ('margin-top', board_text_margin);
             $(".board-text").css ('margin-right', board_text_margin);
             $(".board-number").css ('margin-bottom', board_text_margin);
@@ -247,4 +219,228 @@ function armoAjedrez(){
             $(".ajedrez-wrapper").css ('height', boardtotal);
             $(".ajedrez-wrapper").css ('width', boardtotal);
         }
+    }else{
+        var board_width = (98 * width) / 100;
+        var board_height = ((98 * height) / 100) - 100;
+
+        if(board_width > board_height){
+            var board_margin = (2 * board_height) / 100;
+            var boardtotal = board_height - (board_margin * 2);
+            var cell_height = boardtotal / 8;
+
+            $(".cell").css ('width', cell_height);
+            $(".cell").css ('height', cell_height);
+        }else{
+            var board_margin = (2 * board_width) / 100;
+            var boardtotal = board_width - (board_margin * 2);
+            var cell_height = boardtotal / 8;
+
+            $(".cell").css ('width', cell_height);
+            $(".cell").css ('height', cell_height);
+        }
+        board_text_margin = -cell_height + ((40 * cell_height) / 100);
+
+        $(".board-text").css ('margin-top', board_text_margin);
+        $(".board-text").css ('margin-right', board_text_margin);
+        $(".board-number").css ('margin-bottom', board_text_margin);
+        $(".board-number").css ('margin-left', board_text_margin);
+        $(".ajedrez-wrapper").css ('height', boardtotal);
+        $(".ajedrez-wrapper").css ('width', boardtotal);
     }
+}
+
+//:--------------------------------------ONLINE----------------------------------------------/
+var conn;
+function init(){
+    conn = new WebSocket('ws://localhost:8080');
+
+        conn.onopen = function (e) {
+            console.log("Connection established!");
+            $.ajax({
+            async: false,
+            url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+            type: "POST",
+            data: {action:'agregar'},
+            success: function (data) {}});
+            sendConnection();
+        };
+        conn.onmessage = function(e) {
+            receiveMessage(e);
+        };
+        conn.onclose = function(e) {
+            console.log('Conexión websocket cerrada!');
+        };
+    }
+
+    function sendConnection(e){
+        name = sessionStorage.getItem('usuario');
+        console.log('name: ', name);
+        room = sessionStorage.getItem('id_partido');
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+
+    }
+
+    function sendMessage(e) {
+    };
+
+    function receiveMessage(e) {
+        var jsonMessage = JSON.parse(e.data);
+        if(jsonMessage.type === "onlineUsers"){
+            var count = 0;
+                var usuarios = [];
+                $.each(jsonMessage.onlineUsers, function (key, val) {
+                    if (count === 0) {
+                        usuarios.push(val)
+                    } else {
+                        usuarios.push(val)
+                    }
+                    count++;
+                });
+
+                if(usuarios.length == 1){
+                    $.ajax({
+                        async: false,
+                        url:  "/ChessUY/Ajedrez/php/UsuOnline.php",
+                        type: "POST",
+                        data: {action:'borrar'},
+                        success: function (data) {}
+                        });
+                }
+
+            $.ajax({
+                url:  "/ChessUY/Ajedrez/php/BuscoUsuOnline.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    if(data == 'true'){
+                        if(jugador2 == null){
+                            if(usuarios[0] == jugador1){
+                                jugador2 = usuarios[1];
+                            }else if(usuarios[1] == jugador1){
+                                jugador2 = usuarios[0];
+                            }
+
+                            if(jugador2 != null){
+                                $.ajax({
+                                    type: "POST",
+                                    data: {Turno:Turno, jugador2: jugador2},
+                                    url: "/ChessUY/Ajedrez/php/armoJugadores.php",
+                                    success: function (data) {
+                                        document.getElementById("ArmoJugadores").innerHTML = data;
+                                    }
+                                });
+                            }
+                        }
+                        
+                        $(".modal").hide();
+                    }else if(data == 'false'){
+                        $.ajax({
+                            url: "/ChessUY/Modal/modalDesconeccion.php",
+                            type: "POST",
+                            data: {jugador2:jugador2},
+                            success: function (data) {
+                                document.getElementById("modal").innerHTML = data;
+                            }
+                        });   
+                    }
+                }
+                });
+
+        }else if (jsonMessage.type === "message") {
+        var json2 = jsonMessage['message']
+            tipo = 0;
+            if(json2.includes("victoria")){
+                Derrota();
+            }else if(json2.includes("derrota")){
+                Victoria();
+            }else if(json2.includes("Pido_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalPidoTablas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });   
+            }else if(json2.includes("Acepto_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablasAceptadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Rechazo_tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablasRechazadas.php",
+                    type: "POST",
+                    data: {jugador2:jugador2},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("tablas")){
+                $.ajax({
+                    url: "/ChessUY/Modal/modalTablas.php",
+                    type: "POST",
+                    data: {turno:Turno},
+                    success: function (data) {
+                        document.getElementById("modal").innerHTML = data;
+                    }
+                });
+            }else if(json2.includes("Respondo_tablas")){
+                //console.log("respondo")
+
+            }else if(json2.includes("tab:")){
+                var tab = json2.slice(4)
+                tipo = 1;
+            }else if(json2.includes("jug:")){
+                var jug = json2.slice(4)
+                tipo = 2;
+            }else if(json2.includes("jaq:")){
+                var jaq = json2.slice(4)
+                tipo = 3;
+            }else if(json2.includes("tur:")){
+                var tur = json2.slice(4)
+                tipo = 4;
+            }
+
+            switch(tipo){
+                case 1:
+                    var tab2 = JSON.parse(tab)
+                    if(Turno%2 == 0){
+                        inviertoTablero(tab2);
+                    }else{
+                        for(var p = 1; p <= 8; p++){
+                            for(var q = 1; q <= 8; q++){
+                                Tablero[p][q] = tab2[p][q];
+                            }
+                        }
+                    }
+                    
+                    break;
+                case 2:
+                    var jug2 = JSON.parse(jug);
+                    for(var p = 1; p <= jug2.length; p++){
+                        Jugadas[p] = jug2[p];
+                    }
+                    break;
+                case 3:
+                    var jaq2 = JSON.parse(jaq);
+                    if(jaq2.jaque == true){
+                         var jx = 9-jaq2.x;
+                         var jy = 9-jaq2.y;
+                        Jaque(jx, jy, Jugadas[Turno].Piezas)
+                    }else{jaque = jaq2}
+
+                    break;
+                case 4:
+                    Turno = tur;
+                    break;
+            }
+        }else{console.log("ERROR")}
+        armoAjedrez();
+    };
+//:------------------------------------------------------------------------------------------/
+//
