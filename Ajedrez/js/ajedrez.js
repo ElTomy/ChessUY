@@ -14,7 +14,6 @@ $( document ).ready(function(){
         data: {},
         success: function (data) {
             partido = JSON.parse(data)
-            console.log(partido);
             ID_partido = partido['ID_partido'];
             numJugador = partido['numJugador'];
             jugador1 = partido['jugador1'];
