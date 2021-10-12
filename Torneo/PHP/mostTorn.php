@@ -131,7 +131,7 @@ if(count($torneos) < 1) {
     ";
 }
 if($sinTorn) {
-    echo "No hay torneos actualmente y eso xd";
+    echo "<p style='color: white'>Disculpa, actalmente no hay torneos</p>";
 }
 
 ?>

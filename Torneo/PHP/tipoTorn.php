@@ -1,4 +1,7 @@
 <?php
+include '../../servidor.php';
+$server= new servidor();
+$torneo = $server->InfoTorneo();
 if(isset($_POST['opt'])) {
     $opt = $_POST['opt'];
 }
@@ -180,7 +183,12 @@ if($opt == 'norm') {
     ';
 
 } elseif($opt == 'pres') {
-    echo 'Tendriamos que ver la BD';
+    print_r($torneo);
+    for($i=0;$i<count($torneo);$i++) {
+        if($torneo[$i]['Preset'] == 1) {
+            echo "El torneo ".$torneo[$i]['nombre']." es un preset";
+        }
+    }
 } else {
     echo 'Hubo un error';
 }
