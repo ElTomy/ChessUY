@@ -25,6 +25,7 @@ if(isset($_SESSION['usuario'])){
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
     <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
     <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
+    <script src="/ChessUY/Javascript/Noticias.js"></script>
     
     <link
       rel="shortcut icon"
