@@ -1120,6 +1120,7 @@ function JaqueRey(x,y, sel){
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
+    console.log("Movimiento" ,x,y, sel);
 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
@@ -1310,20 +1311,8 @@ for(i = 1;i <= 8; i++){
     //Peon y Reina
     xx = x-1;
     yy = y-1;
+    console.log("col", col);
     if(col == "n"){
-        //ArribaIzquierda↑←
-        if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //ArribaDerecha↑→
-        xx=x+1;
-        if(x+1 <= 8 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //AbajoIzquierda↓←
-        xx=x-1;
-        yy=y+1;
-        if(x-1 >= 1 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //AbajoDerecha→↓
-        xx=x+1;
-        if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-    }else{
         //ArribaIzquierda↑←
         if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
         //ArribaDerecha↑→
@@ -1336,7 +1325,20 @@ for(i = 1;i <= 8; i++){
         //AbajoDerecha→↓
         xx=x+1;
         if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-    }
+   }else{
+       //ArribaIzquierda↑←
+       if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //ArribaDerecha↑→
+       xx=x+1;
+       if(x+1 <= 8 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //AbajoIzquierda↓←
+       xx=x-1;
+       yy=y+1;
+       if(x-1 >= 1 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //AbajoDerecha→↓
+       xx=x+1;
+       if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+   }
     
     //Abajo↓
     yy=y-1;
