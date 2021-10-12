@@ -3,18 +3,19 @@ include '../../servidor.php';
 session_start();
 $server= new servidor();
 
-$usu = $_SESSION["usuario"];
-$Icon = $_SESSION["icono"];
-$colFondo = $_SESSION["colorfondo"];
-$colIcon = $_SESSION["coloricono"];
+$Jug1 = $server->BuscoJugador($_POST['jugador1']);
+$usu = $Jug1[0]['Usuario'];
+$Icon = $Jug1[0]['icono'];
+$colFondo = $Jug1[0]['colFondo'];
+$colIcon = $Jug1[0]['colIcono'];
 
-if($_SESSION['tipo'] == 0){
+if($Jug1[0]['tipo'] == 0){
     $tipo = "<i class='fas fa-star'></i> Administrador";
-}else if($_SESSION['tipo'] == 1){
+}else if($Jug1[0]['tipo'] == 1){
     $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
-}else if($_SESSION['tipo'] == 2){
+}else if($Jug1[0]['tipo'] == 2){
     $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-}else if($_SESSION['tipo'] == 3){
+}else if($Jug1[0]['tipo'] == 3){
     $tipo = "<i class='fas fa-microphone'></i> Periodista";
 }
 

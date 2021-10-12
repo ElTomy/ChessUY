@@ -354,16 +354,16 @@ footer {
         color: #ffaa00;
       }
 
-      h3{
+      h3 {
         color: #bbb;
         font-weight: normal;
         font-size: 11px;
       }
-      .eliminar{
+      .eliminar {
         color: #ffaa00;
         font-size: 20px;
       }
-      .eliminar-buttons{
+      .eliminar-buttons {
         width: 100%;
         margin: 10px 0;
 
@@ -372,7 +372,7 @@ footer {
         align-items: center;
         flex-wrap: wrap;
 
-        a{
+        a {
           margin: 5px;
         }
       }
@@ -484,7 +484,7 @@ footer {
         }
       }
     }
-    .modal-p{
+    .modal-p {
       color: white;
       text-align: center;
     }
@@ -1203,7 +1203,7 @@ Loading Screen
   }
 }
 
-.blog{
+.blog {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1211,63 +1211,63 @@ Loading Screen
   flex-direction: column;
   flex-wrap: wrap;
 
-  h1{
+  h1 {
     color: #0076be;
     font-size: 30px;
     margin: 10px;
   }
-  hr{
+  hr {
     width: 200px;
     border: 1px solid #0076be;
     margin: 10px;
   }
-  .noticia-wrapper{
+  .noticia-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
-    .noticia{
+    .noticia {
       background-color: #222;
       border-radius: 20px;
       padding: 10px;
       width: 320px;
       margin: 10px;
-      .noticia-img{
+      .noticia-img {
         width: 95%;
         margin: 10px auto;
         height: 200px;
         overflow: hidden;
-  
-        img{
+
+        img {
           object-fit: cover;
           border-radius: 10px;
           width: 100%;
           height: 100%;
         }
       }
-      .noticia-body{
+      .noticia-body {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin: 0 20px;
-        h1{
+        h1 {
           color: #009dff;
           margin: 0 !important;
         }
-        hr{
+        hr {
           width: 90%;
           margin: 10px 0;
           border: 1px solid #0076be;
         }
-        h3{
+        h3 {
           color: #ccc;
         }
-        .autor{
+        .autor {
           color: #ffaa00;
         }
-        .ver-mas{
+        .ver-mas {
           background-color: #0076be;
           border: none;
           width: 120px;
@@ -1667,7 +1667,7 @@ Loading Screen
             margin: 5px 0;
           }
         }
-        .estadisticas-empty{
+        .estadisticas-empty {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -1675,10 +1675,10 @@ Loading Screen
 
           margin: 40px 0;
 
-          h1{
+          h1 {
             color: #ffaa00;
           }
-          p{
+          p {
             color: white;
           }
         }
@@ -1716,7 +1716,7 @@ Loading Screen
         border-radius: 30px;
         margin: 20px;
 
-        #logros{
+        #logros {
           width: 100%;
         }
 
@@ -1747,7 +1747,6 @@ Loading Screen
           align-items: center;
           flex-direction: column;
           margin: 20px 0;
-
 
           .logro {
             width: 100%;
@@ -1798,17 +1797,17 @@ Loading Screen
               }
             }
           }
-          .locked{
-            .logro-img{
-              img{
+          .locked {
+            .logro-img {
+              img {
                 display: none;
               }
-              i{
+              i {
                 display: block;
               }
             }
-            .logro-body{
-              h1{
+            .logro-body {
+              h1 {
                 color: #aaa;
               }
             }
@@ -2008,28 +2007,63 @@ Buscar Jugadores
     align-items: center;
     flex-direction: column;
 
-    #Torneos{
-      .button-fixture{
-        .boton-fixture{
-          background-color: #0076be;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          width: 120px;
-          height: 40px;
-          border-radius: 2em;
+    #Torneos {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
 
-          margin: 0 auto;
+      .Torneo {
+        box-sizing: border-box;
+        max-width: 350px;
+        width: 100%;
 
-          color: white;
+        background-color: #222;
+        padding: 10px;
+        border-radius: 20px;
 
-          transition: 0.5s;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 10px;
+
+        .img {
+          max-width: 120px;
+          width: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
-        .boton-fixture:hover {
-          background-color: #009dff;
+        .info {
+          h2 {
+            color: #ffaa00;
+            font-weight: 500;
+          }
+          .boton-fixture {
+            background-color: #0076be;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 120px;
+            height: 40px;
+            border-radius: 2em;
+
+            margin: 10px auto;
+
+            color: white;
+
+            transition: 0.5s;
+          }
+          .boton-fixture:hover {
+            background-color: #009dff;
+          }
         }
       }
     }
@@ -2167,7 +2201,8 @@ Buscar Jugadores
           }
           .profileButton {
             margin: 10px;
-            button, .eliminar{
+            button,
+            .eliminar {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -2186,10 +2221,10 @@ Buscar Jugadores
                 margin-right: 10px;
               }
             }
-            .eliminar{
+            .eliminar {
               background-color: #9e3f3f;
             }
-            
+
             button:hover {
               background-color: #333;
               color: #fcba03;
@@ -3100,7 +3135,7 @@ Estadisticas Globales
 
         border-radius: 30px;
 
-        box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: .5);
+        box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: 0.5);
 
         .logro-img {
           border-radius: 50%;
@@ -3136,16 +3171,16 @@ Estadisticas Globales
           color: #737373;
         }
       }
-      .locked{
-        .logro-img{
-          img{
+      .locked {
+        .logro-img {
+          img {
             display: none;
           }
-          #locked{
+          #locked {
             display: block;
           }
         }
-        h1{
+        h1 {
           color: #737373;
         }
       }
@@ -3369,10 +3404,10 @@ Editar perfil
               margin-right: 10px;
             }
           }
-          .deshabilitar{
+          .deshabilitar {
             background-color: #f54646;
           }
-          .deshabilitar:hover{
+          .deshabilitar:hover {
             background-color: #461212;
           }
           button:hover {
@@ -3397,14 +3432,14 @@ Noticias (Periodista)
 
 
 */
-.noticia-wrapper2{
+.noticia-wrapper2 {
   width: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .noticia{
+  .noticia {
     box-sizing: border-box;
     width: 90%;
     padding: 40px;
@@ -3412,47 +3447,48 @@ Noticias (Periodista)
     border-radius: 30px;
     margin-bottom: 20px;
 
-    .body-titulo{
+    .body-titulo {
       color: white;
       font-weight: normal;
       font-size: 30px;
     }
 
-    .logo-img{
+    .logo-img {
       max-width: 300px;
 
-      img{
+      img {
         width: 100%;
       }
     }
-    hr{
+    hr {
       border: 1px solid #0076be;
       margin: 10px 0;
     }
-    .noticia-body, .crear-noticia-body{
+    .noticia-body,
+    .crear-noticia-body {
       width: 100%;
       max-width: 800px;
       margin: 20px auto;
 
-      .editar-pencil, .editar-guardar{
+      .editar-pencil,
+      .editar-guardar {
         background-color: transparent;
         color: white;
         border: none;
         cursor: pointer;
         margin-left: 10px;
 
-        transition: .5s;
+        transition: 0.5s;
 
-        i{
+        i {
           font-size: 20px;
         }
       }
-      .editar-guardar{
+      .editar-guardar {
         display: none;
       }
 
-      
-      input{
+      input {
         width: 100%;
         height: 40px;
         background-color: transparent;
@@ -3464,11 +3500,11 @@ Noticias (Periodista)
         margin: 5px 0;
       }
 
-      .editar-pencil:hover{
+      .editar-pencil:hover {
         color: #888;
       }
 
-      .header{
+      .header {
         width: 100%;
 
         text-align: center;
@@ -3479,52 +3515,53 @@ Noticias (Periodista)
         align-items: center;
         flex-direction: column;
 
-        .titulo, .subtitulo{
+        .titulo,
+        .subtitulo {
           width: 100%;
 
           display: flex;
           justify-content: center;
           align-items: center;
 
-          #titulo-input, #subtitulo-input{
+          #titulo-input,
+          #subtitulo-input {
             display: none;
           }
-
         }
 
-        h1{
+        h1 {
           color: white;
           font-weight: lighter;
           font-size: 40px;
         }
-        h2{
+        h2 {
           color: #ccc;
           font-size: 25px;
           font-weight: lighter;
         }
       }
-      .noticia-img{
+      .noticia-img {
         max-width: 600px;
         margin: 10px auto;
 
-        img{
+        img {
           width: 100%;
           border-radius: 30px;
         }
       }
-      .body{
-        h2{
+      .body {
+        h2 {
           color: #ddd;
           margin: 5px 0;
           font-weight: lighter;
         }
-        p{
+        p {
           color: #bbb;
           margin-top: 10px;
-          margin-bottom: 40px
+          margin-bottom: 40px;
         }
 
-        input[type="file"]{
+        input[type="file"] {
           background-color: transparent;
           border: none;
           outline: none;
@@ -3532,18 +3569,19 @@ Noticias (Periodista)
           margin: 10px 0;
           text-align: center;
         }
-        .noticia-info{
+        .noticia-info {
           color: white;
           margin: 20px 0;
         }
       }
-      .noticia-buttons{
+      .noticia-buttons {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
 
-        button, .eliminar{
+        button,
+        .eliminar {
           background-color: #0076be;
           border-radius: 2em;
           border: none;
@@ -3557,61 +3595,59 @@ Noticias (Periodista)
 
           transition: 0.2s;
         }
-        .eliminar{
+        .eliminar {
           background-color: #ff5959;
         }
-        
-        button:hover{
+
+        button:hover {
           background-color: #009dff;
         }
-        .eliminar:hover{
+        .eliminar:hover {
           background-color: #702c2c !important;
-          
         }
       }
     }
-    .crear-noticia-body{
-
-      .body-titulo{
+    .crear-noticia-body {
+      .body-titulo {
         color: white;
         font-weight: normal;
         font-size: 30px;
       }
-      .header{
-        .titulo{
-          input{
+      .header {
+        .titulo {
+          input {
             display: block !important;
             border-radius: 15px;
             font-size: 30px;
           }
-          input::placeholder{
+          input::placeholder {
             color: #ccc;
           }
         }
-        .subtitulo{
-          input{
+        .subtitulo {
+          input {
             display: block !important;
             border-radius: 15px;
           }
-          input::placeholder{
+          input::placeholder {
             color: #ccc;
           }
         }
       }
-      .body{
-        .noticia-img{
+      .body {
+        .noticia-img {
           display: flex;
           justify-content: center;
           align-items: center;
           border-radius: none !important;
-          #img{
+          #img {
             width: min-content !important;
             margin: 0 !important;
             padding: 0 !important;
             border-radius: 0 !important;
           }
         }
-        .noticia-desc{
+        .noticia-desc {
           text-align: center;
           color: #0076be !important;
         }
@@ -4328,6 +4364,205 @@ Torneos
         }
       }
     }
+  }
+}
+/*
+
+
+
+
+
+*/
+//----------------------------------------------------------//
+/*
+
+
+Ver Partidos
+
+
+*/
+
+.verpartidos-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .verpartidos {
+    width: 90%;
+    padding: 20px 10px;
+    border-radius: 20px;
+    background-color: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+      color: white;
+    }
+    hr {
+      margin: 10px 0;
+      width: 90%;
+    }
+    .partidos {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .partido {
+        max-width: 400px;
+        width: 100%;
+        margin: 10px;
+        position: relative;
+
+        height: 240px;
+        background-color: #222;
+        border-radius: 20px;
+
+        .partido-top {
+          height: 150px;
+          overflow: hidden;
+          border-radius: 20px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+          }
+        }
+
+        .partido-bottom {
+          width: 100%;
+          height: 100px;
+          position: absolute;
+
+          padding: 10px 0;
+          left: 0;
+          bottom: 0;
+          border-radius: 0 0 20px 20px;
+
+          background-color: #333;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .vs {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            margin-top: -25px;
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .player1,
+            .player2 {
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              i {
+                font-size: 1.5em;
+              }
+            }
+
+            h2 {
+              color: #ffaa00;
+            }
+          }
+
+          button {
+            background-color: #0076be;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            width: 90px;
+            height: 40px;
+            font-size: 1.1em;
+
+            position: relative;
+            margin-bottom: -40px;
+          }
+
+          a {
+            background-color: #0076be;
+            color: white;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            width: 90px;
+            height: 40px;
+            font-size: 1.1em;
+
+            position: relative;
+            margin-bottom: -40px;
+          }
+        }
+      }
+    }
+  }
+}
+/*
+
+
+
+
+
+*/
+//----------------------------------------------------------//
+/*
+
+
+Error 404 & 403
+
+
+*/
+.error-wrapper {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  h1 {
+    margin: 5px 20px;
+    color: #ffaa00;
+    font-size: 8em;
+  }
+  p {
+    margin: 0 20px;
+    color: white;
+    font-size: 2em;
+  }
+  a {
+    background-color: #ffaa00;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    margin: 10px 0;
   }
 }
 /*

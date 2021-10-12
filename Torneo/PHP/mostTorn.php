@@ -125,7 +125,7 @@ if(count($torneos) < 1) {
         </div>
         <div class='torneo-buttons'>
             <a onclick='uniraBD(".$torneos[$j]['ID_Torneo'].")'><i class='fas fa-plus-circle'></i> Unirse</a>
-            <a href='/cyberhydra/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
+            <a onclick='mostEst(".$torneos[$j]['ID_Torneo'].")'><i class='fas fa-chart-line'></i> Estadisticas</a>
         </div>
     </div>  
     ";

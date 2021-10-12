@@ -2,67 +2,41 @@
 include '../../servidor.php';
 $server= new servidor();
 session_start();
+//$partidos_Online = $server->PartidosOnline();
 $partidos = $server->TraigoPartidos();
-$info = '';
-$usu = $_SESSION["usuario"];
-$Icon = $_SESSION["icono"];
-$colFondo = $_SESSION["colorfondo"];
-$colIcon = $_SESSION["coloricono"];
 
-if($_SESSION['tipo'] == 0){
-    $tipo = "<i class='fas fa-star'></i> Administrador";
-}else if($_SESSION['tipo'] == 1){
-    $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
-}else if($_SESSION['tipo'] == 2){
-    $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-}else if($_SESSION['tipo'] == 3){
-    $tipo = "<i class='fas fa-microphone'></i> Periodista";
-}
+$info = "";
 
-
-$colorJugador ="style= 'color: #ffaa00'"; 
-$colorJugador2 ="style= 'color: #ffaa00'"; 
-
-    $usu2 = 'Jugador2';
-    $colIcon2 = '#ffffff';
-    $Icon2 = 'fas fa-user';
-    $colFondo2 =  '#0076be';
-    $tipo2 = 1;
-
-
-if($tipo2 == 0){
-    $tipo2 = "<i class='fas fa-star'></i> Administrador";
-}else if($tipo2 == 1){
-    $tipo2 = "<i class='fas fa-chess-knight'></i> Jugador";
-}else if($tipo2 == 2){
-    $tipo2 = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
-}else if($tipo2 == 3){
-    $tipo2 = "<i class='fas fa-microphone'></i> Periodista";
-}
-$info = '  <a href="/ChessUY/Profile/'.$usu.'">
-                    <div class="JugadorUno">
-                        <div class="jugador-img" style="background-color:'.$colFondo.'">
-                            <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
-                        </div>
-                        <div class="jugador-body">
-                            <h1 '.$colorJugador.' >'.$usu.'</h1>
-                            <p>'.$tipo.'</p>
-                        </div>
+foreach($partidos as $part){
+    //foreach partidos online
+    if($part['usu2'] != null){   
+    $Jug1 = $server->BuscoJugador($part['usu1']);
+    $Jug2 = $server->BuscoJugador($part['usu2']);
+    
+    $info .= '
+            <div class="partido">
+                <div class="partido-top">
+                <img src="/ChessUY/media/images/Tablero.PNG" alt="">
+                </div>
+                <div class="partido-bottom">
+                <div class="vs">
+                    <div class="player1" style="background-color: '.$Jug1[0]["colFondo"].'">
+                    <i class="'.$Jug1[0]['icono'].'" style="color: '.$Jug1[0]['colIcono'].'" "></i>
                     </div>
-
-                </a>
-                    <h1>vs</h1>
-                    <a href="/ChessUY/Profile/'.$usu2.'">
-                    <div class="JugadorDos">
-                        <div class="jugador-img" style="background-color:'.$colFondo2.'">
-                            <i class="'.$Icon2.'" style="color:'.$colIcon2.'"></i>
-                        </div>
-                        <div class="jugador-body">
-                            <h1 '.$colorJugador2.' >'.$usu2.'</h1>
-                            <p>'.$tipo2.'</p>
-                        </div>
+                    <h2>VS</h2>
+                    <div class="player2" style="background-color: '.$Jug2[0]["colFondo"].'">
+                    <i class="'.$Jug2[0]['icono'].'" style="color: '.$Jug2[0]['colIcono'].'" "></i>
                     </div>
-                </a>';
+                </div>
+                <button onclick="verPartido('.$part["ID"].')">Ver</button>
+                </div>
+            </div>';
+        }
+    
+}
+//<a href="/ChessUY/SalaEspectadores/ajedrezEspectadores.php?id='.$part["ID"].'">Ver</a>  
+     
 
+//echo json_encode($partidos[0]["ID"]);
 echo $info;
 ?>

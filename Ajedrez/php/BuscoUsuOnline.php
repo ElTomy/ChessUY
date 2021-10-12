@@ -6,6 +6,11 @@ $info = $server->BuscoUsuarioOnline();
 $partidos = $server->TraigoPartidos();
 $partidoEncontrado = false;
 $encontrado = false;
+$usuarios = array();
+
+if(isset($_POST['arUsuarios'])){
+    $usuarios = json_decode($_POST['arUsuarios']);
+}
 
 //:BUSCO SI ESTA CONECTADO EL JUGADOR 2
 foreach ($partidos as $buscoPartido) {
@@ -16,17 +21,16 @@ foreach ($partidos as $buscoPartido) {
      }else{
             $jugador2 = $buscoPartido['usu1'];
      }
+     break;
     }
 }
-if($jugador2 == null){
-    $encontrado = null;
-}else{
-    foreach ($info as $jug2) {
-        if($jug2['Usuario'] == $jugador2){
-         $encontrado = true;
-         break;
+if($partidoEncontrado == true){
+    foreach ($usuarios as $usu) {
+        if($usu == $jugador2){
+            $encontrado = true;
         }
     }
 }
-echo json_encode($encontrado); 
+$info = array('encontrado' => $encontrado,'jugador2' => $jugador2);
+echo json_encode($info); 
 ?>

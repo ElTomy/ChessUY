@@ -2,9 +2,23 @@
   include '../servidor.php';
   $server= new servidor();
 
+  session_start();
+
   $usuarios_info = $server->Top();
+  $torneos = $server->InfoTorneo();
 
   $numero_usuarios = count($usuarios_info);
+
+  if(isset($_POST['tornID'])) {
+    $_SESSION['tornID'] = $_POST['tornID'];
+  } else {
+    for($i=0;$i<count($torneos);$i++) {
+      if($torneos[$i]['ID_Torneo'] == $_SESSION['tornID']) {
+        $tornID = $i;
+        $i = count($torneos);
+      }
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +73,12 @@
                     <p><i class="fas fa-users"></i> 12</p>
                 </div>
                 <div class="torneo-right">
-                    <h1>Nombre del Torneo</h1>
+                  <?php
+                  echo '
+                    <h1>'.$torneos[$tornID]['nombre'].'</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione deleniti quis sunt! Quia, magni ullam totam cumque odio fugiat distinctio.</p>
+                  ';
+                  ?>
                 </div>
             </div>
             <hr>

@@ -67,6 +67,14 @@ if(isset($_SESSION['usuario'])){
       <p>Este espacio está reservado para anuncios.</p>
     </section>
 
+    <section class="administrador-wrapper">
+      <h1><i class="fas fa-newspaper"></i> Blog de Noticias</h1>
+      <p>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.</p>
+      <div class="admin-buttons">
+        <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+      </div>
+    </section>
+
 
     <section class="torneos-wrapper-index" id="ArmoTorneos">
       <div class="torneos-grid">

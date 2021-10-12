@@ -14,7 +14,6 @@ $( document ).ready(function(){
         data: {},
         success: function (data) {
             partido = JSON.parse(data)
-            console.log(partido);
             ID_partido = partido['ID_partido'];
             numJugador = partido['numJugador'];
             jugador1 = partido['jugador1'];
@@ -85,59 +84,118 @@ function armoOnline(){
         Turno = 1;
     }
 }
-
+var ID_partido;
 function guardoTablero(){
+    console.log("GUARDO");
     var tab2 = JSON.stringify(Tablero);
     var movs = JSON.stringify(Jugadas)
     $.ajax({
         url:  "/cyberhydra/Ajedrez/php/guardoTablero.php",
         type: "POST",
-        data: {tablero: tab2, turno: Turno, movimientos: movs},
-        success: function (data) {}
+        data: {id_partido:ID_partido,tablero: tab2, turno: Turno, movimientos: movs, barra:barra},
+        success: function (data) {
+            $.ajax({
+                url:  "/ChessUY/Ajedrez/php/guardoTiempo.php",
+                type: "POST",
+                data: {id_partido:ID_partido,numJugador:numJugador, temp:minsec1},
+                success: function (data) {}
+              });
+        }
       });
 }
 function traigoTablero(){
     $.ajax({
         url:  "/cyberhydra/Ajedrez/php/traigoTablero.php",
         type: "POST",
-        data: {},
+        data: {id_partido:ID_partido},
         success: function (data) {
            var dat = JSON.parse(data);
 
+        //:movimientos
            var jug2 = JSON.parse(dat[0]['movimientos'])
            for(var p = 1; p <= jug2.length; p++){
                Jugadas[p] = jug2[p];
            }
+        
+        //:tablero, barra y tiempo
+        barra = dat[0]['barra'];
+         
+        if(numJugador == 1){
 
-           
-           if(numJugador == 1){
             if(dat[0]['turno'] == 1){
-                inviertoTablero(dat[0]['tablero']);
-            }else if(dat[0]['turno']%2 == 0){
-                var tab = JSON.parse(dat[0]['tablero']);
-                for(var p = 1; p <= 8; p++){
-                    for(var q = 1; q <= 8; q++){
-                        Tablero[p][q] = tab[p][q];
+                if(jugador2 == null){
+                    var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
                     }
+                }else{
+                    inviertoTablero(dat[0]['tablero']);
                 }
-    
+               
             }else{
-                inviertoTablero(dat[0]['tablero']);
-                
-            }
-    }else{
-            if(dat[0]['turno']%2 == 0){
-                inviertoTablero(dat[0]['tablero']);
-                
-            }else{
-                var tab = JSON.parse(dat[0]['tablero']);
-                for(var p = 1; p <= 8; p++){
-                    for(var q = 1; q <= 8; q++){
-                        Tablero[p][q] = tab[p][q];
+                if(dat[0]['turno']%2 == 0){
+                    var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
                     }
+                    barraProgreso(barra)
+
+                    minsec1 = dat[0]['tiempo1'];
+                    minsec2 = dat[0]['tiempo2'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
+                }else{
+                    inviertoTablero(dat[0]['tablero']);
+                    barra = 100-barra;
+                    barraProgreso(barra)
+
+                    minsec1 = dat[0]['tiempo2'];
+                    minsec2 = dat[0]['tiempo1'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
                 }
             }
-    }
+        }else{
+            if(dat[0]['turno'] == 1){
+                var tab = JSON.parse(dat[0]['tablero']);
+                    for(var p = 1; p <= 8; p++){
+                        for(var q = 1; q <= 8; q++){
+                            Tablero[p][q] = tab[p][q];
+                        }
+                    }
+            }else{
+                if(dat[0]['turno']%2 == 0){
+                    inviertoTablero(dat[0]['tablero']);
+                    barra = 100-barra;
+                    barraProgreso(barra)
+
+                    minsec1 = dat[0]['tiempo2'];
+                    minsec2 = dat[0]['tiempo1'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+
+                }else{
+                    var tab = JSON.parse(dat[0]['tablero']);
+                        for(var p = 1; p <= 8; p++){
+                            for(var q = 1; q <= 8; q++){
+                                Tablero[p][q] = tab[p][q];
+                            }
+                        }
+                    barraProgreso(barra)
+                    
+                    minsec1 = dat[0]['tiempo1'];
+                    minsec2 = dat[0]['tiempo2'];
+                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+                }
+            }
+        }
          
             armoAjedrez();
         }
@@ -160,7 +218,6 @@ function traigoJaque(){
         success: function (data) {}
       });
 }
-
 function boxHeight(){
     var boxHeight = document.getElementById("box").clientHeight;
 
@@ -286,7 +343,6 @@ var jaque = {
    x: null,
    y: null,
 }
-var socket;
 //
 //
 /*------------------------------------------------------------------------------------------*/
@@ -607,9 +663,10 @@ function seleccionar(x,y){
             Turno++;
             ultTurn = true;
             a = 1;
+            guardoTablero();
+            sendMessage(1);
         }
-        guardoTablero();
-        sendMessage(1);
+        
         armoAjedrez();
     }
 }
@@ -617,6 +674,8 @@ function seleccionar(x,y){
 var totlsec1 = 900;
 var totlsec2 = 900;
 var finalizado = false;
+var minsec1;
+var minsec2;
 window.setInterval(function tiempo() {
     if(!finalizado){
         if(Turno%2 == 0) {
@@ -644,10 +703,10 @@ window.setInterval(function tiempo() {
         }
         var sec1 = new Date(0);
         sec1.setSeconds(totlsec1);
-        var minsec1 = sec1.toISOString().substr(14, 5);
+        minsec1 = sec1.toISOString().substr(14, 5);
         var sec2 = new Date(0);
         sec2.setSeconds(totlsec2);
-        var minsec2 = sec2.toISOString().substr(14, 5);
+        minsec2 = sec2.toISOString().substr(14, 5);
 
         $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
         $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
@@ -2167,7 +2226,7 @@ function init(){
     }
     function sendMessage(e) {
         if(e == 1){
-            guardoTablero();
+            //guardoTablero();
             var tab = "tab:" +JSON.stringify(Tablero);
             var msg = {};
             msg["team"] = "CYBER";
@@ -2213,29 +2272,19 @@ function init(){
                     count++;
                 });
 
-                if(usuarios.length == 1){
-                    $.ajax({
-                        async: false,
-                        url:  "/cyberhydra/Ajedrez/php/UsuOnline.php",
-                        type: "POST",
-                        data: {action:'borrar'},
-                        success: function (data) {}
-                        });
-                }
+                arUsuarios = JSON.stringify(usuarios)
 
             $.ajax({
                 url:  "/cyberhydra/Ajedrez/php/BuscoUsuOnline.php",
                 type: "POST",
-                data: {},
+                data: {arUsuarios:arUsuarios},
                 success: function (data) {
-                    if(data == 'true'){
-                        if(jugador2 == null){
-                            if(usuarios[0] == jugador1){
-                                jugador2 = usuarios[1];
-                            }else if(usuarios[1] == jugador1){
-                                jugador2 = usuarios[0];
-                            }
+                    console.log(data);
+                    var dat = JSON.parse(data);
 
+                    if(dat['encontrado'] == true){
+                        if(jugador2 == null){
+                             jugador2 = dat['jugador2'];
                             if(jugador2 != null){
                                 $.ajax({
                                     type: "POST",
@@ -2246,10 +2295,10 @@ function init(){
                                     }
                                 });
                             }
-                        }
-                        
+                    }
                         $(".modal").hide();
-                    }else if(data == 'false'){
+
+                    }else if(dat['encontrado'] == false){
                         $.ajax({
                             url: "/cyberhydra/Modal/modalDesconeccion.php",
                             type: "POST",
@@ -2475,7 +2524,7 @@ function aceptar_tablas(){
         }
         });
     tabla++;
-    ActualizarEstadisticas();
+    ActualizarEstadisticas(0.5);
 }
 function rechazar_tablas(){
     $.ajax({

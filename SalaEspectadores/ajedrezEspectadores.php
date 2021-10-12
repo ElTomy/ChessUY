@@ -13,6 +13,9 @@
     <script src="../Javascript/Loader.js"></script>
     <script src="js/ajedrezEspectadores.js"></script>
     <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <!-- <script>
+    console.log("id " + <?php echo $_GET["ID"] ?>);
+    </script> -->
     
     <link
       rel="shortcut icon"
