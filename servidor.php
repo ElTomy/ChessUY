@@ -1140,4 +1140,22 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function TraigoUsuariosTorneo($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoUsuariosTorneo(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($usuario);
+            while ($stmts->fetch()) {
+                $data = array('usuario' => $usuarios);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
