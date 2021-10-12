@@ -37,7 +37,7 @@ function boxHeight(){
 }
 function TraigoEntrenamiento(){
     $.ajax({
-        url: "/ChessUY/Entrenamiento/php/TraigoEntrenamiento.php",
+        url: "/cyberhydra/Entrenamiento/php/TraigoEntrenamiento.php",
         type: "POST",
         data: {},
         success: function (data) {
@@ -58,7 +58,7 @@ function TraigoEntrenamiento(){
             }else{
                 console.log("No hay entrenamientos")
                 $.ajax({
-                    url: "/ChessUY/Modal/modal.php",
+                    url: "/cyberhydra/Modal/modal.php",
                     type: "POST",
                     data:{numero_mensaje: 23},
                     success: function (modal){
@@ -75,7 +75,7 @@ function TraigoEntrenamiento(){
     Armo Tablero     
     */
     $.ajax({
-        url: "/ChessUY/Entrenamiento/php/armoAjedrez.php",
+        url: "/cyberhydra/Entrenamiento/php/armoAjedrez.php",
         type: "POST",
         data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno},
         success: function (data) {
@@ -89,7 +89,7 @@ function TraigoEntrenamiento(){
     */
     $.ajax({
         type: "POST",
-        url: "/ChessUY/Entrenamiento/php/armoMovimientos.php",
+        url: "/cyberhydra/Entrenamiento/php/armoMovimientos.php",
         data: {Jugadas:Jugadas, Turno:Turno},
         success: function (data) {
             document.getElementById("ArmoMovimientos").innerHTML = data;
@@ -102,7 +102,7 @@ function TraigoEntrenamiento(){
     $.ajax({
         type: "POST",
         data: {Turno:Turno},
-        url: "/ChessUY/Entrenamiento/php/armoJugadores.php",
+        url: "/cyberhydra/Entrenamiento/php/armoJugadores.php",
         success: function (data) {
             document.getElementById("ArmoJugadores").innerHTML = data;
         }
@@ -455,7 +455,7 @@ function MovimientoCorrecto(x,y,p){
         type: "POST",
         async: false,
         data: {X:x,Y:y,Pieza:p,ID:idProblema,Turno:Turno},
-        url: "/ChessUY/Entrenamiento/php/MovimientoCorrecto.php",
+        url: "/cyberhydra/Entrenamiento/php/MovimientoCorrecto.php",
         success: function (data) {
             console.log(data)
             var dat = JSON.parse(data);
@@ -469,7 +469,7 @@ function MovimientoCorrecto(x,y,p){
             }else{
                 if(xp == 0){
                     $.ajax({
-                        url: "/ChessUY/Modal/modal.php",
+                        url: "/cyberhydra/Modal/modal.php",
                         type: "POST",
                         data:{numero_mensaje: 21},
                         success: function (modal){
@@ -479,7 +479,7 @@ function MovimientoCorrecto(x,y,p){
                     movimientoCorrect = 0;
                 }else{
                     $.ajax({
-                        url: "/ChessUY/Modal/modal.php",
+                        url: "/cyberhydra/Modal/modal.php",
                         type: "POST",
                         data:{numero_mensaje: 22},
                         success: function (modal){
@@ -488,7 +488,7 @@ function MovimientoCorrecto(x,y,p){
                     });
                     movimientoCorrect = 1;
                     $.ajax({
-                        url: "/ChessUY/Entrenamiento/php/EntrenamientoCompletado.php",
+                        url: "/cyberhydra/Entrenamiento/php/EntrenamientoCompletado.php",
                         type: "POST",
                         data: {ID:idProblema},
                         success: function (data) {
@@ -1052,7 +1052,7 @@ function Coronacion(x,y,sel){
         var col = "b";
     }
     $.ajax({
-        url: "/ChessUY/Modal/modalCoronacion.php",
+        url: "/cyberhydra/Modal/modalCoronacion.php",
         type: "POST",
         data: {color: col , x:x, y:y},
         success: function (data) {

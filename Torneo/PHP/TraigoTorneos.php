@@ -14,7 +14,7 @@ for($x=0;$x<$numero_Torneos;$x++){
         $return .='
         <div class="Torneo">
             <div class="img">
-             <img src="/ChessUY/media/images/Trofeo.png"></img>
+             <img src="/cyberhydra/media/images/Trofeo.png"></img>
             </div>
             <div class="info">
                 <h2>'.$nombre.'</h2>

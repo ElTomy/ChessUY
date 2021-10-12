@@ -27,7 +27,7 @@ if(isset($_POST['Turno'])){
     }
 }
 
-$jugadores = '  <a href="/ChessUY/Profile/'.$usu.'">
+$jugadores = '  <a href="/cyberhydra/Profile/'.$usu.'">
                     <div class="JugadorUno">
                         <div class="jugador-img" style="background-color:'.$colFondo.'">
                             <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
@@ -40,7 +40,7 @@ $jugadores = '  <a href="/ChessUY/Profile/'.$usu.'">
 
                 </a>
                     <h1>vs</h1>
-                    <a href="/ChessUY/Profile/BOT">
+                    <a href="/cyberhydra/Profile/BOT">
                     <div class="JugadorDos">
                         <div class="jugador-body">
                             <h1 '.$colorJugador2.'>ALFI ᴮᴼᵀ</h1>

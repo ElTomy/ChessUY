@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../Javascript/Loader.js"></script>
     <script src="js/ajedrezEspectadores.js"></script>
-    <script src="/ChessUY/Usuarios/js/function-usuarios.js"></script>
+    <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
     <!-- <script>
     console.log("id " + <?php echo $_GET["ID"] ?>);
     </script> -->
@@ -27,7 +27,7 @@
     <title>ChessUY | Championship</title>
   </head>
   <body>
-    <!--<audio src="/chessuy/media/audio/Background.mp3" autoplay="true" loop="true"></audio>-->
+    <!--<audio src="/cyberhydra/media/audio/Background.mp3" autoplay="true" loop="true"></audio>-->
     <div id="header"></div>
     <div id="modal"></div>
     <div class="loader-wrapper">

@@ -572,10 +572,10 @@ function uniraBD(tornID) {
 
 function mostEst(tornID) {
     $.ajax({
-        url: "/ChessUY/Usuarios/EstadisticasTorneo.php",
+        url: "/cyberhydra/Usuarios/EstadisticasTorneo.php",
         type: "post",
         data: {tornID : tornID},
-        success: location.href = "/ChessUY/Usuarios/EstadisticasTorneo.php",
+        success: location.href = "/cyberhydra/Usuarios/EstadisticasTorneo.php",
     })
 }
 

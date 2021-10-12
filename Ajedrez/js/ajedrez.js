@@ -95,7 +95,7 @@ function guardoTablero(){
         data: {id_partido:ID_partido,tablero: tab2, turno: Turno, movimientos: movs, barra:barra},
         success: function (data) {
             $.ajax({
-                url:  "/ChessUY/Ajedrez/php/guardoTiempo.php",
+                url:  "/cyberhydra/Ajedrez/php/guardoTiempo.php",
                 type: "POST",
                 data: {id_partido:ID_partido,numJugador:numJugador, temp:minsec1},
                 success: function (data) {}

@@ -2,7 +2,7 @@ $( document ).ready(function(){
    var id_partido = sessionStorage.getItem('id_partido');
    $.ajax({
     async: false,
-    url:  "/ChessUY/SalaEspectadores/php/cargoPartido.php",
+    url:  "/cyberhydra/SalaEspectadores/php/cargoPartido.php",
     type: "POST",
     data: {id_partido:id_partido},
     success: function (data) {
@@ -136,7 +136,7 @@ function armoAjedrez(){
     Armo Tablero     
     */
     $.ajax({
-        url: "/ChessUY/SalaEspectadores/php/armoAjedrez.php",
+        url: "/cyberhydra/SalaEspectadores/php/armoAjedrez.php",
         type: "POST",
         data: {Tablero:Tablero, Movimiento:Movimiento, jaque: jaque, Turno: Turno, jugador1:jug1},
         success: function (data) {
@@ -150,7 +150,7 @@ function armoAjedrez(){
     */
     $.ajax({
         type: "POST",
-        url: "/ChessUY/SalaEspectadores/php/armoMovimientos.php",
+        url: "/cyberhydra/SalaEspectadores/php/armoMovimientos.php",
         data: {Jugadas:Jugadas, Turno:Turno},
         success: function (data) {
             document.getElementById("ArmoMovimientos").innerHTML = data;
@@ -163,7 +163,7 @@ function armoAjedrez(){
     $.ajax({
         type: "POST",
         data: {Turno:Turno, jugador2: jug2,  jugador1:jug1},
-        url: "/ChessUY/SalaEspectadores/php/armoJugadores.php",
+        url: "/cyberhydra/SalaEspectadores/php/armoJugadores.php",
         success: function (data) {
             document.getElementById("ArmoJugadores").innerHTML = data;
         }
@@ -175,7 +175,7 @@ function armoAjedrez(){
     
     $.ajax({
         type: "POST",
-        url: "/ChessUY/SalaEspectadores/php/armoChat.php",
+        url: "/cyberhydra/SalaEspectadores/php/armoChat.php",
         success: function (data) {
             document.getElementById("ArmoChat").innerHTML = data;
             heightdiv();
@@ -343,7 +343,7 @@ function init(){
             console.log("Connection established!");
             $.ajax({
             async: false,
-            url:  "/ChessUY/SalaEspectadores/php/UsuOnline.php",
+            url:  "/cyberhydra/SalaEspectadores/php/UsuOnline.php",
             type: "POST",
             data: {action:'agregar'},
             success: function (data) {}});
@@ -384,7 +384,7 @@ function init(){
                 arUsuarios = JSON.stringify(usuarios)
                 
             $.ajax({
-                url:  "/ChessUY/SalaEspectadores/php/BuscoUsuOnline.php",
+                url:  "/cyberhydra/SalaEspectadores/php/BuscoUsuOnline.php",
                 type: "POST",
                 data: {arUsuarios:arUsuarios, jug1:jug1, jug2:jugador2},
                 success: function (data) {
@@ -393,7 +393,7 @@ function init(){
 
                      if(dat['usuarios_conectados'] == false){
                         $.ajax({
-                            url: "/ChessUY/Modal/modalDesconeccion.php",
+                            url: "/cyberhydra/Modal/modalDesconeccion.php",
                             type: "POST",
                             data: {jugador2:dat['usuario_desconectado']},
                             success: function (data) {
@@ -413,7 +413,7 @@ function init(){
                 Victoria();
             }else if(json2.includes("Pido_tablas")){
                 $.ajax({
-                    url: "/ChessUY/Modal/modalPidoTablas.php",
+                    url: "/cyberhydra/Modal/modalPidoTablas.php",
                     type: "POST",
                     data: {jugador2:jug2},
                     success: function (data) {
@@ -422,7 +422,7 @@ function init(){
                 });   
             }else if(json2.includes("Acepto_tablas")){
                 $.ajax({
-                    url: "/ChessUY/Modal/modalTablasAceptadas.php",
+                    url: "/cyberhydra/Modal/modalTablasAceptadas.php",
                     type: "POST",
                     data: {jugador2:jug2},
                     success: function (data) {
@@ -431,7 +431,7 @@ function init(){
                 });
             }else if(json2.includes("Rechazo_tablas")){
                 $.ajax({
-                    url: "/ChessUY/Modal/modalTablasRechazadas.php",
+                    url: "/cyberhydra/Modal/modalTablasRechazadas.php",
                     type: "POST",
                     data: {jugador2:jug2},
                     success: function (data) {
@@ -440,7 +440,7 @@ function init(){
                 });
             }else if(json2.includes("tablas")){
                 $.ajax({
-                    url: "/ChessUY/Modal/modalTablas.php",
+                    url: "/cyberhydra/Modal/modalTablas.php",
                     type: "POST",
                     data: {turno:Turno},
                     success: function (data) {

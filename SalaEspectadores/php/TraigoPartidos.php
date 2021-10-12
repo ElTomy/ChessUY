@@ -16,7 +16,7 @@ foreach($partidos as $part){
     $info .= '
             <div class="partido">
                 <div class="partido-top">
-                <img src="/ChessUY/media/images/Tablero.PNG" alt="">
+                <img src="/cyberhydra/media/images/Tablero.PNG" alt="">
                 </div>
                 <div class="partido-bottom">
                 <div class="vs">
@@ -34,7 +34,7 @@ foreach($partidos as $part){
         }
     
 }
-//<a href="/ChessUY/SalaEspectadores/ajedrezEspectadores.php?id='.$part["ID"].'">Ver</a>  
+//<a href="/cyberhydra/SalaEspectadores/ajedrezEspectadores.php?id='.$part["ID"].'">Ver</a>  
      
 
 //echo json_encode($partidos[0]["ID"]);
