@@ -119,7 +119,18 @@ function traigoTablero(){
         
         //:tablero, barra y tiempo
         barra = dat[0]['barra'];
-         
+        tiempo_Jugador1 = dat[0]['tiempo1'];
+        tiempo_Jugador2 = dat[0]['tiempo2'];
+
+        tmp1 = tiempo_Jugador1.split(":");
+        tmp2 = tiempo_Jugador2.split(":");
+
+        tiempo1 = (tmp1[0]*60);
+        tiempo2 = (tmp2[0]*60);
+       
+        totlsec1 = tiempo1;
+        totlsec2 = tiempo2;
+
         if(numJugador == 1){
 
             if(dat[0]['turno'] == 1){
@@ -143,22 +154,10 @@ function traigoTablero(){
                         }
                     }
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo1'];
-                    minsec2 = dat[0]['tiempo2'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
                 }else{
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo2'];
-                    minsec2 = dat[0]['tiempo1'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
                 }
             }
         }else{
@@ -174,12 +173,6 @@ function traigoTablero(){
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo2'];
-                    minsec2 = dat[0]['tiempo1'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
                 }else{
                     var tab = JSON.parse(dat[0]['tablero']);
                         for(var p = 1; p <= 8; p++){
@@ -188,11 +181,6 @@ function traigoTablero(){
                             }
                         }
                     barraProgreso(barra)
-                    
-                    minsec1 = dat[0]['tiempo1'];
-                    minsec2 = dat[0]['tiempo2'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
                 }
             }
         }
@@ -676,6 +664,8 @@ var totlsec2 = 900;
 var finalizado = false;
 var minsec1;
 var minsec2;
+var tiempo_Jugador1;
+var tiempo_Jugador2;
 window.setInterval(function tiempo() {
     if(!finalizado){
         if(Turno%2 == 0) {
