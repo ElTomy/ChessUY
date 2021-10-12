@@ -4,10 +4,7 @@
 
   session_start();
 
-  $usuarios_info = $server->Top();
   $torneos = $server->InfoTorneo();
-
-  $numero_usuarios = count($usuarios_info);
 
   if(isset($_POST['tornID'])) {
     $_SESSION['tornID'] = $_POST['tornID'];
@@ -15,6 +12,7 @@
     for($i=0;$i<count($torneos);$i++) {
       if($torneos[$i]['ID_Torneo'] == $_SESSION['tornID']) {
         $tornID = $i;
+        $usuarios = $server->TraigoUsuariosTorneo($_SESSION['tornID']);
         $i = count($torneos);
       }
     }
@@ -92,23 +90,20 @@
                     <div class="stats-box" id="stats-box">
 
                     <?php
-                      for($x = 1; $x <= $numero_usuarios; $x++){
-                        $partici = $server->InfoParticipante($usuarios_info[($x - 1)]['usuario']);
-                        if($partici == 0) {
-                          echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
-                                  <div class="info-left">
-                                      <p class="posicion">#'.$x.'</p>
-                                      <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
-                                          <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
+                      for($x = 0; $x < count($usuarios); $x++){
+                        $armPerf = $server->BuscoJugador($usuarios[$x]['usuarios']);
+                        $estUsuar = $server->InfoEstadisticas($usuarios[$x]['usuarios']);
+                        echo '<a class="player" href="/ChessUY/Profile/'.$usuarios[$x]['usuarios'].'">
+                                <div class="info-left">
+                                      <div class="player-img" style="background-color: '.$armPerf[0]['colFondo'].'">
+                                          <i class="'.$armPerf[0]['icono'].'" style="color: '.$armPerf[0]['colIcono'].'"></i>
                                       </div>
-                                      <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
-                                  </div>
-                                  <div class="puntaje">
-                                    '.$usuarios_info[($x - 1)]['ELO'].'
-                                  </div>
-
+                                    <p class="nombre">'.$usuarios[$x]['usuarios'].'</p>
+                                </div>
+                                <div class="puntaje">
+                                  '.$estUsuar[0].'
+                                </div>
                               </a>';
-                        }
                       }
                     ?>
                     </div>
