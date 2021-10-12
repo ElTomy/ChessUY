@@ -5,7 +5,7 @@
     $modal = '<div class="modal">
                 <div class="modal-wrapper">
                     <div class="modal-logo">
-                        <img src="/ChessUY/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
+                        <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
                     </div>
                     <div class="modal-content">
                         <h1>Eliminar</h1>
