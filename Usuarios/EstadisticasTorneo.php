@@ -2,9 +2,23 @@
   include '../servidor.php';
   $server= new servidor();
 
+  session_start();
+
   $usuarios_info = $server->Top();
+  $torneos = $server->InfoTorneo();
 
   $numero_usuarios = count($usuarios_info);
+
+  if(isset($_POST['tornID'])) {
+    $_SESSION['tornID'] = $_POST['tornID'];
+  } else {
+    for($i=0;$i<count($torneos);$i++) {
+      if($torneos[$i]['ID_Torneo'] == $_SESSION['tornID']) {
+        $tornID = $i;
+        $i = count($torneos);
+      }
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +45,7 @@
     />
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Estadisticas Globales</title>
+    <title>ChessUY | Estadisticas Torneo</title>
   </head>
   <body>
     
@@ -59,8 +73,12 @@
                     <p><i class="fas fa-users"></i> 12</p>
                 </div>
                 <div class="torneo-right">
-                    <h1>Nombre del Torneo</h1>
+                  <?php
+                  echo '
+                    <h1>'.$torneos[$tornID]['nombre'].'</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione deleniti quis sunt! Quia, magni ullam totam cumque odio fugiat distinctio.</p>
+                  ';
+                  ?>
                 </div>
             </div>
             <hr>
@@ -75,19 +93,22 @@
 
                     <?php
                       for($x = 1; $x <= $numero_usuarios; $x++){
-                        echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
-                                <div class="info-left">
-                                    <p class="posicion">#'.$x.'</p>
-                                    <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
-                                        <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
-                                    </div>
-                                    <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
-                                </div>
-                                <div class="puntaje">
-                                  '.$usuarios_info[($x - 1)]['ELO'].'
-                                </div>
+                        $partici = $server->InfoParticipante($usuarios_info[($x - 1)]['usuario']);
+                        if($partici == 0) {
+                          echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+                                  <div class="info-left">
+                                      <p class="posicion">#'.$x.'</p>
+                                      <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
+                                          <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
+                                      </div>
+                                      <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
+                                  </div>
+                                  <div class="puntaje">
+                                    '.$usuarios_info[($x - 1)]['ELO'].'
+                                  </div>
 
-                            </a>';
+                              </a>';
+                        }
                       }
                     ?>
                     </div>

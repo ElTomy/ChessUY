@@ -45,7 +45,7 @@ function TraigoEntrenamiento(){
             var tab = JSON.parse(dat[0]['Tablero']);
             var movs = JSON.parse(dat[0]['CantidadMovimientos']);
             idProblema = dat[0]['ID'];
-            if(idProblema[0]["ID"] != 0){
+            if(idProblema != 0){
                 movi = movs;
                 for(var p = 1; p <= 8; p++){
                     for(var q = 1; q <= 8; q++){
@@ -54,12 +54,20 @@ function TraigoEntrenamiento(){
                 }
                 armoAjedrez();
             }else{
-                //Modal de no hay entrenamientos y volver a la index
+                $.ajax({
+                    url: "/ChessUY/Modal/modal.php",
+                    type: "POST",
+                    data:{numero_mensaje: 23},
+                    success: function (modal){
+                        document.getElementById("modal").innerHTML = modal;
+                    }
+                });
             }
         }
     });
 }
  function armoAjedrez(){
+    console.log(Jugadas);
 
     /* 
     Armo Tablero     
@@ -78,6 +86,7 @@ function TraigoEntrenamiento(){
     Armo Tabla Movimientos     
     */
     $.ajax({
+        
         type: "POST",
         url: "/ChessUY/Entrenamiento/php/armoMovimientos.php",
         data: {Jugadas:Jugadas, Turno:Turno},
@@ -127,6 +136,11 @@ var Turno = 1;
 var Reloj = 0;
 var ultTurn = 0;
 var simbolo = null;
+var xp;
+var yp;
+var pp;
+var xXNULL;
+var yYNULL;
 const Tablero = [];
 const TableroJaque = [];
 var seleccionado = null;
@@ -409,7 +423,17 @@ function seleccionar(x,y){
                     simbolo: simbolo,
                 }
                 simbolo = null;
-                Turno = Turno + 2;
+                Turno++;
+                ColocoPieza(pp,"b",xp,yp);
+                ColocoPieza(null,null,xXNULL,yYNULL);
+                Jugadas[(Turno)] = {
+                    Piezas: pp,
+                    color: "n",
+                    Ejex: xp,
+                    Ejey: yp,
+                    simbolo: null,
+                }
+                Turno++;
                 ultTurn = true;
                 a = 1;
             }
@@ -421,6 +445,11 @@ function seleccionar(x,y){
 /*------------------------------------------------------------------------------------------*/
 //
 //
+var xp;
+var yp;
+var pp;
+var xXNULL;
+var yYNULL;
 function MovimientoCorrecto(x,y,p){
     $.ajax({
         type: "POST",
@@ -429,37 +458,40 @@ function MovimientoCorrecto(x,y,p){
         url: "/ChessUY/Entrenamiento/php/MovimientoCorrecto.php",
         success: function (data) {
             var dat = JSON.parse(data);
-            var xp = JSON.parse(dat[0]["x"]);
-            var yp = JSON.parse(dat[0]["y"]);
-            var pp = dat[0]["Pieza"];
-            var XNULL = JSON.parse(dat[0]["XNULL"]);
-            var YNULL = JSON.parse(dat[0]["YNULL"]);
+            xp = JSON.parse(dat[0]["x"]);
+            yp = JSON.parse(dat[0]["y"]);
+            pp = dat[0]["Pieza"];
+            xXNULL = JSON.parse(dat[0]["XNULL"]);
+            yYNULL = JSON.parse(dat[0]["YNULL"]);
             if(xp != 0 && xp != 9){
-                ColocoPieza(pp,"n",xp,yp);
-                ColocoPieza(null,null,XNULL,YNULL);
                 movimientoCorrect = 1;
-                Jugadas[(Turno + 1)] = {
-                    Piezas: pp,
-                    color: "n",
-                    Ejex: xp,
-                    Ejey: yp,
-                    simbolo: null,
-                }
             }else{
-                if(xp == 0){
-                    //ModalError
-                    alert("Esa no es la opcion correcta");
+                if(xp == 0){ 
+                    $.ajax({
+                        url: "/ChessUY/Modal/modal.php",
+                        type: "POST",
+                        data:{numero_mensaje: 21},
+                        success: function (modal){
+                            document.getElementById("modal").innerHTML = modal;
+                        }
+                    });
                     movimientoCorrect = 0;
                 }else{
-                    //ModalVictoria
-                    alert("Felicidades completaste el desafio")
-                    movimientoCorrect = 1;
+                    movimientoCorrect = 0;
                     $.ajax({
-                        url: "/ChessUY/Entrenamiento/php/EntrenamientoCompletado.php",
+                        url: "/ChessUY/Modal/modal.php",
                         type: "POST",
-                        data: {ID:idProblema},
-                        success: function (data) {
-                            TraigoEntrenamiento();
+                        data:{numero_mensaje: 22},
+                        success: function (modal){
+                            document.getElementById("modal").innerHTML = modal;
+                            $.ajax({
+                                url: "/ChessUY/Entrenamiento/php/EntrenamientoCompletado.php",
+                                type: "POST",
+                                data: {ID:idProblema},
+                                success: function (data) {
+                                    location.reload();
+                                }
+                            });
                         }
                     });
 
