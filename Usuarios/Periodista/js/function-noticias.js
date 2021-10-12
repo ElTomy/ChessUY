@@ -85,7 +85,7 @@
  });
 
 function editar(id_noticia){
-    location.href = "/cyberhydra/Usuarios/Periodista/php/editarNoticia/" + id_noticia;
+    location.href = "/cyberhydra/Usuarios/Periodista/php/editarNoticia.php?ID=" + id_noticia;
 }
 
 function eliminarNoticia(id_noticia){

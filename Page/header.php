@@ -37,7 +37,7 @@
                 
                 if(isset($_SESSION['usuario'])){
                     echo "  <div class='header-session'>
-                                <a class='profile' href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'>
+                                <a class='profile' href='/cyberhydra/Profile/Profile.php?Usuario=" . $_SESSION['usuario'] . "'>
                                     <div class='session-image' style='background-color: ". $ColorFondo ."'><i class='" . $Icono ."' style='color: ". $ColorIcono ."'></i></div>
                                     <div class='header-user'>
                                         <p>" . $_SESSION['usuario'] . "</p>";
@@ -97,7 +97,7 @@
             <a href="/cyberhydra/Index.php"><i class="fas fa-home"></i> Inicio</a>
             <?php
                 if(isset($_SESSION['usuario'])){
-                    echo "  <a href='/cyberhydra/Profile/" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
+                    echo "  <a href='/cyberhydra/Profile/Profile.php?Usuario=" . $_SESSION['usuario'] . "'><i class='fas fa-address-card'></i> Mi Perfil</a>
                             <a class='search' href='/cyberhydra/Profile/BuscarJugadores.html'><i class='fas fa-search'></i> Buscar Jugadores</a>
                             <a onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>";
                 }else{

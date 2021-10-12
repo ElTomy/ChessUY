@@ -110,7 +110,7 @@
 
                   if(isset($_SESSION['usuario'])){
                     if($usuario_info['usuario'] == $_SESSION['usuario'] || $_SESSION['tipo'] == 0){
-                      echo '<a href="/cyberhydra/Profile/Editar/' . $usuario_info['usuario'] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
+                      echo '<a href="/cyberhydra/Profile/editarPerfil.php?Usuario=' . $usuario_info['usuario'] . '"><i class="fas fa-edit"></i> Editar Perfil</a>';
                     }
                   }else{
 
@@ -255,7 +255,7 @@
 
 
                 echo '</div>
-                <a class="ver-logros" href="/cyberhydra/Profile/Logros/'.$usuario.'"><i class="fas fa-medal"></i>Ver todos los logros</a>
+                <a class="ver-logros" href="/cyberhydra/Profile/Logros.php?Usuario='.$usuario.'"><i class="fas fa-medal"></i>Ver todos los logros</a>
               </div>
             </div>
         </div>
