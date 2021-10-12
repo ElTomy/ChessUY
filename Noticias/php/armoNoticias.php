@@ -1,66 +1,37 @@
-<div class='noticias-grid'>
+<?php
+    include '../../servidor.php';
+    $server= new servidor();
 
-    <div class='noticia-wrapper'>
-        <div class='noticia'>
-            <div class='noticia-image'>
-            <img src='media/images/Noticia.png' alt='' />
-            </div>
-            <div class='noticia-body'>
-            <h1>Noticia 1</h1>
-            <hr />
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-                totam perspiciatis, libero impedit odit quod ab maiores fugiat
-                eaque quo molestias voluptate qui? Iusto aspernatur facilis
-                commodi quidem quia nulla vero alias cumque, quae perspiciatis
-                officia fuga quas dolorum totam...
-            </p>
-            <a href=''>Leer Más</a>
-            </div>
-        </div>
-    </div>
+    $noticias = $server->NoticiasIndex();
 
-    <!--Noticia 2-->
+    echo "<div class='noticias-grid'>";
 
-    <div class='noticia-wrapper'>
-        <div class='noticia'>
-            <div class='noticia-image'>
-            <img src='media/images/Noticia.png' alt='' />
-            </div>
-            <div class='noticia-body'>
-            <h1>Noticia 2</h1>
-            <hr />
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-                totam perspiciatis, libero impedit odit quod ab maiores fugiat
-                eaque quo molestias voluptate qui? Iusto aspernatur facilis
-                commodi quidem quia nulla vero alias cumque, quae perspiciatis
-                officia fuga quas dolorum totam...
-            </p>
-            <a href=''>Leer Más</a>
-            </div>
-        </div>
-    </div>
+    for($x = 0; $x < 3; $x++){
+        if(strlen($noticias[$x]['Informacion']) <= 100){
+            $informacion = $noticias[$x]['Informacion'];
+        }
+        else{
+            $informacion = substr($noticias[$x]['Informacion'],0,350) . '...';
+        }
 
-    <!--Noticia 3-->
 
-    <div class='noticia-wrapper'>
-        <div class='noticia'>
-            <div class='noticia-image'>
-            <img src='media/images/Noticia.png' alt='' />
-            </div>
-            <div class='noticia-body'>
-            <h1>Noticia 3</h1>
-            <hr />
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-                totam perspiciatis, libero impedit odit quod ab maiores fugiat
-                eaque quo molestias voluptate qui? Iusto aspernatur facilis
-                commodi quidem quia nulla vero alias cumque, quae perspiciatis
-                officia fuga quas dolorum totam...
-            </p>
-            <a href=''>Leer Más</a>
-            </div>
-        </div>
-    </div>
-</div>
+        echo "  <div class='noticia-wrapper'>
+                    <div class='noticia'>
+                        <div class='noticia-image'>
+                        <img src='".$noticias[$x]['IMG']."' alt='' />
+                        </div>
+                        <div class='noticia-body'>
+                        <h1>".$noticias[$x]['Titulo']."</h1>
+                        <hr />
+                        <p>
+                            ".$informacion."
+                        </p>
+                        <a onclick='noticia(".$noticias[$x]['ID'].")'>Leer Más</a>
+                        </div>
+                    </div>
+                </div>";
+
+    }
+    echo "</div>";
+
+?>
