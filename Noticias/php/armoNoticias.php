@@ -26,7 +26,7 @@
                         <p>
                             ".$informacion."
                         </p>
-                        <a href=''>Leer Más</a>
+                        <a onclick='noticia(".$noticias[$x]['ID'].")'>Leer Más</a>
                         </div>
                     </div>
                 </div>";
