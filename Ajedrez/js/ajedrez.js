@@ -1332,31 +1332,61 @@ function JaqueRey(x,y, sel){
     
     //:Caballo
     //←↑
-    if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    yy = y+1;
-    //←↓
-    if (x-2>=1 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}
-    yy = y+2;
-    xx = x-1;
-    //↓←
-    if (x-1>=1 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x+1;
-    //↓→
-    if (x+1<=8 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x+2;
-    yy = y+1;
-    //→↓
-    if (x+2<=8 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}
-    yy = y-1;
-    //→↑
-    if (x+2<=8 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    yy = y-2;
-    xx = x+1;
-    //↑→
-    if (x+1<=8 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x-1;
-    //↑←
-    if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}};
+    if (x-2>=1 && y-1>=1) {
+        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+        if(Movimiento[x][y] != null){
+            yy = y+1;
+            //←↓
+            if (x-2>=1 && y+1<=8) {
+                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                if(Movimiento[x][y] != null){
+                    yy = y+2;
+                    xx = x-1;
+                    //↓←
+                    if (x-1>=1 && y+2<=8) {
+                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                        if(Movimiento[x][y] != null){
+                            xx = x+1;
+                            //↓→
+                            if (x+1<=8 && y+2<=8) {
+                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                if(Movimiento[x][y] != null){
+                                    xx = x+2;
+                                    yy = y+1;
+                                    //→↓
+                                    if (x+2<=8 && y+1<=8) {
+                                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                        if(Movimiento[x][y] != null){
+                                            yy = y-1;
+                                            //→↑
+                                            if (x+2<=8 && y-1>=1) {
+                                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                if(Movimiento[x][y] != null){
+                                                    yy = y-2;
+                                                    xx = x+1;
+                                                    //↑→
+                                                    if (x+1<=8 && y-2>=1) {
+                                                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                        if(Movimiento[x][y] != null){
+                                                            xx = x-1;
+                                                            //↑←
+                                                            if (x-1>=1 && y-2>=1) {
+                                                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                            }
+                                                        }
+                                                    } 
+                                                }
+                                            } 
+                                        }
+                                    }
+                                }
+                            } 
+                        }    
+                    } 
+                }
+            }
+        }
+    } 
     
     //?----------------------------------------------------------------------------------
     //:Torre y Reina
