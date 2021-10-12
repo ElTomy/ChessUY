@@ -122,14 +122,16 @@ function traigoTablero(){
         tiempo_Jugador1 = dat[0]['tiempo1'];
         tiempo_Jugador2 = dat[0]['tiempo2'];
 
-        tmp1 = tiempo_Jugador1.split(":");
-        tmp2 = tiempo_Jugador2.split(":");
-
-        tiempo1 = (tmp1[0]*60);
-        tiempo2 = (tmp2[0]*60);
-       
-        totlsec1 = tiempo1;
-        totlsec2 = tiempo2;
+        if(tiempo_Jugador1 != null){
+            tmp1 = tiempo_Jugador1.split(":");
+            tmp2 = tiempo_Jugador2.split(":");
+    
+            tiempo1 = (tmp1[0]*60);
+            tiempo2 = (tmp2[0]*60);
+           
+            totlsec1 = tiempo1;
+            totlsec2 = tiempo2;
+        }
 
         if(numJugador == 1){
 
@@ -154,10 +156,30 @@ function traigoTablero(){
                         }
                     }
                     barraProgreso(barra)
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo1;
+                        totlsec2 = tiempo2;
+                    }
                 }else{
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
+                    }
                 }
             }
         }else{
@@ -173,6 +195,16 @@ function traigoTablero(){
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
+                    }
                 }else{
                     var tab = JSON.parse(dat[0]['tablero']);
                         for(var p = 1; p <= 8; p++){
@@ -180,7 +212,17 @@ function traigoTablero(){
                                 Tablero[p][q] = tab[p][q];
                             }
                         }
-                    barraProgreso(barra)
+                    barraProgreso(barra);
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo1;
+                        totlsec2 = tiempo2;
+                    }
                 }
             }
         }
