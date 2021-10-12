@@ -1016,4 +1016,27 @@ class servidor
         }
         return false;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function TraigoUsuariosTorneo($id){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL TraigoUsuariosTorneo(?)";    
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $id);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($usuarios);
+            while ($stmts->fetch()) {
+                $data = array('usuarios' => $usuarios);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
