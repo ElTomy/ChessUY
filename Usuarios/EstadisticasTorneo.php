@@ -45,7 +45,7 @@
     />
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Estadisticas Globales</title>
+    <title>ChessUY | Estadisticas Torneo</title>
   </head>
   <body>
     
@@ -93,19 +93,22 @@
 
                     <?php
                       for($x = 1; $x <= $numero_usuarios; $x++){
-                        echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
-                                <div class="info-left">
-                                    <p class="posicion">#'.$x.'</p>
-                                    <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
-                                        <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
-                                    </div>
-                                    <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
-                                </div>
-                                <div class="puntaje">
-                                  '.$usuarios_info[($x - 1)]['ELO'].'
-                                </div>
+                        $partici = $server->InfoParticipante($usuarios_info[($x - 1)]['usuario']);
+                        if($partici == 0) {
+                          echo '<a class="player" href="/ChessUY/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+                                  <div class="info-left">
+                                      <p class="posicion">#'.$x.'</p>
+                                      <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
+                                          <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
+                                      </div>
+                                      <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
+                                  </div>
+                                  <div class="puntaje">
+                                    '.$usuarios_info[($x - 1)]['ELO'].'
+                                  </div>
 
-                            </a>';
+                              </a>';
+                        }
                       }
                     ?>
                     </div>
