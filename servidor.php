@@ -1149,9 +1149,9 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($usuario);
+            $stmts->bind_result($usuarios);
             while ($stmts->fetch()) {
-                $data = array('usuario' => $usuarios);
+                $data = array('usuarios' => $usuarios);
                 $info[] = $data;
             }
             $stmts->close();
