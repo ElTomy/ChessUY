@@ -1,7 +1,7 @@
 <?php
-  /*include '../../../servidor.php';
+  include '../../../servidor.php';
   $server= new servidor();
-  $server->VerificoSesion(0); */
+  $server->VerificoSesion(0); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

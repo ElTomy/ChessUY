@@ -1,8 +1,8 @@
 <?php
-
+  // include 'servidor.php';
+  // $server= new servidor();
+  // $server->VerificoSesion(0); 
 session_start();
-
-
 
 $index ='
 
