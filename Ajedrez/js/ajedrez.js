@@ -2467,9 +2467,9 @@ function init(){
                     Turno = tur;
                     break;
                 case 5:
-                    console.log(chat);
-                    var content = document.getElementById('chat').innerHTML;
-                    document.getElementById('chat').innerHTML = content + '<div class="received-message">[] ' + chat + '</div>';
+                    console.log("recibo chat");
+                    var content = document.getElementById('chat-box').innerHTML;
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a><p>'+chat+'</p></div></div>';
                     break;
             }
         }else{console.log("ERROR")}
@@ -2487,9 +2487,8 @@ function init(){
             msg["message"] = "Chat:" + message;
             conn.send(JSON.stringify(msg));
 
-            var content = document.getElementById('chat').innerHTML;
-
-            document.getElementById('chat').innerHTML = content + '<div class="sent-message">[ME] ' + message + '</div>';
+            var content = document.getElementById('chat-box').innerHTML;
+            document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a><p>'+message+'</p></div></div>';
             document.getElementById('message').value = '';
         }
     }

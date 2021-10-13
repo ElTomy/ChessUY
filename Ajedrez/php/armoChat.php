@@ -1,5 +1,5 @@
 <?php
- $chat = '  <div class="chat-box">
+ $chat = '  <div class="chat-box" id="chat-box">
                 <div class="mensaje1-wrapper">
                     <div class="mensaje1">
                         <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
@@ -9,7 +9,7 @@
                 <div class="mensaje2-wrapper">
                     <div class="mensaje2">
                         <a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit assumenda asperiores dolores explicabo rem recusandae unde aut alias rerum soluta!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit </p>
                     </div>
                 </div>
                 <div class="mensaje1-wrapper">
@@ -26,6 +26,4 @@
             </div>';
 
             echo $chat;
-            return $chat;
-
 ?>
