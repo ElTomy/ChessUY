@@ -1339,7 +1339,10 @@ function JaqueRey(x,y, sel){
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
-    console.log("Movimiento" ,x,y, sel);
+    var derecha = false;
+    var arriba = false;
+    var ArribaIzquierda = false;
+    var AbajoIzquierda = false;
 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
@@ -1432,6 +1435,7 @@ function JaqueRey(x,y, sel){
                     Movimiento[x][y] = null
                     if(x >= 3 ){
                         Movimiento[x-2][y] = null
+                        derecha  = true;
                     }
                 }
                 break;
@@ -1439,7 +1443,8 @@ function JaqueRey(x,y, sel){
         }
     }
     
-    //izquierda
+    if(derecha == false){
+        //izquierda
     for(i = 1; i <= 8; i++){
         if( x-i >= 1){
             ix = x - i;
@@ -1454,6 +1459,8 @@ function JaqueRey(x,y, sel){
             }
         }
     }   
+    }
+    
     //arriba
     for(i = 1; i <= 8; i++){
         if(y-i>=1){
@@ -1463,25 +1470,28 @@ function JaqueRey(x,y, sel){
                     Movimiento[x][y] = null
                     if(y <= 6 ){
                         Movimiento[x][y+2] = null
+                        arriba = true;
                     }
                 }
                 break;
             }
         } 
     }
-        
-   //abajo↓
-    for(i = 1;i <= 8; i++){
-        iy  = i +y;
-        if(iy <= 8){
-            if(Tablero[x][iy].Piezas != null){
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null 
-                    if(y >= 3 ){
-                        Movimiento[x][y-2] = null
+
+    if(arriba == false){
+        //abajo↓
+        for(i = 1;i <= 8; i++){
+            iy  = i +y;
+            if(iy <= 8){
+                if(Tablero[x][iy].Piezas != null){
+                    if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                        Movimiento[x][y] = null 
+                        if(y >= 3 ){
+                            Movimiento[x][y-2] = null
+                        }
                     }
+                    break;
                 }
-                break;
             }
         }
     }
@@ -1498,6 +1508,7 @@ for(i = 1; i <= 8; i++){
                 Movimiento[x][y] = null
                 if(x <= 6 && y <= 6){
                     Movimiento[x+2][y+2] = null
+                    ArribaIzquierda = true;
                 }
             }
             break;
@@ -1515,6 +1526,7 @@ for(i = 1;i <= 8; i++){
                 Movimiento[x][y] = null
                 if(x <= 6 && y >= 3){
                     Movimiento[x+2][y-2] = null
+                    AbajoIzquierda = true;
                 }
             }
             break;
@@ -1522,45 +1534,49 @@ for(i = 1;i <= 8; i++){
     }
 }    
 
-//ArribaDerecha↑→
-for(i = 1;i <= 8; i++){
-    if(y-i>=1 && x+i <= 8){
-        ix = x + i;
-        iy = y - i;
-        if(Tablero[ix][iy].Piezas != null){
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-                if(x >= 3 && y <= 6){
-                    Movimiento[x-2][y+2] = null
+if(AbajoIzquierda == false){
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8; i++){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                    if(x >= 3 && y <= 6){
+                        Movimiento[x-2][y+2] = null
+                    }
                 }
+                break;
             }
-            break;
         }
-    }
-}  
+    } 
+}
  
-//AbajoDerecha→↓
-for(i = 1;i <= 8; i++){
-    if(y+i<=8 && x+i <= 8){
-        ix = x + i;
-        iy = y + i;
-        if(Tablero[ix][iy].Piezas != null){
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-                if(x >= 3 && y >= 3){
-                    Movimiento[x-2][y-2] = null
+ if(ArribaIzquierda == false){
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                    if(x >= 3 && y >= 3){
+                        Movimiento[x-2][y-2] = null
+                    }
                 }
+                break;
             }
-            break;
         }
-    }
-}   
+    } 
+ }
+  
 
   //?----------------------------------------------------------------------------------
     //:Peon y Reina
     xx = x-1;
     yy = y-1;
-    console.log("col", col);
     if(col == "n"){
         //ArribaIzquierda↑←
         if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
@@ -2330,7 +2346,6 @@ function init(){
                 type: "POST",
                 data: {arUsuarios:arUsuarios},
                 success: function (data) {
-                    console.log(data);
                     var dat = JSON.parse(data);
 
                     if(dat['encontrado'] == true){
@@ -2420,6 +2435,9 @@ function init(){
             }else if(json2.includes("tur:")){
                 var tur = json2.slice(4)
                 tipo = 4;
+            }else if(json2.includes("Chat:")){
+                var chat = json2.slice(5);
+                tipo = 5;
             }
 
             switch(tipo){
@@ -2448,12 +2466,33 @@ function init(){
                 case 4:
                     Turno = tur;
                     break;
+                case 5:
+                    console.log(chat);
+                    var content = document.getElementById('chat').innerHTML;
+                    document.getElementById('chat').innerHTML = content + '<div class="received-message">[] ' + chat + '</div>';
+                    break;
             }
         }else{console.log("ERROR")}
 
         resetMovimientos();
         armoAjedrez();
     };
+
+    function mandarChat(){
+        var message = document.getElementById('message').value;
+
+        if(message.length > 0){
+            var msg = {};
+            msg["type"] = "message";
+            msg["message"] = "Chat:" + message;
+            conn.send(JSON.stringify(msg));
+
+            var content = document.getElementById('chat').innerHTML;
+
+            document.getElementById('chat').innerHTML = content + '<div class="sent-message">[ME] ' + message + '</div>';
+            document.getElementById('message').value = '';
+        }
+    }
 //:------------------------------------------------------------------------------------------/
 //
 //
@@ -2709,3 +2748,5 @@ function ActualizarEstadisticas(resultado){
         }
         });
 }
+
+

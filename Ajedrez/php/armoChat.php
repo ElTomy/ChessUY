@@ -21,8 +21,8 @@
             </div>
 
             <div class="chat-input">
-                <input type="text" placeholder="Escribe un mensaje aquí">
-                <button><i class="fas fa-paper-plane"></i></button>
+                <input  id="message" type="text" placeholder="Escribe un mensaje aquí">
+                <button onclick="mandarChat()"><i class="fas fa-paper-plane"></i></button>
             </div>';
 
             echo $chat;
