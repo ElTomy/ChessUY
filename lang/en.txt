@@ -1,0 +1,9 @@
+campeonato=>Online Chess Championship
+camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
+news-index=>News Blog
+news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news.
+recent-tourn=>Recent Tournament
+best-players=>Best Players
+open-tourn=>Open Tournaments
+foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. All rights reserved.
+foot-design=>Designed by:

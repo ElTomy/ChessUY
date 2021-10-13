@@ -1,0 +1,9 @@
+campeonato=>Campeonato de Ajedrez Online
+camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
+news-index=>Blog de Noticias
+news-index-desc=>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.
+recent-tourn=>Torneo Reciente
+best-players=>Mejores Jugadores
+open-tourn=>Torneos Abiertos
+foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. Todos los derechos reservados.
+foot-design=>Diseñada por:

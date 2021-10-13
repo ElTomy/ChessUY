@@ -1,0 +1,6 @@
+.loading-lang{
+    opacity: 0;
+  }
+.loading-lang.show{
+  opacity: 1;
+}
