@@ -815,12 +815,12 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoPartida($Nombre){
+    function InfoPartida($Nombre,$ID){
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL InfoPartida(?)";
+        $sql = "CALL InfoPartida(?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("s", $Nombre);
+        $stmts->bind_param("si", $Nombre,$ID);
 
         if ($stmts->execute()) {
 
@@ -923,9 +923,9 @@ class servidor
         if ($stmts->execute()) {
 
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo, $Jaque1, $Jaque2 ,$Barra ,$Tiempo ,$Tiempo2);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo, 'Jaque1' => $Jaque1, 'Jaque2' => $Jaque2);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo, 'Jaque1' => $Jaque1, 'Jaque2' => $Jaque2, 'Barra' => $Barra, 'Tiempo' => $Tiempo, 'Tiempo2' => $Tiempo2);
                                 $info[] = $data;
             }
             $stmts->close();

@@ -7,6 +7,9 @@ if(isset($_POST['id'])){
     $Participantes = $server->FixturePuntos($IDT);
     $cantParticipantes = count($Participantes);
     $partidos = $server->TraigoPartidosTorneo();
+    $Info = $server->InfoPartida('',$IDT);
+    $Ronda = $Info[0]['ronda'];
+    $fechaAct = date('Ymd');
     $col = 0;
     foreach ($partidos as $buscoPartido) {
         if($buscoPartido['Torneo'] == $IDT){
