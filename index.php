@@ -94,13 +94,13 @@ if(isset($_SESSION['usuario'])){
         <div class="mejores-jugadores">
           <div class="mejores-jugadores-header">
             <h1 data-lang="best-players">Mejores Jugadores</h1>
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
           <hr>
           <div class="jugadores-table" id="tabla-estadisticas">
           </div>
           <div class="mas-mobile">
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
         </div>
         

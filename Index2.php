@@ -98,22 +98,22 @@ $index .='
               <div class="admin-buttons">
                 <a href="/ChessUY/Admin" data-lang="requests"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
                 <a href="/ChessUY/Profile/BuscarJugadores.html" data-lang="manage-user"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/ChessUY/Torneos"><i class="fas fa-trophy" data-lang="create-tourn"></i> Crear Torneo</a>
-                <a href="/ChessUY/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy" data-lang="org-tourn"></i> Organizar Torneos</a>
+                <a href="/ChessUY/Torneos" data-lang="create-tourn"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/ChessUY/Torneo/OrganizarTorneos.html" data-lang="org-tourn"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
             </section>';
     }
     if($_SESSION['tipo'] == 3){
       $index .= '
               <section class="administrador-wrapper">
-              <h1><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
+              <h1 data-lang="journalist-tools"><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
               <p class="admin"><i class="fas fa-newspaper"></i> ' . $_SESSION["usuario"] . '</p>
-              <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <p data-lang="journalist-tools-desc">Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
                 <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-                <a href="Usuarios/Periodista/PHP/crearNoticia.php"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
-                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
-                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
+                <a href="Usuarios/Periodista/PHP/crearNoticia.php" data-lang="create-news"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href="" data-lang="edit-news"><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href="" data-lang="delete-news"><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
               </div>
             </section>';
     }
@@ -124,7 +124,7 @@ $index .='
                 <div class="torneos-grid">
                   <div class="torneo-reciente">
                     <div class="torneo-reciente-header">
-                      <h1>Torneo Reciente</h1>
+                      <h1 data-lang="recent-tourn">Torneo Reciente</h1>
                     </div>
                     <hr>
                     <div class="torneo" id="torn-InscAct">
@@ -133,8 +133,8 @@ $index .='
                   </div>
                   <div class="mejores-jugadores">
                     <div class="mejores-jugadores-header">
-                      <h1>Mejores Jugadores</h1>
-                      <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+                      <h1 data-lang="best-players">Mejores Jugadores</h1>
+                      <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
                     </div>
                     <hr>
                     <div class="jugadores-table" id="tabla-estadisticas">
@@ -143,7 +143,7 @@ $index .='
                 </div>
                 <div class="torneos-recientes-wrapper">
 
-                  <h1>Torneos Abiertos</h1>
+                  <h1 data-lang="open-tourn">Torneos Abiertos</h1>
                   <hr>
 
                   <div class="torneos-recientes" id="torn-Act">

@@ -4,6 +4,7 @@ news-index=>Blog de Noticias
 news-index-desc=>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.
 recent-tourn=>Torneo Reciente
 best-players=>Mejores Jugadores
+see-all=><i class="fas fa-user-friends"></i> Ver Todos
 open-tourn=>Torneos Abiertos
 foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. Todos los derechos reservados.
 foot-design=>Diseñada por:
@@ -15,7 +16,13 @@ welcome-main=>Bienvenido a la página principal de <b>ChessUY Championship</b>.
 play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Jugar
 admin-tools=><i class="fas fa-hammer"></i> Herramientas de Administrador
 admin-tools-desc=>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.
-requests=> Solicitudes
-manage-user=> Administrar Usuarios
-create-tourn=> Crear Torneo
-org-tourn=> Organizar Torneos
+requests=><i class="fas fa-id-card-alt"></i> Solicitudes
+manage-user=><i class="fas fa-user-edit"></i> Administrar Usuarios
+create-tourn=><i class="fas fa-trophy" data-lang="create-tourn"></i> Crear Torneo
+org-tourn=><i class="fas fa-trophy" data-lang="org-tourn"></i> Organizar Torneos
+
+journalist-tools=><i class="fas fa-hammer"></i> Herramientas de Periodista
+journalist-tools-desc=>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.
+create-news=><i class="fas fa-folder-plus"></i> Crear Noticia
+edit-news=><i class="fas fa-edit"></i> Editar Noticias
+delete-news=><i class="fas fa-trash-alt"></i> Eliminar Noticias
