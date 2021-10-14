@@ -292,19 +292,6 @@ $.ajax({
         document.getElementById("ArmoJugadores").innerHTML = data;
     }
 });
-
-/* 
-Armo Chat     
-*/
-
-$.ajax({
-    type: "POST",
-    url: "/ChessUY/Ajedrez/php/armoChat.php",
-    success: function (data) {
-        document.getElementById("ArmoChat").innerHTML = data;
-        heightdiv();
-    }
-});
 }
 
 function heightdiv(){
@@ -2469,7 +2456,7 @@ function init(){
                 case 5:
                     console.log("recibo chat");
                     var content = document.getElementById('chat-box').innerHTML;
-                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a><p>'+chat+'</p></div></div>';
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">'+jugador2+'</a><p>'+chat+'</p></div></div>';
                     break;
             }
         }else{console.log("ERROR")}
@@ -2478,18 +2465,20 @@ function init(){
         armoAjedrez();
     };
 
-    function mandarChat(){
+    function mandarChat(e){
         var message = document.getElementById('message').value;
 
-        if(message.length > 0){
-            var msg = {};
-            msg["type"] = "message";
-            msg["message"] = "Chat:" + message;
-            conn.send(JSON.stringify(msg));
-
-            var content = document.getElementById('chat-box').innerHTML;
-            document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">ByJuanii_</a><p>'+message+'</p></div></div>';
-            document.getElementById('message').value = '';
+        if(e.keyCode == 13){
+            if(message.length > 0){
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Chat:" + message;
+                conn.send(JSON.stringify(msg));
+    
+                var content = document.getElementById('chat-box').innerHTML;
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">'+jugador1+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('message').value = '';
+            }
         }
     }
 //:------------------------------------------------------------------------------------------/
