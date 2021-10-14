@@ -89,7 +89,14 @@
                   <div class="box-content" id="box">
 
                     <div class="table-wrapper" id="ArmoMovimientos"></div>
-                    <div class="chat" id="ArmoChat"></div>
+                     <div class="chat" id="ArmoChat">
+                      <div class="chat-box" id="chat-box">
+                        <div class="chat-input">
+                            <input  id="message" type="text" onkeyup="mandarChat(event)" placeholder="Escribe un mensaje aquí">
+                            <button onclick="mandarChat()"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                      </div>
+                    </div>
                       
                   </div>
               </div>

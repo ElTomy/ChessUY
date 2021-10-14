@@ -2454,9 +2454,8 @@ function init(){
                     Turno = tur;
                     break;
                 case 5:
-                    console.log("recibo chat");
                     var content = document.getElementById('chat-box').innerHTML;
-                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">'+jugador2+'</a><p>'+chat+'</p></div></div>';
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/'+jugador2+'">'+jugador2+'</a><p>'+chat+'</p></div></div>';
                     break;
             }
         }else{console.log("ERROR")}
@@ -2476,7 +2475,7 @@ function init(){
                 conn.send(JSON.stringify(msg));
     
                 var content = document.getElementById('chat-box').innerHTML;
-                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/ByJuanii_">'+jugador1+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+jugador1+'">'+jugador1+'</a><p>'+message+'</p></div></div>';
                 document.getElementById('message').value = '';
             }
         }

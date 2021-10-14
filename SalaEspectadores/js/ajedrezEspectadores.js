@@ -168,19 +168,6 @@ function armoAjedrez(){
             document.getElementById("ArmoJugadores").innerHTML = data;
         }
     });
-    
-    /* 
-    Armo Chat     
-    */
-    
-    $.ajax({
-        type: "POST",
-        url: "/ChessUY/SalaEspectadores/php/armoChat.php",
-        success: function (data) {
-            document.getElementById("ArmoChat").innerHTML = data;
-            heightdiv();
-        }
-    });
 }
 
 function heightdiv(){
@@ -462,6 +449,9 @@ function init(){
             }else if(json2.includes("tur:")){
                 var tur = json2.slice(4)
                 tipo = 4;
+            }else if(json2.includes("ChatE:")){
+                var chat = json2.slice(6);
+                tipo = 5;
             }
 
             switch(tipo){
@@ -496,9 +486,30 @@ function init(){
                 case 4:
                     Turno = tur;
                     break;
+                case 5:
+                    var content = document.getElementById('chat-box').innerHTML;
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/'+jugador2+'">'+jugador2+'</a><p>'+chat+'</p></div></div>';
+                    break;
             }
         }else{console.log("ERROR")}
         armoAjedrez();
     };
+
+    function mandarChat(e){
+        var message = document.getElementById('message').value;
+
+        if(e.keyCode == 13){
+            if(message.length > 0){
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "ChatE:" + message;
+                conn.send(JSON.stringify(msg));
+    
+                var content = document.getElementById('chat-box').innerHTML;
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+jug1+'">'+jug1+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('message').value = '';
+            }
+        }
+    }
 //:------------------------------------------------------------------------------------------/
 //
