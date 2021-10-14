@@ -57,7 +57,7 @@ if(isset($_SESSION['usuario'])){
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-        <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
+          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <h1 data-lang="campeonato">Campeonato de Ajedrez Online</h1>
           <p data-lang="camp-desc">
             <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.

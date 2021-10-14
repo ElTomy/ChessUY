@@ -7,3 +7,15 @@ best-players=>Mejores Jugadores
 open-tourn=>Torneos Abiertos
 foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. Todos los derechos reservados.
 foot-design=>Diseñada por:
+search-play=><i class="fas fa-search"></i> Buscar Jugadores
+logout=> Cerrar Sesión
+
+welcome=>¡Bienvenido 
+welcome-main=>Bienvenido a la página principal de <b>ChessUY Championship</b>.
+play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Jugar
+admin-tools=><i class="fas fa-hammer"></i> Herramientas de Administrador
+admin-tools-desc=>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.
+requests=> Solicitudes
+manage-user=> Administrar Usuarios
+create-tourn=> Crear Torneo
+org-tourn=> Organizar Torneos

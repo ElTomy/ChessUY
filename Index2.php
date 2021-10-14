@@ -20,7 +20,8 @@ $index ='
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
     <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>';
+    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
+    <script src="Javascript/translate.js"></script>';
     if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
       $index .='<script src="/ChessUY/Javascript/functionIndex2.js"></script>';
     }
@@ -58,14 +59,17 @@ $index .='
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <h1>¡Bienvenido <span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
-          <p style="margin-top: 10px;">
+          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
+          <div style="display:flex; justify-content:center;">
+            <h1><span data-lang="welcome">¡Bienvenido </span><span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
+          </div>
+          <p style="margin-top: 10px;" data-lang="welcome-main">
             Bienvenido a la página principal de <b>ChessUY Championship</b>.
           </p>
         </div>
 
         <div class="buttons" style="margin: 0; display: flex;">
-          <a href="Ajedrez/ajedrez.php">
+          <a href="Ajedrez/ajedrez.php" data-lang="play">
             <span></span>
             <span></span>
             <span></span>
@@ -88,14 +92,14 @@ $index .='
 
     if($_SESSION['tipo'] == 0){
       $index .= '<section class="administrador-wrapper">
-              <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
+              <h1 data-lang="admin-tools"><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
               <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
-              <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <p data-lang="admin-tools-desc">Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
-                <a href="/ChessUY/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
+                <a href="/ChessUY/Admin" data-lang="requests"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/ChessUY/Profile/BuscarJugadores.html" data-lang="manage-user"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/ChessUY/Torneos"><i class="fas fa-trophy" data-lang="create-tourn"></i> Crear Torneo</a>
+                <a href="/ChessUY/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy" data-lang="org-tourn"></i> Organizar Torneos</a>
               </div>
             </section>';
     }
