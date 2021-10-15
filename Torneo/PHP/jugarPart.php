@@ -7,7 +7,7 @@ session_start();
 // Ver si esta en algun torneo y en cual
 if(isset($_SESSION['usuario'])) {
     $usuarioLog = $_SESSION['usuario'];
-    $partid = $server->InfoPartida($usuarioLog);
+    $partid = $server->InfoPartida($usuarioLog, 0);
     for($i=0;$i<count($partid);$i++) {
         if($partid[$i]['Jugador1'] == $usuarioLog || $partid[$i]['Jugador2'] == $usuarioLog && $partid[$i]['ID_Torneo'] != 0) {
             $idTornUnid = $partid[$i]['ID_Torneo'];

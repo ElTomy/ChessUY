@@ -20,7 +20,8 @@ $index ='
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/ChessUY/Noticias/js/noticias.js"></script>
     <script src="/ChessUY/Javascript/Loader.js"></script>
-    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>';
+    <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
+    <script src="Javascript/translate.js"></script>';
     if( $_SESSION['tipo'] != 2  && $_SESSION['tipo'] != 3){
       $index .='<script src="/ChessUY/Javascript/functionIndex2.js"></script>';
     }
@@ -58,14 +59,17 @@ $index .='
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <h1>¡Bienvenido <span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
-          <p style="margin-top: 10px;">
+          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
+          <div style="display:flex; justify-content:center;">
+            <h1><span data-lang="welcome">¡Bienvenido </span><span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
+          </div>
+          <p style="margin-top: 10px;" data-lang="welcome-main">
             Bienvenido a la página principal de <b>ChessUY Championship</b>.
           </p>
         </div>
 
         <div class="buttons" style="margin: 0; display: flex;">
-          <a href="Ajedrez/ajedrez.php">
+          <a href="Ajedrez/ajedrez.php" data-lang="play">
             <span></span>
             <span></span>
             <span></span>
@@ -88,28 +92,28 @@ $index .='
 
     if($_SESSION['tipo'] == 0){
       $index .= '<section class="administrador-wrapper">
-              <h1><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
+              <h1 data-lang="admin-tools"><i class="fas fa-hammer"></i> Herramientas de Administrador</h1>
               <p class="admin"><i class="fas fa-star"></i> ' . $_SESSION["usuario"] . '</p>
-              <p>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <p data-lang="admin-tools-desc">Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
-                <a href="/ChessUY/Admin"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
-                <a href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
-                <a href="/ChessUY/Torneos"><i class="fas fa-trophy"></i> Crear Torneo</a>
-                <a href="/ChessUY/Torneo/OrganizarTorneos.html"><i class="fas fa-trophy"></i> Organizar Torneos</a>
+                <a href="/ChessUY/Admin" data-lang="requests"><i class="fas fa-id-card-alt"></i> Solicitudes</a>
+                <a href="/ChessUY/Profile/BuscarJugadores.html" data-lang="manage-user"><i class="fas fa-user-edit"></i> Administrar Usuarios</a>
+                <a href="/ChessUY/Torneos" data-lang="create-tourn"><i class="fas fa-trophy"></i> Crear Torneo</a>
+                <a href="/ChessUY/Torneo/OrganizarTorneos.html" data-lang="org-tourn"><i class="fas fa-trophy"></i> Organizar Torneos</a>
               </div>
             </section>';
     }
     if($_SESSION['tipo'] == 3){
       $index .= '
               <section class="administrador-wrapper">
-              <h1><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
+              <h1 data-lang="journalist-tools"><i class="fas fa-hammer"></i> Herramientas de Periodista</h1>
               <p class="admin"><i class="fas fa-newspaper"></i> ' . $_SESSION["usuario"] . '</p>
-              <p>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
+              <p data-lang="journalist-tools-desc">Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.</p>
               <div class="admin-buttons">
                 <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-                <a href="Usuarios/Periodista/PHP/crearNoticia.php"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
-                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
-                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
+                <a href="Usuarios/Periodista/PHP/crearNoticia.php" data-lang="create-news"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
+                <a href="" data-lang="edit-news"><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href="" data-lang="delete-news"><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
               </div>
             </section>';
     }
@@ -120,7 +124,7 @@ $index .='
                 <div class="torneos-grid">
                   <div class="torneo-reciente">
                     <div class="torneo-reciente-header">
-                      <h1>Torneo Reciente</h1>
+                      <h1 data-lang="recent-tourn">Torneo Reciente</h1>
                     </div>
                     <hr>
                     <div class="torneo" id="torn-InscAct">
@@ -129,8 +133,8 @@ $index .='
                   </div>
                   <div class="mejores-jugadores">
                     <div class="mejores-jugadores-header">
-                      <h1>Mejores Jugadores</h1>
-                      <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+                      <h1 data-lang="best-players">Mejores Jugadores</h1>
+                      <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
                     </div>
                     <hr>
                     <div class="jugadores-table" id="tabla-estadisticas">
@@ -139,7 +143,7 @@ $index .='
                 </div>
                 <div class="torneos-recientes-wrapper">
 
-                  <h1>Torneos Abiertos</h1>
+                  <h1 data-lang="open-tourn">Torneos Abiertos</h1>
                   <hr>
 
                   <div class="torneos-recientes" id="torn-Act">

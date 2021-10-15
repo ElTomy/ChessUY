@@ -57,7 +57,7 @@ if(isset($_SESSION['usuario'])){
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-        <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
+          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <h1 data-lang="campeonato">Campeonato de Ajedrez Online</h1>
           <p data-lang="camp-desc">
             <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
@@ -94,13 +94,13 @@ if(isset($_SESSION['usuario'])){
         <div class="mejores-jugadores">
           <div class="mejores-jugadores-header">
             <h1 data-lang="best-players">Mejores Jugadores</h1>
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
           <hr>
           <div class="jugadores-table" id="tabla-estadisticas">
           </div>
           <div class="mas-mobile">
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
         </div>
         
