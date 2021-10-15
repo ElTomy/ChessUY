@@ -800,16 +800,28 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT){
+    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT,$Tiempo){
         $conn = $this->conectar();
-        $sql = "CALL AgendoPartida(?,?,?,?,?)";
+        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("i", $id);
-        $stmts->bind_param("ssssi",$Usuario1, $Usuario2, $Color1, $Color2,$IDT);
+        $stmts->bind_param("ssssis",$Usuario1, $Usuario2, $Color1, $Color2,$IDT,$Tiempo);
         if($stmts->execute()){
             $execute = true;
         }
-        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoPartidaTorneo($IDT,$Usuario1, $Usuario2, $Fecha, $Ronda){
+        $conn = $this->conectar();
+        $sql = "CALL InfoPartidaTorneo(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("isssi", $IDT,$Usuario1, $Usuario2, $Fecha, $Ronda);
+        if($stmts->execute()){
+            $execute = true;
+        }
     }
     //
     /*------------------------------------------------------------------------------------------*/
