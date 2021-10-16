@@ -1,0 +1,28 @@
+campeonato=>Online Chess Championship
+camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
+news-index=>News Blog
+news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news.
+recent-tourn=>Recent Tournament
+best-players=>Best Players
+see-all=><i class="fas fa-user-friends"></i> See All
+open-tourn=>Open Tournaments
+foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. All rights reserved.
+foot-design=>Designed by:
+search-play=><i class="fas fa-search"></i> Browse Players
+logout=> Logout
+
+welcome=>Welcome 
+welcome-main=>Welcome to <b>ChessUY Championship's</b> main page.
+play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Play
+admin-tools=><i class="fas fa-hammer"></i> Admin tools
+admin-tools-desc=>Tools that allow for the website's adminstration. Whomever uses them is responsible for their consequences.
+requests=><i class="fas fa-id-card-alt"></i> Requests
+manage-user=><i class="fas fa-user-edit"></i> Manage Users
+create-tourn=><i class="fas fa-trophy" data-lang="create-tourn"></i> Create Tournament
+org-tourn=> <i class="fas fa-trophy" data-lang="org-tourn"></i> Organize Tournament
+
+journalist-tools=><i class="fas fa-hammer"></i> Journalist Tools
+journalist-tools-desc=>Tools that allow for the creation, modification and deletion of news. Whomever uses them is responsible for their consequences.
+create-news=><i class="fas fa-folder-plus"></i> Create News
+edit-news=><i class="fas fa-edit"></i> Edit News
+delete-news=><i class="fas fa-trash-alt"></i> Delete News
