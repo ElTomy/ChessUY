@@ -345,8 +345,12 @@ function init(){
     }
 
     function sendConnection(e){
-        name = sessionStorage.getItem('usuario');
-        console.log('name: ', name);
+        if(sessionStorage.getItem('usuario') == null){
+            number = Math.round(Math.random() * 9999);
+            name = 'guest'+number
+        }else{
+            name = sessionStorage.getItem('usuario');
+        }
         room = sessionStorage.getItem('id_partido');
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
 
@@ -488,28 +492,28 @@ function init(){
                     break;
                 case 5:
                     var content = document.getElementById('chat-box').innerHTML;
-                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/'+jugador2+'">'+jugador2+'</a><p>'+chat+'</p></div></div>';
+                    chat = chat.split(":");
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/'+chat[0]+'">'+chat[0]+'</a><p>'+chat[1]+'</p></div></div>';
                     break;
             }
         }else{console.log("ERROR")}
         armoAjedrez();
     };
 
-    function mandarChat(e){
-        var message = document.getElementById('message').value;
+    function enter(e){if(e.keyCode == 13){mandarChat()}}
+    function mandarChat(){
+        var message = document.getElementById('message').value; 
 
-        if(e.keyCode == 13){
             if(message.length > 0){
                 var msg = {};
                 msg["type"] = "message";
-                msg["message"] = "ChatE:" + message;
+                msg["message"] = "ChatE:"+name+":"+ message;
                 conn.send(JSON.stringify(msg));
     
                 var content = document.getElementById('chat-box').innerHTML;
-                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+jug1+'">'+jug1+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+name+'">'+name+'</a><p>'+message+'</p></div></div>';
                 document.getElementById('message').value = '';
             }
-        }
     }
 //:------------------------------------------------------------------------------------------/
 //

@@ -92,7 +92,7 @@
                      <div class="chat" id="ArmoChat">
                       <div class="chat-box" id="chat-box">
                         <div class="chat-input">
-                            <input  id="message" type="text" onkeyup="mandarChat(event)" placeholder="Escribe un mensaje aquí">
+                            <input  id="message" type="text" onkeyup="enter(event)" placeholder="Escribe un mensaje aquí">
                             <button onclick="mandarChat()"><i class="fas fa-paper-plane"></i></button>
                         </div>
                       </div>
