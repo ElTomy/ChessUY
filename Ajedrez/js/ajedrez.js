@@ -2191,7 +2191,7 @@ function Victoria(){
 }
 //
 //
-//:--------------------------------------ONLINE----------------------------------------------/
+//:--------------------------------------ONLINE---------------------------------------------:/
 var conn;
 function init(){
     conn = new WebSocket('ws://localhost:8080');
@@ -2464,10 +2464,10 @@ function init(){
         armoAjedrez();
     };
 
-    function mandarChat(e){
+    function enter(e){if(e.keyCode == 13){mandarChat()}}
+    function mandarChat(){
         var message = document.getElementById('message').value;
 
-        if(e.keyCode == 13){
             if(message.length > 0){
                 var msg = {};
                 msg["type"] = "message";
@@ -2478,9 +2478,8 @@ function init(){
                 document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+jugador1+'">'+jugador1+'</a><p>'+message+'</p></div></div>';
                 document.getElementById('message').value = '';
             }
-        }
     }
-//:------------------------------------------------------------------------------------------/
+//:-----------------------------------------------------------------------------------------:/
 //
 //
 function inviertoTablero(tab){
