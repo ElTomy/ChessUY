@@ -41,13 +41,11 @@ function TraigoEntrenamiento(){
         type: "POST",
         data: {},
         success: function (data) {
-            console.log(data)
             var dat = JSON.parse(data);
             var tab = JSON.parse(dat[0]['Tablero']);
             var movs = JSON.parse(dat[0]['CantidadMovimientos']);
             idProblema = dat[0]['ID'];
             if(idProblema != 0){
-                console.log("xd");
                 movi = movs;
                 for(var p = 1; p <= 8; p++){
                     for(var q = 1; q <= 8; q++){
@@ -56,7 +54,6 @@ function TraigoEntrenamiento(){
                 }
                 armoAjedrez();
             }else{
-                console.log("No hay entrenamientos")
                 $.ajax({
                     url: "/cyberhydra/Modal/modal.php",
                     type: "POST",
@@ -70,6 +67,7 @@ function TraigoEntrenamiento(){
     });
 }
  function armoAjedrez(){
+    console.log(Jugadas);
 
     /* 
     Armo Tablero     
@@ -88,6 +86,7 @@ function TraigoEntrenamiento(){
     Armo Tabla Movimientos     
     */
     $.ajax({
+        
         type: "POST",
         url: "/cyberhydra/Entrenamiento/php/armoMovimientos.php",
         data: {Jugadas:Jugadas, Turno:Turno},
@@ -424,7 +423,7 @@ function seleccionar(x,y){
                     simbolo: simbolo,
                 }
                 simbolo = null;
-                Turno = Turno + 2;
+                Turno++;
                 ColocoPieza(pp,"b",xp,yp);
                 ColocoPieza(null,null,xXNULL,yYNULL);
                 Jugadas[(Turno)] = {
@@ -434,6 +433,7 @@ function seleccionar(x,y){
                     Ejey: yp,
                     simbolo: null,
                 }
+                Turno++;
                 ultTurn = true;
                 a = 1;
             }
@@ -457,7 +457,6 @@ function MovimientoCorrecto(x,y,p){
         data: {X:x,Y:y,Pieza:p,ID:idProblema,Turno:Turno},
         url: "/cyberhydra/Entrenamiento/php/MovimientoCorrecto.php",
         success: function (data) {
-            console.log(data)
             var dat = JSON.parse(data);
             xp = JSON.parse(dat[0]["x"]);
             yp = JSON.parse(dat[0]["y"]);
@@ -467,7 +466,7 @@ function MovimientoCorrecto(x,y,p){
             if(xp != 0 && xp != 9){
                 movimientoCorrect = 1;
             }else{
-                if(xp == 0){
+                if(xp == 0){ 
                     $.ajax({
                         url: "/cyberhydra/Modal/modal.php",
                         type: "POST",
@@ -478,21 +477,21 @@ function MovimientoCorrecto(x,y,p){
                     });
                     movimientoCorrect = 0;
                 }else{
+                    movimientoCorrect = 0;
                     $.ajax({
                         url: "/cyberhydra/Modal/modal.php",
                         type: "POST",
                         data:{numero_mensaje: 22},
                         success: function (modal){
                             document.getElementById("modal").innerHTML = modal;
-                        }
-                    });
-                    movimientoCorrect = 1;
-                    $.ajax({
-                        url: "/cyberhydra/Entrenamiento/php/EntrenamientoCompletado.php",
-                        type: "POST",
-                        data: {ID:idProblema},
-                        success: function (data) {
-                            location.reload();
+                            $.ajax({
+                                url: "/cyberhydra/Entrenamiento/php/EntrenamientoCompletado.php",
+                                type: "POST",
+                                data: {ID:idProblema},
+                                success: function (data) {
+                                    location.reload();
+                                }
+                            });
                         }
                     });
 

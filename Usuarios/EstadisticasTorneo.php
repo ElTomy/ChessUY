@@ -4,10 +4,7 @@
 
   session_start();
 
-  $usuarios_info = $server->Top();
   $torneos = $server->InfoTorneo();
-
-  $numero_usuarios = count($usuarios_info);
 
   if(isset($_POST['tornID'])) {
     $_SESSION['tornID'] = $_POST['tornID'];
@@ -15,6 +12,7 @@
     for($i=0;$i<count($torneos);$i++) {
       if($torneos[$i]['ID_Torneo'] == $_SESSION['tornID']) {
         $tornID = $i;
+        $usuarios = $server->TraigoUsuariosTorneo($_SESSION['tornID']);
         $i = count($torneos);
       }
     }
@@ -45,7 +43,7 @@
     />
     <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
-    <title>ChessUY | Estadisticas Globales</title>
+    <title>ChessUY | Estadisticas Torneo</title>
   </head>
   <body>
     
@@ -92,20 +90,20 @@
                     <div class="stats-box" id="stats-box">
 
                     <?php
-                      for($x = 1; $x <= $numero_usuarios; $x++){
-                        echo '<a class="player" href="/cyberhydra/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+                      for($x = 0; $x < count($usuarios); $x++){
+                        $armPerf = $server->BuscoJugador($usuarios[$x]['usuarios']);
+                        $estUsuar = $server->InfoEstadisticas($usuarios[$x]['usuarios']);
+                        echo '<a class="player" href="/cyberhydra/Profile/Profile.php?Usuario='.$usuarios[$x]['usuarios'].'">
                                 <div class="info-left">
-                                    <p class="posicion">#'.$x.'</p>
-                                    <div class="player-img" style="background-color: '.$usuarios_info[($x - 1)]['ColorFondo'].'">
-                                        <i class="'.$usuarios_info[($x - 1)]['Icono'].'" style="color: '.$usuarios_info[($x - 1)]['ColorIcono'].'"></i>
-                                    </div>
-                                    <p class="nombre">'.$usuarios_info[($x - 1)]['usuario'].'</p>
+                                      <div class="player-img" style="background-color: '.$armPerf[0]['colFondo'].'">
+                                          <i class="'.$armPerf[0]['icono'].'" style="color: '.$armPerf[0]['colIcono'].'"></i>
+                                      </div>
+                                    <p class="nombre">'.$usuarios[$x]['usuarios'].'</p>
                                 </div>
                                 <div class="puntaje">
-                                  '.$usuarios_info[($x - 1)]['ELO'].'
+                                  '.$estUsuar[0].'
                                 </div>
-
-                            </a>';
+                              </a>';
                       }
                     ?>
                     </div>

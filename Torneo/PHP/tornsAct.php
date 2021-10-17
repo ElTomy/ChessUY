@@ -64,7 +64,10 @@ for($i=0;$i<count($torneos);$i++) {
             </div>
         </div>
         ";
+    } else {
+        echo "<p style='color: white'>Disculpa, actalmente no hay torneos abiertos</p>";
     }
 }
+
 
 ?>

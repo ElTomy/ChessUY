@@ -41,7 +41,7 @@ $mail->Body = " <div style='width: 500px; height: 400px; padding: 20px; backgrou
                     <p style='font-size: 17px; color: white;'>Tu cuenta de <b>ChessUY Championship</b> fue:</p><p style='font-size: 25px; color: greenyellow;'>APROBADA</p><p style='font-size: 17px; color: white;'>Haz click abajo para loguearte.</p>
                     <hr style='border: 1px solid #0076be; margin: 20px 0'>
                     <br>
-                    <a style='font-size: 15px; margin: 40px 0; padding: 20px 40px; background-color: #0076be; text-decoration: none; color: white; border-radius: 30px' href='https://localhost:8080/cyberhydra/Form/Login'><i class='fas fa-chess-knight' style='margin: 0 10px'></i> Ir a ChessUY</a>
+                    <a style='font-size: 15px; margin: 40px 0; padding: 20px 40px; background-color: #0076be; text-decoration: none; color: white; border-radius: 30px' href='http://179.27.156.47/cyberhydra/index.php'><i class='fas fa-chess-knight' style='margin: 0 10px'></i> Ir a ChessUY</a>
                 </div>";
 try {
     $mail->send();

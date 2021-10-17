@@ -30,7 +30,7 @@
             echo '      </div>
                     <div class="nav-links">
         
-                    <a class="search" href="/cyberhydra/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>';
+                    <a class="search" href="/cyberhydra/Profile/BuscarJugadores.html" data-lang="search-play"><i class="fas fa-search"></i> Buscar Jugadores</a>';
     
         
             
@@ -53,7 +53,7 @@
                                     echo "<p class='tipo-profile'>$tipo</p>
                                     </div>
                                 </a>
-                                <a class='cerrarsesion' onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>
+                                <a class='cerrarsesion' onclick='cerrarSesion()' data-lang='logout'><i class='fas fa-door-open'></i> Cerrar Sesión</a>
                             </div>";
                 }else{
                     echo "<div class='loginregister'>

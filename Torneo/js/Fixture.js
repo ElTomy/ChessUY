@@ -42,7 +42,14 @@ function Ficture(id){
         url: "/cyberhydra/Torneo/PHP/Fixture.php",
         data: {id:id},
         success: function (data) {
-            console.log(data)
+            $.ajax({
+                url: "/ChessUY/Modal/modal.php",
+                type: "POST",
+                data:{numero_mensaje: data},
+                success: function (modal){
+                    document.getElementById("modal").innerHTML = modal;
+                }
+            });
         }    
     });   
 }

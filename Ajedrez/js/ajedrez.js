@@ -119,7 +119,20 @@ function traigoTablero(){
         
         //:tablero, barra y tiempo
         barra = dat[0]['barra'];
-         
+        tiempo_Jugador1 = dat[0]['tiempo1'];
+        tiempo_Jugador2 = dat[0]['tiempo2'];
+
+        if(tiempo_Jugador1 != null){
+            tmp1 = tiempo_Jugador1.split(":");
+            tmp2 = tiempo_Jugador2.split(":");
+    
+            tiempo1 = (tmp1[0]*60);
+            tiempo2 = (tmp2[0]*60);
+           
+            totlsec1 = tiempo1;
+            totlsec2 = tiempo2;
+        }
+
         if(numJugador == 1){
 
             if(dat[0]['turno'] == 1){
@@ -143,22 +156,30 @@ function traigoTablero(){
                         }
                     }
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo1'];
-                    minsec2 = dat[0]['tiempo2'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo1;
+                        totlsec2 = tiempo2;
+                    }
                 }else{
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo2'];
-                    minsec2 = dat[0]['tiempo1'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
+                    }
                 }
             }
         }else{
@@ -174,12 +195,16 @@ function traigoTablero(){
                     inviertoTablero(dat[0]['tablero']);
                     barra = 100-barra;
                     barraProgreso(barra)
-
-                    minsec1 = dat[0]['tiempo2'];
-                    minsec2 = dat[0]['tiempo1'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
-
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
+                    }
                 }else{
                     var tab = JSON.parse(dat[0]['tablero']);
                         for(var p = 1; p <= 8; p++){
@@ -187,12 +212,17 @@ function traigoTablero(){
                                 Tablero[p][q] = tab[p][q];
                             }
                         }
-                    barraProgreso(barra)
-                    
-                    minsec1 = dat[0]['tiempo1'];
-                    minsec2 = dat[0]['tiempo2'];
-                    $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
-                    $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+                    barraProgreso(barra);
+                    if(tiempo_Jugador1 != null){
+                        tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo1;
+                        totlsec2 = tiempo2;
+                    }
                 }
             }
         }
@@ -260,19 +290,6 @@ $.ajax({
     url: "/cyberhydra/Ajedrez/php/armoJugadores.php",
     success: function (data) {
         document.getElementById("ArmoJugadores").innerHTML = data;
-    }
-});
-
-/* 
-Armo Chat     
-*/
-
-$.ajax({
-    type: "POST",
-    url: "/cyberhydra/Ajedrez/php/armoChat.php",
-    success: function (data) {
-        document.getElementById("ArmoChat").innerHTML = data;
-        heightdiv();
     }
 });
 }
@@ -676,6 +693,8 @@ var totlsec2 = 900;
 var finalizado = false;
 var minsec1;
 var minsec2;
+var tiempo_Jugador1;
+var tiempo_Jugador2;
 window.setInterval(function tiempo() {
     if(!finalizado){
         if(Turno%2 == 0) {
@@ -1307,6 +1326,10 @@ function JaqueRey(x,y, sel){
     let i, ix, iy;
     let xx = x-2;
     let yy = y-1;
+    var derecha = false;
+    var arriba = false;
+    var ArribaIzquierda = false;
+    var AbajoIzquierda = false;
 
     if(sel=="tn" || sel=="cn" || sel=="an" || sel=="dn" || sel=="rn" || sel=="pn"){
         var col = "n";
@@ -1332,31 +1355,61 @@ function JaqueRey(x,y, sel){
     
     //:Caballo
     //←↑
-    if (x-2>=1 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    yy = y+1;
-    //←↓
-    if (x-2>=1 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}
-    yy = y+2;
-    xx = x-1;
-    //↓←
-    if (x-1>=1 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x+1;
-    //↓→
-    if (x+1<=8 && y+2<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x+2;
-    yy = y+1;
-    //→↓
-    if (x+2<=8 && y+1<=8) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}}
-    yy = y-1;
-    //→↑
-    if (x+2<=8 && y-1>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    yy = y-2;
-    xx = x+1;
-    //↑→
-    if (x+1<=8 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}} 
-    xx = x-1;
-    //↑←
-    if (x-1>=1 && y-2>=1) {if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}};
+    if (x-2>=1 && y-1>=1) {
+        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+        if(Movimiento[x][y] != null){
+            yy = y+1;
+            //←↓
+            if (x-2>=1 && y+1<=8) {
+                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                if(Movimiento[x][y] != null){
+                    yy = y+2;
+                    xx = x-1;
+                    //↓←
+                    if (x-1>=1 && y+2<=8) {
+                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                        if(Movimiento[x][y] != null){
+                            xx = x+1;
+                            //↓→
+                            if (x+1<=8 && y+2<=8) {
+                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                if(Movimiento[x][y] != null){
+                                    xx = x+2;
+                                    yy = y+1;
+                                    //→↓
+                                    if (x+2<=8 && y+1<=8) {
+                                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                        if(Movimiento[x][y] != null){
+                                            yy = y-1;
+                                            //→↑
+                                            if (x+2<=8 && y-1>=1) {
+                                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                if(Movimiento[x][y] != null){
+                                                    yy = y-2;
+                                                    xx = x+1;
+                                                    //↑→
+                                                    if (x+1<=8 && y-2>=1) {
+                                                        if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                        if(Movimiento[x][y] != null){
+                                                            xx = x-1;
+                                                            //↑←
+                                                            if (x-1>=1 && y-2>=1) {
+                                                                if(Tablero[xx][yy].Piezas == colorC){Movimiento[x][y] = null}
+                                                            }
+                                                        }
+                                                    } 
+                                                }
+                                            } 
+                                        }
+                                    }
+                                }
+                            } 
+                        }    
+                    } 
+                }
+            }
+        }
+    } 
     
     //?----------------------------------------------------------------------------------
     //:Torre y Reina
@@ -1369,6 +1422,7 @@ function JaqueRey(x,y, sel){
                     Movimiento[x][y] = null
                     if(x >= 3 ){
                         Movimiento[x-2][y] = null
+                        derecha  = true;
                     }
                 }
                 break;
@@ -1376,7 +1430,8 @@ function JaqueRey(x,y, sel){
         }
     }
     
-    //izquierda
+    if(derecha == false){
+        //izquierda
     for(i = 1; i <= 8; i++){
         if( x-i >= 1){
             ix = x - i;
@@ -1391,6 +1446,8 @@ function JaqueRey(x,y, sel){
             }
         }
     }   
+    }
+    
     //arriba
     for(i = 1; i <= 8; i++){
         if(y-i>=1){
@@ -1400,25 +1457,28 @@ function JaqueRey(x,y, sel){
                     Movimiento[x][y] = null
                     if(y <= 6 ){
                         Movimiento[x][y+2] = null
+                        arriba = true;
                     }
                 }
                 break;
             }
         } 
     }
-        
-   //abajo↓
-    for(i = 1;i <= 8; i++){
-        iy  = i +y;
-        if(iy <= 8){
-            if(Tablero[x][iy].Piezas != null){
-                if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
-                    Movimiento[x][y] = null 
-                    if(y >= 3 ){
-                        Movimiento[x][y-2] = null
+
+    if(arriba == false){
+        //abajo↓
+        for(i = 1;i <= 8; i++){
+            iy  = i +y;
+            if(iy <= 8){
+                if(Tablero[x][iy].Piezas != null){
+                    if(Tablero[x][iy].Piezas == colorD ||Tablero[x][iy].Piezas == colorT){
+                        Movimiento[x][y] = null 
+                        if(y >= 3 ){
+                            Movimiento[x][y-2] = null
+                        }
                     }
+                    break;
                 }
-                break;
             }
         }
     }
@@ -1435,6 +1495,7 @@ for(i = 1; i <= 8; i++){
                 Movimiento[x][y] = null
                 if(x <= 6 && y <= 6){
                     Movimiento[x+2][y+2] = null
+                    ArribaIzquierda = true;
                 }
             }
             break;
@@ -1452,6 +1513,7 @@ for(i = 1;i <= 8; i++){
                 Movimiento[x][y] = null
                 if(x <= 6 && y >= 3){
                     Movimiento[x+2][y-2] = null
+                    AbajoIzquierda = true;
                 }
             }
             break;
@@ -1459,58 +1521,50 @@ for(i = 1;i <= 8; i++){
     }
 }    
 
-//ArribaDerecha↑→
-for(i = 1;i <= 8; i++){
-    if(y-i>=1 && x+i <= 8){
-        ix = x + i;
-        iy = y - i;
-        if(Tablero[ix][iy].Piezas != null){
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-                if(x >= 3 && y <= 6){
-                    Movimiento[x-2][y+2] = null
+if(AbajoIzquierda == false){
+    //ArribaDerecha↑→
+    for(i = 1;i <= 8; i++){
+        if(y-i>=1 && x+i <= 8){
+            ix = x + i;
+            iy = y - i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                    if(x >= 3 && y <= 6){
+                        Movimiento[x-2][y+2] = null
+                    }
                 }
+                break;
             }
-            break;
         }
-    }
-}  
+    } 
+}
  
-//AbajoDerecha→↓
-for(i = 1;i <= 8; i++){
-    if(y+i<=8 && x+i <= 8){
-        ix = x + i;
-        iy = y + i;
-        if(Tablero[ix][iy].Piezas != null){
-            if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
-                Movimiento[x][y] = null
-                if(x >= 3 && y >= 3){
-                    Movimiento[x-2][y-2] = null
+ if(ArribaIzquierda == false){
+    //AbajoDerecha→↓
+    for(i = 1;i <= 8; i++){
+        if(y+i<=8 && x+i <= 8){
+            ix = x + i;
+            iy = y + i;
+            if(Tablero[ix][iy].Piezas != null){
+                if(Tablero[ix][iy].Piezas == colorD ||Tablero[ix][iy].Piezas == colorA){
+                    Movimiento[x][y] = null
+                    if(x >= 3 && y >= 3){
+                        Movimiento[x-2][y-2] = null
+                    }
                 }
+                break;
             }
-            break;
         }
-    }
-}   
+    } 
+ }
+  
 
   //?----------------------------------------------------------------------------------
     //:Peon y Reina
     xx = x-1;
     yy = y-1;
     if(col == "n"){
-        //ArribaIzquierda↑←
-        if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //ArribaDerecha↑→
-        xx=x+1;
-        if(x+1 <= 8 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //AbajoIzquierda↓←
-        xx=x-1;
-        yy=y+1;
-        if(x-1 >= 1 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-        //AbajoDerecha→↓
-        xx=x+1;
-        if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-    }else{
         //ArribaIzquierda↑←
         if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
         //ArribaDerecha↑→
@@ -1523,7 +1577,20 @@ for(i = 1;i <= 8; i++){
         //AbajoDerecha→↓
         xx=x+1;
         if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
-    }
+   }else{
+       //ArribaIzquierda↑←
+       if(x-1 >= 1 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //ArribaDerecha↑→
+       xx=x+1;
+       if(x+1 <= 8 && y-1 >= 1){if(Tablero[xx][yy].Piezas == colorP || Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //AbajoIzquierda↓←
+       xx=x-1;
+       yy=y+1;
+       if(x-1 >= 1 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+       //AbajoDerecha→↓
+       xx=x+1;
+       if(x+1 <= 8 && y+1 <= 8){if(Tablero[xx][yy].Piezas == colorR){Movimiento[x][y] = null}}
+   }
     
     //Abajo↓
     yy=y-1;
@@ -2124,7 +2191,7 @@ function Victoria(){
 }
 //
 //
-//:--------------------------------------ONLINE----------------------------------------------/
+//:--------------------------------------ONLINE---------------------------------------------:/
 var conn;
 function init(){
     conn = new WebSocket('ws://179.27.156.47:8080');
@@ -2153,6 +2220,14 @@ function init(){
         };
         conn.onclose = function(e) {
             console.log('Conexión websocket cerrada!');
+            $.ajax({
+                url:  "/cyberhydra/Modal/modalNoJugar.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+              });
         };
     }
 
@@ -2279,7 +2354,6 @@ function init(){
                 type: "POST",
                 data: {arUsuarios:arUsuarios},
                 success: function (data) {
-                    console.log(data);
                     var dat = JSON.parse(data);
 
                     if(dat['encontrado'] == true){
@@ -2369,6 +2443,9 @@ function init(){
             }else if(json2.includes("tur:")){
                 var tur = json2.slice(4)
                 tipo = 4;
+            }else if(json2.includes("Chat:")){
+                var chat = json2.slice(5);
+                tipo = 5;
             }
 
             switch(tipo){
@@ -2397,13 +2474,33 @@ function init(){
                 case 4:
                     Turno = tur;
                     break;
+                case 5:
+                    var content = document.getElementById('chat-box').innerHTML;
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/cyberhydra/Profile/Profile.php?Usuario='+jugador2+'">'+jugador2+'</a><p>'+chat+'</p></div></div>';
+                    break;
             }
         }else{console.log("ERROR")}
 
         resetMovimientos();
         armoAjedrez();
     };
-//:------------------------------------------------------------------------------------------/
+
+    function enter(e){if(e.keyCode == 13){mandarChat()}}
+    function mandarChat(){
+        var message = document.getElementById('message').value;
+
+            if(message.length > 0){
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "Chat:" + message;
+                conn.send(JSON.stringify(msg));
+    
+                var content = document.getElementById('chat-box').innerHTML;
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/cyberhydra/Profile/Profile.php?Usuario='+jugador1+'">'+jugador1+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('message').value = '';
+            }
+    }
+//:-----------------------------------------------------------------------------------------:/
 //
 //
 function inviertoTablero(tab){
@@ -2658,3 +2755,5 @@ function ActualizarEstadisticas(resultado){
         }
         });
 }
+
+
