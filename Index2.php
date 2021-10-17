@@ -1,7 +1,7 @@
 <?php
-  // include 'servidor.php';
-  // $server= new servidor();
-  // $server->VerificoSesion(0); 
+  include 'servidor.php';
+  $server= new servidor();
+  $server->VerificoSesion(3); 
 session_start();
 
 $index ='

@@ -1,3 +1,8 @@
+<?php
+  include 'servidor.php';
+  $server= new servidor();
+  $server->VerificoSesion(1); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

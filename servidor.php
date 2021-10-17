@@ -21,33 +21,33 @@ class servidor
     //
     //
     function VerificoSesion($tipo){
-
-        if(!isset($_SESSION["usuario"])){
-            header("Location: /chessuy/Form/login.html");
-
-        }else{
+            session_start();
             switch ($tipo) {
-                case 0: //admin
-                    if($_SESSION["tipo"] != "0"){
-                        header("Location: /chessuy/Form/login.html");
+                case 0: //tenes que ser admin
+                    if($_SESSION["tipo"] != 0){
+                        header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 1: //jugador
-                    if($_SESSION["tipo"] != "1"){
-                        header("Location: /chessuy/Form/login.html");
+                case 1: //tenes que ser admin o jugador
+                    if($_SESSION["tipo"] != 0 || $_SESSION["tipo"] != 1){
+                        header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 2: //arbitro
-                    if($_SESSION["tipo"] != "2"){
-                        header("Location: /chessuy/Form/login.html");
+                case 2: //tenes que ser admin o periodista
+                    if($_SESSION["tipo"] != 0 || $_SESSION["tipo"] != 3){
+                    header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 3: //periodista
-                    if($_SESSION["tipo"] != "3"){
-                    header("Location: /chessuy/Form/login.html");
+                case 3: //estar logeado
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-            }
+                case 4: //si estas logeado no podes entrer
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /ChessUY/Form/login.html");
+                    }
+                    break;
             }
         
     }
