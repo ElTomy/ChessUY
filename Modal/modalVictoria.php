@@ -11,7 +11,7 @@ session_start();
                         <img src='/ChessUY/media/images/Trofeo.png'></div>
                         <p>El ganador fue:</p>
                         <h1 id ='jugador'>".$_SESSION['usuario']."</h1>
-                        <a onclick='cerrar()'><i class='fas fa-times-circle'></i> Cerrar</a>
+                        <a href='/ChessUY/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
                     </div>
                 </div>
             </div>";

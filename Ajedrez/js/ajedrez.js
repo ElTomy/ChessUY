@@ -2220,6 +2220,14 @@ function init(){
         };
         conn.onclose = function(e) {
             console.log('Conexión websocket cerrada!');
+            $.ajax({
+                url:  "/ChessUY/Modal/modalNoJugar.php",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    document.getElementById("modal").innerHTML = data;
+                }
+              });
         };
     }
 
