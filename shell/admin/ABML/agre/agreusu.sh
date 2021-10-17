@@ -16,11 +16,9 @@ else
     if useradd $usu >/dev/null 2>&1
     then
         echo ""
-        passwd $usu
-        echo ""
-        echo "+------------------------------------+"
-        echo -e "| ${green}Se agrego el usuario correctamente${nc} |"
-        echo "+------------------------------------+"
+        echo "+--------------------------------------------------------------------------+"
+        echo -e "| ${green}Se agrego el usuario correctamente, recuerde de agregarle una contraseña${nc} |"
+        echo "+--------------------------------------------------------------------------+"
         sleep 3s
         . ./admin/ABML/agregar.sh
     else

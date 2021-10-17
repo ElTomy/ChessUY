@@ -2,7 +2,7 @@
 /*
     Principiante -------------------->  600
     Aficionado ----------------------> 1500
-    Semiprofecional -----------------> 1800
+    Semiprofesional  -----------------> 1800
     Candidato a Maestro (CM) --------> 2200
     Maestro FIDE (MF) ---------------> 2300
     Maestro Internacional (MI) ------> 2400
@@ -21,7 +21,7 @@
                         <div class='card'>
                             <button onclick='guardoESTI(600)'>Principiante</button> 
                             <button onclick='guardoESTI(1500)'>Aficionado</button>
-                            <button onclick='guardoESTI(1800)'>Semiprofecional</button>
+                            <button onclick='guardoESTI(1800)'>Semiprofesional </button>
                             <button onclick='guardoESTI(2200)'>Candidato a Maestro (CM)</button>
                             <button onclick='guardoESTI(2300)'>Maestro FIDE (MF)</button>
                             <button onclick='guardoESTI(2400)'>Maestro Internacional (MI)</button>

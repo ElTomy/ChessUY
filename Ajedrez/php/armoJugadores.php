@@ -55,7 +55,7 @@ if($tipo2 == 0){
     $tipo2 = "<i class='fas fa-microphone'></i> Periodista";
 }
 
-$jugadores = '  <a href="/cyberhydra/Profile/'.$usu.'">
+$jugadores = '  <a href="/cyberhydra/Profile/Profile.php?Usuario='.$usu.'">
                     <div class="JugadorUno">
                         <div class="jugador-img" style="background-color:'.$colFondo.'">
                             <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
@@ -68,7 +68,7 @@ $jugadores = '  <a href="/cyberhydra/Profile/'.$usu.'">
 
                 </a>
                     <h1>vs</h1>
-                    <a href="/cyberhydra/Profile/'.$usu2.'">
+                    <a href="/cyberhydra/Profile/Profile.php?Usuario='.$usu2.'">
                     <div class="JugadorDos">
                         <div class="jugador-img" style="background-color:'.$colFondo2.'">
                             <i class="'.$Icon2.'" style="color:'.$colIcon2.'"></i>

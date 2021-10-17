@@ -27,7 +27,7 @@ $logro = '<!DOCTYPE html>
                 
                 <script src="/cyberhydra/Javascript/Loader.js"></script>
                 <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
-                <script src="/cyberhydra/Profile/JS/Logros2.js"></script>
+                
 
                 
                 <link

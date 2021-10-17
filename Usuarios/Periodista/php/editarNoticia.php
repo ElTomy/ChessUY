@@ -2,7 +2,6 @@
 
 include '../../../servidor.php';
 $server= new servidor();
-session_start();
 
 $id = $_GET['ID'];
 
@@ -26,7 +25,6 @@ echo '<!DOCTYPE html>
     <script src="/cyberhydra/Javascript/Loader.js"></script>
     <script src="/cyberhydra/Usuarios/js/function-usuarios.js"></script>
     <script src="/cyberhydra/Usuarios/Periodista/js/function-noticias.js"></script>
-    <script src="/cyberhydra/Usuarios/Periodista/js/jquery.richtext.js"></script>
 
     <link
       rel="shortcut icon"
@@ -87,10 +85,10 @@ echo '<!DOCTYPE html>
           <div class="body">
 
             <div class="noticia-img">
-              <img src="/cyberhydra/media/images/Noticia.png" alt="">
+              <img src="'. $noticia[0]['IMG'] .'" alt="">
             </div>
-            <input type="file" id="img" name="img" accept="image/*">
-            <input type="text" id="RichText">
+            
+            <textarea placeholder="Contenido del Post" name="Contenido" id="contenido" required></textarea>
 
           </div>
           <div class="noticia-buttons">';
@@ -98,20 +96,27 @@ echo '<!DOCTYPE html>
               session_start();
               $nombre = $_SESSION['usuario'];
               $nombre2 = "'$nombre'";
+              $img = $noticia[0]['IMG'];
+              $img2 = "'$img'";
 
+              echo '<button onclick="guardar('.$nombre2.', '.$id.', '. $img2.')"><i class="fas fa-save"></i> Guardar</button>';
               echo '<button onclick="guardar('.$nombre2.')"><i class="fas fa-save"></i> Guardar</button>';
 
           echo '</div>
         </div>
       </div>
-    </section>
-
-    <section class="anuncio">
       <h1><i class="fas fa-newspaper"></i> Anuncio</h1>
       <p>Este espacio está reservado para anuncios.</p>
     </section>
 
     <div id="footer"></div>
+
+    <script src="../../ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("contenido");
+      CKEDITOR.instances.contenido.setData("'. $noticia[0]['Informacion'] .'");
+    </script>
+
   </body>
 </html>';
 

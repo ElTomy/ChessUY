@@ -8,5 +8,5 @@ $(document).ready(function () {
 });
 
 function noticia(id){
-    location.href = id;
+    location.href = '/cyberhydra/Blog/noticia.php?ID='+id;
 }

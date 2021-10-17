@@ -87,19 +87,19 @@ if(count($torneos) < 1) {
         if(str_replace('-', '', $torneos[$j]['Fecha_inicio']) == $fechaAct && str_replace(':', '', $comTornP[3]) >= date('gis')) {
             $estado = "<p style='color: white'>Inscripciones se abren hoy a las ".substr($comTorn[3], 0, -3)." horas</p>";
         } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
-            $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+            $estado = "<p style='color: #ff4d4d'>Inscripciones cerradas</p>";
         } else {
             $estado = "<p style='color: green'>Inscripciones abiertas</p>";
         }
     } elseif(str_replace('-', '', $torneos[$j]['Fecha_fin']) < $fechaAct && $comTorn[0].$comTorn[1].$comTorn[2] > $fechaAct) {
         //Terminaron las inscripciones pero no comenzo el torneo
-        $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+        $estado = "<p style='color: #ff4d4d'>Inscripciones cerradas</p>";
     } elseif($comTorn[0].$comTorn[1].$comTorn[2] <= $fechaAct) {
         //Ya comenzo el torneo
         if($comTorn[0].$comTorn[1].$comTorn[2] == $fechaAct && str_replace(':', '', $comTornP[3]) <= date('gis')) {
             $estado = "En curso";
         } else {
-            $estado = "<p style='color: red'>Inscripciones cerradas</p>";
+            $estado = "<p style='color: #ff4d4d'>Inscripciones cerradas</p>";
         }
     } else {
         //Error inesperado
@@ -125,7 +125,7 @@ if(count($torneos) < 1) {
         </div>
         <div class='torneo-buttons'>
             <a onclick='uniraBD(".$torneos[$j]['ID_Torneo'].")'><i class='fas fa-plus-circle'></i> Unirse</a>
-            <a href='/cyberhydra/Usuarios/EstadisticasTorneo.php'><i class='fas fa-chart-line'></i> Estadisticas</a>
+            <a onclick='mostEst(".$torneos[$j]['ID_Torneo'].")'><i class='fas fa-chart-line'></i> Estadisticas</a>
         </div>
     </div>  
     ";

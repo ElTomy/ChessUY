@@ -85,36 +85,71 @@
  });
 
 function editar(id_noticia){
-    location.href = "/cyberhydra/Usuarios/Periodista/php/editarNoticia/" + id_noticia;
+    location.href = "/cyberhydra/Usuarios/Periodista/php/editarNoticia.php?ID=" + id_noticia;
 }
 
-function prueba(usuario){
-
-    
-    var titulo = $('#titulo-text').text();
-    var subtitulo = $('#subtitulo-text').text();
-    var contenido = $('#RichText').val();
-    
+function eliminarNoticia(id_noticia){
+    $('#modal').show();
     $.ajax({
         type: "POST",
-        url: "editar.php",
-        data: {Usuario: usuario, Titulo: titulo, Subtitulo: subtitulo, Informacion: contenido, img: img},
-        success: function (response) {
-            location.reload();
+        url: "/cyberhydra/Modal/modalEliminarNoticia.php",
+        data: {ID: id_noticia},
+        success: function (data) {
+            document.getElementById("modal").innerHTML = data;
         }
     });
+}
 
-    alert(sessionValue);
+function borrar(id_noticia){
+    $.ajax({
+        type: "POST",
+        url: "php/borrar.php",
+        data: {ID: id_noticia},
+        success: function (response) {
+            location.href = "/cyberhydra/Blog/Blog.html";
+        }
+    });
+}
+
+function guardar(usuario, id, imagen){
+
+    var titulo = $('#titulo-text').text();
+    var subtitulo = $('#subtitulo-text').text();
+    var contenido = CKEDITOR.instances.contenido.getData();
+
+    console.log(usuario)
+    console.log(id)
+    console.log(titulo)
+    console.log(subtitulo)
+    console.log(contenido)
+    console.log(imagen)
+
+    $.ajax({
+        type: "POST",
+        url: "../editar.php",
+        data: {Usuario: usuario, Id: id, Titulo: titulo, Descripcion: subtitulo, Informacion: contenido, img: imagen},
+        success: function (response) {
+
+            location.href = "/cyberhydra/Blog/" + id;
+
+        }
+    });
 }
 
 function crear(usuario){
+
     var titulo = $('#titulo-input').val();
     var subtitulo = $('#subtitulo-input').val();
-    var contenido = $('#RichText').val();
-    var imagen = "Por ahora no hay.";
+    let contenido = CKEDITOR.instances.contenido.getData();
 
-    if(titulo == ""|| subtitulo == "" || contenido == "<div><br></div>"){
-        console.log("hola");
+    var form_data = new FormData();  // Create a FormData object
+
+    var files = $('#pic')[0].files;
+
+    console.log(contenido)
+
+    if(titulo == ""|| subtitulo == "" || contenido == "" || files.length == 0){
+
         $.ajax({
             type: "POST",
             url: "/cyberhydra/Modal/modal.php",
@@ -123,13 +158,27 @@ function crear(usuario){
                 document.getElementById("modal").innerHTML = data;
             }
         });
+
     }else{
+
+        form_data.append('file', files[0]);  // Append all element in FormData  object
+        form_data.append('Titulo', titulo);
+        form_data.append('Subtitulo', subtitulo);
+        form_data.append('Contenido', contenido);
+        form_data.append('Autor', usuario);
+
         $.ajax({
-            type: "POST",
-            url: "/cyberhydra/Usuarios/Periodista/PHP/crear.php",
-            data: {Usuario: usuario, Titulo: titulo, Descripcion: subtitulo, Informacion: contenido, img: imagen},
+            type        : "POST",
+            url         : "/cyberhydra/Usuarios/Periodista/PHP/crear.php",
+            data        : form_data,
+            cache       : false,
+            dataType    : 'text',
+            contentType : false,
+            processData : false,
+
             success: function (response) {
                 console.log(response);
+
                 $.ajax({
                     type: "POST",
                     url: "/cyberhydra/Modal/modal.php",
@@ -142,83 +191,4 @@ function crear(usuario){
         });
     }
 }
-
-
-/*var fileobj;
-function upload_file(e,tipo) {
-    e.preventDefault();
-    if(tipo==1 || tipo==2){
-
-      fileobj = e.dataTransfer.files[0];
-      ajax_file_upload(fileobj,tipo);
-
-    }else{
-
-      e.preventDefault();
-
-      if (e.dataTransfer.items) {
-        // Use DataTransferItemList interface to access the file(s)
-        for (var i = 0; i < e.dataTransfer.items.length; i++) {
-          // If dropped items aren't files, reject them
-          if (e.dataTransfer.items[i].kind === 'file') {
-            var file = e.dataTransfer.items[i].getAsFile();
-            ajax_file_upload(file,tipo);
-          }
-        }
-      } else {
-
-        // Uso DataTransfer a los archivos 
-        for (var i = 0; i < e.dataTransfer.files.length; i++) {
-          var file = e.dataTransfer.items[i].getAsFile();
-            ajax_file_upload(file,tipo);
-        }
-
-      } 
-      
-    }  
-}
-
-function ajax_file_upload(file_obj,tipo) {
-    if(file_obj != undefined) {
-        var form_data = new FormData(); 
-        var idp = $("#user").data("idp");
-        form_data.append('file', file_obj);
-        form_data.append('id',idp);
-        form_data.append('tipo',tipo);//tipo 1 es imagen principal, se graba en datosProyecto la url
-        $.ajax({
-            type: 'POST',
-            url: '/cyberhydra/Usuarios/Periodista/imagenes_noticias/uploadIMG.php',
-            contentType: false,
-            processData: false,
-            data: form_data,
-            success:function(msg) {
-                $('#selectfile').val('');
-                //TraigoFoto(idp,tipo);
-            }
-        });
-    }
-}
-
-function TraigoFoto(idp, tipo){
- 
-    $.ajax({
-        type: 'POST',
-        url: '/cyberhydra/Usuarios/Periodista/imagenes_noticias/downloadIMG.php',
-        data: {idp: idp, tipo: tipo},
-        success:function(msg) {
-          
-          if(tipo==1){
-            $('#fprincipal').html(msg);
-          }
-          if(tipo==2){
-            $('#fbanner').html(msg);
-          } 
-          if(tipo==3){
-            $('#fsecundarias').html("");
-            $('#fsecundarias').append(msg);
-          }
-            
-        }
-    });
-}*/
  

@@ -12,7 +12,7 @@
                         </div>
                         <p class='modal-p'>".$_POST['jugador2']." esta desconectado!</p>
                         <p class='modal-p'>Puedes esperalo a que se reconecte o volver al menu.</p>
-                        <a href='/ChessUY/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
+                        <a href='/cyberhydra/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
                         </div>
                 </div>
             </div>";

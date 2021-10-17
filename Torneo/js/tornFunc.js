@@ -570,6 +570,15 @@ function uniraBD(tornID) {
     })
 }
 
+function mostEst(tornID) {
+    $.ajax({
+        url: "/cyberhydra/Usuarios/EstadisticasTorneo.php",
+        type: "post",
+        data: {tornID : tornID},
+        success: location.href = "/cyberhydra/Usuarios/EstadisticasTorneo.php",
+    })
+}
+
 function cerrar(){
     document.getElementById("modal").innerHTML = "";
   }

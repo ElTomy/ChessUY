@@ -121,6 +121,24 @@ switch($numero_mensaje){
         $link = "";
         $mensaje = "La noticia se ha editado con exito.";
         break;
+    
+    case 21:
+        $mensaje_2 = "Entrenamientos:";
+        $link = "";
+        $mensaje = "Ese movimiento es incorrecto.";
+        break;    
+
+    case 22:
+        $mensaje_2 = "Entrenamientos:";
+        $link = "";
+        $mensaje = "Felicidades completaste este entrenamiento.";
+        break;  
+        
+    case 23:
+        $mensaje_2 = "Entrenamientos:";
+        $link = "";
+        $mensaje = "No quedan entrenamientos.";
+        break;          
 }
 
 
