@@ -38,16 +38,25 @@ if(isset($_POST['id'])){
     }else{
         $day++;
     }
+    $color1 = mt_rand(0,1);
+    if($color1 == 1){
+        $color2 = 0;
+    }else{
+        $color2 = 1;
+    }
     $num = 1;
     $col = 0;
+    $id;
     foreach ($partidos as $buscoPartido) {
         if($buscoPartido['Torneo'] == $IDT){
             if($buscoPartido['estado'] == 1){
                $col = 1;
+               $id = 25;
            }
         }
     }
     if($col == 0){
+        $id = 24;
         for($x = 1;$x <= $cantParticipantes;$x++){
             if($x%2 != 0){
                 $Usu1 = $Participantes[$x]['Usuario'];
@@ -83,7 +92,7 @@ if(isset($_POST['id'])){
                 }
                 $num++;
                 $fecha =  $year.$mes.$day.$Hora;
-                $server->AgendoPartida($Usu1, $Usu2,"1","2",$IDT,$TiempoPart);
+                $server->AgendoPartida($Usu1, $Usu2,$color1,$color2,$IDT,$TiempoPart);
                 $server->InfoPartidaTorneo($IDT,$Usu1, $Usu2, $fecha, $Ronda);
             }
         }
@@ -99,4 +108,6 @@ if(isset($_POST['id'])){
     }
 }
 }
+echo $id;
+return $id;
 ?>

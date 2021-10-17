@@ -138,7 +138,17 @@ switch($numero_mensaje){
         $mensaje_2 = "Entrenamientos:";
         $link = "";
         $mensaje = "No quedan entrenamientos.";
-        break;          
+        break;  
+    case 24:
+        $mensaje_2 = "Organizar Torneos:";
+        $link = "";
+        $mensaje = "El emparejamiento entre los jugadores se realizo correctamente.";
+        break;  
+    case 25:
+        $mensaje_2 = "Organizar Torneos:";
+        $link = "";
+        $mensaje = "El emparejamiento entre los jugadores no se realizo debido a que no sea han concretado todos los partidos.";
+        break;                  
 }
 
 
