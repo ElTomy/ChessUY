@@ -9,7 +9,7 @@
                         <hr><div class='modal-trofeo'>
                         <img src='/cyberhydra/media/images/Trofeo.png'></div>
                         <h1 id ='jugador'>EMPATE</h1>
-                        <a href='/ChessUY/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
+                        <a href='/cyberhydra/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
                     </div>
                 </div>
             </div>";

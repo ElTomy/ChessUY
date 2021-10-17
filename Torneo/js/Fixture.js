@@ -43,7 +43,7 @@ function Ficture(id){
         data: {id:id},
         success: function (data) {
             $.ajax({
-                url: "/ChessUY/Modal/modal.php",
+                url: "/cyberhydra/Modal/modal.php",
                 type: "POST",
                 data:{numero_mensaje: data},
                 success: function (modal){

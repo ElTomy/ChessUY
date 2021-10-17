@@ -11,7 +11,7 @@ session_start();
                         <img src='/cyberhydra/media/images/Trofeo.png'></div>
                         <p>El ganador fue:</p>
                         <h1 id ='jugador'>".$_POST['jugador2']."</h1>
-                        <a href='/ChessUY/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
+                        <a href='/cyberhydra/Index.php'><i class='fas fa-home' aria-hidden='true'></i> Inicio</a>
                     </div>
                 </div>
             </div>";

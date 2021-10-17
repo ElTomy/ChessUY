@@ -1,3 +1,3 @@
 function noticia(id){
-    location.href = "/ChessUY/Blog/" + id;
+    location.href = "/cyberhydra/Blog/" + id;
 }
