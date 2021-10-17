@@ -1033,6 +1033,21 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
+    function FinalizarTorneo($p,$s,$t,$id){
+        $conn = $this->conectar();
+        $sql = "CALL FinalizarTorneo(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sssi", $p,$s,$t,$id);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
     function TraigoUsuariosTorneo($id){
         $conn = $this->conectar();
         $info = array();

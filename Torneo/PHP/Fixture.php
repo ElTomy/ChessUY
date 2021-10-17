@@ -39,12 +39,6 @@ if(isset($_POST['id'])){
     }else{
         $day++;
     }
-    $color1 = mt_rand(0,1);
-    if($color1 == 1){
-        $color2 = 0;
-    }else{
-        $color2 = 1;
-    }
     $num = 1;
     $col = 0;
     $id;
@@ -93,7 +87,7 @@ if(isset($_POST['id'])){
                 }
                 $num++;
                 $fecha =  $year.$mes.$day.$Hora;
-                $server->AgendoPartida($Usu1, $Usu2,$color1,$color2,$IDT,$TiempoPart);
+                $server->AgendoPartida($Usu1, $Usu2,'0','1',$IDT,$TiempoPart);
                 $server->InfoPartidaTorneo($IDT,$Usu1, $Usu2, $fecha, $Ronda);
             }
         }
