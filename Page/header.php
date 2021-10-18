@@ -1,4 +1,6 @@
 <header>
+    <script src="/ChessUY/Javascript/translate.js"></script>
+    <link rel="stylesheet" href="/ChessUY/styles/translate.css" />
     <div class="header-logo">
 
         <?php
@@ -60,6 +62,7 @@
             ?>
         
     </div>
+          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
     <div class="burger-mobile" onclick="myFunction(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
