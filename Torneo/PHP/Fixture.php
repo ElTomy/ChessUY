@@ -92,7 +92,7 @@ if(isset($_POST['id'])){
                 }
                 $num++;
                 $fecha =  $year.$mes.$day.$Hora;
-                $server->AgendoPartida($Usu1, $Usu2,$color1,$color2,$IDT,$TiempoPart);
+                $server->AgendoPartida($Usu1, $Usu2,'0','1',$IDT,$TiempoPart);
                 $server->InfoPartidaTorneo($IDT,$Usu1, $Usu2, $fecha, $Ronda);
             }
         }

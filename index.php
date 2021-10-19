@@ -26,14 +26,12 @@ if(isset($_SESSION['usuario'])){
     <script src="/ChessUY/Usuarios/js/armoEstadisticas.js"></script>
     <script src="/ChessUY/Torneo/js/tornFunc.js"></script>
     <script src="/ChessUY/Javascript/Noticias.js"></script>
-    <script src="Javascript/translate.js"></script>
     
     <link
       rel="shortcut icon"
       href="media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="styles/translate.css" />
     <link rel="stylesheet" href="styles/styles.css" />
 
     <title>ChessUY | Championship</title>
@@ -57,7 +55,6 @@ if(isset($_SESSION['usuario'])){
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <h1 data-lang="campeonato">Campeonato de Ajedrez Online</h1>
           <p data-lang="camp-desc">
             <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
