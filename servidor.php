@@ -29,12 +29,12 @@ class servidor
                     }
                     break;
                 case 1: //tenes que ser admin o jugador
-                    if($_SESSION["tipo"] != 0 || $_SESSION["tipo"] != 1){
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 1){
                         header("Location: /ChessUY/Form/login.html");
                     }
                     break;
                 case 2: //tenes que ser admin o periodista
-                    if($_SESSION["tipo"] != 0 || $_SESSION["tipo"] != 3){
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 3){
                     header("Location: /ChessUY/Form/login.html");
                     }
                     break;

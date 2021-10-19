@@ -17,7 +17,6 @@
                 $ColorIcono = '#ffffff';
                 $ColorFondo = '#0076be';
             }
-            $banderas = "<img src='/ChessUY/media/images/ingles.png' width=10%>,<img src='/ChessUY/media/images/español.png' width=10%>";
             
             if(isset($_SESSION['usuario'])){
                 echo '  <a href="/ChessUY/Inicio">
@@ -67,7 +66,7 @@
             ?>
         
     </div>
-          <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=10%>,<img src="/ChessUY/media/images/español.png" width=10%>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=10%></a>
+          <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=52px>,<img src="/ChessUY/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=52px></a>
     <div class="burger-mobile" onclick="myFunction(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
