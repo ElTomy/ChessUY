@@ -67,7 +67,7 @@ $index .='
         </div>
 
         <div class="buttons" style="margin: 0; display: flex;">
-          <a href="Ajedrez/ajedrez.php" data-lang="play">
+          <a href="Ajedrez/ajedrez.php?Torn=0" data-lang="play">
             <span></span>
             <span></span>
             <span></span>

@@ -18,7 +18,7 @@ if(isset($_SESSION['usuario'])) {
                 if($timeDiff <= 7000 && $timeDiff >= 0) {
                     // Mostrar boton
                     echo "
-                    <a>
+                    <a href='Ajedrez/ajedrez.php?Torn=".$idTornUnid."'>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,7 +32,7 @@ if(isset($_SESSION['usuario'])) {
                 if(str_replace(':', '', $fechahora[1]) <= 7000) {
                     // Mostrar boton
                     echo "
-                    <a>
+                    <a href='Ajedrez/ajedrez.php?Torn=".$idTornUnid."'>
                     <span></span>
                     <span></span>
                     <span></span>

@@ -1181,4 +1181,23 @@ class servidor
         }
         return $info;
     }
+
+    function traigoJaqueTorneo($usuario, $jug, $id){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoJaqueTorneo(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sii", $usuario, $jug, $id);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($jaque);
+            while ($stmts->fetch()) {
+                $info = $jaque;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+
 }
