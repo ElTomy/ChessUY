@@ -2,7 +2,6 @@
   include 'servidor.php';
   $server= new servidor();
   $server->VerificoSesion(3); 
-session_start();
 
 $index ='
 
@@ -59,7 +58,6 @@ $index .='
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <div style="display:flex; justify-content:center;">
             <h1><span data-lang="welcome">¡Bienvenido </span><span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
           </div>
