@@ -20,8 +20,8 @@ if(isset($_SESSION['usuario'])) {
                 }
             }
             $fechahora = explode(' ', $partid[$i]['Fecha']);
+            $timeDiff = str_replace(':', '', $fechahora[1]) - date('Gis');
             if($fechahora[0] == date('Y-m-d')) {
-                $timeDiff = str_replace(':', '', $fechahora[1]) - date('Gis');
                 // Ver si la partida para hoy esta a 30 min de empezar
                 if($timeDiff <= 7000 && $timeDiff >= 0 - $tempDesc) {
                     // Mostrar boton
@@ -31,7 +31,7 @@ if(isset($_SESSION['usuario'])) {
                     <span></span>
                     <span></span>
                     <span></span>
-                    <i class='fas fa-trophy'></i>Torneo
+                    <i class='fas fa-trophy'></i><span data-lang='tourn'>Torneo</span>
                     </a>
                     ";       
                 }
@@ -45,7 +45,7 @@ if(isset($_SESSION['usuario'])) {
                     <span></span>
                     <span></span>
                     <span></span>
-                    <i class='fas fa-trophy'></i>Torneo
+                    <i class='fas fa-trophy'></i><span data-lang='tourn'>Torneo</span>
                     </a>
                     ";       
                 }

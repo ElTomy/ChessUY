@@ -1,3 +1,6 @@
+chessuy-index=>ChessUY | Inicio
+chessuy-browse=>ChessUY | Buscar
+
 campeonato=>Campeonato de Ajedrez Online
 camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
 news-index=>Blog de Noticias
@@ -77,3 +80,13 @@ stats=>Estadisticas
 info=>Información
 
 sorry-tourn=>Disculpa, actalmente no hay torneos abiertos
+
+tourn=>Torneo
+
+admin=>Administrador
+player=>Jugador
+reff=>Árbitro
+journalist=>Periodista
+
+profile=>Perfil
+delete=>Eliminar
