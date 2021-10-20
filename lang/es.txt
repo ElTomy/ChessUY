@@ -1,0 +1,92 @@
+chessuy-index=>ChessUY | Inicio
+chessuy-browse=>ChessUY | Buscar
+
+campeonato=>Campeonato de Ajedrez Online
+camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
+news-index=>Blog de Noticias
+news-index-desc=>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.
+recent-tourn=>Torneo Reciente
+best-players=>Mejores Jugadores
+see-all=><i class="fas fa-user-friends"></i> Ver Todos
+open-tourn=>Torneos Abiertos
+foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. Todos los derechos reservados.
+foot-design=>Diseñada por:
+search-play=><i class="fas fa-search"></i> Buscar Jugadores
+logout=> Cerrar Sesión
+
+welcome=>¡Bienvenido 
+welcome-main=>Bienvenido a la página principal de <b>ChessUY Championship</b>.
+play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Jugar
+admin-tools=><i class="fas fa-hammer"></i> Herramientas de Administrador
+admin-tools-desc=>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.
+requests=><i class="fas fa-id-card-alt"></i> Solicitudes
+manage-user=><i class="fas fa-user-edit"></i> Administrar Usuarios
+create-tourn=><i class="fas fa-trophy" data-lang="create-tourn"></i> Crear Torneo
+org-tourn=><i class="fas fa-trophy" data-lang="org-tourn"></i> Organizar Torneos
+
+journalist-tools=><i class="fas fa-hammer"></i> Herramientas de Periodista
+journalist-tools-desc=>Herramientas que permiten a los periodistas crear, editar y eliminar noticias. El uso de estas cae en la responsabilidad de la persona que las utilice.
+create-news=><i class="fas fa-folder-plus"></i> Crear Noticia
+edit-news=><i class="fas fa-edit"></i> Editar Noticias
+delete-news=><i class="fas fa-trash-alt"></i> Eliminar Noticias
+read-more=>Leer Más
+
+jan=>Enero
+feb=>Febrero
+mar=>Marzo
+apr=>Abril
+may=>Mayo
+jun=>Junio
+jul=>Julio
+aug=>Agosto
+sep=>Septiembre
+oct=>Octubre
+nov=>Noviembre
+dec=>Diciembre
+
+NEReq=>No tiene restricciones de ELO
+MinEReq=>El minimo de ELO requerido es de
+MaxEReq=>El maximo de ELO permitido es de
+ERang=>ELO de
+a-to=>a
+points=>puntos
+
+NAReq=>No tiene restricciones de edad
+MinAReq=>Este torneo tiene edad minima de
+MaxAReq=>Este torneo tiene edad maxima de
+ARang=>La edad permitida es de
+years=>años
+
+the-tourn-has=>El torneo cuenta con
+mpp1=>minuto por jugador
+mpp2=>minutos por jugador
+
+gpd1=>partida por dia
+gpd2=>partidas por dia
+
+insc-open-the=>Las inscripciones se abren el
+de-of=>de
+of-the-year=>del año
+alas-at=>a las
+hours=>horas
+insc-open=>Inscripciones se abren hoy a las
+insc-closed=>Inscripciones cerradas
+insc-opened=>Inscripciones abiertas
+torn-start=>Comienza el
+on-course=>En curso
+
+join=>Unirse
+stats=>Estadisticas
+info=>Información
+
+sorry-tourn=>Disculpa, actalmente no hay torneos abiertos
+
+tourn=>Torneo
+
+admin=>Administrador
+player=>Jugador
+reff=>Árbitro
+journalist=>Periodista
+
+profile=>Perfil
+delete=>Eliminar

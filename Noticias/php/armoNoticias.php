@@ -26,7 +26,7 @@
                         <p>
                             ".$informacion."
                         </p>
-                        <a onclick='noticia(".$noticias[$x]['ID'].")'>Leer Más</a>
+                        <a onclick='noticia(".$noticias[$x]['ID'].")' data-lang='read-more'>Leer Más</a>
                         </div>
                     </div>
                 </div>";

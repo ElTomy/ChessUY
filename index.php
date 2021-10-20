@@ -55,8 +55,8 @@ if(isset($_SESSION['usuario'])){
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <h1>Campeonato de Ajedrez Online</h1>
-          <p>
+          <h1 data-lang="campeonato">Campeonato de Ajedrez Online</h1>
+          <p data-lang="camp-desc">
             <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
           </p>
         </div>
@@ -69,8 +69,8 @@ if(isset($_SESSION['usuario'])){
     </section>
 
     <section class="administrador-wrapper">
-      <h1><i class="fas fa-newspaper"></i> Blog de Noticias</h1>
-      <p>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.</p>
+      <h1 data-lang="news-index"><i class="fas fa-newspaper"></i> Blog de Noticias</h1>
+      <p data-lang="news-index-desc">Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.</p>
       <div class="admin-buttons">
         <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
       </div>
@@ -81,7 +81,7 @@ if(isset($_SESSION['usuario'])){
       <div class="torneos-grid">
         <div class="torneo-reciente">
           <div class="torneo-reciente-header">
-            <h1>Torneo Reciente</h1>
+            <h1 data-lang="recent-tourn">Torneo Reciente</h1>
           </div>
           <hr>
           <div class="torneo" id="torn-InscAct">
@@ -90,21 +90,21 @@ if(isset($_SESSION['usuario'])){
         </div>
         <div class="mejores-jugadores">
           <div class="mejores-jugadores-header">
-            <h1>Mejores Jugadores</h1>
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <h1 data-lang="best-players">Mejores Jugadores</h1>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
           <hr>
           <div class="jugadores-table" id="tabla-estadisticas">
           </div>
           <div class="mas-mobile">
-            <a href="/ChessUY/Usuarios/Estadisticas.php"><i class="fas fa-user-friends"></i> Ver Todos</a>
+            <a href="/ChessUY/Usuarios/Estadisticas.php" data-lang="see-all"><i class="fas fa-user-friends"></i> Ver Todos</a>
           </div>
         </div>
         
       </div>
       <div class="torneos-recientes-wrapper">
 
-                  <h1>Torneos Abiertos</h1>
+                  <h1 data-lang="open-tourn">Torneos Abiertos</h1>
                   <hr>
 
                   <div class="torneos-recientes" id="torn-Act">

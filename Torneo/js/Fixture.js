@@ -42,7 +42,31 @@ function Ficture(id){
         url: "/ChessUY/Torneo/PHP/Fixture.php",
         data: {id:id},
         success: function (data) {
-            console.log(data)
+            $.ajax({
+                url: "/ChessUY/Modal/modal.php",
+                type: "POST",
+                data:{numero_mensaje: data},
+                success: function (modal){
+                    document.getElementById("modal").innerHTML = modal;
+                }
+            });
+        }    
+    });   
+}
+function FinalizarTorneo(id){
+    $.ajax({
+        type: "POST",
+        url: "/ChessUY/Torneo/PHP/FinalizarTorneo.php",
+        data: {id:id},
+        success: function (data) {
+            $.ajax({
+                url: "/ChessUY/Modal/modal.php",
+                type: "POST",
+                data:{numero_mensaje: data},
+                success: function (modal){
+                    document.getElementById("modal").innerHTML = modal;
+                }
+            });
         }    
     });   
 }

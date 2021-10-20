@@ -1,0 +1,92 @@
+chessuy-index=>ChessUY | Index
+chessuy-browse=>ChessUY | Browse
+
+campeonato=>Online Chess Championship
+camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
+news-index=>News Blog
+news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news.
+recent-tourn=>Recent Tournament
+best-players=>Best Players
+see-all=><i class="fas fa-user-friends"></i> See All
+open-tourn=>Open Tournaments
+foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. All rights reserved.
+foot-design=>Designed by:
+search-play=><i class="fas fa-search"></i> Browse Players
+logout=> Logout
+
+welcome=>Welcome 
+welcome-main=>Welcome to <b>ChessUY Championship's</b> main page.
+play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Play
+admin-tools=><i class="fas fa-hammer"></i> Admin tools
+admin-tools-desc=>Tools that allow for the website's adminstration. Whomever uses them is responsible for their consequences.
+requests=><i class="fas fa-id-card-alt"></i> Requests
+manage-user=><i class="fas fa-user-edit"></i> Manage Users
+create-tourn=><i class="fas fa-trophy" data-lang="create-tourn"></i> Create Tournament
+org-tourn=> <i class="fas fa-trophy" data-lang="org-tourn"></i> Organize Tournament
+
+journalist-tools=><i class="fas fa-hammer"></i> Journalist Tools
+journalist-tools-desc=>Tools that allow for the creation, modification and deletion of news. Whomever uses them is responsible for their consequences.
+create-news=><i class="fas fa-folder-plus"></i> Create News
+edit-news=><i class="fas fa-edit"></i> Edit News
+delete-news=><i class="fas fa-trash-alt"></i> Delete News
+read-more=>Read More
+
+jan=>January
+feb=>February
+mar=>March
+apr=>April
+may=>May
+jun=>June
+jul=>July
+aug=>August
+sep=>September
+oct=>October
+nov=>November
+dec=>December
+
+NEReq=>No ELO restrictions
+MinEReq=>The minimum amount of ELO points required are
+MaxEReq=>The maximum amount of ELO points allowed are
+ERang=>ELO from
+a-to=>to
+points=>points
+
+NAReq=>No age restrictions
+MinAReq=>The minimum age required is
+MaxAReq=>The maximum age allowed is
+ARang=>Age from
+years=>years old
+
+the-tourn-has=>The tournament consists of
+mpp1=>minute per player
+mpp2=>minutes per player
+
+gpd1=>game per day
+gpd2=>games per day
+
+insc-open-the=>Inscriptions will open the
+de-of=>of
+of-the-year=>of the year
+alas-at=>at
+hours=>hours
+insc-open=>Inscriptions will open today at
+insc-closed=>Inscriptions closed
+insc-opened=>Inscriptions open
+torn-start=>Starts the
+on-course=>On course
+
+join=>Join
+stats=>Stats
+info=>Information
+
+sorry-tourn=>Sorry, there are no open tournaments right now
+
+tourn=>Tournament
+
+admin=>Administrator
+player=>Player
+reff=>Referee
+journalist=>Journalist
+
+profile=>Profile
+delete=>Delete

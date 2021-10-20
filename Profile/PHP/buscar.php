@@ -22,7 +22,7 @@
     
     $jugador = "";
 
-    $tipos = array("<p><i class='fas fa-star'></i> Administrador</p>", "<p><i class='fas fa-chess-knight'></i> Jugador</p>", "<p><i class='fas fa-ruler-horizontal'></i> Árbitro</p>", "<p><i class='fas fa-microphone'></i> Periodista</p>");
+    $tipos = array("<p><i class='fas fa-star'></i> <span data-lang='admin'>Administrador</span></p>", "<p><i class='fas fa-chess-knight'></i> <span data-lang='player'>Jugador</span></p>", "<p><i class='fas fa-ruler-horizontal'></i> <span data-lang='reff'>Árbitro</span></p>", "<p><i class='fas fa-microphone'></i> <span data-lang='journalist'>Periodista</span></p>");
 
     if($nombre != ""){
         $encontrado = false;
@@ -46,10 +46,10 @@
                                                     "</div>
                                                 </div>
                                                 <div class='profileButton'>
-                                                    <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>";
+                                                    <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'><span data-lang='profile'>Perfil</span></p></button>";
                                                 
                                                     if($tipo == 0){
-                                                        $jugador .= "<button class='eliminar' onclick='eliminar('" . $usuarios[($x - 1)]['usuario'] . "')'><i class='fas fa-user-slash'></i> Eliminar</button>";
+                                                        $jugador .= "<button class='eliminar' onclick='eliminar('" . $usuarios[($x - 1)]['usuario'] . "')'><i class='fas fa-user-slash'></i> <span data-lang='delete'>Eliminar</span></button>";
                                                     }
                                     $jugador .= "</div>
                                             </div>";
@@ -82,10 +82,10 @@
                                                 "</div>
                                             </div>
                                             <div class='profileButton'>
-                                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'>Perfil</p></button>";
+                                                <button onclick= perfil('" . $usuarios[($x - 1)]['usuario'] . "')><i class='fas fa-id-card'></i><p class='buttonText'><span data-lang='profile'>Perfil</span></p></button>";
                                                 
                                                 if($tipo == 0){
-                                                    $jugador .= '<button class="eliminar" onclick="eliminar(' . $usuario2 . ')"><i class="fas fa-user-slash"></i> Eliminar</button>';
+                                                    $jugador .= '<button class="eliminar" onclick="eliminar(' . $usuario2 . ')"><i class="fas fa-user-slash"></i> <span data-lang="delete">Eliminar</span></button>';
                                                 }
                                  $jugador .= "</div>
                                         </div>";
