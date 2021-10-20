@@ -90,10 +90,11 @@ $index .='
     }
 
     $index .= '<section class="administrador-wrapper">
-                <h1><i class="fas fa-newspaper"></i> Blog de Noticias</h1>
-                <p>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.</p>
+                <h1><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+                <p>Visitá nuestro blog, o prueba nuestra nueva sección de entrenamientos.</p>
                 <div class="admin-buttons">
                   <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+                  <a href="/ChessUY/Entrenamiento/Entrenamiento.html"><i class="fas fa-chess-board"></i> Entrenamiento</a>
                 </div>
               </section>';
     
