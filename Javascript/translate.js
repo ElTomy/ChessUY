@@ -53,7 +53,7 @@ $(document).ready(function(){
       };
       $('.loading-lang').addClass('show');
       $.ajax({
-        url: '/ChessUY/lang/'+lang+'.txt',
+        url: '/cyberhydra/lang/'+lang+'.txt',
         error:function(){
           alert('No se cargó traducción');
         },
