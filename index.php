@@ -26,14 +26,12 @@ if(isset($_SESSION['usuario'])){
     <script src="/cyberhydra/Usuarios/js/armoEstadisticas.js"></script>
     <script src="/cyberhydra/Torneo/js/tornFunc.js"></script>
     <script src="/cyberhydra/Javascript/Noticias.js"></script>
-    <script src="Javascript/translate.js"></script>
     
     <link
       rel="shortcut icon"
       href="media/svg/Logo/Favicon.svg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="styles/translate.css" />
     <link rel="stylesheet" href="styles/styles.css" />
 
     <title>ChessUY | Championship</title>
@@ -57,7 +55,6 @@ if(isset($_SESSION['usuario'])){
         <img src="media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <h1 data-lang="campeonato">Campeonato de Ajedrez Online</h1>
           <p data-lang="camp-desc">
             <b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
@@ -72,10 +69,11 @@ if(isset($_SESSION['usuario'])){
     </section>
 
     <section class="administrador-wrapper">
-      <h1 data-lang="news-index"><i class="fas fa-newspaper"></i> Blog de Noticias</h1>
-      <p data-lang="news-index-desc">Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.</p>
+      <h1 data-lang="news-index"><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+      <p data-lang="news-index-desc">Visitá nuestro blog y enterate de las ultimas noticias de ChessUY o ve partidos.</p>
       <div class="admin-buttons">
         <a href="/cyberhydra/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+        <a href="/cyberhydra/SalaEspectadores/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
       </div>
     </section>
 

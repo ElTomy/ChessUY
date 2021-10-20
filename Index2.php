@@ -1,8 +1,7 @@
 <?php
-  // include 'servidor.php';
-  // $server= new servidor();
-  // $server->VerificoSesion(0); 
-session_start();
+  include 'servidor.php';
+  $server= new servidor();
+  $server->VerificoSesion(3); 
 
 $index ='
 
@@ -38,7 +37,7 @@ $index .='
     />
     <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
-    <title>ChessUY | Inicio</title>
+    <title data-lang="chessuy-index">ChessUY | Inicio</title>
   </head>
   <body>
     <div id="header"></div>
@@ -59,7 +58,6 @@ $index .='
         <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" />
 
         <div class="index-info">
-          <a href="#" id="translate" data-text="English,Español" data-file="es,en" data-index="1">English</a>
           <div style="display:flex; justify-content:center;">
             <h1><span data-lang="welcome">¡Bienvenido </span><span style="color: #ffaa00">' . $_SESSION["usuario"] . '</span>!</h1>
           </div>
@@ -69,7 +67,7 @@ $index .='
         </div>
 
         <div class="buttons" style="margin: 0; display: flex;">
-          <a href="Ajedrez/ajedrez.php" data-lang="play">
+          <a href="Ajedrez/ajedrez.php?Torn=0" data-lang="play">
             <span></span>
             <span></span>
             <span></span>
@@ -88,6 +86,16 @@ $index .='
                 <p>Este espacio está reservado para anuncios.</p>
               </section>';
     }
+
+    $index .= '<section class="administrador-wrapper">
+                <h1><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+                <p>Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
+                <div class="admin-buttons">
+                  <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+                  <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
+                  <a href="/ChessUY/Entrenamiento/Entrenamiento.html"><i class="fas fa-chess-board"></i> Entrenamiento</a>
+                </div>
+              </section>';
     
 
     if($_SESSION['tipo'] == 0){

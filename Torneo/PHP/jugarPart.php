@@ -16,38 +16,37 @@ if(isset($_SESSION['usuario'])) {
             $infoAdi = $server->InfoTorneo();
             for($j=0;$j<count($infoAdi);$j++) {
                 if($infoAdi[$j]['ID_Torneo'] == $idTornUnid) {
-                    $horaTornArr = explode(' ', str_replace('-', ' ', $infoAdi[$j]['InicioTorneo']));
-                    $horaTorn = $horaTornArr[3];
+                    $tempDesc = str_replace(':', '', $infoAdi[$j]['TiempoDescalificar']);
                     $j = count($infoAdi);
                 }
             }
-
-            if($partid[$i]['Fecha'] == date('Y-m-d')) {
-                $timeDiff = str_replace(':', '', $horaTorn) - date('gis');
+            $fechahora = explode(' ', $partid[$i]['Fecha']);
+            $timeDiff = str_replace(':', '', $fechahora[1]) - date('Gis');
+            if($fechahora[0] == date('Y-m-d')) {
                 // Ver si la partida para hoy esta a 30 min de empezar
-                if($timeDiff <= 3000 && $timeDiff >= 0) {
+                if($timeDiff <= 7000 && $timeDiff >= 0 - $tempDesc) {
                     // Mostrar boton
                     echo "
-                    <a>
+                    <a href='Ajedrez/ajedrez.php?Torn=".$idTornUnid."'>
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <i class='fas fa-trophy'></i>Torneo
+                    <i class='fas fa-trophy'></i><span data-lang='tourn'>Torneo</span>
                     </a>
                     ";       
                 }
-            }elseif($partid[$i]['Fecha'] == date('Y-m-d', strtotime("tomorrow"))) {
-                // Ver si la partida para hoy esta a 30 min de empezar
-                if(str_replace(':', '', $horaTorn) <= 3000) {
+            }elseif($fechahora[0] == date('Y-m-d', strtotime("tomorrow"))) {
+                // Ver si la partida para mañana esta a 30 min de empezar
+                if($timeDiff <= -233000) {
                     // Mostrar boton
                     echo "
-                    <a>
+                    <a href='Ajedrez/ajedrez.php?Torn=".$idTornUnid."'>
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    <i class='fas fa-trophy'></i>Torneo
+                    <i class='fas fa-trophy'></i><span data-lang='tourn'>Torneo</span>
                     </a>
                     ";       
                 }

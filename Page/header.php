@@ -1,4 +1,6 @@
 <header>
+    <script src="/cyberhydra/Javascript/translate.js"></script>
+    <link rel="stylesheet" href="/cyberhydra/styles/translate.css" />
     <div class="header-logo">
 
         <?php
@@ -29,7 +31,7 @@
             
             echo '      </div>
                     <div class="nav-links">
-        
+                    
                     <a class="search" href="/cyberhydra/Profile/BuscarJugadores.html" data-lang="search-play"><i class="fas fa-search"></i> Buscar Jugadores</a>';
     
         
@@ -62,6 +64,8 @@
                           </div>";
                 }
             ?>
+
+        <a href="#" id="translate" data-text='<img src="/cyberhydra/media/images/ingles.png" width=52px>,<img src="/cyberhydra/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/cyberhydra/media/images/ingles.png" width=52px></a>
         
     </div>
     <div class="burger-mobile" onclick="myFunction(this)">
@@ -106,6 +110,7 @@
                           <a href='/cyberhydra/Form/register-user.html'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
+            <a href="#" id="translate" data-text='<img src="/cyberhydra/media/images/ingles.png" width=52px>,<img src="/cyberhydra/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/cyberhydra/media/images/ingles.png" width=52px></a>
         </div>
     </div>
     <script>

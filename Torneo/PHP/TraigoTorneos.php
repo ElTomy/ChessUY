@@ -17,6 +17,7 @@ for($x=0;$x<$numero_Torneos;$x++){
         <div class="info">
             <h2>'.$nombre.'</h2>
             <a class="boton-fixture" style="color: white" onclick="Ficture('.$id.')">Fixture</a>
+            <a class="boton-fixture" style="color: white" onclick="FinalizarTorneo('.$id.')">Finalizar</a>
         </div>
         
     </div>';

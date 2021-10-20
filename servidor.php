@@ -21,33 +21,33 @@ class servidor
     //
     //
     function VerificoSesion($tipo){
-
-        if(!isset($_SESSION["usuario"])){
-            header("Location: /cyberhydra/Form/login.html");
-
-        }else{
+            session_start();
             switch ($tipo) {
-                case 0: //admin
-                    if($_SESSION["tipo"] != "0"){
+                case 0: //tenes que ser admin
+                    if($_SESSION["tipo"] != 0){
                         header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
-                case 1: //jugador
-                    if($_SESSION["tipo"] != "1"){
+                case 1: //tenes que ser admin o jugador
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 1){
                         header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
-                case 2: //arbitro
-                    if($_SESSION["tipo"] != "2"){
-                        header("Location: /cyberhydra/Form/login.html");
-                    }
-                    break;
-                case 3: //periodista
-                    if($_SESSION["tipo"] != "3"){
+                case 2: //tenes que ser admin o periodista
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 3){
                     header("Location: /cyberhydra/Form/login.html");
                     }
                     break;
-            }
+                case 3: //estar logeado
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /cyberhydra/Form/login.html");
+                    }
+                    break;
+                case 4: //si estas logeado no podes entrer
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /cyberhydra/Form/login.html");
+                    }
+                    break;
             }
         
     }
@@ -1147,6 +1147,17 @@ class servidor
         }
         return $execute;
     }
+    
+    function FinalizarTorneo($p,$s,$t,$id){
+        $conn = $this->conectar();
+        $sql = "CALL FinalizarTorneo(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sssi", $p,$s,$t,$id);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
     //
     //
     /*------------------------------------------------------------------------------------------*/
@@ -1170,4 +1181,23 @@ class servidor
         }
         return $info;
     }
+
+    function traigoJaqueTorneo($usuario, $jug, $id){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoJaqueTorneo(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sii", $usuario, $jug, $id);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($jaque);
+            while ($stmts->fetch()) {
+                $info = $jaque;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+
 }

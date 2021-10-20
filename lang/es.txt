@@ -1,3 +1,6 @@
+chessuy-index=>ChessUY | Inicio
+chessuy-browse=>ChessUY | Buscar
+
 campeonato=>Campeonato de Ajedrez Online
 camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
 news-index=>Blog de Noticias
@@ -26,3 +29,64 @@ journalist-tools-desc=>Herramientas que permiten a los periodistas crear, editar
 create-news=><i class="fas fa-folder-plus"></i> Crear Noticia
 edit-news=><i class="fas fa-edit"></i> Editar Noticias
 delete-news=><i class="fas fa-trash-alt"></i> Eliminar Noticias
+read-more=>Leer Más
+
+jan=>Enero
+feb=>Febrero
+mar=>Marzo
+apr=>Abril
+may=>Mayo
+jun=>Junio
+jul=>Julio
+aug=>Agosto
+sep=>Septiembre
+oct=>Octubre
+nov=>Noviembre
+dec=>Diciembre
+
+NEReq=>No tiene restricciones de ELO
+MinEReq=>El minimo de ELO requerido es de
+MaxEReq=>El maximo de ELO permitido es de
+ERang=>ELO de
+a-to=>a
+points=>puntos
+
+NAReq=>No tiene restricciones de edad
+MinAReq=>Este torneo tiene edad minima de
+MaxAReq=>Este torneo tiene edad maxima de
+ARang=>La edad permitida es de
+years=>años
+
+the-tourn-has=>El torneo cuenta con
+mpp1=>minuto por jugador
+mpp2=>minutos por jugador
+
+gpd1=>partida por dia
+gpd2=>partidas por dia
+
+insc-open-the=>Las inscripciones se abren el
+de-of=>de
+of-the-year=>del año
+alas-at=>a las
+hours=>horas
+insc-open=>Inscripciones se abren hoy a las
+insc-closed=>Inscripciones cerradas
+insc-opened=>Inscripciones abiertas
+torn-start=>Comienza el
+on-course=>En curso
+
+join=>Unirse
+stats=>Estadisticas
+info=>Información
+
+sorry-tourn=>Disculpa, actalmente no hay torneos abiertos
+
+tourn=>Torneo
+
+admin=>Administrador
+player=>Jugador
+reff=>Árbitro
+journalist=>Periodista
+
+profile=>Perfil
+delete=>Eliminar
