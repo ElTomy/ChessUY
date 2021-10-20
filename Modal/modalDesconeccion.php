@@ -19,5 +19,4 @@
             </div>";
 
 echo $modal;
-return $modal;
 ?>

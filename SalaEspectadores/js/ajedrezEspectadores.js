@@ -7,7 +7,6 @@ $( document ).ready(function(){
     data: {id_partido:id_partido},
     success: function (data) {
         var partido = JSON.parse(data)
-        console.log(partido);
         jug1 = partido[0]['usu1'];
         jugador2 = partido[0]['usu2'];
         col1 = partido[0]['col1'];
@@ -15,11 +14,10 @@ $( document ).ready(function(){
         tablero = partido[0]['tablero'];
         movimientos = partido[0]['movimientos'];
         barra = partido[0]['barra'];
-        tiempo1 = partido[0]['tiempo1'];
-        tiempo2 = partido[0]['tiempo2'];
+        tiempo_Jugador1 = partido[0]['tiempo1'];
+        tiempo_Jugador2 = partido[0]['tiempo2'];
 
         Turno = turno;
-        console.log("jug2",jugador2);
     }
   });
   CreoTablero();
@@ -60,6 +58,7 @@ var jaque = {
 }
 var jug1="";
 var jug2="";
+var ultTurn = 0;
 
 function armoTablero(tablero, barra, col){
     var tab = JSON.parse(tablero);
@@ -72,10 +71,26 @@ function armoTablero(tablero, barra, col){
                 }
             }
             barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+            tmp2 = tiempo_Jugador2.split(":");
+    
+            tiempo1 = (tmp1[0]*60);
+            tiempo2 = (tmp2[0]*60);
+           
+            totlsec1 = tiempo1;
+            totlsec2 = tiempo2;
         }else{
             inviertoTablero(tab);
             barra = 100-barra;
             barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
         }
 
     }else if(col == 1){
@@ -83,6 +98,14 @@ function armoTablero(tablero, barra, col){
             inviertoTablero(tab);
             barra = 100-barra;
             barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
         }else{
             for(var p = 1; p <= 8; p++){
                 for(var q = 1; q <= 8; q++){
@@ -90,6 +113,14 @@ function armoTablero(tablero, barra, col){
                 }
             }
             barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+            tmp2 = tiempo_Jugador2.split(":");
+    
+            tiempo1 = (tmp1[0]*60);
+            tiempo2 = (tmp2[0]*60);
+           
+            totlsec1 = tiempo1;
+            totlsec2 = tiempo2;
         }
     }
 
@@ -166,19 +197,6 @@ function armoAjedrez(){
         url: "/ChessUY/SalaEspectadores/php/armoJugadores.php",
         success: function (data) {
             document.getElementById("ArmoJugadores").innerHTML = data;
-        }
-    });
-    
-    /* 
-    Armo Chat     
-    */
-    
-    $.ajax({
-        type: "POST",
-        url: "/ChessUY/SalaEspectadores/php/armoChat.php",
-        success: function (data) {
-            document.getElementById("ArmoChat").innerHTML = data;
-            heightdiv();
         }
     });
 }
@@ -334,6 +352,52 @@ function barraProgreso(porcentaje){
         $('.bar2').css("width", (100 - porcentaje) + "%");
      }
 } 
+var totlsec1 = 900;
+var totlsec2 = 900;
+var finalizado = false;
+var minsec1;
+var minsec2;
+var tiempo_Jugador1;
+var tiempo_Jugador2;
+window.setInterval(function tiempo() {
+    if(!finalizado){
+        if(Turno%2 == 0) {
+            if(ultTurn) {
+                totlsec2 = totlsec2 + 5;
+                ultTurn = false;
+            } else {
+                totlsec1--;
+                if(totlsec1 < 1){
+                    Derrota();
+                }
+            }
+        } else {
+            if(ultTurn) {
+                totlsec1 = totlsec1 + 5;
+                ultTurn = false;
+            } else {
+                totlsec2--;
+                menos_tiempo++;
+                if(totlsec2 < 1){
+                    Reloj = 1;
+                    Derrota();
+                }
+            }
+        }
+        var sec1 = new Date(0);
+        sec1.setSeconds(totlsec1);
+        minsec1 = sec1.toISOString().substr(14, 5);
+        var sec2 = new Date(0);
+        sec2.setSeconds(totlsec2);
+        minsec2 = sec2.toISOString().substr(14, 5);
+
+        $("#tempJug1").html("<i class='fas fa-stopwatch'></i>" + minsec1);
+        $("#tempJug2").html("<i class='fas fa-stopwatch'></i>" + minsec2);
+        
+    } else {
+
+    }
+}, 1000);
 //:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
@@ -358,8 +422,12 @@ function init(){
     }
 
     function sendConnection(e){
-        name = sessionStorage.getItem('usuario');
-        console.log('name: ', name);
+        if(sessionStorage.getItem('usuario') == null){
+            number = Math.round(Math.random() * 9999);
+            name = 'guest'+number
+        }else{
+            name = sessionStorage.getItem('usuario');
+        }
         room = sessionStorage.getItem('id_partido');
         conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
 
@@ -462,6 +530,9 @@ function init(){
             }else if(json2.includes("tur:")){
                 var tur = json2.slice(4)
                 tipo = 4;
+            }else if(json2.includes("ChatE:")){
+                var chat = json2.slice(6);
+                tipo = 5;
             }
 
             switch(tipo){
@@ -496,9 +567,30 @@ function init(){
                 case 4:
                     Turno = tur;
                     break;
+                case 5:
+                    var content = document.getElementById('chat-box').innerHTML;
+                    chat = chat.split(":");
+                    document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje1-wrapper"> <div class="mensaje1"><a class="nombre" href="/ChessUY/Profile/'+chat[0]+'">'+chat[0]+'</a><p>'+chat[1]+'</p></div></div>';
+                    break;
             }
         }else{console.log("ERROR")}
         armoAjedrez();
     };
+
+    function enter(e){if(e.keyCode == 13){mandarChat()}}
+    function mandarChat(){
+        var message = document.getElementById('message').value; 
+
+            if(message.length > 0){
+                var msg = {};
+                msg["type"] = "message";
+                msg["message"] = "ChatE:"+name+":"+ message;
+                conn.send(JSON.stringify(msg));
+    
+                var content = document.getElementById('chat-box').innerHTML;
+                document.getElementById('chat-box').innerHTML = content +  '<div class="mensaje2-wrapper"> <div class="mensaje2"><a class="nombre" href="/ChessUY/Profile/'+name+'">'+name+'</a><p>'+message+'</p></div></div>';
+                document.getElementById('message').value = '';
+            }
+    }
 //:------------------------------------------------------------------------------------------/
 //

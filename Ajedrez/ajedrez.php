@@ -1,3 +1,8 @@
+<?php
+  include '../servidor.php';
+  $server= new servidor();
+  $server->VerificoSesion(1); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,19 +49,6 @@
               <img src="../media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
           </div>
 
-          <div class="first-player-mobile">
-              <div class="first-player-wrapper">
-                  <div class="profile-body-picture">
-                      <i class="fas fa-user"></i>
-                  </div>
-                  <div class="profile-avatar-body">
-                      <h1>'.'</h1>
-                      <p><i class="fas fa-chess-knight"></i> Jugador</p>
-                  </div>
-              </div>
-              <p class="espectadores"><i class="fas fa-eye"></i> 10</p>
-          </div>
-
           <div class="ajedrez-flex" id="ArmoAjedrez"></div>
 
           <div class="movimientos">
@@ -86,9 +78,14 @@
                   <div class="box-content" id="box">
 
                     <div class="table-wrapper" id="ArmoMovimientos"></div>
-                    <div class="chat" id="ArmoChat"></div>
-                      
-                  </div>
+                    <div class="chat" id="ArmoChat">
+                      <div class="chat-box" id="chat-box">
+                        <div class="chat-input">
+                            <input  id="message" type="text" onkeyup="enter(event)" placeholder="Escribe un mensaje aquí">
+                            <button onclick="mandarChat()"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                      </div>
+                    </div>
               </div>
               <div class="ajedrez-buttons">
                   <button onclick="Acuerdo_Mutuo()"><i class="fas fa-border-all"></i> Tablas</button>

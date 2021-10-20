@@ -1,4 +1,6 @@
 <header>
+    <script src="/ChessUY/Javascript/translate.js"></script>
+    <link rel="stylesheet" href="/ChessUY/styles/translate.css" />
     <div class="header-logo">
 
         <?php
@@ -29,8 +31,8 @@
             
             echo '      </div>
                     <div class="nav-links">
-        
-                    <a class="search" href="/ChessUY/Profile/BuscarJugadores.html"><i class="fas fa-search"></i> Buscar Jugadores</a>';
+                    
+                    <a class="search" href="/ChessUY/Profile/BuscarJugadores.html" data-lang="search-play"><i class="fas fa-search"></i> Buscar Jugadores</a>';
     
         
             
@@ -53,7 +55,7 @@
                                     echo "<p class='tipo-profile'>$tipo</p>
                                     </div>
                                 </a>
-                                <a class='cerrarsesion' onclick='cerrarSesion()'><i class='fas fa-door-open'></i> Cerrar Sesión</a>
+                                <a class='cerrarsesion' onclick='cerrarSesion()' data-lang='logout'><i class='fas fa-door-open'></i> Cerrar Sesión</a>
                             </div>";
                 }else{
                     echo "<div class='loginregister'>
@@ -64,6 +66,7 @@
             ?>
         
     </div>
+          <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=52px>,<img src="/ChessUY/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=52px></a>
     <div class="burger-mobile" onclick="myFunction(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>

@@ -21,33 +21,33 @@ class servidor
     //
     //
     function VerificoSesion($tipo){
-
-        if(!isset($_SESSION["usuario"])){
-            header("Location: /chessuy/Form/login.html");
-
-        }else{
+            session_start();
             switch ($tipo) {
-                case 0: //admin
-                    if($_SESSION["tipo"] != "0"){
-                        header("Location: /chessuy/Form/login.html");
+                case 0: //tenes que ser admin
+                    if($_SESSION["tipo"] != 0){
+                        header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 1: //jugador
-                    if($_SESSION["tipo"] != "1"){
-                        header("Location: /chessuy/Form/login.html");
+                case 1: //tenes que ser admin o jugador
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 1){
+                        header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 2: //arbitro
-                    if($_SESSION["tipo"] != "2"){
-                        header("Location: /chessuy/Form/login.html");
+                case 2: //tenes que ser admin o periodista
+                    if($_SESSION["tipo"] != 0 && $_SESSION["tipo"] != 3){
+                    header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-                case 3: //periodista
-                    if($_SESSION["tipo"] != "3"){
-                    header("Location: /chessuy/Form/login.html");
+                case 3: //estar logeado
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /ChessUY/Form/login.html");
                     }
                     break;
-            }
+                case 4: //si estas logeado no podes entrer
+                    if(!isset($_SESSION["usuario"])){
+                    header("Location: /ChessUY/Form/login.html");
+                    }
+                    break;
             }
         
     }
@@ -800,28 +800,40 @@ class servidor
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT){
+    function AgendoPartida($Usuario1, $Usuario2, $Color1, $Color2,$IDT,$Tiempo){
         $conn = $this->conectar();
-        $sql = "CALL AgendoPartida(?,?,?,?,?)";
+        $sql = "CALL AgendoPartida(?,?,?,?,?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("i", $id);
-        $stmts->bind_param("ssssi",$Usuario1, $Usuario2, $Color1, $Color2,$IDT);
+        $stmts->bind_param("ssssis",$Usuario1, $Usuario2, $Color1, $Color2,$IDT,$Tiempo);
         if($stmts->execute()){
             $execute = true;
         }
-        return $info;
     }
     //
     //
     /*------------------------------------------------------------------------------------------*/
     //
     //
-    function InfoPartida($Nombre){
+    function InfoPartidaTorneo($IDT,$Usuario1, $Usuario2, $Fecha, $Ronda){
+        $conn = $this->conectar();
+        $sql = "CALL InfoPartidaTorneo(?,?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("isssi", $IDT,$Usuario1, $Usuario2, $Fecha, $Ronda);
+        if($stmts->execute()){
+            $execute = true;
+        }
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function InfoPartida($Nombre,$ID){
         $conn = $this->conectar();
         $info = array();
-        $sql = "CALL InfoPartida(?)";
+        $sql = "CALL InfoPartida(?,?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("s", $Nombre);
+        $stmts->bind_param("si", $Nombre,$ID);
 
         if ($stmts->execute()) {
 
@@ -924,9 +936,9 @@ class servidor
         if ($stmts->execute()) {
 
             $stmts->store_result();
-            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo);
+            $stmts->bind_result($id, $Usuario1, $Usuario2, $Turno, $Color1, $Color2, $Tablero, $Estado, $movimientos, $Torneo, $Jaque1, $Jaque2 ,$Barra ,$Tiempo ,$Tiempo2);
             while ($stmts->fetch()) {
-                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo, 'Jaque1' => $Jaque1, 'Jaque2' => $Jaque2);
+                $data = array('ID' => $id, 'usu1' => $Usuario1, 'usu2' => $Usuario2, 'turno' => $Turno, 'col1' => $Color1, 'col2' => $Color2, 'tablero' => $Tablero, 'estado' => $Estado, 'movimientos' => $movimientos, 'Torneo' => $Torneo, 'Jaque1' => $Jaque1, 'Jaque2' => $Jaque2, 'Barra' => $Barra, 'Tiempo' => $Tiempo, 'Tiempo2' => $Tiempo2);
                                 $info[] = $data;
             }
             $stmts->close();
@@ -1135,6 +1147,17 @@ class servidor
         }
         return $execute;
     }
+    
+    function FinalizarTorneo($p,$s,$t,$id){
+        $conn = $this->conectar();
+        $sql = "CALL FinalizarTorneo(?,?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sssi", $p,$s,$t,$id);
+        if($stmts->execute()){
+            return true;
+        }
+        return false;
+    }
     //
     //
     /*------------------------------------------------------------------------------------------*/
@@ -1158,4 +1181,23 @@ class servidor
         }
         return $info;
     }
+
+    function traigoJaqueTorneo($usuario, $jug, $id){
+        $conn = $this->conectar();
+        $info = 'ERROR';
+        $sql = "CALL TraigoJaqueTorneo(?,?,?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("sii", $usuario, $jug, $id);
+        if ($stmts->execute()) {
+            
+            $stmts->store_result();
+            $stmts->bind_result($jaque);
+            while ($stmts->fetch()) {
+                $info = $jaque;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
+
 }

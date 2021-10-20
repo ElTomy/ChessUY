@@ -42,7 +42,24 @@ if($col == 1){
     $numeros_x = array_reverse($numeros_x);
 }
 
-$Ajedrez = '<div class="ajedrez-flex">
+$Ajedrez ='
+                  
+                <div class="first-player-mobile">
+                <div class="first-player-wrapper">
+                    <div class="profile-body-picture" style="background-color:'.$colFondo.'">
+                    <i class="'.$Icon.'" style="color:'.$colIcon.'"></i>
+                    </div>
+                    <div class="profile-avatar-body">
+                    <h1>'.$usu.'</h1>
+                    <p>'.$tipo.'</p>
+                    </div>
+                </div>
+                </div>
+                <div class="movimientos>
+                </div>';
+
+
+$Ajedrez .= '<div class="ajedrez-flex">
                     <div class="ajedrez-wrapper">
                         <div class="ajedrez">';
 
@@ -170,18 +187,42 @@ En la parte donde hace el <a href="/ChessUY/Profile/ByJuanii <-- aca hay que pon
 $movimientos = "'movimientos'";
 $chat = "'chat'";
 
+if($_POST['jugador2'] != null){
+    $Jug2 = $server->BuscoJugador($_POST['jugador2']);
+    $usu2 = $Jug2[0]['Usuario'];
+    $colFondo2 = $Jug2[0]['colFondo'];
+    $Icon2 = $Jug2[0]['icono'];
+    $colIcon2 =  $Jug2[0]['colIcono'];
+    $tipo2 = $Jug2[0]['tipo'];
+}else{
+    $usu2 = 'Jugador2';
+    $colIcon2 = '#ffffff';
+    $Icon2 = 'fas fa-user';
+    $colFondo2 =  '#0076be';
+    $tipo2 = 1;
+}
+if($tipo2 == 0){
+    $tipo2 = "<i class='fas fa-star'></i> Administrador";
+}else if($tipo2 == 1){
+    $tipo2 = "<i class='fas fa-chess-knight'></i> Jugador";
+}else if($tipo2 == 2){
+    $tipo2 = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+}else if($tipo2 == 3){
+    $tipo2 = "<i class='fas fa-microphone'></i> Periodista";
+}
+
 $Ajedrez .='
                     </div>
                         </div>
                     </div>
                 </div>
                 <div class="second-player-mobile">
-                    <div class="profile-body-picture">
-                    <i class="fas fa-user"></i>
+                    <div class="profile-body-picture" style="background-color:'.$colFondo2.'">
+                    <i class="'.$Icon2.'" style="color:'.$colIcon2.'"></i>
                     </div>
                     <div class="profile-avatar-body">
-                    <h1>ByJuanii</h1>
-                    <p><i class="fas fa-chess-knight"></i> Jugador</p>
+                    <h1>'.$usu2.'</h1>
+                    <p>'.$tipo2.'</p>
                     </div>
                 </div>
 
