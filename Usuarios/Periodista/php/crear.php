@@ -13,7 +13,7 @@ if(isset($_POST['Autor'], $_POST['Titulo'], $_POST['Subtitulo'], $_POST['Conteni
 
 if(isset($_FILES['file']['name'])){
 
-    $Imagen = '/ChessUY/Usuarios/Periodista/imagenes_noticias/' . $_FILES['file']['name'];
+    $Imagen = '/cyberhydra/Usuarios/Periodista/imagenes_noticias/' . $_FILES['file']['name'];
 
     if ( $_FILES['file']['error'] > 0 ){
         echo 'Error: ' . $_FILES['file']['error'] . '<br>';
