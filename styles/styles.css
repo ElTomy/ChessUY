@@ -216,6 +216,10 @@ header .nav-links .loginregister a:hover {
   width: 120px;
 }
 
+header .nav-links #translate {
+  margin-left: 20px;
+}
+
 header .burger-mobile {
   position: relative;
   z-index: 6;

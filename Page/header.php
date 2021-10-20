@@ -64,9 +64,10 @@
                           </div>";
                 }
             ?>
+
+        <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=52px>,<img src="/ChessUY/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=52px></a>
         
     </div>
-          <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=52px>,<img src="/ChessUY/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=52px></a>
     <div class="burger-mobile" onclick="myFunction(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
@@ -109,6 +110,7 @@
                           <a href='/ChessUY/Form/Register-User'><i class='fas fa-user-plus'></i> Register</a>";
                 }
             ?>
+            <a href="#" id="translate" data-text='<img src="/ChessUY/media/images/ingles.png" width=52px>,<img src="/ChessUY/media/images/español.png" width=52px>' data-file="es,en" data-index="1"><img src="/ChessUY/media/images/ingles.png" width=52px></a>
         </div>
     </div>
     <script>
