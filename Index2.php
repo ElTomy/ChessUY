@@ -37,7 +37,7 @@ $index .='
     />
     <link rel="stylesheet" href="styles/styles.css" />
 
-    <title>ChessUY | Inicio</title>
+    <title data-lang="chessuy-index">ChessUY | Inicio</title>
   </head>
   <body>
     <div id="header"></div>

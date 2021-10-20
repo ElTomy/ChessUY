@@ -246,8 +246,8 @@ function envaPHP(preset) {
     reserv.sort();
     if(opt == 'norm' || opt == 'avan') {
         var nomTorn = setVar('nomDesc', 'oblig');
-        var tempDesc = setVar('tempDesc', 'oblig');
-        var tempJug = setVar('tempJug', 'oblig');
+        var tempDesc = setVar('tempDesc', 'temp');
+        var tempJug = setVar('tempJug', 'temp');
         var partDia = setVar('partDia', 'oblig');
         var prem = setVar('prem', 'oblig');
         var hrCom = setVar('hrCom', 'oblig');
@@ -391,6 +391,33 @@ function setVar(vari, modo) {
             }}else{
                 vari = document.getElementById(vari).value;
             }
+        }
+    }
+    if(modo == "temp") {
+        if(document.getElementById(vari).value.length == 8) {
+            for(var i=1;i<=8;i++) {
+                var c = document.getElementById(vari).value.charAt(i-1);
+                if(i % 3 == 0) {
+                    if(c !== ":") {
+                        transf = false;
+                        alert("1");
+                    }
+                }else{
+                    if(c >= 0 && c <= 9) {}else{
+                        transf = false;
+                        alert("2");
+                    }
+                }
+            }
+        }else{
+            transf = false;
+            alert("3");
+        }
+        if(transf) {
+            vari = document.getElementById(vari).value;
+        } else {
+            alert('Asegurese de ingresar la hora en el siguiente formato: hh:mm:ss');
+            vari = null;
         }
     }
     if(modo == "def") {
