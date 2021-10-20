@@ -86,6 +86,16 @@ $index .='
                 <p>Este espacio está reservado para anuncios.</p>
               </section>';
     }
+
+    $index .= '<section class="administrador-wrapper">
+                <h1><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+                <p>Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
+                <div class="admin-buttons">
+                  <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
+                  <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
+                  <a href="/ChessUY/Entrenamiento/Entrenamiento.html"><i class="fas fa-chess-board"></i> Entrenamiento</a>
+                </div>
+              </section>';
     
 
     if($_SESSION['tipo'] == 0){
