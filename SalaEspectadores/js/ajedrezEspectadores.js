@@ -59,12 +59,26 @@ var jaque = {
 var jug1="";
 var jug2="";
 var ultTurn = 0;
+var menos_tiempo = 0;
 
 function armoTablero(tablero, barra, col){
     var tab = JSON.parse(tablero);
 
     if(col == 0){
         if(Turno%2 == 0){
+            inviertoTablero(tab);
+            barra = 100-barra;
+            barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+                        tmp2 = tiempo_Jugador2.split(":");
+                
+                        tiempo1 = (tmp1[0]*60);
+                        tiempo2 = (tmp2[0]*60);
+                       
+                        totlsec1 = tiempo2;
+                        totlsec2 = tiempo1;
+            
+        }else{
             for(var p = 1; p <= 8; p++){
                 for(var q = 1; q <= 8; q++){
                     Tablero[p][q] = tab[p][q];
@@ -79,22 +93,25 @@ function armoTablero(tablero, barra, col){
            
             totlsec1 = tiempo1;
             totlsec2 = tiempo2;
-        }else{
-            inviertoTablero(tab);
-            barra = 100-barra;
-            barraProgreso(barra);
-            tmp1 = tiempo_Jugador1.split(":");
-                        tmp2 = tiempo_Jugador2.split(":");
-                
-                        tiempo1 = (tmp1[0]*60);
-                        tiempo2 = (tmp2[0]*60);
-                       
-                        totlsec1 = tiempo2;
-                        totlsec2 = tiempo1;
         }
 
     }else if(col == 1){
         if(Turno%2 == 0){
+            for(var p = 1; p <= 8; p++){
+                for(var q = 1; q <= 8; q++){
+                    Tablero[p][q] = tab[p][q];
+                }
+            }
+            barraProgreso(barra);
+            tmp1 = tiempo_Jugador1.split(":");
+            tmp2 = tiempo_Jugador2.split(":");
+        
+            tiempo1 = (tmp1[0]*60);
+            tiempo2 = (tmp2[0]*60);
+           
+            totlsec1 = tiempo1;
+            totlsec2 = tiempo2;
+        }else{
             inviertoTablero(tab);
             barra = 100-barra;
             barraProgreso(barra);
@@ -106,21 +123,6 @@ function armoTablero(tablero, barra, col){
                        
                         totlsec1 = tiempo2;
                         totlsec2 = tiempo1;
-        }else{
-            for(var p = 1; p <= 8; p++){
-                for(var q = 1; q <= 8; q++){
-                    Tablero[p][q] = tab[p][q];
-                }
-            }
-            barraProgreso(barra);
-            tmp1 = tiempo_Jugador1.split(":");
-            tmp2 = tiempo_Jugador2.split(":");
-    
-            tiempo1 = (tmp1[0]*60);
-            tiempo2 = (tmp2[0]*60);
-           
-            totlsec1 = tiempo1;
-            totlsec2 = tiempo2;
         }
     }
 
@@ -401,7 +403,7 @@ window.setInterval(function tiempo() {
 //:--------------------------------------ONLINE----------------------------------------------/
 var conn;
 function init(){
-    conn = new WebSocket('ws://localhost:8080');
+    conn = new WebSocket('ws://179.27.156.47:8080');
 
         conn.onopen = function (e) {
             console.log("Connection established!");
@@ -429,7 +431,8 @@ function init(){
             name = sessionStorage.getItem('usuario');
         }
         room = sessionStorage.getItem('id_partido');
-        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\"}")
+        team = "CYBER";
+        conn.send("{\"type\":\"login\",\"name\":\"" + name + "\",\"room\":\""+ room + "\",\"team\":\"" + team + "\"}")
 
     }
 
@@ -583,6 +586,7 @@ function init(){
 
             if(message.length > 0){
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "ChatE:"+name+":"+ message;
                 conn.send(JSON.stringify(msg));

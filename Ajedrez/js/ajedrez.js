@@ -2536,6 +2536,7 @@ function init(){
 
             if(message.length > 0){
                 var msg = {};
+                msg["team"] = "CYBER";
                 msg["type"] = "message";
                 msg["message"] = "Chat:" + message;
                 conn.send(JSON.stringify(msg));
