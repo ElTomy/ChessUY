@@ -4,7 +4,8 @@ chessuy-browse=>ChessUY | Browse
 campeonato=>Online Chess Championship
 camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
 news-index=>News Blog
-news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news.
+news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news or watch matches.
+news-index-desc-log=>Visit our blog, watch matches, or try out our new training section.
 recent-tourn=>Recent Tournament
 best-players=>Best Players
 see-all=><i class="fas fa-user-friends"></i> See All
@@ -14,9 +15,24 @@ foot-design=>Designed by:
 search-play=><i class="fas fa-search"></i> Browse Players
 logout=> Logout
 
+next=><span></span><span></span><span></span><span></span><i class="fas fa-arrow-alt-circle-right"></i>Next
+name=>Name
+surname=>Surname
+institute=>Institute
+study-year=>Year Studied
+birthday=>Date of birth
+id-cedula=>Id Card Number
+cellphone=>Phone Number
+username=>Username
+password=>Password
+forgot-pass=>I forgot my password.
+
 welcome=>Welcome 
 welcome-main=>Welcome to <b>ChessUY Championship's</b> main page.
 play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Play
+user-tools=><i class="fas fa-user"></i> User Tools
+watch=>Watch Matches
+training=>Training
 admin-tools=><i class="fas fa-hammer"></i> Admin tools
 admin-tools-desc=>Tools that allow for the website's adminstration. Whomever uses them is responsible for their consequences.
 requests=><i class="fas fa-id-card-alt"></i> Requests
@@ -90,3 +106,6 @@ journalist=>Journalist
 
 profile=>Profile
 delete=>Delete
+
+our-blog=>Our Blog:
+author=>Author:

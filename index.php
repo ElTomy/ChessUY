@@ -69,11 +69,11 @@ if(isset($_SESSION['usuario'])){
     </section>
 
     <section class="administrador-wrapper">
-      <h1 data-lang="news-index"><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+      <h1 data-lang="user-tools"><i class="fas fa-user"></i> Herramientas del Usuario</h1>
       <p data-lang="news-index-desc">Visitá nuestro blog y enterate de las ultimas noticias de ChessUY o ve partidos.</p>
       <div class="admin-buttons">
         <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-        <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
+        <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> <span data-lang="watch">Ver Partidos</span></a>
       </div>
     </section>
 

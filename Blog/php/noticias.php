@@ -20,8 +20,8 @@ for($x = 0; $x < $noticialength; $x++){
                             
                             <h3>'. $noticia[$x]['Descripcion'] .'</h3>
                             <hr />
-                            <p class="autor">Autor: '. $noticia[$x]['Usuario'] .'</p>
-                            <button class="ver-mas" onclick="noticia('.$noticia[$x]["ID"].')">Ver más</button>
+                            <p class="autor"><span data-lang="author">Autor:</span> '. $noticia[$x]['Usuario'] .'</p>
+                            <button class="ver-mas" onclick="noticia('.$noticia[$x]["ID"].')"><span data-lang="read-more">Ver más</span></button>
                         </div>
                     </div>';
 }

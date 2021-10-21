@@ -4,7 +4,8 @@ chessuy-browse=>ChessUY | Buscar
 campeonato=>Campeonato de Ajedrez Online
 camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
 news-index=>Blog de Noticias
-news-index-desc=>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY.
+news-index-desc=>Visitá nuestro blog y enterate de las ultimas noticias de ChessUY o ve partidos.
+news-index-desc-log=>Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.
 recent-tourn=>Torneo Reciente
 best-players=>Mejores Jugadores
 see-all=><i class="fas fa-user-friends"></i> Ver Todos
@@ -14,9 +15,24 @@ foot-design=>Diseñada por:
 search-play=><i class="fas fa-search"></i> Buscar Jugadores
 logout=> Cerrar Sesión
 
+next=><span></span><span></span><span></span><span></span><i class="fas fa-arrow-alt-circle-right"></i>Siguiente
+name=>Nombre
+surname=>Apellido
+institute=>Institución Liceal
+study-year=>Año Cursando
+birthday=>Fecha de Nacimiento
+id-cedula=>Cedula
+cellphone=>Celular
+username=>Usuario
+password=>Contraseña
+forgot-pass=>He olvidado mi contraseña.
+
 welcome=>¡Bienvenido 
 welcome-main=>Bienvenido a la página principal de <b>ChessUY Championship</b>.
 play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Jugar
+user-tools=><i class="fas fa-user"></i> Herramientas del Usuario
+watch=>Ver Partidos
+training=>Entrenamiento
 admin-tools=><i class="fas fa-hammer"></i> Herramientas de Administrador
 admin-tools-desc=>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.
 requests=><i class="fas fa-id-card-alt"></i> Solicitudes
@@ -90,3 +106,6 @@ journalist=>Periodista
 
 profile=>Perfil
 delete=>Eliminar
+
+our-blog=>Nuestro Blog:
+author=>Autor:
