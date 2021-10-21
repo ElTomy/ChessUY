@@ -1066,4 +1066,27 @@ class servidor
         }
         return $info;
     }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function traigoTrofeos($Usu){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL traigoTrofeos(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("i", $Usu);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($ID,$CantidadMovimientos,$Tablero);
+            while ($stmts->fetch()) {
+                $data = array('ID_Trofeo' => $ID_Trofeo,'Usuario' => $Usuario,'Tipo' => $Tipo,'nombre' => $nombre);
+                $info[] = $data;
+            }
+            $stmts->close();
+        }
+        return $info;
+    }
 }
