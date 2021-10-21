@@ -92,7 +92,7 @@ $index .='
                 <p>Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
                 <div class="admin-buttons">
                   <a href="/cyberhydra/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-                  <a href="/cyberhydra/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
+                  <a href="/cyberhydra/SalaEspectadores/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
                   <a href="/cyberhydra/Entrenamiento/Entrenamiento.html"><i class="fas fa-chess-board"></i> Entrenamiento</a>
                 </div>
               </section>';
