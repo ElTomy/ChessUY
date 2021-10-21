@@ -1,3 +1,6 @@
+chessuy-index=>ChessUY | Index
+chessuy-browse=>ChessUY | Browse
+
 campeonato=>Online Chess Championship
 camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
 news-index=>News Blog
@@ -77,3 +80,13 @@ stats=>Stats
 info=>Information
 
 sorry-tourn=>Sorry, there are no open tournaments right now
+
+tourn=>Tournament
+
+admin=>Administrator
+player=>Player
+reff=>Referee
+journalist=>Journalist
+
+profile=>Profile
+delete=>Delete

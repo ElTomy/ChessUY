@@ -37,7 +37,7 @@ $index .='
     />
     <link rel="stylesheet" href="styles/styles.css" />
 
-    <title>ChessUY | Inicio</title>
+    <title data-lang="chessuy-index">ChessUY | Inicio</title>
   </head>
   <body>
     <div id="header"></div>
@@ -113,8 +113,8 @@ $index .='
               <div class="admin-buttons">
                 <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
                 <a href="Usuarios/Periodista/PHP/crearNoticia.php"><i class="fas fa-folder-plus"></i> Crear Noticia</a>
-                <a href=""><i class="fas fa-edit"></i> Editar Noticias</a>
-                <a href=""><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
+                <a href="/ChessUY/Blog/Blog.html"><i class="fas fa-edit"></i> Editar Noticias</a>
+                <a href="/ChessUY/Blog/Blog.html"><i class="fas fa-trash-alt"></i> Eliminar Noticias</a>
                 </div>
             </section>';
     }

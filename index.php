@@ -73,7 +73,7 @@ if(isset($_SESSION['usuario'])){
       <p data-lang="news-index-desc">Visitá nuestro blog y enterate de las ultimas noticias de ChessUY o ve partidos.</p>
       <div class="admin-buttons">
         <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-        <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
+        <a href="/ChessUY/SalaEspectadores/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>
       </div>
     </section>
 
