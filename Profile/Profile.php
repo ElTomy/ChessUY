@@ -12,6 +12,13 @@
   $logros = $server->TraigoLogros();
   $numero_logros = count($logros);
 
+  $trofeos = $server->traigoTrofeos($usuario);
+  $numero_trofeos = count($trofeos);
+
+  echo $numero_trofeos;
+  echo json_encode($trofeos);
+  echo $usuario;
+  
   $mislogros = $server->TraigoMisLogros($usuario);
   $numero_mislogros = count($mislogros);
 ?>
@@ -122,35 +129,35 @@
                   
             </div>
 
-            <section class="trofeos-wrapper">
-              <div class="trofeo-header">
-                <h1>Trofeos</h1>
-                <div class="trofeos-list">
+            <?php
 
-                  <div class="trofeo">
-                    <div class="trofeo-img">
-                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
-                    </div>
-                    <div class="trofeo-body">
-                      <h1>Nombre del Trofeo</h1>
-                      <p>Descripción del Trofeo</p>
-                    </div>
-                  </div>
+            if($numero_trofeos > 0){
+              echo '<section class="trofeos-wrapper">
+                      <div class="trofeo-header">
+                        <h1>Trofeos</h1>
+                        <div class="trofeos-list">';
 
-                  <div class="trofeo">
-                    <div class="trofeo-img">
-                      <img src="/ChessUY/media/images/Trofeo.png" alt="">
-                    </div>
-                    <div class="trofeo-body">
-                      <h1>Nombre del Trofeo</h1>
-                      <p>Descripción del Trofeo</p>
-                    </div>
-                  </div>
+                        for($x = 0; $x <= $numero_trofeos; $x++){
+                          echo '<div class="trofeo">
+                                  <div class="trofeo-img">
+                                    <img src="'.$trofeos[$x]["Tipo"].'" alt="">
+                                  </div>
+                                  <div class="trofeo-body">
+                                    <h1>'.$trofeos[$x]["nombre"].'</h1>
+                                  </div>
+                                </div>';
+                        }
 
-                </div>
+                        echo '
+                        </div>
 
-              </div>
-            </section>
+                      </div>
+                    </section>';
+            }
+
+            ?>
+
+            
             
             <div class="profile-grid">
 
