@@ -57,7 +57,6 @@
                   <option disabled selected>Selecciona un tipo de torneo</option>
                   <option value="norm">Normal</option>
                   <option value="avan">Avanzado</option>
-                  <option value="pres">Crear preset??</option>
                 </select>
               </form>
             </div>

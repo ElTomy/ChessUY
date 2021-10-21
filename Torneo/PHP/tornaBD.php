@@ -2,7 +2,7 @@
 include '../../servidor.php';
 $servidor = new servidor();
 
-if(isset($_POST['tiempo']) && isset($_POST['ELO_Min']) && isset($_POST['ELO_Max']) && isset($_POST['Fecha_inicio']) && isset($_POST['Fecha_fin']) &&isset($_POST['Numero_Participantes']) &&isset($_POST['TiempoDescalificar']) && isset($_POST['PartidasxDia']) && isset($_POST['CantidaddeReservas']) && isset($_POST['Localidad']) && isset($_POST['EdadMinima']) && isset($_POST['EdadMaxima']) && isset($_POST['InicioTorneo']) && isset($_POST['hrCom']) && isset($_POST['preset']) && isset($_POST['nomTorn'])) {
+if(isset($_POST['tiempo']) && isset($_POST['ELO_Min']) && isset($_POST['ELO_Max']) && isset($_POST['Fecha_inicio']) && isset($_POST['Fecha_fin']) &&isset($_POST['Numero_Participantes']) &&isset($_POST['TiempoDescalificar']) && isset($_POST['PartidasxDia']) && isset($_POST['CantidaddeReservas']) && isset($_POST['Localidad']) && isset($_POST['EdadMinima']) && isset($_POST['EdadMaxima']) && isset($_POST['InicioTorneo']) && isset($_POST['hrCom']) && isset($_POST['nomTorn'])) {
     $tiempo = $_POST['tiempo'];
     $ELO_Min = $_POST['ELO_Min'];
     $ELO_Max = $_POST['ELO_Max'];
@@ -24,7 +24,7 @@ if(isset($_POST['tiempo']) && isset($_POST['ELO_Min']) && isset($_POST['ELO_Max'
     $nomTorn = $_POST['nomTorn'];
 }
 
-$x = $servidor->CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $InicioTorneo, $preset, $nomTorn);
+$x = $servidor->CrearTorneo($tiempo, $ELO_Min, $ELO_Max, $Fecha_inicio, $Fecha_fin, $Numero_Participantes, $TiempoDescalificar, $PartidasxDia, $CantidaddeReservas, $Localidad, $EdadMinima, $EdadMaxima, $InicioTorneo, 0, $nomTorn);
 
 echo $x;
 
