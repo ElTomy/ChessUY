@@ -1080,7 +1080,7 @@ class servidor
 
         if ($stmts->execute()) {
             $stmts->store_result();
-            $stmts->bind_result($ID,$CantidadMovimientos,$Tablero);
+            $stmts->bind_result($ID_Trofeo,$Usuario,$Tipo,$nombre);
             while ($stmts->fetch()) {
                 $data = array('ID_Trofeo' => $ID_Trofeo,'Usuario' => $Usuario,'Tipo' => $Tipo,'nombre' => $nombre);
                 $info[] = $data;
