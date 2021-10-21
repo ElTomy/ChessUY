@@ -1,142 +1,143 @@
 class Torneo{
-        constructor(Fecha_inicio, Fecha_fin, eloMin, eloMax, cantJug, tiempo, tempDesc, partDia, cantRes, locTorn, edaMin, edaMax, comTorn, finInsc, comInsc, hrCom){
-        this.Fecha_inicio=Fecha_inicio;
-        this.Fecha_fin=Fecha_fin;
-        this.eloMin=eloMin;
-        this.eloMax=eloMax;
-        this.cantJug=cantJug;
-        this.tiempo=tiempo;
-        this.tempDesc=tempDesc;
-        this.partDia=partDia;
-        this.cantRes=cantRes;
-        this.locTorn=locTorn;
-        this.edaMin=edaMin;
-        this.edaMax=edaMax;
-        this.comTorn=comTorn;
-        this.finInsc=finInsc;
-        this.comInsc=comInsc;
-        this.hrCom=hrCom;
-    }
-    get Fi(){
-        return this.Fecha_inicio;
-    }
-    set Fi(x){
-        this.Fecha_inicio=x;
-    }
-    get Ff(){
-        return this.Fecha_fin;
-    }
-    set Ff(x){
-        this.Fecha_fin=x;
-    }
-    get ELOminimo(){
-        return this.eloMin;
-    }
-    set ELOminimo(x){
-        this.eloMin=x;
-    }
-    get ELOmaximo(){
-        return this.eloMax;
-    }
-    set ELOmaximo(x){
-        this.eloMax=x;
-    }
-    get cantidadJugadores(){
-        return this.cantJug;
-    }
-    set cantidadJugadores(x){
-        this.cantJug=x;
-    }
-    get time(){
-        return this.tiempo;
-    }
-    set time(x){
-        this.tiempo=x;
-    }
-    get tiempoDesc(){
-        return this.tempDesc;
-    }
-    set tiempoDesc(x){
-        this.tempDesc=x;
-    }
-    get partidasDia(){
-        return this.partDia;
-    }
-    set partidasDia(x){
-        this.partDia=x;
-    }
-    get cantidadRes(){
-        return this.cantRes;
-    }
-    set cantidadRes(x){
-        this.cantRes=x;
-    }
-    get locali(){
-        return this.locTorn;
-    }
-    set locali(x){
-        this.locTorn=x;
-    }
-    get edadmin(){
-        return this.edaMin;
-    }
-    set edadmin(x){
-        this.edaMin=x;
-    }
-    get edadmax(){
-        return this.edaMax;
-    }
-    set edadmax(x){
-        this.edaMax=x;
-    }
-    get comienzoTorneo(){
-        return this.comTorn;
-    }
-    set comienzoTorneo(x){
-        this.comTorn=x;
-    }
-    get finInscripciones(){
-        return this.finInsc;
-    }
-    set finInscripciones(x){
-        this.finInsc=x;
-    }
-    get comienzoInscripciones(){
-        return this.comInsc;
-    }
-    set comienzoInscripciones(x){
-        this.comInsc=x;
-    }
-    get horacomienzo(){
-        return this.hrCom;
-    }
-    set horacomienzo(x){
-        this.hrCom=x;
-    }
+    constructor(Fecha_inicio, Fecha_fin, eloMin, eloMax, cantJug, tiempo, tempDesc, partDia, cantRes, locTorn, edaMin, edaMax, comTorn, finInsc, comInsc, hrCom){
+    this.Fecha_inicio=Fecha_inicio;
+    this.Fecha_fin=Fecha_fin;
+    this.eloMin=eloMin;
+    this.eloMax=eloMax;
+    this.cantJug=cantJug;
+    this.tiempo=tiempo;
+    this.tempDesc=tempDesc;
+    this.partDia=partDia;
+    this.cantRes=cantRes;
+    this.locTorn=locTorn;
+    this.edaMin=edaMin;
+    this.edaMax=edaMax;
+    this.comTorn=comTorn;
+    this.finInsc=finInsc;
+    this.comInsc=comInsc;
+    this.hrCom=hrCom;
+}
+get Fi(){
+    return this.Fecha_inicio;
+}
+set Fi(x){
+    this.Fecha_inicio=x;
+}
+get Ff(){
+    return this.Fecha_fin;
+}
+set Ff(x){
+    this.Fecha_fin=x;
+}
+get ELOminimo(){
+    return this.eloMin;
+}
+set ELOminimo(x){
+    this.eloMin=x;
+}
+get ELOmaximo(){
+    return this.eloMax;
+}
+set ELOmaximo(x){
+    this.eloMax=x;
+}
+get cantidadJugadores(){
+    return this.cantJug;
+}
+set cantidadJugadores(x){
+    this.cantJug=x;
+}
+get time(){
+    return this.tiempo;
+}
+set time(x){
+    this.tiempo=x;
+}
+get tiempoDesc(){
+    return this.tempDesc;
+}
+set tiempoDesc(x){
+    this.tempDesc=x;
+}
+get partidasDia(){
+    return this.partDia;
+}
+set partidasDia(x){
+    this.partDia=x;
+}
+get cantidadRes(){
+    return this.cantRes;
+}
+set cantidadRes(x){
+    this.cantRes=x;
+}
+get locali(){
+    return this.locTorn;
+}
+set locali(x){
+    this.locTorn=x;
+}
+get edadmin(){
+    return this.edaMin;
+}
+set edadmin(x){
+    this.edaMin=x;
+}
+get edadmax(){
+    return this.edaMax;
+}
+set edadmax(x){
+    this.edaMax=x;
+}
+get comienzoTorneo(){
+    return this.comTorn;
+}
+set comienzoTorneo(x){
+    this.comTorn=x;
+}
+get finInscripciones(){
+    return this.finInsc;
+}
+set finInscripciones(x){
+    this.finInsc=x;
+}
+get comienzoInscripciones(){
+    return this.comInsc;
+}
+set comienzoInscripciones(x){
+    this.comInsc=x;
+}
+get horacomienzo(){
+    return this.hrCom;
+}
+set horacomienzo(x){
+    this.hrCom=x;
+}
 }
 //---------------------------------
 function confTipo(opt) {
-    opt = opt.value;
-    $.ajax({
-        type: "POST",
-        url: "/cyberhydra/Torneo/PHP/tipoTorn.php",
-        data: { opt:opt },
-        success: function (html) {
-            document.getElementById("hola").innerHTML = html;
-        }
-    });
+opt = opt.value;
+$.ajax({
+    type: "POST",
+    url: "/cyberhydra/Torneo/PHP/tipoTorn.php",
+    data: { opt:opt },
+    success: function (html) {
+        document.getElementById("hola").innerHTML = html;
+        cargAgen();
+    }
+});
 }
 
 function opcReser(reser) {
-    reser = reser.value;
-    $.ajax({
-        type: "POST",
-        url: "/cyberhydra/Torneo/PHP/resoNo.php",
-        data: { reser:reser },
-        success: function (html) {
-            document.getElementById("penultOpt").innerHTML = html;
-        }
-    });
+reser = reser.value;
+$.ajax({
+    type: "POST",
+    url: "/cyberhydra/Torneo/PHP/resoNo.php",
+    data: { reser:reser },
+    success: function (html) {
+        document.getElementById("penultOpt").innerHTML = html;
+    }
+});
 }
 
 
@@ -155,9 +156,7 @@ $.ajax({
 function quehacerRes() {
 if(document.getElementById('siLim').checked) {
     $.ajax({
-        type: "POST",
-        url: "/cyberhydra/Torneo/PHP/cantFech.php",
-        data: { ultopt:ultopt },
+        url: "/cyberhydra/Torneo/PHP/quehacerRes.php",
         success: function (html) {
             $("#quehacerRes").html(html);
         }
@@ -168,27 +167,8 @@ if(document.getElementById('siLim').checked) {
 }
 }
 
-function quehacerRes() {
-    if(document.getElementById('siLim').checked) {
-        $.ajax({
-            url: "/cyberhydra/Torneo/PHP/quehacerRes.php",
-            success: function (html) {
-                $("#quehacerRes").html(html);
-            }
-        })
-    } else {
-        document.getElementById("quehacerRes").innerHTML = '';
-        document.getElementById("penultOpt").innerHTML = '';
-    }
-}
-
 function cargAgen() {
-    $.ajax({
-        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
-        success: function (html) {
-            $("#agenTorn").html(html);
-        }
-    })
+$("#agenTorn").load("/cyberhydra/Torneo/PHP/agenTorn.php");
 }
 
 var date = new Date();
@@ -248,7 +228,7 @@ if(repe == false && num < 3) {
 }
 if(num <= 3) {
     $.ajax({
-        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
+        url: "/cyberhydra/Torneo/PHP/marcFech.php",
         type: "post",
         data: {reserv:reserv, num:num},
         success: function (styles) {
@@ -260,24 +240,32 @@ if(num <= 3) {
 
 var transf = true;
 
-function envaPHP() {
+function envaPHP(preset) {
 transf = true;
 opt = document.getElementById("tipTorn").value;
 reserv.sort();
 if(opt == 'norm' || opt == 'avan') {
-    var tempDesc = setVar('tempDesc', 'oblig');
-    var tempJug = setVar('tempJug', 'oblig');
+    var nomTorn = setVar('nomDesc', 'oblig');
+    var tempDesc = setVar('tempDesc', 'temp');
+    var tempJug = setVar('tempJug', 'temp');
     var partDia = setVar('partDia', 'oblig');
     var prem = setVar('prem', 'oblig');
     var hrCom = setVar('hrCom', 'oblig');
-    if(reserv.length < 3) {
-        alert("Asegurese de que las fechas estan seleccionadas");
-        transf = false;
+    if(preset == 0) {
+        if(reserv.length < 3) {
+            alert("Asegurese de que las fechas estan seleccionadas");
+            transf = false;
+        } else {
+            var comInsc = reserv[0].slice(4);
+            var finInsc = reserv[1].slice(4);
+            var comTorn = reserv[2].slice(4);
+        }
     } else {
-        var comInsc = reserv[0].slice(4);
-        var finInsc = reserv[1].slice(4);
-        var comTorn = reserv[2].slice(4);
+        var comInsc = 0;
+        var finInsc = 0;
+        var comTorn = 0;
     }
+
     var eloMax = setVar('eloMax', 'def');
     var eloMin = setVar('eloMin', 'def');
     var edaMax = setVar('edaMax', 'def');
@@ -322,7 +310,7 @@ if(opt == 'avan') {
 
 if(transf) {
     $.ajax({
-        url: "/cyberhydra/Torneo/PHP/agenTorn.php",
+        url: "/cyberhydra/Torneo/PHP/tornaBD.php",
         type: "post",
         data: { tiempo : tempJug, 
                 ELO_Min : eloMin,
@@ -337,7 +325,9 @@ if(transf) {
                 EdadMinima : edaMin,
                 EdadMaxima : edaMax,
                 InicioTorneo : comTorn,
-                hrCom : hrCom
+                hrCom : hrCom,
+                preset : preset,
+                nomTorn : nomTorn
               },
         success: function (exec) {
             $.ajax({
@@ -372,241 +362,97 @@ console.log("Es transferible?: "+transf);
 }
 
 function setVar(vari, modo) {
+
 if(modo == 'simple') {
     if(document.getElementById(vari).value == "") {
         vari = null;
     } else {
         vari = document.getElementById(vari).value;
     }
-    if(num <= 3) {
-        $.ajax({
-            url: "/cyberhydra/Torneo/PHP/marcFech.php",
-            type: "post",
-            data: {reserv:reserv, num:num},
-            success: function (styles) {
-                $(".style").html(styles);
-            }
-        })
-    }
 }
-
-var transf = true;
-
-function envaPHP(preset) {
-    transf = true;
-    opt = document.getElementById("tipTorn").value;
-    reserv.sort();
-    if(opt == 'norm' || opt == 'avan') {
-        var nomTorn = setVar('nomDesc', 'oblig');
-        var tempDesc = setVar('tempDesc', 'temp');
-        var tempJug = setVar('tempJug', 'temp');
-        var partDia = setVar('partDia', 'oblig');
-        var prem = setVar('prem', 'oblig');
-        var hrCom = setVar('hrCom', 'oblig');
-        if(preset == 0) {
-            if(reserv.length < 3) {
-                alert("Asegurese de que las fechas estan seleccionadas");
-                transf = false;
-            } else {
-                var comInsc = reserv[0].slice(4);
-                var finInsc = reserv[1].slice(4);
-                var comTorn = reserv[2].slice(4);
-            }
-        } else {
-            var comInsc = 0;
-            var finInsc = 0;
-            var comTorn = 0;
-        }
-
-        var eloMax = setVar('eloMax', 'def');
-        var eloMin = setVar('eloMin', 'def');
-        var edaMax = setVar('edaMax', 'def');
-        var edaMin = setVar('edaMin', 'def');
-        var locTorn = setVar('locTorn', 'def')
-        var cantJug = setVar('cantJug', 'def');
-        var cantRes = setVar('cantRes', 'def');
-        var fechRes = setVar('fechRes', 'def');
-    }
-    if(opt == 'avan') {
-        var eloMax = setVar('eloMax', 'simple');
-        var eloMin = setVar('eloMin', 'simple');
-        var edaMax = setVar('edaMax', 'simple');
-        var edaMin = setVar('edaMin', 'simple');
-        var locTorn = setVar('locTorn', 'oblig')
-        if(document.getElementById('siLim').checked) {
-            var cantJug = setVar('cantJug', 'oblig');
-            if($("#opcResList").prop("checked")) {
-                if($("#limResCanti").prop("checked")) {
-                    var cantRes = setVar('cantRes', 'oblig');
-                    var fechRes = setVar('fechRes', 'def');
-                } else if($("#limResFecha").prop("checked")) {
-                    var fechRes = setVar('fechRes', 'oblig');
-                    var cantRes = setVar('cantRes', 'def');
-                } else {
-                    alert('Porfavor, eliga entre cantidad de reservas o fecha limite de reservas');
-                    transf = false;
-                }
-            } else if($("#opcResTerm").prop("checked")) {
-                var fechRes = setVar('fechRes', 'def');
-                var cantRes = setVar('cantRes', 'def');
-            } else {
-                alert('Porfavor, eliga entre crear una lista de reservas o terminar las inscripciones');
-                transf = false;
-            }
-        } else {
-            var cantJug = setVar('cantJug', 'def');
-            var cantRes = setVar('cantRes', 'def');
-            var fechRes = setVar('fechRes', 'def');
-        }
-    }
-    
-    if(transf) {
-        $.ajax({
-            url: "/cyberhydra/Torneo/PHP/tornaBD.php",
-            type: "post",
-            data: { tiempo : tempJug, 
-                    ELO_Min : eloMin,
-                    ELO_Max : eloMax,
-                    Fecha_inicio : comInsc,
-                    Fecha_fin : finInsc,
-                    Numero_Participantes : cantJug,
-                    TiempoDescalificar : tempDesc,
-                    PartidasxDia : partDia,
-                    CantidaddeReservas : cantRes,
-                    Localidad : locTorn,
-                    EdadMinima : edaMin,
-                    EdadMaxima : edaMax,
-                    InicioTorneo : comTorn,
-                    hrCom : hrCom,
-                    preset : preset,
-                    nomTorn : nomTorn
-                  },
-            success: function (exec) {
-                $.ajax({
-                    url: "/cyberhydra/Modal/modalCrTorn.php",
-                    type: "POST",
-                    data: {exec:exec},
-                    success: function (data) {
-                        document.getElementById("modal").innerHTML = data;
-                    }
-                  });
-            }
-        })
-    }
-    
-    console.log("Tiempo para descalificar: "+tempDesc);
-    console.log("Tiempo total por jugador: "+tempJug);
-    console.log("Cantidad de partidas por dia: "+partDia);
-    console.log("ELO Maximo: "+eloMax);
-    console.log("ELO Minimo: "+eloMin);
-    console.log("Edad Maxima: "+edaMax);
-    console.log("Edad Minima: "+edaMin);
-    console.log("Cantidad de Jugadores: "+cantJug);
-    console.log("Cantidad de reservas: "+cantRes);
-    console.log("Premio: "+prem);
-    console.log("Localidad: "+locTorn);
-    console.log("Comienzo de inscripciones: "+comInsc);
-    console.log("Fecha de fin de reservas (deprecated): "+fechRes);
-    console.log("Fin de inscripciones: "+finInsc);
-    console.log("Comienzo del torneo: "+comTorn+" "+hrCom);
-    console.log("--------------------------------------------");
-    console.log("Es transferible?: "+transf); 
-}
-
-function setVar(vari, modo) {
-    
-    if(modo == 'simple') {
-        if(document.getElementById(vari).value == "") {
-            vari = null;
-        } else {
-            vari = document.getElementById(vari).value;
-        }
-    }
-    if(modo == 'oblig') {
-        if(document.getElementById(vari).value == "") {
-            alert("Faltan campos para " + vari);
-            vari = null;
-            transf = false;
-        } else {
-            if(vari == 'tempDesc' || vari == 'tempJug' || vari == 'partDia'){
-                var numeros = /[0-9]/gi;
-                var letras = /[A-Z]/gi;
-                var h = document.getElementById(vari).value;
-              
-                if(h.match(numeros) && !h.match(letras) ){
-                    console.log("tiene numeros y no letras")
-                    vari = document.getElementById(vari).value;
-                }else{
-                console.log("tiene letras")
-                vari = null
-                transf = false;
-            }}else{
+if(modo == 'oblig') {
+    if(document.getElementById(vari).value == "") {
+        alert("Faltan campos para " + vari);
+        vari = null;
+        transf = false;
+    } else {
+        if(vari == 'tempDesc' || vari == 'tempJug' || vari == 'partDia'){
+            var numeros = /[0-9]/gi;
+            var letras = /[A-Z]/gi;
+            var h = document.getElementById(vari).value;
+          
+            if(h.match(numeros) && !h.match(letras) ){
+                console.log("tiene numeros y no letras")
                 vari = document.getElementById(vari).value;
-            }
+            }else{
+            console.log("tiene letras")
+            vari = null
+            transf = false;
+        }}else{
+            vari = document.getElementById(vari).value;
         }
     }
-    if(modo == "temp") {
-        if(document.getElementById(vari).value.length == 8) {
-            for(var i=1;i<=8;i++) {
-                var c = document.getElementById(vari).value.charAt(i-1);
-                if(i % 3 == 0) {
-                    if(c !== ":") {
-                        transf = false;
-                        alert("1");
-                    }
-                }else{
-                    if(c >= 0 && c <= 9) {}else{
-                        transf = false;
-                        alert("2");
-                    }
+}
+if(modo == "temp") {
+    if(document.getElementById(vari).value.length == 8) {
+        for(var i=1;i<=8;i++) {
+            var c = document.getElementById(vari).value.charAt(i-1);
+            if(i % 3 == 0) {
+                if(c !== ":") {
+                    transf = false;
+                    alert("1");
+                }
+            }else{
+                if(c >= 0 && c <= 9) {}else{
+                    transf = false;
+                    alert("2");
                 }
             }
-        }else{
-            transf = false;
-            alert("3");
         }
-        if(transf) {
-            vari = document.getElementById(vari).value;
-        } else {
-            alert('Asegurese de ingresar la hora en el siguiente formato: hh:mm:ss');
-            vari = null;
-        }
+    }else{
+        transf = false;
+        alert("3");
     }
-    if(modo == "def") {
+    if(transf) {
+        vari = document.getElementById(vari).value;
+    } else {
+        alert('Asegurese de ingresar la hora en el siguiente formato: hh:mm:ss');
         vari = null;
     }
-    return (vari);
+}
+if(modo == "def") {
+    vari = null;
+}
+return (vari);
 }
 
 function uniraBD(tornID) {
-    $.ajax({
-        url: "/cyberhydra/Torneo/PHP/uniraTorn.php",
-        type: "post",
-        data: {tornID : tornID},
-        success: function (exec) {
-            alert(exec);
-            $.ajax({
-                url: "/cyberhydra/Modal/unirTNotif.php",
-                type: "post",
-                data: {exec : exec},
-                success: function (data) {
-                    document.getElementById("modal").innerHTML = data;
-                }
-            })
-        }
-    })
+$.ajax({
+    url: "/cyberhydra/Torneo/PHP/uniraTorn.php",
+    type: "post",
+    data: {tornID : tornID},
+    success: function (exec) {
+        $.ajax({
+            url: "/cyberhydra/Modal/unirTNotif.php",
+            type: "post",
+            data: {exec : exec},
+            success: function (data) {
+                document.getElementById("modal").innerHTML = data;
+            }
+        })
+    }
+})
 }
 
 function mostEst(tornID) {
-    $.ajax({
-        url: "/cyberhydra/Usuarios/EstadisticasTorneo.php",
-        type: "post",
-        data: {tornID : tornID},
-        success: location.href = "/cyberhydra/Usuarios/EstadisticasTorneo.php",
-    })
+$.ajax({
+    url: "/cyberhydra/Usuarios/EstadisticasTorneo.php",
+    type: "post",
+    data: {tornID : tornID},
+    success: location.href = "/cyberhydra/Usuarios/EstadisticasTorneo.php",
+})
 }
 
 function cerrar(){
-    document.getElementById("modal").innerHTML = "";
-  }
+document.getElementById("modal").innerHTML = "";
 }
