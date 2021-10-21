@@ -14,10 +14,6 @@
 
   $trofeos = $server->traigoTrofeos($usuario);
   $numero_trofeos = count($trofeos);
-
-  echo $numero_trofeos;
-  echo json_encode($trofeos);
-  echo $usuario;
   
   $mislogros = $server->TraigoMisLogros($usuario);
   $numero_mislogros = count($mislogros);
