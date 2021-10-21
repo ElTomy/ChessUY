@@ -137,7 +137,7 @@
                         <h1>Trofeos</h1>
                         <div class="trofeos-list">';
 
-                        for($x = 0; $x <= $numero_trofeos; $x++){
+                        for($x = 0; $x < $numero_trofeos; $x++){
                           echo '<div class="trofeo">
                                   <div class="trofeo-img">
                                     <img src="'.$trofeos[$x]["Tipo"].'" alt="">

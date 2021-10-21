@@ -1076,7 +1076,7 @@ class servidor
         $info = array();
         $sql = "CALL traigoTrofeos(?)";
         $stmts = $conn->prepare($sql);
-        $stmts->bind_param("i", $Usu);
+        $stmts->bind_param("s", $Usu);
 
         if ($stmts->execute()) {
             $stmts->store_result();
