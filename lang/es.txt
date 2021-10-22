@@ -1,5 +1,8 @@
 chessuy-index=>ChessUY | Inicio
 chessuy-browse=>ChessUY | Buscar
+chessuy-watchgames=>ChessUY | Ver Partidos
+chessuy-globalstats=>ChessUY | Estadisticas Globales
+chessuy-tourn=>ChessUY | Torneos
 
 campeonato=>Campeonato de Ajedrez Online
 camp-desc=><b>ChessUY Championship</b> es la primera página Uruguaya para gestionar campeonatos de ajedrez.
@@ -14,6 +17,9 @@ foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. Todos los derechos reserv
 foot-design=>Diseñada por:
 search-play=><i class="fas fa-search"></i> Buscar Jugadores
 logout=> Cerrar Sesión
+games=>Partidos
+watch=>Ver
+globalstats=>Estadisticas Globales
 
 next=><span></span><span></span><span></span><span></span><i class="fas fa-arrow-alt-circle-right"></i>Siguiente
 name=>Nombre
@@ -31,7 +37,7 @@ welcome=>¡Bienvenido
 welcome-main=>Bienvenido a la página principal de <b>ChessUY Championship</b>.
 play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Jugar
 user-tools=><i class="fas fa-user"></i> Herramientas del Usuario
-watch=>Ver Partidos
+watch-games=>Ver Partidos
 training=>Entrenamiento
 admin-tools=><i class="fas fa-hammer"></i> Herramientas de Administrador
 admin-tools-desc=>Herramientas que permiten administrar la página. El uso de estas cae en la responsabilidad de la persona que las utilice.
@@ -109,3 +115,33 @@ delete=>Eliminar
 
 our-blog=>Nuestro Blog:
 author=>Autor:
+
+create-tourn=>Crear Torneo
+type-tourn=>Tipo de Torneo:
+select-type-tourn=>Selecciona un tipo de torneo
+tourn-normal=>Normal
+tourn-advanced=>Avanzado
+amount-of-players=>Cantidad de Jugadores
+what-to-do-max-players=>Que hacer cuando se llega al maximo de jugadores:
+reserve-list=>Lista de reservas
+finish-insc=>Terminar inscripciones
+amount-reserves=>Cantidad de reservas
+end-date-reserves=>Fecha de fin de reservas
+tourn-name=>Nombre del Torneo
+insc-start=>Comienzo de las inscripciones
+insc-end=>Fin de las inscripciones
+tourn-start=>Comienzo del torneo
+time-disqualify=>Tiempo para descalificar
+time-per-player=>Tiempo total por jugador
+amount-games-day=>Cantidad de partidas por día
+limit-players=>Limitar Jugadores
+maximumELO=>ELO maximo
+minimumELO=>ELO minimo
+locale=>Localidad
+select-locale=>Selecciona una localidad
+maximum-age=>Edad maxima
+minimum-age=>Edad minima
+prize=>Premio
+create=>Crear
+time-change=>¿A que hora debe cambiar?
+disabled=>Deshabilitado

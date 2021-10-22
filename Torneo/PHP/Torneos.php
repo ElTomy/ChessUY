@@ -25,7 +25,7 @@
     />
     <link rel="stylesheet" href="/ChessUY/styles/styles.css" />
 
-    <title>ChessUY | Torneos</title>
+    <title data-lang="chessuy-tourn">ChessUY | Torneos</title>
   </head>
   <body>
     
@@ -45,18 +45,18 @@
     <section class="torneos-wrapper">
       <div class="torneos">
         <div class="torneos-titulo">
-          <h1><i class="fas fa-trophy"></i> Crear Torneo</h1>
+          <h1><i class="fas fa-trophy"></i> <span data-lang="create-tourn">Crear Torneo</span></h1>
         </div>
         <div class="torneos-content">
 
           <div class="torneo-menu">
             <div class="tipo-torneo">
-              <h2>Tipo de Torneo:</h2>
+              <h2 data-lang="type-tourn">Tipo de Torneo:</h2>
               <form>
                 <select name="tipTorn" id="tipTorn" onchange='confTipo(this);'>
-                  <option disabled selected>Selecciona un tipo de torneo</option>
-                  <option value="norm">Normal</option>
-                  <option value="avan">Avanzado</option>
+                  <option disabled selected data-lang="select-type-tourn">Selecciona un tipo de torneo</option>
+                  <option value="norm" data-lang="tourn-normal">Normal</option>
+                  <option value="avan" data-lang="tourn-advanced">Avanzado</option>
                 </select>
               </form>
             </div>

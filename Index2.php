@@ -94,7 +94,7 @@ $index .='
                 <p data-lang="news-index-desc-log">Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
                 <div class="admin-buttons">
                   <a href="/ChessUY/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
-                  <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> <span data-lang="watch">Ver Partidos</span></a>
+                  <a href="/ChessUY/Torneo/VerPartidos.html"><i class="fas fa-eye"></i> <span data-lang="watch-games">Ver Partidos</span></a>
                   <a href="/ChessUY/Entrenamiento/Entrenamiento.html"><i class="fas fa-chess-board"></i> <span data-lang="training">Entrenamiento</span></a>
                 </div>
               </section>';
