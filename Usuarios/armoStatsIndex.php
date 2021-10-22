@@ -7,7 +7,7 @@ $usuarios_info = $server->Top();
 $estadisticas = "";
 
 for($x = 1; $x <= 5; $x++){
-    $estadisticas .= '  <a class="player" href="/cyberhydra/Profile/'.$usuarios_info[($x - 1)]['usuario'].'">
+    $estadisticas .= '  <a class="player" href="/cyberhydra/Profile/Profile.php?Usuario='.$usuarios_info[($x - 1)]['usuario'].'">
                             <div class="info-left">
 
                                 <p class="posicion">#'.$x.'</p>

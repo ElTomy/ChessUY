@@ -241,30 +241,24 @@ if(num <= 3) {
 var transf = true;
 
 function envaPHP() {
-    transf = true;
-    opt = document.getElementById("tipTorn").value;
-    reserv.sort();
-    if(opt == 'norm' || opt == 'avan') {
-        var nomTorn = setVar('nomDesc', 'oblig');
-        var tempDesc = setVar('tempDesc', 'temp');
-        var tempJug = setVar('tempJug', 'temp');
-        var partDia = setVar('partDia', 'oblig');
-        var prem = setVar('prem', 'oblig');
-        var hrCom = setVar('hrCom', 'oblig');
-        if(reserv.length < 3) {
-            alert("Asegurese de que las fechas estan seleccionadas");
-            transf = false;
-        } else {
-            var comInsc = reserv[0].slice(4);
-            var finInsc = reserv[1].slice(4);
-            var comTorn = reserv[2].slice(4);
-        }
+transf = true;
+opt = document.getElementById("tipTorn").value;
+reserv.sort();
+if(opt == 'norm' || opt == 'avan') {
+    var nomTorn = setVar('nomDesc', 'oblig');
+    var tempDesc = setVar('tempDesc', 'temp');
+    var tempJug = setVar('tempJug', 'temp');
+    var partDia = setVar('partDia', 'oblig');
+    var prem = setVar('prem', 'oblig');
+    var hrCom = setVar('hrCom', 'oblig');
+    if(reserv.length < 3) {
+        alert("Asegurese de que las fechas estan seleccionadas");
+        transf = false;
     } else {
-        var comInsc = 0;
-        var finInsc = 0;
-        var comTorn = 0;
+        var comInsc = reserv[0].slice(4);
+        var finInsc = reserv[1].slice(4);
+        var comTorn = reserv[2].slice(4);
     }
-
     var eloMax = setVar('eloMax', 'def');
     var eloMin = setVar('eloMin', 'def');
     var edaMax = setVar('edaMax', 'def');
@@ -305,57 +299,6 @@ if(opt == 'avan') {
         var cantRes = setVar('cantRes', 'def');
         var fechRes = setVar('fechRes', 'def');
     }
-    
-    if(transf) {
-        $.ajax({
-            url: "/cyberhydra/Torneo/PHP/tornaBD.php",
-            type: "post",
-            data: { tiempo : tempJug, 
-                    ELO_Min : eloMin,
-                    ELO_Max : eloMax,
-                    Fecha_inicio : comInsc,
-                    Fecha_fin : finInsc,
-                    Numero_Participantes : cantJug,
-                    TiempoDescalificar : tempDesc,
-                    PartidasxDia : partDia,
-                    CantidaddeReservas : cantRes,
-                    Localidad : locTorn,
-                    EdadMinima : edaMin,
-                    EdadMaxima : edaMax,
-                    InicioTorneo : comTorn,
-                    hrCom : hrCom,
-                    nomTorn : nomTorn
-                  },
-            success: function (exec) {
-                $.ajax({
-                    url: "/cyberhydra/Modal/modalCrTorn.php",
-                    type: "POST",
-                    data: {exec:exec},
-                    success: function (data) {
-                        document.getElementById("modal").innerHTML = data;
-                    }
-                  });
-            }
-        })
-    }
-    
-    console.log("Tiempo para descalificar: "+tempDesc);
-    console.log("Tiempo total por jugador: "+tempJug);
-    console.log("Cantidad de partidas por dia: "+partDia);
-    console.log("ELO Maximo: "+eloMax);
-    console.log("ELO Minimo: "+eloMin);
-    console.log("Edad Maxima: "+edaMax);
-    console.log("Edad Minima: "+edaMin);
-    console.log("Cantidad de Jugadores: "+cantJug);
-    console.log("Cantidad de reservas: "+cantRes);
-    console.log("Premio: "+prem);
-    console.log("Localidad: "+locTorn);
-    console.log("Comienzo de inscripciones: "+comInsc);
-    console.log("Fecha de fin de reservas (deprecated): "+fechRes);
-    console.log("Fin de inscripciones: "+finInsc);
-    console.log("Comienzo del torneo: "+comTorn+" "+hrCom);
-    console.log("--------------------------------------------");
-    console.log("Es transferible?: "+transf); 
 }
 
 if(transf) {
@@ -376,7 +319,6 @@ if(transf) {
                 EdadMaxima : edaMax,
                 InicioTorneo : comTorn,
                 hrCom : hrCom,
-                preset : preset,
                 nomTorn : nomTorn
               },
         success: function (exec) {
