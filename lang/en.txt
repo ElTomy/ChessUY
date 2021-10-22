@@ -1,10 +1,14 @@
 chessuy-index=>ChessUY | Index
 chessuy-browse=>ChessUY | Browse
+chessuy-watchgames=>ChessUY | Watch Games
+chessuy-globalstats=>ChessUY | Global Stats
+chessuy-tourn=>ChessUY | Tournaments
 
 campeonato=>Online Chess Championship
 camp-desc=><b>ChessUY Championship</b> is the first Uruguayan website for chess championship management.
 news-index=>News Blog
-news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news.
+news-index-desc=>Visit our blog and stay up to speed with the latest ChessUY news or watch games.
+news-index-desc-log=>Visit our blog, watch games, or try out our new training section.
 recent-tourn=>Recent Tournament
 best-players=>Best Players
 see-all=><i class="fas fa-user-friends"></i> See All
@@ -13,10 +17,28 @@ foot-cpy=>Copyright © 2021 ChessUY Championship, Inc. All rights reserved.
 foot-design=>Designed by:
 search-play=><i class="fas fa-search"></i> Browse Players
 logout=> Logout
+games=>Games
+watch=>Watch
+globalstats=>Global Stats
+
+next=><span></span><span></span><span></span><span></span><i class="fas fa-arrow-alt-circle-right"></i>Next
+name=>Name
+surname=>Surname
+institute=>Institute
+study-year=>Year Studied
+birthday=>Date of birth
+id-cedula=>Id Card Number
+cellphone=>Phone Number
+username=>Username
+password=>Password
+forgot-pass=>I forgot my password.
 
 welcome=>Welcome 
 welcome-main=>Welcome to <b>ChessUY Championship's</b> main page.
 play=><span></span><span></span><span></span><span></span><i class="fas fa-chess-knight"></i>Play
+user-tools=><i class="fas fa-user"></i> User Tools
+watch-games=>Watch Games
+training=>Training
 admin-tools=><i class="fas fa-hammer"></i> Admin tools
 admin-tools-desc=>Tools that allow for the website's adminstration. Whomever uses them is responsible for their consequences.
 requests=><i class="fas fa-id-card-alt"></i> Requests
@@ -90,3 +112,53 @@ journalist=>Journalist
 
 profile=>Profile
 delete=>Delete
+
+our-blog=>Our Blog:
+author=>Author:
+
+create-tourn=>Create Tournament
+type-tourn=>Type of Tournament:
+select-type-tourn=>Select a type of tournament
+tourn-normal=>Normal
+tourn-advanced=>Advanced
+amount-of-players=>Amount of players
+what-to-do-max-players=>What to do when max amount of players is reached:
+reserve-list=>Reserve list
+finish-insc=>Finish inscriptions
+amount-reserves=>Amount of reserves
+end-date-reserves=>End date of reserves
+tourn-name=>Tournament Name
+insc-start=>Inscriptions start
+insc-end=>Inscriptions end
+tourn-start=>Tournament start
+time-disqualify=>Time to disqualify
+time-per-player=>Total time per player
+amount-games-day=>Amount of games per day
+limit-players=>Limit Players
+maximumELO=>Maximum ELO
+minimumELO=>Minimum ELO
+locale=>Locale
+select-locale=>Select a locale
+maximum-age=>Maximum age
+minimum-age=>Minimum age
+prize=>Prize
+create=>Create
+time-change=>At what time should it change
+disabled=>Disabled
+
+my-profile=>My Profile
+edit-profile=>Edit Profile
+trophies=>Trophies
+stats=>Stats
+profile-elo=>ELO:
+profile-victories=>Victories:
+profile-draw=>Draws:
+profile-defeats=>Defeats:
+profile-promote=>Promotions:
+profile-eaten=>Captures:
+profile-time-victories=>Victories in least amount of time:
+profile-move-victories=>Victories in least amount of moves:
+sorry=>We are sorry...
+no-stats-to-show=>There are no stats to show.
+achievements=>Achievements
+percentage-achievement=>% of users have this achievement.

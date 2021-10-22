@@ -38,16 +38,6 @@ CREATE TABLE `estadisticas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `estadisticas`
---
-
-LOCK TABLES `estadisticas` WRITE;
-/*!40000 ALTER TABLE `estadisticas` DISABLE KEYS */;
-INSERT INTO `estadisticas` VALUES ('ByJuanii_',2479,9,1,13,1,4,41,1),('BOT',2500,1,1,1,1,1,1,1),('EL7Seven',58,1,2,2,0,0,21,2),('El_Tomy',20,13,4,20,1,27,2,1),('Maty2914',2975,41,11,30,145,25,1,1),('Administrador',2500,0,0,0,0,0,0,0),(NULL,2500,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('ProfSergio',600,0,0,0,0,0,0,0),('Grilloldo',1500,0,0,0,0,0,0,0),('Agustin',1800,0,0,0,0,0,0,0),('OmeroRaperoNoFake',2500,0,0,0,0,0,0,0);
-/*!40000 ALTER TABLE `estadisticas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `foto`
 --
 
@@ -60,15 +50,6 @@ CREATE TABLE `foto` (
   PRIMARY KEY (`ID_Foto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `foto`
---
-
-LOCK TABLES `foto` WRITE;
-/*!40000 ALTER TABLE `foto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `foto` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `infopartida`
@@ -91,15 +72,6 @@ CREATE TABLE `infopartida` (
   CONSTRAINT `Torneo` FOREIGN KEY (`ID_Torneo`) REFERENCES `torneo` (`ID_Torneo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `infopartida`
---
-
-LOCK TABLES `infopartida` WRITE;
-/*!40000 ALTER TABLE `infopartida` DISABLE KEYS */;
-/*!40000 ALTER TABLE `infopartida` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `juego`
@@ -129,17 +101,8 @@ CREATE TABLE `juego` (
   KEY `partida_ibfk_3_idx` (`Usuario2`),
   CONSTRAINT `juego_ibfk_2` FOREIGN KEY (`Usuario1`) REFERENCES `usuario` (`Usuario`),
   CONSTRAINT `juego_ibfk_3` FOREIGN KEY (`Usuario2`) REFERENCES `usuario` (`Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `juego`
---
-
-LOCK TABLES `juego` WRITE;
-/*!40000 ALTER TABLE `juego` DISABLE KEYS */;
-/*!40000 ALTER TABLE `juego` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `jugadas`
@@ -164,16 +127,6 @@ CREATE TABLE `jugadas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `jugadas`
---
-
-LOCK TABLES `jugadas` WRITE;
-/*!40000 ALTER TABLE `jugadas` DISABLE KEYS */;
-INSERT INTO `jugadas` VALUES (4,'cn',1,6,3,3,0,0),(5,'an',1,7,3,8,0,0),(6,'p',2,7,3,8,7,2),(7,'dn',3,7,3,8,0,0);
-/*!40000 ALTER TABLE `jugadas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `logro`
 --
 
@@ -189,16 +142,6 @@ CREATE TABLE `logro` (
   PRIMARY KEY (`ID_Logro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `logro`
---
-
-LOCK TABLES `logro` WRITE;
-/*!40000 ALTER TABLE `logro` DISABLE KEYS */;
-INSERT INTO `logro` VALUES (1,'Haz comenzado tu camino hacia la grandeza consiguiendo tu primera victoria ','/cyberhydra/media/images/Logro_1.png',25,'Primeros Pasos'),(2,'Te estás volviendo un experto en el area despues de haber ganado 10 partidas pero aún falta camino por recorrer','/cyberhydra/media/images/Logro_2.png',12,'Todo un Aficionado'),(3,'Eres un completo maestro en este juego ya que has alcanzado la gran cifra de 100 victorias','/cyberhydra/media/images/Logro_3.png',12,'El Maestro'),(4,'Después de un partido muy intenso lo que te ha llevado a la derrota ha sido el tiempo ','/cyberhydra/media/images/Logro_4.png',18,'Reloj Agotado'),(5,'Haz recorrido un camino muy largo con 10 de tus peones hasta que se han vuelto grandes guerreros','/cyberhydra/media/images/Logro_5.png',6,'Ascensión'),(6,'Tu y tus guerreros han matado a 100 enemigos','/cyberhydra/media/images/Logro_6.png',0,'Asesino'),(7,'Has aniquilado a un batallón de 1000 soldados','/cyberhydra/media/images/Logro_7.png',0,'Genocida'),(8,'Has ganado tan rápido que no pasaron ni 15 segundos','/cyberhydra/media/images/Logro_8.png',25,'Flash'),(9,'Tus 2 movimientos tan precisos han derribado al rival con gran velocidad','/cyberhydra/media/images/Logro_9.png',12,'Manos Rápidas'),(10,'Te has coronado como el mayor jugador dentro de un torneo','/cyberhydra/media/images/Logro_10.png',0,'Campeón');
-/*!40000 ALTER TABLE `logro` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `noticia`
@@ -219,16 +162,6 @@ CREATE TABLE `noticia` (
   CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `noticia`
---
-
-LOCK TABLES `noticia` WRITE;
-/*!40000 ALTER TABLE `noticia` DISABLE KEYS */;
-INSERT INTO `noticia` VALUES ('Periodista',15,'Journo Ipsum','A lorem ipsum generator for future-of-news nerds','<p>Tumblr iPhone app syndicated Nick Denton production of innocence social media optimization Kindle Single API Bill Keller Fuego curation, if the news is that important, it&#39;ll find me Dan Fleckner plagiarism Like button Google News media diet Gutenberg parenthesis The Daily hyperlocal Google+, backpack journalist bringing a tote bag to a knife fight dead trees Walter Lippmann newsroom cafe Innovator&#39;s Dilemma Article Skimmer production of innocence awesome Dan Fleckner, Frontline tablets Romenesko awesome TweetDeck Twitter topples dictators Jeff Jarvis prostate AOL going forward.</p><p> </p><p>ProPublica vast wasteland Dayton for under $900 a day layoffs paywall twitterati newsonomics, the notion of the public Dayton for under $900 a day stream future Project Thunderdome, news.me church of the savvy Voice of San Diego Frontline Fuego. tools data journalism Free Darko #twittermakesyoustupid Quora Knight Foundation Google News TBD monetization I saw it on Mediagazer Kindle Single a giant stack of newspapers that you&#39;ll never read, Knight News Challenge Josh Marshall plagiarism +1 commons-based peer production Walter Cronkite died for your sins crowdsourcing reporting anonymity Kindle Single put the paper to bed curmudgeon, Gardening & War section tweets DocumentCloud twitterati Gutenberg curation writing filters linking Arianna.</p>','/cyberhydra/Usuarios/Periodista/imagenes_noticias/Exterior_1280x683_34.jpg'),('Maty2914',19,'Tablero','Nuestro Tablero','<p>Este es nuestro tablero</p>','/ChessUY/Usuarios/Periodista/imagenes_noticias/Tablero.PNG'),('Maty2914',20,'Trofeos','trofeos','<p>Participa de nuestros torneos para poder ganar trofeos.</p>','/ChessUY/Usuarios/Periodista/imagenes_noticias/Trofeo.png');
-/*!40000 ALTER TABLE `noticia` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `participante`
@@ -253,15 +186,6 @@ CREATE TABLE `participante` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `participante`
---
-
-LOCK TABLES `participante` WRITE;
-/*!40000 ALTER TABLE `participante` DISABLE KEYS */;
-/*!40000 ALTER TABLE `participante` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `podcast`
 --
 
@@ -279,15 +203,6 @@ CREATE TABLE `podcast` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `podcast`
---
-
-LOCK TABLES `podcast` WRITE;
-/*!40000 ALTER TABLE `podcast` DISABLE KEYS */;
-/*!40000 ALTER TABLE `podcast` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `problema`
 --
 
@@ -303,16 +218,6 @@ CREATE TABLE `problema` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `problema`
---
-
-LOCK TABLES `problema` WRITE;
-/*!40000 ALTER TABLE `problema` DISABLE KEYS */;
-INSERT INTO `problema` VALUES (6,1,'[null,[null,{\"Piezas\":\"t\",\"color\":\"b\",\"Ejex\":1,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":1,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":1,\"Ejey\":7},{\"Piezas\":\"tn\",\"color\":\"n\",\"Ejex\":1,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":2,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":3},{\"Piezas\":\"an\",\"color\":\"n\",\"Ejex\":2,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":2,\"Ejey\":7},{\"Piezas\":\"cn\",\"color\":\"n\",\"Ejex\":2,\"Ejey\":8}],\n[null,{\"Piezas\":\"a\",\"color\":\"b\",\"Ejex\":3,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":3,\"Ejey\":2},{\"Piezas\":\"c\",\"color\":\"b\",\"Ejex\":3,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":3,\"Ejey\":7},{\"Piezas\":\"an\",\"color\":\"n\",\"Ejex\":3,\"Ejey\":8}],\n[null,{\"Piezas\":\"d\",\"color\":\"b\",\"Ejex\":4,\"Ejey\":1},{\"Piezas\":null,\"color\":null,\"Ejex\":4,\"Ejey\":2},{\"Piezas\":\"c\",\"color\":\"b\",\"Ejex\":4,\"Ejey\":3},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":4,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":4,\"Ejey\":5},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":4,\"Ejey\":6},{\"Piezas\":null,\"color\":null,\"Ejex\":4,\"Ejey\":7},{\"Piezas\":\"dn\",\"color\":\"n\",\"Ejex\":4,\"Ejey\":8}],\n[null,{\"Piezas\":\"r\",\"color\":\"b\",\"Ejex\":5,\"Ejey\":1},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":3},{\"Piezas\":\"cn\",\"color\":\"n\",\"Ejex\":5,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":6},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":7},{\"Piezas\":\"tn\",\"color\":\"n\",\"Ejex\":5,\"Ejey\":8}],\n[null,{\"Piezas\":\"a\",\"color\":\"b\",\"Ejex\":6,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":6,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":6,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":7,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":7,\"Ejey\":7},{\"Piezas\":\"rn\",\"color\":\"n\",\"Ejex\":7,\"Ejey\":8}],\n[null,{\"Piezas\":\"t\",\"color\":\"b\",\"Ejex\":8,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":8,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":8,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":8}]]'),(7,3,'[null,[null,{\"Piezas\":\"t\",\"color\":\"b\",\"Ejex\":1,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":1,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":1,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":1,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":1},{\"Piezas\":\"a\",\"color\":\"b\",\"Ejex\":2,\"Ejey\":2},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":2,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":4},{\"Piezas\":\"c\",\"color\":\"b\",\"Ejex\":2,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":2,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":2,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":1},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":3},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":3,\"Ejey\":4},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":3,\"Ejey\":5},{\"Piezas\":\"cn\",\"color\":\"n\",\"Ejex\":3,\"Ejey\":6},{\"Piezas\":null,\"color\":null,\"Ejex\":3,\"Ejey\":7},{\"Piezas\":\"rn\",\"color\":\"n\",\"Ejex\":3,\"Ejey\":8}],\n[null,{\"Piezas\":\"d\",\"color\":\"b\",\"Ejex\":4,\"Ejey\":1},{\"Piezas\":null,\"color\":\"n\",\"color\":null,\"Ejex\":4,\"Ejey\":2},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":4,\"Ejey\":3},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":4,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":4,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":4,\"Ejey\":6},{\"Piezas\":\"dn\",\"color\":\"n\",\"Ejex\":4,\"Ejey\":7},{\"Piezas\":\"tn\",\"color\":\"n\",\"Ejex\":4,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":1},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":3},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":5,\"Ejey\":4},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":5,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":6},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":5,\"Ejey\":8}],\n[null,{\"Piezas\":\"t\",\"color\":\"b\",\"Ejex\":6,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":6,\"Ejey\":2},{\"Piezas\":\"c\",\"color\":\"b\",\"Ejex\":6,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":5},{\"Piezas\":\"cn\",\"color\":\"n\",\"Ejex\":6,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":6,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":6,\"Ejey\":8}],\n[null,{\"Piezas\":\"r\",\"color\":\"b\",\"Ejex\":7,\"Ejey\":1},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":7,\"Ejey\":2},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":3},{\"Piezas\":\"an\",\"color\":\"n\",\"Ejex\":7,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":6},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":7},{\"Piezas\":null,\"color\":null,\"Ejex\":7,\"Ejey\":8}],\n[null,{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":1},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":2},{\"Piezas\":\"p\",\"color\":\"b\",\"Ejex\":8,\"Ejey\":3},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":4},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":5},{\"Piezas\":null,\"color\":null,\"Ejex\":8,\"Ejey\":6},{\"Piezas\":\"pn\",\"color\":\"n\",\"Ejex\":8,\"Ejey\":7},{\"Piezas\":\"tn\",\"color\":\"n\",\"Ejex\":8,\"Ejey\":8}]]');
-/*!40000 ALTER TABLE `problema` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `problemasresueltos`
 --
 
@@ -326,16 +231,6 @@ CREATE TABLE `problemasresueltos` (
   CONSTRAINT `Usuarios` FOREIGN KEY (`Usuarios`) REFERENCES `usuario` (`Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `problemasresueltos`
---
-
-LOCK TABLES `problemasresueltos` WRITE;
-/*!40000 ALTER TABLE `problemasresueltos` DISABLE KEYS */;
-INSERT INTO `problemasresueltos` VALUES (6,'El_Tomy'),(7,'El_Tomy');
-/*!40000 ALTER TABLE `problemasresueltos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `solicitudes`
@@ -358,15 +253,6 @@ CREATE TABLE `solicitudes` (
   `Mail` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `solicitudes`
---
-
-LOCK TABLES `solicitudes` WRITE;
-/*!40000 ALTER TABLE `solicitudes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `solicitudes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `torneo`
@@ -396,18 +282,8 @@ CREATE TABLE `torneo` (
   `Preset` int DEFAULT NULL,
   `Nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID_Torneo`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `torneo`
---
-
-LOCK TABLES `torneo` WRITE;
-/*!40000 ALTER TABLE `torneo` DISABLE KEYS */;
-INSERT INTO `torneo` VALUES (17,0,0,'2021-10-10','2021-10-12',0,'El_Tomy','EL7Seven','Maty2914','00:00:01',1,0,'',0,0,1,'2021-10-13 16:55:00',0,'Torneo Prueba');
-/*!40000 ALTER TABLE `torneo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `trofeo`
@@ -418,20 +294,11 @@ DROP TABLE IF EXISTS `trofeo`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `trofeo` (
   `ID_Trofeo` int NOT NULL,
-  `Descripcion` varchar(200) DEFAULT NULL,
-  `Imagen` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`ID_Trofeo`)
+  `Usuario` varchar(45) DEFAULT NULL,
+  `IMG` int DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `trofeo`
---
-
-LOCK TABLES `trofeo` WRITE;
-/*!40000 ALTER TABLE `trofeo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trofeo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -460,16 +327,6 @@ CREATE TABLE `usuario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (3,'a',12345678,3,'fsadf','sadfasdf','asdasd','123456789','82e19fa12aab7cfc718a002fc82c0f074bf070e7','2021-10-02','mr.blanco2016@gmail.com','fas fa-user','#ffffff','#0076be'),(0,'Administrador',12345678,6,'Administrador','IEP','Administrador','123456789','85550d8e5fc50eb75c4718efe38438b49452bbcf','2003-05-10','Administrador@Administrador.com','fas fa-hammer','#1d9ac3','#204e6a'),(1,'Agustin',46083270,4,'Breccia','Iep','Agustin','099111111','1fb10b98df5e0c7df18c82924fdad0ff97514bab','1988-11-08','sven@gmail..com','fas fa-user','#ffffff','#0076be'),(1,'BOT',12345678,6,'BOT','BOT','ALFI ᴮᴼᵀ','000000000','60497067f3bddb2c37e5b94a3a711487aa435cfc','2021-07-01','BOT@gmail.com','fas fa-robot','#000000','#ffffff'),(0,'ByJuanii_',54879239,6,'Morena','IEP','Juan','098234717','85e8d9a16e8660cc883329709e2e179b03bd9d32','2003-05-10','thewolfmodzyt@gmail.com','fa fa-fighter-jet','#ffaa00','#2e2e2e'),(0,'El_Tomy',12345678,6,'pepe','pepe','pepee','123456789','59d8318230e7b0883406bae77fd4dd16a4fd492a','1847-02-11','mr.blanco2016@gmail.com','fas fa-bug','#ff00dd','#000000'),(0,'EL7Seven',12345678,6,'Quiring','iep','manco','123456789','9c06df9d4ae68fe1ecfe27803ff7931c865d0a90','2009-11-17','svenpqiep@gmail.com','far fa-eye','#ffffff','#000000'),(1,'Grilloldo',41533985,6,'Grillo','IEP','Daniel ','094132077','1dda43a4016d0f589243bf5859efa7a099f1b5aa','1984-03-22','d.grillo2012@gmail.com','fas fa-user','#ffffff','#0076be'),(0,'Maty2914',54732839,2,'Rasnik','IEP','Matias','091614192','900528e8f9efd829e758a24f429331c357163193','2003-08-14','mlolachir@gmail.com','fas fa-biohazard','#bb00ff','#222222'),(1,'OmeroRapero',54148473,6,'Omero','IEP','OmeroElRapero','091935392','1298030a91f59e523f9fb527fd6727770c3825ab','2021-01-08','nicomati18@gmail.com','fas fa-user','#ffffff','#0076be'),(1,'OmeroRaperoNoFake',54149764,6,'Rigoberto','IEP','Peperulo','091976382','1298030a91f59e523f9fb527fd6727770c3825ab','2021-10-12','nicomati18@gmail.com','fas fa-user','#ffffff','#0076be'),(3,'pepeperiodista',12345678,6,'pepeperiodista','pepeperiodista','pepeperiodista','123456789','fd99b705f67f3cf6ef4b4b36f90e461bd9af6752','2021-09-02','mr.blanco2016@gmail.com','fas fa-user','#ffffff','#0076be'),(3,'Periodista',12345678,2,'Periodista','IEP','Periodista','1234568789','9c06df9d4ae68fe1ecfe27803ff7931c865d0a90','2021-08-06','periodista@gmail.com','fas fa-microphone','#f8b703','#222222'),(1,'ProfSergio',55555555,4,'Acosta','Iep','Sergio','094144390','0027b4efb986a6cab9ce6e39f2567d8c276b6f2d','2006-09-12','sasehara0@gmail.com','fas fa-user','#ffffff','#0076be'),(1,'YeEpIkAiYeI',54915798,6,'Vallejo','Santa Elena Lagomar','Germán','098421006','ca64064e4d5255a3b936fc99fc8cc6467a841af9','2003-07-23','gervallejo15@gmail.com','fab fa-accessible-icon','#2bff00','#4a5d68');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `usuariologro`
 --
 
@@ -485,65 +342,6 @@ CREATE TABLE `usuariologro` (
   CONSTRAINT `usuariologro_ibfk_2` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuariologro`
---
-
-LOCK TABLES `usuariologro` WRITE;
-/*!40000 ALTER TABLE `usuariologro` DISABLE KEYS */;
-INSERT INTO `usuariologro` VALUES ('El_Tomy',1),('El_Tomy',2),('El_Tomy',8),('El_Tomy',9),('El_Tomy',3),('ByJuanii_',3),('El_Tomy',4),('Maty2914',1),('Maty2914',8),('Maty2914',9),('Maty2914',2),('Maty2914',4),('Maty2914',5),('ByJuanii_',1),('ByJuanii_',4),('ByJuanii_',8),('EL7Seven',1),('EL7Seven',8);
-/*!40000 ALTER TABLE `usuariologro` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuarios_online`
---
-
-DROP TABLE IF EXISTS `usuarios_online`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios_online` (
-  `Usuario` varchar(45) NOT NULL,
-  PRIMARY KEY (`Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuarios_online`
---
-
-LOCK TABLES `usuarios_online` WRITE;
-/*!40000 ALTER TABLE `usuarios_online` DISABLE KEYS */;
-INSERT INTO `usuarios_online` VALUES ('Agustin'),('ByJuanii_'),('El_Tomy'),('EL7Seven'),('Maty2914');
-/*!40000 ALTER TABLE `usuarios_online` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuariotrofeo`
---
-
-DROP TABLE IF EXISTS `usuariotrofeo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuariotrofeo` (
-  `Usuario` varchar(45) DEFAULT NULL,
-  `ID_Trofeo` int DEFAULT NULL,
-  KEY `ID_Trofeo` (`ID_Trofeo`),
-  KEY `Usuario` (`Usuario`),
-  CONSTRAINT `usuariotrofeo_ibfk_1` FOREIGN KEY (`ID_Trofeo`) REFERENCES `trofeo` (`ID_Trofeo`),
-  CONSTRAINT `usuariotrofeo_ibfk_2` FOREIGN KEY (`Usuario`) REFERENCES `usuario` (`Usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuariotrofeo`
---
-
-LOCK TABLES `usuariotrofeo` WRITE;
-/*!40000 ALTER TABLE `usuariotrofeo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuariotrofeo` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'chessuy'
@@ -970,8 +768,13 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`cyberhydra`@`%` PROCEDURE `FinalizarTorneo`(IN pri varchar(45),IN Se varchar(45),IN Ter varchar(45),IN idt int)
 BEGIN
+	declare nom varchar(45);
 	update torneo set Primero = pri,Segundo = Se,Tercero = Ter where ID_Torneo = idt;
     delete from participante where Id_Torneo = idt;
+    set @nom =(select Nombre from torneo where ID_Torneo = idt);
+    insert into trofeo (ID_Trofeo,Usuario,IMG,nombre) value (idt,pri,"/cyberhydra/media/images/Logro_1.png",@nom);
+    insert into trofeo (ID_Trofeo,Usuario,IMG,nombre) value (idt,Se,"/cyberhydra/media/images/Logro_1.png",@nom);
+    insert into trofeo (ID_Trofeo,Usuario,IMG,nombre) value (idt,Ter,"/cyberhydra/media/images/Logro_1.png",@nom);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1541,6 +1344,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `TraigoJaqueTorneo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`cyberhydra`@`%` PROCEDURE `TraigoJaqueTorneo`(IN usu varchar(60), IN jug INT, IN id INT)
+BEGIN
+if jug = '1' then
+	select Jaque1 from juego where Torneo = id and Estado = '1' and Usuario1 = usu;
+    ELSE
+	select Jaque2 from juego where Torneo = id and Estado = '1' and Usuario2 = usu;
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `TraigoLogro` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1667,7 +1493,26 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`cyberhydra`@`%` PROCEDURE `TraigoTablero`(IN id INT)
 BEGIN
-	select Tablero, Turno, Movimientos, Barra, Tiempo1, Tiempo2 from juego where Torneo = '0' and Estado = '1' and ID_partido = id;
+	select Tablero, Turno, Movimientos, Barra, Tiempo1, Tiempo2 from juego where ID_partido = id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `traigoTrofeos` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`cyberhydra`@`%` PROCEDURE `traigoTrofeos`(IN Usu varchar(45))
+BEGIN
+	select * from trofeo where Usuario = Usu;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1741,4 +1586,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-19 18:19:39
+-- Dump completed on 2021-10-21 17:08:16

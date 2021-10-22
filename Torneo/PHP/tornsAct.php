@@ -5,9 +5,11 @@ $server = new servidor();
 date_default_timezone_set("America/Montevideo");
 $torneos = $server->InfoTorneo();
 $fechaAct = date('Ymd');
+$haytorn = false;
 
 for($i=0;$i<count($torneos);$i++) {
     if(str_replace('-', '', $torneos[$i]['Fecha_inicio']) < $fechaAct && str_replace('-', '', $torneos[$i]['Fecha_fin']) > $fechaAct) {
+        $haytorn = true;
         $comTornP = explode(' ', str_replace('-', ' ', $torneos[$i]['InicioTorneo']));
         $fechTornP = $comTornP[0].$comTornP[1].$comTornP[2];
         $descUnid = 0;
@@ -64,7 +66,7 @@ for($i=0;$i<count($torneos);$i++) {
             </div>
         </div>
         ";
-    } else {
+    } elseif(!$haytorn) {
         echo "<p style='color: white'><span data-lang='sorry-tourn'>Disculpa, actalmente no hay torneos abiertos</span></p>";
     }
 }

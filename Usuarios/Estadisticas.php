@@ -31,7 +31,7 @@
     />
     <link rel="stylesheet" href="/cyberhydra/styles/styles.css" />
 
-    <title>ChessUY | Estadisticas Globales</title>
+    <title data-lang="chessuy-globalstats">ChessUY | Estadisticas Globales</title>
   </head>
   <body>
     
@@ -53,7 +53,7 @@
             <div class="estadisticas-logo">
                 <img src="/cyberhydra/media/svg/Logo/Logo(ForDarkVersion).svg" alt="">
             </div>
-            <h1><i class="fas fa-globe-americas"></i> Estadisticas Globales</h1>
+            <h1><i class="fas fa-globe-americas"></i> <span data-lang="globalstats">Estadisticas Globales</span></h1>
             <hr>
             <div class="estadisticas">
                     <!--<div class="search-bar-wrapper">

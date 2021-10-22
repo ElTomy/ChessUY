@@ -1195,9 +1195,30 @@ class servidor
             while ($stmts->fetch()) {
                 $info = $jaque;
             }
+        }
+        return $info;
+    }
+    //
+    //
+    /*------------------------------------------------------------------------------------------*/
+    //
+    //
+    function traigoTrofeos($Usu){
+        $conn = $this->conectar();
+        $info = array();
+        $sql = "CALL traigoTrofeos(?)";
+        $stmts = $conn->prepare($sql);
+        $stmts->bind_param("s", $Usu);
+
+        if ($stmts->execute()) {
+            $stmts->store_result();
+            $stmts->bind_result($ID_Trofeo,$Usuario,$Tipo,$nombre);
+            while ($stmts->fetch()) {
+                $data = array('ID_Trofeo' => $ID_Trofeo,'Usuario' => $Usuario,'Tipo' => $Tipo,'nombre' => $nombre);
+                $info[] = $data;
+            }
             $stmts->close();
         }
         return $info;
     }
-
 }

@@ -88,8 +88,8 @@ $index .='
     }
 
     $index .= '<section class="administrador-wrapper">
-                <h1><i class="fas fa-user"></i> Herramientas del Usuario</h1>
-                <p>Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
+                <h1 data-lang="user-tools"><i class="fas fa-user"></i> Herramientas del Usuario</h1>
+                <p data-lang="news-index-desc-log">Visitá nuestro blog, ve partidos, o prueba nuestra nueva sección de entrenamientos.</p>
                 <div class="admin-buttons">
                   <a href="/cyberhydra/Blog/Blog.html"><i class="far fa-newspaper"></i> Blog</a>
                   <a href="/cyberhydra/SalaEspectadores/VerPartidos.html"><i class="fas fa-eye"></i> Ver Partidos</a>

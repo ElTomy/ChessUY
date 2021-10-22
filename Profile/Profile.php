@@ -12,6 +12,9 @@
   $logros = $server->TraigoLogros();
   $numero_logros = count($logros);
 
+  $trofeos = $server->traigoTrofeos($usuario);
+  $numero_trofeos = count($trofeos);
+  
   $mislogros = $server->TraigoMisLogros($usuario);
   $numero_mislogros = count($mislogros);
 ?>
@@ -45,7 +48,7 @@
       <?php
             if(isset($_SESSION['usuario'])){
               if($usuario == $_SESSION['usuario']){
-                echo "Mi Perfil";
+                echo "<span data-lang='my-profile'>Mi Perfil</span>";
               }else{
                 echo $usuario;
               }
@@ -94,13 +97,13 @@
                   echo ' <div class="profile-avatar-body">';
                     echo "<p>" . $usuario_info['usuario'] . "</p>";
                     if($usuario_info['tipo'] == 0){
-                      $tipo = "<i class='fas fa-star'></i> Administrador";
+                      $tipo = "<i class='fas fa-star'></i> <span data-lang='admin'>Administrador</span>";
                     }else if($usuario_info['tipo'] == 1){
-                      $tipo = "<i class='fas fa-chess-knight'></i> Jugador";
+                      $tipo = "<i class='fas fa-chess-knight'></i> <span data-lang='player'>Jugador</span>";
                     }else if($usuario_info['tipo'] == 2){
-                      $tipo = "<i class='fas fa-ruler-horizontal'></i> Árbitro";
+                      $tipo = "<i class='fas fa-ruler-horizontal'></i> <span data-lang='reff'>Árbitro</span>";
                     }else if($usuario_info['tipo'] == 3){
-                      $tipo = "<i class='fas fa-microphone'></i> Periodista";
+                      $tipo = "<i class='fas fa-microphone'></i> <span data-lang='journalist'>Periodista</span>";
                     }
                     echo "<p class='tipo-profile'>$tipo</p>";
                   ?>
@@ -121,35 +124,35 @@
                   
             </div>
 
-            <section class="trofeos-wrapper">
-              <div class="trofeo-header">
-                <h1>Trofeos</h1>
-                <div class="trofeos-list">
+            <?php
 
-                  <div class="trofeo">
-                    <div class="trofeo-img">
-                      <img src="/cyberhydra/media/images/Trofeo.png" alt="">
-                    </div>
-                    <div class="trofeo-body">
-                      <h1>Nombre del Trofeo</h1>
-                      <p>Descripción del Trofeo</p>
-                    </div>
-                  </div>
+            if($numero_trofeos > 0){
+              echo '<section class="trofeos-wrapper">
+                      <div class="trofeo-header">
+                        <h1 data-lang="trophies">Trofeos</h1>
+                        <div class="trofeos-list">';
 
-                  <div class="trofeo">
-                    <div class="trofeo-img">
-                      <img src="/cyberhydra/media/images/Trofeo.png" alt="">
-                    </div>
-                    <div class="trofeo-body">
-                      <h1>Nombre del Trofeo</h1>
-                      <p>Descripción del Trofeo</p>
-                    </div>
-                  </div>
+                        for($x = 0; $x < $numero_trofeos; $x++){
+                          echo '<div class="trofeo">
+                                  <div class="trofeo-img">
+                                    <img src="'.$trofeos[$x]["Tipo"].'" alt="">
+                                  </div>
+                                  <div class="trofeo-body">
+                                    <h1>'.$trofeos[$x]["nombre"].'</h1>
+                                  </div>
+                                </div>';
+                        }
 
-                </div>
+                        echo '
+                        </div>
 
-              </div>
-            </section>
+                      </div>
+                    </section>';
+            }
+
+            ?>
+
+            
             
             <div class="profile-grid">
 
@@ -159,36 +162,36 @@
               if($ELO !== null){
                 echo "
                 <div class='estadisticas-header'>
-                  <h1>Estadisticas</h1>
+                  <h1 data-lang='stats'>Estadisticas</h1>
                 </div>
                 <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>ELO:</h1><p>" .$ELO . "</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-elo'>ELO:</h1><p>" .$ELO . "</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victorias:</h1><p>$Victorias</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-victories'>Victorias:</h1><p>$Victorias</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Tablas:</h1><p>$Tablas</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-draw'>Tablas:</h1><p>$Tablas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Derrotas:</h1><p>$Derrotas</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-defeats'>Derrotas:</h1><p>$Derrotas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Coronaciones:</h1><p>$Coronaciones</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-promote'>Coronaciones:</h1><p>$Coronaciones</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Piezas Comidas:</h1><p>$Comidas</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-eaten'>Piezas Comidas:</h1><p>$Comidas</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victoria en menos tiempo:</h1><p>$Menos_Tiempo</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-time-victories'>Victoria en menos tiempo:</h1><p>$Menos_Tiempo</p>
                         </div>
                         <div class='estadisticas-body'>
-                          <h1 class='estadisticas-titulo'>Victoria en menos movimientos:</h1><p>$Menos_Movimientos</p>
+                          <h1 class='estadisticas-titulo' data-lang='profile-move-victories'>Victoria en menos movimientos:</h1><p>$Menos_Movimientos</p>
                         </div>";
               }else{
                 echo "<div class='estadisticas-empty'>
-                        <h1><i class='fas fa-exclamation'></i> Lo sentimos...</h1>
-                        <p>No hay estadisticas para mostrar.</p>
+                        <h1><i class='fas fa-exclamation'></i> <span data-lang='sorry'>Lo sentimos...</span></h1>
+                        <p data-lang='no-stats-to-show'>No hay estadisticas para mostrar.</p>
                       </div>";
               }
               
@@ -197,7 +200,7 @@
 
               <div class="logros-wrapper">
                 <div class="logros-header">
-                  <h1>Logros</h1><p>('.$numero_mislogros.')</p>
+                  <h1 data-lang="achievements">Logros</h1><p>('.$numero_mislogros.')</p>
                 </div>
 
                 <div id="logros">';
@@ -223,7 +226,7 @@
                                       <div class="logro-body">
                                           <h1>'. $logros[($ID - 1)]['Nombre'] .'</h1>
                                           <p>'. $logros[($ID - 1)]['Descripcion'] .'</p>
-                                          <p class="porcentaje">'. $logros[($ID - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                          <p class="porcentaje">'. $logros[($ID - 1)]['Porcentaje'] .'<span data-lang="percentage-achievement">% de los usuarios tienen este logro.</span></p>
                                       </div>
                                   </div>
                               </div>';
@@ -241,7 +244,7 @@
                                       <div class="logro-body">
                                           <h1>'. $logros[($x - 1)]['Nombre'] .'</h1>
                                           <p>'. $logros[($x - 1)]['Descripcion'] .'</p>
-                                          <p class="porcentaje">'. $logros[($x - 1)]['Porcentaje'] .'% de los usuarios tienen este logro.</p>
+                                          <p class="porcentaje">'. $logros[($x - 1)]['Porcentaje'] .'<span data-lang="percentage-achievement">% de los usuarios tienen este logro.</span></p>
                                       </div>
                                   </div>
                               </div>';
