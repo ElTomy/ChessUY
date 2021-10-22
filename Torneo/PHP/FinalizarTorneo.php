@@ -8,6 +8,13 @@ if(isset($_POST['id'])){
     $Participantes = $server->FixturePuntos($IDT);
     $cantParticipantes = count($Participantes);
     $partidos = $server->TraigoPartidosTorneo();
+    $Torns = $server->InfoTorneo();
+    $cant = count($Torns);
+    for($a = 0;$a<$cant;$a++){
+        if($Torns[$a]["ID_Torneo"] == $IDT){
+            $NomPart = $Torns[$a]["nombre"];
+        }
+    }
     $col = 0;
     $id;
     $p = $Participantes[0]['Usuario'];

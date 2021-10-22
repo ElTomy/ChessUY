@@ -54,25 +54,25 @@ date_default_timezone_set('America/Montevideo');
                 <div class="inputs">
                     <input type="text" id="nombre" name="nombre" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Nombre </span>
+                        <span class="text-user" data-lang="name"> Nombre </span>
                     </label>
                 </div>
                 <div class="inputs">
                     <input type="text" id="apellido" name="apellido" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Apellido </span>
+                        <span class="text-user" data-lang="surname"> Apellido </span>
                     </label>
                 </div>
                 <div class="inputs">
                     <input type="text" id="institucion" name="institucion" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Institución Liceal </span>
+                        <span class="text-user" data-lang="institute"> Institución Liceal </span>
                     </label>
                 </div>
                 <div class="inputs">
                     <input type="text" id="año" name="año" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Año Cursando </span>
+                        <span class="text-user" data-lang="study-year"> Año Cursando </span>
                     </label>
                 </div>
                 <div class="inputs">
@@ -85,7 +85,7 @@ date_default_timezone_set('America/Montevideo');
                     echo "<input type='date' max='$año-$mes-$dia' id='nacimiento' name='nacimiento' />";
                     ?>
                     <label class="lbl-user">
-                        <span class="text-user"> Fecha de Nacimiento</span>
+                        <span class="text-user" data-lang="birthday"> Fecha de Nacimiento</span>
                     </label>
                     
                 </div>
@@ -94,13 +94,13 @@ date_default_timezone_set('America/Montevideo');
                 <div class="inputs">
                     <input type="text" id="cedula" name="cedula" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Cedula</span>
+                        <span class="text-user" data-lang="id-cedula"> Cedula</span>
                     </label>
                 </div>
                 <div class="inputs">
                     <input type="text" id="celular" name="celular" required />
                     <label class="lbl-user">
-                        <span class="text-user"> Celular</span>
+                        <span class="text-user" data-lang="cellphone"> Celular</span>
                     </label>
                 </div>
                 <div class="inputs">
@@ -112,13 +112,13 @@ date_default_timezone_set('America/Montevideo');
                 <div class="inputs">
                     <input type="text" id="usuario" name="usuario" required />
                     <label class="lbl-user">
-                    <span class="text-user"> Usuario </span>
+                    <span class="text-user" data-lang="username"> Usuario </span>
                     </label>
                 </div>
                 <div class="inputs">
                     <input type="password" id="contraseña" name="Contraseña" required />
                     <label class="lbl-user">
-                    <span class="text-user"> Contraseña </span>
+                    <span class="text-user" data-lang="password"> Contraseña </span>
                     </label>
                 </div>
             </div>

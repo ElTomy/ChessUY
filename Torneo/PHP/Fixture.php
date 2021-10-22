@@ -12,7 +12,7 @@ if(isset($_POST['id'])){
     $Torns = $server->InfoTorneo();
     $cant = count($Torns);
     for($a = 0;$a<$cant;$a++){
-        if($Torns[$a]["ID_Torneo"] = $IDT){
+        if($Torns[$a]["ID_Torneo"] == $IDT){
             $TiempoPart = $Torns[$a]["tiempo"];
         }
     }

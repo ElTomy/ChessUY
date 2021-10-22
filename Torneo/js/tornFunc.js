@@ -240,7 +240,7 @@ function guarFech(clicked_id) {
 
 var transf = true;
 
-function envaPHP(preset) {
+function envaPHP() {
     transf = true;
     opt = document.getElementById("tipTorn").value;
     reserv.sort();
@@ -251,19 +251,13 @@ function envaPHP(preset) {
         var partDia = setVar('partDia', 'oblig');
         var prem = setVar('prem', 'oblig');
         var hrCom = setVar('hrCom', 'oblig');
-        if(preset == 0) {
-            if(reserv.length < 3) {
-                alert("Asegurese de que las fechas estan seleccionadas");
-                transf = false;
-            } else {
-                var comInsc = reserv[0].slice(4);
-                var finInsc = reserv[1].slice(4);
-                var comTorn = reserv[2].slice(4);
-            }
+        if(reserv.length < 3) {
+            alert("Asegurese de que las fechas estan seleccionadas");
+            transf = false;
         } else {
-            var comInsc = 0;
-            var finInsc = 0;
-            var comTorn = 0;
+            var comInsc = reserv[0].slice(4);
+            var finInsc = reserv[1].slice(4);
+            var comTorn = reserv[2].slice(4);
         }
 
         var eloMax = setVar('eloMax', 'def');
@@ -326,7 +320,6 @@ function envaPHP(preset) {
                     EdadMaxima : edaMax,
                     InicioTorneo : comTorn,
                     hrCom : hrCom,
-                    preset : preset,
                     nomTorn : nomTorn
                   },
             success: function (exec) {

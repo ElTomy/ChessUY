@@ -8,7 +8,7 @@ if(isset($_POST['opt'])) {
 //Codigo del Nombre
 $nomTorn = '
 <div class="nombreTorn">
-    <p>Nombre del Torneo</p>
+    <p data-lang="tourn-name">Nombre del Torneo</p>
     <input type="text" id="nomDesc">
 </div>
 ';
@@ -22,15 +22,15 @@ $agenHTML = '
 <div class="calendar-references">
     <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: red; margin: auto;"></div>
-        Comienzo de las inscripciones
+        <span data-lang="insc-start">Comienzo de las inscripciones</span>
     </div>
     <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: orange; margin: auto;"></div>
-        Fin de las inscripciones
+        <span data-lang="insc-end">Fin de las inscripciones</span>
     </div>
     <div class="reference">
         <div style="width: 30px; height: 30px; border-radius: 20px; background-color: green; margin: auto;"></div>
-        Comienzo del torneo
+        <span data-lang="tourn-start">Comienzo del torneo</span>
     </div>
 </div>
 ';
@@ -38,15 +38,15 @@ $agenHTML = '
 //Codigo de los tiempos
 $tiemHTML = '
 <div class="tiempo">
-    <p>Tiempo para descalificar</p>
+    <p data-lang="time-disqualify">Tiempo para descalificar</p>
     <input type="text" id="tempDesc">
 </div>
 <div class="tiempo">
-    <p>Tiempo total por jugador</p>
+    <p data-lang="time-per-player">Tiempo total por jugador</p>
     <input type="text" id="tempJug" required>
 </div>
 <div class="tiempo">
-    <p>Cantidad de partidas por día</p>
+    <p data-lang="amount-games-day">Cantidad de partidas por día</p>
     <input type="number" id="partDia" required>
 </div>
 ';
@@ -59,15 +59,15 @@ $avanHTML = '
 <div class="avanzada-wrapper">
     <div class="avanzada-left">
         <div class="limitar">
-            <p style="width: 100%;">Limitar Jugadores</p>
+            <p style="width: 100%;" data-lang="limit-players">Limitar Jugadores</p>
             <input type="checkbox" id="siLim" value="siLim" onclick="quehacerRes()">
         </div>
         <div>
-            <p style="width: 100%;">ELO maximo</p>
+            <p style="width: 100%;" data-lang="maximumELO">ELO maximo</p>
             <input type="number" id="eloMax">
         </div>
         <div>
-            <p style="width: 100%;">ELO minimo</p>
+            <p style="width: 100%;" data-lang="minimumELO">ELO minimo</p>
             <input type="number" id="eloMin">
         </div>
         <div id="quehacerRes">
@@ -77,9 +77,9 @@ $avanHTML = '
 
     <div class="avanzada-right">
         <div>
-        <p style="width: 100%;">Localidad</p>
+        <p style="width: 100%;" data-lang="locale">Localidad</p>
             <select id="locTorn">
-                <option disabled selected>Selecciona una localidad</option>
+                <option disabled selected data-lang="select-locale">Selecciona una localidad</option>
                 <option value="x">Cualquiera</option>
                 <option value="mtv">Montevideo</option>
                 <option value="can">Canelones</option>
@@ -87,11 +87,11 @@ $avanHTML = '
             </select>
         </div>
         <div>
-            <p style="width: 100%;">Edad maxima</p>
+            <p style="width: 100%;" data-lang="maximum-age">Edad maxima</p>
             <input type="number" id="edaMax">
         </div>
         <div>
-            <p style="width: 100%;">Edad minima</p>
+            <p style="width: 100%;" data-lang="minimum-age">Edad minima</p>
             <input type="number" id="edaMin">
         </div>
     </div>
@@ -105,15 +105,14 @@ $avanHTML = '
 
 //Codigo de premio
 $premHTML = '
-<p><i class="fas fa-gift"></i> Premio</p>
+<p><i class="fas fa-gift"></i> <span data-lang="prize">Premio</span></p>
 <input type="text" id="prem" required>
 ';
 
 //Codigo para guardar y crear
 $guCrHTML = '
 <div class="torneo-buttons">
-    <button onclick="envaPHP(1)"><i class="fas fa-save"></i> Guardar como preset</button>
-    <button style="background-color: green" onclick="envaPHP(0)"><i class="fas fa-calendar-plus"></i> Crear</button>
+    <button onclick="envaPHP(0)"><i class="fas fa-calendar-plus"></i> <span data-lang="create">Crear</span></button>
 </div>
 ';
 
@@ -127,7 +126,7 @@ if($opt == 'norm') {
             $agenHTML
       .'</div>
         <div class="hora">
-            <p><i class="fas fa-clock"></i> ¿A que hora debe cambiar?</p>
+            <p><i class="fas fa-clock"></i> <span data-lang="time-change">¿A que hora debe cambiar?</span></p>
             <input id="hrCom" type="time">
         </div>
         <div class="tiempo-wrapper">'.
@@ -137,7 +136,7 @@ if($opt == 'norm') {
     </div>
     <div class="config-right">
         <div class="advanced-wrapper">
-            <p><i class="fas fa-ban"></i> Deshabilitado</p>
+            <p><i class="fas fa-ban"></i> <span data-lang="disabled">Deshabilitado</p>
         </div>
         <div class="premio">'.
 //          Premio
