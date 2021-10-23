@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| Que grupo desea borrar?                            ^|
 echo +----------------------------------------------------+
 echo.
@@ -13,7 +13,7 @@ if "%borgrup%" == "q" (
     call \admin\ABML\bajar.bat
 ) else (
     net localgroup %borgrup% /delete || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +-----------------------------------------------------------------+
         echo ^| ${red}Hubo un error al intentar borrar el grupo, asegurate que existe${nc} ^|

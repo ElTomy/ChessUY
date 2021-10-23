@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| A que grupo le quiere ver los usuarios?            ^|
 echo +----------------------------------------------------+
 echo.
@@ -14,7 +14,7 @@ if "%grp%" == "q" (
     call \admin\ABML.bat
 ) else (
     net user %grp% || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +----------------------------------------------+
         echo ^| Hubo un error, asegurate que el grupo existe ^|

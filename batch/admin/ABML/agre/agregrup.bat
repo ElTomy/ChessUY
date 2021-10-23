@@ -13,7 +13,7 @@ if "%cregrup%" == "q" (
     call \admin\ABML\agregar.bat
 ) else (
     net localgroup %cregrup% /add || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +----------------------------------------------------+
         echo ^| No se pudo crear el grupo, asegurate que no existe ^|

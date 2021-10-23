@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| De que grupo quiere eliminar a este usuario?       ^|
 echo +----------------------------------------------------+
 echo.
@@ -13,7 +13,7 @@ if "%elgrup%" == "q" (
     call \admin\ABML\modificar.bat
 ) else (
     net localgroup %elgrup% %usu% /delete || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +-----------------------------------------------------------------------+
         echo ^| No se le pudo eliminar del grupo, asegurate que forme parte del mismo ^|

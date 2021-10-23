@@ -1,6 +1,7 @@
 :loop
 
 call mostLogo.bat
+set work=1
 echo ^| A que grupo quiere agregar a este usuario?         ^|
 echo +----------------------------------------------------+
 echo.
@@ -12,7 +13,7 @@ if "%novgrup%" == "q" (
     call \admin\ABML\modificar.bat
 ) else (
     net localgroup %novgrup% %usu% /add || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +------------------------------------------------------+
         echo ^| No se le pudo agregar al grupo, asegurate que existe ^|

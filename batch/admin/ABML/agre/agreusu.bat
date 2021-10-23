@@ -13,7 +13,7 @@ if "%usu%" == "q" (
     call admin\ABML\agregar.bat
 ) else (
     net user %usu% /add || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +---------------------------------------------------+
         echo ^| Hubo un error, asegurate que el usuario no existe ^|

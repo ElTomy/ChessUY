@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| Que nombre desea ponerle a este usuario?           ^|
 echo +----------------------------------------------------+
 echo.
@@ -13,7 +13,7 @@ if "%novnom%" == "q" (
     call \admin\ABML\modificar.bat
 ) else (
     wmic useraccount where name='%usu%' rename %novnom% || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +-------------------------------------+
         echo ^| Hubo un error, intente otro nombre ^|

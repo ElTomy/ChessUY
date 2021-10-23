@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| Que usuario desea borrar?                          ^|
 echo +----------------------------------------------------+
 echo.
@@ -14,7 +14,7 @@ if "%borusu%" == "q" (
     call \admin\ABML\bajar.bat
 ) else (
     net user %borusu% /delete || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +-------------------------------------------------------------------+
         echo ^| Hubo un error al intentar borrar el usuario, asegurate que existe ^|

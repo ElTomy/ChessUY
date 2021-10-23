@@ -51,16 +51,16 @@ if "%usu%" == "q" (
             net user %usu% %pass%
             goto end_case
         :case_3
-            call admin\ABML\modif\agragrup.sh
+            call admin\ABML\modif\agragrup.bat
             goto end_case
         :case_4
-            call admin\ABML\modif\elimgrup.sh
+            call admin\ABML\modif\elimgrup.bat
             goto end_case
         :case_5
-            call admin\ABML\modif\lokuser.sh
+            call admin\ABML\modif\lokuser.bat
             goto end_case
         :case_6
-            call admin\ABML\modif\unkuser.sh
+            call admin\ABML\modif\unkuser.bat
             goto end_case
         :case_q
             call admin\admin.bat

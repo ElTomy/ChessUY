@@ -1,7 +1,7 @@
 :loop
 
 call mostLogo.bat
-
+set work=1
 echo ^| Seguro que quiere bloquear a este usuario?         ^|
 echo +----------------------------------------------------+
 echo.
@@ -19,7 +19,7 @@ goto :loop
 
 :case_Y
     net user %usu% /active:no || set work=0
-    if %work%==0 (
+    if "%work%"=="0" (
         echo.
         echo +-------------------------------------------+
         echo ^| No se pudo bloquear, asegurate que existe ^|
