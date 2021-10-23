@@ -2,16 +2,15 @@
 
 call mostLogo.bat
 
-echo ^| Bienvenido al menu principal del Batch             ^|
+echo ^| Que desea agregar?                                 ^|
 echo +----------------------------------------------------+
 echo.
-echo [1] Administrador
-echo [2] Tecnico de red
-echo [3] Analista en BD
+echo [1] Agregar usuario
+echo [2] Agregar grupo
 echo.
 echo [q] Volver
 echo.
-set /p "opc=>_ " 
+set /p "opc=>_ "
 
 call :case_%opc%
 call :default_case
@@ -19,17 +18,13 @@ call :default_case
 goto :loop
 
 :case_1
-    call revisar.bat admin
+    call admin\ABML\agre\agreusu.bat
     goto end_case
 :case_2
-    call revisar.bat tecdered
-    goto end_case
-:case_3
-    call revisar.bat tecbd
+    call admin\ABML\agre\agregrup.bat
     goto end_case
 :case_q
-    echo se vuelve
-    timeout /t 3 /nobreak > nul
+    call admin\ABML.bat
     goto end_case
 :default_case
     cls

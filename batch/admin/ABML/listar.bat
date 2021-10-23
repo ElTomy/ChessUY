@@ -2,12 +2,13 @@
 
 call mostLogo.bat
 
-echo ^| Bienvenido al menu principal del Batch             ^|
+echo ^| Que desea listar?                                  ^|
 echo +----------------------------------------------------+
 echo.
-echo [1] Administrador
-echo [2] Tecnico de red
-echo [3] Analista en BD
+echo [1] Listar todos los usuarios
+echo [2] Listar todos los grupos
+echo [3] Listar los grupos de un usuario
+echo [4] Listar los usuarios de un grupo
 echo.
 echo [q] Volver
 echo.
@@ -19,17 +20,19 @@ call :default_case
 goto :loop
 
 :case_1
-    call revisar.bat admin
+    call admin\ABML\list\listusu.bat
     goto end_case
 :case_2
-    call revisar.bat tecdered
+    call admin\ABML\list\listgrup.bat
     goto end_case
 :case_3
-    call revisar.bat tecbd
+    call admin\ABML\list\listgrdus.bat
+    goto end_case
+:case_4
+    call admin\ABML\list\listusdgr.bat
     goto end_case
 :case_q
-    echo se vuelve
-    timeout /t 3 /nobreak > nul
+    call admin\ABML.bat
     goto end_case
 :default_case
     cls

@@ -1,16 +1,17 @@
-#!/bin/bash
+:loop
 
-. ./mostLogo.sh
-echo "| Decida entre las siguientes opciones               |"
-echo "+----------------------------------------------------+"
-echo ""
-echo "[a] Quiere especificar el usuario?"
-echo "                  o"
-echo "[b] Quiere ver todos los usuarios?"
-echo ""
-echo "[q] Volver"
-echo ""
-read -p ">_ " espe
+call mostLogo.bat
+
+echo ^| Decida entre las siguientes opciones               ^|
+echo +----------------------------------------------------+
+echo.
+echo [a] Quiere especificar el usuario?
+echo                   o
+echo [b] Quiere ver todos los usuarios?
+echo.
+echo [q] Volver
+echo.
+set /p "opc=>_ " 
 
 case "$espe" in
     "a") read -p "Inserte el nombre >_ " esus
